@@ -1,0 +1,142 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ user.username|title }}{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+  // highlight drag area 
+  var fileinput = document.querySelector('.file-input');
+  var filedroparea = document.querySelector('.file-drop-area');
+  var jssetnumber = document.querySelector('.js-set-number');
+  fileinput.addEventListener('dragenter', isactive);
+  fileinput.addEventListener('focus', isactive);
+  fileinput.addEventListener('click', isactive);
+
+// back to normal state
+fileinput.addEventListener('dragleave', isactive);
+fileinput.addEventListener('blur', isactive);
+fileinput.addEventListener('drop', isactive);
+
+// add Class
+function isactive() {
+  filedroparea.classList.add('is-active');
+}
+
+// change inner text
+fileinput.addEventListener('change', function() {
+    // if single file then show file name
+    jssetnumber.innerText = fileinput.value.split('\\').pop();
+});
+</script>
+<style type="text/css">
+  @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+  body {
+    background-color: #37385F;
+    font-family: 'Lato', sans-serif;
+  }
+
+  .file-drop-area {
+    border: 1px dashed #7c7db3;
+    border-radius: 3px;
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 26px 20px 30px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+  }
+
+  .fake-btn {
+    color: white;
+    background: #3F4069;
+    width: 176px;
+    border: 1px solid #9E9EC4;
+    border-radius: 3px;
+    padding: 8px 15px;
+    margin-right: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .file-msg {
+    font-size: small;
+    font-weight: 300;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: calc(100% - 130px);
+    vertical-align: middle;
+  }
+
+  .file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+  }
+  .file-input:focus {
+    outline: none;
+  }
+</style>
+
+<section style="padding: 30px 30px 20px 30px;" class="error-header">
+  <h1>{% trans "Update KYC" %}</h1>
+  <p>{% trans 'here you can update your kyc!' %}</p>
+</section>
+<section>
+  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+    <div class="mdc-card">
+      <div class="mdc-layout-grid__inner mt-2">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-8-tablet">
+          <div class="table-responsive">
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.errors }}
+              <div class="file-drop-area" align="center">
+                <div class="fake-btn"><p>Choose Pan Card</p></div>
+                <br>
+                <img width="50px" src="{{imagep}}">
+                <input required name="imageP" accept="image/*;capture=camera" class="file-input" type="file">
+              </div>
+              <div class="file-drop-area" align="center">
+                <div class="fake-btn"><p>Choose Aadhar Front</p></div>
+                <br>
+                <img width="50px" src="{{imageaf}}">
+                <input required name="imageAF" accept="image/*;capture=camera" class="file-input" type="file">
+              </div>
+              <div class="file-drop-area" align="center">
+                <div class="fake-btn"><p>Choose Aadhar Back</p></div>
+                <br>
+                <img width="50px" src="{{imageab}}">
+                <input required name="imageAB" accept="image/*;capture=camera" class="file-input" type="file">
+              </div>
+              <input type="hidden" name="user" value="{{ request.user.username }}">
+              <br><br><br>
+              {% if model.approved == True %}
+              <span style="width: -webkit-fill-available;" class="mdc-button mdc-button--unelevated filled-button--success">&#128512; Hurray! KYC Completed</span>
+              {% elif model.approved == False %}
+              <p>{{ model.description }}</p>
+              <button type="submit" style="width: -webkit-fill-available;" class="mdc-button mdc-button--unelevated filled-button--secondary">Update Again!</button>
+              {% elif model.approved == None %}
+              <p>It will take 2-3 working days to process your kyc</p>
+              <button style="width: -webkit-fill-available;" class="mdc-button mdc-button--unelevated filled-button--secondary">
+                Update KYC
+              </button>
+              {% endif %}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+</div>
+</main>
+{% endblock %}

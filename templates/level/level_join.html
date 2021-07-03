@@ -1,0 +1,57 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+
+
+{% block content %}
+<div class="body-wrapper">
+  <div class="main-wrapper">
+    <div class="page-wrapper full-page-wrapper">
+      <main class="content-wrapper">
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card p-0">
+                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                  <h1>{% trans "Join Plan" %}</h1>
+                  <p>{% trans 'here you can join our investment plan' %}</p>
+                </section><section class="error-info">
+                  <div class="mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-12-desktop stretch-card">
+                    <div class="mdc-card">
+                      <form class="template-demo" method="POST" action="/level/join/" enctype="multipart/form-data">{% csrf_token %}
+                          <input type="hidden" name="user_id" value="{{ request.user }}">
+                          <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+                          <input type="hidden" value='' required name="amount">
+                            <i class="mdc-select__dropdown-icon"></i>
+                            <div class="mdc-select__selected-text"></div>
+                            <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+                              <ul class="mdc-list">
+                                <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
+                                </li>
+                                <li class="mdc-list-item" data-value="999.00">INR 999.00 Package</li>
+                              </ul>
+                            </div>
+                            <span class="mdc-floating-label">Select Package</span>
+                            <div class="mdc-line-ripple"></div>
+                          </div>
+                          <button type="submit" class="mdc-button mdc-button--raised w-100">
+                            Upgrade Now
+                          </button>
+                          <a href="/binary/join/" class="mdc-button mdc-button--secondary w-100">
+                            Back
+                          </a>
+                          </form>
+                          <p>{{ message }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+

@@ -1,0 +1,83 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% block title %}{% trans 'Payment Success' %}{% endblock %}
+{% load sum_tags %}
+
+
+{% block content %}
+<div class="body-wrapper">
+  <div class="main-wrapper">
+    <div class="page-wrapper full-page-wrapper">
+      <main>
+        <div>
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card p-0">
+                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                  <h1>{% trans "Get Fund Request Number" %}</h1>
+                  <p>{% trans 'You can use FRN to upgrade to prime using cash!' %}</p>
+                </section>
+                <section> 
+                  <div class="mdc-layout-grid__inner mt-2 p-3">
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
+                      <p>Please call on helipline number to get your fund request Approved.</p>
+                      <br/>
+                      <div>
+                        {% if message == 'True' %}
+                          <p>
+                            Fund request sent!
+                          </p>
+                        {% endif %}
+                        <form method="post" onsubmit="return confirm('Are you sure you want this action?');">
+                          {% csrf_token %}
+                          <br> 
+                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop pb-2">
+                            <button type="submit" class="mdc-button mdc-button--raised w-100">
+                              Send Fund Request
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+
+                      <div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-6t+ed+2i-1n-4w"
+                        data-ad-client="ca-pub-2476399156226109"
+                        data-ad-slot="6614818154"></ins>
+                        <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+<script>
+    $("#id_username").change(function () {
+      var username = $(this).val();
+
+      $.ajax({
+        url: '/users/ajax/validate_username/',
+        data: {
+          'username': username
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (true) {
+            document.getElementById("user_name").innerHTML = data.is_taken;
+          }
+        }
+      });
+
+    });
+  </script>
+  {% endblock content %}

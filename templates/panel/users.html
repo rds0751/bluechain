@@ -1,0 +1,101 @@
+{% extends 'panel/base.html' %}
+{% load static currency_filters sum_tags %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+<div class="app-layout-canvas">
+    <div class="app-layout-container">
+        {% include 'panel/partials/nav.html' %}
+        <main class="app-layout-content">
+            <!-- Page Content -->
+            <div class="container-fluid p-y-md">
+                <!-- Dynamic Table Full -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Users{% if q != 'blank' %} for {{ q }}{% endif %}{% if s != 'blank' %} sorted by {{ s }}{% endif %}</h4>
+                    </div>
+                    <form class="card-header" method="POST">
+                        {% csrf_token %}
+                        <input type="" name="q" placeholder="Search Users">
+                        <input type="" required name="r" placeholder="No. of Results">
+                        <select style="height: 30px;" name="s">
+                            <option value="blank">Sort Users</option>
+                            <option value="name">Name</option>
+                            <option value="mobile">Mobile</option>
+                            <option value="new_funds">New Funds</option>
+                            <option value="on_hold">On Hold</option>
+                        </select>
+                        <input style="width: 109px;" type="submit">
+                    </form>
+                    <div class="card-block">
+                        <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+                        <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+                            <thead>
+                                <tr>
+                                    <th class="text-center"></th>
+                                    <th>Name</th>
+                                    <th class="hidden-xs">Mobile</th>
+                                    <th class="hidden-xs">User ID</th>
+                                    <th class="text-center w-20">Actions</th>
+                                    <th class="hidden-xs">On Hold</th>
+                                    <th class="hidden-xs">New Funds</th>
+                                    <th>Login</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x in u %}
+                                <tr>
+                                    <td class="text-center">{{ forloop.counter }}</td>
+                                    <td class="font-500">{{ x.name }}</td>
+                                    <td class="hidden-xs">{{ x.mobile }}</td>
+                                    <td class="hidden-xs">{{ x.username }}</td>
+                                    <td class="text-center">
+                                        <div class="btn-group">
+                                            <form action="/panel/users/{{ x.username }}/">
+                                                <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="View User"><i style="color: green" class="ion-information-circled"></i></button>
+                                            </form>
+                                            <form action="/panel/users/{{ x.username }}/">
+                                                <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Block User"><i style="color: yellow" class="ion-minus-circled"></i></button>
+                                            </form>
+                                            <form action="/panel/users/{{ x.username }}/">
+                                                <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Delete User"><i style="color: red" class="ion-close-circled"></i></button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                    <td class="hidden-xs">{{ x.added_amount|add:x.received_amount|add:x.binary_income|add:x.income|currency }}</td>
+                                    <td class="hidden-xs">{{ x.new_funds|currency }}</td>
+                                    <td>
+                                        <form action="/panel/login/" method="POST">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="login" value="{{ x.username }}">
+                                            <input type="submit">
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- .card-block -->
+                </div>
+                <!-- .card -->
+                <!-- End Dynamic Table Full -->
+            </div>
+            <!-- .container-fluid -->
+            <!-- End Page Content -->
+        </main>
+    </div>
+    <!-- .app-layout-container -->
+</div>
+<!-- .app-layout-canvas -->
+
+
+<div class="app-ui-mask-modal"></div>
+{% endblock %}
+{% block scripts %}
+<!-- Page JS Plugins -->
+<script src="{% static 'appUI/js/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+
+<!-- Page JS Code -->
+<script src="{% static 'appUI/js/pages/base_tables_datatables.js' %}"></script>
+{% endblock %}

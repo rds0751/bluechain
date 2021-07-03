@@ -1,0 +1,711 @@
+{% extends 'panel/base.html' %}
+{% load static currency_filters sum_tags %}
+
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+  function copyToClipboard() {
+    var textBox = document.getElementById("copy-to-clipboard-input");
+    textBox.select();
+    document.execCommand("copy");
+    document.getElementById("copy-text").innerHTML = 'Link Copied!';
+}
+</script>
+<input type="input" style="width:10px; position:absolute; z-index: -100 !important;" value="Get higher COMMISSION on all transactions with life changing opportunity to Earn unlimited Incomes and lifetime Achievements. Join Now! https://jrindia.co.in/register={{ user.username }}" id="copy-to-clipboard-input">
+<div class="app-layout-canvas">
+    <div class="app-layout-container">
+
+        {% include 'panel/partials/nav.html' %}
+
+        <main class="app-layout-content">
+            <div class="container">
+                <div class="row">
+                    <div style="padding-top: 20px" style="background-color: white" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <button style="border: 0;
+        background: white;" onclick="copyToClipboard()">
+                              <p id='copy-text' style='color: blue;
+                              margin: 12px;
+                                font-weight: bold;
+                                font-size: 12px;
+                                text-align: center;'>
+                                <i class="ion-heart"></i>
+                                Copy Link
+                              </p>
+                        </button>
+                    </div>
+                    <div style="padding-top: 20px" style="background-color: white" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <a style="border: 0;
+        background: white;" href="whatsapp://send?text=Get higher COMMISSION on all transactions with life changing opportunity to Earn unlimited Incomes and lifetime Achievements. Join Now! https://jrindia.co.in/register={{ user.username }}">
+                              <p id='copy-text' style='color: blue;
+                              margin: 12px;
+                                font-weight: bold;
+                                font-size: 12px;
+                                text-align: center;'>
+                                <i class="ion-paper-airplane"></i>
+                                Share Link
+                              </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid p-y-md">
+                <div class="row">
+                    <marquee scrollamount="8"
+                    direction="left"
+                    behavior="scroll">
+                    <h4 style="color: red; vertical-align: middle; margin: 5px">{{ news.news }}</h4>
+                    </marquee>
+                </div>
+            </div>
+
+            <!-- Page Content -->
+            <div class="container-fluid p-y-md">
+                <!-- Stats -->
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="card" href="javascript:void(0)">
+                            <div class="card-block clearfix">
+                                <div class="pull-right">
+                                    <p class="h6 text-muted m-t-0 m-b-xs">Today's Revenue</p>
+                                    <p class="h3 text-blue m-t-sm m-b-0">{{ tre|currency }}</p>
+                                </div>
+                                <div class="pull-left m-r">
+                                    <span class="img-avatar img-avatar-48 bg-blue bg-inverse"><i class="ion-cash fa-1-5x"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="card bg-green bg-inverse" href="javascript:void(0)">
+                            <div class="card-block clearfix">
+                                <div class="pull-right">
+                                    <p class="h6 text-muted m-t-0 m-b-xs">Week's Cash In</p>
+                                    <p class="h3 m-t-sm m-b-0">{{ ci|currency }}</p>
+                                </div>
+                                <div class="pull-left m-r">
+                                    <span class="img-avatar img-avatar-48 bg-gray-light-o"><i class="ion-arrow-graph-up-right fa-1-5x"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- .col-sm-6 -->
+
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="card bg-orange bg-inverse" href="javascript:void(0)">
+                            <div class="card-block clearfix">
+                                <div class="pull-right">
+                                    <p class="h6 text-muted m-t-0 m-b-xs">Week's Cash Out</p>
+                                    <p class="h3 m-t-sm m-b-0">{{ co|currency }}</p>
+                                </div>
+                                <div class="pull-left m-r">
+                                    <span class="img-avatar img-avatar-48 bg-gray-light-o"><i class="ion-arrow-graph-down-right fa-1-5x"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- .col-sm-6 -->
+
+                    <div class="col-sm-6 col-lg-3">
+                        {% sub ci co as pr %}
+                        <a class="card {% if pr >= 0 %}bg-purple{% else %}bg-red{% endif %} bg-inverse" href="javascript:void(0)">
+                            <div class="card-block clearfix">
+                                <div class="pull-right">
+                                    <p class="h6 text-muted m-t-0 m-b-xs">Week's Profit</p>
+                                    <p class="h3 m-t-sm m-b-0">{{ pr|currency }}</p>
+                                </div>
+                                <div class="pull-left m-r">
+                                    <span class="img-avatar img-avatar-48 bg-gray-light-o"><i class="{% if pr >= 0 %}ion-happy{% else %}ion-sad{% endif %} fa-1-5x"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- .col-sm-6 -->
+                </div>
+                <!-- .row -->
+                <!-- End stats -->
+
+                <div class="row">
+                    <!-- Company overview Chart -->
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-header bg-blue bg-inverse">
+                                <h4>Company overview</h4>
+                                <ul class="card-actions">
+                                    <li>
+                                        <span class="label bg-green">Stat<span class="hidden-xs">istic</span>s <i class="ion-connection-bars"></i></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-block p-b-0 bg-blue bg-inverse">
+                                <!-- Chart.js Charts (initialized in js/pages/base_pages_dashboard.js), for more examples please check http://www.chartjs.org/docs/ -->
+                                <div style="height: 200px;"><canvas class="js-chartjs-lines1"></canvas></div>
+                            </div>
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-xs-6 col-lg-3 b-r">
+                                        <p class="h6 small text-muted">Monthly change</p>
+                                        <p class="h3 m-t-0 m-b-md">+214.22</p>
+                                        <div class="progress progress-mini m-b-sm">
+                                            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100" style="width: 76%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-lg-3 b-r visible-lg">
+                                        <p class="h6 small text-muted">Shares trade</p>
+                                        <p class="h3 m-t-0 m-b-md">$28.74M</p>
+                                        <div class="progress progress-mini m-b-sm">
+                                            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" style="width: 84%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-lg-3 b-r visible-lg">
+                                        <p class="h6 small text-muted">Monthly change</p>
+                                        <p class="h3 m-t-0 m-b-md">+74%</p>
+                                        <div class="progress progress-mini m-b-sm">
+                                            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100" style="width: 74%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-lg-3">
+                                        <p class="h6 small text-muted">Total revenue</p>
+                                        <p class="h3 m-t-0 m-b-md">$74.23M</p>
+                                        <div class="progress progress-mini m-b-sm">
+                                            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- .row -->
+                            </div>
+                            <!-- .card-block -->
+                        </div>
+                        <!-- .card -->
+                    </div>
+                    <!-- .col-lg-8 -->
+                    <!-- End Company overview Chart -->
+
+                    <!-- Weekly transactions Widget -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Weekly transactions</h4>
+                                <ul class="card-actions">
+                                    <li class="dropdown">
+                                        <button type="button" data-toggle="dropdown"><i class="ion-more"></i></button>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li class="dropdown-header">Profile</li>
+                                            <li>
+                                                <a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">3</span> News</a>
+                                            </li>
+                                            <li>
+                                                <a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">1</span> Messages</a>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li class="dropdown-header">More</li>
+                                            <li>
+                                                <a tabindex="-1" href="javascript:void(0)">Edit Profile..</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <!-- .card-actions -->
+                            </div>
+                            <!-- .card-header -->
+                            <div class="card-block p-b-0">
+                                <div style="height: 268px;"><canvas class="js-chartjs-lines2"></canvas></div>
+                            </div>
+                            <div class="card-block text-center">
+                                <span class="label bg-green m-r-xs">Statistics <i class="ion-connection-bars"></i></span> <small>for the <a href="javascript:void(0)">last Month</a></small>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .col-lg-4 -->
+                    <!-- End Weekly transactions Widget -->
+                </div>
+                <!-- .row -->
+
+                <div class="row">
+
+                    <div class="col-lg-4">
+                        <!-- Weekly users Widget -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Weekly users</h4>
+                                <ul class="card-actions">
+                                    <li class="dropdown">
+                                        <button type="button" data-toggle="dropdown"><i class="ion-more"></i></button>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li class="dropdown-header">Profile</li>
+                                            <li>
+                                                <a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">3</span> News</a>
+                                            </li>
+                                            <li>
+                                                <a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">1</span> Messages</a>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li class="dropdown-header">More</li>
+                                            <li>
+                                                <a tabindex="-1" href="javascript:void(0)">Edit Profile..</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-block">
+                                <div style="height: 238px;"><canvas class="js-chartjs-bars"></canvas></div>
+                            </div>
+                            <div class="card-block text-center">
+                                <span class="label bg-green m-r-xs">Statistics <i class="ion-connection-bars"></i></span> <small>for the <a href="javascript:void(0)">last Month</a></small>
+                            </div>
+                        </div>
+                        <!-- .card -->
+                        <!-- End Weekly users Widget -->
+                    </div>
+                    <!-- .col-lg-4 -->
+
+                    <div class="col-lg-8">
+                        <!-- Transactions history Widget -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Transactions history</h4>
+                                <ul class="card-actions">
+                                    <li class="dropdown">
+                                        <button type="button" data-toggle="dropdown"><i class="ion-more"></i></button>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li class="dropdown-header">Profile</li>
+                                            <li>
+                                                <a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">3</span> News</a>
+                                            </li>
+                                            <li>
+                                                <a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">1</span> Messages</a>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li class="dropdown-header">More</li>
+                                            <li>
+                                                <a tabindex="-1" href="javascript:void(0)">Edit Profile..</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-block">
+                                <div style="height: 238px;"><canvas class="js-chartjs-lines3"></canvas></div>
+                            </div>
+                            <div class="card-block text-center">
+                                <span class="label bg-green m-r-xs">Statistics <i class="ion-connection-bars"></i></span> <small>for the <a href="javascript:void(0)">last Month</a></small>
+                            </div>
+                        </div>
+                        <!-- .card -->
+                        <!-- End Transactions history Widget -->
+                    </div>
+                    <!-- .col-lg-8 -->
+                </div>
+                <!-- .row -->
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Monthly summary widget -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Monthly summary</h4>
+                                <ul class="card-actions">
+                                    <li class="dropdown">
+                                        <button type="button" data-toggle="dropdown"><i class="ion-more"></i></button>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li class="dropdown-header">Profile</li>
+                                            <li>
+                                                <a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">3</span> News</a>
+                                            </li>
+                                            <li>
+                                                <a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">1</span> Messages</a>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li class="dropdown-header">More</li>
+                                            <li>
+                                                <a tabindex="-1" href="javascript:void(0)">Edit Profile..</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <!-- .card-actions -->
+                            </div>
+                            <!-- .card-header -->
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <p class="h6 small text-muted">Monthly change</p>
+                                        <p class="h3 m-t-0">+214.22</p>
+                                        <!-- Chart.js Charts (initialized in js/pages/base_pages_dashboard.js), for more examples please check http://www.chartjs.org/docs/ -->
+                                        <div style="height: 120px;"><canvas class="js-chartjs-lines4"></canvas></div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="h6 small text-muted">Shares trade</p>
+                                        <p class="h3 m-t-0">$28.74M</p>
+                                        <!-- Chart.js Charts (initialized in js/pages/base_pages_dashboard.js), for more examples please check http://www.chartjs.org/docs/ -->
+                                        <div style="height: 120px;"><canvas class="js-chartjs-lines5"></canvas></div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="h6 small text-muted">Monthly change</p>
+                                        <p class="h3 m-t-0">+74%</p>
+                                        <!-- Chart.js Charts (initialized in js/pages/base_pages_dashboard.js), for more examples please check http://www.chartjs.org/docs/ -->
+                                        <div style="height: 120px;"><canvas class="js-chartjs-lines6"></canvas></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- .card-block -->
+                        </div>
+                        <!-- .card -->
+                        <!-- End Monthly summary widget -->
+                    </div>
+                    <!-- .col-lg-8 -->
+
+                    <!-- Server load Widget -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header bg-purple bg-inverse">
+                                <h4>Server load</h4>
+                                <ul class="card-actions">
+                                    <li>
+                                        <span class="js-flot-live-info"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-block bg-purple p-x-0 p-b-0">
+                                <!-- Live Chart Container -->
+                                <div class="js-flot-live" style="height: 207px;"></div>
+                            </div>
+                        </div>
+                        <!-- .card -->
+                    </div>
+                    <!-- End Server load Widget // .col-lg-4 -->
+                </div>
+                <!-- .row -->
+            </div>
+            <!-- .container-fluid -->
+            <!-- End Page Content -->
+
+        </main>
+
+    </div>
+    <!-- .app-layout-container -->
+</div>
+<!-- .app-layout-canvas -->
+
+
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+/*
+Document: base_pages_dashboard.js
+Author: Rustheme
+Description: Custom JS code used in Dashboard Page (index.html)
+ */
+
+var BasePagesDashboard = function() {
+    // Chart.js Chart: http://www.chartjs.org/docs
+    var initDashChartJS = function() {
+
+        // Get Chart Containers
+        var $dashChartLinesCnt1 = jQuery( '.js-chartjs-lines1' )[0].getContext( '2d' ),
+            $dashChartLinesCnt2 = jQuery( '.js-chartjs-lines2' )[0].getContext( '2d' ),
+            $dashChartBarsCnt = jQuery( '.js-chartjs-bars' )[0].getContext( '2d' ),
+            $dashChartLinesCnt3 = jQuery( '.js-chartjs-lines3' )[0].getContext( '2d' ),
+            $dashChartLinesCnt4 = jQuery( '.js-chartjs-lines4' )[0].getContext( '2d' ),
+            $dashChartLinesCnt5 = jQuery( '.js-chartjs-lines5' )[0].getContext( '2d' ),
+            $dashChartLinesCnt6 = jQuery( '.js-chartjs-lines6' )[0].getContext( '2d' ),
+            $flotLive = jQuery( '.js-flot-live' );
+
+        // Set global chart options
+        var $globalOptions = {
+            showScale: false,
+            tooltipCornerRadius: 2,
+            maintainAspectRatio: false,
+            responsive: true,
+            animation: false,
+            pointDotStrokeWidth: 2,
+        };
+
+        // Lines Chart Data 1
+        var $dashChartLinesData = {
+            labels: ['2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014'],
+            datasets: [
+                {
+                    label: 'This Week',
+                    fillColor: 'rgba(255, 255, 255, .1)',
+                    strokeColor: 'rgba(255, 255, 255, .38)',
+                    pointColor: App.colors.blue,
+                    pointStrokeColor: '#fff',
+                    data: [30, 80, 100, 75, 16, 42, 20, 42, 40, 65, 48, 56, 80, 95]
+                }
+            ]
+        };
+
+        // Lines Chart Data 2
+        var $dashChartLinesData2 = {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [
+                {
+                    label: 'This Week',
+                    fillColor: App.hexToRgba( App.colors.blue, 20 ),
+                    strokeColor: App.hexToRgba( App.colors.blue, 20 ),
+                    pointColor: '#fff',
+                    pointStrokeColor: App.hexToRgba( App.colors.blue, 70 ),
+                    data: [20, 25, 40, 30, 55, 60, 80]
+                }
+            ]
+        };
+
+        // Lines Chart Data 3
+        var $dashChartLinesData3 = {
+            labels: ['20', '40', '60', '80', '100', '120', '140'],
+            datasets: [
+                {
+                    label: 'This Week',
+                    fillColor: App.hexToRgba( App.colors.blue, 50 ),
+                    pointColor: App.colors.blue,
+                    data: [2500, 1500, 1200, 3200, 4800, 3500, 1500]
+                }
+            ]
+        };
+
+        // Lines Chart Data 4
+        var $dashChartLinesData4 = {
+            labels: ['2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014'],
+            datasets: [
+                {
+                    label: 'This Week',
+                    strokeColor: App.colors.blue,
+                    pointColor: '#fff',
+                    pointStrokeColor: App.colors.blue,
+                    data: [20, 25, 40, 30, 45, 40, 55, 40, 48, 40, 42, 50]
+                }
+            ]
+        };
+
+        // Lines Chart Data 5
+        var $dashChartLinesData5 = {
+            labels: ['2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014'],
+            datasets: [
+                {
+                    label: 'This Week',
+                    fillColor: App.hexToRgba( App.colors.green, 30 ),
+                    strokeColor: App.colors.green,
+                    pointColor: '#fff',
+                    pointStrokeColor: App.colors.green,
+                    data: [20, 25, 40, 30, 45, 40, 55, 40, 48, 40, 42, 50]
+                }
+            ]
+        };
+
+        // Lines Chart Data 6
+        var $dashChartLinesData6 = {
+            labels: ['2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'],
+            datasets: [
+                {
+                    label: 'This Week',
+                    fillColor: App.hexToRgba( App.colors.purple, 30 ),
+                    strokeColor: App.colors.purple,
+                    pointColor: '#fff',
+                    pointStrokeColor: App.colors.purple,
+                    data: [55, 40, 48, 40, 42, 50, 20, 25, 40, 30, 45, 40]
+                }
+            ]
+        };
+
+        // Lines Chart Data 7
+        var $dashChartLinesData7 = {
+            labels: ['2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'],
+            datasets: [
+                {
+                    fillColor: App.hexToRgba( App.colors.green, 30 ),
+                    strokeColor: App.colors.green,
+                    pointColor: '#fff',
+                    pointDot: false,
+                    pointStrokeColor: App.colors.green,
+                    data: [50, 45, 52, 35, 45, 64, 50, 47, 45, 53]
+                }
+            ]
+        };
+
+        // Lines Chart Data 8
+        var $dashChartLinesData8 = {
+            labels: ['2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'],
+            datasets: [
+                {
+                    fillColor: App.hexToRgba( App.colors.blue, 30 ),
+                    strokeColor: App.colors.blue,
+                    pointColor: '#fff',
+                    pointDot: false,
+                    pointStrokeColor: App.colors.blue,
+                    data: [30, 35, 42, 35, 60, 38, 50, 40, 48, 48]
+                }
+            ]
+        };
+
+        // Lines Chart Data 9
+        var $dashChartLinesData9 = {
+            labels: ['2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'],
+            datasets: [
+                {
+                    fillColor: App.hexToRgba( App.colors.purple, 30 ),
+                    strokeColor: App.colors.purple,
+                    pointColor: '#fff',
+                    pointDot: false,
+                    pointStrokeColor: App.colors.purple,
+                    data: [60, 55, 52, 38, 62, 40, 50, 46, 50, 54]
+                }
+            ]
+        };
+
+        // Init Lines Chart
+        $dashChartLines = new Chart( $dashChartLinesCnt1 ).Line( $dashChartLinesData, $globalOptions );
+
+        // Init Lines Chart 2
+        $dashChartLines2 = new Chart( $dashChartLinesCnt2 ).Line( $dashChartLinesData2, $globalOptions );
+
+        // Init Lines Chart Bars
+        $dashChartBars = new Chart( $dashChartBarsCnt ).Bar( $dashChartLinesData3, {
+            scaleBeginAtZero: false,
+            scaleShowVerticalLines: false,
+            barShowStroke: false,
+            scaleFontFamily: "'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            scaleFontColor: App.colors.text_muted,
+            tooltipTitleFontFamily: "'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            tooltipCornerRadius: 2,
+            maintainAspectRatio: false,
+            responsive: true,
+            animation: false,
+        });
+
+        // Init Lines Chart 4
+        $dashChartLines4 = new Chart( $dashChartLinesCnt3 ).Line( $dashChartLinesData4, {
+            scaleShowHorizontalLines: false,
+            bezierCurve: false,
+            datasetFill: false,
+            pointDotStrokeWidth: 2,
+            scaleFontFamily: "'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            scaleFontColor: App.colors.text_muted,
+            scaleFontStyle: '500',
+            tooltipTitleFontFamily: "'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            tooltipCornerRadius: 2,
+            maintainAspectRatio: false,
+            responsive: true,
+            animation: false,
+        });
+
+        // "Company overview" widget
+        // Init Lines Chart 4
+        $dashChartLines4 = new Chart( $dashChartLinesCnt4 ).Line( $dashChartLinesData7, {
+            pointDot: false,
+            showScale: false,
+            maintainAspectRatio: false,
+            responsive: true,
+            animation: false,
+        });
+
+        // Init Lines Chart 5
+        $dashChartLines5 = new Chart( $dashChartLinesCnt5 ).Line( $dashChartLinesData8, {
+            pointDot: false,
+            showScale: false,
+            maintainAspectRatio: false,
+            responsive: true,
+            animation: false,
+        });
+
+        // Init Lines Chart 6
+        $dashChartLines6 = new Chart( $dashChartLinesCnt6 ).Line( $dashChartLinesData9, {
+            pointDot: false,
+            showScale: false,
+            maintainAspectRatio: false,
+            responsive: true,
+            animation: false,
+        });
+
+        // Live Chart
+        var $dataLive = [];
+
+        // Generate random data
+        function getRandomData() {
+
+            if ( $dataLive.length > 0 )
+                $dataLive = $dataLive.slice( 1 );
+
+            while ( $dataLive.length < 300 ) {
+                var prev = $dataLive.length > 0 ? $dataLive[$dataLive.length - 1] : 50;
+                var y = prev + Math.random() * 10 - 5;
+                if ( y < 0 )
+                    y = 0;
+                if ( y > 100 )
+                    y = 100;
+                $dataLive.push( y );
+            }
+
+            var res = [];
+            for ( var i = 0; i < $dataLive.length; ++i )
+                res.push([i, $dataLive[i]]);
+
+            // Show live chart info
+            jQuery( '.js-flot-live-info' ).html( y.toFixed( 0 ) + '%' );
+
+            return res;
+        }
+
+        // Update live chart
+        function updateChartLive() {
+            $chartLive.setData( [getRandomData()] );
+            $chartLive.draw();
+            setTimeout( updateChartLive, 70 );
+        }
+
+        // Init live chart
+        var $chartLive = jQuery.plot( $flotLive,
+            [{
+                data: getRandomData()
+            }], {
+                series: {
+                    shadowSize: 0
+                },
+                lines: {
+                    show: true,
+                    lineWidth: 1,
+                    fill: true,
+                    fillColor: {
+                        colors: [{
+                            opacity: .2
+                        }, {
+                            opacity: .2
+                        }]
+                    }
+                },
+                colors: ['#fff'],
+                grid: {
+                    borderWidth: 0,
+                    color: App.colors.gray_lighter,
+                },
+                yaxis: {
+                    show: false,
+                    min: 0,
+                    max: 110
+                },
+                xaxis: {
+                    show: false
+                }
+            }
+        );
+
+        // Start getting new data
+        updateChartLive();
+    };
+
+    return {
+        init: function () {
+            // Init ChartJS chart
+            initDashChartJS();
+        }
+    };
+}();
+
+// Initialize when page loads
+jQuery( function() {
+    BasePagesDashboard.init();
+});
+
+</script>
+{% endblock %}
