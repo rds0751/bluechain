@@ -26,9 +26,9 @@ class LevelIncomeSettings(models.Model):
 
 class UserTotal(models.Model):
     user = models.CharField(max_length=25, blank=True, null=True)
-    direct = models.CharField(max_length=25, blank=True, null=True)
+    level = models.IntegerField()
     active = models.BooleanField()
     left_months = models.IntegerField()
-    level = models.IntegerField()
+    direct = models.CharField(max_length=25, blank=True, null=True)
     created_at = models.DateTimeField(default=datetime.now, blank=True)
     updated_at = models.DateTimeField(default=datetime.now, blank=True)

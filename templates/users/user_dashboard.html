@@ -5,120 +5,6 @@
 
 
     {% block content %}
-   <!--  <style type="text/css">
-      #mask {
-  position:absolute;
-  left:0;
-  top:0;
-  z-index:9000;
-  background-color:#000;
-  display:none;
-}  
-#boxes .window {
-  position:absolute;
-  left:0;
-  top:0;
-  height:200px;
-  display:none;
-  z-index:9999;
-  padding:20px;
-  border-radius: 15px;
-  text-align: center;
-}
-#boxes #dialog {
-  height:auto;
-  padding:10px;
-  background-color:#ffffff;
-  font-family: 'Segoe UI Light', sans-serif;
-  font-size: 15pt;
-}
-.maintext{
-    text-align: center;
-  font-family: "Segoe UI", sans-serif;
-  text-decoration: none;
-}
-#lorem{
-  font-family: "Segoe UI", sans-serif;
-  font-size: 12pt;
-  text-align: left;
-}
-#popupfoot{
-  font-family: "Segoe UI", sans-serif;
-  font-size: 16pt;
-  padding: 10px 20px;
-}
-#popupfoot a{
-  text-decoration: none;
-}
-.agree:hover{
-  background-color: #D1D1D1;
-}
-.popupoption:hover{
-  background-color:#D1D1D1;
-  color: green;
-}
-.popupoption2:hover{
-  
-  color: red;
-}
-    </style>
-    <script type="text/javascript">
-      $(document).ready(function() {    
-    var id = '#dialog';
-  
-    //Get the screen height and width
-    var maskHeight = $(document).height();
-    var maskWidth = $(window).width();
-  
-    //Set heigth and width to mask to fill up the whole screen
-    $('#mask').css({'width':maskWidth,'height':maskHeight});
-    
-    //transition effect   
-    $('#mask').fadeIn(500); 
-    $('#mask').fadeTo("slow",0.9);  
-  
-    //Get the window height and width
-    var winH = $(window).height();
-    var winW = $(window).width();
-              
-    //Set the popup window to center
-    $(id).css('top',  winH/2-$(id).height()/2);
-    $(id).css('left', winW/2-$(id).width()/2);
-  
-    //transition effect
-    $(id).fadeIn(2000);   
-  
-  //if close button is clicked
-  $('.window .close').click(function (e) {
-    //Cancel the link behavior
-    e.preventDefault();
-    
-    $('#mask').hide();
-    $('.window').hide();
-  });   
-  
-  //if mask is clicked
-  $('#mask').click(function () {
-    $(this).hide();
-    $('.window').hide();
-  });   
-  
-});
-    </script> -->
-  <!--   <div id="boxes">
-      <div style="left: auto;
-    right: auto;
-    display: block;
-    top: auto;
-    bottom: auto;
-    background: transparent;
-    position: fixed;" id="dialog" class="window">
-        <a href='/users/shop-wallet/'><img style="width: 300px" src="https://i.imgur.com/0k89ANm.gif"></a>
-        <a style="position: relative; top: -290px;" class="agree close" style="color:red;" href="/users">X</a>
-        <a href="/users/shop-wallet/" class='mdc-button mdc-button--raised mdc-ripple-upgraded w-50'>Top-Up Now</a>
-      </div>
-      <div style="width: 1478px; font-size: 32pt; color:white; height: 602px; display: none; opacity: 0.8;" id="mask"></div>
-    </div> -->
     <!-- partial -->
     <div class="main-wrapper mdc-drawer-app-content">
       <div class="page-wrapper mdc-toolbar-fixed-adjust">
@@ -137,25 +23,11 @@
                 </div>
               </div>
             </div>
-            <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
-              <div class="mdc-card bg-warning text-white info-card info-card--success">
-                <div class="card-inner">
-                  <h5 style="" class="card-title"><strong> Credit Limits</strong> </h5>
-                  <p style="" class="font-weight-light pb-2 mb-1">Shopping Credit: ₹ {{ reward|floatformat:2 }}</p>
-                  <p style="" class="font-weight-light pb-2 mb-1">Recharge Credit: ₹ {{ user.recharge_limit|floatformat:2 }}</p>
-                  <p style="line-height: 1" class="tx-10">Daily Cashback: Active <!-- <span id="months"></span> Months, --> <span id="days"></span> Days Left else Inactive </p>
-                  <div style="background: transparent; box-shadow: 0 0 10px 5px rgb(255 66 15 / 0%);" class="card-icon-wrapper">
-                </div>
-             </div>
-           </div>
-         </div>
          <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
           <div class="mdc-card bg-secondary text-white info-card info-card--danger">
             <div class="card-inner">
               <h5 style="" class="card-title"><strong> Wallet Balance </strong> </h5>
-              <h5 style="" class="font-weight-light pb-2 mb-1">₹ 00.00</h5>
-              <p style="line-height: 1" class="tx-10">Redeemable ₹ 00.00<!--  <br/> Cashback ₹ 0 --></p>
-              <p style="line-height: 1" class="tx-10">On hold ₹ 00.00</p>
+              <h5 style="" class="font-weight-light pb-2 mb-1">₹ {{ request.user.wallet }}</h5>
               <div style="background: transparent; box-shadow: 0 0 10px 5px rgb(255 66 15 / 0%);" class="card-icon-wrapper">
               
             </div>
@@ -163,14 +35,14 @@
         </div>
       </div>
 
-      <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+      <!-- <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
           <div class="mdc-card bg-primary text-white info-card info-card--danger">
             <div class="card-inner">
               <h5 style="" class="card-title"><strong>Daily Self Income </strong> </h5>
               <h5 style="" class="font-weight-light pb-2 mb-1" id="day_self">0</h5>
           </div>
         </div>
-      </div>
+      </div> --><!-- 
       <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
           <div class="mdc-card bg-warning text-white info-card info-card--danger">
             <div class="card-inner">
@@ -178,9 +50,9 @@
               <h5 style="" class="font-weight-light pb-2 mb-1" id="tot_self">₹ 0</h5>
           </div>
         </div>
-      </div>
+      </div> -->
       <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
-          <div class="mdc-card bg-secondary text-white info-card info-card--danger">
+          <div class="mdc-card bg-success text-white info-card info-card--danger">
             <div class="card-inner">
               <h5 style="" class="card-title"><strong>Today Level Income </strong> </h5>
               <h5 style="" class="font-weight-light pb-2 mb-1">₹ 0</h5>
@@ -188,13 +60,13 @@
         </div>
       </div>
       <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
-          <div class="mdc-card bg-primary text-white info-card info-card--danger">
+          <div class="mdc-card bg-warning text-white info-card info-card--danger">
             <div class="card-inner">
               <h5 style="" class="card-title"><strong>Total Level Income </strong> </h5>
               <h5 style="" class="font-weight-light pb-2 mb-1"  id="tot_lev">₹ 0</h5>
           </div>
         </div>
-      </div>
+      </div><!-- 
       <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
           <div class="mdc-card bg-warning text-white info-card info-card--danger">
             <div class="card-inner">
@@ -226,7 +98,7 @@
               <h5 style="" class="font-weight-light pb-2 mb-1">00</h5>
           </div>
         </div>
-      </div>
+      </div> -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.2.1/moment.min.js"></script>
       <script>
         $(function() {

@@ -1,0 +1,395 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% load sum_tags %}
+ 
+
+{% block content %}
+<div class="body-wrapper">
+  <div class="main-wrapper">
+    <div class="page-wrapper full-page-wrapper">
+      <main>
+        <div>
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card p-0">
+                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                  <h1>{% trans "Shopping Network" %}</h1>
+                  <p>{% trans 'here you can see your JR Shopping Network' %}</p>
+                </section>
+                <section style="padding: 5%">
+                  <div class="mdc-layout-grid__inner mt-2" align="center">
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>All 7 Levels</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr>
+                              <th>User Type</th>
+                              <th>All</th>
+                              <th>Active</th>
+                              <th>Inactive</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                              <td>Level 1</td>
+                              <td><span style="color: orange; font-size: 16px">&#9679; </span> {{ counting.1 }}</td>
+                              <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.1 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.1 countingi.1 as x1 %}{{ x1|floatformat:"0" }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 2</td>
+                              <td><span style="color: orange; font-size: 16px">&#9679; </span> {{ counting.2 }}</td>
+                              <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.2 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.2 countingi.2 as x2 %}{{ x2|floatformat:"0" }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 3</td>
+                              <td><span style="color: orange; font-size: 16px">&#9679; </span> {{ counting.3 }}</td>
+                              <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.3 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.3 countingi.3 as x3 %}{{ x3|floatformat:"0" }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 4</td>
+                              <td><span style="color: orange; font-size: 16px">&#9679; </span> {{ counting.4 }}</td>
+                              <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.4 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.4 countingi.4 as x4 %}{{ x4|floatformat:"0" }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 5</td>
+                              <td><span style="color: orange; font-size: 16px">&#9679; </span> {{ counting.5 }}</td>
+                              <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.5 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.5 countingi.5 as x5 %}{{ x5|floatformat:"0" }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 6</td>
+                              <td><span style="color: orange; font-size: 16px">&#9679; </span> {{ counting.6 }}</td>
+                              <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.6 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.6 countingi.6 as x6 %}{{ x6|floatformat:"0" }}</td>
+                              </tr>
+                              <tr>
+                              <td>Level 7</td>
+                              <td><span style="color: orange; font-size: 16px">&#9679; </span> {{ counting.7 }}</td>
+                              <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.7 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.7 countingi.7 as x7 %}{{ x7|floatformat:"0" }}</td>
+                              </tr>
+                              <tr>
+                              <td><strong>Total</strong></td>
+                              <td><strong style="color: orange; font-size: 16px;">&#9745; {{ counting.1|add:counting.2|add:counting.3|add:counting.4|add:counting.5|add:counting.6|add:counting.7 }}</strong></td>
+                              <td><strong style="color: green; font-size: 16px;">&#9745; {{ countingi.1|add:countingi.2|add:countingi.3|add:countingi.4|add:countingi.5|add:countingi.6|add:countingi.7 }}</strong></td>
+                              <td><strong style="color: red; font-size: 16px;">&#9745; {{ x1|add:x2|add:x3|add:x4|add:x5|add:x6|add:x7 }}</strong></td>
+                              </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 1</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Mobile</th>
+                              <th>Plan</th>
+                              <th>View</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for usern, shopn in user_list %}
+                              <tr>
+                              <td>{% if shopn.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ usern.name|truncatewords:1|slice:"-3" }}({{ usern.username }})</td>
+                              <td><a href="tel:{{ usern.mobile }}">{{ usern.mobile }}</a></td>
+                              <td>${{ shopn.amount }}</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 2</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Upline</th>
+                              <th>Plan</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for level2n, level2nu in all.0 %}
+                              <tr>
+                              <td>{% if level2n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level2nu.name|truncatewords:1|slice:"-3" }}({{ level2nu.username }})</td>
+                              <td>{{ level2n.direct }}</td>
+                              <td>{{ level2n.amount }}</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 3</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Upline</th>
+                              <th>Plan</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for level3n, level3nu in all.1 %}
+                              <tr>
+                              <td>{% if level3n.amount >= 1500 %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level3nu.name|truncatewords:1|slice:"-3" }}({{ level3nu.username }})</td>
+                              <td>{{ level3n.direct }}</td>
+                              {% if level3n.amount >= 1500 %}
+                              <td>
+                                <div class="two">
+                                  <p id="days{{ level3n.user }}"></p>&nbsp;Days
+                                </div>
+                              </td>
+                              <script>
+                                const date2{{ level3n.user }} = new Date();
+                                const date1{{ level3n.user }} = new Date('{{ level3n.expire_at|date:"Y-m-d H:i" }}');
+                                var res{{ level3n.user }} = Math.abs(date1{{ level3n.user }} - date2{{ level3n.user }}) / 1000;
+                                var days{{ level3n.user }} = Math.floor(res{{ level3n.user }} / 86400);
+                                const ele{{ level3n.user }} = document.getElementById('days{{ level3n.user }}');
+                                ele{{ level3n.user }}.innerText = days{{ level3n.user }};
+                              </script>
+                              {% elif level3n.total_self_income > 0 %}
+                              <td><p>Expired</p></td>
+                              {% else %}
+                              <td><p>Inactive</p></td>
+                              {% endif %}
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 4</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Upline</th>
+                              <th>Plan</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for level4n, level4nu in all.2 %}
+                              <tr>
+                              <td>
+                                {% if level4n.amount >= 1500 %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level4nu.name|truncatewords:1|slice:"-2" }}({{ level4nu.username }})</td>
+                              <td>{{ level4n.direct }}</td>
+                              {% if level4n.amount >= 1500 %}
+                              <td>
+                                <div class="two">
+                                  <p id="days{{ level4n.user }}"></p>&nbsp;Days
+                                </div>
+                              </td>
+                              <script>
+                                const date2{{ level4n.user }} = new Date();
+                                const date1{{ level4n.user }} = new Date('{{ level4n.expire_at|date:"Y-m-d H:i" }}');
+                                var res{{ level4n.user }} = Math.abs(date1{{ level4n.user }} - date2{{ level4n.user }}) / 1000;
+                                var days{{ level4n.user }} = Math.floor(res{{ level4n.user }} / 86400);
+                                const ele{{ level4n.user }} = document.getElementById('days{{ level4n.user }}');
+                                ele{{ level4n.user }}.innerText = days{{ level4n.user }};
+                              </script>
+                              {% elif level4n.total_self_income > 0 %}
+                              <td><p>Expired</p></td>
+                              {% else %}
+                              <td><p>Inactive</p></td>
+                              {% endif %}
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 5</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Upline</th>
+                              <th>Plan</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for level5n, level5nu in all.3 %}
+                              <tr>
+                              <td>{% if level5n.amount >= 1500 %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level5nu.name|truncatewords:1|slice:"-3" }}({{ level5nu.username }})</td>
+                              <td>{{ level5n.direct }}</td>
+                              {% if level5n.amount >= 1500 %}
+                              <td>
+                                <div class="two">
+                                  <p id="days{{ level5n.user }}"></p>&nbsp;Days
+                                </div>
+                              </td>
+                              <script>
+                                const date2{{ level5n.user }} = new Date();
+                                const date1{{ level5n.user }} = new Date('{{ level5n.expire_at|date:"Y-m-d H:i" }}');
+                                var res{{ level5n.user }} = Math.abs(date1{{ level5n.user }} - date2{{ level5n.user }}) / 1000;
+                                var days{{ level5n.user }} = Math.floor(res{{ level5n.user }} / 86400);
+                                const ele{{ level5n.user }} = document.getElementById('days{{ level5n.user }}');
+                                ele{{ level5n.user }}.innerText = days{{ level5n.user }};
+                              </script>
+                              {% elif level5n.total_self_income > 0 %}
+                              <td><p>Expired</p></td>
+                              {% else %}
+                              <td><p>Inactive</p></td>
+                              {% endif %}
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 6</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Upline</th>
+                              <th>Plan</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for level6n, level6nu in all.4 %}
+                              <tr>
+                              <td>{% if level6n.amount >= 1500 %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level6nu.name|truncatewords:1|slice:"-3" }}({{ level6nu.username }})</td>
+                              <td>{{ level6n.direct }}</td>
+                              {% if level6n.amount >= 1500 %}
+                              <td>
+                                <div class="two">
+                                  <p id="days{{ level6n.user }}"></p>&nbsp;Days
+                                </div>
+                              </td>
+                              <script>
+                                const date2{{ level6n.user }} = new Date();
+                                const date1{{ level6n.user }} = new Date('{{ level6n.expire_at|date:"Y-m-d H:i" }}');
+                                var res{{ level6n.user }} = Math.abs(date1{{ level6n.user }} - date2{{ level6n.user }}) / 1000;
+                                var days{{ level6n.user }} = Math.floor(res{{ level6n.user }} / 86400);
+                                const ele{{ level6n.user }} = document.getElementById('days{{ level6n.user }}');
+                                ele{{ level6n.user }}.innerText = days{{ level6n.user }};
+                              </script>
+                              {% elif level6n.total_self_income > 0 %}
+                              <td><p>Expired</p></td>
+                              {% else %}
+                              <td><p>Inactive</p></td>
+                              {% endif %}
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 7</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Upline</th>
+                              <th>Plan</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for level7n, level7nu in all.5 %}
+                              <tr>
+                              <td>{% if level7n.amount >= 1500 %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level7nu.name|truncatewords:1|slice:"-3" }}({{ level7nu.username }})</td>
+                              <td>{{ level7n.direct }}</td>
+                              {% if level7n.amount >= 1500 %}
+                              <td>
+                                <div class="two">
+                                  <p id="days{{ level7n.user }}"></p>&nbsp;Days
+                                </div>
+                              </td>
+                              <script>
+                                const date2{{ level7n.user }} = new Date();
+                                const date1{{ level7n.user }} = new Date('{{ level7n.expire_at|date:"Y-m-d H:i" }}');
+                                var res{{ level7n.user }} = Math.abs(date1{{ level7n.user }} - date2{{ level7n.user }}) / 1000;
+                                var days{{ level7n.user }} = Math.floor(res{{ level7n.user }} / 86400);
+                                const ele{{ level7n.user }} = document.getElementById('days{{ level7n.user }}');
+                                ele{{ level7n.user }}.innerText = days{{ level7n.user }};
+                              </script>
+                              {% elif level7n.total_self_income > 0 %}
+                              <td><p>Expired</p></td>
+                              {% else %}
+                              <td><p>Inactive</p></td>
+                              {% endif %}
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                      <h5>Level 8</h5>
+                      <div class="table-responsive">
+                        <table class="table dashboard-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Upline</th>
+                              <th>Plan</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              {% for level7n, level7nu in all.5 %}
+                              <tr>
+                              <td>{% if level7n.amount >= 1500 %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level7nu.name|truncatewords:1|slice:"-3" }}({{ level7nu.username }})</td>
+                              <td>{{ level7n.direct }}</td>
+                              {% if level7n.amount >= 1500 %}
+                              <td>
+                                <div class="two">
+                                  <p id="days{{ level7n.user }}"></p>&nbsp;Days
+                                </div>
+                              </td>
+                              <script>
+                                const date2{{ level7n.user }} = new Date();
+                                const date1{{ level7n.user }} = new Date('{{ level7n.expire_at|date:"Y-m-d H:i" }}');
+                                var res{{ level7n.user }} = Math.abs(date1{{ level7n.user }} - date2{{ level7n.user }}) / 1000;
+                                var days{{ level7n.user }} = Math.floor(res{{ level7n.user }} / 86400);
+                                const ele{{ level7n.user }} = document.getElementById('days{{ level7n.user }}');
+                                ele{{ level7n.user }}.innerText = days{{ level7n.user }};
+                              </script>
+                              {% elif level7n.total_self_income > 0 %}
+                              <td><p>Expired</p></td>
+                              {% else %}
+                              <td><p>Inactive</p></td>
+                              {% endif %}
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+<style type="text/css">
+.two p { display: inline-block; max-width: 50%; }
+.two p:nth-child(1) { float:left; }
+.two p:nth-child(2) { float:right; }
+</style>
+{% endblock content %}

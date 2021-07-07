@@ -56,11 +56,6 @@ def signuponboarding(request):
         ruser = User.objects.get(username=user.referal)
     except Exception as e:
         ruser = 'blank'
-    s = Shopping()
-    s.user = user.username
-    s.direct = user.referal
-    s.amount = 0
-    s.save()
     return render(request, 'users/onboarding.html', {'user': user, 'ruser': ruser})
 
 class UserDetailView(LoginRequiredMixin, DetailView):
@@ -152,8 +147,8 @@ class UserDashboardView(LoginRequiredMixin, ListView):
             amount = "Please upgrade"
             capping_limit = "Please upgrade"
             total_income = 0
-        recent = WalletHistories.objects.filter(user_id=str(self.request.user)).order_by('-created_at')[:10]
-        large = WalletHistories.objects.filter(user_id=str(self.request.user)).order_by('-amount')[:10]
+        recent = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-created_at')[:10]
+        large = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-amount')[:10]
         
 
 
@@ -257,7 +252,7 @@ def loginbonus(request):
         user.login_bonus = True
         user.income += 0.02
 
-        benewallet = WalletHistories()
+        benewallet = WalletHistory()
         benewallet.user_id = str(request.user)
         benewallet.amount = 0.02
         benewallet.type = "credit"
@@ -297,14 +292,14 @@ def booking(request):
                 user = request.user
                 user.new_funds -= 1500
                 user.save()
-                w = WalletHistories()
+                w = WalletHistory()
                 w.user_id = user.username
                 w.amount = 1500.00
                 w.filter = "Add"
                 w.comment = "Shopping Wallet Topup"
                 w.type = "credit"
                 w.save()
-                w = WalletHistories()
+                w = WalletHistory()
                 w.user_id = request.user.username
                 w.amount = 1500.00
                 w.filter = "Add"
@@ -474,7 +469,7 @@ def success(request):
         b.giftCardIssued = data.get("giftCardIssued")
         b.user = data.get("firstname")
         b.save()
-        w = WalletHistories()
+        w = WalletHistory()
         w.user_id = data.get("firstname")
         w.amount = 1500.00
         w.filter = "Add"

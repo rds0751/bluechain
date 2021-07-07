@@ -33,6 +33,7 @@ urlpatterns = [
     path('contact/', TemplateView.as_view(template_name='contact.html')),
     path('plan/', TemplateView.as_view(template_name='plan.html')),
     path('', TemplateView.as_view(template_name='apnabase.html')),
+    path('soon/', TemplateView.as_view(template_name='users/coming_soon.html')),
     path('users/', include('users.urls', namespace="users")),
     path('level/', include('level.urls', namespace="level")),
     path('panel/', include('panel.urls', namespace="panel")),

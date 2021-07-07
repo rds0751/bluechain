@@ -118,3 +118,16 @@ class Withdrawal(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     account_number = models.CharField(max_length=255, blank=True, null=True)
     ifsc = models.CharField(max_length=255, blank=True, null=True)
+
+
+class FundRequest(models.Model):
+    user = models.CharField(max_length=20)
+    amount = models.FloatField()
+    approved = models.BooleanField(default=False)
+    used = models.BooleanField(default=False)
+    code = models.CharField(max_length=16, null=True, blank=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True)
+    updated_at = models.DateTimeField(default=timezone.now, blank=True)
+
+    def __str__(self):
+        return self.code + ' for amount ' + str(self.amount) + ' on ' + str(self.created_at) + ' by ' + self.user

@@ -1,6 +1,5 @@
 {% extends "users/base.html" %}
 {% load static i18n %}
-{% load thumbnail %}
 {% block title %}{% trans 'Profile' %}{% endblock %}
 
 
@@ -43,11 +42,8 @@
 														</table>
 														<p style="color: red">Note: Due to security reasons, we don't display your password.</p>
 													</div>
-													<a href="/binary/upgrade/" type="submit" class="mdc-button mdc-button--raised w-100 mb-3">
+													<a href="/level/join/" type="submit" class="mdc-button mdc-button--raised w-100 mb-3">
                             Buy Prime
-                          </a>
-                          <a href="/users/shop-wallet/" type="submit" class="mdc-button mdc-button--raised mdc-button--secondary w-100 mb-3">
-                            Top Up Shopping
                           </a>
                           <a href="/users/~update/" type="submit" style="color: white" class="mdc-button mdc-button--raised mdc-button--success w-100">
                             View Profile

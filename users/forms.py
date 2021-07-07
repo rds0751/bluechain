@@ -24,11 +24,11 @@ class SimpleSignupForm(SignupForm):
 	def clean_username(self):
 		def generateuser():
 			r = random.randint(100001,999999)
-			u = User.objects.filter(username='DIB{}'.format(r)).count()
+			u = User.objects.filter(username='IPAY{}'.format(r)).count()
 			if u > 0:
 				generateuser()
 			else:
-				return 'DIB{}'.format(r)
+				return 'IPAY{}'.format(r)
 		u = generateuser()
 		username = u
 		return username
@@ -37,7 +37,7 @@ class SimpleSignupForm(SignupForm):
 		user = super(SimpleSignupForm, self).save(request)
 		user.mobile = self.cleaned_data['mobile']
 		user.name = self.cleaned_data['name']
-		user.referal = self.cleaned_data['referal_code']
+		user.referral = self.cleaned_data['referal_code']
 		user.nominee = self.cleaned_data['nominee']
 		user.nominee_relation = self.cleaned_data['nominee_relation']
 		user.save()

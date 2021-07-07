@@ -23,14 +23,12 @@
                       <p>Please call on helipline number to get your fund request Approved.</p>
                       <br/>
                       <div>
-                        {% if message == 'True' %}
-                          <p>
-                            Fund request sent!
-                          </p>
-                        {% endif %}
                         <form method="post" onsubmit="return confirm('Are you sure you want this action?');">
                           {% csrf_token %}
-                          <br> 
+                          <br>
+                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop pb-2"> 
+                            <input class="w-100" type="integer" name="amount" placeholder="Amount in USD" min="500" max="100000" step="500">
+                          </div>
                           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop pb-2">
                             <button type="submit" class="mdc-button mdc-button--raised w-100">
                               Send Fund Request
@@ -38,18 +36,29 @@
                           </div>
                         </form>
                       </div>
-
                       <div>
-                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <ins class="adsbygoogle"
-                        style="display:block"
-                        data-ad-format="fluid"
-                        data-ad-layout-key="-6t+ed+2i-1n-4w"
-                        data-ad-client="ca-pub-2476399156226109"
-                        data-ad-slot="6614818154"></ins>
-                        <script>
-                          (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
+                        <br><br>
+                        <h6 class="card-title card-padding pb-0">Past Requests</h6>
+                        <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th class="text-left">Amount</th>
+                          <th>Code</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for x in fr %}
+                        <tr>
+                          <td class="text-left">{{ x.amount }}</td>
+                          <td>{{ x.code }}</td>
+                          <td>{% if x.approved %}Approved{% else %}Waiting{% endif %}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
                       </div>
                     </div>
                   </section>

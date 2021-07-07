@@ -7,7 +7,7 @@ from django.views.generic import DetailView, ListView, RedirectView, UpdateView,
 from django.shortcuts import render, redirect
 from users.models import User
 from .models import PaymentOption, Withdrawal
-from wallets.models import WalletHistory, Beneficiary
+from wallets.models import WalletHistory, Beneficiary, FundRequest
 from django.shortcuts import render
 import requests
 import os
@@ -114,7 +114,7 @@ def transfer(request):
                 status = 'success'
                 amount = float(request.POST.get('amount'))
                 if status == 'success':
-                    userwallet = WalletHistories()
+                    userwallet = WalletHistory()
                     userwallet.user_id = str(user_id)
                     userwallet.amount = float(amount)
                     userwallet.type = "debit"
@@ -123,7 +123,7 @@ def transfer(request):
                     bene = User.objects.get(username=bene_id)
                     bene.received_amount += amount
                     bene.save()
-                    benewallet = WalletHistories()
+                    benewallet = WalletHistory()
                     benewallet.user_id = str(bene_id)
                     benewallet.amount = float(amount)
                     benewallet.type = "credit"
@@ -345,14 +345,14 @@ def recharge(request):
 
                     user_id.save()  
                     amount = float(request.POST.get('amount'))  
-                    userwallet = WalletHistories()  
+                    userwallet = WalletHistory()  
                     userwallet.user_id = str(user_id)   
                     userwallet.amount = float(amount - amount/100)  
                     userwallet.type = "debit"   
                     userwallet.comment = "spent on recharge"    
 
                     amount = float(request.POST.get('amount'))  
-                    userspend = WalletHistories()   
+                    userspend = WalletHistory()   
                     userspend.user_id = str(user_id)    
                     userspend.amount = amount/100   
                     userspend.type = "debit"    
@@ -412,7 +412,7 @@ def recharge(request):
                             upline_amount = levels['level{}'.format(level)]*amount*0.70 
                             upline_user.income += upline_amount*0.9 
                             upline_user.total_income  += upline_amount  
-                            upline_wallet = WalletHistories()   
+                            upline_wallet = WalletHistory()   
                             upline_wallet.user_id = upline  
                             upline_wallet.amount = upline_amount    
                             upline_wallet.type = "credit"   
@@ -422,7 +422,7 @@ def recharge(request):
                         level = level + 1   
                     userid.income += 0.02*amount*0.9*0.70   
                     userid.total_income  += 0.02*amount*0.70    
-                    usewallet = WalletHistories()   
+                    usewallet = WalletHistory()   
                     usewallet.user_id = str(userid) 
                     usewallet.amount = 0.02*amount*0.70 
                     usewallet.type = "credit"   
@@ -538,7 +538,7 @@ def neft(request):
                             model.account_number = payment_o.account_number
                             model.ifsc = payment_o.ifsc
 
-                            userwallet = WalletHistories()
+                            userwallet = WalletHistory()
                             userwallet.user_id = str(user_id)
                             userwallet.amount = float(amount) 
                             userwallet.type = "debit"
@@ -564,7 +564,7 @@ def neft(request):
 def history(request):
     user = request.user
     page = request.GET.get('page', 1)
-    history_list = WalletHistories.objects.filter(user_id=str(user)).order_by('-created_at')
+    history_list = WalletHistory.objects.filter(user_id=str(user)).order_by('-created_at')
     paginator = Paginator(history_list, 20)
     try:
         page = int(request.GET.get('page', '1'))
@@ -582,9 +582,9 @@ def history(request):
     dend_date = datetime.datetime.now()
     mstart_date = datetime.datetime.now() + datetime.timedelta(-30)
     mend_date = datetime.datetime.now()
-    mwhs = WalletHistories.objects.filter(created_at__range=(mstart_date, mend_date), user_id=str(user))
-    wwhs = WalletHistories.objects.filter(created_at__range=(wstart_date, wend_date), user_id=str(user))
-    dwhs = WalletHistories.objects.filter(created_at__range=(dstart_date, dend_date), user_id=str(user))
+    mwhs = WalletHistory.objects.filter(created_at__range=(mstart_date, mend_date), user_id=str(user))
+    wwhs = WalletHistory.objects.filter(created_at__range=(wstart_date, wend_date), user_id=str(user))
+    dwhs = WalletHistory.objects.filter(created_at__range=(dstart_date, dend_date), user_id=str(user))
     dincome = 0
     wincome = 0
     mincome = 0
@@ -627,8 +627,8 @@ def imps(request):
     def generateid():
         txnid = get_random_string(8)
         try:
-            txn = WalletHistories.objects.get(txnid = txnid)
-        except WalletHistories.DoesNotExist:
+            txn = WalletHistory.objects.get(txnid = txnid)
+        except WalletHistory.DoesNotExist:
             txn = 0
         if txn:
             generateid()
@@ -812,8 +812,8 @@ def send(request):
     def generateid():
         txnid = get_random_string(8)
         try:
-            txn = WalletHistories.objects.get(txnid = txnid)
-        except WalletHistories.DoesNotExist:
+            txn = WalletHistory.objects.get(txnid = txnid)
+        except WalletHistory.DoesNotExist:
             txn = 0
         if txn:
             generateid()
@@ -869,7 +869,7 @@ def send(request):
     #                     sendmoney, sdata = sendmoney(mobile, amount*0.97, bid, txnid)
 
     #                 if sendmoney != 'FAILED':
-    #                     userwallet = WalletHistories()
+    #                     userwallet = WalletHistory()
     #                     userwallet.balance_after = userbal - amount
     #                     userwallet.user_id = str(user_id)
     #                     userwallet.amount = float(amount)
@@ -905,7 +905,7 @@ def send(request):
                         sendmoney, sdata = sendmoney(mobile, amount*0.97, bid, txnid)
 
                     if sendmoney != 'FAILED':
-                        userwallet = WalletHistories()
+                        userwallet = WalletHistory()
                         userwallet.balance_after = userbal - amount
                         userwallet.user_id = str(user_id)
                         userwallet.amount = float(amount)
@@ -931,26 +931,33 @@ def send(request):
     return render(request, 'users/moneytransfered.html', { 'message': message, })
 
 def fundrequest(request):
-    message = 'False'
+    message = ''
+    fr = FundRequest.objects.filter(user=request.user.username)
+
+    def generateid():
+        txnid = get_random_string(8)
+        txnid = 'IPAY'+txnid
+        try:
+            txn = FundRequest.objects.get(code = txnid)
+        except FundRequest.DoesNotExist:
+            txn = 0
+        if txn:
+            generateid()
+        else:
+            return format(txnid)
+
     if request.method == 'POST':
-        if request.user.shop > 0:
-            usersw = request.user
-            userscl = request.user
-            amount = usersw.shop
-            userscl.cash_back += amount
-            userscl.save()
-            usersw.shop = 0
-            usersw.save()
-            w = WalletHistories()
-            w.amount = amount
-            w.comment = "converted to SCL"
-            w.balance_after = 0
-            w.type = 'hidden'
-            w.filter = "SCL"
-            w.user_id = request.user.username
-            w.save()
-            message = 'True'
-    return render(request, 'users/fundrequest.html', {'message': message})
+        amount = request.POST.get('amount')
+        user = request.user
+        code = generateid()
+        message = 'Fund request sent'
+        model = FundRequest()
+        model.user = user.username
+        model.amount = amount
+        model.code = code
+        model.save()
+
+    return render(request, 'users/fundrequest.html', {'message': message, 'fr': fr})
 
 from django.template.context_processors import csrf
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
