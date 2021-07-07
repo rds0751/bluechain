@@ -109,12 +109,12 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-ROOT_URLCONF = 'config.urls'
-ASGI_APPLICATION = "config.routing.application"
+ROOT_URLCONF = 'aboota.urls'
+ASGI_APPLICATION = "aboota.routing.application"
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
+        'aboota': {
             "hosts": [('127.0.0.1', 6379)],
         },
     },
@@ -136,7 +136,7 @@ _TEMPLATE_CONTEXT_PROCESSORS = [
                 'django.contrib.messages.context_processors.messages',
                 "django.template.context_processors.tz",
 
-                'config.processor.universally_used_data'
+                'aboota.processor.universally_used_data'
             ]
 
 TEMPLATES = [
@@ -157,7 +157,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'aboota.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/databases
@@ -171,7 +171,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 import dj_database_url
 DATABASES = {
-    'default': dj_database_url.config(
+    'default': dj_database_url.aboota(
         default='postgres://dbmasteruser:pb2d80740f512c8cb41341e3291ed05b6b3d480a@ls-dff3f02526dec6fd6545926edd21f876ed074863.cz4lglmvud83.ap-south-1.rds.amazonaws.com:5432/postgres',
         conn_max_age=600)}
 
@@ -235,7 +235,7 @@ ADMIN_MEDIA_PREFIX = 'https://punchline-app.s3.amazonaws.com/static/admin/'
 # STATIC_URL = '/static/'
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
 
-STATICFILES_STORAGE = 'config.storage_backends.StaticStorage'
+STATICFILES_STORAGE = 'aboota.storage_backends.StaticStorage'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
@@ -253,10 +253,10 @@ STATICFILES_FINDERS = [
 ]
 
 AWS_PUBLIC_MEDIA_LOCATION = 'media/public'
-DEFAULT_FILE_STORAGE = 'config.storage_backends.PublicMediaStorage'
+DEFAULT_FILE_STORAGE = 'aboota.storage_backends.PublicMediaStorage'
 
 AWS_PRIVATE_MEDIA_LOCATION = 'media/private'
-PRIVATE_FILE_STORAGE = 'config.storage_backends.PrivateMediaStorage'
+PRIVATE_FILE_STORAGE = 'aboota.storage_backends.PrivateMediaStorage'
 
 MEDIA_ROOT_URL = '.'
 
