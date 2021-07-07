@@ -220,22 +220,22 @@ mimetypes.add_type("text/css", ".css", True)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-# AWS_ACCESS_KEY_ID = 'AKIAU73Y34UHP4R7QT6K'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'jrindiastatic'
-# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-# AWS_S3_OBJECT_PARAMETERS = {
-#     'CacheControl': 'max-age=86400',
-# }
+AWS_ACCESS_KEY_ID = 'AKIAU73Y34UHP4R7QT6K'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'jrindiastatic'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
 
-# AWS_STATIC_LOCATION = 'static'
+AWS_STATIC_LOCATION = 'static'
 
-# ADMIN_MEDIA_PREFIX = 'https://punchline-app.s3.amazonaws.com/static/admin/'
+ADMIN_MEDIA_PREFIX = 'https://punchline-app.s3.amazonaws.com/static/admin/'
 
-STATIC_URL = '/static/'
-# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
+# STATIC_URL = '/static/'
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
 
-# STATICFILES_STORAGE = 'config.storage_backends.StaticStorage'
+STATICFILES_STORAGE = 'config.storage_backends.StaticStorage'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
