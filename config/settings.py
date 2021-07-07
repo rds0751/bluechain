@@ -114,7 +114,7 @@ ASGI_APPLICATION = "aboota.routing.application"
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'aboota': {
+        'CONFIG': {
             "hosts": [('127.0.0.1', 6379)],
         },
     },
@@ -171,7 +171,7 @@ WSGI_APPLICATION = 'aboota.wsgi.application'
 
 import dj_database_url
 DATABASES = {
-    'default': dj_database_url.aboota(
+    'default': dj_database_url.config(
         default='postgres://dbmasteruser:pb2d80740f512c8cb41341e3291ed05b6b3d480a@ls-dff3f02526dec6fd6545926edd21f876ed074863.cz4lglmvud83.ap-south-1.rds.amazonaws.com:5432/postgres',
         conn_max_age=600)}
 
