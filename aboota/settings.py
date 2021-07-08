@@ -336,3 +336,6 @@ COMPRESS_PARSER = 'compressor.parser.AutoSelectParser'
 COMPRESS_ENABLED = False
 COMPRESS_ROOT = '../..'
 COMPRESS_URL = '/'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_UNIQUE_EMAIL = False

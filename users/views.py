@@ -53,7 +53,7 @@ def lockscreen(request):
 def signuponboarding(request):
     user = request.user
     try:
-        ruser = User.objects.get(username=user.referal)
+        ruser = User.objects.get(username=user.referral)
     except Exception as e:
         ruser = 'blank'
     return render(request, 'users/onboarding.html', {'user': user, 'ruser': ruser})
@@ -136,24 +136,20 @@ class UserDashboardView(LoginRequiredMixin, ListView):
         self.request.session['user_id'] = self.request.user.username
         context = super().get_context_data(*args, **kwargs)
         amount = 0
-        teams = 0
-        
-        upgraded = "None"
-        if upgraded != "None":
-            amount = upgraded.amount
-            capping_limit = '3,00,000.00'
-            total_income = max(min(user.total_users_right, user.total_users_left)*200*2, self.request.user.total_income)
-        else:
-            amount = "Please upgrade"
-            capping_limit = "Please upgrade"
-            total_income = 0
+        try:
+            plan = UserTotal.objects.get(user=request.user).level
+            level = LevelIncomeSettings.objects.get(level=plan).amount
+        except Exception as e:
+            plan = 'Please Upgrade'
+            level = None
+
+
         recent = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-created_at')[:10]
         large = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-amount')[:10]
         
 
 
-        context["amount"] = amount
-        context["capping_limit"] = capping_limit
+        context["amount"] = level
         context['recent'] = recent
         context['large'] = large
         return context
