@@ -452,7 +452,7 @@ def recharge(request):
 def paymentoptions(request): 
     message = ""
     try:
-        model = Paymentoptions.objects.get(user=request.user.username)
+        model = PaymentOption.objects.get(user=request.user.username)
     except Exception as e:
         model = 'blank'
     if model != 'blank':
@@ -468,7 +468,7 @@ def paymentoptions(request):
         try:
             user = request.user
             try:
-                model = Paymentoptions.objects.get(user=request.user.username)
+                model = PaymentOption.objects.get(user=request.user.username)
             except Exception as e:
                 model = 'blank'
             if model != 'blank':
@@ -482,7 +482,7 @@ def paymentoptions(request):
                 model.status = None
                 model.save()
             else:
-                model = Paymentoptions()
+                model = PaymentOption()
                 model.name = name
                 model.account_number = account
                 model.ifsc = ifsc
@@ -515,7 +515,7 @@ def neft(request):
             user_id = request.user
             amount = float(request.POST.get('amount'))
             try:
-                payment_o = Paymentoptions.objects.get(user=user_id)
+                payment_o = PaymentOption.objects.get(user=user_id)
                 kyc = ImageUploadModel.objects.get(user=user_id)
                 verify = True
             except Exception as e:

@@ -192,7 +192,7 @@ def leveljoin(request):
     message = "Please Proceed with upgrade"
 
     def userjoined(user, level):
-        user = (UserTotal.objects.filter(Q(user__iexact=str(user), level=level)).distinct())
+        user = (UserTotal.objects.filter(Q(user__iexact=str(user))).distinct())
         if user:
             return False
         else:
@@ -286,7 +286,7 @@ def leveljoin(request):
                 frn.save()
                 return redirect('/level/team/{}/'.format(user_id))
             else:
-                message = "user already joined, please choose another package"
+                message = "user already joined, please upgrade another ID"
         else:
             message = "not enough available balance in fund request"
     else:

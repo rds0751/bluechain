@@ -102,6 +102,7 @@ fileinput.addEventListener('change', function() {
                 <span> Account Status </span>
                 <span style="color: {% if model != 'blank' %}{% if model.status == True %}green{% elif model.status == None %}orange{% else %}red{% endif %}{% endif %}">{% if model != 'blank' %}{% if model.status == True %}Active{% elif model.status == None %}Pending Verification{% else %}Declined{% endif %}{% endif %}</span>
               </p>
+              {{ message }}
               <p class="d-flex justify-content-between">
                 <span> Account Holder </span>
                 <span style="color: green">
