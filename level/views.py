@@ -192,8 +192,12 @@ def leveljoin(request):
     message = "Please Proceed with upgrade"
 
     def userjoined(user, level):
-        user = (UserTotal.objects.filter(Q(user__iexact=str(user))).distinct())
-        if user:
+        try:
+            user = UserTotal.objects.get(user=str(user))
+        except Exception as e:
+            user = 'blank'
+        print(user)
+        if user != 'blank':
             return False
         else:
             return True
@@ -211,7 +215,7 @@ def leveljoin(request):
             userbal = 0
         levelp = LevelIncomeSettings.objects.get(amount=packamount)
         user_id = User.objects.get(username=str(user))
-        userjoined = userjoined(user, levelp.level)
+        userjoined = userjoined(request.user, levelp.level)
         if userbal >= packamount:
             if userjoined:
                 frn = FundRequest.objects.get(code=request.POST.get('FRN'))
@@ -262,7 +266,7 @@ def leveljoin(request):
                         upline_user = 'blank'
                     if upline_user != 'blank':  
                         directs = UserTotal.objects.filter(direct=upline_user, level=levelp.level)
-                        if directs >= levelp.level:   
+                        if directs.count() + 1 >= levelp.level:   
                             upline_amount = levels['level{}'.format(level)]*amount 
                             upline_user.wallet += upline_amount
                             upline_wallet = WalletHistory()   
