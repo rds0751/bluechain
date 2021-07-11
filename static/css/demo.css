@@ -1296,7 +1296,7 @@ li.nav-item.pl-4.pl-md-0.ml-0.ml-md-4 {
 ================================================== */
 
 .maineheader .bg-light {
-    background-color: white !important;
+    background-color: #ffffff00 !important;
     transition: all 200ms linear;
 }
 
