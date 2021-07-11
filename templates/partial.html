@@ -1,22 +1,22 @@
 {% load static i18n %}<!-- partial:partials/_sidebar.html -->
-<aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open" style="background: #0082b7">
+<aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open" style="background: #333333">
   <div class="mdc-drawer__content">
     <div class="align-items-left" style="margin: 10px 25px; height: 10%; margin-top: 30px;">
       <h2 align="center" style="color: white; margin-bottom: 0px;">$&nbsp;{{ request.user.wallet }}
       </h2>
-      <p style="font-size: 10px; background: linear-gradient(90deg, rgba(255,255,255,1) 26%, rgba(0,212,255,1) 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;" align="center">Mr/s. {{ request.user.name|truncatewords:2 }}({{user.username}})
+      <p style="font-size: 10px; color: white;" align="center">Mr/s. {{ request.user.name|truncatewords:2 }}({{user.username}})
       </p>
     </div>
     <div class="mdc-list-group">
       <nav class="mdc-list mdc-drawer-menu">
-        <div {% if request.get_full_path == '/users/' %} style='width: 100%;background: #d94e80;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+        <div {% if request.get_full_path == '/users/' %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
           <a class="mdc-drawer-link" {% if request.get_full_path == '/users/' %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="/users/">
             <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon style " aria-hidden="true">dashboard
             </i>Dashboard
           </a>
         </div>
 
-        <div {% if '/sedrftgyhhop/' in request.get_full_path %} style='width: 100%;background: #d94e80;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+        <div {% if '/sedrftgyhhop/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
           <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu6">
             <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">cached
             </i>
@@ -27,7 +27,7 @@
           </a>
           <div class="mdc-expansion-panel" id="ui-sub-menu6">
             <nav class="mdc-list mdc-drawer-submenu">
-              <div {% if request.get_full_path == '/level/join/' %} style='background: #d94e80' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+              <div {% if request.get_full_path == '/level/join/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
                   <a class="mdc-drawer-link" {% if request.get_full_path == '/level/join/' %} style='color: white;
                   font-size: bold;
                   font-weight: bold;
@@ -38,7 +38,7 @@
                   Upgrade Prime
                 </a>
               </div>
-              <div {% if request.get_full_path == '/wallet/fund-request/' %} style='background: #d94e80' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+              <div {% if request.get_full_path == '/wallet/fund-request/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
             <a class="mdc-drawer-link" {% if request.get_full_path == '/wallet/fund-request/' %} style='color: white;
             font-size: bold;
             font-weight: bold;
@@ -52,7 +52,7 @@
             </nav>
           </div>
         </div>
-        <div {% if '/shdrcftvgbop/' in request.get_full_path %} style='width: 100%;background: #d94e80;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+        <div {% if '/shdrcftvgbop/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
           <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu1">
             <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">people
             </i>
@@ -63,7 +63,7 @@
           </a>
           <div class="mdc-expansion-panel" id="ui-sub-menu1">
             <nav class="mdc-list mdc-drawer-submenu">
-              <div {% if request.get_full_path == '/users/~update/' %} style='background: #d94e80' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+              <div {% if request.get_full_path == '/users/~update/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
                   <a class="mdc-drawer-link" {% if request.get_full_path == '/users/~update/' %} style='color: white;
                   font-size: bold;
                   font-weight: bold;
@@ -74,7 +74,7 @@
                   Personal Details
                 </a>
               </div>
-          <div {% if request.get_full_path == '/wallet/account/' %} style='background: #d94e80' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+          <div {% if request.get_full_path == '/wallet/account/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
             <a class="mdc-drawer-link" {% if request.get_full_path == '/wallet/account/' %} style='color: white;
             font-size: bold;
             font-weight: bold;
@@ -85,7 +85,7 @@
             Bank Details
           </a>
         </div>
-              <div {% if request.get_full_path == '/kyc/pancard/' %} style='background: #d94e80' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+              <div {% if request.get_full_path == '/kyc/pancard/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
             <a class="mdc-drawer-link" {% if request.get_full_path == '/kyc/pancard/' %} style='color: white;
             font-size: bold;
             font-weight: bold;
@@ -99,7 +99,7 @@
             </nav>
           </div>
         </div>
-      <div {% if '/shoxdcfvgp/' in request.get_full_path %} style='width: 100%;background: #d94e80;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+      <div {% if '/shoxdcfvgp/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
         <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu5">
           <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">device_hub
               </i>
@@ -110,7 +110,7 @@
         </a>
         <div class="mdc-expansion-panel" id="ui-sub-menu5">
           <nav class="mdc-list mdc-drawer-submenu">
-              <div {% if request.get_full_path == '/users/shop/roi/' %} style='background: #d94e80' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+              <div {% if request.get_full_path == '/users/shop/roi/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
             <a class="mdc-drawer-link" {% if request.get_full_path == '/users/shop/roi/' %} style='color: white;
             font-size: bold;
             font-weight: bold;
@@ -124,7 +124,7 @@
         </nav>
       </div>
     </div>
-    <div {% if '/shoedrftvgbhp/' in request.get_full_path %} style='width: 100%;background: #d94e80;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+    <div {% if '/shoedrftvgbhp/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
           <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu2">
             <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">monetization_on
             </i>
@@ -135,7 +135,7 @@
           </a>
           <div class="mdc-expansion-panel" id="ui-sub-menu2">
             <nav class="mdc-list mdc-drawer-submenu">
-              <!-- <div {% if request.get_full_path == '/wallet/imps-transfer/' %} style='background: #d94e80' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+              <!-- <div {% if request.get_full_path == '/wallet/imps-transfer/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
             <a class="mdc-drawer-link" {% if request.get_full_path == '/wallet/imps-transfer/' %} style='color: white;
             font-size: bold;
             font-weight: bold;
@@ -146,7 +146,7 @@
                   Via IMPS
                 </a>
               </div> -->
-              <div {% if request.get_full_path == '/soon/' %} style='background: #d94e80' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+              <div {% if request.get_full_path == '/soon/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
             <a class="mdc-drawer-link" {% if request.get_full_path == '/soon/' %} style='color: white;
             font-size: bold;
             font-weight: bold;
@@ -160,7 +160,7 @@
           </nav>
         </div>
       </div>
-    <div {% if '/shsedrcftvgbhop/' in request.get_full_path %} style='width: 100%;background: #d94e80;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+    <div {% if '/shsedrcftvgbhop/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
         <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu7">
           <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">history</i>
           <strong>All Transactions
@@ -199,7 +199,7 @@
         </nav>
       </div>
     </div>
-    <div {% if '/ssedrftgvybhuhop/' in request.get_full_path %} style='width: 100%;background: #d94e80;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+    <div {% if '/ssedrftgvybhuhop/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
         <a class="mdc-expansion-panel-link" {% if '/shop/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %} href="#" data-toggle="expansionPanel" data-target="ui-sub-menu9">
           <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">code</i>
           <strong>Change Password
@@ -209,7 +209,7 @@
         </a>
         <div class="mdc-expansion-panel" id="ui-sub-menu9">
           <nav class="mdc-list mdc-drawer-submenu">
-            <div {% if request.get_full_path == '/accounts/password/change/' %} style='background: #d94e80' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+            <div {% if request.get_full_path == '/accounts/password/change/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
                   <a class="mdc-drawer-link" {% if request.get_full_path == '/accounts/password/change/' %} style='color: white;
                   font-size: bold;
                   font-weight: bold;
@@ -220,7 +220,7 @@
                   Login Password
                 </a>
               </div>
-            <div {% if request.get_full_path == '/users/change-passcode/' %} style='background: #d94e80' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+            <div {% if request.get_full_path == '/users/change-passcode/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
                   <a class="mdc-drawer-link" {% if request.get_full_path == '/users/change-passcode/' %} style='color: white;
                   font-size: bold;
                   font-weight: bold;
@@ -234,13 +234,13 @@
         </nav>
       </div>
     </div>
-    <div {% if '/soon/' in request.get_full_path %} style='width: 100%;background: #d94e80;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+    <div {% if '/soon/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
       <a class="mdc-drawer-link" {% if '/soon/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="/soon/">
         <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">live_help
         </i>Customer Support
       </a>
     </div>
-    <div {% if request.get_full_path == '/accounts/logout/' %} style='width: 100%;background: #d94e80;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+    <div {% if request.get_full_path == '/accounts/logout/' %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
       <a class="mdc-drawer-link" {% if request.get_full_path == '/accounts/logout/' %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="/accounts/logout/">
         <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">queue_play_next
         </i>Logout
