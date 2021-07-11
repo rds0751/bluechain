@@ -33,8 +33,8 @@ def home(request):
 	dend_date = datetime.datetime.now()
 	mstart_date = datetime.datetime.now() + datetime.timedelta(-30)
 	mend_date = datetime.datetime.now()
-	dwhs = WalletHistories.objects.filter(created_at__range=(dstart_date, dend_date))
-	wwhs = WalletHistories.objects.filter(created_at__range=(wstart_date, wend_date))
+	dwhs = WalletHistory.objects.filter(created_at__range=(dstart_date, dend_date))
+	wwhs = WalletHistory.objects.filter(created_at__range=(wstart_date, wend_date))
 	ci = 0
 	co = 0
 	tre = 0
@@ -98,7 +98,7 @@ def orders(request):
 		model = Order.objects.get(number=int(order))
 		if status == 'Cancelled' and model.status != 'Cancelled':
 			model.user.shop += 100 + int(model.total_incl_tax)*448/613
-			wallet = WalletHistories()
+			wallet = WalletHistory()
 			wallet.user_id = model.user.username
 			wallet.amount = 100 + model.total_incl_tax*448/613
 			wallet.balance_after = model.user.new_funds + model.user.added_amount + model.user.received_amount + model.user.shopping_wallet + model.user.income + model.user.binary_income
@@ -134,14 +134,14 @@ def franchise(request):
 			user = User.objects.get(username=request_.user)
 			user.new_funds += package.commission_in_percent * package.amount / 100
 			user.save()
-			wallet = WalletHistories()
+			wallet = WalletHistory()
 			wallet.user_id = model.user
 			wallet.amount = amount
 			wallet.balance_after = request.user.new_funds + request.user.added_amount + request.user.received_amount + request.user.shopping_wallet + request.user.income + request.user.binary_income
 			wallet.type = "credit"
 			wallet.comment = "Franchise Wallet Updated"
 			wallet.save()
-			wallet1 = WalletHistories()
+			wallet1 = WalletHistory()
 			wallet1.user_id = model.user
 			wallet1.amount = package.commission_in_percent * package.amount / 100
 			wallet1.balance_after = request.user.new_funds + request.user.added_amount + request.user.received_amount + request.user.shopping_wallet + request.user.income + request.user.binary_income
@@ -260,7 +260,7 @@ def neft(request):
                         model.admin_fees = 0
                         model.tax = amount*5/100
 
-                        userwallet = WalletHistories()
+                        userwallet = WalletHistory()
                         userwallet.balance_after = userbal - amount
                         userwallet.user_id = str(user_id)
                         userwallet.amount = float(amount)

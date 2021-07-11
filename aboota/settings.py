@@ -220,9 +220,9 @@ mimetypes.add_type("text/css", ".css", True)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-AWS_ACCESS_KEY_ID = 'AKIAU73Y34UHP4R7QT6K'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'jrindiastatic'
+AWS_ACCESS_KEY_ID = 'AKIA2G5C7FQ6DCI3B5H5'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'ipaymaticsbucket'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
