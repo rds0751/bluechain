@@ -142,7 +142,7 @@ class UserDashboardView(LoginRequiredMixin, ListView):
             level = LevelIncomeSettings.objects.get(level=plan).amount
         except Exception as e:
             plan = 'Please Upgrade'
-            level = e
+            level = 'None'
 
 
         recent = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-created_at')[:10]
