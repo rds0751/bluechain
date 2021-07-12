@@ -37,7 +37,7 @@ class SimpleSignupForm(SignupForm):
 		user = super(SimpleSignupForm, self).save(request)
 		user.mobile = self.cleaned_data['mobile']
 		user.name = self.cleaned_data['name']
-		user.referral = self.cleaned_data['referal_code']
+		user.referral = self.cleaned_data['referal_code'].upper()
 		user.nominee = self.cleaned_data['nominee']
 		user.nominee_relation = self.cleaned_data['nominee_relation']
 		user.save()

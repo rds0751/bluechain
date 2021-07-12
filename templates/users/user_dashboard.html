@@ -27,7 +27,7 @@
           <div class="mdc-card text-white info-card info-card--danger" style="background: #14bbce;">
             <div class="card-inner">
               <h5 style="" class="card-title"><strong> Wallet Balance </strong> </h5>
-              <h5 style="" class="font-weight-light pb-2 mb-1">₹ {{ request.user.wallet }}</h5>
+              <h5 style="" class="font-weight-light pb-2 mb-1">$ {{ request.user.wallet }}</h5>
               <div style="background: transparent; box-shadow: 0 0 10px 5px rgb(255 66 15 / 0%);" class="card-icon-wrapper">
               
             </div>
@@ -47,7 +47,7 @@
           <div class="mdc-card bg-warning text-white info-card info-card--danger">
             <div class="card-inner">
               <h5 style="" class="card-title"><strong>Total Self Income </strong> </h5>
-              <h5 style="" class="font-weight-light pb-2 mb-1" id="tot_self">₹ 0</h5>
+              <h5 style="" class="font-weight-light pb-2 mb-1" id="tot_self">$ 0</h5>
           </div>
         </div>
       </div> -->
@@ -55,7 +55,7 @@
           <div class="mdc-card bg-primary text-white info-card info-card--danger">
             <div class="card-inner">
               <h5 style="" class="card-title"><strong>My Plan </strong> </h5>
-              <h5 style="" class="font-weight-light pb-2 mb-1">₹ {{ amount }}</h5>
+              <h5 style="" class="font-weight-light pb-2 mb-1">$ {{ amount }}</h5>
           </div>
         </div> 
       </div>
@@ -63,7 +63,7 @@
           <div class="mdc-card text-white info-card info-card--danger" style="background: #14bbce;">
             <div class="card-inner">
               <h5 style="" class="card-title"><strong>Total Level Income </strong> </h5>
-              <h5 style="" class="font-weight-light pb-2 mb-1"  id="tot_lev">₹ 0</h5>
+              <h5 style="" class="font-weight-light pb-2 mb-1"  id="tot_lev">$ 0</h5>
           </div>
         </div>
       </div><!-- 
@@ -71,7 +71,7 @@
           <div class="mdc-card bg-warning text-white info-card info-card--danger">
             <div class="card-inner">
               <h5 style="" class="card-title"><strong>Total Shopping Income </strong> </h5>
-              <h5 style="" class="font-weight-light pb-2 mb-1" id="tot_shop">₹ 0</h5>
+              <h5 style="" class="font-weight-light pb-2 mb-1" id="tot_shop">$ 0</h5>
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@
           <div class="mdc-card bg-primary text-white info-card info-card--danger">
             <div class="card-inner">
               <h5 style="" class="card-title"><strong>Total Prime Earnings </strong> </h5>
-              <h5 style="" class="font-weight-light pb-2 mb-1">₹ 00.00</h5>
+              <h5 style="" class="font-weight-light pb-2 mb-1">$ 00.00</h5>
           </div>
         </div>
       </div>
@@ -117,7 +117,7 @@
       <div class="mdc-card bg-success text-white info-card info-card--success">
         <div class="card-inner">
           <h5 style="" class="card-title"><strong>Today's Earning</strong> </h5>
-          <h5 style="" class="font-weight-light pb-2 mb-1"> ₹ {{ user.today_binary_income }}</h5>
+          <h5 style="" class="font-weight-light pb-2 mb-1"> $ {{ user.today_binary_income }}</h5>
           <p style="line-height: 1" class="tx-10">Will be updated in <span id='time'></span>!</p>
           <div class="card-icon-wrapper" style="background-color: #ffffff;
           box-shadow: 0 0 10px 5px rgb(255 255 255 / 35%);">
@@ -131,8 +131,8 @@
       <div class="mdc-card bg-success text-white info-card info-card--info">
         <div class="card-inner">
           <h5 style="" class="card-title"><strong> Prime User</strong> </h5>
-          <h5 style="" class="font-weight-light pb-2 mb-1"> ₹ {{ amount }}</h5>
-          <p style="line-height: 1" class="tx-10">Weekly Capping : ₹{{ capping_limit }}</p>
+          <h5 style="" class="font-weight-light pb-2 mb-1"> $ {{ amount }}</h5>
+          <p style="line-height: 1" class="tx-10">Weekly Capping : ${{ capping_limit }}</p>
           <div class="card-icon-wrapper" style="background-color: #ffffff;
           box-shadow: 0 0 10px 5px rgb(255 255 255 / 35%);">
           <img width="60px" src="https://img.icons8.com/fluent/96/000000/office.png"/>
@@ -154,7 +154,7 @@
               {% else %}
               <tr>
                 <td style="padding-top: 20px; font-size: 12px;">{{r.comment}}<p style="color: grey; font-size: 8px;">{{r.created_at}}
-                  <span style="{% if r.type == 'credit' %}color: green;{% else %}color: red;{% endif %} font-size: 12px; float: right;" ><strong>{% if r.type == 'credit' %}+{% else %}-{% endif %}  ₹{{r.amount|floatformat:2}}</strong></span></p></td>
+                  <span style="{% if r.type == 'credit' %}color: green;{% else %}color: red;{% endif %} font-size: 12px; float: right;" ><strong>{% if r.type == 'credit' %}+{% else %}-{% endif %}  ${{r.amount|floatformat:2}}</strong></span></p></td>
                 </tr>
                 {% endif %}
                 {% endfor %}
@@ -177,7 +177,7 @@
               {% else %}
               <tr>
                 <td style="padding-top: 20px; font-size: 12px;">{{r.comment}}<p style="color: grey; font-size: 8px;">{{r.created_at}}
-                  <span style="{% if r.type == 'credit' %}color: green;{% else %}color: red;{% endif %} font-size: 12px; float: right;" ><strong>{% if r.type == 'credit' %}+{% else %}-{% endif %}  ₹{{r.amount|floatformat:2}}</strong></span></p></td>
+                  <span style="{% if r.type == 'credit' %}color: green;{% else %}color: red;{% endif %} font-size: 12px; float: right;" ><strong>{% if r.type == 'credit' %}+{% else %}-{% endif %}  ${{r.amount|floatformat:2}}</strong></span></p></td>
                 </tr>
                 {% endif %}
                 {% endfor %}

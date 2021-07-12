@@ -38,6 +38,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 import datetime
 from django.utils import timezone
+from level.models import LevelIncomeSettings
 
 logger = logging.getLogger('django')
 
@@ -137,11 +138,11 @@ class UserDashboardView(LoginRequiredMixin, ListView):
         context = super().get_context_data(*args, **kwargs)
         amount = 0
         try:
-            plan = UserTotal.objects.get(user=request.user).level
+            plan = UserTotal.objects.get(user=self.request.user).level
             level = LevelIncomeSettings.objects.get(level=plan).amount
         except Exception as e:
             plan = 'Please Upgrade'
-            level = None
+            level = e
 
 
         recent = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-created_at')[:10]

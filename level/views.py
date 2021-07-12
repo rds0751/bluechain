@@ -1,3 +1,10 @@
+import os
+import razorpay
+
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
 from django.shortcuts import render
 from django.contrib.auth import get_user_model 
 from django.db.models import Q
@@ -67,8 +74,13 @@ def leveltree(request, user):
         level7 = UserTotal.objects.filter(direct=y).order_by('id')
         for z in level7:
             level7n.append(z)
+    level8n = []
+    for y in level7n:
+        level8 = UserTotal.objects.filter(direct=y).order_by('id')
+        for z in level8:
+            level8n.append(z)
 
-    all_levels = [level1n, level2n, level3n, level4n, level5n, level6n, level7n]
+    all_levels = [level1n, level2n, level3n, level4n, level5n, level6n, level7n, level8n]
     all_users = level1n
     counting = {}
     level = 0
@@ -110,8 +122,13 @@ def leveltree(request, user):
         level7i = UserTotal.objects.filter(direct=y, active=True).order_by('id')
         for z in level7i:
             level7ni.append(z)
+    level8ni = []
+    for y in level7n:
+        level8i = UserTotal.objects.filter(direct=y, active=True).order_by('id')
+        for z in level8i:
+            level8ni.append(z)
 
-    all_levelsi = [level1ni, level2ni, level3ni, level4ni, level5ni, level6ni, level7ni]
+    all_levelsi = [level1ni, level2ni, level3ni, level4ni, level5ni, level6ni, level7ni, level8ni]
     all_usersi = level1ni
     countingi = {}
     leveli = 0
@@ -175,7 +192,15 @@ def leveltree(request, user):
             level7nu.append(user)
         except Exception as e:
             raise e
-    all_ = [zip(level2n, level2nu), zip(level3n, level3nu), zip(level4n, level4nu), zip(level5n, level5nu), zip(level6n, level6nu), zip(level7n, level7nu)]
+    level8n = level8n
+    level8nu = []
+    for u in level8n:
+        try:
+            user = User.objects.get(username=u.user)
+            level8nu.append(user)
+        except Exception as e:
+            raise e
+    all_ = [zip(level2n, level2nu), zip(level3n, level3nu), zip(level4n, level4nu), zip(level5n, level5nu), zip(level6n, level6nu), zip(level7n, level7nu), zip(level8n, level8nu),]
     user_listi = []
     for u in all_usersi:
         try:
@@ -296,3 +321,18 @@ def leveljoin(request):
     else:
         message = ""
     return render(request, 'level/level_join.html', {'packages': packages, "message": message})
+
+def payment(request):
+    amount = 100 #100 here means 1 dollar,1 rupree if currency INR
+    # client = razorpay.Client(key,secret)
+    client = razorpay.Client(auth=('rzp_test_Ye1A8KoHWSr6pR','zb9V7TYiqOo1j47TylJkKX94'))
+    response = client.order.create({'amount':amount,'currency':'USD','payment_capture':0})
+    print(response)
+    context = {'response':response}
+    return render(request,"level/payment.html",context)
+
+@csrf_exempt
+def payment_success(request):
+    if request.method =="POST":
+        print(request.POST)
+        return HttpResponse("Done payment hurrey!")
