@@ -282,7 +282,7 @@ def leveljoin(request):
                     uplines.append(upline_user)
                     level += 1
 
-                level = 1
+                level = 0
                 print(uplines)
                 for upline in uplines:
                     try:
@@ -290,16 +290,16 @@ def leveljoin(request):
                     except Exception as e:  
                         upline_user = 'blank'
                     if upline_user != 'blank':  
-                        directs = UserTotal.objects.filter(direct=upline_user, level=levelp.level)
-                        if directs.count() + 1 >= levelp.level:   
-                            upline_amount = levels['level{}'.format(level)]*amount 
+                        directs = UserTotal.objects.filter(direct=upline_user)
+                        if directs.count() >= level:   
+                            upline_amount = levels['level{}'.format(level+1)]*amount 
                             upline_user.wallet += upline_amount
                             upline_wallet = WalletHistory()   
                             upline_wallet.user_id = upline  
                             upline_wallet.amount = upline_amount    
                             upline_wallet.type = "credit"   
-                            upline_wallet.comment = "New Upgrade by your level{} user".format(level)  
-                            upline_user.save()  
+                            upline_wallet.comment = "New Upgrade by your level {} user".format(level+1)  
+                            upline_user.save()
                             upline_wallet.save()
                     level = level + 1
                 
