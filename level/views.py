@@ -291,7 +291,21 @@ def leveljoin(request):
                         upline_user = 'blank'
                     if upline_user != 'blank':  
                         directs = UserTotal.objects.filter(direct=upline_user)
-                        if directs.count() >= level:   
+                        if request.user.referral == upline_user.username:
+                            direct = True
+                        else:
+                            direct = False
+                        if directs.count() >= level and direct:   
+                            upline_amount = levels['level{}'.format(level+1)]*amount 
+                            upline_user.wallet += upline_amount
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = upline  
+                            upline_wallet.amount = upline_amount    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "New Upgrade by your level {} user".format(level+1)  
+                            upline_user.save()
+                            upline_wallet.save()
+                        elif directs.count() > level and not direct:   
                             upline_amount = levels['level{}'.format(level+1)]*amount 
                             upline_user.wallet += upline_amount
                             upline_wallet = WalletHistory()   
