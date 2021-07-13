@@ -166,6 +166,7 @@ def activation(request, id):
                         upline_wallet.comment = "New Upgrade by your level {} user".format(level+1)
                         upgraded.business += upline_amount
                         upline_wallet.save()
+                        upline_user.save()
                         print('if')
                     elif directs.count() > level and not direct:   
                         upline_amount = levels['level{}'.format(level+1)]*amount 
@@ -177,6 +178,7 @@ def activation(request, id):
                         upline_wallet.comment = "New Upgrade by your level {} user".format(level+1)
                         upgraded.business += upline_amount
                         upline_wallet.save()
+                        upline_user.save()
                         print('elif')
                     else:
                         upline_user.wallet += upline_amount
@@ -188,7 +190,6 @@ def activation(request, id):
                         upgraded.business += upline_amount
                         upline_wallet.save()
                         print('else')
-                    upline_user.save()
                     upgraded.save()
                     print('outside')
                 level = level + 1
