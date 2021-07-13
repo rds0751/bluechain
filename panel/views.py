@@ -225,6 +225,7 @@ def activation(request, id):
             act.status = 'Approved'
             act.save()
         else:
+        	act = Activation.objects.get(id=act_id)
             act.comments = comment
             act.status = "Rejected"
             act.save()
