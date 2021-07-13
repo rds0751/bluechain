@@ -106,7 +106,7 @@
                               <tr>
                               <td>{% if shopn.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ usern.name|truncatewords:1|slice:"-3" }}({{ usern.username }})</td>
                               <td><a href="tel:{{ usern.mobile }}">{{ usern.mobile }}</a></td>
-                              <td>Level {{ shopn.level.amount }}</td>
+                              <td>$ {{ shopn.level.amount }}</td>
                               <td><a href="/level/team/{{ usern.username }}/">View</a></td>
                               </tr>
                               {% endfor %}
@@ -130,7 +130,7 @@
                               <tr>
                               <td>{% if level2n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level2nu.name|truncatewords:1|slice:"-3" }}({{ level2nu.username }})</td>
                               <td>{{ level2nu.referral }}</td>
-                              <td>Level {{ level2n.level.amount }}</td>
+                              <td>$ {{ level2n.level.amount }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -153,7 +153,7 @@
                               <tr>
                               <td>{% if level3n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level3nu.name|truncatewords:1|slice:"-3" }}({{ level3nu.username }})</td>
                               <td>{{ level3n.direct }}</td>
-                              <td>Level {{ level3n.level.amount }}</td>
+                              <td>$ {{ level3n.level.amount }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -177,7 +177,7 @@
                               <td>
                                 {% if level4n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level4nu.name|truncatewords:1|slice:"-2" }}({{ level4nu.username }})</td>
                               <td>{{ level4n.direct }}</td>
-                              <td>Level {{ level4n.level.amount }}</td>
+                              <td>$ {{ level4n.level.amount }}</td>
                               {% endfor %}
                           </tbody>
                         </table>
@@ -199,7 +199,7 @@
                               <tr>
                               <td>{% if level5n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level5nu.name|truncatewords:1|slice:"-3" }}({{ level5nu.username }})</td>
                               <td>{{ level5n.direct }}</td>
-                              <td>Level {{ level5n.level.amount }}</td>
+                              <td>$ {{ level5n.level.amount }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -222,7 +222,7 @@
                               <tr>
                               <td>{% if level6n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level6nu.name|truncatewords:1|slice:"-3" }}({{ level6nu.username }})</td>
                               <td>{{ level6n.direct }}</td>
-                              <td>Level {{ level6n.level.amount }}</td>
+                              <td>$ {{ level6n.level.amount }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -245,7 +245,7 @@
                               <tr>
                               <td>{% if level7n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level7nu.name|truncatewords:1|slice:"-3" }}({{ level7nu.username }})</td>
                               <td>{{ level7n.direct }}</td>
-                              <td>Level {{ level7n.level.amount }}</td>
+                              <td>$ {{ level7n.level.amount }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -268,7 +268,7 @@
                               <tr>
                               <td>{% if level8n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level8nu.name|truncatewords:1|slice:"-3" }}({{ level8nu.username }})</td>
                               <td>{{ level8n.direct }}</td>
-                              <td>Level {{ level8n.level.amount }}</td>
+                              <td>$ {{ level8n.level.amount }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
