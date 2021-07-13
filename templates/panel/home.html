@@ -1,5 +1,5 @@
 {% extends 'panel/base.html' %}
-{% load static currency_filters sum_tags %}
+{% load static sum_tags %}
 
 {% block content %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -67,7 +67,7 @@
                             <div class="card-block clearfix">
                                 <div class="pull-right">
                                     <p class="h6 text-muted m-t-0 m-b-xs">Today's Revenue</p>
-                                    <p class="h3 text-blue m-t-sm m-b-0">{{ tre|currency }}</p>
+                                    <p class="h3 text-blue m-t-sm m-b-0">{{ tre }}</p>
                                 </div>
                                 <div class="pull-left m-r">
                                     <span class="img-avatar img-avatar-48 bg-blue bg-inverse"><i class="ion-cash fa-1-5x"></i></span>
@@ -81,7 +81,7 @@
                             <div class="card-block clearfix">
                                 <div class="pull-right">
                                     <p class="h6 text-muted m-t-0 m-b-xs">Week's Cash In</p>
-                                    <p class="h3 m-t-sm m-b-0">{{ ci|currency }}</p>
+                                    <p class="h3 m-t-sm m-b-0">{{ ci }}</p>
                                 </div>
                                 <div class="pull-left m-r">
                                     <span class="img-avatar img-avatar-48 bg-gray-light-o"><i class="ion-arrow-graph-up-right fa-1-5x"></i></span>
@@ -96,7 +96,7 @@
                             <div class="card-block clearfix">
                                 <div class="pull-right">
                                     <p class="h6 text-muted m-t-0 m-b-xs">Week's Cash Out</p>
-                                    <p class="h3 m-t-sm m-b-0">{{ co|currency }}</p>
+                                    <p class="h3 m-t-sm m-b-0">{{ co }}</p>
                                 </div>
                                 <div class="pull-left m-r">
                                     <span class="img-avatar img-avatar-48 bg-gray-light-o"><i class="ion-arrow-graph-down-right fa-1-5x"></i></span>
@@ -112,7 +112,7 @@
                             <div class="card-block clearfix">
                                 <div class="pull-right">
                                     <p class="h6 text-muted m-t-0 m-b-xs">Week's Profit</p>
-                                    <p class="h3 m-t-sm m-b-0">{{ pr|currency }}</p>
+                                    <p class="h3 m-t-sm m-b-0">{{ pr }}</p>
                                 </div>
                                 <div class="pull-left m-r">
                                     <span class="img-avatar img-avatar-48 bg-gray-light-o"><i class="{% if pr >= 0 %}ion-happy{% else %}ion-sad{% endif %} fa-1-5x"></i></span>

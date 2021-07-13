@@ -1,5 +1,4 @@
 {% load static %}
-{% load dashboard_tags %}
     <!-- Drawer -->
                 <aside class="app-layout-drawer">
 
@@ -7,7 +6,7 @@
                     <div class="app-layout-drawer-scroll">
                         <!-- Drawer logo -->
                         <div id="logo" class="drawer-header">
-                            <h2 style="text-align: center">₹&nbsp;{{ request.user.income|add:request.user.binary_income|add:request.user.new_funds|add:request.user.added_amount|add:request.user.received_amount|add:request.user.shopping_wallet|floatformat:2 }}</h2>
+                            <h2 style="text-align: center">$&nbsp;{{ request.user.wallet|floatformat:2 }}</h2>
                         </div>
                         <div style="height: auto" id="logo" class="drawer-header">
                             <h2 style="font-size: 12px; text-align: center; margin: 0;">Mr/s. {{ request.user.name|truncatewords:2 }}({{user.username}})</h2>
@@ -35,70 +34,22 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="/panel/orders/"><i class="ion-ios-people-outline"></i> Orders</a>
+                                    <a href="/panel/orders/"><i class="ion-ios-people-outline"></i> Payments</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="/dashboard/shipping/weight-based/"><i class="ion-ios-people-outline"></i> Shipping</a>
+                                    <a href="/panel/activations/"><i class="ion-ios-people-outline"></i> Activations</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/panel/franchise/"><i class="ion-ios-people-outline"></i> Franchise</a>
                                 </li>
-                                {% endif %}
-
-                                {% if perms.partner.dashboard_access or request.user.is_superuser %}
-                                <li class="nav-item nav-drawer-header">Store Management</li>
-                                
-                                <li class="nav-item">
-                                    <a href="/panel/stores/"> My Stores</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="/panel/~profile/"> My Profile</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="/panel/~withdrawals/"> Store Incomes</a>
-                                </li>
-
-                                {% block dashboard_nav %}
-                                {% dashboard_navigation user as nav_items %}
-
-                                {% for item in nav_items %}
-                                <li class="dropdown">
-                                    {% if item.is_heading %}
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                        {% if item.icon %}<i class="{{ item.icon }}"></i>{% endif %}
-                                        {{ item.label }} <b class="caret"></b>
-                                    </a>
-                                    {% else %}
-                                    <a href="{{ item.url }}">
-                                        {% if item.icon %}<i class="{{ item.icon }}"></i>{% endif %}
-                                        {{ item.label }}
-                                    </a>
-                                    {% endif %}
-                                    {% if item.has_children %}
-                                    <ul class="dropdown-menu">
-                                        {% for subitem in item.children %}
-                                        <li>
-                                            <a href="{{ subitem.url }}">
-                                            {% if subitem.icon %}<i class="{{ subitem.icon }}"></i>{% endif %}
-                                            {{ subitem.label }}
-                                            </a>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                    {% endif %}
-                                </li>
-                                {% endfor %}
-                                {% endblock %}
                                 {% endif %}
                             </ul>
                         </nav>
                         <!-- End drawer navigation -->
 
                         <div class="drawer-footer">
-                            <p class="copyright">&copy; JR India Group</p>
+                            <p class="copyright">&copy; IPAYMATICS</p>
                             <a href="/">Visit Us</a>
                         </div>
                     </div>
@@ -118,18 +69,10 @@
             <span class="icon-bar"></span>
         </button>
                         <span class="navbar-page-title">
-            
-            {% if bst != 'blank' %}
-            <img src="https://i.imgur.com/8FAdDXS.png" style="
-                width: 200px;
+            <img src="{% static 'download.png' %}" style="
+                width: 100px;
                 margin-top: 10px;
             ">
-            {% else %}
-            <img src="https://i.imgur.com/NZGfylX.png" style="
-                width: 200px;
-                margin-top: 10px;
-            ">
-            {% endif %}
         </span>
                     </div>
 

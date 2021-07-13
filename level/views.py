@@ -336,6 +336,24 @@ def leveljoin(request):
         message = ""
     return render(request, 'level/level_join.html', {'packages': packages, "message": message})
 
+def activation(request):
+    packages = LevelIncomeSettings.objects.all()
+    actp = Activation.objects.filter(user=request.user.username, status='Pending').count()
+    acta = Activation.objects.filter(user=request.user.username, status='Approved').count()
+    if request.method == "POST":
+        amount = request.POST.get("amount")
+        user = request.user
+        act = Activation()
+        act.user = user.username
+        act.amount = amount
+        act.status = 'Pending'
+        act.comment = ''
+        act.save()
+        title = 'Thankyou!'
+        message = 'Your activation for ${} is in pending, please wait for 24-48 hrs for activation'.format(amount)
+        return render(request,"level/thankyou.html", {'title': title, 'message': message})
+    return render(request,"level/level_join.html", {'packages': packages, 'acta': acta, 'actp': actp})
+
 def payment(request):
     amount = 100 #100 here means 1 dollar,1 rupree if currency INR
     # client = razorpay.Client(key,secret)

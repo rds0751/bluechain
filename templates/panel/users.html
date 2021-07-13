@@ -1,6 +1,5 @@
 {% extends 'panel/base.html' %}
-{% load static currency_filters sum_tags %}
-{% load render_table from django_tables2 %}
+{% load static sum_tags %}
 
 {% block content %}
 <div class="app-layout-canvas">
@@ -62,8 +61,8 @@
                                             </form>
                                         </div>
                                     </td>
-                                    <td class="hidden-xs">{{ x.added_amount|add:x.received_amount|add:x.binary_income|add:x.income|currency }}</td>
-                                    <td class="hidden-xs">{{ x.new_funds|currency }}</td>
+                                    <td class="hidden-xs">{{ x.wallet }}</td>
+                                    <td class="hidden-xs">{{ x.wallet }}</td>
                                     <td>
                                         <form action="/panel/login/" method="POST">
                                             {% csrf_token %}

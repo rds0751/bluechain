@@ -27,27 +27,16 @@
           </a>
           <div class="mdc-expansion-panel" id="ui-sub-menu6">
             <nav class="mdc-list mdc-drawer-submenu">
-              <div {% if request.get_full_path == '/level/join/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
-                  <a class="mdc-drawer-link" {% if request.get_full_path == '/level/join/' %} style='color: white;
+              <div {% if request.get_full_path == '/level/activation/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
+                  <a class="mdc-drawer-link" {% if request.get_full_path == '/level/activation/' %} style='color: white;
                   font-size: bold;
                   font-weight: bold;
                   font-size: 12px;' {% else %} style='color: white;
                   font-size: bold;
                   font-weight: bold;
-                  font-size: 11px;' {% endif %}  href="/level/join/">
+                  font-size: 11px;' {% endif %}  href="/level/activation/">
                   Upgrade Prime
                 </a>
-              </div>
-              <div {% if request.get_full_path == '/wallet/fund-request/' %} style='background: #7d7c7c' {% else %} {% endif %} class="mdc-list-item mdc-drawer-item">
-            <a class="mdc-drawer-link" {% if request.get_full_path == '/wallet/fund-request/' %} style='color: white;
-            font-size: bold;
-            font-weight: bold;
-            font-size: 12px;' {% else %} style='color: white;
-            font-size: bold;
-            font-weight: bold;
-            font-size: 11px;' {% endif %}  href="/wallet/fund-request/">
-                Fund Request
-              </a>
               </div>
             </nav>
           </div>

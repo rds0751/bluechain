@@ -138,12 +138,9 @@ class UserDashboardView(LoginRequiredMixin, ListView):
         context = super().get_context_data(*args, **kwargs)
         amount = 0
         try:
-            plan = UserTotal.objects.get(user=self.request.user).level
-            level = LevelIncomeSettings.objects.get(level=plan).amount
+            level = UserTotal.objects.get(user=self.request.user)
         except Exception as e:
-            plan = 'Please Upgrade'
             level = 'None'
-
 
         recent = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-created_at')[:10]
         large = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-amount')[:10]

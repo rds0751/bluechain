@@ -24,142 +24,291 @@ from wallets.models import WalletHistory, Withdrawal, PaymentOption
 from users.models import User
 from kyc.models import ImageUploadModel
 import random
+from level.models import Activation, LevelIncomeSettings, UserTotal
 
 @staff_member_required
 def home(request):
-	wstart_date = datetime.datetime.now() + datetime.timedelta(-7)
-	wend_date = datetime.datetime.now()
-	dstart_date = datetime.datetime.now() + datetime.timedelta(-1)
-	dend_date = datetime.datetime.now()
-	mstart_date = datetime.datetime.now() + datetime.timedelta(-30)
-	mend_date = datetime.datetime.now()
-	dwhs = WalletHistory.objects.filter(created_at__range=(dstart_date, dend_date))
-	wwhs = WalletHistory.objects.filter(created_at__range=(wstart_date, wend_date))
-	ci = 0
-	co = 0
-	tre = 0
-	for wh in wwhs:
-		if 'Shopping Wallet Topup' in wh.comment or 'spent binary id' in wh.comment:
-			ci += wh.amount
-		elif 'NEFT' in wh.comment or 'imps' in wh.comment or 'spent on recharge' in wh.comment:
-			co += wh.amount
-	for wh in dwhs:
-		if 'Shopping Wallet Topup' in wh.comment or 'spent binary id' in wh.comment:
-			tre += wh.amount
-	return render(request, 'panel/home.html', {'ci': ci, 'co': co, 'tre':tre  })
+    wstart_date = datetime.datetime.now() + datetime.timedelta(-7)
+    wend_date = datetime.datetime.now()
+    dstart_date = datetime.datetime.now() + datetime.timedelta(-1)
+    dend_date = datetime.datetime.now()
+    mstart_date = datetime.datetime.now() + datetime.timedelta(-30)
+    mend_date = datetime.datetime.now()
+    dwhs = WalletHistory.objects.filter(created_at__range=(dstart_date, dend_date))
+    wwhs = WalletHistory.objects.filter(created_at__range=(wstart_date, wend_date))
+    ci = 0
+    co = 0
+    tre = 0
+    for wh in wwhs:
+        if 'Shopping Wallet Topup' in wh.comment or 'spent binary id' in wh.comment:
+            ci += wh.amount
+        elif 'NEFT' in wh.comment or 'imps' in wh.comment or 'spent on recharge' in wh.comment:
+            co += wh.amount
+    for wh in dwhs:
+        if 'Shopping Wallet Topup' in wh.comment or 'spent binary id' in wh.comment:
+            tre += wh.amount
+    return render(request, 'panel/home.html', {'ci': ci, 'co': co, 'tre':tre  })
 
 @staff_member_required
 def users(request):
-	q = 'blank'
-	s = 'blank'
-	r = 100
-	u = User.objects.all().order_by('?')[:100]
-	if request.method == 'POST' and request.POST.get('r') != '':
-		q = request.POST.get('q')
-		s = request.POST.get('s')
-		r = request.POST.get('r')
-		u = User.objects.all().order_by('?')[:int(r)]
-		if 'q' in request.POST and len(request.POST.get('q'))>=4:
-			u = User.objects.filter(username__icontains=request.POST.get('q'))
-			s = 'blank'
-		if request.POST.get('s') != 'blank':
-			u = User.objects.all().annotate(on_hold=Sum(F('income') + F('binary_income') + F('added_amount') + F('received_amount'))).order_by('-'+request.POST.get('s'))[:int(request.POST.get('r'))]
-			q = 'blank'
-		if 'q' in request.POST and request.POST.get('s') != 'blank' and len(request.POST.get('q'))>=3:
-			u = User.objects.filter(username__icontains=request.POST.get('q')).annotate(on_hold=Sum(F('income') + F('binary_income') + F('added_amount') + F('received_amount'))).order_by('-'+request.POST.get('s'))
-	return render(request, 'panel/users.html', {'u': u, 'q': q, 's': s, 'r': r})
+    q = 'blank'
+    s = 'blank'
+    r = 100
+    u = User.objects.all().order_by('?')[:100]
+    if request.method == 'POST' and request.POST.get('r') != '':
+        q = request.POST.get('q')
+        s = request.POST.get('s')
+        r = request.POST.get('r')
+        u = User.objects.all().order_by('?')[:int(r)]
+        if 'q' in request.POST and len(request.POST.get('q'))>=4:
+            u = User.objects.filter(username__icontains=request.POST.get('q'))
+            s = 'blank'
+        if request.POST.get('s') != 'blank':
+            u = User.objects.all().annotate(on_hold=Sum(F('income') + F('binary_income') + F('added_amount') + F('received_amount'))).order_by('-'+request.POST.get('s'))[:int(request.POST.get('r'))]
+            q = 'blank'
+        if 'q' in request.POST and request.POST.get('s') != 'blank' and len(request.POST.get('q'))>=3:
+            u = User.objects.filter(username__icontains=request.POST.get('q')).annotate(on_hold=Sum(F('income') + F('binary_income') + F('added_amount') + F('received_amount'))).order_by('-'+request.POST.get('s'))
+    return render(request, 'panel/users.html', {'u': u, 'q': q, 's': s, 'r': r})
 
 @staff_member_required
 def withdrawals(request):
-	w = Withdrawals.objects.all()
-	return render(request, 'panel/withdrawals.html', {'w': w})
+    w = Withdrawal.objects.all()
+    return render(request, 'panel/withdrawals.html', {'w': w})
+
+@staff_member_required
+def activations(request):
+    w = Activation.objects.all()
+    return render(request, 'panel/activations.html', {'w': w})
+
+@staff_member_required
+def activation(request, id):
+    message = ''
+    def activate(user, amount):
+        def userjoined(user, level):
+            try:
+                user = UserTotal.objects.get(user=str(user))
+            except Exception as e:
+                user = 'blank'
+            print(user)
+            if user != 'blank':
+                return False
+            else:
+                return True
+        user=User.objects.get(username=user)
+        upline_user = user.referral
+        packamount = amount
+        levelp = LevelIncomeSettings.objects.get(amount=packamount)
+        user_id = User.objects.get(username=str(user))
+        userjoined = userjoined(user, levelp.level)
+        if userjoined:
+            userwallet = WalletHistory()
+            userwallet.user_id = user_id
+            userwallet.amount = packamount
+            userwallet.type = "debit"
+            userwallet.comment = "Prime Upgradation"
+
+            userid = user   
+
+            def finduplines(user):  
+                try:    
+                    user = User.objects.get(username__iexact=str(user)) 
+                    upline = user.referral   
+                except User.DoesNotExist:   
+                    upline = 'blank'    
+                return upline   
+
+            levels = {  
+            'level1': 20/100,  
+            'level2': 10/100, 
+            'level3': 8/100, 
+            'level4': 6/100, 
+            'level5': 4/100, 
+            'level6': 2/100, 
+            'level7': 2/100, 
+            'level8': 8/100,  
+            }   
+
+            level = 0   
+            upline_user = userid.referral    
+            userid = user   
+            amount = packamount 
+            uplines = [upline_user, ]
+            while level < 7 and upline_user != 'blank':
+                upline_user = finduplines(str(upline_user))
+                uplines.append(upline_user)
+                level += 1
+
+            level = 0
+            print(uplines)
+            for upline in uplines:
+                try:
+                    upline_user = User.objects.get(username=upline) 
+                except Exception as e:  
+                    upline_user = 'blank'
+                try:
+                    upgraded = UserTotal.objects.get(user=upline)
+                except Exception as e:
+                    upgraded = 'blank'
+                if upline_user != 'blank' and upgraded != 'blank':  
+                    directs = UserTotal.objects.filter(direct=upline_user)
+                    if user.referral == upline_user.username:
+                        direct = True
+                    else:
+                        direct = False
+                    upline_amount = levels['level{}'.format(level+1)]*amount
+                    print(directs.count(), level, direct)
+                    if directs.count() >= level and direct: 
+                        upline_user.wallet += upline_amount
+                        upline_wallet = WalletHistory()   
+                        upline_wallet.user_id = upline  
+                        upline_wallet.amount = upline_amount    
+                        upline_wallet.type = "credit"   
+                        upline_wallet.comment = "New Upgrade by your level {} user".format(level+1)
+                        upgraded.business += upline_amount
+                        upline_wallet.save()
+                        print('if')
+                    elif directs.count() > level and not direct:   
+                        upline_amount = levels['level{}'.format(level+1)]*amount 
+                        upline_user.wallet += upline_amount
+                        upline_wallet = WalletHistory()   
+                        upline_wallet.user_id = upline  
+                        upline_wallet.amount = upline_amount    
+                        upline_wallet.type = "credit"   
+                        upline_wallet.comment = "New Upgrade by your level {} user".format(level+1)
+                        upgraded.business += upline_amount
+                        upline_wallet.save()
+                        print('elif')
+                    else:
+                        upgraded.business += upline_amount
+                        print('else')
+                    upline_user.save()
+                    upgraded.save()
+                    print('outside')
+                level = level + 1
+            
+            model = UserTotal()
+            model.user = userid
+            model.level = levelp
+            model.active = True
+            model.left_months = levelp.expiration_period
+            model.direct = user.referral
+            model.save()
+            userwallet.save()
+            user_id.save()
+        else:
+            message = "user already joined, please upgrade another ID"
+    w = Activation.objects.get(id=id)
+    u = User.objects.get(username=w.user)
+    try:
+        k = ImageUploadModel.objects.get(user=w.user)
+        b = Paymentoptions.objects.get(user=w.user)
+    except Exception as e:
+        k = 'blank'
+        b = 'blank'
+    if request.method == "POST":
+        action = request.POST.get('action')
+        comment = request.POST.get('comment')
+        act_id = request.POST.get('id')
+        if action == 'accept':
+            act = Activation.objects.get(id=act_id)
+            user = act.user
+            amount = act.amount
+            activate(user, amount)
+            act.comments = comment
+            act.status = 'Approved'
+            act.save()
+        else:
+            act.comments = comment
+            act.status = "Rejected"
+            act.save()
+    return render(request, 'panel/activation.html', {'w': w, 'u': u, 'k': k, 'b': b, 'message': message})
 
 @staff_member_required
 def withdrawal(request, id):
-	w = Withdrawals.objects.get(id=id)
-	u = User.objects.get(username=w.user)
-	try:
-		k = ImageUploadModel.objects.get(user=w.user)
-		b = Paymentoptions.objects.get(user=w.user)
-	except Exception as e:
-		k = 'blank'
-		b = 'blank'
-	return render(request, 'panel/withdrawal.html', {'w': w, 'u': u, 'k': k, 'b': b})
+    w = Withdrawal.objects.get(id=id)
+    u = User.objects.get(username=w.user)
+    try:
+        k = ImageUploadModel.objects.get(user=w.user)
+        b = Paymentoptions.objects.get(user=w.user)
+    except Exception as e:
+        k = 'blank'
+        b = 'blank'
+    return render(request, 'panel/withdrawal.html', {'w': w, 'u': u, 'k': k, 'b': b})
 
 
 @staff_member_required
 def orders(request):
-	u = Line.objects.all()
-	if request.method == 'POST':
-		order = request.POST.get('order')
-		status = request.POST.get('status')
-		comment = request.POST.get('comment')
+    u = Line.objects.all()
+    if request.method == 'POST':
+        order = request.POST.get('order')
+        status = request.POST.get('status')
+        comment = request.POST.get('comment')
 
-		model = Order.objects.get(number=int(order))
-		if status == 'Cancelled' and model.status != 'Cancelled':
-			model.user.shop += 100 + int(model.total_incl_tax)*448/613
-			wallet = WalletHistory()
-			wallet.user_id = model.user.username
-			wallet.amount = 100 + model.total_incl_tax*448/613
-			wallet.balance_after = model.user.new_funds + model.user.added_amount + model.user.received_amount + model.user.shopping_wallet + model.user.income + model.user.binary_income
-			wallet.type = "credit"
-			wallet.comment = "Shopping Refund"
-			wallet.save()
-		model.status = status
-		model.comment = comment
-		model.save()
-	return render(request, 'panel/orders.html', {'u': u})
+        model = Order.objects.get(number=int(order))
+        if status == 'Cancelled' and model.status != 'Cancelled':
+            model.user.shop += 100 + int(model.total_incl_tax)*448/613
+            wallet = WalletHistory()
+            wallet.user_id = model.user.username
+            wallet.amount = 100 + model.total_incl_tax*448/613
+            wallet.balance_after = model.user.new_funds + model.user.added_amount + model.user.received_amount + model.user.shopping_wallet + model.user.income + model.user.binary_income
+            wallet.type = "credit"
+            wallet.comment = "Shopping Refund"
+            wallet.save()
+        model.status = status
+        model.comment = comment
+        model.save()
+    return render(request, 'panel/orders.html', {'u': u})
 
 @staff_member_required
 def franchise(request):
-	u = Request.objects.all()
-	if request.method == 'POST':
-		id_ = request.POST.get('id')
-		status = request.POST.get('status')
-		comment = request.POST.get('comment')
+    u = Request.objects.all()
+    if request.method == 'POST':
+        id_ = request.POST.get('id')
+        status = request.POST.get('status')
+        comment = request.POST.get('comment')
 
-		request_ = Request.objects.get(id=id_)
-		amount = request_.amount
-		package = Package.objects.get(amount=amount)
+        request_ = Request.objects.get(id=id_)
+        amount = request_.amount
+        package = Package.objects.get(amount=amount)
 
-		try:
-			model = Franchise.objects.get(user=request_.user)
-		except Exception as e:
-			model = Franchise()
-		
-		if status == '1':
-			model.user = request_.user
-			model.wallet += amount
-			model.active = 1
-			user = User.objects.get(username=request_.user)
-			user.new_funds += package.commission_in_percent * package.amount / 100
-			user.save()
-			wallet = WalletHistory()
-			wallet.user_id = model.user
-			wallet.amount = amount
-			wallet.balance_after = request.user.new_funds + request.user.added_amount + request.user.received_amount + request.user.shopping_wallet + request.user.income + request.user.binary_income
-			wallet.type = "credit"
-			wallet.comment = "Franchise Wallet Updated"
-			wallet.save()
-			wallet1 = WalletHistory()
-			wallet1.user_id = model.user
-			wallet1.amount = package.commission_in_percent * package.amount / 100
-			wallet1.balance_after = request.user.new_funds + request.user.added_amount + request.user.received_amount + request.user.shopping_wallet + request.user.income + request.user.binary_income
-			wallet1.type = "credit"
-			wallet1.comment = "Franchise Commission"
-			wallet1.save()
-			model.save()
-		request_.status = status
-		request_.comment = comment
-		request_.balance_given = amount
-		request_.save()
-	return render(request, 'panel/franchise.html', {'u': u})
+        try:
+            model = Franchise.objects.get(user=request_.user)
+        except Exception as e:
+            model = Franchise()
+        
+        if status == '1':
+            model.user = request_.user
+            model.wallet += amount
+            model.active = 1
+            user = User.objects.get(username=request_.user)
+            user.new_funds += package.commission_in_percent * package.amount / 100
+            user.save()
+            wallet = WalletHistory()
+            wallet.user_id = model.user
+            wallet.amount = amount
+            wallet.balance_after = request.user.new_funds + request.user.added_amount + request.user.received_amount + request.user.shopping_wallet + request.user.income + request.user.binary_income
+            wallet.type = "credit"
+            wallet.comment = "Franchise Wallet Updated"
+            wallet.save()
+            wallet1 = WalletHistory()
+            wallet1.user_id = model.user
+            wallet1.amount = package.commission_in_percent * package.amount / 100
+            wallet1.balance_after = request.user.new_funds + request.user.added_amount + request.user.received_amount + request.user.shopping_wallet + request.user.income + request.user.binary_income
+            wallet1.type = "credit"
+            wallet1.comment = "Franchise Commission"
+            wallet1.save()
+            model.save()
+        request_.status = status
+        request_.comment = comment
+        request_.balance_given = amount
+        request_.save()
+    return render(request, 'panel/franchise.html', {'u': u})
 
 @staff_member_required
 def invoice(request, number):
-	o = Order.objects.get(number=number)
-	l = Line.objects.filter(order__number=number)
-	return render(request, 'panel/invoice.html', {'o': o, 'l': l})
+    o = Order.objects.get(number=number)
+    l = Line.objects.filter(order__number=number)
+    return render(request, 'panel/invoice.html', {'o': o, 'l': l})
 
 class UserProfileView(LoginRequiredMixin, UpdateView):
     fields = [
@@ -178,69 +327,69 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
 
 @login_required
 def stores(request):
-	if request.method == 'POST':
-		store = request.POST.get('store')
-		store = Partner.objects.get(id=store)
-		try:
-			address = PartnerAddress.objects.get(partner__id=store.id)
-		except Exception as e:
-			address = None
-		if 'line1' in request.POST:
-			if address == None:
-				country = Country.objects.get(iso_3166_1_a2=request.POST.get('country'))
-				model = PartnerAddress()
-				model.partner = Partner.objects.get(id=store.id)
-				store.name = request.POST.get('name')
-				model.line1 = request.POST.get('line1')
-				model.line2 = request.POST.get('line2')
-				model.line3 = request.POST.get('line3')
-				model.line4 = request.POST.get('line4')
-				model.state = request.POST.get('state')
-				model.postcode = request.POST.get('postcode')
-				model.country = country
-				model.save()
-				store.save()
-				store = Partner.objects.filter(Q(users__id=request.user.id) | Q(admin_user__id=request.user.id)).distinct()
-				return render(request, 'panel/stores.html', {'stores': store})
-			if address != None:
-				model = address
-				country = Country.objects.get(iso_3166_1_a2=request.POST.get('country'))
-				store.name = request.POST.get('name')
-				model.line1 = request.POST.get('line1')
-				model.line2 = request.POST.get('line2')
-				model.line3 = request.POST.get('line3')
-				model.line4 = request.POST.get('line4')
-				model.state = request.POST.get('state')
-				model.postcode = request.POST.get('postcode')
-				model.country = country
-				model.save()
-				store.save()
-				store = Partner.objects.filter(Q(users__id=request.user.id) | Q(admin_user__id=request.user.id)).distinct()
-				return render(request, 'panel/stores.html', {'stores': store})
-		if 'staff_username' in request.POST:
-			store.users.add(User.objects.get(username=request.POST.get('staff_username')))
-			store.save()
-			store = Partner.objects.filter(Q(users__id=request.user.id) | Q(admin_user__id=request.user.id)).distinct()
-			return render(request, 'panel/stores.html', {'stores': store})
-		if 'remove_user' in request.POST:
-			store.users.remove(User.objects.get(username=request.POST.get('remove_user')))
-			store.save()
-			store = Partner.objects.filter(Q(users__id=request.user.id) | Q(admin_user__id=request.user.id)).distinct()
-			return render(request, 'panel/stores.html', {'stores': store})
-		if 'make_admin' in request.POST:
-			store.admin_user = User.objects.get(username=request.POST.get('make_admin'))
-			store.save()
-			store = Partner.objects.filter(Q(users__id=request.user.id) | Q(admin_user__id=request.user.id)).distinct()
-			return render(request, 'panel/stores.html', {'stores': store})
-		return render(request, 'panel/store-edit.html', {'store': store, 'address': address})
-	user = request.user
-	store = Partner.objects.filter(Q(users__id=request.user.id) | Q(admin_user__id=request.user.id)).distinct()
-	return render(request, 'panel/stores.html', {'stores': store})
+    if request.method == 'POST':
+        store = request.POST.get('store')
+        store = Partner.objects.get(id=store)
+        try:
+            address = PartnerAddress.objects.get(partner__id=store.id)
+        except Exception as e:
+            address = None
+        if 'line1' in request.POST:
+            if address == None:
+                country = Country.objects.get(iso_3166_1_a2=request.POST.get('country'))
+                model = PartnerAddress()
+                model.partner = Partner.objects.get(id=store.id)
+                store.name = request.POST.get('name')
+                model.line1 = request.POST.get('line1')
+                model.line2 = request.POST.get('line2')
+                model.line3 = request.POST.get('line3')
+                model.line4 = request.POST.get('line4')
+                model.state = request.POST.get('state')
+                model.postcode = request.POST.get('postcode')
+                model.country = country
+                model.save()
+                store.save()
+                store = Partner.objects.filter(Q(users__id=request.user.id) | Q(admin_user__id=request.user.id)).distinct()
+                return render(request, 'panel/stores.html', {'stores': store})
+            if address != None:
+                model = address
+                country = Country.objects.get(iso_3166_1_a2=request.POST.get('country'))
+                store.name = request.POST.get('name')
+                model.line1 = request.POST.get('line1')
+                model.line2 = request.POST.get('line2')
+                model.line3 = request.POST.get('line3')
+                model.line4 = request.POST.get('line4')
+                model.state = request.POST.get('state')
+                model.postcode = request.POST.get('postcode')
+                model.country = country
+                model.save()
+                store.save()
+                store = Partner.objects.filter(Q(users__id=request.user.id) | Q(admin_user__id=request.user.id)).distinct()
+                return render(request, 'panel/stores.html', {'stores': store})
+        if 'staff_username' in request.POST:
+            store.users.add(User.objects.get(username=request.POST.get('staff_username')))
+            store.save()
+            store = Partner.objects.filter(Q(users__id=request.user.id) | Q(admin_user__id=request.user.id)).distinct()
+            return render(request, 'panel/stores.html', {'stores': store})
+        if 'remove_user' in request.POST:
+            store.users.remove(User.objects.get(username=request.POST.get('remove_user')))
+            store.save()
+            store = Partner.objects.filter(Q(users__id=request.user.id) | Q(admin_user__id=request.user.id)).distinct()
+            return render(request, 'panel/stores.html', {'stores': store})
+        if 'make_admin' in request.POST:
+            store.admin_user = User.objects.get(username=request.POST.get('make_admin'))
+            store.save()
+            store = Partner.objects.filter(Q(users__id=request.user.id) | Q(admin_user__id=request.user.id)).distinct()
+            return render(request, 'panel/stores.html', {'stores': store})
+        return render(request, 'panel/store-edit.html', {'store': store, 'address': address})
+    user = request.user
+    store = Partner.objects.filter(Q(users__id=request.user.id) | Q(admin_user__id=request.user.id)).distinct()
+    return render(request, 'panel/stores.html', {'stores': store})
 
 @login_required
 def neft(request):
     message = ""
-    withdrawals = Withdrawals.objects.filter(user=request.user.username)
+    withdrawals = Withdrawal.objects.filter(user=request.user.username)
 
     if request.method == 'POST':
         user_id = request.user
@@ -286,7 +435,7 @@ def neft(request):
 def guestlogin(request):
     """Log in a user without requiring credentials with user object"""
     if request.method == 'POST':
-    	user = request.POST.get('login')
-    	user = User.objects.get(username=user)
+        user = request.POST.get('login')
+        user = User.objects.get(username=user)
     login(request, user, backend=settings.AUTHENTICATION_BACKENDS[0])
     return redirect('/users/')
