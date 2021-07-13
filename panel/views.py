@@ -179,7 +179,14 @@ def activation(request, id):
                         upline_wallet.save()
                         print('elif')
                     else:
+                    	upline_user.wallet += upline_amount
+                        upline_wallet = WalletHistory()   
+                        upline_wallet.user_id = upline  
+                        upline_wallet.amount = upline_amount    
+                        upline_wallet.type = "credit"   
+                        upline_wallet.comment = "Level {} not opened, added to total busines".format(level+1)
                         upgraded.business += upline_amount
+                        upline_wallet.save()
                         print('else')
                     upline_user.save()
                     upgraded.save()
