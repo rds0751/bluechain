@@ -116,13 +116,13 @@ fileinput.addEventListener('change', function() {
                 </span>
               </p>
               <p class="d-flex justify-content-between">
-                <span> IFSC Code </span>
+                <span> SWIFT Code </span>
                 <span style="color: green">
                   {{ model.ifsc }}
                 </span>
               </p>
               <p class="d-flex justify-content-between">
-                <span> UPI/VPA </span>
+                <span> MT5 Account </span>
                 <span style="color: green">
                   {{ model.upi_id }}
                 </span>
@@ -149,20 +149,16 @@ fileinput.addEventListener('change', function() {
               <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
                 <input required type="text" value="{{ model.ifsc }}" name="ifsc" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
                 <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> IFSC Code </span></label>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> SWIFT Code </span></label>
               </div>
             </div>
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
               <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
                 <input required type="text" name="upi_id" value="{{ model.upi_id }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
                 <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> UPI/VPA </span></label>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> MT5 Account </span></label>
               </div>
             </div>
-              <div class="file-drop-area" align="center">
-                <div class="fake-btn"><h3>Add Bank Verification Document</h3><p>*Bank Passbook or Cancel Cheque</p></div>
-                <input required name="verification" accept="image/*;capture=camera" class="file-input" type="file">
-              </div>
               <img width="100%" src="{% if model.verification %}{{ model.verification.url }}{% endif %}">
               <input required type="hidden" name="user" value="{{ request.user.username }}">
               <br><br><br>

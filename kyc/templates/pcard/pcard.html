@@ -99,19 +99,13 @@ fileinput.addEventListener('change', function() {
               {% csrf_token %}
               {{ form.errors }}
               <div class="file-drop-area" align="center">
-                <div class="fake-btn"><p>Choose Pan Card</p></div>
-                <br>
-                <img width="50px" src="{{imagep}}">
-                <input required name="imageP" accept="image/*;capture=camera" class="file-input" type="file">
-              </div>
-              <div class="file-drop-area" align="center">
-                <div class="fake-btn"><p>Choose Aadhar Front</p></div>
+                <div class="fake-btn"><p>Choose Document Front</p></div>
                 <br>
                 <img width="50px" src="{{imageaf}}">
                 <input required name="imageAF" accept="image/*;capture=camera" class="file-input" type="file">
               </div>
               <div class="file-drop-area" align="center">
-                <div class="fake-btn"><p>Choose Aadhar Back</p></div>
+                <div class="fake-btn"><p>Choose Document Back</p></div>
                 <br>
                 <img width="50px" src="{{imageab}}">
                 <input required name="imageAB" accept="image/*;capture=camera" class="file-input" type="file">
