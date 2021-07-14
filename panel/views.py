@@ -163,7 +163,7 @@ def activation(request, id):
                         upline_wallet.user_id = upline  
                         upline_wallet.amount = upline_amount    
                         upline_wallet.type = "credit"   
-                        upline_wallet.comment = "New Upgrade by your level {} user".format(level+1)
+                        upline_wallet.comment = "New Upgrade by {} in level {}".format(user, level+1)
                         upgraded.business += upline_amount
                         upline_wallet.save()
                         upline_user.save()
@@ -175,7 +175,7 @@ def activation(request, id):
                         upline_wallet.user_id = upline  
                         upline_wallet.amount = upline_amount    
                         upline_wallet.type = "credit"   
-                        upline_wallet.comment = "New Upgrade by your level {} user".format(level+1)
+                        upline_wallet.comment = "New Upgrade by {} in level {}".format(user, level+1)
                         upgraded.business += upline_amount
                         upline_wallet.save()
                         upline_user.save()
@@ -186,7 +186,7 @@ def activation(request, id):
                         upline_wallet.user_id = upline  
                         upline_wallet.amount = upline_amount    
                         upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Level {} not opened, added to total busines".format(level+1)
+                        upline_wallet.comment = "{} upgraded but Level {} not opened!".format(user, level+1)
                         upgraded.business += upline_amount
                         upline_wallet.save()
                         print('else')

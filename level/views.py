@@ -40,6 +40,7 @@ def leveltree(request, user):
         s = UserTotal.objects.get(user=user.username)
     except Exception as e:
         s = e
+    directs = UserTotal.objects.filter(direct=user).count()
     level1 = UserTotal.objects.filter(direct=user.username).order_by('id')
     level1n = []
     for x in level1:
@@ -87,6 +88,26 @@ def leveltree(request, user):
     for a in all_levels:
         level += 1
         counting['{}'.format(level)] = len(a)
+
+    levels = {  
+                'level1': 20/100,  
+                'level2': 10/100, 
+                'level3': 8/100, 
+                'level4': 6/100, 
+                'level5': 4/100, 
+                'level6': 2/100, 
+                'level7': 2/100, 
+                'level8': 8/100,  
+                }
+
+    business = {}
+    level = 0
+    for a in all_levels:
+        level += 1
+        b = 0
+        for x in a:
+            b += x.level.amount
+        business['{}'.format(level)] = b*levels['level{}'.format(level)]
 
     level1i = UserTotal.objects.filter(direct=user.username, active=True).order_by('id')
     level1ni = []
@@ -209,7 +230,7 @@ def leveltree(request, user):
         except Exception as e:
             raise e
 
-    return render(request, 'level/tree.html', {'all': all_, 'counting': counting, 'countingi': countingi, 'user_':user, 'user_list': zip(user_list, all_users), 'user_listi':user_listi, 's': s,})
+    return render(request, 'level/tree.html', {'all': all_, 'counting': counting, 'directs': directs, 'business': business, 'countingi': countingi, 'user_':user, 'user_list': zip(user_list, all_users), 'user_listi':user_listi, 's': s,})
 
 @login_required
 def leveljoin(request):
