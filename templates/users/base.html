@@ -40,7 +40,7 @@
     {% if request.user.is_authenticated %}
     {% include 'partial.html' %}              
         {% endif %}
-        <input type="input" style="width:10px; position:absolute; z-index: -100 !important;" value="Get higher COMMISSION on all transactions with life changing opportunity to Earn unlimited Incomes and lifetime Achievements. Join Now! https://ipaymatics.com/register={{ user.username }}" id="copy-to-clipboard-input">
+        <input type="input" style="width:10px; position:absolute; z-index: -100 !important;" value="Get higher COMMISSION on all transactions with life changing opportunity to Earn unlimited Incomes and lifetime Achievements. Join Now! https://ipaymatics.com/register={{ user.id }}" id="copy-to-clipboard-input">
 <script type="text/javascript">
   var code = $("#copy-to-clipboard-input");
     var btnCopy = $("#btn-copy");
@@ -52,6 +52,7 @@
         document.getElementById("copy-text").innerHTML = '<i style="vertical-align: bottom;" class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon style " aria-hidden="true">content_copy</i>Link Copied!';
     });
 </script>
+{% block wrapper %}
 {% if user.is_authenticated %}
   <div align="center" style="background: white;" class="pt-4">
   <div style="background: white" class="page-wrapper mdc-toolbar-fixed-adjust pt-5">
@@ -71,7 +72,7 @@
           </div>
           <div class="stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone">
             <div style="padding-left: 25%;" class="mdc-list-item mdc-drawer-item">
-              <a href="whatsapp://send?text=Get higher COMMISSION on all transactions with life changing opportunity to Earn unlimited Incomes and lifetime Achievements. Join Now! https://ipaymatics.com/register={{ user.username }}" class="mdc-drawer-link" style='color: #0ba0b0;
+              <a href="whatsapp://send?text=Get higher COMMISSION on all transactions with life changing opportunity to Earn unlimited Incomes and lifetime Achievements. Join Now! https://ipaymatics.com/register={{ user.id }}" class="mdc-drawer-link" style='color: #0ba0b0;
     font-size: bold;
     font-weight: bold;
     font-size: 11px;' href="/users/">
@@ -105,7 +106,6 @@ behavior="scroll">
   </div>
 </div>
 {% endif %}
-{% block wrapper %}
         {% block content %}
         {% endblock content %}
 {% endblock wrapper %}

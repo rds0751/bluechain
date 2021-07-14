@@ -82,8 +82,8 @@ class SearchListView(ListView):
 
 def referalsignup(request, use):
     logout(request)
-    user_name = User.objects.get(id=use)
-    user_name = user_name.name
+    user = User.objects.get(id=use)
+    user_name = user.name
     if request.method == 'POST':
         form = SimpleSignupForm()
         if form.is_valid():
@@ -91,7 +91,7 @@ def referalsignup(request, use):
             return redirect('/signup/onboarding/')
     else:
         form = SimpleSignupForm()
-    return render(request, 'account/refersignup.html', {'form': form, 'user':use, 'name':user_name})
+    return render(request, 'account/refersignup.html', {'form': form, 'user':user, 'name':user_name})
 
 def vendorsignup(request):
     logout(request)
