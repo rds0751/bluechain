@@ -107,7 +107,6 @@
                               <td>{% if shopn.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ usern.name|truncatewords:1|slice:"-3" }}({{ usern.username }})</td>
                               <td><a href="tel:{{ usern.mobile }}">{{ usern.mobile }}</a></td>
                               <td>$ {{ shopn.level.amount }}</td>
-                              <td><a href="/level/team/{{ usern.username }}/">View</a></td>
                               </tr>
                               {% endfor %}
                           </tbody>
