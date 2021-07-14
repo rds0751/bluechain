@@ -82,7 +82,7 @@ class SearchListView(ListView):
 
 def referalsignup(request, use):
     logout(request)
-    user_name = User.objects.get(username=use)
+    user_name = User.objects.get(id=use)
     user_name = user_name.name
     if request.method == 'POST':
         form = SimpleSignupForm()
