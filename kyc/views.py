@@ -80,4 +80,4 @@ def ocr_core(request):
             return render(request, 'pcard/pcard.html', {'form':form, 'model': model, 'post':post, 'extracted_text': extracted_text, 'imagep': imageURLP, 'imageaf': imageURLAF, 'imageab': imageURLAB, })
     else:
         form = ImageUploadForm()
-    return render(request, 'pcard/pcard.html',{'form':form, 'model': model, 'desc': desc, 'imagep': imageURLP, 'imageaf': imageURLAF, 'imageab': imageURLAB,})
+    return render(request, 'pcard/pcard.html',{'form':form, 'model': model, 'desc': desc, 'imageaf': imageURLAF, 'imageab': imageURLAB,})
