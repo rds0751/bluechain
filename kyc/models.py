@@ -6,10 +6,8 @@ from django.utils.html import mark_safe
 class ImageUploadModel(models.Model):
     description = models.CharField(max_length=255, blank=True)
     user = models.CharField(max_length=20, unique=True)
-    imageP = models.ImageField()
     imageAF = models.ImageField()
     imageAB = models.ImageField()
-    pan = models.CharField(max_length=20, unique=True, null=True)
     name = models.CharField(max_length=100, null=True, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     approved = models.NullBooleanField(null=True)
