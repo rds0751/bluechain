@@ -22,7 +22,6 @@ def ocr_core(request):
     except Exception as e:
         model = 'blank'
     if model != 'blank':
-        imageURLP = model.imageP.url
         imageURLAF = model.imageAF.url
         imageURLAB = model.imageAB.url
         desc = model.description
@@ -56,7 +55,6 @@ def ocr_core(request):
                 model.description = "Hurray! We are processing"
                 model.name = request.user.name
                 model.save()
-                imageURLP = model.imageP.url
                 imageURLAF = model.imageAF.url
                 imageURLAB = model.imageAB.url    
 
