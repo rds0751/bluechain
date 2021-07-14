@@ -186,7 +186,7 @@ def activation(request, id):
                         upline_wallet.user_id = upline  
                         upline_wallet.amount = upline_amount    
                         upline_wallet.type = "credit"   
-                        upline_wallet.comment = "{} upgraded but Level {} not opened!".format(user, level+1)
+                        upline_wallet.comment = "{} joined but Level {} not opened!".format(user, level+1)
                         upgraded.business += upline_amount
                         upline_wallet.save()
                         print('else')

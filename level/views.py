@@ -107,8 +107,43 @@ def leveltree(request, user):
         b = 0
         for x in a:
             b += x.level.amount
-        business['{}'.format(level)] = b*levels['level{}'.format(level)]
+        # business['{}'.format(level)] = b*levels['level{}'.format(level)]
+        business['{}'.format(level)] = b
 
+    l1 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 1', user_id=request.user.username)).exclude(comment__icontains='not')
+    l2 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 2', user_id=request.user.username)).exclude(comment__icontains='not')
+    l3 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 3', user_id=request.user.username)).exclude(comment__icontains='not')
+    l4 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 4', user_id=request.user.username)).exclude(comment__icontains='not')
+    l5 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 5', user_id=request.user.username)).exclude(comment__icontains='not')
+    l6 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 6', user_id=request.user.username)).exclude(comment__icontains='not')
+    l7 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 7', user_id=request.user.username)).exclude(comment__icontains='not')
+    l8 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 8', user_id=request.user.username)).exclude(comment__icontains='not')
+    l1c = 0
+    for x in l1:
+        l1c += x.amount
+    l2c = 0
+    for x in l2:
+        l2c += x.amount
+    l3c = 0
+    for x in l3:
+        l3c += x.amount
+    l4c = 0
+    for x in l4:
+        l4c += x.amount
+    l5c = 0
+    for x in l5:
+        l5c += x.amount
+    l6c = 0
+    for x in l6:
+        l6c += x.amount
+    l7c = 0
+    for x in l7:
+        l7c += x.amount
+    l8c = 0
+    for x in l8:
+        l8c += x.amount
+
+    lc = [0, l1c, l2c, l3c, l4c, l5c, l6c, l7c, l8c]
     level1i = UserTotal.objects.filter(direct=user.username, active=True).order_by('id')
     level1ni = []
     for x in level1i:
@@ -230,7 +265,7 @@ def leveltree(request, user):
         except Exception as e:
             raise e
 
-    return render(request, 'level/tree.html', {'all': all_, 'counting': counting, 'directs': directs, 'business': business, 'countingi': countingi, 'user_':user, 'user_list': zip(user_list, all_users), 'user_listi':user_listi, 's': s,})
+    return render(request, 'level/tree.html', {'all': all_, 'lc': lc, 'counting': counting, 'directs': directs, 'business': business, 'countingi': countingi, 'user_':user, 'user_list': zip(user_list, all_users), 'user_listi':user_listi, 's': s,})
 
 @login_required
 def leveljoin(request):
@@ -308,7 +343,7 @@ def leveljoin(request):
                 for upline in uplines:
                     try:
                         upline_user = User.objects.get(username=upline) 
-                    except Exception as e:  
+                    except Exception as e:
                         upline_user = 'blank'
                     if upline_user != 'blank':  
                         directs = UserTotal.objects.filter(direct=upline_user)
