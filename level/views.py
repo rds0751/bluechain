@@ -110,14 +110,14 @@ def leveltree(request, user):
         # business['{}'.format(level)] = b*levels['level{}'.format(level)]
         business['{}'.format(level)] = b
 
-    l1 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 1', user_id=request.user.username)).exclude(comment__icontains='not')
-    l2 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 2', user_id=request.user.username)).exclude(comment__icontains='not')
-    l3 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 3', user_id=request.user.username)).exclude(comment__icontains='not')
-    l4 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 4', user_id=request.user.username)).exclude(comment__icontains='not')
-    l5 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 5', user_id=request.user.username)).exclude(comment__icontains='not')
-    l6 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 6', user_id=request.user.username)).exclude(comment__icontains='not')
-    l7 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 7', user_id=request.user.username)).exclude(comment__icontains='not')
-    l8 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=request.user.username) and Q(comment__icontains='level 8', user_id=request.user.username)).exclude(comment__icontains='not')
+    l1 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 1', user_id=user.username)).exclude(comment__icontains='not')
+    l2 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 2', user_id=user.username)).exclude(comment__icontains='not')
+    l3 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 3', user_id=user.username)).exclude(comment__icontains='not')
+    l4 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 4', user_id=user.username)).exclude(comment__icontains='not')
+    l5 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 5', user_id=user.username)).exclude(comment__icontains='not')
+    l6 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 6', user_id=user.username)).exclude(comment__icontains='not')
+    l7 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 7', user_id=user.username)).exclude(comment__icontains='not')
+    l8 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 8', user_id=user.username)).exclude(comment__icontains='not')
     l1c = 0
     for x in l1:
         l1c += x.amount
