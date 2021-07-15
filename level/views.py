@@ -269,7 +269,7 @@ def leveltree(request, user):
 
 @login_required
 def leveljoin(request):
-    packages = LevelIncomeSettings.objects.all()
+    packages = LevelIncomeSettings.objects.all().order_by('amount')
     message = "Please Proceed with upgrade"
 
     def userjoined(user, level):
