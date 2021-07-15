@@ -25,7 +25,8 @@
                           <thead>
                             <tr>
                               <th>Levels</th>
-                              <th>Users</th>
+                              <th>Active Users</th>
+                              <th>Inactive Users</th>
                               <th>Business</th>
                               <th>My Commision</th>
                             </tr>
@@ -34,54 +35,63 @@
                               <tr>
                               <td><strong style="color: {% if directs >= 1 %}green{% else %}red{% endif %}">Level 1</strong></td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.1 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.1 countingi.1 as x1 %}{{ x1|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.1 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{lc.1}}</td>
                               </tr>
                               <tr>
                               <td><strong style="color: {% if directs >= 2 %}green{% else %}red{% endif %}">Level 2</strong></td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.2 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.2 countingi.2 as x2 %}{{ x2|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.2 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{ lc.2 }}</td>
                               </tr>
                               <tr>
                               <td><strong style="color: {% if directs >= 3 %}green{% else %}red{% endif %}">Level 3</strong></td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.3 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.3 countingi.3 as x3 %}{{ x3|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.3 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{ lc.3 }}</td>
                               </tr>
                               <tr>
                               <td><strong style="color: {% if directs >= 4 %}green{% else %}red{% endif %}">Level 4</strong></td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.4 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.4 countingi.4 as x4 %}{{ x4|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.4 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{ lc.4 }}</td>
                               </tr>
                               <tr>
                               <td><strong style="color: {% if directs >= 5 %}green{% else %}red{% endif %}">Level 5</strong></td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.5 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.5 countingi.5 as x5 %}{{ x5|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.5 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{ lc.5 }}</td>
                               </tr>
                               <tr>
                               <td><strong style="color: {% if directs >= 6 %}green{% else %}red{% endif %}">Level 6</strong></td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.6 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.6 countingi.6 as x6 %}{{ x6|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.6 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{ lc.6 }}</td>
                               </tr>
                               <tr>
                               <td><strong style="color: {% if directs >= 7 %}green{% else %}red{% endif %}">Level 7</strong></td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.7 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.7 countingi.7 as x7 %}{{ x7|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.7 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{ lc.7 }}</td>
                               </tr>
                               <tr>
                               <td><strong style="color: {% if directs >= 8 %}green{% else %}red{% endif %}">Level 8</strong></td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.8 }}</td>
+                              <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.8 countingi.8 as x8 %}{{ x8|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.8 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{ lc.8 }}</td>
                               </tr>
                               <tr>
                               <td><strong>Total</strong></td>
                               <td><strong style="color: green; font-size: 16px;">&#9745; {{ countingi.1|add:countingi.2|add:countingi.3|add:countingi.4|add:countingi.5|add:countingi.6|add:countingi.7|add:countingi.8 }}</strong></td>
+                              <td><strong style="color: red; font-size: 16px;">&#9745; {{ x1|add:x2|add:x3|add:x4|add:x5|add:x6|add:x7|add:x8 }}</strong></td>
                               <td><strong style="color: orange; font-size: 16px;">$ {{ business.1|add:business.2|add:business.3|add:business.4|add:business.5|add:business.6|add:business.7|add:business.8 }}</strong></td>
                               <td><strong style="color: red; font-size: 16px;">$ {{ request.user.wallet }}</strong></td>
                               </tr>
