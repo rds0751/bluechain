@@ -194,7 +194,7 @@ def activation(request, id):
                     print('outside')
                 level = level + 1
             
-            model = UserTotal()
+            model = UserTotal.objects.get_or_create(user=userid)
             model.user = userid
             model.level = levelp
             model.active = True

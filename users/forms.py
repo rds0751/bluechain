@@ -2,6 +2,8 @@ from allauth.account.forms import SignupForm
 from django import forms
 from .models import *
 import random
+import requests
+from level.models import UserTotal, LevelIncomeSettings
 
 class SimpleSignupForm(SignupForm):
 	mobile = forms.CharField(max_length=250, label='mobile')
@@ -33,8 +35,26 @@ class SimpleSignupForm(SignupForm):
 
 	def save(self, request):
 		user = super(SimpleSignupForm, self).save(request)
+		referral = self.cleaned_data['referal_code'].upper()
+		try:
+			userr = User.objects.get(username=referral)
+		except Exception as e:
+			userr = 'blank'
+		if userr == 'blank':
+			referral = 'IPAY999999'
+		plan = UserTotal()
+		plan.user = user
+		plan.level = LevelIncomeSettings.objects.get(id=9)
+		plan.active = False
+		plan.left_months = 0
+		plan.direct = referral
+		plan.save()
+		# url = "http://2factor.in/API/V1/99254625-e54d-11eb-8089-0200cd936042/ADDON_SERVICES/SEND/PSMS"
+		# payload = "{'From': 'TFCTOR', 'Msg': 'Hello World', 'To': '7000934949,'}"
+		# response = requests.request("GET", url, data=payload)
+		# print(response.text)
 		user.mobile = self.cleaned_data['mobile']
 		user.name = self.cleaned_data['name']
-		user.referral = self.cleaned_data['referal_code'].upper()
+		user.referral = referral
 		user.save()
 		return user
