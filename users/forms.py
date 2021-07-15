@@ -7,8 +7,6 @@ class SimpleSignupForm(SignupForm):
 	mobile = forms.CharField(max_length=250, label='mobile')
 	name = forms.CharField(max_length=250, label='name')
 	referal_code = forms.CharField(max_length=14, label="refer")
-	nominee = forms.CharField(max_length=100, label="nominee")
-	nominee_relation = forms.CharField(max_length=100, label="nominee_relation")
 
 	def get_success_url(self):
 		return '/signup/onboarding/'
@@ -38,7 +36,5 @@ class SimpleSignupForm(SignupForm):
 		user.mobile = self.cleaned_data['mobile']
 		user.name = self.cleaned_data['name']
 		user.referral = self.cleaned_data['referal_code'].upper()
-		user.nominee = self.cleaned_data['nominee']
-		user.nominee_relation = self.cleaned_data['nominee_relation']
 		user.save()
 		return user
