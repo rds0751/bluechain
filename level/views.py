@@ -269,7 +269,7 @@ def leveltree(request, user):
 
 @login_required
 def leveljoin(request):
-    packages = LevelIncomeSettings.objects.all()
+    packages = LevelIncomeSettings.objects.all().exclude(id=9).order_by('amount')
     message = "Please Proceed with upgrade"
 
     def userjoined(user, level):
@@ -393,7 +393,7 @@ def leveljoin(request):
     return render(request, 'level/level_join.html', {'packages': packages, "message": message})
 
 def activation(request):
-    packages = LevelIncomeSettings.objects.all()
+    packages = LevelIncomeSettings.objects.all().exclude(id=9).order_by('amount')
     actp = Activation.objects.filter(user=request.user.username, status='Pending').count()
     acta = Activation.objects.filter(user=request.user.username, status='Approved').count()
     if request.method == "POST":
