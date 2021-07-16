@@ -205,6 +205,11 @@ LANGUAGES = (
     ('en', _('English')),
     ('fr', _('French')),
     ('ar', _('Araibic')),
+    ('vi', _('Viet Nam')),
+    ('my', _('Burmese')),
+    ('zh', _('Chinese')),
+    ('hi', _('Hindi')),
+    ('ga', _('Irish'))
 )
 
 TIME_ZONE = 'Asia/Kolkata'
