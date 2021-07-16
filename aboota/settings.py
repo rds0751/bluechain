@@ -207,7 +207,6 @@ LANGUAGES = (
     ('ar', _('Araibic')),
     ('vi', _('Viet Nam')),
     ('my', _('Burmese')),
-    ('zh', _('Chinese')),
     ('hi', _('Hindi')),
     ('ga', _('Irish'))
 )
