@@ -18,88 +18,110 @@
                 </section>
                 <section style="padding: 5%">
                   <div class="mdc-layout-grid__inner mt-2" align="center">
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
-                      <h5>All 8 Levels</h5>
+                    {% if lll == "0" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                            <tr>
-                              <th>Levels</th>
+                            <tr style="background-color: #0ba0b040">
+                              <th>&nbsp;&nbsp;Levels</th>
+                              <th>Status</th>
                               <th>Active Users</th>
                               <th>Inactive Users</th>
                               <th>Business</th>
                               <th>My Commision</th>
+                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>
-                              <tr>
-                              <td><strong style="color: {% if directs >= 1 %}green{% else %}red{% endif %}">Level 1</strong></td>
+                              <tr style="background-color: {% if directs >= 1 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td><strong>&nbsp;&nbsp;Level 1</strong></td>
+                              <td>{% if directs >= 1 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.1 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.1 countingi.1 as x1 %}{{ x1|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.1 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{lc.1}}</td>
+                              <td><a href="/level/team/{{request.user.username}}/1/">View</a></td>
                               </tr>
-                              <tr>
-                              <td><strong style="color: {% if directs >= 2 %}green{% else %}red{% endif %}">Level 2</strong></td>
+                              <tr style="background-color: {% if directs >= 2 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td><strong>&nbsp;&nbsp;Level 2</strong></td>
+                              <td>{% if directs >= 2 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.2 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.2 countingi.2 as x2 %}{{ x2|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.2 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{ lc.2 }}</td>
+                              <td><a href="/level/team/{{request.user.username}}/2/">View</a></td>
                               </tr>
-                              <tr>
-                              <td><strong style="color: {% if directs >= 3 %}green{% else %}red{% endif %}">Level 3</strong></td>
+                              <tr style="background-color: {% if directs >= 3 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td><strong>&nbsp;&nbsp;Level 3</strong></td>
+                              <td>{% if directs >= 3 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.3 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.3 countingi.3 as x3 %}{{ x3|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.3 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{ lc.3 }}</td>
+                              <td><a href="/level/team/{{request.user.username}}/3/">View</a></td>
                               </tr>
-                              <tr>
-                              <td><strong style="color: {% if directs >= 4 %}green{% else %}red{% endif %}">Level 4</strong></td>
+                              <tr style="background-color: {% if directs >= 4 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td><strong>&nbsp;&nbsp;Level 4</strong></td>
+                              <td>{% if directs >= 4 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.4 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.4 countingi.4 as x4 %}{{ x4|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.4 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{ lc.4 }}</td>
+                              <td><a href="/level/team/{{request.user.username}}/4/">View</a></td>
                               </tr>
-                              <tr>
-                              <td><strong style="color: {% if directs >= 5 %}green{% else %}red{% endif %}">Level 5</strong></td>
+                              <tr style="background-color: {% if directs >= 5 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td><strong>&nbsp;&nbsp;Level 5</strong></td>
+                              <td>{% if directs >= 5 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.5 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.5 countingi.5 as x5 %}{{ x5|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.5 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{ lc.5 }}</td>
+                              <td><a href="/level/team/{{request.user.username}}/5/">View</a></td>
                               </tr>
-                              <tr>
-                              <td><strong style="color: {% if directs >= 6 %}green{% else %}red{% endif %}">Level 6</strong></td>
+                              <tr style="background-color: {% if directs >= 6 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td><strong>&nbsp;&nbsp;Level 6</strong></td>
+                              <td>{% if directs >= 6 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.6 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.6 countingi.6 as x6 %}{{ x6|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.6 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{ lc.6 }}</td>
+                              <td><a href="/level/team/{{request.user.username}}/6/">View</a></td>
                               </tr>
-                              <tr>
-                              <td><strong style="color: {% if directs >= 7 %}green{% else %}red{% endif %}">Level 7</strong></td>
+                              <tr style="background-color: {% if directs >= 7 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td><strong>&nbsp;&nbsp;Level 7</strong></td>
+                              <td>{% if directs >= 7 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.7 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.7 countingi.7 as x7 %}{{ x7|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.7 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{ lc.7 }}</td>
+                              <td><a href="/level/team/{{request.user.username}}/7/">View</a></td>
                               </tr>
-                              <tr>
-                              <td><strong style="color: {% if directs >= 8 %}green{% else %}red{% endif %}">Level 8</strong></td>
+                              <tr style="background-color: {% if directs >= 8 %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td><strong>&nbsp;&nbsp;Level 8</strong></td>
+                              <td>{% if directs >= 8 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.8 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.8 countingi.8 as x8 %}{{ x8|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.8 }}</td>
                               <td><span style="font-size: 16px">$ </span>{{ lc.8 }}</td>
+                              <td><a href="/level/team/{{request.user.username}}/8/">View</a></td>
                               </tr>
-                              <tr>
-                              <td><strong>Total</strong></td>
-                              <td><strong style="color: green; font-size: 16px;">&#9745; {{ countingi.1|add:countingi.2|add:countingi.3|add:countingi.4|add:countingi.5|add:countingi.6|add:countingi.7|add:countingi.8 }}</strong></td>
-                              <td><strong style="color: red; font-size: 16px;">&#9745; {{ x1|add:x2|add:x3|add:x4|add:x5|add:x6|add:x7|add:x8 }}</strong></td>
-                              <td><strong style="color: orange; font-size: 16px;">$ {{ business.1|add:business.2|add:business.3|add:business.4|add:business.5|add:business.6|add:business.7|add:business.8 }}</strong></td>
-                              <td><strong style="color: red; font-size: 16px;">$ {{ request.user.wallet }}</strong></td>
+                              <tr style="background-color: #0ba0b040">
+                              <td><strong>&nbsp;&nbsp;Total</strong></td>
+                              <td><strong>{{directs}} Levels Open</strong></td>
+                              <td><strong style="font-size: 16px;">&#9745; {{ countingi.1|add:countingi.2|add:countingi.3|add:countingi.4|add:countingi.5|add:countingi.6|add:countingi.7|add:countingi.8 }}</strong></td>
+                              <td><strong style="font-size: 16px;">&#9745; {{ x1|add:x2|add:x3|add:x4|add:x5|add:x6|add:x7|add:x8 }}</strong></td>
+                              <td><strong style="font-size: 16px;">$ {{ business.1|add:business.2|add:business.3|add:business.4|add:business.5|add:business.6|add:business.7|add:business.8 }}</strong></td>
+                              <td><strong style="font-size: 16px;">$ {{ request.user.wallet }}</strong></td>
+                              <td>&nbsp;&nbsp;</td>
                               </tr>
                           </tbody>
                         </table>
                       </div>
                     </div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                    {% endif %}
+                    {% if lll == "1" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
                       <h5>Level 1</h5>
                       <div class="table-responsive">
                         <table class="table dashboard-table">
@@ -108,22 +130,27 @@
                               <th>Name</th>
                               <th>Mobile</th>
                               <th>Plan</th>
-                              <th>Action</th>
+                              <!-- <th>Action</th> -->
                             </tr>
                           </thead>
                           <tbody>
                               {% for usern, shopn in user_list %}
                               <tr>
-                              <td>{% if shopn.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ usern.name|truncatewords:1|slice:"-3" }}({{ usern.username }})</td>
+                              <td>{% if shopn.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ usern.name }}({{ usern.username }})</td>
                               <td><a href="tel:{{ usern.mobile }}">{{ usern.mobile }}</a></td>
                               <td>$ {{ shopn.level.amount }}</td>
+                              <!-- <td><a href="/level/team/{{usern.username}}/0/">View</a></td> -->
                               </tr>
                               {% endfor %}
                           </tbody>
                         </table>
                       </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
                     </div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                    {% endif %}
+                    {% if lll == "2" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
                       <h5>Level 2</h5>
                       <div class="table-responsive">
                         <table class="table dashboard-table">
@@ -137,7 +164,7 @@
                           <tbody>
                               {% for level2n, level2nu in all.0 %}
                               <tr>
-                              <td>{% if level2n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level2nu.name|truncatewords:1|slice:"-3" }}({{ level2nu.username }})</td>
+                              <td>{% if level2n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level2nu.name }}({{ level2nu.username }})</td>
                               <td>{{ level2nu.referral }}</td>
                               <td>$ {{ level2n.level.amount }}</td>
                               </tr>
@@ -145,8 +172,12 @@
                           </tbody>
                         </table>
                       </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
                     </div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                    {% endif %}
+                    {% if lll == "3" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
                       <h5>Level 3</h5>
                       <div class="table-responsive">
                         <table class="table dashboard-table">
@@ -160,7 +191,7 @@
                           <tbody>
                               {% for level3n, level3nu in all.1 %}
                               <tr>
-                              <td>{% if level3n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level3nu.name|truncatewords:1|slice:"-3" }}({{ level3nu.username }})</td>
+                              <td>{% if level3n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level3nu.name }}({{ level3nu.username }})</td>
                               <td>{{ level3n.direct }}</td>
                               <td>$ {{ level3n.level.amount }}</td>
                               </tr>
@@ -168,8 +199,12 @@
                           </tbody>
                         </table>
                       </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
                     </div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                    {% endif %}
+                    {% if lll == "4" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
                       <h5>Level 4</h5>
                       <div class="table-responsive">
                         <table class="table dashboard-table">
@@ -184,15 +219,19 @@
                               {% for level4n, level4nu in all.2 %}
                               <tr>
                               <td>
-                                {% if level4n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level4nu.name|truncatewords:1|slice:"-2" }}({{ level4nu.username }})</td>
+                                {% if level4n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level4nu.name }}({{ level4nu.username }})</td>
                               <td>{{ level4n.direct }}</td>
                               <td>$ {{ level4n.level.amount }}</td>
                               {% endfor %}
                           </tbody>
                         </table>
                       </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
                     </div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                    {% endif %}
+                    {% if lll == "5" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
                       <h5>Level 5</h5>
                       <div class="table-responsive">
                         <table class="table dashboard-table">
@@ -206,7 +245,7 @@
                           <tbody>
                               {% for level5n, level5nu in all.3 %}
                               <tr>
-                              <td>{% if level5n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level5nu.name|truncatewords:1|slice:"-3" }}({{ level5nu.username }})</td>
+                              <td>{% if level5n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level5nu.name }}({{ level5nu.username }})</td>
                               <td>{{ level5n.direct }}</td>
                               <td>$ {{ level5n.level.amount }}</td>
                               </tr>
@@ -214,8 +253,12 @@
                           </tbody>
                         </table>
                       </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
                     </div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                    {% endif %}
+                    {% if lll == "6" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
                       <h5>Level 6</h5>
                       <div class="table-responsive">
                         <table class="table dashboard-table">
@@ -229,7 +272,7 @@
                           <tbody>
                               {% for level6n, level6nu in all.4 %}
                               <tr>
-                              <td>{% if level6n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level6nu.name|truncatewords:1|slice:"-3" }}({{ level6nu.username }})</td>
+                              <td>{% if level6n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level6nu.name }}({{ level6nu.username }})</td>
                               <td>{{ level6n.direct }}</td>
                               <td>$ {{ level6n.level.amount }}</td>
                               </tr>
@@ -237,8 +280,12 @@
                           </tbody>
                         </table>
                       </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
                     </div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                    {% endif %}
+                    {% if lll == "7" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
                       <h5>Level 7</h5>
                       <div class="table-responsive">
                         <table class="table dashboard-table">
@@ -252,7 +299,7 @@
                           <tbody>
                               {% for level7n, level7nu in all.5 %}
                               <tr>
-                              <td>{% if level7n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level7nu.name|truncatewords:1|slice:"-3" }}({{ level7nu.username }})</td>
+                              <td>{% if level7n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level7nu.name }}({{ level7nu.username }})</td>
                               <td>{{ level7n.direct }}</td>
                               <td>$ {{ level7n.level.amount }}</td>
                               </tr>
@@ -260,8 +307,12 @@
                           </tbody>
                         </table>
                       </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
                     </div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet" align="center">
+                    {% endif %}
+                    {% if lll == "8" %}
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
                       <h5>Level 8</h5>
                       <div class="table-responsive">
                         <table class="table dashboard-table">
@@ -275,7 +326,7 @@
                           <tbody>
                               {% for level8n, level8nu in all.6 %}
                               <tr>
-                              <td>{% if level8n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level8nu.name|truncatewords:1|slice:"-3" }}({{ level8nu.username }})</td>
+                              <td>{% if level8n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level8nu.name }}({{ level8nu.username }})</td>
                               <td>{{ level8n.direct }}</td>
                               <td>$ {{ level8n.level.amount }}</td>
                               </tr>
@@ -283,7 +334,11 @@
                           </tbody>
                         </table>
                       </div>
+                      <br><br>
+                      <button onclick="window.history.back();" class="mdc-button mdc-button--raised w-50">Back</button>
                     </div>
+                    {% else %}
+                    {% endif %}
                   </div>
                 </section>
               </div>

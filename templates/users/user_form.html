@@ -55,25 +55,9 @@
 	          </div>
 			<div class="py-4">
 				<p class="d-flex justify-content-between">
-					<span> Prime Status </span>
-					<span style="color: green">{% if bst != 'blank' %}Active{% else %}Inactive{% endif %}</span>
-				</p>
-				<p class="d-flex justify-content-between">
 					<span> Mobile </span>
 					<span style="color: green">
 						{{ user.mobile }}
-					</span>
-				</p>
-				<p class="d-flex justify-content-between">
-					<span> Prime Upline </span>
-					<span style="color: green">
-						{{ bst.direct_user_id }}
-					</span>
-				</p>
-				<p class="d-flex justify-content-between">
-					<span> Shopping Upline </span>
-					<span style="color: green">
-						{{ sht.direct }}
 					</span>
 				</p>
 				<p class="d-flex justify-content-between">
@@ -122,23 +106,16 @@
 						</div>
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
 							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-								<input type="text" name="email" value="{{ request.user.email }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input" readonly>
+								<input type="text" name="email" value="{{ request.user.email }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
 								<div class="mdc-line-ripple"></div>
 								<label style="" for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Email </span></label>
 							</div>
 						</div>
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
 							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px; ">
-								<input type="text" name="mobile" value="{{ request.user.mobile }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input" readonly>
+								<input type="text" name="mobile" value="{{ request.user.mobile }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
 								<div class="mdc-line-ripple"></div>
 								<label style="" for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Mobile </span></label>
-							</div>
-						</div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-								<input type="text" value="{{ request.user.date_joined|timesince }} ago" class="mdc-text-field__input" id="text-field-hero-input" readonly>
-								<div class="mdc-line-ripple"></div>
-								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Date Joined </span></label>
 							</div>
 						</div>
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
@@ -176,7 +153,7 @@
 								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> State </span></label>
 							</div>
 						</div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
 							<label class="mdc-button mdc-button--unelevated filled-button--secondary w-100" style="
 										    display: inline-block;
 										    padding: 6px 12px;

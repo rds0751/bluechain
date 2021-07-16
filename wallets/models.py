@@ -89,7 +89,7 @@ class PaymentOption(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     account_number = models.CharField(max_length=255, blank=True, null=True)
     ifsc = models.CharField(max_length=255, blank=True, null=True)
-    upi_id = models.CharField(max_length=255, blank=True, null=True)
+    bank = models.CharField(max_length=255, blank=True, null=True)
     comment = models.CharField(max_length=500, blank=True, null=True)
     mt5_account = models.CharField(max_length=50, blank=True, null=True)
     verification = models.ImageField()

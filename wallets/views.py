@@ -461,39 +461,45 @@ def paymentoptions(request):
 
     if request.method == 'POST':
         name = request.POST.get('name')
-        account = request.POST.get('account')
+        account1 = request.POST.get('account1')
+        account2 = request.POST.get('account2')
         ifsc = request.POST.get('ifsc')
         upi_id = request.POST.get('upi_id')
-        verification = request.FILES.get('verification')
-        try:
-            user = request.user
+        bank = request.POST.get('bank')
+        if account1 == account2:
             try:
-                model = PaymentOption.objects.get(user=request.user.username)
+                user = request.user
+                try:
+                    model = PaymentOption.objects.get(user=request.user.username)
+                except Exception as e:
+                    model = 'blank'
+                if model != 'blank':
+                    model.name = name
+                    model.account_number = account
+                    model.ifsc = ifsc
+                    model.upi_id = upi_id
+                    model.verification = verification
+                    model.user = user.username
+                    model.name = user.name
+                    model.status = None
+                    model.bank = bank
+                    model.save()
+                else:
+                    model = PaymentOption()
+                    model.name = name
+                    model.account_number = account
+                    model.ifsc = ifsc
+                    model.upi_id = upi_id
+                    model.verification = verification
+                    model.user = user.username
+                    model.name = user.name
+                    model.status = None
+                    model.bank = bank
+                    model.save()
             except Exception as e:
-                model = 'blank'
-            if model != 'blank':
-                model.name = name
-                model.account_number = account
-                model.ifsc = ifsc
-                model.upi_id = upi_id
-                model.verification = verification
-                model.user = user.username
-                model.name = user.name
-                model.status = None
-                model.save()
-            else:
-                model = PaymentOption()
-                model.name = name
-                model.account_number = account
-                model.ifsc = ifsc
-                model.upi_id = upi_id
-                model.verification = verification
-                model.user = user.username
-                model.name = user.name
-                model.status = None
-                model.save()
-        except Exception as e:
-            message = "Error 500 {}".format(e)
+                message = "Error 500 {}".format(e)
+        else:
+            message = 'Please type same account number in both fields!'
 
     return render(request, 'users/account.html', {'model': model, 'message': message})
 

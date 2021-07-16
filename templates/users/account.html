@@ -135,14 +135,21 @@ fileinput.addEventListener('change', function() {
               <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
                 <input required type="text" value="{{ model.name }}" name="name" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
                 <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Name </span></label>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Name According to Bank </span></label>
               </div>
             </div>
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
               <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-                <input required type="text" value="{{ model.account_number }}" name="account" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+                <input required type="password" value="{{ model.account_number }}" name="account1" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
                 <div class="mdc-line-ripple"></div>
                 <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Account No. </span></label>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
+              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+                <input required type="text" value="{{ model.account_number }}" name="account2" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+                <div class="mdc-line-ripple"></div>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Confirm Account No. </span></label>
               </div>
             </div>
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
@@ -150,6 +157,13 @@ fileinput.addEventListener('change', function() {
                 <input required type="text" value="{{ model.ifsc }}" name="ifsc" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
                 <div class="mdc-line-ripple"></div>
                 <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> SWIFT/IBAN/IFSC Code </span></label>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
+              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
+                <input required type="text" value="{{ model.bank }}" name="bank" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+                <div class="mdc-line-ripple"></div>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Name of Bank </span></label>
               </div>
             </div>
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">

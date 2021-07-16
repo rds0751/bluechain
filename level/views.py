@@ -34,13 +34,14 @@ class OtherListView(LoginRequiredMixin, ListView):
         return context
 
 @login_required
-def leveltree(request, user):
+def leveltree(request, user, level):
+    lll = level
     user = User.objects.get(username=user)
     try:
         s = UserTotal.objects.get(user=user.username)
     except Exception as e:
         s = e
-    directs = UserTotal.objects.filter(direct=user).count()
+    directs = UserTotal.objects.filter(direct=user, active=True).count()
     level1 = UserTotal.objects.filter(direct=user.username).order_by('id')
     level1n = []
     for x in level1:
@@ -265,7 +266,7 @@ def leveltree(request, user):
         except Exception as e:
             raise e
 
-    return render(request, 'level/tree.html', {'all': all_, 'lc': lc, 'counting': counting, 'directs': directs, 'business': business, 'countingi': countingi, 'user_':user, 'user_list': zip(user_list, all_users), 'user_listi':user_listi, 's': s,})
+    return render(request, 'level/tree.html', {'lll': lll, 'all': all_, 'lc': lc, 'counting': counting, 'directs': directs, 'business': business, 'countingi': countingi, 'user_':user, 'user_list': zip(user_list, all_users), 'user_listi':user_listi, 's': s,})
 
 @login_required
 def leveljoin(request):
