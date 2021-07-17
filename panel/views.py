@@ -100,7 +100,8 @@ def activation(request, id):
         levelp = LevelIncomeSettings.objects.get(amount=packamount)
         user_id = User.objects.get(username=str(user))
         userjoined = userjoined(user, levelp.level)
-        if userjoined:
+        print(userjoined)
+        if not userjoined:
             userwallet = WalletHistory()
             userwallet.user_id = user_id
             userwallet.amount = packamount
@@ -194,8 +195,9 @@ def activation(request, id):
                     print('outside')
                 level = level + 1
             
-            model = UserTotal.objects.get_or_create(user=userid)
-            model.user = userid
+            model, created = UserTotal.objects.get_or_create(user=userid.username)
+            model, created = UserTotal.objects.get_or_create(user=userid.username)
+            model.user = userid.username
             model.level = levelp
             model.active = True
             model.left_months = levelp.expiration_period
