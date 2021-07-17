@@ -136,7 +136,7 @@
                           </thead>
                           <tbody>
                               {% for usern, shopn in user_list %}
-                              <tr>
+                              <tr style="background-color: {% if shopn.active %}#00ff0040{% else %}#ff000040{% endif %}">
                               <td>{% if shopn.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ usern.name }}</td>
                               <td>{{ usern.username }}</td>
                               <td><a href="tel:{{ usern.mobile }}">{{ usern.mobile }}</a></td>
@@ -166,7 +166,7 @@
                           </thead>
                           <tbody>
                               {% for level2n, level2nu in all.0 %}
-                              <tr>
+                              <tr style="background-color: {% if level2n.active %}#00ff0040{% else %}#ff000040{% endif %}">
                               <td>{% if level2n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level2nu.name }}</td>
                               <td>{{ level2nu.username }}</td>
                               <td>{{ level2nu.referral }}</td>
@@ -195,7 +195,7 @@
                           </thead>
                           <tbody>
                               {% for level3n, level3nu in all.1 %}
-                              <tr>
+                              <tr style="background-color: {% if level3n.active %}#00ff0040{% else %}#ff000040{% endif %}">
                               <td>{% if level3n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level3nu.name }}</td>
                               <td>{{ level3nu.username }}</td>
                               <td>{{ level3n.direct }}</td>
@@ -253,7 +253,7 @@
                           </thead>
                           <tbody>
                               {% for level5n, level5nu in all.3 %}
-                              <tr>
+                              <tr style="background-color: {% if level5n.active %}#00ff0040{% else %}#ff000040{% endif %}">
                               <td>{% if level5n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level5nu.name }}</td>
                               <td>{{ level5nu.username }}</td>
                               <td>{{ level5n.direct }}</td>
@@ -282,7 +282,7 @@
                           </thead>
                           <tbody>
                               {% for level6n, level6nu in all.4 %}
-                              <tr>
+                              <tr style="background-color: {% if level6n.active %}#00ff0040{% else %}#ff000040{% endif %}">
                               <td>{% if level6n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level6nu.name }}</td>
                               <td>{{ level6nu.username }}</td>
                               <td>{{ level6n.direct }}</td>
@@ -311,7 +311,7 @@
                           </thead>
                           <tbody>
                               {% for level7n, level7nu in all.5 %}
-                              <tr>
+                              <tr style="background-color: {% if level7n.active %}#00ff0040{% else %}#ff000040{% endif %}">
                               <td>{% if level7n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level7nu.name }}</td>
                               <td>{{ level7nu.username }}</td>
                               <td>{{ level7n.direct }}</td>
@@ -340,7 +340,7 @@
                           </thead>
                           <tbody>
                               {% for level8n, level8nu in all.6 %}
-                              <tr>
+                              <tr style="background-color: {% if level8n.active %}#00ff0040{% else %}#ff000040{% endif %}">
                               <td>{% if level8n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level8nu.name }}</td>
                               <td>{{ level8nu.username }}</td>
                               <td>{{ level8n.direct }}</td>
