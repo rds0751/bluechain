@@ -122,13 +122,13 @@
                           </div> -->
                             <input type="hidden" name="amount" value="0" class="amount">
                             <ul style="-webkit-box-shadow: 5px 5px 5px #666;
-    -moz-box-shadow: 5px 5px 5px #666;
-    box-shadow: 5px 5px 5px #666;
-    display:inline-block;" class="faux-select" data-selected-value="ted">
+                                -moz-box-shadow: 5px 5px 5px #666;
+                                box-shadow: 5px 5px 5px #666;
+                                display:inline-block;" class="faux-select" data-selected-value="ted">
                               <li class="selected-option"><span>Select Package</span>
-                                <ul class="options" style="z-index: 10;">
+                                <ul class="options" style="z-index: 10; width: 150px;">
                                   {% for package in packages %}
-                                    <li class="mdc-list-item" data-value="{{ package.amount }}">${{package.amount}}.00/-</li>
+                                    <li class="mdc-list-item" style="justify-content: space-around;" data-value="{{ package.amount }}">${{package.amount}}.00/-</li>
                                   {% endfor %}
                                 </ul>
                               </li>
