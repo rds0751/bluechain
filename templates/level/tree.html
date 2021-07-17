@@ -35,13 +35,13 @@
                           </thead>
                           <tbody>
                               <tr style="background-color: {% if directs >= 1 %}#00ff0040{% else %}#ff000040{% endif %}">
-                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><strong>&nbsp;&nbsp;Level 1</strong></td>
-                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if directs >= 1 %}Open{% else %}Closed{% endif %}</td>
-                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.1 }}</td>
-                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.1 countingi.1 as x1 %}{{ x1|floatformat:"0" }}</td>
-                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span> {{ business.1 }}</td>
-                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span>{{lc.1}}</td>
-                              <td style="border-left: solid 1px white; border-right: solid 1px white;"><a href="/level/team/{{request.user.username}}/1/">View</a></td>
+                                <td style="border-left: solid 1px white; border-right: solid 1px white;"><strong>&nbsp;&nbsp;Level 1</strong></td>
+                                <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if directs >= 1 %}Open{% else %}Closed{% endif %}</td>
+                                <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.1 }}</td>
+                                <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.1 countingi.1 as x1 %}{{ x1|floatformat:"0" }}</td>
+                                <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span> {{ business.1 }}</td>
+                                <td style="border-left: solid 1px white; border-right: solid 1px white;"><span style="font-size: 16px">$ </span>{{lc.1}}</td>
+                                <td style="border-left: solid 1px white; border-right: solid 1px white;"><a href="/level/team/{{request.user.username}}/1/">View</a></td>
                               </tr>
                               <tr style="background-color: {% if directs >= 2 %}#00ff0040{% else %}#ff000040{% endif %}">
                               <td style="border-left: solid 1px white; border-right: solid 1px white;"><strong>&nbsp;&nbsp;Level 2</strong></td>
