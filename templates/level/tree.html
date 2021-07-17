@@ -128,6 +128,7 @@
                           <thead>
                             <tr style="background-color: #333333;">
                               <th style="color: white">&nbsp;&nbsp;Name</th>
+                              <th>Sr. No.</th>
                               <th style="color: white">IPAY ID</th>
                               <th style="color: white">Mobile</th>
                               <th style="color: white">Plan</th>
@@ -137,6 +138,7 @@
                           <tbody>
                               {% for usern, shopn in user_list %}
                               <tr style="background-color: {% if shopn.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td>{{forloop.counter}}</td>
                               <td>{% if shopn.active %}&nbsp;&nbsp;<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ usern.name }}</td>
                               <td>{{ usern.username }}</td>
                               <td><a href="tel:{{ usern.mobile }}">{{ usern.mobile }}</a></td>
@@ -158,6 +160,7 @@
                         <table class="table dashboard-table">
                           <thead>
                             <tr style="background-color: #333333;">
+                              <th>Sr. No.</th>
                               <th style="color: white">&nbsp;&nbsp;Name</th>
                               <th style="color: white">IPAY ID</th>
                               <th style="color: white">Upline</th>
@@ -167,6 +170,7 @@
                           <tbody>
                               {% for level2n, level2nu in all.0 %}
                               <tr style="background-color: {% if level2n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td>{{forloop.counter}}</td>
                               <td>{% if level2n.active %}&nbsp;&nbsp;<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level2nu.name }}</td>
                               <td>{{ level2nu.username }}</td>
                               <td>{{ level2nu.referral }}</td>
@@ -187,6 +191,7 @@
                         <table class="table dashboard-table">
                           <thead>
                             <tr style="background-color: #333333;">
+                              <th>Sr. No.</th>
                               <th style="color: white">&nbsp;&nbsp;Name</th>
                               <th style="color: white">IPAY ID</th>
                               <th style="color: white">Upline</th>
@@ -196,6 +201,7 @@
                           <tbody>
                               {% for level3n, level3nu in all.1 %}
                               <tr style="background-color: {% if level3n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td>{{forloop.counter}}</td>
                               <td>{% if level3n.active %}&nbsp;&nbsp;<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level3nu.name }}</td>
                               <td>{{ level3nu.username }}</td>
                               <td>{{ level3n.direct }}</td>
@@ -245,6 +251,7 @@
                         <table class="table dashboard-table">
                           <thead>
                             <tr style="background-color: #333333;">
+                              <th>Sr. No.</th>
                               <th style="color: white">&nbsp;&nbsp;Name</th>
                               <th style="color: white">IPAY ID</th>
                               <th style="color: white">Upline</th>
@@ -254,6 +261,7 @@
                           <tbody>
                               {% for level5n, level5nu in all.3 %}
                               <tr style="background-color: {% if level5n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td>{{forloop.counter}}</td>
                               <td>{% if level5n.active %}&nbsp;&nbsp;<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level5nu.name }}</td>
                               <td>{{ level5nu.username }}</td>
                               <td>{{ level5n.direct }}</td>
@@ -274,6 +282,7 @@
                         <table class="table dashboard-table">
                           <thead>
                             <tr style="background-color: #333333;">
+                              <th>Sr. No.</th>
                               <th style="color: white">&nbsp;&nbsp;Name</th>
                               <th style="color: white">IPAY ID</th>
                               <th style="color: white">Upline</th>
@@ -283,6 +292,7 @@
                           <tbody>
                               {% for level6n, level6nu in all.4 %}
                               <tr style="background-color: {% if level6n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td>{{forloop.counter}}</td>
                               <td>{% if level6n.active %}&nbsp;&nbsp;<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level6nu.name }}</td>
                               <td>{{ level6nu.username }}</td>
                               <td>{{ level6n.direct }}</td>
@@ -303,6 +313,7 @@
                         <table class="table dashboard-table">
                           <thead>
                             <tr style="background-color: #333333;">
+                              <th>Sr. No.</th>
                               <th style="color: white">&nbsp;&nbsp;Name</th>
                               <th style="color: white">IPAY ID</th>
                               <th style="color: white">Upline</th>
@@ -312,6 +323,7 @@
                           <tbody>
                               {% for level7n, level7nu in all.5 %}
                               <tr style="background-color: {% if level7n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td>{{forloop.counter}}</td>
                               <td>{% if level7n.active %}&nbsp;&nbsp;<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level7nu.name }}</td>
                               <td>{{ level7nu.username }}</td>
                               <td>{{ level7n.direct }}</td>
@@ -332,6 +344,7 @@
                         <table class="table dashboard-table">
                           <thead>
                             <tr style="background-color: #333333;">
+                              <th>Sr. No.</th>
                               <th style="color: white">&nbsp;&nbsp;Name</th>
                               <th style="color: white">IPAY ID</th>
                               <th style="color: white">Upline</th>
@@ -341,6 +354,7 @@
                           <tbody>
                               {% for level8n, level8nu in all.6 %}
                               <tr style="background-color: {% if level8n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td>{{forloop.counter}}</td>
                               <td>{% if level8n.active %}&nbsp;&nbsp;<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level8nu.name }}</td>
                               <td>{{ level8nu.username }}</td>
                               <td>{{ level8n.direct }}</td>
