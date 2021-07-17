@@ -12,7 +12,7 @@
 			{% if user.name %}<p class="lead">{{ user.name|title }}</p>{% endif %}
 			<div class="text-center">
 				{% if user.profile_pic %}
-			<img class="img-xl img-rouded mb-3" src="{{ user.profile_pic.url }}" width="200px" alt="Picture Profile" id="pic">
+			<img style="border-radius: 50%;" class="img-xl img-rouded mb-3" src="{{ user.profile_pic.url }}" width="200px" alt="Picture Profile" id="pic">
 			{% else %}
 			{% endif %}
 				<p>
