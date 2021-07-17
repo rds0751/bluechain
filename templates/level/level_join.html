@@ -3,6 +3,92 @@
 
 
 {% block content %}
+<style type="text/css">
+  .center-table {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.center-table .center-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+#select-box {
+  min-width: 320px;
+  max-width: 30%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2em;
+  text-align: center;
+  background: #fff;
+}
+.faux-select {
+  list-style-type: none;
+  padding: 0.4em 0;
+  background: #0ba0b0;
+  color: #fff;
+  text-align: left;
+  border: 3px solid #81c6ce;
+  cursor: pointer;
+  width: 200px;
+  display: inline-block;
+  position: relative;
+}
+.faux-select li {
+  padding: 0;
+  text-indent: 1em;
+  position: relative;
+}
+.faux-select li .options {
+  display: block;
+  list-style-type: none;
+  padding: 0;
+  margin: 0.4em 0 0 0;
+  background: transparent;
+  position: absolute;
+  width: 100%;
+  max-height: 0px;
+  overflow: hidden;
+  border: 3px solid transparent;
+  top: 1.2em;
+  left: -0.2em;
+  transition: all ease 0.25s;
+}
+.faux-select li .options li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+.faux-select li .options li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.faux-select li .options li:last-of-type {
+  border-bottom: 0;
+}
+.faux-select li .options.open {
+  background: #0ba0b0;
+  max-height: 10000%;
+  border: 3px solid #81c6ce;
+  border-top: 3px solid transparent;
+}
+.faux-select:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-top: 0.8em solid #fff;
+  position: absolute;
+  top: 0.5em;
+  right: 1em;
+  transition: all ease 0.25s;
+}
+.faux-select.open:before {
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-bottom: 0.8em solid #fff;
+  border-top: 0;
+}
+</style>
 <div class="body-wrapper">
   <div class="main-wrapper">
     <div class="page-wrapper full-page-wrapper">
@@ -18,7 +104,7 @@
                   <div class="mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-12-desktop stretch-card">
                     <div class="mdc-card">
                       <form class="template-demo" method="POST" action="/level/activation/" enctype="multipart/form-data">{% csrf_token %}
-                          <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+                          <!-- <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
                           <input type="hidden" value='' required name="amount">
                             <i class="mdc-select__dropdown-icon"></i>
                             <div class="mdc-select__selected-text"></div>
@@ -33,8 +119,21 @@
                             </div>
                             <span class="mdc-floating-label">Select Package</span>
                             <div class="mdc-line-ripple"></div>
-                          </div>
-                          
+                          </div> -->
+                            <input type="hidden" name="amount" value="0" class="amount">
+                            <ul style="-webkit-box-shadow: 5px 5px 5px #666;
+    -moz-box-shadow: 5px 5px 5px #666;
+    box-shadow: 5px 5px 5px #666;
+    display:inline-block;" class="faux-select" data-selected-value="ted">
+                              <li class="selected-option"><span>Select Package</span>
+                                <ul class="options" style="z-index: 10;">
+                                  {% for package in packages %}
+                                    <li class="mdc-list-item" data-value="{{ package.amount }}">${{package.amount}}.00/-</li>
+                                  {% endfor %}
+                                </ul>
+                              </li>
+                            </ul>
+                            <br>
                           {% if actp == 0 and acta == 0%}
                           <button type="submit" class="mdc-button mdc-button--raised w-100">
                             Upgrade Now
@@ -61,5 +160,19 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $('.faux-select').click(function(){
+  $(this).toggleClass('open');
+  $('.options',this).toggleClass('open');
+});
+
+$('.options li').click(function(){
+  var selection = $(this).text();
+  var dataValue = $(this).attr('data-value');
+  $('.selected-option span').text(selection);
+  $('.faux-select').attr('data-selected-value',dataValue);
+  $('input.amount').val(dataValue);
+});
+</script>
 {% endblock content %}
 
