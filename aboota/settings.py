@@ -208,7 +208,7 @@ LANGUAGES = (
     ('vi', _('Viet Nam')),
     ('my', _('Burmese')),
     ('hi', _('Hindi')),
-    ('ga', _('Irish'))
+    ('ga', _('Irish')),
 )
 
 TIME_ZONE = 'Asia/Kolkata'
@@ -281,6 +281,7 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_LOGOUT_REDIRECT_URL ="/accounts/login/"
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
 LOGIN_REDIRECT_URL = '/users/'
 
