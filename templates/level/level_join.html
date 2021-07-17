@@ -126,16 +126,18 @@
                                 box-shadow: 5px 5px 5px #666;
                                 display:inline-block;" class="faux-select" data-selected-value="ted">
                               <li class="selected-option" style="
-    font-size: larger;
+    letter-spacing: 1px;
+    font-size: 18px;
     font-weight: 500;
-    font-feature-settings: normal;"><span>Select Package</span>
+    /* font-feature-settings: initial; */
+    font-family: sans-serif;"><span>Select Package</span>
                                 <ul class="options" style="z-index: 10;">
                                   {% for package in packages %}
                                     <li class="mdc-list-item" style="justify-content: space-around;
-    letter-spacing: 3px;
-    font-size: larger;
+    letter-spacing: 1px;
+    font-size: 18px;
     font-weight: 500;
-    font-feature-settings: normal;" data-value="{{ package.amount }}">${{package.amount}}.00/-</li>
+    font-family: sans-serif;" data-value="{{ package.amount }}">${{package.amount}}.00/-</li>
                                   {% endfor %}
                                 </ul>
                               </li>
