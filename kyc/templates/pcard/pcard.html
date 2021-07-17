@@ -97,13 +97,21 @@
               {% csrf_token %}
               {{ form.errors }}
               <div class="file-drop-area1" align="center" >
+                {% if imageaf == '' %}
                 <img src="{% static 'id-front.png' %}" style="width: 100%; height: 100%; border-radius: 5%;">
                 <h5 class="js-set-number1">Choose Govt Approved ID Front</h5>
+                {% else %}
+                <img src="{{imageaf}}" style="width: 100%; height: 100%; border-radius: 5%;">
+                {% endif %}
                 <input required name="imageAF" accept="image/*;capture=camera" class="file-input1" type="file">
               </div>
               <div class="file-drop-area2" align="center">
+                {% if imageaf == '' %}
                 <img src="{% static 'id-back.png' %}" style="width: 100%; height: 100%; border-radius: 5%;">
-                <h5 class="js-set-number2">Choose Govt Approved ID Back</h5>
+                <h5 class="js-set-number1">Choose Govt Approved ID Front</h5>
+                {% else %}
+                <img src="{{imageab}}" style="width: 100%; height: 100%; border-radius: 5%;">
+                {% endif %}
                 <input required name="imageAB" accept="image/*;capture=camera" class="file-input2" type="file">
               </div>
               <input type="hidden" name="user" value="{{ request.user.username }}">
