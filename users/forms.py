@@ -52,13 +52,13 @@ class SimpleSignupForm(SignupForm):
 		plan.left_months = 0
 		plan.direct = referral
 		plan.save()
-		subject = 'Welcome to IPAYMATICS Inc.'
-		html_message = render_to_string('account/email/welcome.html', {'context': self.cleaned_data['name']})
-		plain_message = strip_tags(html_message)
-		from_email = 'support@ipaymatics.com'
-		to = user.email
+		# subject = 'Welcome to IPAYMATICS Inc.'
+		# html_message = render_to_string('account/email/welcome.html', {'context': self.cleaned_data['name']})
+		# plain_message = strip_tags(html_message)
+		# from_email = 'support@ipaymatics.com'
+		# to = user.email
 
-		mail.send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
+		# mail.send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
 		# url = "http://2factor.in/API/V1/99254625-e54d-11eb-8089-0200cd936042/ADDON_SERVICES/SEND/PSMS"
 		# payload = "{'From': 'TFCTOR', 'Msg': 'Hello World', 'To': '7000934949,'}"
 		# response = requests.request("GET", url, data=payload)
