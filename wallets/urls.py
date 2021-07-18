@@ -10,6 +10,6 @@ urlpatterns = [
     url(r"^imps-transfer/$", views.imps, name="imps"),
     url(r"^send/$", views.send, name="send"),
     url(r"^account/$", views.paymentoptions, name="account"),
-    url(r"^neft-transfer/$", views.neft, name="neft"),
+    url(r"^mt5-transfer/$", views.neft, name="neft"),
     url(r"^recharge/callback/$", views.callback, name="callback"),
 ]

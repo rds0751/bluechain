@@ -475,10 +475,9 @@ def paymentoptions(request):
                     model = 'blank'
                 if model != 'blank':
                     model.name = name
-                    model.account_number = account
+                    model.account_number = account1
                     model.ifsc = ifsc
-                    model.upi_id = upi_id
-                    model.verification = verification
+                    model.mt5_account = upi_id
                     model.user = user.username
                     model.name = user.name
                     model.status = None
@@ -487,10 +486,9 @@ def paymentoptions(request):
                 else:
                     model = PaymentOption()
                     model.name = name
-                    model.account_number = account
+                    model.account_number = account1
                     model.ifsc = ifsc
-                    model.upi_id = upi_id
-                    model.verification = verification
+                    model.mt5_account = upi_id
                     model.user = user.username
                     model.name = user.name
                     model.status = None
@@ -506,7 +504,7 @@ def paymentoptions(request):
 @login_required
 def neft(request):
     message = ""
-    withdrawals = Withdrawals.objects.filter(user=request.user.username)
+    withdrawals = Withdrawal.objects.filter(user=request.user.username)
 
     if request.method == 'POST':
         if 'auto_neft' in request.POST:
@@ -528,11 +526,12 @@ def neft(request):
                 verify = False
             try:
                 if verify == True:
-                    if amount%500 == 0:
-                        if request.user.new_funds >= amount:
-                            user_id.new_funds = user_id.new_funds - amount
+                    # if amount%500 == 0:
+                    if True:
+                        if request.user.wallet >= amount:
+                            user_id.wallet = user_id.wallet - amount
                             amount = float(request.POST.get('amount'))
-                            model = Withdrawals()
+                            model = Withdrawal()
                             model.user = user_id
                             model.amount = amount
                             model.description = ''
@@ -548,23 +547,23 @@ def neft(request):
                             userwallet.user_id = str(user_id)
                             userwallet.amount = float(amount) 
                             userwallet.type = "debit"
-                            userwallet.filter = "NEFT"
-                            userwallet.comment = "NEFT"
+                            userwallet.filter = "MT5"
+                            userwallet.comment = "MT5 Transfer"
 
                             userwallet.save()
                             user_id.save()
                             model.save()
-                            message = "NEFT Request Received!"
+                            message = "MT5 Transfer Request Received!"
                         else:
-                            message = "Not Enough Balance in Redeemable Balance!"
+                            message = "Not Enough Balance in Redeemable Wallet!"
                     else:
                         message = "Please Enter Amount in multiples of 500!"
                 else:
-                    message = "NEFT Services are in maintenance"
+                    message = "MT5 Services are in maintenance"
             except Exception as e:
                 message = "Error 500 {}".format(e)
 
-    return render(request, 'users/neft.html', {'message': message, 'withdrawals': withdrawals})
+    return render(request, 'users/mt5.html', {'message': message, 'withdrawals': withdrawals})
 
 @login_required
 def history(request):
