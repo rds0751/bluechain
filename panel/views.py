@@ -84,13 +84,13 @@ def activations(request):
 def activation(request, id):
     message = ''
     def activate(user, amount):
-        def userjoined(user, level):
+        def userjoined(user):
             try:
                 user = UserTotal.objects.get(user=str(user))
             except Exception as e:
                 user = 'blank'
-            print(user)
-            if user != 'blank':
+            print(user, '---------------')
+            if user == 'blank':
                 return False
             else:
                 return True
@@ -99,7 +99,7 @@ def activation(request, id):
         packamount = amount
         levelp = LevelIncomeSettings.objects.get(amount=packamount)
         user_id = User.objects.get(username=str(user))
-        userjoined = userjoined(user, levelp.level)
+        userjoined = userjoined(user)
         print(userjoined)
         if not userjoined:
             userwallet = WalletHistory()
@@ -118,16 +118,16 @@ def activation(request, id):
                     upline = 'blank'    
                 return upline   
 
-            levels = {  
-            'level1': 20/100,  
-            'level2': 10/100, 
-            'level3': 8/100, 
-            'level4': 6/100, 
-            'level5': 4/100, 
-            'level6': 2/100, 
-            'level7': 2/100, 
-            'level8': 8/100,  
-            }   
+            levels = {
+            'level1': 20/100, 
+            'level2': 10/100,
+            'level3': 8/100,
+            'level4': 6/100,
+            'level5': 4/100,
+            'level6': 2/100,
+            'level7': 2/100,
+            'level8': 8/100,
+            }
 
             level = 0   
             upline_user = userid.referral    
