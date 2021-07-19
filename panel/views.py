@@ -52,23 +52,26 @@ def home(request):
 @staff_member_required
 def users(request):
     q = 'blank'
-    s = 'blank'
-    r = 100
-    u = User.objects.all().order_by('?')[:100]
-    if request.method == 'POST' and request.POST.get('r') != '':
+    u = User.objects.all().order_by('?')
+    if request.method == 'POST':
         q = request.POST.get('q')
-        s = request.POST.get('s')
-        r = request.POST.get('r')
         u = User.objects.all().order_by('?')[:int(r)]
-        if 'q' in request.POST and len(request.POST.get('q'))>=4:
-            u = User.objects.filter(username__icontains=request.POST.get('q'))
-            s = 'blank'
-        if request.POST.get('s') != 'blank':
-            u = User.objects.all().annotate(on_hold=Sum(F('income') + F('binary_income') + F('added_amount') + F('received_amount'))).order_by('-'+request.POST.get('s'))[:int(request.POST.get('r'))]
-            q = 'blank'
-        if 'q' in request.POST and request.POST.get('s') != 'blank' and len(request.POST.get('q'))>=3:
-            u = User.objects.filter(username__icontains=request.POST.get('q')).annotate(on_hold=Sum(F('income') + F('binary_income') + F('added_amount') + F('received_amount'))).order_by('-'+request.POST.get('s'))
-    return render(request, 'panel/users.html', {'u': u, 'q': q, 's': s, 'r': r})
+        if 'q' in request.POST and len(request.POST.get('q'))>=3:
+            u = User.objects.filter(username__icontains=request.POST.get('q')) or User.objects.filter(name__icontains=request.POST.get('q')) or User.objects.filter(email__icontains=request.POST.get('q')) or User.objects.filter(mobile__icontains=request.POST.get('q'))
+    return render(request, 'panel/users.html', {'u': u, 'q': q})
+
+@staff_member_required
+def user(request, id):
+    u = User.objects.get(id=id)
+    try:
+        k = ImageUploadModel.objects.get(user=w.user)
+    except Exception as e:
+        k = 'blank'
+    try:
+        b = Paymentoptions.objects.get(user=w.user)
+    except Exception as e:
+        b = 'blank'
+    return render(request, 'panel/user.html', {'u': u, 'k': k, 'b': b})
 
 @staff_member_required
 def withdrawals(request):

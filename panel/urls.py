@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^login/$', views.guestlogin, name='guestlogin'),
     url(r'^users/$', views.users, name='users'),
+    url(r'^users/(?P<id>[\w.@+-]+)/$', views.user, name='users'),
     url(r'^~withdrawals/$', views.neft, name='neft'),
     url(r'^withdrawals/$', views.withdrawals, name='withdrawals'),
     url(r'^activations/$', views.activations, name='activations'),

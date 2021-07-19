@@ -11,19 +11,11 @@
                 <!-- Dynamic Table Full -->
                 <div class="card">
                     <div class="card-header">
-                        <h4>Users{% if q != 'blank' %} for {{ q }}{% endif %}{% if s != 'blank' %} sorted by {{ s }}{% endif %}</h4>
+                        <h4>Users{% if q != 'blank' %} for {{ q }}{% endif %}</h4>
                     </div>
                     <form class="card-header" method="POST">
                         {% csrf_token %}
                         <input type="" name="q" placeholder="Search Users">
-                        <input type="" required name="r" placeholder="No. of Results">
-                        <select style="height: 30px;" name="s">
-                            <option value="blank">Sort Users</option>
-                            <option value="name">Name</option>
-                            <option value="mobile">Mobile</option>
-                            <option value="new_funds">New Funds</option>
-                            <option value="on_hold">On Hold</option>
-                        </select>
                         <input style="width: 109px;" type="submit">
                     </form>
                     <div class="card-block">
@@ -36,9 +28,7 @@
                                     <th class="hidden-xs">Mobile</th>
                                     <th class="hidden-xs">User ID</th>
                                     <th class="text-center w-20">Actions</th>
-                                    <th class="hidden-xs">On Hold</th>
-                                    <th class="hidden-xs">New Funds</th>
-                                    <th>Login</th>
+                                    <th>Wallet</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,17 +49,14 @@
                                             <form action="/panel/users/{{ x.username }}/">
                                                 <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Delete User"><i style="color: red" class="ion-close-circled"></i></button>
                                             </form>
+                                            <form action="/panel/login/" method="POST">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="login" value="{{ x.username }}">
+                                            <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Login User"><i style="color: violet" class="ion-cube"></i></button>
+                                        </form>
                                         </div>
                                     </td>
                                     <td class="hidden-xs">{{ x.wallet }}</td>
-                                    <td class="hidden-xs">{{ x.wallet }}</td>
-                                    <td>
-                                        <form action="/panel/login/" method="POST">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="login" value="{{ x.username }}">
-                                            <input type="submit">
-                                        </form>
-                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
