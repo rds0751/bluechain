@@ -224,22 +224,26 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                            <tr>
-                              <th>Name</th>
-                              <th>IPAY ID</th>
-                              <th>Upline</th>
-                              <th>Plan</th>
+                            <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
+                              <th style="color: white">&nbsp;&nbsp;Name</th>
+                              <th style="color: white">IPAY ID</th>
+                              <th style="color: white">Upline</th>
+                              <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
                             </tr>
                           </thead>
                           <tbody>
                               {% for level4n, level4nu in all.2 %}
-                              <tr>
+                            <tr style="background-color: {% if level3n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">
                                 {% if level4n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level4nu.name }}</td>
-                                <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level4nu.username }}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level4nu.username }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level4n.direct }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level4n.level.amount }}</td>
                               <td>$ {% mul level4n.level.amount 0.06 as level4nres %}{{ level4nres }}</td>
+                            </tr>
                               {% endfor %}
                           </tbody>
                         </table>
