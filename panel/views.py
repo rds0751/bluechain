@@ -77,12 +77,23 @@ def withdrawals(request):
 
 @staff_member_required
 def activations(request):
-    w = Activation.objects.all()
+    w = Activation.objects.all().order_by('-created_at')
+    for x in w:
+        try:
+            x.user = User.objects.get(username=x.user)
+        except Exception as e:
+            pass
     return render(request, 'panel/activations.html', {'w': w})
 
 @staff_member_required
 def activation(request, id):
     message = ''
+
+    if request.method == 'POST' and 'delete' in request.POST:
+        act = Activation.objects.get(id=id)
+        act.delete()
+        return redirect('/panel/activations/')
+
     def activate(user, amount):
         def userjoined(user):
             try:
