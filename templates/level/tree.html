@@ -132,7 +132,7 @@
                               <th style="color: white">IPAY ID</th>
                               <th style="color: white">Mobile</th>
                               <th style="color: white">Plan</th>
-                              <!-- <th>Action</th> -->
+                              <th style="color: white">My Earning</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -143,8 +143,7 @@
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ usern.username }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;"><a href="tel:{{ usern.mobile }}">{{ usern.mobile }}</a></td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ shopn.level.amount }}</td>
-                              <!-- <td style="border-left: solid 1px white; border-right: solid 1px white;"><a href="/level/team/{{usern.username}}/0/">View</a></td> -->
-                              </tr>
+                              <td>$ {% mul shopn.level.amount 0.20 as shopnres %}{{ shopnres }}</td>
                               {% endfor %}
                           </tbody>
                         </table>
@@ -159,22 +158,24 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
                             <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
                               <th style="color: white">&nbsp;&nbsp;Name</th>
                               <th style="color: white">IPAY ID</th>
                               <th style="color: white">Upline</th>
                               <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
                             </tr>
                           </thead>
                           <tbody>
                               {% for level2n, level2nu in all.0 %}
                               <tr style="background-color: {% if level2n.active %}#00ff0040{% else %}#ff000040{% endif %}">
-                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{&nbsp;&nbsp;&nbsp;&nbsp;{forloop.counter}}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if level2n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level2nu.name }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level2nu.username }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level2nu.referral }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level2n.level.amount }}</td>
+                              <td>$ {% mul level2n.level.amount 0.10 as level2nres %}{{ level2nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -190,22 +191,24 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
                             <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
                               <th style="color: white">&nbsp;&nbsp;Name</th>
                               <th style="color: white">IPAY ID</th>
                               <th style="color: white">Upline</th>
                               <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
                             </tr>
                           </thead>
                           <tbody>
                               {% for level3n, level3nu in all.1 %}
                               <tr style="background-color: {% if level3n.active %}#00ff0040{% else %}#ff000040{% endif %}">
-                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{&nbsp;&nbsp;&nbsp;&nbsp;{forloop.counter}}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if level3n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level3nu.name }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level3nu.username }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level3n.direct }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level3n.level.amount }}</td>
+                              <td>$ {% mul level3n.level.amount 0.08 as level3nres %}{{ level3nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -236,6 +239,7 @@
                                 <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level4nu.username }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level4n.direct }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level4n.level.amount }}</td>
+                              <td>$ {% mul level4n.level.amount 0.06 as level4nres %}{{ level4nres }}</td>
                               {% endfor %}
                           </tbody>
                         </table>
@@ -250,22 +254,24 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
                             <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
                               <th style="color: white">&nbsp;&nbsp;Name</th>
                               <th style="color: white">IPAY ID</th>
                               <th style="color: white">Upline</th>
                               <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
                             </tr>
                           </thead>
                           <tbody>
                               {% for level5n, level5nu in all.3 %}
                               <tr style="background-color: {% if level5n.active %}#00ff0040{% else %}#ff000040{% endif %}">
-                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{&nbsp;&nbsp;&nbsp;&nbsp;{forloop.counter}}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if level5n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level5nu.name }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level5nu.username }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level5n.direct }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level5n.level.amount }}</td>
+                              <td>$ {% mul level5n.level.amount 0.04 as level5nres %}{{ level5nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -281,22 +287,24 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
                             <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
                               <th style="color: white">&nbsp;&nbsp;Name</th>
                               <th style="color: white">IPAY ID</th>
                               <th style="color: white">Upline</th>
                               <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
                             </tr>
                           </thead>
                           <tbody>
                               {% for level6n, level6nu in all.4 %}
                               <tr style="background-color: {% if level6n.active %}#00ff0040{% else %}#ff000040{% endif %}">
-                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{&nbsp;&nbsp;&nbsp;&nbsp;{forloop.counter}}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if level6n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level6nu.name }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level6nu.username }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level6n.direct }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level6n.level.amount }}</td>
+                              <td>$ {% mul level6n.level.amount 0.02 as level6nres %}{{ level6nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -312,22 +320,24 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
                             <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
                               <th style="color: white">&nbsp;&nbsp;Name</th>
                               <th style="color: white">IPAY ID</th>
                               <th style="color: white">Upline</th>
                               <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
                             </tr>
                           </thead>
                           <tbody>
                               {% for level7n, level7nu in all.5 %}
                               <tr style="background-color: {% if level7n.active %}#00ff0040{% else %}#ff000040{% endif %}">
-                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{&nbsp;&nbsp;&nbsp;&nbsp;{forloop.counter}}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if level7n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level7nu.name }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level7nu.username }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level7n.direct }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level7n.level.amount }}</td>
+                              <td>$ {% mul level7n.level.amount 0.02 as level7nres %}{{ level7nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -343,22 +353,24 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
                             <tr style="background-color: #333333;">
+                              <th width="50px" style="color: white">&nbsp;&nbsp;Sr. No.</th>
                               <th style="color: white">&nbsp;&nbsp;Name</th>
                               <th style="color: white">IPAY ID</th>
                               <th style="color: white">Upline</th>
                               <th style="color: white">Plan</th>
+                              <th style="color: white">My Earning</th>
                             </tr>
                           </thead>
                           <tbody>
                               {% for level8n, level8nu in all.6 %}
                               <tr style="background-color: {% if level8n.active %}#00ff0040{% else %}#ff000040{% endif %}">
-                              <td style="border-left: solid 1px white; border-right: solid 1px white;">{&nbsp;&nbsp;&nbsp;&nbsp;{forloop.counter}}</td>
+                              <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{% if level8n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level8nu.name }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level8nu.username }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">{{ level8n.direct }}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ level8n.level.amount }}</td>
+                              <td>$ {% mul level8n.level.amount 0.08 as level8nres %}{{ level8nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
