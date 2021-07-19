@@ -21,8 +21,8 @@
                                 {% if request.user.is_superuser %}
                                 <li class="nav-item nav-drawer-header">Admin</li>
 
-                                <li class="nav-item {% if '/panel/home/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/panel/home/"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
+                                <li class="nav-item {% if '/panel/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/panel/"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
                                 </li>
                                 <li class="nav-item {% if '/panel/users/' in request.get_full_path %}active{% endif %}">
                                     <a href="/panel/users/"><i class="ion-ios-people-outline"></i> All Users</a>
