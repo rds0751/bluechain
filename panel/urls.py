@@ -6,7 +6,7 @@ from . import views
 
 app_name = "panel"
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
+    url(r'^', views.home, name='home'),
     url(r'^login/$', views.guestlogin, name='guestlogin'),
     url(r'^users/$', views.users, name='users'),
     url(r'^users/(?P<id>[\w.@+-]+)/$', views.user, name='users'),

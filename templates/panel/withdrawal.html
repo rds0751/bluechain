@@ -1,6 +1,5 @@
 {% extends 'panel/base.html' %}
-{% load static currency_filters sum_tags %}
-{% load render_table from django_tables2 %}
+{% load static sum_tags %}
 
 {% block content %}
 <div class="app-layout-canvas">
@@ -27,13 +26,7 @@
                         <div class="row">
                             <!-- Company Info -->
                             <div class="col-xs-6 col-sm-4 col-lg-3">
-                                <p class="h3">Jumanji Real India Pvt. Ltd.</p>
-                                <address>
-                                    Shop No. 9<br>
-                                    Tulip Centre Point<br>
-                                    Sonipat, Haryana - 131001<br>
-                                    <i class="ion-ios-telephone-outline"></i> +91 13079 61462
-                                </address>
+                                <p class="h3">IPAYMATICS Inc.</p>
                             </div>
                             <!-- End Company Info -->
 
@@ -87,7 +80,7 @@
                             <select style="height: 38px; border: 0">
                                 <option>IMPS</option>
                                 <option>NEFT</option>
-                                <option>IMPS</option>
+                                <option>RTGS</option>
                             </select>
                             <input type="hidden" name="acc">
                             <input type="hidden" name="ifsc">

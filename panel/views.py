@@ -11,6 +11,7 @@ from django.urls import reverse_lazy
 import requests
 from django.conf import settings
 from django.shortcuts import render, render_to_response
+from django.contrib.auth.hashers import make_password, check_password
 from django.http import HttpResponse, HttpRequest, Http404
 from django.template import RequestContext
 from django.conf import settings
@@ -55,23 +56,79 @@ def users(request):
     u = User.objects.all().order_by('?')
     if request.method == 'POST':
         q = request.POST.get('q')
-        u = User.objects.all().order_by('?')[:int(r)]
+        u = User.objects.all().order_by('?')
         if 'q' in request.POST and len(request.POST.get('q'))>=3:
             u = User.objects.filter(username__icontains=request.POST.get('q')) or User.objects.filter(name__icontains=request.POST.get('q')) or User.objects.filter(email__icontains=request.POST.get('q')) or User.objects.filter(mobile__icontains=request.POST.get('q'))
     return render(request, 'panel/users.html', {'u': u, 'q': q})
 
 @staff_member_required
 def user(request, id):
+    print(request.POST)
+    if request.method == "POST" and 'name' in request.POST:
+        id_ = request.POST.get('id')
+        user = User.objects.get(id=id_)
+        user.name = request.POST.get('name')
+        user.mobile = request.POST.get('mobile')
+        user.email = request.POST.get('email')
+        user.address = request.POST.get('address')
+        user.city = request.POST.get('city')
+        user.state = request.POST.get('state')
+        user.nominee = request.POST.get('nominee')
+        user.nominee_relation = request.POST.get('nominee_relation')
+        user.referral = request.POST.get('referral')
+        user.save()
+        print(request.POST)
+        if request.POST.get('password') != '':
+            user.password = make_password(request.POST.get('password'))
+            user.save()
+    if request.method == "POST" and 'account1' in request.POST:
+        id_ = request.POST.get('ida')
+        if id_ == '':
+            p = PaymentOption()
+        else:
+            try:
+                p = PaymentOption.objects.get(id=id_)
+            except Exception as e:
+                p = PaymentOption()
+        account1 = request.POST.get('account1')
+        account2 = request.POST.get('account2')
+        if account1 == account2:
+            p.user = request.POST.get('userid')
+            p.account_number = account1
+            p.name = request.POST.get('namea')
+            p.ifsc = request.POST.get('ifsc')
+            p.bank = request.POST.get('bank')
+            p.mt5_account = request.POST.get('mt5_account')
+            p.save()
+        else:
+            message = 'Please confirm account number'
+    if request.method == "POST" and 'idk' in request.POST:
+        id_ = request.POST.get('idk')
+        if id_ == '':
+            k = ImageUploadModel()
+        else:
+            try:
+                k = ImageUploadModel.objects.get(id=id_)
+            except Exception as e:
+                k = ImageUploadModel()
+        file1 = request.FILES.get('front')
+        file2 = request.FILES.get('back')
+        k.user = request.POST.get('userid')
+        k.imageAF = file1
+        k.imageAB = file2
+        k.save()
+    
     u = User.objects.get(id=id)
     try:
-        k = ImageUploadModel.objects.get(user=w.user)
+        k = ImageUploadModel.objects.get(user=u.username)
     except Exception as e:
         k = 'blank'
     try:
-        b = Paymentoptions.objects.get(user=w.user)
+        b = PaymentOption.objects.get(user=u.username)
     except Exception as e:
         b = 'blank'
-    return render(request, 'panel/user.html', {'u': u, 'k': k, 'b': b})
+    w = Withdrawal.objects.filter(user=u.username)
+    return render(request, 'panel/user.html', {'u': u, 'k': k, 'b': b, 'w': w})
 
 @staff_member_required
 def withdrawals(request):
