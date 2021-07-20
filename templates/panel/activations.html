@@ -20,11 +20,12 @@
                                     <th class="text-center"></th>
                                     <th>User ID</th>
                                     <th>User</th>
-                                    <th>Upline</th>
+                                    <th>Upline Name</th>
+                                    <th>Upline ID</th>
                                     <th>Status</th>
                                     <th class="hidden-xs">Package</th>
                                     <th>Date</th>
-                                    <th class="text-center w-20">Actions</th>
+                                    <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -33,17 +34,18 @@
                                     <td class="text-center">{{ forloop.counter }}</td>
                                     <td class="font-500">{{ x.user.username }}</td>
                                     <td class="font-500">{{ x.user.name }}</td>
-                                    <td>{{ x.user.referral }}</td>
+                                    <td>{{ x.user.referral.name }}</td>
+                                    <td>{{ x.user.referral.username }}</td>
                                     <td>{{ x.status }}</td>
                                     <td class="hidden-xs">{{ x.amount }}</td>
-                                    <td>{{ x.created_at|date:'Y-m-d H:i' }}</td>
+                                    <td>{{ x.created_at|date:'Y-m-d h:i A' }}</td>
                                     <td class="text-center">
                                         <form style="float: left;" action="/panel/activations/{{ x.id }}/">
                                             <div class="btn-group">
                                                 <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="View Details"><i style="color: green" class="ion-information-circled"></i></button>
                                             </div>
                                         </form>
-                                        <form style="float: right;" action="/panel/activations/{{ x.id }}/" method="POST">
+                                        <form onSubmit="if(!confirm('Are you sure?')){return false;}" style="float: right;" action="/panel/activations/{{ x.id }}/" method="POST">
                                             {% csrf_token %}
                                             <div class="btn-group">
                                                 <input type="hidden" value='true' name="delete">

@@ -143,6 +143,10 @@ def activations(request):
             x.user = User.objects.get(username=x.user)
         except Exception as e:
             pass
+        try:
+            x.user.referral = User.objects.get(username=x.user.referral)
+        except Exception as e:
+            pass
     return render(request, 'panel/activations.html', {'w': w})
 
 @staff_member_required
