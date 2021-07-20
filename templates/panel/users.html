@@ -1,5 +1,5 @@
 {% extends 'panel/base.html' %}
-{% load static sum_tags %}
+{% load static sum_tags i18n %}
 
 {% block content %}
 <div class="app-layout-canvas">
@@ -11,7 +11,7 @@
                 <!-- Dynamic Table Full -->
                 <div class="card">
                     <div class="card-header">
-                        <h4>Users{% if q != 'blank' %} for {{ q }}{% endif %}</h4>
+                        <h4>{% trans 'Users' %}</h4>
                     </div>
                     <form class="card-header" method="POST">
                         {% csrf_token %}

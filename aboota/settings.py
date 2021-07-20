@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'compressor',
     'ticket',
+    'rosetta',
 
     'level',
     'markdown_deux',  # Required for Knowledgebase item formatting
