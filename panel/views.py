@@ -182,7 +182,7 @@ def activation(request, id):
         user_id = User.objects.get(username=str(user))
         userjoined = userjoined(user)
         print(userjoined)
-        if not userjoined:
+        if userjoined:
             userwallet = WalletHistory()
             userwallet.user_id = user_id
             userwallet.amount = packamount
