@@ -53,12 +53,18 @@ def home(request):
 @staff_member_required
 def users(request):
     q = 'blank'
-    u = User.objects.all().order_by('?')
+    u = User.objects.all().order_by('?')[:200]
     if request.method == 'POST':
         q = request.POST.get('q')
-        u = User.objects.all().order_by('?')
+        u = User.objects.all().order_by('?')[:200]
         if 'q' in request.POST and len(request.POST.get('q'))>=3:
             u = User.objects.filter(username__icontains=request.POST.get('q')) or User.objects.filter(name__icontains=request.POST.get('q')) or User.objects.filter(email__icontains=request.POST.get('q')) or User.objects.filter(mobile__icontains=request.POST.get('q'))
+            u = u[:200]
+    for x in u:
+        try:
+            x.referral = User.objects.get(username=x.referral)
+        except Exception as e:
+            x.referral = x.referral
     return render(request, 'panel/users.html', {'u': u, 'q': q})
 
 @staff_member_required

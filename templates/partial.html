@@ -2,9 +2,9 @@
 <aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open" style="background: #333333">
   <div class="mdc-drawer__content">
     <div class="align-items-left" style="margin: 10px 25px; height: 10%; margin-top: 30px;">
-      <h2 align="center" style="color: white; margin-bottom: 0px;">$&nbsp;{{ request.user.wallet }}
+      <h2 align="center" style="color: white; margin-bottom: 0px;">$&nbsp;{{ request.user.wallet|add:request.user.c }}
       </h2>
-      <p style="font-size: 10px; color: white;" align="center">Mr/s. {{ request.user.name|truncatewords:2 }}({{user.username}})
+      <p style="font-size: 10px; color: white;" align="center">Mr/s. {{ request.user.name|truncatewords:1 }}({{user.username}})
       </p>
     </div>
     <div class="mdc-list-group">
@@ -35,7 +35,7 @@
                   font-size: bold;
                   font-weight: bold;
                   font-size: 11px;' {% endif %}  href="/level/activation/">
-                  {% trans 'Purchase Prime' %}
+                  {% trans 'Purchase Package' %}
                 </a>
               </div>
             </nav>

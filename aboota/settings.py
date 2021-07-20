@@ -210,6 +210,13 @@ LANGUAGES = (
     ('my', _('Burmese')),
     ('hi', _('Hindi')),
     ('ga', _('Irish')),
+    ('hr', _('croatian')),
+    ('it', _('Italian')),
+    ('es', _('Spanish')),
+    ('sv', _('Swedish')),
+    ('id', _('Indonesian')),
+    ('th', _('Thai')),
+    ('ja', _('Japanese'))
 )
 
 TIME_ZONE = 'Asia/Kolkata'

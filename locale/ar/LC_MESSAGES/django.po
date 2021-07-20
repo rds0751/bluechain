@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-20 10:37+0530\n"
+"POT-Creation-Date: 2021-07-20 11:16+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,6 +47,34 @@ msgstr ""
 msgid "Irish"
 msgstr ""
 
+#: aboota/settings.py:213
+msgid "croatian"
+msgstr ""
+
+#: aboota/settings.py:214
+msgid "Italian"
+msgstr ""
+
+#: aboota/settings.py:215
+msgid "Spanish"
+msgstr ""
+
+#: aboota/settings.py:216
+msgid "Swedish"
+msgstr ""
+
+#: aboota/settings.py:217
+msgid "Indonesian"
+msgstr ""
+
+#: aboota/settings.py:218
+msgid "Thai"
+msgstr ""
+
+#: aboota/settings.py:219
+msgid "Japanese"
+msgstr ""
+
 #: helpers.py:142
 #, python-brace-format
 msgid "We detected the url {url} but it appears to be invalid."
@@ -80,7 +108,8 @@ msgstr ""
 msgid "This account is inactive."
 msgstr ""
 
-#: templates/account/email.html:7
+#: templates/account/email.html:7 templates/users/account.html:125
+#: templates/users/account.html:173
 msgid "Account"
 msgstr ""
 
@@ -353,7 +382,8 @@ msgstr ""
 msgid "Full Name"
 msgstr ""
 
-#: templates/account/signup.html:70
+#: templates/account/signup.html:70 templates/users/user_form.html:58
+#: templates/users/user_form.html:118
 msgid "Mobile"
 msgstr ""
 
@@ -584,7 +614,7 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
-#: templates/partial.html:15
+#: templates/partial.html:15 templates/users/user_form.html:26
 msgid "My Dashboard"
 msgstr ""
 
@@ -711,6 +741,34 @@ msgstr ""
 msgid "here you can add your Bank Details for NEFT!"
 msgstr ""
 
+#: templates/users/account.html:102
+msgid "Account Status"
+msgstr ""
+
+#: templates/users/account.html:107
+msgid "Account Holder"
+msgstr ""
+
+#: templates/users/account.html:113 templates/users/account.html:145
+msgid "Account No."
+msgstr ""
+
+#: templates/users/account.html:138
+msgid "Name According to Bank"
+msgstr ""
+
+#: templates/users/account.html:152
+msgid "Confirm Account No."
+msgstr ""
+
+#: templates/users/account.html:166
+msgid "Name of Bank"
+msgstr ""
+
+#: templates/users/account.html:180
+msgid "Update Account"
+msgstr ""
+
 #: templates/users/activationrequest.html:4
 #: templates/users/activationrequest.html:17
 msgid "Activation Request"
@@ -727,6 +785,14 @@ msgstr ""
 
 #: templates/users/addamount.html:17
 msgid "here you can add money to your service wallet"
+msgstr ""
+
+#: templates/users/base.html:78
+msgid "Copy Link"
+msgstr ""
+
+#: templates/users/base.html:89
+msgid "Share Link"
 msgstr ""
 
 #: templates/users/binarytree.html:18 templates/users/moneytransfer.html:17
@@ -831,6 +897,22 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
+#: templates/users/user_dashboard.html:17
+msgid "Latest News"
+msgstr ""
+
+#: templates/users/user_dashboard.html:29
+msgid "Wallet Balance"
+msgstr ""
+
+#: templates/users/user_dashboard.html:40
+msgid "My Package"
+msgstr ""
+
+#: templates/users/user_dashboard.html:48
+msgid "Total Business"
+msgstr ""
+
 #: templates/users/user_detail.html:43
 msgid "RSS Channel"
 msgstr ""
@@ -851,7 +933,7 @@ msgstr ""
 msgid "Facebook Profile"
 msgstr ""
 
-#: templates/users/user_detail.html:57
+#: templates/users/user_detail.html:57 templates/users/user_form.html:167
 msgid "Update Profile"
 msgstr ""
 
@@ -877,6 +959,42 @@ msgstr ""
 
 #: templates/users/user_detail.html:83
 msgid "Global Interactions"
+msgstr ""
+
+#: templates/users/user_form.html:23
+msgid "Edit Profile"
+msgstr ""
+
+#: templates/users/user_form.html:64 templates/users/user_form.html:125
+msgid "Nominee"
+msgstr ""
+
+#: templates/users/user_form.html:70 templates/users/user_form.html:132
+msgid "Nominee Relation"
+msgstr ""
+
+#: templates/users/user_form.html:104
+msgid "Name"
+msgstr ""
+
+#: templates/users/user_form.html:111
+msgid "Email"
+msgstr ""
+
+#: templates/users/user_form.html:139
+msgid "Address"
+msgstr ""
+
+#: templates/users/user_form.html:146
+msgid "City"
+msgstr ""
+
+#: templates/users/user_form.html:153
+msgid "State"
+msgstr ""
+
+#: templates/users/user_form.html:160
+msgid "Upload Profile Picture"
 msgstr ""
 
 #: templates/users/user_list.html:19

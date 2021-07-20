@@ -99,18 +99,18 @@ fileinput.addEventListener('change', function() {
           <div class="table-responsive">
             <div class="py-4">
               <p class="d-flex justify-content-between">
-                <span> Account Status </span>
+                <span> {% trans "Account Status" %} </span>
                 <span style="color: {% if model != 'blank' %}{% if model.status == True %}green{% elif model.status == None %}orange{% else %}red{% endif %}{% endif %}">{% if model != 'blank' %}{% if model.status == True %}Active{% elif model.status == None %}Pending Verification{% else %}Declined{% endif %}{% endif %}</span>
               </p>
               {{ message }}
               <p class="d-flex justify-content-between">
-                <span> Account Holder </span>
+                <span> {% trans "Account Holder" %} </span>
                 <span style="color: green">
                   {{ model.name }}
                 </span>
               </p>
               <p class="d-flex justify-content-between">
-                <span> Account No. </span>
+                <span> {% trans "Account No." %} </span>
                 <span style="color: green">
                   {{ model.account_number }}
                 </span>
@@ -122,7 +122,7 @@ fileinput.addEventListener('change', function() {
                 </span>
               </p>
               <p class="d-flex justify-content-between">
-                <span> MT5 Account </span>
+                <span> MT5 {% trans "Account" %} </span>
                 <span style="color: green">
                   {{ model.mt5_account }}
                 </span>
@@ -135,21 +135,21 @@ fileinput.addEventListener('change', function() {
               <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
                 <input required type="text" value="{{ model.name }}" name="name" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
                 <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Name According to Bank </span></label>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Name According to Bank" %} </span></label>
               </div>
             </div>
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
               <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
                 <input required type="password" value="{{ model.account_number }}" name="account1" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
                 <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Account No. </span></label>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Account No." %} </span></label>
               </div>
             </div>
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
               <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
                 <input required type="text" value="{{ model.account_number }}" name="account2" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
                 <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Confirm Account No. </span></label>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Confirm Account No." %} </span></label>
               </div>
             </div>
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
@@ -163,21 +163,21 @@ fileinput.addEventListener('change', function() {
               <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
                 <input required type="text" value="{{ model.bank }}" name="bank" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
                 <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> Name of Bank </span></label>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Name of Bank" %} </span></label>
               </div>
             </div>
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
               <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
                 <input type="text" name="upi_id" value="{{ model.mt5_account }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
                 <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> MT5 Account </span></label>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> MT5 {% trans "Account" %} </span></label>
               </div>
             </div>
               <img width="100%" src="{% if model.verification %}{{ model.verification.url }}{% endif %}">
               <input required type="hidden" name="user" value="{{ request.user.username }}">
               <br><br><br>
               <button {% if model != 'blank' %}{% if model.status == True %}disabled{% endif %}{% endif %} style="width: -webkit-fill-available;" class="mdc-button mdc-button--unelevated filled-button--success">
-                Update Account
+                {% trans "Update Account" %}
               </button>
             </form>
           </div>

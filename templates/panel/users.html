@@ -11,7 +11,7 @@
                 <!-- Dynamic Table Full -->
                 <div class="card">
                     <div class="card-header">
-                        <h4>{% trans 'Users' %}</h4>
+                        <h4>{% trans 'All Users' %}</h4>
                     </div>
                     <form class="card-header" method="POST">
                         {% csrf_token %}
@@ -25,9 +25,11 @@
                                 <tr>
                                     <th class="text-center"></th>
                                     <th>Name</th>
-                                    <th class="hidden-xs">Mobile</th>
-                                    <th class="hidden-xs">User ID</th>
-                                    <th class="text-center w-20">Actions</th>
+                                    <th>Status</th>
+                                    <th>Mobile</th>
+                                    <th>User ID</th>
+                                    <th>Upline</th>
+                                    <th>Actions</th>
                                     <th>Wallet</th>
                                 </tr>
                             </thead>
@@ -35,13 +37,25 @@
                                 {% for x in u %}
                                 <tr>
                                     <td class="text-center">{{ forloop.counter }}</td>
-                                    <td class="font-500">{{ x.name }}</td>
-                                    <td class="hidden-xs">{{ x.mobile }}</td>
-                                    <td class="hidden-xs">{{ x.username }}</td>
+                                    <td>{{ x.name }}</td>
+                                    <td>{% if x.is_active == True %}Active{% else %}Blocked{% endif %}</td>
+                                    <td>{{ x.mobile }}</td>
+                                    <td>{{ x.username }}</td>
+                                    <td>{{ x.referral.name }}</td>
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <form style="float: left;" action="/panel/users/{{ x.id }}/">
                                                 <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="View User"><i style="color: green" class="ion-information-circled"></i></button>
+                                            </form>
+                                            <form style="float: left;" action="/panel/users/{{ x.id }}/"  method="POST" onsubmit="if(!confirm('Are you sure?')){return false;}">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="block">
+                                                <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Block User"><i style="color: yellow" class="ion-minus-circled"></i></button>
+                                            </form>
+                                            <form style="float: left;" action="/panel/users/{{ x.id }}/"  method="POST" onsubmit="if(!confirm('Are you sure?')){return false;}">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="delete">
+                                                <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Delete User"><i style="color: red" class="ion-close-circled"></i></button>
                                             </form>
                                             <form style="float: right;" action="/panel/login/" method="POST">
                                             {% csrf_token %}

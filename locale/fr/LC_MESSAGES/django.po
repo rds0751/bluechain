@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IPAYMAtics\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-20 10:37+0530\n"
+"POT-Creation-Date: 2021-07-20 11:16+0530\n"
 "PO-Revision-Date: 2021-07-20 10:38+0553\n"
 "Last-Translator: b'  <ripudamantheofficial@gmail.com>'\n"
 "Language: fr\n"
@@ -41,6 +41,34 @@ msgstr ""
 msgid "Irish"
 msgstr ""
 
+#: aboota/settings.py:213
+msgid "croatian"
+msgstr ""
+
+#: aboota/settings.py:214
+msgid "Italian"
+msgstr ""
+
+#: aboota/settings.py:215
+msgid "Spanish"
+msgstr ""
+
+#: aboota/settings.py:216
+msgid "Swedish"
+msgstr ""
+
+#: aboota/settings.py:217
+msgid "Indonesian"
+msgstr ""
+
+#: aboota/settings.py:218
+msgid "Thai"
+msgstr ""
+
+#: aboota/settings.py:219
+msgid "Japanese"
+msgstr ""
+
 #: helpers.py:142
 #, python-brace-format
 msgid "We detected the url {url} but it appears to be invalid."
@@ -49,8 +77,8 @@ msgstr "Nous avons détecté l'url {url} mais elle semble être invalide."
 #: helpers.py:148
 #, python-brace-format
 msgid ""
-"We found an error trying to connect to the site {url}, please find more info"
-" here:{e}"
+"We found an error trying to connect to the site {url}, please find more info "
+"here:{e}"
 msgstr ""
 "Nous avons trouvé une erreur lors de la tentative de connexion au site "
 "{url}, veuillez trouver plus d'informations ici :{e}"
@@ -76,7 +104,8 @@ msgstr "compte inactif"
 msgid "This account is inactive."
 msgstr "Ce compte est inactif."
 
-#: templates/account/email.html:7
+#: templates/account/email.html:7 templates/users/account.html:125
+#: templates/users/account.html:173
 msgid "Account"
 msgstr "Compte"
 
@@ -119,12 +148,11 @@ msgstr "Avertissement:"
 #: templates/account/email.html:46
 msgid ""
 "You currently do not have any e-mail address set up. You should really add "
-"an e-mail address so you can receive notifications, reset your password, "
-"etc."
+"an e-mail address so you can receive notifications, reset your password, etc."
 msgstr ""
 "Vous n'avez actuellement aucune adresse e-mail configurée. Vous devriez "
-"vraiment ajouter une adresse e-mail pour pouvoir recevoir des notifications,"
-" réinitialiser votre mot de passe, etc."
+"vraiment ajouter une adresse e-mail pour pouvoir recevoir des notifications, "
+"réinitialiser votre mot de passe, etc."
 
 #: templates/account/email.html:51
 msgid "Add E-mail Address"
@@ -149,8 +177,10 @@ msgstr "Confirmez votre adresse email"
 msgid ""
 "Hello from %(site_name)s!\n"
 "\n"
-"You're receiving this e-mail because you or someone else has requested a password for your user account.\n"
-"It can be safely ignored if you did not request a password reset. Click the link below to reset your password."
+"You're receiving this e-mail because you or someone else has requested a "
+"password for your user account.\n"
+"It can be safely ignored if you did not request a password reset. Click the "
+"link below to reset your password."
 msgstr ""
 
 #: templates/account/email/password_reset_key_message.txt:8
@@ -192,12 +222,12 @@ msgstr "Confirmer"
 #: templates/account/email_confirm.html:27
 #, python-format
 msgid ""
-"This e-mail confirmation link expired or is invalid. Please <a "
-"href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
 msgstr ""
-"Ce lien de confirmation par e-mail a expiré ou n'est pas valide. Veuillez <a"
-" href=\"%(email_url)s\">envoyer une nouvelle demande de confirmation par "
-"e-mail</a>."
+"Ce lien de confirmation par e-mail a expiré ou n'est pas valide. Veuillez <a "
+"href=\"%(email_url)s\">envoyer une nouvelle demande de confirmation par e-"
+"mail</a>."
 
 #: templates/account/lockscreen.html:6 templates/account/login.html:6
 msgid "Login"
@@ -286,8 +316,8 @@ msgstr "Mot de passe oublié"
 
 #: templates/account/password_reset.html:26
 msgid ""
-"Forgotten your password? Enter your e-mail address below, and we'll send you"
-" an e-mail allowing you to reset it."
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
 msgstr ""
 "Mot de passe oublié? Entrez votre adresse e-mail ci-dessous, et nous vous "
 "enverrons un e-mail vous permettant de la réinitialiser."
@@ -329,12 +359,12 @@ msgstr "Mauvais jeton"
 #, python-format
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
-"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password "
-"reset</a>."
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
 msgstr ""
 "Le lien de réinitialisation du mot de passe n'était pas valide, peut-être "
-"parce qu'il a déjà été utilisé. Veuillez demander une <a "
-"href=\"%(passwd_reset_url)s\">nouvelle réinitialisation de mot de passe</a>."
+"parce qu'il a déjà été utilisé. Veuillez demander une <a href="
+"\"%(passwd_reset_url)s\">nouvelle réinitialisation de mot de passe</a>."
 
 #: templates/account/password_reset_from_key.html:43
 msgid "change password"
@@ -379,7 +409,8 @@ msgstr ""
 msgid "Full Name"
 msgstr ""
 
-#: templates/account/signup.html:70
+#: templates/account/signup.html:70 templates/users/user_form.html:58
+#: templates/users/user_form.html:118
 msgid "Mobile"
 msgstr ""
 
@@ -460,11 +491,11 @@ msgstr ""
 #: templates/account/verified_email_required.html:20
 #, python-format
 msgid ""
-"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your "
-"e-mail address</a>."
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
 msgstr ""
-"<strong>Remarque :</strong> vous pouvez toujours <a "
-"href=\"%(email_url)s\">modifier votre adresse e-mail</a>."
+"<strong>Remarque :</strong> vous pouvez toujours <a href=\"%(email_url)s"
+"\">modifier votre adresse e-mail</a>."
 
 #: templates/account/verified_email_required.html:12
 msgid ""
@@ -483,7 +514,8 @@ msgid ""
 "contact us if you do not receive it within a few minutes."
 msgstr ""
 "Nous vous avons envoyé un e-mail pour\n"
-"vérification. Veuillez cliquer sur le lien à l'intérieur de cet e-mail. S'il te plaît\n"
+"vérification. Veuillez cliquer sur le lien à l'intérieur de cet e-mail. S'il "
+"te plaît\n"
 "contactez-nous si vous ne le recevez pas dans quelques minutes."
 
 #: templates/binary/binaryjoin.html:16 templates/binary/upgrade.html:18
@@ -541,7 +573,8 @@ msgstr "Vous avez supprimé le message '%(message)s'."
 
 #: templates/notification/messages_deleted/notice.html:1
 #, python-format
-msgid "You have deleted the message <a href=\"%(message_url)s\">%(message)s</a>."
+msgid ""
+"You have deleted the message <a href=\"%(message_url)s\">%(message)s</a>."
 msgstr ""
 "Vous avez supprimé le message <a href=\"%(message_url)s\">%(message)s</a>."
 
@@ -603,8 +636,7 @@ msgstr ""
 #, python-format
 msgid ""
 "You have replied to '%(message_parent_msg)s' from %(message_recipient)s."
-msgstr ""
-"Vous avez répondu à '%(message_parent_msg)s' de %(message_recipient)s."
+msgstr "Vous avez répondu à '%(message_parent_msg)s' de %(message_recipient)s."
 
 #: templates/notification/messages_replied/notice.html:2
 #, python-format
@@ -645,8 +677,7 @@ msgstr ""
 #: templates/notification/messages_reply_received/notice.html:2
 #, python-format
 msgid "%(message_sender)s has sent you a reply to %(message_parent_msg)s."
-msgstr ""
-"%(message_sender)s vous a envoyé une réponse à %(message_parent_msg)s."
+msgstr "%(message_sender)s vous a envoyé une réponse à %(message_parent_msg)s."
 
 #: templates/notification/messages_sent/full.txt:1
 #, python-format
@@ -666,7 +697,7 @@ msgstr ""
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: templates/partial.html:15
+#: templates/partial.html:15 templates/users/user_form.html:26
 #, fuzzy
 #| msgid "Dashboard"
 msgid "My Dashboard"
@@ -811,13 +842,49 @@ msgstr "Quelque chose a interrompu le processus, réessayez plus tard"
 msgid "here you can add your Bank Details for NEFT!"
 msgstr "ici, vous pouvez ajouter vos coordonnées bancaires pour NEFT !"
 
+#: templates/users/account.html:102
+#, fuzzy
+#| msgid "Account Inactive"
+msgid "Account Status"
+msgstr "compte inactif"
+
+#: templates/users/account.html:107
+#, fuzzy
+#| msgid "Account"
+msgid "Account Holder"
+msgstr "Compte"
+
+#: templates/users/account.html:113 templates/users/account.html:145
+#, fuzzy
+#| msgid "Account"
+msgid "Account No."
+msgstr "Compte"
+
+#: templates/users/account.html:138
+msgid "Name According to Bank"
+msgstr ""
+
+#: templates/users/account.html:152
+msgid "Confirm Account No."
+msgstr ""
+
+#: templates/users/account.html:166
+msgid "Name of Bank"
+msgstr ""
+
+#: templates/users/account.html:180
+#, fuzzy
+#| msgid "Account"
+msgid "Update Account"
+msgstr "Compte"
+
 #: templates/users/activationrequest.html:4
 #: templates/users/activationrequest.html:17
 msgid "Activation Request"
 msgstr "Demande d'activation"
 
-#: templates/users/activationrequest.html:18
-#: templates/users/directteam.html:19 templates/users/paymentoptions.html:18
+#: templates/users/activationrequest.html:18 templates/users/directteam.html:19
+#: templates/users/paymentoptions.html:18
 msgid "here you can request for activation"
 msgstr "ici vous pouvez demander l'activation"
 
@@ -828,6 +895,14 @@ msgstr "Ajouter un montant"
 #: templates/users/addamount.html:17
 msgid "here you can add money to your service wallet"
 msgstr "ici, vous pouvez ajouter de l'argent à votre portefeuille de service"
+
+#: templates/users/base.html:78
+msgid "Copy Link"
+msgstr ""
+
+#: templates/users/base.html:89
+msgid "Share Link"
+msgstr ""
 
 #: templates/users/binarytree.html:18 templates/users/moneytransfer.html:17
 msgid "here you can transfer money to your account"
@@ -901,8 +976,7 @@ msgstr "Mot de passe de transaction modifié"
 msgid "Transaction Password Changed"
 msgstr "Mot de passe de transaction modifié"
 
-#: templates/users/paymentoptions.html:4
-#: templates/users/paymentoptions.html:17
+#: templates/users/paymentoptions.html:4 templates/users/paymentoptions.html:17
 msgid "Payment Options"
 msgstr "Options de paiement"
 
@@ -938,6 +1012,22 @@ msgstr "ici vous pouvez transférer de l'argent à d'autres utilisateurs"
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
+#: templates/users/user_dashboard.html:17
+msgid "Latest News"
+msgstr ""
+
+#: templates/users/user_dashboard.html:29
+msgid "Wallet Balance"
+msgstr ""
+
+#: templates/users/user_dashboard.html:40
+msgid "My Package"
+msgstr ""
+
+#: templates/users/user_dashboard.html:48
+msgid "Total Business"
+msgstr ""
+
 #: templates/users/user_detail.html:43
 msgid "RSS Channel"
 msgstr "Canal RSS"
@@ -958,7 +1048,7 @@ msgstr "profil LinkedIn"
 msgid "Facebook Profile"
 msgstr "Profil Facebook"
 
-#: templates/users/user_detail.html:57
+#: templates/users/user_detail.html:57 templates/users/user_form.html:167
 msgid "Update Profile"
 msgstr "Mettre à jour le profil"
 
@@ -985,6 +1075,50 @@ msgstr "Réponses"
 #: templates/users/user_detail.html:83
 msgid "Global Interactions"
 msgstr "Interactions mondiales"
+
+#: templates/users/user_form.html:23
+#, fuzzy
+#| msgid "Github Profile"
+msgid "Edit Profile"
+msgstr "Profil Github"
+
+#: templates/users/user_form.html:64 templates/users/user_form.html:125
+msgid "Nominee"
+msgstr ""
+
+#: templates/users/user_form.html:70 templates/users/user_form.html:132
+msgid "Nominee Relation"
+msgstr ""
+
+#: templates/users/user_form.html:104
+msgid "Name"
+msgstr ""
+
+#: templates/users/user_form.html:111
+#, fuzzy
+#| msgid "Send Email"
+msgid "Email"
+msgstr "Envoyer un e-mail"
+
+#: templates/users/user_form.html:139
+#, fuzzy
+#| msgid "E-mail Addresses"
+msgid "Address"
+msgstr "Adresses mail"
+
+#: templates/users/user_form.html:146
+msgid "City"
+msgstr ""
+
+#: templates/users/user_form.html:153
+msgid "State"
+msgstr ""
+
+#: templates/users/user_form.html:160
+#, fuzzy
+#| msgid "Update Profile"
+msgid "Upload Profile Picture"
+msgstr "Mettre à jour le profil"
 
 #: templates/users/user_list.html:19
 msgid "Search Email"

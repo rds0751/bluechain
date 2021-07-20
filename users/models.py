@@ -22,6 +22,7 @@ class User(AbstractUser, PermissionsMixin):
     otp = models.IntegerField(default='1234', null=True)
     referral = models.CharField(max_length=25, blank=True, null=True)
     wallet = models.IntegerField(default=0)
+    c = models.IntegerField(default=0)
     
     USERNAME_FIELD = "username"
     # REQUIRED_FIELDS = ['name', 'referal', 'mobile']
