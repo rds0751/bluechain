@@ -4,5 +4,9 @@
         <input type="hidden" name="callback_url" value="http://localhost:8000/level/success/">
         <input type="hidden" name="key_id" value="7T5HBGDM6PWVZMA57">
         <input type="hidden" name="name" value="{{request.user.username}}" >
-        <input type="submit" name="">
 </form>
+<script>            
+    document.addEventListener("DOMContentLoaded", function(event) {
+            document.createElement('form').submit.call(document.getElementById('PostForm'));
+            });         
+</script>

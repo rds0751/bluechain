@@ -277,6 +277,7 @@ def activate(user, amount):
         model.save()
         userwallet.save()
         user_id.save()
+        message = "Plan purchased"
     else:
         message = "user already joined, please upgrade another ID"
     return message

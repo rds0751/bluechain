@@ -418,17 +418,19 @@ def activation(request):
             if user.c >= amount:
                 usec = user
                 usec.c -= amount
-                usec.save()
-                message = Activation()
+                act = Activation()
                 act.user = user.username
                 act.amount = amount
                 act.status = 'Approved'
                 act.comment = 'auto approved service balance'
-                actvate(user, amount)
+                message = activate(user, amount)
                 act.save()
-                title = 'Thankyou!'
+                usec.save()
+            else:
+                message = "You dont have enough service balance"
+            title = 'Thankyou!'
                 # message = 'Your activation for ${} is in pending, please wait for 24-48 hrs for activation'.format(amount)
-            return render(request,"level/thankyou.html")
+            return render(request,"level/thankyou.html", {'title': title, 'message': message})
     return render(request,"level/level_join.html", {'packages': packages, 'acta': acta, 'actp': actp})
 
 def payment(request):
@@ -456,7 +458,6 @@ def payment(request):
     return render(request,"level/joined.html",context)
 
 @csrf_exempt
-@login_required
 def payment_success(request):
     if request.method =="POST":
         status = request.POST.get('status')
@@ -474,4 +475,4 @@ def payment_success(request):
             w.type = 'credit'
             w.comment += 'Failed'
             w.save()
-        return redirect('/level/activation/')
+    return redirect('/users/')
