@@ -428,7 +428,7 @@ def activation(request):
                 act.save()
                 title = 'Thankyou!'
                 # message = 'Your activation for ${} is in pending, please wait for 24-48 hrs for activation'.format(amount)
-            return render(request,"level/thankyou.html", {'title': title, 'message': message})
+            return render(request,"level/thankyou.html")
     return render(request,"level/level_join.html", {'packages': packages, 'acta': acta, 'actp': actp})
 
 def payment(request):
@@ -463,6 +463,8 @@ def payment_success(request):
         oid = request.POST.get('order_id')
         txnid = request.POST.get('txnid')
         w = WalletHistory.objects.get(txnid=oid)
-        if status == 'a':
-            pass
+        if status == 'SUCCESS':
+            w.type = 'credit'
+            w.
+            
         return HttpResponse("Done payment hurrey!")
