@@ -210,7 +210,7 @@ def leveltree(request, user, level):
             user = User.objects.get(username=u.user)
             level2nu.append(user)
         except Exception as e:
-            raise e
+            pass
     level3n = level3n
     level3nu = []
     for u in level3n:
@@ -218,7 +218,7 @@ def leveltree(request, user, level):
             user = User.objects.get(username=u.user)
             level3nu.append(user)
         except Exception as e:
-            raise e
+            pass
     level4n = level4n
     level4nu = []
     for u in level4n:
@@ -226,7 +226,7 @@ def leveltree(request, user, level):
             user = User.objects.get(username=u.user)
             level4nu.append(user)
         except Exception as e:
-            raise e
+            pass
     level5n = level5n
     level5nu = []
     for u in level5n:
@@ -234,7 +234,7 @@ def leveltree(request, user, level):
             user = User.objects.get(username=u.user)
             level5nu.append(user)
         except Exception as e:
-            raise e
+            pass
     level6n = level6n
     level6nu = []
     for u in level6n:
@@ -242,7 +242,7 @@ def leveltree(request, user, level):
             user = User.objects.get(username=u.user)
             level6nu.append(user)
         except Exception as e:
-            raise e
+            pass
     level7n = level7n
     level7nu = []
     for u in level7n:
@@ -250,7 +250,7 @@ def leveltree(request, user, level):
             user = User.objects.get(username=u.user)
             level7nu.append(user)
         except Exception as e:
-            raise e
+            pass
     level8n = level8n
     level8nu = []
     for u in level8n:
@@ -258,7 +258,7 @@ def leveltree(request, user, level):
             user = User.objects.get(username=u.user)
             level8nu.append(user)
         except Exception as e:
-            raise e
+            pass
     all_ = [zip(level2n, level2nu), zip(level3n, level3nu), zip(level4n, level4nu), zip(level5n, level5nu), zip(level6n, level6nu), zip(level7n, level7nu), zip(level8n, level8nu),]
     user_listi = []
     for u in all_usersi:
@@ -266,7 +266,7 @@ def leveltree(request, user, level):
             user = User.objects.get(username=u.user)
             user_listi.append(user)
         except Exception as e:
-            raise e
+            pass
 
     return render(request, 'level/tree.html', {'lll': lll, 'all': all_, 'lc': lc, 'counting': counting, 'directs': directs, 'business': business, 'countingi': countingi, 'user_':user, 'user_list': zip(user_list, all_users), 'user_listi':user_listi, 's': s,})
 
@@ -449,7 +449,6 @@ def payment(request):
     w = WalletHistory()
     w.user_id = user.username
     w.amount = amount
-    w.type = null
     w.comment = 'Money added using razorpay'
     w.txnid = txnid
     w.save()
@@ -457,6 +456,7 @@ def payment(request):
     return render(request,"level/joined.html",context)
 
 @csrf_exempt
+@login_required
 def payment_success(request):
     if request.method =="POST":
         status = request.POST.get('status')
@@ -465,6 +465,13 @@ def payment_success(request):
         w = WalletHistory.objects.get(txnid=oid)
         if status == 'SUCCESS':
             w.type = 'credit'
-            pass
-            
-        return HttpResponse("Done payment hurrey!")
+            w.comment += 'success with {}'.format(txnid)
+            w.save()
+            u = User.objects.get(username=w.user_id)
+            u.c += w.amount
+            u.save()
+        else:
+            w.type = 'credit'
+            w.comment += 'Failed'
+            w.save()
+        return redirect('/level/activation/')
