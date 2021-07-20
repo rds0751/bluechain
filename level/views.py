@@ -17,6 +17,8 @@ from .models import Activation, LevelIncomeSettings, UserTotal
 from django.contrib.auth.decorators import login_required
 from wallets.models import WalletHistory, FundRequest
 from django.core.paginator import Paginator
+from panel.views import activate
+from django.utils.crypto import get_random_string
 
 class OtherListView(LoginRequiredMixin, ListView):
     model = User
@@ -199,7 +201,7 @@ def leveltree(request, user, level):
             user = User.objects.get(username=u.user)
             user_list.append(user)
         except Exception as e:
-            raise e
+            pass
 
     level2n = level2n
     level2nu = []
@@ -398,30 +400,69 @@ def activation(request):
     actp = Activation.objects.filter(user=request.user.username, status='Pending').count()
     acta = Activation.objects.filter(user=request.user.username, status='Approved').count()
     if request.method == "POST":
-        amount = request.POST.get("amount")
-        user = request.user
-        act = Activation()
-        act.user = user.username
-        act.amount = amount
-        act.status = 'Pending'
-        act.comment = ''
-        act.save()
-        title = 'Thankyou!'
-        message = 'Your activation for ${} is in pending, please wait for 24-48 hrs for activation'.format(amount)
-        return render(request,"level/thankyou.html", {'title': title, 'message': message})
+        if request.POST.get('type') == 'cash':
+            amount = request.POST.get("amount")
+            user = request.user
+            act = Activation()
+            act.user = user.username
+            act.amount = amount
+            act.status = 'Pending'
+            act.comment = ''
+            act.save()
+            title = 'Thankyou!'
+            message = 'Your activation for ${} is in pending, please wait for 24-48 hrs for activation'.format(amount)
+            return render(request,"level/thankyou.html", {'title': title, 'message': message})
+        else:
+            amount = int(request.POST.get("amount"))
+            user = request.user
+            if user.c >= amount:
+                usec = user
+                usec.c -= amount
+                usec.save()
+                message = Activation()
+                act.user = user.username
+                act.amount = amount
+                act.status = 'Approved'
+                act.comment = 'auto approved service balance'
+                actvate(user, amount)
+                act.save()
+                title = 'Thankyou!'
+                # message = 'Your activation for ${} is in pending, please wait for 24-48 hrs for activation'.format(amount)
+            return render(request,"level/thankyou.html", {'title': title, 'message': message})
     return render(request,"level/level_join.html", {'packages': packages, 'acta': acta, 'actp': actp})
 
 def payment(request):
-    amount = 100 #100 here means 1 dollar,1 rupree if currency INR
-    # client = razorpay.Client(key,secret)
-    client = razorpay.Client(auth=('rzp_test_Ye1A8KoHWSr6pR','zb9V7TYiqOo1j47TylJkKX94'))
-    response = client.order.create({'amount':amount,'currency':'USD','payment_capture':0})
-    print(response)
-    context = {'response':response}
-    return render(request,"level/payment.html",context)
+    def generateid():
+        txnid = get_random_string(8)
+        try:
+            txn = WalletHistory.objects.get(txnid = txnid)
+        except WalletHistory.DoesNotExist:
+            txn = 0
+        if txn:
+            generateid()
+        else:
+            return txnid
+
+    amount = int(int(request.POST.get('amounta'))*75 + 0.02*int(request.POST.get('amounta'))*75)
+    user = request.user
+    txnid = generateid()
+    w = WalletHistory()
+    w.user_id = user.username
+    w.amount = amount
+    w.type = null
+    w.comment = 'Money added using razorpay'
+    w.txnid = txnid
+    w.save()
+    context = {'user': user, 'oid': txnid, 'amount': amount}
+    return render(request,"level/joined.html",context)
 
 @csrf_exempt
 def payment_success(request):
     if request.method =="POST":
-        print(request.POST)
+        status = request.POST.get('status')
+        oid = request.POST.get('order_id')
+        txnid = request.POST.get('txnid')
+        w = WalletHistory.objects.get(txnid=oid)
+        if status == 'a':
+            pass
         return HttpResponse("Done payment hurrey!")

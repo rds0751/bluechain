@@ -155,6 +155,132 @@ def activations(request):
             pass
     return render(request, 'panel/activations.html', {'w': w})
 
+def activate(user, amount):
+    def userjoined(user):
+        try:
+            user = UserTotal.objects.get(user=str(user))
+        except Exception as e:
+            user = 'blank'
+        print(user, '---------------')
+        if user == 'blank':
+            return False
+        else:
+            return True
+    user=User.objects.get(username=user)
+    upline_user = user.referral
+    packamount = amount
+    levelp = LevelIncomeSettings.objects.get(amount=packamount)
+    user_id = User.objects.get(username=str(user))
+    userjoined = userjoined(user)
+    print(userjoined)
+    if userjoined:
+        userwallet = WalletHistory()
+        userwallet.user_id = user_id
+        userwallet.amount = packamount
+        userwallet.type = "debit"
+        userwallet.comment = "Prime Upgradation"
+
+        userid = user   
+
+        def finduplines(user):  
+            try:    
+                user = User.objects.get(username__iexact=str(user)) 
+                upline = user.referral   
+            except User.DoesNotExist:   
+                upline = 'blank'    
+            return upline   
+
+        levels = {
+        'level1': 20/100, 
+        'level2': 10/100,
+        'level3': 8/100,
+        'level4': 6/100,
+        'level5': 4/100,
+        'level6': 2/100,
+        'level7': 2/100,
+        'level8': 8/100,
+        }
+
+        level = 0   
+        upline_user = userid.referral    
+        userid = user   
+        amount = packamount 
+        uplines = [upline_user, ]
+        while level < 7 and upline_user != 'blank':
+            upline_user = finduplines(str(upline_user))
+            uplines.append(upline_user)
+            level += 1
+
+        level = 0
+        print(uplines)
+        for upline in uplines:
+            try:
+                upline_user = User.objects.get(username=upline) 
+            except Exception as e:  
+                upline_user = 'blank'
+            try:
+                upgraded = UserTotal.objects.get(user=upline)
+            except Exception as e:
+                upgraded = 'blank'
+            if upline_user != 'blank' and upgraded != 'blank':  
+                directs = UserTotal.objects.filter(direct=upline_user)
+                if user.referral == upline_user.username:
+                    direct = True
+                else:
+                    direct = False
+                upline_amount = levels['level{}'.format(level+1)]*amount
+                print(directs.count(), level, direct)
+                if directs.count() >= level and direct: 
+                    upline_user.wallet += upline_amount
+                    upline_wallet = WalletHistory()   
+                    upline_wallet.user_id = upline  
+                    upline_wallet.amount = upline_amount    
+                    upline_wallet.type = "credit"   
+                    upline_wallet.comment = "New Upgrade by {} in level {}".format(user, level+1)
+                    upgraded.business += upline_amount
+                    upline_wallet.save()
+                    upline_user.save()
+                    print('if')
+                elif directs.count() > level and not direct:   
+                    upline_amount = levels['level{}'.format(level+1)]*amount 
+                    upline_user.wallet += upline_amount
+                    upline_wallet = WalletHistory()   
+                    upline_wallet.user_id = upline  
+                    upline_wallet.amount = upline_amount    
+                    upline_wallet.type = "credit"   
+                    upline_wallet.comment = "New Upgrade by {} in level {}".format(user, level+1)
+                    upgraded.business += upline_amount
+                    upline_wallet.save()
+                    upline_user.save()
+                    print('elif')
+                else:
+                    upline_user.wallet += upline_amount
+                    upline_wallet = WalletHistory()   
+                    upline_wallet.user_id = upline  
+                    upline_wallet.amount = upline_amount    
+                    upline_wallet.type = "credit"   
+                    upline_wallet.comment = "{} joined but Level {} not opened!".format(user, level+1)
+                    upgraded.business += upline_amount
+                    upline_wallet.save()
+                    print('else')
+                upgraded.save()
+                print('outside')
+            level = level + 1
+        
+        model, created = UserTotal.objects.get_or_create(user=userid.username)
+        model, created = UserTotal.objects.get_or_create(user=userid.username)
+        model.user = userid.username
+        model.level = levelp
+        model.active = True
+        model.left_months = levelp.expiration_period
+        model.direct = user.referral
+        model.save()
+        userwallet.save()
+        user_id.save()
+    else:
+        message = "user already joined, please upgrade another ID"
+    return message
+
 @staff_member_required
 def activation(request, id):
     message = ''
@@ -164,130 +290,6 @@ def activation(request, id):
         act.delete()
         return redirect('/panel/activations/')
 
-    def activate(user, amount):
-        def userjoined(user):
-            try:
-                user = UserTotal.objects.get(user=str(user))
-            except Exception as e:
-                user = 'blank'
-            print(user, '---------------')
-            if user == 'blank':
-                return False
-            else:
-                return True
-        user=User.objects.get(username=user)
-        upline_user = user.referral
-        packamount = amount
-        levelp = LevelIncomeSettings.objects.get(amount=packamount)
-        user_id = User.objects.get(username=str(user))
-        userjoined = userjoined(user)
-        print(userjoined)
-        if userjoined:
-            userwallet = WalletHistory()
-            userwallet.user_id = user_id
-            userwallet.amount = packamount
-            userwallet.type = "debit"
-            userwallet.comment = "Prime Upgradation"
-
-            userid = user   
-
-            def finduplines(user):  
-                try:    
-                    user = User.objects.get(username__iexact=str(user)) 
-                    upline = user.referral   
-                except User.DoesNotExist:   
-                    upline = 'blank'    
-                return upline   
-
-            levels = {
-            'level1': 20/100, 
-            'level2': 10/100,
-            'level3': 8/100,
-            'level4': 6/100,
-            'level5': 4/100,
-            'level6': 2/100,
-            'level7': 2/100,
-            'level8': 8/100,
-            }
-
-            level = 0   
-            upline_user = userid.referral    
-            userid = user   
-            amount = packamount 
-            uplines = [upline_user, ]
-            while level < 7 and upline_user != 'blank':
-                upline_user = finduplines(str(upline_user))
-                uplines.append(upline_user)
-                level += 1
-
-            level = 0
-            print(uplines)
-            for upline in uplines:
-                try:
-                    upline_user = User.objects.get(username=upline) 
-                except Exception as e:  
-                    upline_user = 'blank'
-                try:
-                    upgraded = UserTotal.objects.get(user=upline)
-                except Exception as e:
-                    upgraded = 'blank'
-                if upline_user != 'blank' and upgraded != 'blank':  
-                    directs = UserTotal.objects.filter(direct=upline_user)
-                    if user.referral == upline_user.username:
-                        direct = True
-                    else:
-                        direct = False
-                    upline_amount = levels['level{}'.format(level+1)]*amount
-                    print(directs.count(), level, direct)
-                    if directs.count() >= level and direct: 
-                        upline_user.wallet += upline_amount
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = upline  
-                        upline_wallet.amount = upline_amount    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "New Upgrade by {} in level {}".format(user, level+1)
-                        upgraded.business += upline_amount
-                        upline_wallet.save()
-                        upline_user.save()
-                        print('if')
-                    elif directs.count() > level and not direct:   
-                        upline_amount = levels['level{}'.format(level+1)]*amount 
-                        upline_user.wallet += upline_amount
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = upline  
-                        upline_wallet.amount = upline_amount    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "New Upgrade by {} in level {}".format(user, level+1)
-                        upgraded.business += upline_amount
-                        upline_wallet.save()
-                        upline_user.save()
-                        print('elif')
-                    else:
-                        upline_user.wallet += upline_amount
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = upline  
-                        upline_wallet.amount = upline_amount    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "{} joined but Level {} not opened!".format(user, level+1)
-                        upgraded.business += upline_amount
-                        upline_wallet.save()
-                        print('else')
-                    upgraded.save()
-                    print('outside')
-                level = level + 1
-            
-            model, created = UserTotal.objects.get_or_create(user=userid.username)
-            model, created = UserTotal.objects.get_or_create(user=userid.username)
-            model.user = userid.username
-            model.level = levelp
-            model.active = True
-            model.left_months = levelp.expiration_period
-            model.direct = user.referral
-            model.save()
-            userwallet.save()
-            user_id.save()
-        else:
-            message = "user already joined, please upgrade another ID"
     w = Activation.objects.get(id=id)
     u = User.objects.get(username=w.user)
     try:
@@ -304,7 +306,7 @@ def activation(request, id):
             act = Activation.objects.get(id=act_id)
             user = act.user
             amount = act.amount
-            activate(user, amount)
+            message = activate(user, amount)
             act.comments = comment
             act.status = 'Approved'
             act.save()
