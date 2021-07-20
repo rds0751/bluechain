@@ -162,7 +162,7 @@
                     <div>
                       <form class="template-demo" method="POST" action="/level/activation/" enctype="multipart/form-data">{% csrf_token %}
                         <h5>Add Money to Service Balance</h5>
-                          <input style="width: 78%" type="number" min="100" max="6000" name="amounta" placeholder="Amount in Dollars" class="amount">
+                          <input style="width: 78%; -moz-appearance: textfield;" type="number" min="100" max="6000" name="amounta" placeholder="Amount in Dollars" class="amount">
                           <p style="color: green;">Service Balance: $ {{ request.user.c }}</p>
                           <button style="width: 80%" type="submit" class="mdc-button mdc-button--raised w-25">
                             Top Up Service Balance

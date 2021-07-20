@@ -235,7 +235,7 @@
                           </thead>
                           <tbody>
                               {% for level4n, level4nu in all.2 %}
-                            <tr style="background-color: {% if level3n.active %}#00ff0040{% else %}#ff000040{% endif %}">
+                            <tr style="background-color: {% if level4n.active %}#00ff0040{% else %}#ff000040{% endif %}">
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">
                                 {% if level4n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level4nu.name }}</td>
