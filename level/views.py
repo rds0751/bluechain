@@ -469,7 +469,7 @@ def payment_success(request):
             w.comment += 'success with {}'.format(txnid)
             w.save()
             u = User.objects.get(username=w.user_id)
-            u.c += w.amount
+            u.c += w.amount/75 - 0.02*w.amount/75
             u.save()
         else:
             w.type = 'credit'
