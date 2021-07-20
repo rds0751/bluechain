@@ -465,6 +465,6 @@ def payment_success(request):
         w = WalletHistory.objects.get(txnid=oid)
         if status == 'SUCCESS':
             w.type = 'credit'
-            w.
+            pass
             
         return HttpResponse("Done payment hurrey!")
