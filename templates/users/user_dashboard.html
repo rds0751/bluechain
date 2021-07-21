@@ -37,7 +37,7 @@
       </div>
       <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
           <div style="background-color: #14bbce;" class="mdc-card text-white info-card info-card--danger">
-            <div class="card-inner">
+            <div>
               <h5 style="" class="card-title"><strong>{% trans "My Package" %} </strong> </h5>
               <h5 style="" class="font-weight-light pb-2 mb-1">{% if amount != 'None' %}$ {{ amount.level.amount }}{% endif %}</h5>
               {% if amount.ccm_ends != 'gone' and amount.ccm_ends != 'not active' %}<p style="line-height: 1" class="tx-10">{{ amount.ccm_ends|timeuntil }} left to activate CCM</p>{% endif %}
