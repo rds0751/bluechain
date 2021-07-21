@@ -20,7 +20,7 @@
                     behavior="scroll">
                     <p class="tx-10">{{ notification|safe }}</p>
                   </marquee> -->
-                  <h5 style="" class="font-weight-light pb-2 mb-1">$ {{ ret }}</h5>
+                  <h5 style="" class="font-weight-light pb-2 mb-1">$ {{ ret|floatformat:2 }}</h5>
                 </div>
               </div>
             </div>
