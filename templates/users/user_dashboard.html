@@ -40,8 +40,8 @@
             <div>
               <h5 style="" class="card-title"><strong>{% trans "My Package" %} </strong> </h5>
               <h5 style="" class="font-weight-light pb-2 mb-1">{% if amount != 'None' %}$ {{ amount.level.amount }}{% endif %}</h5>
-              {% if amount.ccm_ends != 'gone' and amount.ccm_ends != 'not active' %}<p style="line-height: 1" class="tx-10">{{ amount.ccm_ends|timeuntil|truncatechars:4 }} left to activate CCM</p>{% endif %}
-              {% if amount.plan_ends != 'gone' and amount.plan_ends != 'not active' %}<p style="line-height: 1" class="tx-10">{{ amount.plan_ends|timeuntil|truncatechars:4 }} left in current Plan</p>{% endif %}
+              {% if amount.ccm_ends != 'gone' and amount.ccm_ends != 'not active' %}<p style="line-height: 1" class="tx-10">{{ amount.ccm_ends|timeuntil }} left to be CCM</p>{% endif %}
+              {% if amount.plan_ends != 'gone' and amount.plan_ends != 'not active' %}<p style="line-height: 1" class="tx-10">{{ amount.plan_ends|timeuntil }} left in current Plan</p>{% endif %}
 
           </div> 
         </div> 
