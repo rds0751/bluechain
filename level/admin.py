@@ -28,7 +28,7 @@ class LevelIncomeSettingAdmin(ImportExportModelAdmin):
 
 class UserTotalAdmin(ImportExportModelAdmin):
     resource_class = UserTotal
-    list_display = [f.name for f in UserTotal._meta.fields]
+    list_display = [f.name for f in UserTotal._meta.fields] + ['ccm_ends', 'plan_ends']
     search_fields = ('user_id', )
 
 
