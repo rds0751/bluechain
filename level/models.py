@@ -21,7 +21,7 @@ class LevelIncomeSettings(models.Model):
     level = models.IntegerField()
     amount = models.IntegerField()
     name = models.CharField(max_length=125, null=True, blank=True)
-    direct_commission_percentage = models.IntegerField()
+    return_amount = models.IntegerField()
     expiration_period = models.IntegerField()
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True)
@@ -56,4 +56,4 @@ class UserTotal(models.Model):
             return 'not active'
 
     def __str__(self):
-        return str(self.user)
+        return str(self.user) 

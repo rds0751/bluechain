@@ -127,6 +127,24 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         # Only get the User record for the user making the request
         return User.objects.get(username=self.request.user.username)
 
+    def get_context_data(self, *args, **kwargs):
+        self.request.session['user_id'] = self.request.user.username
+        context = super().get_context_data(*args, **kwargs)
+        amount = 0
+        try:
+            levelp = UserTotal.objects.get(user=self.request.user)
+        except Exception as e:
+            levelp = 'None'
+
+        user = User.objects.get(username=self.request.user)
+        try:
+            s = UserTotal.objects.get(user=user.username)
+        except Exception as e:
+            s = e
+        
+        context["s"] = s
+        return context
+
 
 class UserDashboardView(LoginRequiredMixin, ListView):
     model = User
@@ -202,10 +220,21 @@ class UserDashboardView(LoginRequiredMixin, ListView):
 
         recent = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-created_at')[:10]
         large = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-amount')[:10]
+
+        plan_ends = levelp.activated_at
+        if plan_ends != 'gone' and plan_ends != 'not active':
+            date_diff = plan_ends - timezone.now()
+        else:
+            date_diff = 'blank'
+        if date_diff != 'blank':
+            total_days = levelp.level.expiration_period * 30
+            rate = levelp.level.return_amount/total_days
+            return_total = -(rate*date_diff.days)
+        if return_total <= 0:
+            return_total = 0
         
-
-
         context["amount"] = levelp
+        context['ret'] = return_total
         context['recent'] = recent
         context['large'] = large
         context['business'] = business

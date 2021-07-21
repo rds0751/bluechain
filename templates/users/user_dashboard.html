@@ -14,12 +14,13 @@
               <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
                 <div class="mdc-card text-white info-card info-card--danger" style="background: #14bbce;">
                   <div style="margin-right: 0%" class="card-inner">
-                    <h5 class="card-title"><strong>{% trans "Latest News" %} </strong> </h5>
-                    <marquee style="height: 140px;" scrollamount="1"
+                    <h5 class="card-title"><strong>{% trans "Net Return" %} </strong> </h5>
+                    <!-- <marquee style="height: 140px;" scrollamount="1"
                     direction="up"
                     behavior="scroll">
                     <p class="tx-10">{{ notification|safe }}</p>
-                  </marquee>
+                  </marquee> -->
+                  <h5 style="" class="font-weight-light pb-2 mb-1">$ {{ ret }}</h5>
                 </div>
               </div>
             </div>
@@ -42,7 +43,6 @@
               <h5 style="" class="font-weight-light pb-2 mb-1">{% if amount != 'None' %}$ {{ amount.level.amount }}{% endif %}</h5>
               {% if amount.ccm_ends != 'gone' and amount.ccm_ends != 'not active' %}<p style="line-height: 1" class="tx-10">{{ amount.ccm_ends|timeuntil }} left to be CCM</p>{% endif %}
               {% if amount.plan_ends != 'gone' and amount.plan_ends != 'not active' %}<p style="line-height: 1" class="tx-10">{{ amount.plan_ends|timeuntil }} left in current Plan</p>{% endif %}
-
           </div> 
         </div> 
       </div>

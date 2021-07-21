@@ -20,7 +20,7 @@
 				</p>
 				<div class="d-flex justify-content-between">
 					<a href="#edit" class="mdc-button mdc-button--unelevated filled-button--primary mdc-ripple-upgraded">
-						{% trans "Edit Profile" %} 
+						{% trans "Edit Profile" %}
 					</a>
 					<a href="/users/" class="mdc-button mdc-button--unelevated filled-button--primary mdc-ripple-upgraded">
 						{% trans "My Dashboard" %} 
@@ -73,9 +73,15 @@
 					</span>
 				</p>
 				<p class="d-flex justify-content-between">
-					<span> DOJ </span>
+					<span>Date of Registration</span>
 					<span style="color: green">
-						{{ user.date_joined }}
+						{{ user.date_joined|date }}
+					</span>
+				</p>
+				<p class="d-flex justify-content-between">
+					<span>Date of Activation</span>
+					<span style="color: green">
+						{{ s.activated_at|date }}
 					</span>
 				</p>
 			</div>
