@@ -231,8 +231,7 @@ def activate(user, amount):
                     direct = False
                 upline_amount = levels['level{}'.format(level+1)]*amount
                 print(directs.count(), level, direct)
-                if directs.count() >= level and direct: 
-                    upline_user.wallet += upline_amount
+                if directs.count() >= level and direct:
                     upline_wallet = WalletHistory()   
                     upline_wallet.user_id = upline  
                     upline_wallet.amount = upline_amount    
@@ -243,8 +242,7 @@ def activate(user, amount):
                     upline_user.save()
                     print('if')
                 elif directs.count() > level and not direct:   
-                    upline_amount = levels['level{}'.format(level+1)]*amount 
-                    upline_user.wallet += upline_amount
+                    upline_amount = levels['level{}'.format(level+1)]*amount
                     upline_wallet = WalletHistory()   
                     upline_wallet.user_id = upline  
                     upline_wallet.amount = upline_amount    
@@ -255,13 +253,11 @@ def activate(user, amount):
                     upline_user.save()
                     print('elif')
                 else:
-                    upline_user.wallet += upline_amount
                     upline_wallet = WalletHistory()   
                     upline_wallet.user_id = upline  
                     upline_wallet.amount = upline_amount    
                     upline_wallet.type = "credit"   
                     upline_wallet.comment = "{} joined but Level {} not opened!".format(user, level+1)
-                    upgraded.business += upline_amount
                     upline_wallet.save()
                     print('else')
                 upgraded.save()
@@ -275,6 +271,7 @@ def activate(user, amount):
         model.active = True
         model.left_months = levelp.expiration_period
         model.direct = user.referral
+        model.activated_at = datetime.datetime.now()
         model.save()
         userwallet.save()
         user_id.save()
