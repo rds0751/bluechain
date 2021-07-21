@@ -174,6 +174,7 @@ def activate(user, amount):
     userjoined = userjoined(user)
     print(userjoined)
     if userjoined:
+    # if True:
         userwallet = WalletHistory()
         userwallet.user_id = user_id
         userwallet.amount = packamount
@@ -219,11 +220,11 @@ def activate(user, amount):
             except Exception as e:  
                 upline_user = 'blank'
             try:
-                upgraded = UserTotal.objects.get(user=upline)
+                upgraded = UserTotal.objects.get(user=upline, active=True)
             except Exception as e:
                 upgraded = 'blank'
             if upline_user != 'blank' and upgraded != 'blank':  
-                directs = UserTotal.objects.filter(direct=upline_user)
+                directs = UserTotal.objects.filter(direct=upline_user, active=True)
                 if user.referral == upline_user.username:
                     direct = True
                 else:
