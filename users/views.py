@@ -221,16 +221,19 @@ class UserDashboardView(LoginRequiredMixin, ListView):
         recent = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-created_at')[:10]
         large = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-amount')[:10]
 
-        plan_ends = levelp.activated_at
-        if plan_ends != 'gone' and plan_ends != 'not active':
-            date_diff = plan_ends - timezone.now()
-        else:
-            date_diff = 'blank'
-        if date_diff != 'blank':
-            total_days = levelp.level.expiration_period * 30
-            rate = levelp.level.return_amount/total_days
-            return_total = -(rate*date_diff.days)
-        if return_total <= 0:
+        try:
+            plan_ends = levelp.activated_at
+            if plan_ends != 'gone' and plan_ends != 'not active':
+                date_diff = plan_ends - timezone.now()
+            else:
+                date_diff = 'blank'
+            if date_diff != 'blank':
+                total_days = levelp.level.expiration_period * 30
+                rate = levelp.level.return_amount/total_days
+                return_total = -(rate*date_diff.days)
+            if return_total <= 0:
+                return_total = 0
+        except Exception as e:
             return_total = 0
         
         context["amount"] = levelp
