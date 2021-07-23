@@ -11,6 +11,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.conf.urls import url
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from cryptopay import urls as cryptocurrency_payment_urls
 from debug_toolbar import urls as durls
 from django.conf.urls import re_path
 from users import views
@@ -43,6 +44,7 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls")),
     path("api/token/", TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path("api/token/refresh/", TokenRefreshView.as_view(), name='token_refresh'),
+    url(r'^crypto/', include(cryptocurrency_payment_urls)),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

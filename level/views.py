@@ -428,8 +428,9 @@ def activation(request):
                 usec.save()
             else:
                 message = "You dont have enough service balance"
+                title = 'Please check the error'
+                return render(request,"level/sorry.html", {'title': title, 'message': message})
             title = 'Thankyou!'
-                # message = 'Your activation for ${} is in pending, please wait for 24-48 hrs for activation'.format(amount)
             return render(request,"level/thankyou.html", {'title': title, 'message': message})
     return render(request,"level/level_join.html", {'packages': packages, 'acta': acta, 'actp': actp})
 
