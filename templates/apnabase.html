@@ -165,6 +165,36 @@
             </div>
         </div>
     </section>
+    <style type="text/css">
+        @media screen and (min-width: 480px) {
+            .flagw {
+                position: fixed;
+                top: 2%;
+                left: 1%;
+                width: 60px;
+                z-index: 1000;
+                display: block;
+            }
+            .flagm {
+                display:none;
+            }
+        }
+        @media screen and (max-width: 479px) {
+            .flagm {
+                position: fixed;
+                top: 3%;
+                left: 59%;
+                width: 20%;
+                z-index: 1000;
+                display:block;
+            }
+            .flagw {
+                display:none;
+            }
+        }
+    </style>
+    <img src="https://acegif.com/wp-content/uploads/british-flag.gif" class="flagw">
+    <img src="https://acegif.com/wp-content/uploads/british-flag.gif" class="flagm">
     <section class='registelogin-sec'>
         <div class='container'>
             <div class='row'>
