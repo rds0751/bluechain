@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^~withdrawals/$', views.neft, name='neft'),
     url(r'^withdrawals/$', views.withdrawals, name='withdrawals'),
     url(r'^ids/$', views.ids, name='ids'),
+    url(r'^reports/$', views.reports, name='reports'),
     url(r'^activations/$', views.activations, name='activations'),
     url(r'^activations/(?P<id>[\w.@+-]+)/$', views.activation, name='activation'),
     url(r'^withdrawals/(?P<id>[\w.@+-]+)/$', views.withdrawal, name='withdrawal'),

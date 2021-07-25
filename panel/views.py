@@ -26,6 +26,7 @@ from users.models import User
 from kyc.models import ImageUploadModel
 import random
 from level.models import Activation, LevelIncomeSettings, UserTotal
+import csv
 
 @staff_member_required
 def home(request):
@@ -169,6 +170,34 @@ def ids(request):
             pass
         x.directs = UserTotal.objects.filter(direct=x.user).count()
     return render(request, 'panel/ids.html', {'w': w})
+
+@staff_member_required
+def reports(request):
+    if request.method == 'POST':
+        fromm = request.POST.get('from')
+        date = datetime.datetime.strptime(fromm, '%Y-%m-%d')
+        too = request.POST.get('to')
+        date = datetime.datetime.strptime(too, '%Y-%m-%d')
+        w = UserTotal.objects.filter(active=True, activated_at__range=(fromm, too)).order_by('-created_at')
+        for x in w:
+            try:
+                x.user = User.objects.get(username=x.user)
+            except Exception as e:
+                pass
+            try:
+                x.user.referral = User.objects.get(username=x.user.referral)
+            except Exception as e:
+                x.user.referral = User.objects.get(username='IPAY999999')
+            x.directs = UserTotal.objects.filter(direct=x.user).count()
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment;filename=report.csv'
+        writer = csv.writer(response)
+        field_names = ['Name', 'User ID', 'Amount', 'Mobile', 'Upline ID', 'Upline Name', 'Directs']
+        writer.writerow(field_names)
+        for obj in w:
+            writer.writerow([obj.user.name, obj.user.username, obj.level.amount, obj.user.mobile, obj.user.referral.username, obj.user.referral.name, obj.directs])
+        return response
+    return render(request, 'panel/reports.html')
 
 def activate(user, amount):
     def userjoined(user):
