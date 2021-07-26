@@ -202,7 +202,7 @@ def reports(request):
 def activate(user, amount):
     def userjoined(user):
         try:
-            user = UserTotal.objects.get(user=str(user))
+            user = UserTotal.objects.get(user=str(user), active=True)
         except Exception as e:
             user = 'blank'
         print(user, '---------------')
@@ -217,8 +217,8 @@ def activate(user, amount):
     user_id = User.objects.get(username=str(user))
     userjoined = userjoined(user)
     print(userjoined)
-    if amount < 1:
-        if userjoined:
+    if True:
+        if not userjoined:
         # if True:
             userwallet = WalletHistory()
             userwallet.user_id = user_id
