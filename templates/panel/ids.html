@@ -28,6 +28,7 @@
                                     <th>Activation Date</th>
                                     <th>Directs</th>
                                     <th>Wallet</th>
+                                    <th>CCM Pool</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,6 +43,7 @@
                                     <td>{{ x.activated_at|date:'Y-m-d h:i A' }}</td>
                                     <td>{{ x.directs }}</td>
                                     <td>{{ x.user.wallet }}</td>
+                                    <td>{{ x.ccm_pool }} Months</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

@@ -169,6 +169,25 @@ def ids(request):
         except Exception as e:
             pass
         x.directs = UserTotal.objects.filter(direct=x.user).count()
+        start_date = x.activated_at
+        end_date = x.activated_at + datetime.timedelta(days=7)
+        directs = UserTotal.objects.filter(direct=x.user, activated_at__range=(start_date, end_date))
+        ccm = 0
+        for y in directs:
+            ccm += y.level.amount
+        ccm_pool = 0
+        if ccm >= 10000:
+            ccm_pool = 12
+        if ccm >= 20000:
+            ccm_pool = 24
+        if ccm >= 30000:
+            ccm_pool = 36
+        if ccm >= 40000:
+            ccm_pool = 48
+        if ccm >= 50000:
+            ccm_pool = 60
+        x.ccm_pool = ccm_pool
+
     return render(request, 'panel/ids.html', {'w': w})
 
 @staff_member_required
