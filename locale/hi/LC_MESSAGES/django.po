@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-20 11:16+0530\n"
+"POT-Creation-Date: 2021-07-26 14:53+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,59 +18,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: aboota/settings.py:206
+#: aboota/settings.py:207
 msgid "English"
 msgstr ""
 
-#: aboota/settings.py:207
+#: aboota/settings.py:208
 msgid "French"
 msgstr ""
 
-#: aboota/settings.py:208
+#: aboota/settings.py:209
 msgid "Araibic"
 msgstr ""
 
-#: aboota/settings.py:209
+#: aboota/settings.py:210
 msgid "Viet Nam"
 msgstr ""
 
-#: aboota/settings.py:210
+#: aboota/settings.py:211
 msgid "Burmese"
 msgstr ""
 
-#: aboota/settings.py:211
+#: aboota/settings.py:212
 msgid "Hindi"
 msgstr ""
 
-#: aboota/settings.py:212
+#: aboota/settings.py:213
 msgid "Irish"
 msgstr ""
 
-#: aboota/settings.py:213
+#: aboota/settings.py:214
 msgid "croatian"
 msgstr ""
 
-#: aboota/settings.py:214
+#: aboota/settings.py:215
 msgid "Italian"
 msgstr ""
 
-#: aboota/settings.py:215
+#: aboota/settings.py:216
 msgid "Spanish"
 msgstr ""
 
-#: aboota/settings.py:216
+#: aboota/settings.py:217
 msgid "Swedish"
 msgstr ""
 
-#: aboota/settings.py:217
+#: aboota/settings.py:218
 msgid "Indonesian"
 msgstr ""
 
-#: aboota/settings.py:218
+#: aboota/settings.py:219
 msgid "Thai"
 msgstr ""
 
-#: aboota/settings.py:219
+#: aboota/settings.py:220
 msgid "Japanese"
 msgstr ""
 
@@ -369,52 +369,52 @@ msgid ""
 "Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
 msgstr ""
 
-#: templates/account/signup.html:48
+#: templates/account/signup.html:50
 msgid "Sponsor ID"
 msgstr ""
 
-#: templates/account/signup.html:56
+#: templates/account/signup.html:58
 msgid "Sponsor Name"
 msgstr ""
 
-#: templates/account/signup.html:63
+#: templates/account/signup.html:65
 msgid "Full Name"
 msgstr ""
 
-#: templates/account/signup.html:70 templates/users/user_form.html:58
-#: templates/users/user_form.html:118
+#: templates/account/signup.html:72 templates/users/user_form.html:58
+#: templates/users/user_form.html:124
 msgid "Mobile"
 msgstr ""
 
-#: templates/account/signup.html:79
+#: templates/account/signup.html:81
 msgid "Email ID"
 msgstr ""
 
-#: templates/account/signup.html:92
+#: templates/account/signup.html:94
 msgid "Create Password"
 msgstr ""
 
-#: templates/account/signup.html:101
+#: templates/account/signup.html:103
 msgid "Confirm Password"
 msgstr ""
 
-#: templates/account/signup.html:120
+#: templates/account/signup.html:122
 msgid "Terms & Conditions"
 msgstr ""
 
-#: templates/account/signup.html:125
+#: templates/account/signup.html:127
 msgid "Register"
 msgstr ""
 
-#: templates/account/signup.html:131
+#: templates/account/signup.html:133
 msgid "Already have an account?"
 msgstr ""
 
-#: templates/account/signup.html:131
+#: templates/account/signup.html:133
 msgid "login"
 msgstr ""
 
-#: templates/account/signup.html:131
+#: templates/account/signup.html:133
 msgid "here."
 msgstr ""
 
@@ -611,8 +611,8 @@ msgid ""
 "%(message_recipient)s."
 msgstr ""
 
-#: templates/panel/users.html:14 users/apps.py:7
-msgid "Users"
+#: templates/panel/users.html:14
+msgid "All Users"
 msgstr ""
 
 #: templates/partial.html:15 templates/users/user_form.html:26
@@ -624,7 +624,7 @@ msgid "Top up"
 msgstr ""
 
 #: templates/partial.html:38
-msgid "Purchase Prime"
+msgid "Purchase Package"
 msgstr ""
 
 #: templates/partial.html:48
@@ -680,11 +680,11 @@ msgstr ""
 msgid "Change Languange"
 msgstr ""
 
-#: templates/partial.html:344
+#: templates/partial.html:343
 msgid "Download App"
 msgstr ""
 
-#: templates/partial.html:429
+#: templates/partial.html:428
 msgid "Lock screen"
 msgstr ""
 
@@ -899,18 +899,18 @@ msgid "Dashboard"
 msgstr ""
 
 #: templates/users/user_dashboard.html:17
-msgid "Latest News"
+msgid "Traditional Income"
 msgstr ""
 
-#: templates/users/user_dashboard.html:29
+#: templates/users/user_dashboard.html:30
 msgid "Wallet Balance"
 msgstr ""
 
-#: templates/users/user_dashboard.html:40
+#: templates/users/user_dashboard.html:42
 msgid "My Package"
 msgstr ""
 
-#: templates/users/user_dashboard.html:48
+#: templates/users/user_dashboard.html:52
 msgid "Total Business"
 msgstr ""
 
@@ -934,7 +934,7 @@ msgstr ""
 msgid "Facebook Profile"
 msgstr ""
 
-#: templates/users/user_detail.html:57 templates/users/user_form.html:167
+#: templates/users/user_detail.html:57 templates/users/user_form.html:173
 msgid "Update Profile"
 msgstr ""
 
@@ -966,35 +966,35 @@ msgstr ""
 msgid "Edit Profile"
 msgstr ""
 
-#: templates/users/user_form.html:64 templates/users/user_form.html:125
+#: templates/users/user_form.html:64 templates/users/user_form.html:131
 msgid "Nominee"
 msgstr ""
 
-#: templates/users/user_form.html:70 templates/users/user_form.html:132
+#: templates/users/user_form.html:70 templates/users/user_form.html:138
 msgid "Nominee Relation"
 msgstr ""
 
-#: templates/users/user_form.html:104
+#: templates/users/user_form.html:110
 msgid "Name"
 msgstr ""
 
-#: templates/users/user_form.html:111
+#: templates/users/user_form.html:117
 msgid "Email"
 msgstr ""
 
-#: templates/users/user_form.html:139
+#: templates/users/user_form.html:145
 msgid "Address"
 msgstr ""
 
-#: templates/users/user_form.html:146
+#: templates/users/user_form.html:152
 msgid "City"
 msgstr ""
 
-#: templates/users/user_form.html:153
+#: templates/users/user_form.html:159
 msgid "State"
 msgstr ""
 
-#: templates/users/user_form.html:160
+#: templates/users/user_form.html:166
 msgid "Upload Profile Picture"
 msgstr ""
 
@@ -1053,4 +1053,8 @@ msgstr ""
 
 #: users/admin.py:73
 msgid "Groups"
+msgstr ""
+
+#: users/apps.py:7
+msgid "Users"
 msgstr ""

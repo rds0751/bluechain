@@ -28,7 +28,13 @@
                                     <a href="/panel/users/"><i class="ion-ios-people-outline"></i> All Users</a>
                                 </li>
                                 <li class="nav-item {% if '/panel/users/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/panel/ids/"><i class="ion-ios-information-outline"></i> All IDs</a>
+                                    <a href="/panel/ids/"><i class="ion-ios-information-outline"></i>IDs</a>
+                                </li>
+                                <li class="nav-item {% if '/panel/users/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/panel/ids/"><i class="ion-ios-information-outline"></i>KYCs</a>
+                                </li>
+                                <li class="nav-item {% if '/panel/users/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/panel/ids/"><i class="ion-ios-information-outline"></i>Bank Details</a>
                                 </li>
                                 <li class="nav-item {% if '/panel/users/' in request.get_full_path %}active{% endif %}">
                                     <a href="/panel/reports/"><i class="ion-ios-flower-outline"></i> Reports/Excel</a>
