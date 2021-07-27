@@ -143,6 +143,40 @@ def withdrawals(request):
     return render(request, 'panel/withdrawals.html', {'w': w})
 
 @staff_member_required
+def kycs(request):
+    w = ImageUploadModel.objects.all()
+    if request.method == 'POST':
+        if 'approve' in request.POST:
+            x = ImageUploadModel.objects.get(user=request.POST.get('user'))
+            x.approved = True
+            x.save()
+        if 'reject' in request.POST:
+            x = ImageUploadModel.objects.get(user=request.POST.get('user'))
+            x.approved = False
+            x.save()
+        if 'delete' in request.POST:
+            x = ImageUploadModel.objects.get(user=request.POST.get('user'))
+            x.delete()
+    return render(request, 'panel/kycs.html', {'w': w})
+
+@staff_member_required
+def bankdetails(request):
+    w = PaymentOption.objects.all()
+    if request.method == 'POST':
+        if 'approve' in request.POST:
+            x = PaymentOption.objects.get(user=request.POST.get('user'))
+            x.status = True
+            x.save()
+        if 'reject' in request.POST:
+            x = PaymentOption.objects.get(user=request.POST.get('user'))
+            x.status = False
+            x.save()
+        if 'delete' in request.POST:
+            x = PaymentOption.objects.get(user=request.POST.get('user'))
+            x.delete()
+    return render(request, 'panel/bankdetails.html', {'w': w})
+
+@staff_member_required
 def activations(request):
     w = Activation.objects.all().order_by('-created_at')
     for x in w:
