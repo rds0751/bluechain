@@ -19,9 +19,9 @@
                                 <tr>
                                     <th class="text-center"></th>
                                     <th>User ID</th>
-                                    <th>User</th>
-                                    <th>Upline Name</th>
+                                    <th>User Name</th>
                                     <th>Upline ID</th>
+                                    <th>Upline Name</th>
                                     <th>Status</th>
                                     <th class="hidden-xs">Package</th>
                                     <th>Date</th>
@@ -34,8 +34,8 @@
                                     <td class="text-center">{{ forloop.counter }}</td>
                                     <td class="font-500">{{ x.user.username }}</td>
                                     <td class="font-500">{{ x.user.name }}</td>
+                                    <td><i style="color: {% if x.user.referral.top.level.amount > 0 %}green {% else %}red{% endif %}" class="ion-cube"></i>{{ x.user.referral.username }}</td>
                                     <td>{{ x.user.referral.name }}</td>
-                                    <td>{{ x.user.referral.username }}</td>
                                     <td>{{ x.status }}</td>
                                     <td class="hidden-xs">{{ x.amount }}</td>
                                     <td>{{ x.created_at|date:'Y-m-d h:i A' }}</td>
@@ -48,8 +48,10 @@
                                         <form onSubmit="if(!confirm('Are you sure?')){return false;}" style="float: right;" action="/panel/activations/{{ x.id }}/" method="POST">
                                             {% csrf_token %}
                                             <div class="btn-group">
-                                                <input type="hidden" value='true' name="delete">
-                                                <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Delete Request"><i style="color: red" class="ion-close-circled"></i></button>
+                                                <input type="hidden" name="action" value="reject">
+                                                <input type="hidden" name="comment" value="Rejected from outside">
+                                                <input type="hidden" name="id" value="{{x.id}}">
+                                                <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Reject Request"><i style="color: red" class="ion-close-circled"></i></button>
                                             </div>
                                         </form>
                                     </td>

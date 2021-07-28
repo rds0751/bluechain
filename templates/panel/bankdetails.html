@@ -52,15 +52,6 @@
                                                 <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Reject"><i style="color: yellow" class="ion-minus-circled"></i></button>
                                             </div>
                                         </form>
-                                        <form onSubmit="if(!confirm('Are you sure?')){return false;}" style="float: right;" method="POST">
-                                            {% csrf_token %}
-                                            <div class="btn-group">
-                                                <input type="hidden" name="user" value="{{x.user}}">
-                                                <input type="hidden" name="delete">
-                                                <input type="hidden" value='true' name="delete">
-                                                <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Delete Details"><i style="color: red" class="ion-close-circled"></i></button>
-                                            </div>
-                                        </form>
                                     </td>
                                 </tr>
                                 {% endfor %}

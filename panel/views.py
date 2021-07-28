@@ -66,6 +66,10 @@ def users(request):
             x.referral = User.objects.get(username=x.referral)
         except Exception as e:
             x.referral = x.referral
+        try:
+            x.top = UserTotal.objects.get(user=x.username)
+        except Exception as e:
+            x.top = 0
     return render(request, 'panel/users.html', {'u': u, 'q': q})
 
 @staff_member_required
@@ -124,6 +128,11 @@ def user(request, id):
         k.imageAF = file1
         k.imageAB = file2
         k.save()
+    if request.method == "POST" and 'block' in request.POST:
+        user = User.objects.get(id=id)
+        user.is_active = False
+        user.save()
+        return redirect('/panel/users/')
     
     u = User.objects.get(id=id)
     try:
@@ -178,7 +187,7 @@ def bankdetails(request):
 
 @staff_member_required
 def activations(request):
-    w = Activation.objects.all().order_by('-created_at')
+    w = Activation.objects.all().order_by('-created_at')[:200]
     for x in w:
         try:
             x.user = User.objects.get(username=x.user)
@@ -188,11 +197,21 @@ def activations(request):
             x.user.referral = User.objects.get(username=x.user.referral)
         except Exception as e:
             pass
+        try:
+            x.user.referral.top = UserTotal.objects.get(user=x.user.referral)
+        except Exception as e:
+            pass
     return render(request, 'panel/activations.html', {'w': w})
 
 @staff_member_required
 def ids(request):
-    w = UserTotal.objects.filter(active=True).order_by('-created_at')
+    w = UserTotal.objects.filter(active=True).order_by('-created_at')[:200]
+    if request.method == 'POST':
+        fromm = request.POST.get('from')
+        date = datetime.datetime.strptime(fromm, '%Y-%m-%d')
+        too = request.POST.get('to')
+        date = datetime.datetime.strptime(too, '%Y-%m-%d')
+        w = UserTotal.objects.filter(active=True, activated_at__range=(fromm, too)).order_by('-created_at')
     for x in w:
         try:
             x.user = User.objects.get(username=x.user)
@@ -203,6 +222,14 @@ def ids(request):
         except Exception as e:
             pass
         x.directs = UserTotal.objects.filter(direct=x.user).count()
+        try:
+            x.kyc = ImageUploadModel.objects.get(user=x.user)
+        except Exception as e:
+            pass
+        try:
+            x.bank = PaymentOption.objects.get(user=x.user)
+        except Exception as e:
+            pass
         start_date = x.activated_at
         end_date = x.activated_at + datetime.timedelta(days=7)
         directs = UserTotal.objects.filter(direct=x.user, activated_at__range=(start_date, end_date))
@@ -223,34 +250,6 @@ def ids(request):
         x.ccm_pool = ccm_pool
 
     return render(request, 'panel/ids.html', {'w': w})
-
-@staff_member_required
-def reports(request):
-    if request.method == 'POST':
-        fromm = request.POST.get('from')
-        date = datetime.datetime.strptime(fromm, '%Y-%m-%d')
-        too = request.POST.get('to')
-        date = datetime.datetime.strptime(too, '%Y-%m-%d')
-        w = UserTotal.objects.filter(active=True, activated_at__range=(fromm, too)).order_by('-created_at')
-        for x in w:
-            try:
-                x.user = User.objects.get(username=x.user)
-            except Exception as e:
-                pass
-            try:
-                x.user.referral = User.objects.get(username=x.user.referral)
-            except Exception as e:
-                x.user.referral = User.objects.get(username='IPAY999999')
-            x.directs = UserTotal.objects.filter(direct=x.user).count()
-        response = HttpResponse(content_type='text/csv')
-        response['Content-Disposition'] = 'attachment;filename=report.csv'
-        writer = csv.writer(response)
-        field_names = ['Name', 'User ID', 'Amount', 'Mobile', 'Upline ID', 'Upline Name', 'Directs']
-        writer.writerow(field_names)
-        for obj in w:
-            writer.writerow([obj.user.name, obj.user.username, obj.level.amount, obj.user.mobile, obj.user.referral.username, obj.user.referral.name, obj.directs])
-        return response
-    return render(request, 'panel/reports.html')
 
 def activate(user, amount):
     def userjoined(user):

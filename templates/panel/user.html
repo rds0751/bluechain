@@ -120,12 +120,12 @@
                                                 <div class="col-xs-6">
                                                     <label for="exampleInputName1">Document Front</label>
                                                     <input type="file" name="front" class="form-control" id="exampleInputName1" value="{{ b.name }}" />
-                                                    <img src="{{k.imageAF.url}}" style="width: 100%">
+                                                    <img src="{% if k.imageAF %}{{k.imageAF.url}}{% endif %}" style="width: 100%">
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <label for="exampleInputName2">Document Back</label>
                                                     <input type="file" name="back" value="{{ b.account_number }}" class="form-control" id="exampleInputName2" />
-                                                    <img src="{{k.imageAB.url}}" style="width: 100%">
+                                                    <img src="{% if k.imageAB %}{{k.imageAB.url}}{% endif %}" style="width: 100%">
                                                 </div>
                                                 <div class="col-xs-6">
                                                 	<br>

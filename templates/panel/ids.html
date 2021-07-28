@@ -10,13 +10,25 @@
                 <!-- Dynamic Table Full -->
                 <div class="card">
                     <div class="card-header">
-                        <h4>All IDs</h4>
+                        <h4>Active IDs</h4>
+                        <ul class="card-actions">
+                            <li>
+                                <!-- Print Page functionality is initialized in App() -> uiHelperPrint() -->
+                                <button type="button" onclick="App.initHelper( 'print-page' );"><i class="ion-printer m-r-xs"></i> Print Data</button>
+                                <button onclick="exportData()"><i class="ion-ios-download m-r-xs"></i> Download Data</button>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="card-block"><!-- 
-                        <input type="date" id="date" value="{{w.0.activated_at.date|date:"Y-m-d" }}">
-                        <input type="date" id="date" value="{{w.0.activated_at.date|date:"Y-m-d" }}"> -->
-                        <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
-                        <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+                    <div class="card-block" style="overflow: auto;">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <label>From</label>
+                            <input type="date" name="from" placeholder="From">
+                            <label>To</label>
+                            <input type="date" name="to" placeholder="To">
+                            <input type="submit" name="">
+                        </form>
+                        <table id="tblStocks" class="table table-bordered table-striped table-vcenter js-dataTable-full">
                             <thead>
                                 <tr>
                                     <th class="text-center"></th>
@@ -29,6 +41,8 @@
                                     <th>Directs</th>
                                     <th>Wallet</th>
                                     <th>CCM Pool</th>
+                                    <th>KYC</th>
+                                    <th>Bank</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,6 +58,8 @@
                                     <td>{{ x.directs }}</td>
                                     <td>{{ x.user.wallet }}</td>
                                     <td>{{ x.ccm_pool }} Months</td>
+                                    <td>{% if x.kyc.approved == True %}Approved{% elif x.kyc.approved == False %}Rejected{% elif x.kyc.approved == None %}Pending{% else %}None{% endif %}</td>
+                                    <td>{% if x.bank.status == True %}Approved{% elif x.bank.status == False %}Rejected{% elif x.bank.status == None %}Pending{% else %}None{% endif %}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -68,6 +84,67 @@
 {% block scripts %}
 <!-- Page JS Plugins -->
 <script src="{% static 'appUI/js/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script type="text/javascript">
+    function exportData(){
+    /* Get the HTML data using Element by Id */
+    var table = document.getElementById("tblStocks");
+ 
+    /* Declaring array variable */
+    var rows =[];
+ 
+      //iterate through rows of table
+    for(var i=0,row; row = table.rows[i];i++){
+        //rows would be accessed using the "row" variable assigned in the for loop
+        //Get each cell value/column from the row
+        column1 = row.cells[0].innerText;
+        column2 = row.cells[1].innerText;
+        column3 = row.cells[2].innerText;
+        column4 = row.cells[3].innerText;
+        column5 = row.cells[4].innerText;
+        column6 = row.cells[5].innerText;
+        column7 = row.cells[6].innerText;
+        column8 = row.cells[7].innerText;
+        column9 = row.cells[8].innerText;
+        column10 = row.cells[9].innerText;
+        column11 = row.cells[10].innerText;
+        column12 = row.cells[11].innerText;
+
+    /* add a new records in the array */
+        rows.push(
+            [
+                column1,
+                column2,
+                column3,
+                column4,
+                column5,
+                column6,
+                column7,
+                column8,
+                column9,
+                column10,
+                column11,
+                column12
+            ]
+        );
+ 
+        }
+        csvContent = "data:text/csv;charset=utf-8,";
+         /* add the column delimiter as comma(,) and each row splitted by new line character (\n) */
+        rows.forEach(function(rowArray){
+            row = rowArray.join(",");
+            csvContent += row + "\r\n";
+        });
+ 
+        /* create a hidden <a> DOM node and set its download attribute */
+        var encodedUri = encodeURI(csvContent);
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "Stock_Price_Report.csv");
+        document.body.appendChild(link);
+         /* download the data file named "Stock_Price_Report.csv" */
+        link.click();
+}
+</script>
 
 <!-- Page JS Code -->
 <script type="text/javascript">
