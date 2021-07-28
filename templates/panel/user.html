@@ -131,7 +131,7 @@
                                                 	<br>
 	                                                <p>
 	                                                    <label class="css-input switch switch-info">
-	                                                    	<input type="checkbox" checked="" name=verified>
+	                                                    	<input type="checkbox" {% if k.approved %}checked{% endif %} name=verified>
 	                                                    	<span></span> Verified
 	                                                    </label>
 	                                                </p>
@@ -183,7 +183,7 @@
                                                 	<br>
 	                                                <p>
 	                                                    <label class="css-input switch switch-info">
-	                                                    	<input type="checkbox" checked="" name=verified>
+	                                                    	<input type="checkbox" {% if b.status %}checked{% endif %} name=verified>
 	                                                    	<span></span> Verified
 	                                                    </label>
 	                                                </p>

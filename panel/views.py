@@ -110,6 +110,11 @@ def user(request, id):
             p.ifsc = request.POST.get('ifsc')
             p.bank = request.POST.get('bank')
             p.mt5_account = request.POST.get('mt5_account')
+            verified = request.POST.get('verified')
+            if verified == 'on':
+                p.status = True
+            else:
+                p.status = False
             p.save()
         else:
             message = 'Please confirm account number'
@@ -124,9 +129,15 @@ def user(request, id):
                 k = ImageUploadModel()
         file1 = request.FILES.get('front')
         file2 = request.FILES.get('back')
+        verified = request.POST.get('verified')
         k.user = request.POST.get('userid')
-        k.imageAF = file1
-        k.imageAB = file2
+        if request.FILES:
+            k.imageAF = file1
+            k.imageAB = file2
+        if verified == 'on':
+            k.approved = True
+        else:
+            k.approved = False
         k.save()
     if request.method == "POST" and 'block' in request.POST:
         user = User.objects.get(id=id)
