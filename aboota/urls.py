@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^tickets/', include('ticket.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    path('accounts/login/', views.customlogin, name='customlogin'),
     path('accounts/', include("allauth.urls")),
     url(r'^kyc/', include('kyc.urls')),
     path('__debug__/', include(durls), name='debug_toolbar'),

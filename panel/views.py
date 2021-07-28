@@ -629,7 +629,7 @@ def neft(request):
 def guestlogin(request):
     """Log in a user without requiring credentials with user object"""
     if request.method == 'POST':
-        user = request.POST.get('login')
+        user = request.POST.get('username')
         user = User.objects.get(username=user)
     login(request, user, backend=settings.AUTHENTICATION_BACKENDS[0])
     return redirect('/users/')

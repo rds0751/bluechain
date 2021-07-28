@@ -21,23 +21,20 @@
                                 {% if request.user.is_superuser %}
                                 <li class="nav-item nav-drawer-header">Admin</li>
 
-                                <li class="nav-item {% if '/panel/' in request.get_full_path %}active{% endif %}">
+                                <li class="nav-item">
                                     <a href="/panel/"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
                                 </li>
                                 <li class="nav-item {% if '/panel/users/' in request.get_full_path %}active{% endif %}">
                                     <a href="/panel/users/"><i class="ion-ios-people-outline"></i> All Users</a>
                                 </li>
                                 <li class="nav-item {% if '/panel/users/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/panel/ids/"><i class="ion-ios-information-outline"></i>IDs</a>
+                                    <a href="/panel/ids/"><i class="ion-ios-information-outline"></i>Active IDs</a>
                                 </li>
                                 <li class="nav-item {% if '/panel/kycs/' in request.get_full_path %}active{% endif %}">
                                     <a href="/panel/kycs/"><i class="ion-ios-bookmarks-outline"></i>KYCs</a>
                                 </li>
                                 <li class="nav-item {% if '/panel/bankdetails/' in request.get_full_path %}active{% endif %}">
                                     <a href="/panel/bankdetails/"><i class="ion-ios-paw-outline"></i>Bank Details</a>
-                                </li>
-                                <li class="nav-item {% if '/panel/users/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/panel/reports/"><i class="ion-ios-flower-outline"></i> Reports/Excel</a>
                                 </li>
                                 <li class="nav-item {% if '/panel/withdrawals/' in request.get_full_path %}active{% endif %}">
                                     <a href="/panel/withdrawals/"><i class="ion-ios-paperplane-outline"></i>MT5 Withdrawals</a>
@@ -71,11 +68,11 @@
                             <span class="icon-bar"></span>
                         </button>
                         <span class="navbar-page-title">
-            <img src="{% static 'download.png' %}" style="
-                width: 100px;
-                margin-top: 10px;
-            ">
-        </span>
+                            <img src="{% static 'download.png' %}" style="
+                                width: 100px;
+                                margin-top: 10px;
+                            ">
+                        </span>
                     </div>
 
                     <div class="collapse navbar-collapse" id="header-navbar-collapse">
