@@ -451,7 +451,7 @@ def payment(request):
     txnid = generateid()
     w = WalletHistory()
     w.user_id = user.username
-    w.amount = amount
+    w.amount = amount/75
     w.comment = 'Money added using razorpay'
     w.txnid = txnid
     w.save()
