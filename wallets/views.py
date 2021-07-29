@@ -479,7 +479,6 @@ def paymentoptions(request):
                     model.ifsc = ifsc
                     model.mt5_account = upi_id
                     model.user = user.username
-                    model.name = user.name
                     model.status = None
                     model.bank = bank
                     model.save()
@@ -490,7 +489,6 @@ def paymentoptions(request):
                     model.ifsc = ifsc
                     model.mt5_account = upi_id
                     model.user = user.username
-                    model.name = user.name
                     model.status = None
                     model.bank = bank
                     model.save()
