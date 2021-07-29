@@ -451,7 +451,7 @@ def payment(request):
     txnid = generateid()
     w = WalletHistory()
     w.user_id = user.username
-    w.amount = amount/75
+    w.amount = amount/75 - 0.02*amount/75
     w.comment = 'Money added using razorpay'
     w.txnid = txnid
     w.save()
@@ -470,7 +470,7 @@ def payment_success(request):
             w.comment += 'success with {}'.format(txnid)
             w.save()
             u = User.objects.get(username=w.user_id)
-            u.c += w.amount/75 - 0.02*w.amount/75
+            u.c += w.amount
             u.save()
         else:
             w.type = 'credit'
