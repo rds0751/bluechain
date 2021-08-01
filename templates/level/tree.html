@@ -133,6 +133,7 @@
                               <th style="color: white">Mobile</th>
                               <th style="color: white">Plan</th>
                               <th style="color: white">My Earning</th>
+                              <th style="color: white">Details</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -144,6 +145,7 @@
                               <td style="border-left: solid 1px white; border-right: solid 1px white;"><a href="tel:{{ usern.mobile }}">{{ usern.mobile }}</a></td>
                               <td style="border-left: solid 1px white; border-right: solid 1px white;">$ {{ shopn.level.amount }}</td>
                               <td>$ {% mul shopn.level.amount 0.20 as shopnres %}{{ shopnres }}</td>
+                              <td><a href="/level/team/{{ usern.username }}/1/">View</a></td>
                               {% endfor %}
                           </tbody>
                         </table>
