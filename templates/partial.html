@@ -229,9 +229,9 @@
         </i>{% trans 'Customer Support' %}
       </a>
     </div>
-    <div {% if request.get_full_path == '/accounts/logout/' %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
-      <a class="mdc-drawer-link" {% if request.get_full_path == '/accounts/logout/' %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="/accounts/logout/">
-        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">queue_play_next
+    <div {% if request.get_full_path == '/accounts/logout/' %} style='z-index: 10000000000000000; width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='z-index: 10000000000000000; width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
+      <a class="mdc-drawer-link" style="z-index: 10000000000000000;" {% if request.get_full_path == '/accounts/logout/' %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="/accounts/logout/">
+        <i style="z-index: 10000000000000000;" class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">queue_play_next
         </i>{% trans 'Logout' %}
       </a>
     </div>
