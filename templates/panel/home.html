@@ -82,6 +82,52 @@
                         </a>
                     </div>
                     <!-- .col-sm-6 -->
+
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="card bg-green bg-inverse" href="javascript:void(0)">
+                            <div class="card-block clearfix">
+                                <div class="pull-right">
+                                    <p class="h6 text-muted m-t-0 m-b-xs">Total Cash in</p>
+                                    <p class="h3 m-t-sm m-b-0">{{ tci }}</p>
+                                </div>
+                                <div class="pull-left m-r">
+                                    <span class="img-avatar img-avatar-48 bg-gray-light-o"><i class="{% if pr >= 0 %}ion-happy{% else %}ion-sad{% endif %} fa-1-5x"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- .col-sm-6 -->
+
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="card bg-orange bg-inverse" href="javascript:void(0)">
+                            <div class="card-block clearfix">
+                                <div class="pull-right">
+                                    <p class="h6 text-muted m-t-0 m-b-xs">Total Cash out</p>
+                                    <p class="h3 m-t-sm m-b-0">{{ tco }}</p>
+                                </div>
+                                <div class="pull-left m-r">
+                                    <span class="img-avatar img-avatar-48 bg-gray-light-o"><i class="{% if pr >= 0 %}ion-happy{% else %}ion-sad{% endif %} fa-1-5x"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- .col-sm-6 -->
+
+                    <div class="col-sm-6 col-lg-3">
+                        {% sub tci tco as tpr %}
+                        <a class="card {% if pr >= 0 %}bg-purple{% else %}bg-red{% endif %} bg-inverse" href="javascript:void(0)">
+                            <div class="card-block clearfix">
+                                <div class="pull-right">
+                                    <p class="h6 text-muted m-t-0 m-b-xs">Company Profit</p>
+                                    <p class="h3 m-t-sm m-b-0">{{ tpr }}</p>
+                                </div>
+                                <div class="pull-left m-r">
+                                    <span class="img-avatar img-avatar-48 bg-gray-light-o"><i class="{% if pr >= 0 %}ion-happy{% else %}ion-sad{% endif %} fa-1-5x"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- .col-sm-6 -->
                 </div>
                 <!-- .row -->
                 <!-- End stats -->

@@ -38,18 +38,26 @@ def home(request):
     mend_date = datetime.datetime.now()
     dwhs = WalletHistory.objects.filter(created_at__range=(dstart_date, dend_date))
     wwhs = WalletHistory.objects.filter(created_at__range=(wstart_date, wend_date))
+    twhsi = WalletHistory.objects.filter(comment__icontains='Prime Upgradation')
+    twhso = WalletHistory.objects.filter(comment__icontains='MT5 Transfer')
+    tci = 0
+    tco = 0
+    for x in twhsi:
+        tci += x.amount
+    for x in twhso:
+        tco += x.amount 
     ci = 0
     co = 0
     tre = 0
     for wh in wwhs:
-        if 'Shopping Wallet Topup' in wh.comment or 'spent binary id' in wh.comment:
+        if 'Prime Upgradation' in wh.comment:
             ci += wh.amount
-        elif 'NEFT' in wh.comment or 'imps' in wh.comment or 'spent on recharge' in wh.comment:
+        elif 'MT5 Transfer' in wh.comment:
             co += wh.amount
     for wh in dwhs:
-        if 'Shopping Wallet Topup' in wh.comment or 'spent binary id' in wh.comment:
+        if 'Prime Upgradation' in wh.comment:
             tre += wh.amount
-    return render(request, 'panel/home.html', {'ci': ci, 'co': co, 'tre':tre  })
+    return render(request, 'panel/home.html', {'ci': ci, 'co': co, 'tre':tre, 'tci': tci, 'tco': tco})
 
 @staff_member_required
 def users(request):
