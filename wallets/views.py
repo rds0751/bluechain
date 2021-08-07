@@ -19,6 +19,8 @@ from random import randint
 import datetime
 
 from kyc.models import ImageUploadModel
+from django.core.mail import send_mail
+from django.http import HttpResponse
 
 class SearchListView(LoginRequiredMixin, ListView):
     model = User
@@ -538,7 +540,7 @@ def neft(request):
                             model.tax = amount*5/100
                             model.status = 'pending'
                             model.name = payment_o.name
-                            model.account_number = payment_o.account_number
+                            model.account_number = payment_o.mt5_account
                             model.ifsc = payment_o.ifsc
 
                             userwallet = WalletHistory()
@@ -551,6 +553,7 @@ def neft(request):
                             userwallet.save()
                             user_id.save()
                             model.save()
+                            send_mail("hello paul", "User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@ipaymatics.com", ['partner@dibortfx.com',])
                             message = "MT5 Transfer Request Received!"
                         else:
                             message = "Not Enough Balance in Redeemable Wallet!"
