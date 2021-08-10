@@ -233,6 +233,10 @@ def ids(request):
         w = UserTotal.objects.filter(active=True, activated_at__range=(fromm, too)).order_by('-created_at')
     for x in w:
         try:
+            x.comments = Activation.objects.get(user=x.user).comments
+        except Exception as e:
+            x.comments = 'not present'
+        try:
             x.user = User.objects.get(username=x.user)
         except Exception as e:
             pass

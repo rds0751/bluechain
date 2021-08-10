@@ -553,7 +553,7 @@ def neft(request):
                             userwallet.save()
                             user_id.save()
                             model.save()
-                            send_mail("hello paul", "User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@ipaymatics.com", ['partner@dibortfx.com',])
+                            send_mail("hello", "User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@ipaymatics.com", ['partner@dibortfx.com',])
                             message = "MT5 Transfer Request Received!"
                         else:
                             message = "Not Enough Balance in Redeemable Wallet!"
