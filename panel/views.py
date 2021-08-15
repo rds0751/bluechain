@@ -62,13 +62,13 @@ def home(request):
 @staff_member_required
 def users(request):
     q = 'blank'
-    u = User.objects.all().order_by('?')[:200]
+    u = User.objects.all().order_by('?')
     if request.method == 'POST':
         q = request.POST.get('q')
-        u = User.objects.all().order_by('?')[:200]
+        u = User.objects.all().order_by('?')
         if 'q' in request.POST and len(request.POST.get('q'))>=3:
             u = User.objects.filter(username__icontains=request.POST.get('q')) or User.objects.filter(name__icontains=request.POST.get('q')) or User.objects.filter(email__icontains=request.POST.get('q')) or User.objects.filter(mobile__icontains=request.POST.get('q'))
-            u = u[:200]
+            u = u
     for x in u:
         try:
             x.referral = User.objects.get(username=x.referral)
@@ -206,7 +206,7 @@ def bankdetails(request):
 
 @staff_member_required
 def activations(request):
-    w = Activation.objects.all().order_by('-created_at')[:200]
+    w = Activation.objects.all().order_by('-created_at')
     for x in w:
         try:
             x.user = User.objects.get(username=x.user)
@@ -224,7 +224,7 @@ def activations(request):
 
 @staff_member_required
 def ids(request):
-    w = UserTotal.objects.filter(active=True).order_by('-created_at')[:200]
+    w = UserTotal.objects.filter(active=True).order_by('-created_at')
     if request.method == 'POST':
         fromm = request.POST.get('from')
         date = datetime.datetime.strptime(fromm, '%Y-%m-%d')
