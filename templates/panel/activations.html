@@ -22,7 +22,7 @@
                                     <th>User Name</th>
                                     <th>Upline ID</th>
                                     <th>Upline Name</th>
-                                    <th>Status</th>
+                                    <th class="hidden-xs">Status</th>
                                     <th>Package</th>
                                     <th>Date</th>
                                     <th class="text-center">Actions</th>
@@ -36,8 +36,8 @@
                                     <td class="font-500">{{ x.user.name }}</td>
                                     <td><i style="color: {% if x.user.referral.top.level.amount > 0 %}green {% else %}red{% endif %}" class="ion-cube"></i>{{ x.user.referral.username }}</td>
                                     <td>{{ x.user.referral.name }}</td>
-                                    <td>{{ x.status }}</td>
-                                    <td class="hidden-xs">{{ x.amount }}</td>
+                                    <td class="hidden-xs">{{ x.status }}</td>
+                                    <td >{{ x.amount }}</td>
                                     <td>{{ x.created_at|date:'Y-m-d h:i A' }}</td>
                                     <td class="text-center">
                                         <form style="float: left;" action="/panel/activations/{{ x.id }}/">
