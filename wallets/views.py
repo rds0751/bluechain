@@ -556,7 +556,7 @@ def neft(request):
                             user_id.save()
                             model.save()
                             subject = 'MT5 Transfer Request from IPAYMATICS'
-                            html_message = render_to_string('account/email/welcome.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':payment_o.mt5_account, 'amount':amount*0.95})
+                            html_message = render_to_string('account/email/ipay.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':payment_o.mt5_account, 'amount':amount*0.95})
                             plain_message = strip_tags(html_message)
                             from_email = 'support@ipaymatics.com'
                             to = 'rds0751@gmail.com'
