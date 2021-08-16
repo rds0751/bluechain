@@ -469,8 +469,9 @@ def paymentoptions(request):
         account2 = request.POST.get('account2')
         ifsc = request.POST.get('ifsc')
         upi_id = request.POST.get('upi_id')
+        upi_id2 = request.POST.get('upi_id2')
         bank = request.POST.get('bank')
-        if account1 == account2:
+        if account1 == account2 and upi_id == upi_id2:
             try:
                 user = request.user
                 try:
