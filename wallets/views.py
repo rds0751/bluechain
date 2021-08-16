@@ -561,7 +561,7 @@ def neft(request):
                             from_email = 'support@ipaymatics.com'
                             to = 'rds0751@gmail.com'
 
-                            mail.send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
+                            send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
                             url = "http://2factor.in/API/V1/99254625-e54d-11eb-8089-0200cd936042/ADDON_SERVICES/SEND/PSMS"
                             payload = "{'From': 'TFCTOR', 'Msg': 'Hello World', 'To': '7000934949,'}"
                             response = requests.request("GET", url, data=payload)
