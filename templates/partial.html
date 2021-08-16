@@ -224,7 +224,7 @@
       </div>
     </div>
     <div {% if '/soon/' in request.get_full_path %} style='width: 100%;background: #7d7c7c;margin: 0 0 0 0;border-bottom: 1px solid white;' {% else %} style='width: 100%;margin: 0 0 0 0;border-bottom: 1px solid white;' {% endif %} class="mdc-list-item mdc-drawer-item">
-      <a class="mdc-drawer-link" {% if '/soon/' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="/soon/">
+      <a class="mdc-drawer-link" {% if 'https://tawk.to/chat/5f57c9b4f0e7167d000e8ad8/1eregigo5?$_tawk_sk=611abea1e4845c37407a8793&$_tawk_tk=5361ef3366c7183df5c287adb00136b4&v=698' in request.get_full_path %} style='color: white;font-size: bold;font-weight: bold;font-size: 12px;' {% else %} style='color: white;font-size: bold;font-weight: bold;font-size: 11px;' {% endif %}  href="https://tawk.to/chat/5f57c9b4f0e7167d000e8ad8/1eregigo5?$_tawk_sk=611abea1e4845c37407a8793&$_tawk_tk=5361ef3366c7183df5c287adb00136b4&v=698">
         <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">live_help
         </i>{% trans 'Customer Support' %}
       </a>
