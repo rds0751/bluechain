@@ -528,8 +528,8 @@ def neft(request):
                 verify = False
             try:
                 if verify == True:
-                    # if amount%100 == 0:
-                    if True:
+                    if amount%100 == 0:
+                    # if True:
                         if request.user.wallet >= amount:
                             user_id.wallet = user_id.wallet - amount
                             amount = float(request.POST.get('amount'))
