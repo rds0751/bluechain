@@ -21,6 +21,8 @@ import datetime
 from kyc.models import ImageUploadModel
 from django.core.mail import send_mail
 from django.http import HttpResponse
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 class SearchListView(LoginRequiredMixin, ListView):
     model = User
