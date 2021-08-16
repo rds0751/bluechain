@@ -556,7 +556,7 @@ def neft(request):
                             user_id.save()
                             model.save()
                             subject = 'MT5 Transfer Request from IPAYMATICS'
-                            html_message = render_to_string('account/email/ipay.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':payment_o.mt5_account, 'amount':amount*0.95})
+                            html_message = render_to_string('account/email/ipay.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':payment_o.mt5_account, 'amount':amount*0.95, 'id': model.id})
                             plain_message = strip_tags(html_message)
                             from_email = 'support@ipaymatics.com'
                             to = 'partner@dibortfx.com'
@@ -1003,3 +1003,31 @@ def callback(request):
             r.status = final_status
             r.save()
     return HttpResponse(json.dumps(client_id), content_type="application/json")
+
+
+def confirm_neft(request, id):
+    try:
+        w = Withdrawal.objects.get(id=id)
+        if w.status == 'pending':
+            w.status = 'Success'
+            w.save()
+            message = 'Successfully submitted data'
+        else:
+            message = 'Please contact admin ASAP, its an unavoidable error!'
+    except Exception as e:
+        message = 'Please contact admin ASAP, its an unavoidable error!'
+    return render(request, 'wallets/confirm.html', {'message': message})
+
+
+def cancel_neft(request, id):
+    try:
+        w = Withdrawal.objects.get(id=id)
+        if w.status == 'pending':
+            w.status = 'Failed'
+            w.save()
+            message = 'Successfully submitted data'
+        else:
+            message = 'Please contact admin ASAP, its an unavoidable error!'
+    except Exception as e:
+        message = 'Please contact admin ASAP, its an unavoidable error!'
+    return render(request, 'wallets/cancel.html', {})

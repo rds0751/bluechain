@@ -12,4 +12,6 @@ urlpatterns = [
     url(r"^account/$", views.paymentoptions, name="account"),
     url(r"^mt5-transfer/$", views.neft, name="neft"),
     url(r"^recharge/callback/$", views.callback, name="callback"),
+    url(r"^cancel/(?P<id>[\w.@+-]+)/$", views.cancel_neft, name="cancel"),
+    url(r"^confirm/(?P<id>[\w.@+-]+)/$", views.confirm_neft, name="confirm"),
 ]
