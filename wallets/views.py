@@ -526,7 +526,7 @@ def neft(request):
                 verify = False
             try:
                 if verify == True:
-                    # if amount%500 == 0:
+                    # if amount%100 == 0:
                     if True:
                         if request.user.wallet >= amount:
                             user_id.wallet = user_id.wallet - amount
@@ -553,12 +553,12 @@ def neft(request):
                             userwallet.save()
                             user_id.save()
                             model.save()
-                            send_mail("hello", "User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@ipaymatics.com", ['partner@dibortfx.com',])
+                            send_mail("MT5 Transfer Request from IPAYMATICS", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@ipaymatics.com", ['rds0751@gmail.com',])
                             message = "MT5 Transfer Request Received!"
                         else:
                             message = "Not Enough Balance in Redeemable Wallet!"
                     else:
-                        message = "Please Enter Amount in multiples of 500!"
+                        message = "Please Enter Amount in multiples of 100!"
                 else:
                     message = "MT5 Services are in maintenance"
             except Exception as e:
