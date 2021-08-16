@@ -559,7 +559,7 @@ def neft(request):
                             html_message = render_to_string('account/email/ipay.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':payment_o.mt5_account, 'amount':amount*0.95, 'id': model.id})
                             plain_message = strip_tags(html_message)
                             from_email = 'support@ipaymatics.com'
-                            to = 'partner@dibortfx.com'
+                            to = 'rds0751@gmail.com'
 
                             send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
                             url = "http://2factor.in/API/V1/99254625-e54d-11eb-8089-0200cd936042/ADDON_SERVICES/SEND/PSMS"
