@@ -553,7 +553,18 @@ def neft(request):
                             userwallet.save()
                             user_id.save()
                             model.save()
-                            send_mail("MT5 Transfer Request from IPAYMATICS", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@ipaymatics.com", ['rds0751@gmail.com',])
+                            subject = 'MT5 Transfer Request from IPAYMATICS'
+                            html_message = render_to_string('account/email/welcome.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':payment_o.mt5_account, 'amount':amount*0.95})
+                            plain_message = strip_tags(html_message)
+                            from_email = 'support@ipaymatics.com'
+                            to = 'rds0751@gmail.com'
+
+                            mail.send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
+                            url = "http://2factor.in/API/V1/99254625-e54d-11eb-8089-0200cd936042/ADDON_SERVICES/SEND/PSMS"
+                            payload = "{'From': 'TFCTOR', 'Msg': 'Hello World', 'To': '7000934949,'}"
+                            response = requests.request("GET", url, data=payload)
+                            print(response.text)
+                            # send_mail("", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@ipaymatics.com", ['rds0751@gmail.com',])
                             message = "MT5 Transfer Request Received!"
                         else:
                             message = "Not Enough Balance in Redeemable Wallet!"
