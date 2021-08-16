@@ -1030,4 +1030,4 @@ def cancel_neft(request, id):
             message = 'Please contact admin ASAP, its an unavoidable error!'
     except Exception as e:
         message = 'Please contact admin ASAP, its an unavoidable error!'
-    return render(request, 'wallets/cancel.html', {})
+    return render(request, 'wallets/cancel.html', {'message': message})
