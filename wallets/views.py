@@ -7,7 +7,7 @@ from django.views.generic import DetailView, ListView, RedirectView, UpdateView,
 from django.shortcuts import render, redirect
 from users.models import User
 from .models import PaymentOption, Withdrawal
-from wallets.models import WalletHistory, Beneficiary, FundRequest
+from wallets.models import WalletHistory, Beneficiary, MetatraderAccount
 from django.shortcuts import render
 import requests
 import os
@@ -468,10 +468,8 @@ def paymentoptions(request):
         account1 = request.POST.get('account1')
         account2 = request.POST.get('account2')
         ifsc = request.POST.get('ifsc')
-        upi_id = request.POST.get('upi_id')
-        upi_id2 = request.POST.get('upi_id2')
         bank = request.POST.get('bank')
-        if account1 == account2 and upi_id == upi_id2:
+        if account1 == account2:
             try:
                 user = request.user
                 try:
@@ -506,10 +504,48 @@ def paymentoptions(request):
 
 @login_required
 def neft(request):
+    def generateid():
+        txnid = randint(1000,9999)
+        txnid = '220022{}'.format(txnid)
+        try:
+            txn = MetatraderAccount.objects.get(account=txnid, generated=True)
+        except MetatraderAccount.DoesNotExist:
+            txn = 0
+        if txn:
+            generateid()
+        else:
+            return txnid
     message = ""
     withdrawals = Withdrawal.objects.filter(user=request.user.username)
+    try:
+        mt5 = MetatraderAccount.objects.get(user=request.user.username, generated=True)
+    except Exception as e:
+        mt5 = 'blank' 
+    mt5s = MetatraderAccount.objects.filter(user=request.user.username).exclude(generated=False).count()
+    if request.method == 'POST' and 'password' in request.POST:
+        password = request.POST.get('password')
+        account = generateid()
+        mt = MetatraderAccount()
+        mt.password = password
+        mt.account = account
+        mt.user = request.user
+        mt.save()
+        user_id = request.user
+        subject = 'MT5 Account Generate Request from IPAYMATICS'
+        html_message = render_to_string('account/email/ipay-generate.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':account, 'amount':password, 'id': mt.id})
+        plain_message = strip_tags(html_message)
+        from_email = 'support@ipaymatics.com'
+        to = 'partner@dibortfx.com'
 
-    if request.method == 'POST':
+        send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
+        url = "http://2factor.in/API/V1/99254625-e54d-11eb-8089-0200cd936042/ADDON_SERVICES/SEND/PSMS"
+        payload = "{'From': 'TFCTOR', 'Msg': 'Hello World', 'To': '7000934949,'}"
+        response = requests.request("GET", url, data=payload)
+        print(response.text)
+        return redirect('/wallet/mt5-transfer/')
+
+
+    if request.method == 'POST' and 'mt5' in request.POST:
         if 'auto_neft' in request.POST:
             u = request.user
             if u.auto_neft == False:
@@ -520,7 +556,7 @@ def neft(request):
 
         if not 'auto_neft' in request.POST:
             user_id = request.user
-            amount = float(request.POST.get('amount'))
+            amount = request.user.wallet
             try:
                 payment_o = PaymentOption.objects.get(user=user_id)
                 kyc = ImageUploadModel.objects.get(user=user_id)
@@ -529,11 +565,9 @@ def neft(request):
                 verify = False
             try:
                 if verify == True:
-                    if amount%100 == 0:
-                    # if True:
+                    if True:
                         if request.user.wallet >= amount:
                             user_id.wallet = user_id.wallet - amount
-                            amount = float(request.POST.get('amount'))
                             model = Withdrawal()
                             model.user = user_id
                             model.amount = amount
@@ -578,7 +612,7 @@ def neft(request):
             except Exception as e:
                 message = "Error 500 {}".format(e)
 
-    return render(request, 'users/mt5.html', {'message': message, 'withdrawals': withdrawals})
+    return render(request, 'users/mt5.html', {'message': message, 'withdrawals': withdrawals, 'mt5': mt5, 'mt5s': mt5s})
 
 @login_required
 def history(request):
@@ -1005,6 +1039,33 @@ def callback(request):
             r.save()
     return HttpResponse(json.dumps(client_id), content_type="application/json")
 
+
+def confirm_generate(request, id):
+    try:
+        w = MetatraderAccount.objects.get(id=id)
+        if w.generated == None:
+            w.generated = True
+            w.save()
+            message = 'Successfully submitted data'
+        else:
+            message = 'Please contact admin ASAP, its an unavoidable error!'
+    except Exception as e:
+        message = 'Please contact admin ASAP, its an unavoidable error!'
+    return render(request, 'wallets/confirm.html', {'message': message})
+
+
+def cancel_generate(request, id):
+    try:
+        w = MetatraderAccount.objects.get(id=id)
+        if w.generated == None:
+            w.generated = False
+            w.save()
+            message = 'Successfully submitted data'
+        else:
+            message = 'Please contact admin ASAP, its an unavoidable error!'
+    except Exception as e:
+        message = 'Please contact admin ASAP, its an unavoidable error!'
+    return render(request, 'wallets/cancel.html', {'message': message})
 
 def confirm_neft(request, id):
     try:

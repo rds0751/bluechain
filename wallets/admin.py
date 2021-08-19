@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import WalletHistory, Beneficiary, AddFund, PaymentOption, Withdrawal, FundRequest
+from .models import WalletHistory, Beneficiary, AddFund, PaymentOption, Withdrawal, MetatraderAccount
 from import_export.admin import ImportExportModelAdmin
 from django import forms
 from django.contrib import admin
@@ -71,4 +71,4 @@ admin.site.register(PaymentOption, accountsAdmin)
 admin.site.register(Beneficiary, BeneficiaryAdmin)
 admin.site.register(AddFund, AddFundAdmin)
 admin.site.register(Withdrawal, withdrawalAdmin)
-admin.site.register(FundRequest)
+admin.site.register(MetatraderAccount)

@@ -15,7 +15,7 @@ from django.shortcuts import render, redirect
 from users.models import User
 from .models import Activation, LevelIncomeSettings, UserTotal
 from django.contrib.auth.decorators import login_required
-from wallets.models import WalletHistory, FundRequest
+from wallets.models import WalletHistory, MetatraderAccount
 from django.core.paginator import Paginator
 from panel.views import activate
 from django.utils.crypto import get_random_string

@@ -68,19 +68,47 @@
   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
     <div class="mdc-card">
       <div class="mdc-layout-grid__inner mt-2">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-8-tablet">
-          <!-- <form method="POST">
+        {% if mt5 == 'blank' %}
+        <p>Firstly generate an MT5 Account!</p>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-8-tablet">
+          <form class="template-demo" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="hidden" name="auto_neft" value="{% if request.user.auto_neft %}false{% else %}true{% endif %}">
-            <button type="submit" class="mdc-button-secondary mdc-button--raised">{% if request.user.auto_neft %}Auto-NEFT Activated!{% else %}Activate Auto NEFT!{% endif %}</button>
-          </form> -->
+            <div class="mdc-layout-grid__inner">
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                <div class="mdc-text-field mdc-text-field--outlined">
+                  <input type="text" required="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" value="" name="password" id="passwords_pattern1" list="passwords_pattern1_datalist" title="Please enter 1 UPPERCASE, 1 lowercase, 1 Spcial Character, 1 Number, min 8 Characters" class="mdc-text-field__input">
+                  <div class="mdc-notched-outline mdc-notched-outline--upgraded">
+                    <div class="mdc-notched-outline__leading"></div>
+                    <div class="mdc-notched-outline__notch">
+                      <label for="text-field-hero-input" class="mdc-floating-label" style="">Account Password
+                      </label>
+                    </div>
+                    <div class="mdc-notched-outline__trailing"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% if mt5s == 0 %}
+            <button type="submit" class="mdc-button mdc-button--raised w-50 mdc-ripple-upgraded">
+              Generate MT5 Account
+            </button>
+            {% else %}
+            <p>Request in progress</p>
+            {% endif %}
+          </form>
+        </div>
+        {% else %}
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-8-tablet">
           <br>
+          <p>MT5 Account:{{ mt5.account }}, MT5 Password: {{ mt5.password }}</p>
           {% if request.user.auto_neft %}
           {% else %}
           <form method="POST">
             {% csrf_token %}
-            <input type="number" name="amount" placeholder="Enter Amount for NEFT withdrawal">
-            <button type="submit">Submit Request</button>
+            <input type="hidden" name="mt5">
+            <button type="submit" class="mdc-button mdc-button--raised  mdc-ripple-upgraded">
+              Send Amount to DibortFX MT5 Account
+            </button>
             <p>{{ message }}</p>
           </form>
           {% endif %}
@@ -102,6 +130,13 @@
             {% endfor %}
           </div>
         </div>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-8-tablet">
+          <button disabled type="submit" class="mdc-button mdc-button--raised w-100 mdc-ripple-upgraded">
+            Request Monthly Withdrawal
+          </button>
+          <p style="color: red">{% trans 'Note: Withhdrawals are only allowed on first day of every month, next it will activate on September 1, 2021' %}</p>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>

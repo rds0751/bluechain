@@ -166,20 +166,6 @@ fileinput.addEventListener('change', function() {
                 <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Name of Bank" %} </span></label>
               </div>
             </div>
-            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
-              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-                <input type="password" name="upi_id" value="{{ model.mt5_account }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
-                <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> MT5 {% trans "Account" %} </span></label>
-              </div>
-            </div>
-            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
-              <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-                <input type="text" name="upi_id2" value="{{ model.mt5_account }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
-                <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;">Confirm MT5 {% trans "Account" %} </span></label>
-              </div>
-            </div>
               <img width="100%" src="{% if model.verification %}{{ model.verification.url }}{% endif %}">
               <input required type="hidden" name="user" value="{{ request.user.username }}">
               <br><br><br>
