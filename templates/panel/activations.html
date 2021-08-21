@@ -45,6 +45,7 @@
                                                 <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="View Details"><i style="color: green" class="ion-information-circled"></i></button>
                                             </div>
                                         </form>
+                                        {% if x.status == 'Pending' %}
                                         <form onSubmit="if(!confirm('Are you sure?')){return false;}" style="float: right;" action="/panel/activations/{{ x.id }}/" method="POST">
                                             {% csrf_token %}
                                             <div class="btn-group">
@@ -54,6 +55,7 @@
                                                 <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Reject Request"><i style="color: red" class="ion-close-circled"></i></button>
                                             </div>
                                         </form>
+                                        {% endif %}
                                     </td>
                                 </tr>
                                 {% endfor %}

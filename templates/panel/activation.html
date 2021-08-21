@@ -94,6 +94,14 @@
                             <input type="hidden" name="id" value="{{w.id}}">
                             <button class="btn btn-app">Submit</button>
                         </form>
+                        {% else %}
+                        <form method="POST" action="/panel/activations/{{w.id}}/" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="text" style="height: 37px;" value="{{ w.comments }}" name="comment" placeholder="Comments">
+                            <input type="hidden" name="id" value="{{w.id}}">
+                            <input type="hidden" name="cmnt">
+                            <button class="btn btn-app">Submit</button>
+                        </form>
                         {% endif %}
                         <!-- Footer -->
                         <hr class="hidden-print">

@@ -419,7 +419,7 @@ def activation(request, id):
     except Exception as e:
         k = 'blank'
         b = 'blank'
-    if request.method == "POST":
+    if request.method == "POST" and 'action' in request.POST:
         action = request.POST.get('action')
         comment = request.POST.get('comment')
         act_id = request.POST.get('id')
@@ -436,6 +436,13 @@ def activation(request, id):
             act.comments = comment
             act.status = "Rejected"
             act.save()
+        return redirect('/panel/activations/')
+    if request.method == "POST" and 'cmnt' in request.POST:
+        comment = request.POST.get('comment')
+        act_id = request.POST.get('id')
+        act = Activation.objects.get(id=act_id)
+        act.comments = comment
+        act.save()
         return redirect('/panel/activations/')
     return render(request, 'panel/activation.html', {'w': w, 'u': u, 'k': k, 'b': b, 'message': message})
 
