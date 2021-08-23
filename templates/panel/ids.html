@@ -34,6 +34,7 @@
                                     <th class="text-center"></th>
                                     <th>User ID</th>
                                     <th>User</th>
+                                    <th>Mobile</th>
                                     <th>Upline Name</th>
                                     <th>Upline ID</th>
                                     <th class="hidden-xs">Package</th>
@@ -51,6 +52,7 @@
                                 <tr>
                                     <td class="text-center">{{ forloop.counter }}</td>
                                     <td class="font-500">{{ x.user.username }}</td>
+                                    <td class="font-500">{{ x.user.mobile }}</td>
                                     <td class="font-500">{{ x.user.name }}</td>
                                     <td>{{ x.user.referral.name }}</td>
                                     <td>{{ x.user.referral.username }}</td>
