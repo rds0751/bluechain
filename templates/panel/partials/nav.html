@@ -27,8 +27,6 @@
                                 <li class="nav-item {% if '/panel/users/' in request.get_full_path %}active{% endif %}">
                                     <a href="/panel/users/"><i class="ion-ios-people-outline"></i> All Users</a>
                                 </li>
-                                <li class="nav-item {% if '/panel/users/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/panel/ids/"><i class="ion-ios-information-outline"></i>Active IDs</a>
                                 <li class="nav-item {% if '/panel/withdrawals/' in request.get_full_path %}active{% endif %}">
                                     <a href="/panel/withdrawals/"><i class="ion-ios-paperplane-outline"></i>MT5 Withdrawals</a>
                                 </li>
@@ -36,6 +34,8 @@
                                     <a href="/panel/activations/"><i class="ion-ios-checkmark-outline"></i> Activations Requests</a>
                                 </li>
                                 {% endif %}
+                                <li class="nav-item {% if '/panel/users/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/panel/ids/"><i class="ion-ios-information-outline"></i>Active IDs</a>
                                 </li>
                                 <li class="nav-item {% if '/panel/kycs/' in request.get_full_path %}active{% endif %}">
                                     <a href="/panel/kycs/"><i class="ion-ios-bookmarks-outline"></i>KYCs</a>
