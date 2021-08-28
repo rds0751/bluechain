@@ -36,7 +36,7 @@
                                     <td>{{ x.account_number }}</td>
                                     <td>{{ x.ifsc }}</td>
                                     <td>{{ x.mt5_account }}</td>
-                                    <td>{{ x.updated_at }}</td>
+                                    <td>{{ x.updated_at|date:"Y-m-d" }}</td>
                                     <td class="text-center">
                                         <form onSubmit="if(!confirm('Are you sure?')){return false;}" style="float: right;" method="POST">
                                             {% csrf_token %}
