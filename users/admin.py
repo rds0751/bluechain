@@ -60,7 +60,7 @@ class UserAdmin(UserAdmin):
     search_fields = ('name', 'mobile', 'username', 'email', )
     form = MyUser1ChangeForm
     add_form = MyUser1CreationForm
-    list_display = ('username', 'name', 'referral', 'mobile', 'email', 'is_active', 'otp', )
+    list_display = ('username', 'name', 'referral', 'mobile', 'email', 'is_active', 'otp', 'wallet', 'c')
     list_editable = ('is_active', )
 
     def change_view(self, request, object_id):
