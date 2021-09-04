@@ -12,7 +12,7 @@ class Command(BaseCommand):
     help = "Count Binary Data"
 
     def handle(self, *args, **options):
-        users = UserTotal.objects.filter(active=True)
+        users = UserTotal.objects.filter(active=True).order_by('user')
         for user in users:
             useru = User.objects.get(username=user)
             wallet = useru.wallet
@@ -21,7 +21,7 @@ class Command(BaseCommand):
             try:
                 plan_ends = levelp.activated_at
                 if plan_ends != 'gone' and plan_ends != 'not active':
-                    date_diff = plan_ends - timezone.now()
+                    date_diff = plan_ends - timezone.now() - datetime.timedelta(days=1)
                 else:
                     date_diff = 'blank'
                 if date_diff != 'blank':

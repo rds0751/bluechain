@@ -15,6 +15,7 @@ class Beneficiary(models.Model):
     status = models.CharField(max_length=255)
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(default=timezone.now, blank=True)
+    
 
 class WalletHistory(models.Model):
     user_id = models.CharField(max_length=20)
