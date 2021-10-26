@@ -16,8 +16,14 @@ class Command(BaseCommand):
         for user in users:
             useru = User.objects.get(username=user)
             wallet = useru.wallet
-            wallet10 = wallet*0.10
+            wallet9 = wallet - wallet*0.10*0.95
+            wallet10 = wallet - wallet*0.10*0.95
             levelp = user
+            start_date = datetime.datetime.now() + datetime.timedelta(-30)
+            end_date = datetime.datetime.now()
+            newusers = UserTotal.objects.filter(activated_at__range=(start_date, end_date))
+            if user in newusers:
+                wallet10 = wallet9
             try:
                 plan_ends = levelp.activated_at
                 if plan_ends != 'gone' and plan_ends != 'not active':
@@ -27,9 +33,10 @@ class Command(BaseCommand):
                 if date_diff != 'blank':
                     total_days = levelp.level.expiration_period * 30
                     rate = levelp.level.return_amount/total_days
-                    return_total = -(rate*date_diff.days)
-                if return_total <= 0:
-                    return_total = 0
+                    if user in newusers:
+                        return_total = -(rate*date_diff.days)*0.95
+                    else:
+                        return_total = (rate*30)*0.95
             except Exception as e:
                 raise e
             try:
@@ -37,6 +44,7 @@ class Command(BaseCommand):
             except Exception as e:
                 wallet = 1
             if wallet != 1:
-                print(str(useru)+', '+str(useru.name)+', '+str(return_total)+', '+str(wallet10)+', '+str(wallet.account_number)+', '+str(wallet.ifsc))
+                print(str(useru)+', '+str(useru.email)+', '+', '+str(useru.mobile)+', '+', '+str(useru.name)+', '+str(return_total)+', '+str(wallet10)+', '+str(wallet.account_number)+', '+str(wallet.ifsc))
             else:
-                print(str(useru)+', '+str(useru.name)+', '+str(return_total)+', '+str(wallet10))
+                print(str(useru)+', '+str(useru.email)+', '+', '+str(useru.mobile)+', '+', '+str(useru.name)+', '+str(return_total)+', '+str(wallet10))
+

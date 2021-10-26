@@ -27,6 +27,14 @@
         <link rel="stylesheet" id="css-bootstrap" href="assets/css/bootstrap.css" />
         <link rel="stylesheet" id="css-app" href="assets/css/app.css" />
         <link rel="stylesheet" id="css-app-custom" href="assets/css/app-custom.css" />
+        <style type="text/css">
+            .darkmode--activated {
+                  color: #DAA520 !important;
+                }
+            .darkmode--activated h1 {
+                  color: silver !important;
+                }
+        </style>
         <!-- End Stylesheets -->
     </head>
 
@@ -123,7 +131,7 @@
                 <main class="app-layout-content">
 
                     <!-- Page header -->
-                    <figure class="banner bg-img bg-app bg-inverse" data-height="500" style="background-image: url(assets/img/misc/frontend_header_bg.png)">
+                    <figure class="banner" data-height="500">
                         <figcaption class="banner-caption">
                             <div class="container">
                                 <div class="row vcenter-md">
@@ -271,7 +279,7 @@
                     </div>
                     <!-- .section -->
 
-                    <div class="section p-y-xl bg-app bg-inverse">
+                    <div class="section p-y-xl">
                         <div class="container text-center">
                             <div class="row">
                                 <div class="col-md-6 col-md-offset-3">
@@ -363,6 +371,28 @@
             </div>
         </div>
         <!-- End Apps Modal -->
+
+        <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+        <script>
+          function addDarkmodeWidget() {
+            const options = {
+                              top: '64px', // default: '32px'
+                              right: '32px', // default: '32px'
+                              left: 'unset', // default: 'unset'
+                              bottom: 'unset',
+                              time: '0.3s', // default: '0.3s'
+                              mixColor: '#fff', // default: '#fff'
+                              backgroundColor: '#fff',  // default: '#fff'
+                              buttonColorDark: '#100f2c',  // default: '#100f2c'
+                              buttonColorLight: '#fff', // default: '#fff'
+                              saveInCookies: false, // default: true,
+                              label: '🌓', // default: ''
+                              autoMatchOsTheme: true // default: true
+                            }
+            new Darkmode(options).showWidget();
+          }
+          window.addEventListener('load', addDarkmodeWidget);
+        </script>
 
         <!-- AppUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock and App.js -->
         <script src="assets/js/core/jquery.min.js"></script>

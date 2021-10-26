@@ -23,6 +23,7 @@ class User(AbstractUser, PermissionsMixin):
     referral = models.CharField(max_length=25, blank=True, null=True)
     wallet = models.IntegerField(default=0)
     c = models.IntegerField(default=0)
+    withdrawal = models.FloatField(default=0, null=True, blank=True)
     
     USERNAME_FIELD = "username"
     # REQUIRED_FIELDS = ['name', 'referal', 'mobile']

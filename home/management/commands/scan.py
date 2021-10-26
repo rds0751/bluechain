@@ -10,7 +10,7 @@ class Command(BaseCommand):
 	help = "Count Binary Data"
 
 	def handle(self, *args, **options):
-		start_date = datetime.datetime.now() + datetime.timedelta(-30)
+		start_date = datetime.datetime.now() + datetime.timedelta(-100)
 		end_date = datetime.datetime.now() + datetime.timedelta(-15)
 		w = WalletHistory.objects.filter(created_at__range=(start_date, end_date), comment__icontains="New Upgrade by").exclude(filter__icontains="payment done")
 		for x in w:
