@@ -29,7 +29,7 @@
             <div class="card-inner">
               <h5 style="" class="card-title"><strong> {% trans "Wallet Balance" %} </strong> </h5>
               <h5 style="" class="font-weight-light pb-2 mb-1">$ {{ request.user.wallet|add:request.user.c|floatformat:2 }}</h5>
-              <p style="line-height: 1" class="tx-10">Redeemable $ {{ request.user.wallet|floatformat:2 }} <br/> Paid $ {{ request.user.withdrawal|floatformat:2 }}</p>
+              <p style="line-height: 1" class="tx-10">Payable $ {{ request.user.wallet|floatformat:2 }} <br/> Paid $ {{ request.user.withdrawal|floatformat:2 }}</p>
               <p style="line-height: 1" class="tx-10">Service $ {{ request.user.c }}</p>
               <div style="background: transparent; box-shadow: 0 0 10px 5px rgb(255 66 15 / 0%);" class="card-icon-wrapper">
             </div>
