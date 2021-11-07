@@ -24,6 +24,7 @@ class User(AbstractUser, PermissionsMixin):
     wallet = models.IntegerField(default=0)
     c = models.IntegerField(default=0)
     withdrawal = models.FloatField(default=0, null=True, blank=True)
+    traditional_withdrawal = models.FloatField(default=0)
     
     USERNAME_FIELD = "username"
     # REQUIRED_FIELDS = ['name', 'referal', 'mobile']

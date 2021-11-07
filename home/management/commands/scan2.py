@@ -44,7 +44,7 @@ class Command(BaseCommand):
             except Exception as e:
                 wallet = 1
             if wallet != 1:
-                print(str(useru)+', '+str(useru.email)+', '+', '+str(useru.mobile)+', '+', '+str(useru.name)+', '+str(return_total)+', '+str(wallet10)+', '+str(wallet.account_number)+', '+str(wallet.ifsc))
+                print(str(useru)+', '+str(useru.email)+', '+', '+str(useru.mobile)+', '+', '+str(useru.name)+', '+str(return_total)+', '+str(wallet10)+', "'+str(wallet.account_number)+'", '+str(wallet.ifsc))
             else:
                 print(str(useru)+', '+str(useru.email)+', '+', '+str(useru.mobile)+', '+', '+str(useru.name)+', '+str(return_total)+', '+str(wallet10))
 
