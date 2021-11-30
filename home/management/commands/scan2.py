@@ -34,7 +34,8 @@ class Command(BaseCommand):
                     total_days = levelp.level.expiration_period * 30
                     rate = levelp.level.return_amount/total_days
                     if user in newusers:
-                        return_total = -(rate*date_diff.days)*0.95
+                        return_total = -(rate*(date_diff.days-2))*0.95
+                        # print(date_diff.days-2, rate, user)
                     else:
                         return_total = (rate*30)*0.95
             except Exception as e:
@@ -44,7 +45,7 @@ class Command(BaseCommand):
             except Exception as e:
                 wallet = 1
             if wallet != 1:
-                print(str(useru)+', '+str(useru.email)+', '+', '+str(useru.mobile)+', '+', '+str(useru.name)+', '+str(return_total)+', '+str(wallet10)+', '+str(wallet.account_number)+', '+str(wallet.ifsc))
+                print(str(useru)+', '+str(useru.email)+', '+', '+str(useru.mobile)+', '+', '+str(useru.name)+', '+str(return_total)+', '+str(wallet10)+', '+"{}".format(str(wallet.account_number))+', '+str(wallet.ifsc))
             else:
                 print(str(useru)+', '+str(useru.email)+', '+', '+str(useru.mobile)+', '+', '+str(useru.name)+', '+str(return_total)+', '+str(wallet10))
 

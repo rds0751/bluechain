@@ -7,7 +7,7 @@ from django.views.generic import DetailView, ListView, RedirectView, UpdateView,
 from django.shortcuts import render, redirect
 from users.models import User
 from .models import PaymentOption, Withdrawal
-from wallets.models import WalletHistory, Beneficiary, MetatraderAccount
+from wallets.models import WalletHistory, Beneficiary, MetatraderAccount, Mtw
 from django.shortcuts import render
 import requests
 import os
@@ -852,6 +852,24 @@ def imps(request):
         'ifsc': ifsc,
         'message': message,
         })
+
+@login_required
+def mt5t(request):
+    try:
+        mt = Mtw.objects.get(user_id=request.user)
+    except Exception as e:
+        mt = 0
+    if request.method == "POST":
+        user = request.user
+        act = Mtw()
+        act.user_id = user.username
+        act.status = 'Pending'
+        act.save()
+        title = 'Thankyou!'
+        message = 'Your withdrawal is in pending, please wait for 24-48 hrs'
+        return render(request,"level/thankyou.html", {'title': title, 'message': message})
+    return render(request,"users/mt5.html", {"mt": mt})
+
 
 @login_required
 def send(request):

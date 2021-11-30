@@ -15,6 +15,16 @@ class Beneficiary(models.Model):
     status = models.CharField(max_length=255)
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(default=timezone.now, blank=True)
+
+# Create your models here.
+class Mtw(models.Model):
+    user_id = models.CharField(max_length=255, blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True, null=True)
+    account_number = models.CharField(max_length=255, blank=True, null=True)
+    ifsc = models.CharField(max_length=255, blank=True, null=True)
+    status = models.CharField(max_length=255)
+    created_at = models.DateTimeField(default=timezone.now, blank=True)
+    updated_at = models.DateTimeField(default=timezone.now, blank=True)
     
 
 class WalletHistory(models.Model):

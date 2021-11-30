@@ -106,7 +106,7 @@
           <form method="POST">
             {% csrf_token %}
             <input type="hidden" name="mt5">
-            <button type="submit" class="mdc-button mdc-button--raised  mdc-ripple-upgraded">
+            <button type="submit" disabled class="mdc-button mdc-button--raised  mdc-ripple-upgraded">
               Send Amount to DibortFX MT5 Account
             </button>
             <p>{{ message }}</p>
@@ -131,10 +131,14 @@
           </div>
         </div>
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-8-tablet">
-          <button disabled type="submit" class="mdc-button mdc-button--raised w-100 mdc-ripple-upgraded">
+        <form method="POST">
+        {% csrf_token %}
+          <button {% if mt != 0 %}disabled{% endif %} type="submit" class="mdc-button mdc-button--raised w-100 mdc-ripple-upgraded">
             Request Monthly Withdrawal
           </button>
-          <p style="color: red">{% trans 'Note: Withhdrawals are only allowed on first day of every month, next it will activate on September 1, 2021' %}</p>
+          </form>{% if mt != 0 %}
+          <p style="color: green">{% trans 'Your withdrawal is in process!' %}</p>{% endif %}
+          <p style="color: red">{% trans 'Note: Withhdrawals are only allowed on first day of every month, next it will activate on January 1, 2022' %}</p>
         </div>
         {% endif %}
       </div>

@@ -69,7 +69,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'compressor',
     'ticket',
-    'rosetta',
 
     'level',
     'markdown_deux',  # Required for Knowledgebase item formatting
@@ -220,7 +219,7 @@ LANGUAGES = (
     ('ja', _('Japanese'))
 )
 
-TIME_ZONE = 'Asia/Kolkata'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
