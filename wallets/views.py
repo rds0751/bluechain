@@ -864,6 +864,7 @@ def mt5t(request):
         act = Mtw()
         act.user_id = user.username
         act.status = 'Pending'
+        act.account_number = request.POST.get('account')
         act.save()
         title = 'Thankyou!'
         message = 'Your withdrawal is in pending, please wait for 24-48 hrs'

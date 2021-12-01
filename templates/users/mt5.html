@@ -68,36 +68,6 @@
   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
     <div class="mdc-card">
       <div class="mdc-layout-grid__inner mt-2">
-        {% if mt5 == 'blank' %}
-        <p>Firstly generate an MT5 Account!</p>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-8-tablet">
-          <form class="template-demo" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="mdc-layout-grid__inner">
-              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                <div class="mdc-text-field mdc-text-field--outlined">
-                  <input type="text" required="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" value="" name="password" id="passwords_pattern1" list="passwords_pattern1_datalist" title="Please enter 1 UPPERCASE, 1 lowercase, 1 Spcial Character, 1 Number, min 8 Characters" class="mdc-text-field__input">
-                  <div class="mdc-notched-outline mdc-notched-outline--upgraded">
-                    <div class="mdc-notched-outline__leading"></div>
-                    <div class="mdc-notched-outline__notch">
-                      <label for="text-field-hero-input" class="mdc-floating-label" style="">Account Password
-                      </label>
-                    </div>
-                    <div class="mdc-notched-outline__trailing"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {% if mt5s == 0 %}
-            <button type="submit" class="mdc-button mdc-button--raised w-50 mdc-ripple-upgraded">
-              Generate MT5 Account
-            </button>
-            {% else %}
-            <p>Request in progress</p>
-            {% endif %}
-          </form>
-        </div>
-        {% else %}
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-8-tablet">
           <br>
           <p>MT5 Account:{{ mt5.account }}, MT5 Password: {{ mt5.password }}</p>
@@ -132,7 +102,30 @@
         </div>
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-8-tablet">
         <form method="POST">
-        {% csrf_token %}
+        {% csrf_token %}<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100">
+                            <input type="text" class="mdc-text-field__input" id="text-field-hero-input" name="name" placeholder="" autofocus="autofocus" maxlength="150">
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">Name</label>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100">
+                            <input type="text" class="mdc-text-field__input" id="text-field-hero-input" name="email" placeholder="" autofocus="autofocus" maxlength="150">
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">Email</label>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100">
+                            <input type="text" class="mdc-text-field__input" id="text-field-hero-input" name="account" placeholder="" autofocus="autofocus" maxlength="150">
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">MT5 Account Number</label>
+                          </div>
+                        </div>
+                        <br>
           <button {% if mt != 0 %}disabled{% endif %} type="submit" class="mdc-button mdc-button--raised w-100 mdc-ripple-upgraded">
             Request Monthly Withdrawal
           </button>
@@ -140,7 +133,6 @@
           <p style="color: green">{% trans 'Your withdrawal is in process!' %}</p>{% endif %}
           <p style="color: red">{% trans 'Note: Withhdrawals are only allowed on first day of every month, next it will activate on January 1, 2022' %}</p>
         </div>
-        {% endif %}
       </div>
     </div>
   </div>
