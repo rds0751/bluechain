@@ -864,10 +864,9 @@ def mt5t(request):
         act = Mtw()
         act.user_id = user.username
         act.status = 'Pending'
-        act.account_number = request.POST.get('account')
         act.save()
         title = 'Thankyou!'
-        message = 'Your withdrawal is in pending, please wait for 24-48 hrs'
+        message = 'Your amount sent is being processed, please wait for 24-48 hrs'
         return render(request,"level/thankyou.html", {'title': title, 'message': message})
     return render(request,"users/mt5.html", {"mt": mt})
 
