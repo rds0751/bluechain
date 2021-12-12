@@ -863,29 +863,11 @@ def mt5t(request):
         user = request.user
         url = "https://admin.dibortfx.com/modules/ThirdParty/api.php"
 
-        values = '''{  
-        "firstname":{0},
-        "lastname":"",
-        "email":{1},
-        "birthday":"02-12-1995",
-        "country_name":"India",
-        "mobile":{3},
-        "mailingstreet":"useraddress",
-        "mailingcity":"usercity",
-        "mailingpobox":"110011",
-        "reference_id":"110011",
-        "live_metatrader_type":"MT5",
-        "live_label_account_type":"B_IPAY_IPAY",
-        "live_currency_code":"USD",
-        "leverage":"300"
-        }'''
-        values = values.format(user.name, user.email, user.mobile)
-
+        values = '{{"firstname":"{0}","lastname":" ","email":"{1}","birthday":"02-12-1995","country_name":"India","mobile":"{2}","mailingstreet":"{3}","mailingcity":"usercity","mailingpobox":"110011","reference_id":"110011","live_metatrader_type":"MT5","live_label_account_type":"B_IPAY_IPAY","live_currency_code":"USD","leverage":"300"}}'
         payload={
         '_operation': 'dibortCreateContact',
-        'values': values
+        'values': values.format(user.name, user.email, user.mobile, user.address)
         }
-        payload = payload.format(user.name, user.email, user.mobile)
         
         headers = {
         'Authorization': 'Basic YWRtaW46SmZuS3RwZTlDTk03dTVyTFFVN0FqbnpGeng1Sk9CYWF2MU5uQGFhRGZDIUBkZ2g='
@@ -896,23 +878,20 @@ def mt5t(request):
         res = response.json()
         account = res.get('result').get('live_details').get('account_no')
         user.otp = account
+        user.rank = res.get('result').get('live_details').get('contactid')[-5:]
         user.save()
-        url = "http://admin.dibortfx.com/modules/ThirdParty/api.php"
+        url = "https://admin.dibortfx.com/modules/ThirdParty/api.php"
+        amount = request.user.wallet
 
         payload={
         '_operation': 'dibortCreateDeposit',
-        'values': '''{
-        "contactid":"12x35761",
-        "payment_from":"IPAY",
-        "payment_currency":"USD",
-        "payment_to":"802556",
-        "amount":"10.25"
-        }'''
+        'values': '{{"contactid":"12x{0}","payment_from":"IPAY","payment_currency":"USD","payment_to":"{1}","amount":"{2}"}}'.format(request.user.rank, request.user.otp, request.user.wallet)
         }
+        user = request.user
+        user.withdrawal += amount
+        user.wallet = 0
+        user.save()
         response = requests.request("POST", url, headers=headers, data=payload)
-
-        print(response.text)
-
         title = 'Thankyou!'
         message = 'Your amount sent is being processed, please wait for 24-48 hrs'
         return render(request,"level/thankyou.html", {'title': title, 'message': message})
