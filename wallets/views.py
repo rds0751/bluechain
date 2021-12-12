@@ -863,9 +863,7 @@ def mt5t(request):
         user = request.user
         url = "https://admin.dibortfx.com/modules/ThirdParty/api.php"
 
-        payload={
-        '_operation': 'dibortCreateContact',
-        'values': '''{  
+        values = '''{  
         "firstname":{0},
         "lastname":"",
         "email":{1},
@@ -881,6 +879,11 @@ def mt5t(request):
         "live_currency_code":"USD",
         "leverage":"300"
         }'''
+        values = values.format(user.name, user.email, user.mobile)
+
+        payload={
+        '_operation': 'dibortCreateContact',
+        'values': values
         }
         payload = payload.format(user.name, user.email, user.mobile)
         
