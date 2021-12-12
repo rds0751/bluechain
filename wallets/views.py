@@ -861,11 +861,54 @@ def mt5t(request):
         mt = 0
     if request.method == "POST":
         user = request.user
-        act = Mtw()
-        act.user_id = user.username
-        act.status = 'Pending'
-        act.account_number = request.POST.get('account')
-        act.save()
+        url = "https://admin.dibortfx.com/modules/ThirdParty/api.php"
+
+        payload={
+        '_operation': 'dibortCreateContact',
+        'values': '''{  
+        "firstname":"username",
+        "lastname":"username",
+        "email":"manindergulia062@gmail.com",
+        "birthday":"02-12-1995",
+        "country_name":"India",
+        "mobile":"7000934949",
+        "mailingstreet":"useraddress",
+        "mailingcity":"usercity",
+        "mailingpobox":"110011",
+        "reference_id":"110011",
+        "live_metatrader_type":"MT5",
+        "live_label_account_type":"B_IPAY_IPAY",
+        "live_currency_code":"USD",
+        "leverage":"300"
+        }'''
+        }
+        
+        headers = {
+        'Authorization': 'Basic YWRtaW46SmZuS3RwZTlDTk03dTVyTFFVN0FqbnpGeng1Sk9CYWF2MU5uQGFhRGZDIUBkZ2g='
+        }
+
+        response = requests.request("POST", url, headers=headers, data=payload)
+        print(response.text)
+        res = response.json()
+        account = res.get('result').get('live_details').get('account_no')
+        user.otp = account
+        user.save()
+        url = "http://admin.dibortfx.com/modules/ThirdParty/api.php"
+
+        payload={
+        '_operation': 'dibortCreateDeposit',
+        'values': '''{
+        "contactid":"12x35761",
+        "payment_from":"IPAY",
+        "payment_currency":"USD",
+        "payment_to":"802556",
+        "amount":"10.25"
+        }'''
+        }
+        response = requests.request("POST", url, headers=headers, data=payload)
+
+        print(response.text)
+
         title = 'Thankyou!'
         message = 'Your withdrawal is in pending, please wait for 24-48 hrs'
         return render(request,"level/thankyou.html", {'title': title, 'message': message})

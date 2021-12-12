@@ -70,13 +70,13 @@
       <div class="mdc-layout-grid__inner mt-2">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-8-tablet">
           <br>
-          <p>MT5 Account:{{ mt5.account }}, MT5 Password: {{ mt5.password }}</p>
+          <p>MT5 Account:{{ request.user.otp }}, MT5 Password: Kindly check your Email.</p>
           {% if request.user.auto_neft %}
           {% else %}
           <form method="POST">
             {% csrf_token %}
             <input type="hidden" name="mt5">
-            <button type="submit" disabled class="mdc-button mdc-button--raised  mdc-ripple-upgraded">
+            <button type="submit" class="mdc-button mdc-button--raised  mdc-ripple-upgraded">
               Send Amount to DibortFX MT5 Account
             </button>
             <p>{{ message }}</p>

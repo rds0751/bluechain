@@ -299,9 +299,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'box.nws-mail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'support@ipaymatics.com'
+EMAIL_HOST_USER = 'apikey'
 DEFAULT_FROM_EMAIL = 'support@ipaymatics.com'
-EMAIL_HOST_PASSWORD = 'e6qeuzVS4zJz'
+EMAIL_HOST_PASSWORD = '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'
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 REST_FRAMEWORK = {
