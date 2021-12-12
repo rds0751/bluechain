@@ -866,12 +866,12 @@ def mt5t(request):
         payload={
         '_operation': 'dibortCreateContact',
         'values': '''{  
-        "firstname":"username",
-        "lastname":"username",
-        "email":"manindergulia062@gmail.com",
+        "firstname":{0},
+        "lastname":"",
+        "email":{1},
         "birthday":"02-12-1995",
         "country_name":"India",
-        "mobile":"7000934949",
+        "mobile":{3},
         "mailingstreet":"useraddress",
         "mailingcity":"usercity",
         "mailingpobox":"110011",
@@ -882,6 +882,7 @@ def mt5t(request):
         "leverage":"300"
         }'''
         }
+        payload = payload.format(user.name, user.email, user.mobile)
         
         headers = {
         'Authorization': 'Basic YWRtaW46SmZuS3RwZTlDTk03dTVyTFFVN0FqbnpGeng1Sk9CYWF2MU5uQGFhRGZDIUBkZ2g='
@@ -910,7 +911,7 @@ def mt5t(request):
         print(response.text)
 
         title = 'Thankyou!'
-        message = 'Your withdrawal is in pending, please wait for 24-48 hrs'
+        message = 'Your amount sent is being processed, please wait for 24-48 hrs'
         return render(request,"level/thankyou.html", {'title': title, 'message': message})
     return render(request,"users/mt5.html", {"mt": mt})
 
