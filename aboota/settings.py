@@ -297,7 +297,7 @@ LOGIN_URL = "/accounts/login/"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'box.nws-mail.com'
+EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'apikey'
 DEFAULT_FROM_EMAIL = 'support@ipaymatics.com'
