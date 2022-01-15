@@ -61,7 +61,7 @@ class UserAdmin(UserAdmin):
     form = MyUser1ChangeForm
     add_form = MyUser1CreationForm
     list_display = ('username', 'name', 'referral', 'mobile', 'email', 'is_active', 'otp', 'wallet', 'c')
-    list_editable = ('is_active', )
+    list_editable = ('is_active', 'c',)
 
     def change_view(self, request, object_id):
         if request.user.is_superuser:
