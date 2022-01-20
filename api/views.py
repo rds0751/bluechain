@@ -171,7 +171,7 @@ class Deposit(APIView):
             user.save()
             return Response({"status": 1})
         except Exception as e:
-            return Response({"status": 1, "message": e})
+            return Response({"status": 0, "message": e})
 
 class TaskView(RetrieveAPIView):
 
