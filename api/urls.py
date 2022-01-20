@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from rest_framework.authtoken.views import obtain_auth_token
 from django.views.decorators.cache import cache_page
-from .views import CreateUserAPIView, LogoutUserAPIView, SignupView, UserDetailView, LevelTeamView, TaskView, postback, Completed, TxnsView, newpostback, GameView, Played
+from .views import Deposit, CreateUserAPIView, LogoutUserAPIView, SignupView, UserDetailView, LevelTeamView, TaskView, postback, Completed, TxnsView, newpostback, GameView, Played
 
 
 urlpatterns = [
@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^auth/signup/$',
         CreateUserAPIView.as_view(),
         name='auth_user_create'),
+    url(r"^deposit/$", Deposit.as_view(), name='hash'),
     url(r"^auth/register/$", SignupView.as_view(), name='auth_user_create'),
     url(r"^completed/$", Completed.as_view(), name='completed'),
     url(r"^played/$", Played.as_view(), name='played'),

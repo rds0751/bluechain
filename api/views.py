@@ -18,6 +18,8 @@ from level.models import UserTotal
 from django.core import serializers
 from django.core.cache import cache
 # from .renderers import UserJSONRenderer
+from wallets.models import WalletHistory
+
  
 User = get_user_model()
 
@@ -149,6 +151,24 @@ class LevelTeamView(RetrieveAPIView):
         return Response({'users': usersdata, 'levels': leveldata})
 
 from django.utils.crypto import get_random_string
+
+class Deposit(APIView):
+    permission_classes = (permissions.AllowAny,)
+    
+    def post(self, request, format=None):
+        id = self.request.data ["id"]
+        amount = self.request.data ["amount"]
+        comment = self.request.data ["comment"]
+        user = User.objects.get(username=id)
+        user.c += int(amount)
+        wallet = WalletHistory()
+        wallet.user_id = id
+        wallet.amount = amount
+        wallet.comment = comment
+        wallet.type = 'credit'
+        wallet.save()
+        user.save()
+        return Response({"status": 1})
 
 class TaskView(RetrieveAPIView):
 
