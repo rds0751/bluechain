@@ -156,19 +156,22 @@ class Deposit(APIView):
     permission_classes = (permissions.AllowAny,)
     
     def post(self, request, format=None):
-        id = self.request.data ["id"]
-        amount = self.request.data ["amount"]
-        comment = self.request.data ["comment"]
-        user = User.objects.get(username=id)
-        user.c += int(amount)
-        wallet = WalletHistory()
-        wallet.user_id = id
-        wallet.amount = amount
-        wallet.comment = comment
-        wallet.type = 'credit'
-        wallet.save()
-        user.save()
-        return Response({"status": 1})
+        try:
+            id = self.request.data ["id"]
+            amount = self.request.data ["amount"]
+            comment = self.request.data ["comment"]
+            user = User.objects.get(username=id)
+            user.c += int(amount)
+            wallet = WalletHistory()
+            wallet.user_id = id
+            wallet.amount = amount
+            wallet.comment = comment
+            wallet.type = 'credit'
+            wallet.save()
+            user.save()
+            return Response({"status": 1})
+        except Exception as e:
+            return Response({"status": 1, "message": e})
 
 class TaskView(RetrieveAPIView):
 
