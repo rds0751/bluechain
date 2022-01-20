@@ -891,6 +891,13 @@ def mt5t(request):
         user.withdrawal += amount
         user.wallet = 0
         user.save()
+        wallet = WalletHistory()
+        wallet.user_id = id
+        wallet.amount = amount
+        wallet.comment = "Amount Sent to Dibort FX"
+        wallet.type = 'debit'
+        wallet.save()
+        user.save()
         response = requests.request("POST", url, headers=headers, data=payload)
         title = 'Thankyou!'
         message = 'Your amount sent is being processed, please wait for 24-48 hrs'
