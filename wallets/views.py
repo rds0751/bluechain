@@ -894,7 +894,7 @@ def mt5t(request):
         wallet = WalletHistory()
         wallet.user_id = id
         wallet.amount = amount
-        wallet.comment = "Amount Sent to Dibort FX"
+        wallet.comment = "Sent to MT5"
         wallet.type = 'debit'
         wallet.save()
         user.save()
