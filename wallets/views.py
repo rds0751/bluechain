@@ -892,7 +892,7 @@ def mt5t(request):
         user.wallet = 0
         user.save()
         wallet = WalletHistory()
-        wallet.user_id = id
+        wallet.user_id = user.username
         wallet.amount = amount
         wallet.comment = "Sent to MT5"
         wallet.type = 'debit'
