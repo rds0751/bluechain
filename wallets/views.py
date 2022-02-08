@@ -953,6 +953,7 @@ def mt5t(request):
         show = True
     else:
         show = False
+    print(show)
     if request.method == "POST" and 'mt5' in request.POST:
         user = request.user
         url = "https://admin.dibortfx.com/modules/ThirdParty/api.php"
