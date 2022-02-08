@@ -949,7 +949,7 @@ def mt5t(request):
     except Exception as e:
         mt = 0
     wt = WalletHistory.objects.filter(user_id=request.user.username, comment="Sent to DCXa")
-    if wt.count == 0:
+    if wt.count() == 0:
         show = True
     else:
         show = False
