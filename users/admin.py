@@ -66,7 +66,7 @@ class UserAdmin(UserAdmin):
     def change_view(self, request, object_id):
         if request.user.is_superuser:
             self.fieldsets = (
-                    (None, {'fields': ('username', 'password', )}),
+                    (None, {'fields': ('username', 'password', 'referral',)}),
                     (_('Personal info'), {'fields': ( 'name', 'email', 'mobile', )}),
                     (_('Permissions'), {'fields': ('is_active', 'is_staff', 'user_permissions', )}),
                     (_('Important dates'), {'fields': ('last_login', )}),

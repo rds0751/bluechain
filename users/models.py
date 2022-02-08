@@ -25,6 +25,7 @@ class User(AbstractUser, PermissionsMixin):
     c = models.IntegerField(default=0)
     withdrawal = models.FloatField(default=0, null=True, blank=True)
     traditional_withdrawal = models.FloatField(default=0)
+    dcxa_id = models.CharField(null=True, blank=True, max_length=255)
     
     USERNAME_FIELD = "username"
     # REQUIRED_FIELDS = ['name', 'referal', 'mobile']

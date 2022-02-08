@@ -17,6 +17,7 @@ import jwt
 from django.utils import timezone
 from random import randint
 import datetime
+from level.models import UserTotal
 
 from kyc.models import ImageUploadModel
 from django.core.mail import send_mail
@@ -610,6 +611,94 @@ def neft(request):
             except Exception as e:
                 message = "Error 500 {}".format(e)
 
+    if request.method == 'POST' and 'dcxa' in request.POST:
+        if 'auto_neft' in request.POST:
+            u = request.user
+            if u.auto_neft == False:
+                u.auto_neft = True
+            else:
+                u.auto_neft = False
+            u.save()
+
+        if not 'auto_neft' in request.POST:
+            user_id = request.user
+            amount = request.user.wallet
+            try:
+                levelp = UserTotal.objects.get(user=request.user)
+            except Exception as e:
+                levelp = 'None'
+            total_days = levelp.level.expiration_period * 30
+            rate = levelp.level.return_amount/total_days
+            amount = (rate*30)
+
+            try:
+                payment_o = PaymentOption.objects.get(user=user_id)
+                kyc = ImageUploadModel.objects.get(user=user_id)
+                verify = True
+            except Exception as e:
+                verify = False
+            try:
+                if verify == True:
+                    if True:
+                        if True:
+                            user_id.wallet = user_id.wallet - amount
+                            model = Withdrawal()
+                            model.user = user_id
+                            model.amount = amount
+                            model.description = ''
+                            model.total_amount = amount*95/100
+                            model.admin_fees = 0
+                            model.tax = amount*5/100
+                            model.status = 'pending'
+                            model.name = payment_o.name
+                            model.account_number = payment_o.mt5_account
+                            model.ifsc = payment_o.ifsc
+
+                            userwallet = WalletHistory()
+                            userwallet.user_id = str(user_id)
+                            userwallet.amount = float(amount) 
+                            userwallet.type = "debit"
+                            userwallet.filter = "DCXa"
+                            userwallet.comment = "DCXa Transfer"
+
+                            url = "http://app.dcxa.io/api/webservice.asmx/signup"
+
+                            payload = "name={}&mobile={}&email={}&password=DCXa1234&sponsorid=DCXa-999999&withdraw_amount={}&code=IPAYMATIC3456789012".format(request.user.name, request.user.mobile, request.user.email, amount)
+                            headers = {
+                                'content-type': "application/x-www-form-urlencoded",
+                                'cache-control': "no-cache",
+                                'postman-token': "301c3688-89d1-ce66-9d44-68353aa780a5"
+                                }
+
+                            response = requests.request("POST", url, data=payload, headers=headers)
+
+                            print(response.text)
+
+                            userwallet.save()
+                            user_id.save()
+                            model.save()
+                            subject = 'DCXa Transfer Request from IPAYMATICS'
+                            html_message = render_to_string('account/email/ipay.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':payment_o.mt5_account, 'amount':amount*0.95, 'id': model.id})
+                            plain_message = strip_tags(html_message)
+                            from_email = 'support@ipaymatics.com'
+                            to = 'support@dcxa.io'
+
+                            send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
+                            url = "http://2factor.in/API/V1/99254625-e54d-11eb-8089-0200cd936042/ADDON_SERVICES/SEND/PSMS"
+                            payload = "{'From': 'TFCTOR', 'Msg': 'Hello World', 'To': '7000934949,'}"
+                            response = requests.request("GET", url, data=payload)
+                            print(response.text)
+                            # send_mail("", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@ipaymatics.com", ['rds0751@gmail.com',])
+                            message = "DCXa Transfer Request Received!"
+                        else:
+                            message = "Not Enough Balance in Redeemable Wallet!"
+                    else:
+                        message = "Please Enter Amount in multiples of 100!"
+                else:
+                    message = "MT5 Services are in maintenance"
+            except Exception as e:
+                message = "Error 500 {}".format(e)
+
     return render(request, 'users/mt5.html', {'message': message, 'withdrawals': withdrawals, 'mt5': mt5, 'mt5s': mt5s})
 
 @login_required
@@ -859,7 +948,12 @@ def mt5t(request):
         mt = Mtw.objects.get(user_id=request.user)
     except Exception as e:
         mt = 0
-    if request.method == "POST":
+    wt = WalletHistory.objects.filter(user_id=request.user.username, comment="Sent to DCXa")
+    if wt.count == 0:
+        show = True
+    else:
+        show = False
+    if request.method == "POST" and 'mt5' in request.POST:
         user = request.user
         url = "https://admin.dibortfx.com/modules/ThirdParty/api.php"
 
@@ -892,9 +986,9 @@ def mt5t(request):
         user.wallet = 0
         user.save()
         wallet = WalletHistory()
-        wallet.user_id = id
+        wallet.user_id = user.username
         wallet.amount = amount
-        wallet.comment = "Amount Sent to Dibort FX"
+        wallet.comment = "Sent to MT5"
         wallet.type = 'debit'
         wallet.save()
         user.save()
@@ -902,7 +996,54 @@ def mt5t(request):
         title = 'Thankyou!'
         message = 'Your amount sent is being processed, please wait for 24-48 hrs'
         return render(request,"level/thankyou.html", {'title': title, 'message': message})
-    return render(request,"users/mt5.html", {"mt": mt})
+    if request.method == "POST" and 'dcxa' in request.POST:
+        user = request.user
+        try:
+            levelp = UserTotal.objects.get(user=request.user)
+        except Exception as e:
+            levelp = 'None'
+        total_days = levelp.level.expiration_period * 30
+        rate = levelp.level.return_amount/total_days
+        amount = (rate*30)
+        url = "http://app.dcxa.io/api/webservice.asmx/signup"
+
+        payload = "name={}&mobile={}&email={}&password=DCXa1234&sponsorid=DCXa-999999&withdraw_amount={}&code=IPAYMATIC3456789012".format(request.user.name, request.user.mobile, request.user.email, amount)
+        headers = {
+            'content-type': "application/x-www-form-urlencoded",
+            'cache-control': "no-cache",
+            'postman-token': "301c3688-89d1-ce66-9d44-68353aa780a5"
+            }
+        print(payload)
+
+        response = requests.request("POST", url, data=payload, headers=headers)
+
+        print(response.text)
+        res = response.json()
+        account = res.get('userid')
+        user.dcxa_id = account
+        user.save()
+        url = "https://admin.dibortfx.com/modules/ThirdParty/api.php"
+
+        payload={
+        '_operation': 'dibortCreateDeposit',
+        'values': '{{"contactid":"12x{0}","payment_from":"IPAY","payment_currency":"USD","payment_to":"{1}","amount":"{2}"}}'.format(request.user.rank, request.user.otp, request.user.wallet)
+        }
+        user = request.user
+        user.withdrawal += amount
+        user.wallet = 0
+        user.save()
+        wallet = WalletHistory()
+        wallet.user_id = user.username
+        wallet.amount = amount
+        wallet.comment = "Sent to DCXa"
+        wallet.type = 'debit'
+        wallet.save()
+        user.save()
+        response = requests.request("POST", url, headers=headers, data=payload)
+        title = 'Thankyou!'
+        message = 'Your amount sent to DCXa & is being processed, please wait for 24-48 hrs'
+        return render(request,"level/thankyou.html", {'title': title, 'message': message})
+    return render(request,"users/mt5.html", {"mt": mt, 'show': show})
 
 
 @login_required

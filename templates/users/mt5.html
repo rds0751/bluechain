@@ -61,7 +61,7 @@
 </style>
 
 <section style="padding: 30px 30px 20px 30px;" class="error-header">
-  <h1>{% trans "MT5 Transfer" %}</h1>
+  <h1>{% trans "Money Transfer" %}</h1>
   <p>{% trans 'After transfer request Generation, You will receive balance within 24-48 hours!' %}</p>
 </section>
 <section>
@@ -101,37 +101,20 @@
           </div>
         </div>
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-8-tablet">
-        <form method="POST">
-        {% csrf_token %}<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field w-100">
-                            <input type="text" class="mdc-text-field__input" id="text-field-hero-input" name="name" placeholder="" autofocus="autofocus" maxlength="150">
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">Name</label>
-                          </div>
-                        </div>
-                        <br>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field w-100">
-                            <input type="text" class="mdc-text-field__input" id="text-field-hero-input" name="email" placeholder="" autofocus="autofocus" maxlength="150">
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">Email</label>
-                          </div>
-                        </div>
-                        <br>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field w-100">
-                            <input type="text" class="mdc-text-field__input" id="text-field-hero-input" name="account" placeholder="" autofocus="autofocus" maxlength="150">
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">MT5 Account Number</label>
-                          </div>
-                        </div>
-                        <br>
-          <button disabled type="submit" class="mdc-button mdc-button--raised w-100 mdc-ripple-upgraded">
-            Request Monthly Withdrawal
-          </button>
-          </form>{% if mt != 0 %}
-          <p style="color: green">{% trans 'Your withdrawal is in process!' %}</p>{% endif %}
-          <p style="color: red">{% trans 'Note: Withhdrawals are only allowed on first day of every month, next it will activate on January 1, 2022' %}</p>
+          <br>
+          <p>DCXa ID:{{ request.user.dcxa_id }}</p>
+          {% if request.user.auto_neft %}
+          {% else %}
+          <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="dcxa">
+            <button {% if not show %}disabled{% endif %} type="submit" class="mdc-button mdc-button--raised  mdc-ripple-upgraded">
+              Monthly Withdrawal via DCXa/Pancake
+            </button>
+            <p>{{ message }}</p>
+          </form>
+          {% endif %}
+          </div>
         </div>
       </div>
     </div>

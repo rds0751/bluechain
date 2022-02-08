@@ -303,6 +303,11 @@ class UserDashboardView(LoginRequiredMixin, ListView):
                 return_total = (rate*30)
             if return_total <= 0:
                 return_total = 0
+            wt = WalletHistory.objects.filter(user_id=request.user.username, comment="Sent to DCXa")
+            if wt.count == 0:
+                pass
+            else:
+                return_total = 0
         except Exception as e:
             return_total = 0
         
