@@ -19,22 +19,22 @@ class Command(BaseCommand):
             wallet9 = wallet - wallet*0.10*0.95
             wallet10 = wallet - wallet*0.10*0.95
             levelp = user
-            start_date = datetime.datetime.now() + datetime.timedelta(-30)
-            end_date = datetime.datetime.now()
+            start_date = datetime.datetime.now() + datetime.timedelta(-26)
+            end_date = datetime.datetime.now() + datetime.timedelta(+4)
             newusers = UserTotal.objects.filter(activated_at__range=(start_date, end_date))
             if user in newusers:
                 wallet10 = wallet9
             try:
                 plan_ends = levelp.activated_at
                 if plan_ends != 'gone' and plan_ends != 'not active':
-                    date_diff = plan_ends - timezone.now() - datetime.timedelta(days=1)
+                    date_diff = plan_ends - timezone.now() - datetime.timedelta(days=4)
                 else:
                     date_diff = 'blank'
                 if date_diff != 'blank':
                     total_days = levelp.level.expiration_period * 30
                     rate = levelp.level.return_amount/total_days
                     if user in newusers:
-                        return_total = -(rate*(date_diff.days-2))*0.95
+                        return_total = -(rate*(date_diff.days))*0.95
                         # print(date_diff.days-2, rate, user)
                     else:
                         return_total = (rate*30)*0.95

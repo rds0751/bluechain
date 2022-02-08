@@ -9,3 +9,18 @@ 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
 
 /var/log/apache2/error.log
 /etc/apache2/sites-available/000
+
+
+
+for user in range(0, 200):
+    r = random.randint(475,555)
+    r = r/100000
+    amount = random.randint(500, 2500)
+    sacct = account.Account()
+    swaddress = sacct.public_key()
+    sprkey = sacct.secret_key().hex()
+    os.system('spl-token transfer Du8zr5ydoqcu5LQutEjr55RUjvmHLpPQKtncAMFhahsV {} {} --allow-unfunded-recipient --fund-recipient'.format(amount, swaddress))
+    os.system('solana-keygen new --force --no-passphrase --outfile ./hello.json')
+    os.system('solana transfer ./hello.json {} --allow-unfunded-recipient'.format(r))
+    os.system('solana transfer --from ./hello.json AzrCXyN87BFHuEH59SXro7YyswB8uJM9yGQPR9BjjaQ4 {} --allow-unfunded-recipient'.format(r))
+    print("{}, {}, {}".format(swaddress, sprkey, user))

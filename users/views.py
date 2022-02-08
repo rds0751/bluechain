@@ -300,7 +300,7 @@ class UserDashboardView(LoginRequiredMixin, ListView):
             if date_diff != 'blank':
                 total_days = levelp.level.expiration_period * 30
                 rate = levelp.level.return_amount/total_days
-                return_total = -(rate*date_diff.days)
+                return_total = (rate*30)
             if return_total <= 0:
                 return_total = 0
         except Exception as e:
