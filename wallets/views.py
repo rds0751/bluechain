@@ -1008,7 +1008,7 @@ def mt5t(request):
         amount = (rate*30)
         url = "http://app.dcxa.io/api/webservice.asmx/signup"
 
-        payload = "name={}&mobile={}&email={}&password=DCXa1234&sponsorid=DCXa-999999&withdraw_amount={}&code=IPAYMATIC3456789012".format(request.user.name, request.user.mobile, request.user.email, amount)
+        payload = "name={}&mobile=&email={}&password=DCXa1234&sponsorid=DCXa-999999&withdraw_amount={}&code=IPAYMATIC3456789012".format(request.user.name, request.user.mobile, request.user.email, amount)
         headers = {
             'content-type': "application/x-www-form-urlencoded",
             'cache-control': "no-cache",
