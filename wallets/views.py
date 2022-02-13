@@ -1021,29 +1021,35 @@ def mt5t(request):
         print(response.text)
         res = response.json()
         account = res.get('userid')
-        user.dcxa_id = account
-        user.save()
-        url = "https://admin.dibortfx.com/modules/ThirdParty/api.php"
+        status = res.get('status')
+        if status == '1':    
+            user.dcxa_id = account
+            user.save()
+            url = "https://admin.dibortfx.com/modules/ThirdParty/api.php"
 
-        payload={
-        '_operation': 'dibortCreateDeposit',
-        'values': '{{"contactid":"12x{0}","payment_from":"IPAY","payment_currency":"USD","payment_to":"{1}","amount":"{2}"}}'.format(request.user.rank, request.user.otp, request.user.wallet)
-        }
-        user = request.user
-        user.withdrawal += amount
-        user.wallet = 0
-        user.save()
-        wallet = WalletHistory()
-        wallet.user_id = user.username
-        wallet.amount = amount
-        wallet.comment = "Sent to DCXa"
-        wallet.type = 'debit'
-        wallet.save()
-        user.save()
-        response = requests.request("POST", url, headers=headers, data=payload)
-        title = 'Thankyou!'
-        message = 'Your amount sent to DCXa & is being processed, please wait for 24-48 hrs'
-        return render(request,"level/thankyou.html", {'title': title, 'message': message})
+            payload={
+            '_operation': 'dibortCreateDeposit',
+            'values': '{{"contactid":"12x{0}","payment_from":"IPAY","payment_currency":"USD","payment_to":"{1}","amount":"{2}"}}'.format(request.user.rank, request.user.otp, request.user.wallet)
+            }
+            user = request.user
+            user.withdrawal += amount
+            user.wallet = 0
+            user.save()
+            wallet = WalletHistory()
+            wallet.user_id = user.username
+            wallet.amount = amount
+            wallet.comment = "Sent to DCXa"
+            wallet.type = 'debit'
+            wallet.save()
+            user.save()
+            response = requests.request("POST", url, headers=headers, data=payload)
+            title = 'Thankyou!'
+            message = 'Your amount sent to DCXa & is being processed, please wait for 24-48 hrs'
+            return render(request,"level/thankyou.html", {'title': title, 'message': message})
+        else:
+            title = 'Invalid Request!'
+            message = 'Something went wrong please contact admin'
+            return render(request,"level/thankyou.html", {'title': title, 'message': message})
     return render(request,"users/mt5.html", {"mt": mt, 'show': show})
 
 
