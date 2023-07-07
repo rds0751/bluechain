@@ -840,14 +840,6 @@ def imps(request):
         ]
         return status, data    
 
-    # def resendbeneotp(mobile, bid):
-    #     url = "https://mobilerechargenow.com/api/v2/dmt/beneficiaryotp.php?username=MRN1747997&apikey=1273418745&number={}&beneficiaryid={}".format(mobile, bid)
-    #     # url = "https://www.mobilerechargenow.com/api/v2/dmt/deletebeneficiary.php?username=MRN1747997&apikey=1348504980&number=$cUser->mobile&beneficiaryid=" . $bene->bene_id . "&format=json"
-    #     # url = "https://www.mobilerechargenow.com/api/v2/dmt/deletebeneficiaryverifiy.php?username=MRN1747997&apikey=1348504980&number=$cUser->mobile&otp=$request->otp&beneficiaryid=" . $bene->bene_id . "&format=json"
-    
-    # def report():
-    #     url = 'from database'
-
     def registermain():
         mobile = request.POST.get('mobile')
         rstatus = 'do it'

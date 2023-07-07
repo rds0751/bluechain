@@ -24,7 +24,7 @@ from django.contrib.auth import load_backend, login
 from wallets.models import WalletHistory, Withdrawal, PaymentOption
 from users.models import User
 import random
-from level.models import Activation, LevelIncomeSettings, LevelUser
+from level.models import Activation, LevelIncomeSettings, LevelUser, PoolUser
 import csv
 
 @staff_member_required
@@ -293,7 +293,6 @@ def activate(user, amount):
     print(userjoined)
     if True:
         if not userjoined:
-        # if True:
             userwallet = WalletHistory()
             userwallet.user_id = user_id
             userwallet.amount = packamount
@@ -310,23 +309,25 @@ def activate(user, amount):
                     upline = 'blank'    
                 return upline   
 
-            levels = {
-            'level1': 20/100, 
-            'level2': 10/100,
-            'level3': 8/100,
-            'level4': 6/100,
-            'level5': 4/100,
-            'level6': 2/100,
-            'level7': 2/100,
-            'level8': 8/100,
-            }
+            levels = {  
+                'level1': 1/100,  
+                'level2': 1/100, 
+                'level3': 0.75/100, 
+                'level4': 0.5/100, 
+                'level5': 0.25/100, 
+                'level6': 0.25/100, 
+                'level7': 0.25/100, 
+                'level8': 0.25/100,
+                'level9': 0.25/100,
+                'level10': 0.25/100 
+                }
 
             level = 0   
             upline_user = userid.referral    
             userid = user   
             amount = packamount 
             uplines = [upline_user, ]
-            while level < 7 and upline_user != 'blank':
+            while level < 10 and upline_user != 'blank':
                 upline_user = finduplines(str(upline_user))
                 uplines.append(upline_user)
                 level += 1
@@ -360,6 +361,21 @@ def activate(user, amount):
                         upline_wallet.save()
                         upline_user.save()
                         print('if')
+                        if directs.count() > 1:
+                            upline_wallets = WalletHistory()   
+                            upline_wallets.user_id = upline  
+                            upline_wallets.amount = upline_amount    
+                            upline_wallets.type = "credit"   
+                            upline_wallets.comment = "More than 2 direct upgrades"
+                            upgraded.business += amount
+                            upline_wallets.save()
+                            upline_user.save()
+                            print('if, if')
+                        if directs.count() == 1:
+                            model, created = LevelUser.objects.get_or_create(user=upline_user.username, plan=levelp)
+                            model, created = LevelUser.objects.get_or_create(user=upline_user.username, plan=levelp)
+                            
+
                     elif directs.count() > level and not direct:   
                         upline_amount = levels['level{}'.format(level+1)]*amount
                         upline_wallet = WalletHistory()   
@@ -397,8 +413,6 @@ def activate(user, amount):
             message = "Plan purchased"
         else:
             message = "user already joined, please upgrade another ID"
-    else:
-        message = "Select correct package"
     return message
 
 @staff_member_required
@@ -412,12 +426,6 @@ def activation(request, id):
 
     w = Activation.objects.get(id=id)
     u = User.objects.get(username=w.user)
-    try:
-        k = ImageUploadModel.objects.get(user=w.user)
-        b = Paymentoptions.objects.get(user=w.user)
-    except Exception as e:
-        k = 'blank'
-        b = 'blank'
     if request.method == "POST" and 'action' in request.POST:
         action = request.POST.get('action')
         comment = request.POST.get('comment')
