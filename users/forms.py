@@ -45,7 +45,11 @@ class SimpleSignupForm(SignupForm):
 			userr = 'blank'
 		if userr == 'blank':
 			referral = 'BNXG999999'
+<<<<<<< HEAD
 		plan = LevelUser()
+=======
+		plan = UserTotal()
+>>>>>>> 05d0820 (new commit)
 		plan.user = user
 		plan.level = LevelIncomeSettings.objects.get(id=9)
 		plan.active = False
