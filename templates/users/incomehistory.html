@@ -26,19 +26,19 @@
 															{% for history in histories %}
 															{% if history.type == 'hidden' %}
 															{% else %}
-															<tr>
+															<tr class="mb-2">
 																<td style="padding-left: 20px;">
-																	<p style="color: black; font-size: 10px;">
+																	<p style="font-size: 10px;">
 																	{{ history.comment }}</p>
-																	<p style="color: grey; font-size: 8px;">{{ history.created_at }}</p>
+																	<p style="font-size: 8px;">{{ history.created_at }}</p>
 																</td>
-																<td style="{% if history.type == 'credit' %}color: green;{% else %}color: red;{% endif %} font-size: 10px; padding-right: 20px; float: right;" ><strong>{% if history.type == 'credit' %}+{% else %}-{% endif %}  ${{ history.amount|floatformat:2 }}</strong></td>
+																<td style="{% if history.type == 'credit' %}color: lightgreen;{% else %}color: orange;{% endif %} font-size: 10px; padding-right: 20px; float: right;" ><strong>{% if history.type == 'credit' %}+{% else %}-{% endif %}  ${{ history.amount|floatformat:2 }}</strong></td>
 															</tr>
 															{% endif %}
 															{% endfor %}
 														</tbody>
 													</table>
-													<div style="padding-left: 10px;" class="template-demo">
+													{% comment %} <div style="padding-left: 10px;" class="template-demo">
 														{% for pg in page_range %}
 														{% if histories.number == pg %}
 														<a href="?page={{pg}}" class="mdc-button mdc-button--raised icon-button filled-button--success">
@@ -48,7 +48,7 @@
 														<a href="?page={{pg}}" class="mdc-button mdc-button--raised icon-button filled-button--primary">{{pg}}</a>
 														{% endif %}
 														{% endfor %}
-													</div>
+													</div> {% endcomment %}
 												</div>
 											</div>
 											<div>

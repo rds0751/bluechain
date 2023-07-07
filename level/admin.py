@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Activation, LevelIncomeSettings, UserTotal
+from .models import Activation, LevelIncomeSettings, LevelUser, PoolUser
 
 from import_export.admin import ImportExportModelAdmin
 from django.contrib import admin
@@ -26,12 +26,13 @@ class LevelIncomeSettingAdmin(ImportExportModelAdmin):
     resource_class = LevelIncomeSettingResource
     list_display = [f.name for f in LevelIncomeSettings._meta.fields]
 
-class UserTotalAdmin(ImportExportModelAdmin):
-    resource_class = UserTotal
-    list_display = [f.name for f in UserTotal._meta.fields] + ['ccm_ends', 'plan_ends']
+class LevelUserAdmin(ImportExportModelAdmin):
+    resource_class = LevelUser
+    list_display = [f.name for f in LevelUser._meta.fields]
     search_fields = ('user_id', )
 
 
 admin.site.register(Activation, LevelAdmin)
 admin.site.register(LevelIncomeSettings, LevelIncomeSettingAdmin)
-admin.site.register(UserTotal, UserTotalAdmin)
+admin.site.register(LevelUser, LevelUserAdmin)
+admin.site.register(PoolUser)

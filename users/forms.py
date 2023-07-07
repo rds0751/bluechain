@@ -3,7 +3,7 @@ from django import forms
 from .models import *
 import random
 import requests
-from level.models import UserTotal, LevelIncomeSettings
+from level.models import LevelUser, LevelIncomeSettings
 from django.core import mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
@@ -45,7 +45,7 @@ class SimpleSignupForm(SignupForm):
 			userr = 'blank'
 		if userr == 'blank':
 			referral = 'BNXG999999'
-		plan = UserTotal()
+		plan = LevelUser()
 		plan.user = user
 		plan.level = LevelIncomeSettings.objects.get(id=9)
 		plan.active = False

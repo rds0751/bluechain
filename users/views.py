@@ -40,14 +40,14 @@ import logging
 
 from allauth.account.views import SignupView
 from .models import User
-from level.models import UserTotal
+from level.models import LevelUser
 from .forms import SimpleSignupForm
 from django.db.models import Q
 from django.contrib.auth import get_user_model
 from django.utils.crypto import get_random_string
 import random
 from users.models import User
-from level.models import UserTotal
+from level.models import LevelUser
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import resolve_url
 from django.http import HttpResponseRedirect, QueryDict
@@ -202,13 +202,13 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         context = super().get_context_data(*args, **kwargs)
         amount = 0
         try:
-            levelp = UserTotal.objects.get(user=self.request.user)
+            levelp = LevelUser.objects.get(user=self.request.user)
         except Exception as e:
             levelp = 'None'
 
         user = User.objects.get(username=self.request.user)
         try:
-            s = UserTotal.objects.get(user=user.username)
+            s = LevelUser.objects.get(user=user.username)
         except Exception as e:
             s = e
         
@@ -227,53 +227,53 @@ class UserDashboardView(LoginRequiredMixin, ListView):
         context = super().get_context_data(*args, **kwargs)
         amount = 0
         try:
-            levelp = UserTotal.objects.get(user=self.request.user)
+            levelp = LevelUser.objects.get(user=self.request.user)
         except Exception as e:
             levelp = 'None'
 
         user = User.objects.get(username=self.request.user)
         try:
-            s = UserTotal.objects.get(user=user.username)
+            s = LevelUser.objects.get(user=user.username)
         except Exception as e:
             s = e
-        directs = UserTotal.objects.filter(direct=user).count()
-        level1 = UserTotal.objects.filter(direct=user.username).order_by('id')
+        directs = LevelUser.objects.filter(direct=user).count()
+        level1 = LevelUser.objects.filter(direct=user.username).order_by('id')
         level1n = []
         for x in level1:
             level1n.append(x)
         level2n = []
         for y in level1n:
-            level2 = UserTotal.objects.filter(direct=y).order_by('id')
+            level2 = LevelUser.objects.filter(direct=y).order_by('id')
             for z in level2:
                 level2n.append(z)
         level3n = []
         for y in level2n:
-            level3 = UserTotal.objects.filter(direct=y).order_by('id')
+            level3 = LevelUser.objects.filter(direct=y).order_by('id')
             for z in level3:
                 level3n.append(z)
         level4n = []
         for y in level3n:
-            level4 = UserTotal.objects.filter(direct=y).order_by('id')
+            level4 = LevelUser.objects.filter(direct=y).order_by('id')
             for z in level4:
                 level4n.append(z)
         level5n = []
         for y in level4n:
-            level5 = UserTotal.objects.filter(direct=y).order_by('id')
+            level5 = LevelUser.objects.filter(direct=y).order_by('id')
             for z in level5:
                 level5n.append(z)
         level6n = []
         for y in level5n:
-            level6 = UserTotal.objects.filter(direct=y).order_by('id')
+            level6 = LevelUser.objects.filter(direct=y).order_by('id')
             for z in level6:
                 level6n.append(z)
         level7n = []
         for y in level6n:
-            level7 = UserTotal.objects.filter(direct=y).order_by('id')
+            level7 = LevelUser.objects.filter(direct=y).order_by('id')
             for z in level7:
                 level7n.append(z)
         level8n = []
         for y in level7n:
-            level8 = UserTotal.objects.filter(direct=y).order_by('id')
+            level8 = LevelUser.objects.filter(direct=y).order_by('id')
             for z in level8:
                 level8n.append(z)
 

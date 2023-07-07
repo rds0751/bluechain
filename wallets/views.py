@@ -17,7 +17,7 @@ import jwt
 from django.utils import timezone
 from random import randint
 import datetime
-from level.models import UserTotal
+from level.models import LevelUser
 
 from django.core.mail import send_mail
 from django.http import HttpResponse
@@ -623,7 +623,7 @@ def neft(request):
             user_id = request.user
             amount = request.user.wallet
             try:
-                levelp = UserTotal.objects.get(user=request.user)
+                levelp = LevelUser.objects.get(user=request.user)
             except Exception as e:
                 levelp = 'None'
             total_days = levelp.level.expiration_period * 30
@@ -999,7 +999,7 @@ def mt5t(request):
     if request.method == "POST" and 'dcxa' in request.POST:
         user = request.user
         try:
-            levelp = UserTotal.objects.get(user=request.user)
+            levelp = LevelUser.objects.get(user=request.user)
         except Exception as e:
             levelp = 'None'
         total_days = levelp.level.expiration_period * 30

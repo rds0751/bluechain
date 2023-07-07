@@ -24,7 +24,7 @@ from django.contrib.auth import load_backend, login
 from wallets.models import WalletHistory, Withdrawal, PaymentOption
 from users.models import User
 import random
-from level.models import Activation, LevelIncomeSettings, UserTotal
+from level.models import Activation, LevelIncomeSettings, LevelUser
 import csv
 
 @staff_member_required
@@ -74,7 +74,7 @@ def users(request):
         except Exception as e:
             x.referral = x.referral
         try:
-            x.top = UserTotal.objects.get(user=x.username)
+            x.top = LevelUser.objects.get(user=x.username)
         except Exception as e:
             x.top = 0
     return render(request, 'panel/users.html', {'u': u, 'q': q})
@@ -216,20 +216,20 @@ def activations(request):
         except Exception as e:
             pass
         try:
-            x.user.referral.top = UserTotal.objects.get(user=x.user.referral)
+            x.user.referral.top = LevelUser.objects.get(user=x.user.referral)
         except Exception as e:
             pass
     return render(request, 'panel/activations.html', {'w': w})
 
 @staff_member_required
 def ids(request):
-    w = UserTotal.objects.filter(active=True).order_by('-created_at')
+    w = LevelUser.objects.filter(active=True).order_by('-created_at')
     if request.method == 'POST':
         fromm = request.POST.get('from')
         date = datetime.datetime.strptime(fromm, '%Y-%m-%d')
         too = request.POST.get('to')
         date = datetime.datetime.strptime(too, '%Y-%m-%d')
-        w = UserTotal.objects.filter(active=True, activated_at__range=(fromm, too)).order_by('-created_at')
+        w = LevelUser.objects.filter(active=True, activated_at__range=(fromm, too)).order_by('-created_at')
     for x in w:
         try:
             x.comments = Activation.objects.get(user=x.user).comments
@@ -243,7 +243,7 @@ def ids(request):
             x.user.referral = User.objects.get(username=x.user.referral)
         except Exception as e:
             pass
-        x.directs = UserTotal.objects.filter(direct=x.user).count()
+        x.directs = LevelUser.objects.filter(direct=x.user).count()
         try:
             x.kyc = ImageUploadModel.objects.get(user=x.user)
         except Exception as e:
@@ -254,7 +254,7 @@ def ids(request):
             pass
         start_date = x.activated_at
         end_date = x.activated_at + datetime.timedelta(days=7)
-        directs = UserTotal.objects.filter(direct=x.user, activated_at__range=(start_date, end_date))
+        directs = LevelUser.objects.filter(direct=x.user, activated_at__range=(start_date, end_date))
         ccm = 0
         for y in directs:
             ccm += y.level.amount
@@ -276,7 +276,7 @@ def ids(request):
 def activate(user, amount):
     def userjoined(user):
         try:
-            user = UserTotal.objects.get(user=str(user), active=True)
+            user = LevelUser.objects.get(user=str(user), active=True)
         except Exception as e:
             user = 'blank'
         print(user, '---------------')
@@ -339,11 +339,11 @@ def activate(user, amount):
                 except Exception as e:  
                     upline_user = 'blank'
                 try:
-                    upgraded = UserTotal.objects.get(user=upline, active=True)
+                    upgraded = LevelUser.objects.get(user=upline, active=True)
                 except Exception as e:
                     upgraded = 'blank'
                 if upline_user != 'blank' and upgraded != 'blank':  
-                    directs = UserTotal.objects.filter(direct=upline_user, active=True)
+                    directs = LevelUser.objects.filter(direct=upline_user, active=True)
                     if user.referral == upline_user.username:
                         direct = True
                     else:
@@ -383,8 +383,8 @@ def activate(user, amount):
                     print('outside')
                 level = level + 1
             
-            model, created = UserTotal.objects.get_or_create(user=userid.username)
-            model, created = UserTotal.objects.get_or_create(user=userid.username)
+            model, created = LevelUser.objects.get_or_create(user=userid.username)
+            model, created = LevelUser.objects.get_or_create(user=userid.username)
             model.user = userid.username
             model.level = levelp
             model.active = True

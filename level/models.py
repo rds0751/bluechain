@@ -26,7 +26,7 @@ class LevelIncomeSettings(models.Model):
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True)
 
-class UserTotal(models.Model):
+class LevelUser(models.Model):
     user = models.CharField(max_length=25, blank=True, null=True)
     level = models.ForeignKey(LevelIncomeSettings, on_delete=models.CASCADE)
     active = models.BooleanField()
@@ -37,23 +37,19 @@ class UserTotal(models.Model):
     updated_at = models.DateTimeField(auto_now=True, blank=True)
     activated_at = models.DateTimeField(null=True, blank=True)
 
-    def ccm_ends(self):
-        activated_at = self.activated_at
-        try:
-            if activated_at + timezone.timedelta(days=7) <= timezone.now():
-                return 'gone'
-            return activated_at + timezone.timedelta(days=7)
-        except Exception as e:
-            return 'not active'
+    def __str__(self):
+        return str(self.user)
+    
 
-    def plan_ends(self):
-        activated_at = self.activated_at
-        try:
-            if activated_at + timezone.timedelta(days=self.left_months*30) <= timezone.now():
-                return 'gone'
-            return activated_at + timezone.timedelta(days=self.left_months*30)
-        except Exception as e:
-            return 'not active'
+class PoolUser(models.Model):
+    user = models.CharField(max_length=25, blank=True, null=True)
+    level = models.IntegerField(default=0)
+    plan = models.ForeignKey(LevelIncomeSettings, on_delete=models.CASCADE)
+    active = models.BooleanField(default=False)
+    upline = models.CharField(max_length=10)
+    created_at = models.DateTimeField(default=timezone.now, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True)
+    activated_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return str(self.user) 
+        return str(self.user)

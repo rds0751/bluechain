@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import json
-from level.models import UserTotal
+from level.models import LevelUser
 from users.models import User
 from wallets.models import WalletHistory, PaymentOption
 import datetime
@@ -12,7 +12,7 @@ class Command(BaseCommand):
     help = "Count Binary Data"
 
     def handle(self, *args, **options):
-        users = UserTotal.objects.filter(active=True).order_by('user')
+        users = LevelUser.objects.filter(active=True).order_by('user')
         for user in users:
             useru = User.objects.get(username=user)
             wallet = useru.wallet
@@ -21,7 +21,7 @@ class Command(BaseCommand):
             levelp = user
             start_date = datetime.datetime.now() + datetime.timedelta(-26)
             end_date = datetime.datetime.now() + datetime.timedelta(+4)
-            newusers = UserTotal.objects.filter(activated_at__range=(start_date, end_date))
+            newusers = LevelUser.objects.filter(activated_at__range=(start_date, end_date))
             if user in newusers:
                 wallet10 = wallet9
             try:

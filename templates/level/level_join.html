@@ -121,22 +121,14 @@
                       </div>
                             <br>
                           <div style="width: 80%; margin-bottom: 10%;" class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
-                          <input type="hidden" value='' required name="type">
-                            <i class="mdc-select__dropdown-icon"></i>
-                            <div class="mdc-select__selected-text"></div>
-                            <div class="mdc-select__menu mdc-menu-surface demo-width-class">
-                              <ul class="mdc-list">
-                                <li class="mdc-list-item mdc-list-item--selected" data-value="online" aria-selected="true">Pay by Service Balance
-                                </li>
-                                <li class="mdc-list-item" data-value="cash">Pay in Cash</li>
-                              </ul>
-                            </div>
-                            <span class="mdc-floating-label">Select Payment Type</span>
-                            <div class="mdc-line-ripple"></div>
+                          <select class="form-select border-0" id="type" name="type" required="">
+                              <option value='cash'>Pay in Cash</option>
+                              <option value='online'>Pay by Service Wallet</option>
+                          </select>
                           </div>
                           <br>
                           {% if actp == 0 and acta == 0%}
-                          <button style="width: 80%; margin-bottom: 10%;" type="submit" class="mdc-button mdc-button--raised w-25">
+                          <button style="width: 80%; margin-bottom: 10%;" type="submit" class="btn btn-primary">
                             Purchase Now
                           </button>
                           {% elif actp > 0 %}
@@ -154,7 +146,7 @@
                         <h5>Add Money to Service Balance</h5>
                           <input style="width: 78%; -moz-appearance: textfield;" type="number" min="1" max="6000" name="amounta" placeholder="Amount in Dollars" class="amount">
                           <p style="color: green;">Service Balance: $ {{ request.user.c }}</p>
-                          <button style="width: 80%" type="submit" class="mdc-button mdc-button--raised w-25">
+                          <button style="width: 80%" type="submit" class="btn btn-secondary">
                             Top Up Service Balance
                           </button>
                           </form>

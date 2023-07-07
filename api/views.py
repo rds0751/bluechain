@@ -14,7 +14,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from django.http import JsonResponse
 from users.models import User
-from level.models import UserTotal
+from level.models import LevelUser
 from django.core import serializers
 from django.core.cache import cache
 # from .renderers import UserJSONRenderer
@@ -111,7 +111,7 @@ class LevelTeamView(RetrieveAPIView):
 
     def get(self, request):
         username = request.user
-        user_total = UserTotal.objects.filter(user_id=str(username)).order_by('level')
+        user_total = LevelUser.objects.filter(user_id=str(username)).order_by('level')
         leveldata = []
         for level in user_total:
             data = {
