@@ -5,8 +5,8 @@
 {% block title %}{{ user.username|title }}{% endblock %}
 
 {% block content %}
-<main class="content-wrapper">
-	<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell mdc-layout-grid__cell--span-12-tablet">
+<div class="container">
+  <div class="row align-items-center m-2 p-2">
 		<div class="mdc-card" align="center">
 			<h1>{{ user.username }}</h1>
 			{% if user.name %}<p class="lead">{{ user.name|title }}</p>{% endif %}
@@ -56,31 +56,19 @@
 			<div class="py-4">
 				<p class="d-flex justify-content-between">
 					<span> {% trans "Mobile" %}  </span>
-					<span style="color: green">
+					<span>
 						{{ user.mobile }}
 					</span>
 				</p>
 				<p class="d-flex justify-content-between">
-					<span> {% trans "Nominee" %}  </span>
-					<span style="color: green">
-						{{ user.nominee }}
-					</span>
-				</p>
-				<p class="d-flex justify-content-between">
-					<span> {% trans "Nominee Relation" %}  </span>
-					<span style="color: green">
-						{{ user.nominee_relation }}
-					</span>
-				</p>
-				<p class="d-flex justify-content-between">
 					<span>Date of Registration</span>
-					<span style="color: green">
+					<span>
 						{{ user.date_joined|date }}
 					</span>
 				</p>
 				<p class="d-flex justify-content-between">
 					<span>Date of Activation</span>
-					<span style="color: green">
+					<span>
 						{{ s.activated_at|date }}
 					</span>
 				</p>
@@ -105,56 +93,42 @@
 					<div class="mdc-layout-grid__inner mb-3">
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
 							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-								<input type="text" readonly name="name" value="{{ request.user.name }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+								<input type="text" readonly name="name" value="{{ request.user.name }}" maxlength="255" class="form-control border-start-0" id="text-field-hero-input">
 								<div class="mdc-line-ripple"></div>
 								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Name" %} </span></label>
 							</div>
 						</div>
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
 							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-								<input type="text" name="email" value="{{ request.user.email }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+								<input type="text" name="email" value="{{ request.user.email }}" maxlength="255" class="form-control border-start-0" id="text-field-hero-input">
 								<div class="mdc-line-ripple"></div>
 								<label style="" for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Email" %} </span></label>
 							</div>
 						</div>
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
 							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px; ">
-								<input type="text" name="mobile" value="{{ request.user.mobile }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+								<input type="text" name="mobile" value="{{ request.user.mobile }}" maxlength="255" class="form-control border-start-0" id="text-field-hero-input">
 								<div class="mdc-line-ripple"></div>
 								<label style="" for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Mobile" %} </span></label>
 							</div>
 						</div>
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
 							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-								<input type="text" name="nominee" value="{{request.user.nominee}}" maxlength="155" class="mdc-text-field__input" id="text-field-hero-input">
-								<div class="mdc-line-ripple"></div>
-								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Nominee" %} </span></label>
-							</div>
-						</div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-								<input type="text" name="nominee_relation" value="{{request.user.nominee_relation}}" maxlength="155" class="mdc-text-field__input" id="text-field-hero-input">
-								<div class="mdc-line-ripple"></div>
-								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Nominee Relation" %} </span></label>
-							</div>
-						</div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-								<input type="text" name="address" value="{{ request.user.address }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+								<input type="text" name="address" value="{{ request.user.address }}" maxlength="255" class="form-control border-start-0" id="text-field-hero-input">
 								<div class="mdc-line-ripple"></div>
 								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Address" %} </span></label>
 							</div>
 						</div>
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
 							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-								<input type="text" name="city" value="{{ request.user.city }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+								<input type="text" name="city" value="{{ request.user.city }}" maxlength="255" class="form-control border-start-0" id="text-field-hero-input">
 								<div class="mdc-line-ripple"></div>
 								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "City" %} </span></label>
 							</div>
 						</div>
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
 							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
-								<input type="text" name="state" value="{{ request.user.state }}" maxlength="255" class="mdc-text-field__input" id="text-field-hero-input">
+								<input type="text" name="state" value="{{ request.user.state }}" maxlength="255" class="form-control border-start-0" id="text-field-hero-input">
 								<div class="mdc-line-ripple"></div>
 								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "State" %} </span></label>
 							</div>
@@ -169,14 +143,14 @@
 								</label>
 						</div>
 					</div>
-				<button class="mdc-button mdc-button--unelevated filled-button--primary">
+				<button class="btn btn-primary">
 					{% trans "Update Profile" %}
 				</button>
 				</div>
 			</form>
 		</div>
 	</div>
-</main>
+</div>
 <script type="text/javascript">
 	document.getElementById('profile_pic').onchange = function () {
   alert('Selected file: ' + this.value);

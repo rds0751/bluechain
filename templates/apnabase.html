@@ -1,756 +1,1481 @@
-{% load static %} 
+{% load static %}
 <!DOCTYPE html>
-<html> 
-<head>
-    <meta charset="utf-8" /><!-- 
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <link rel="icon" sizes="76x76" type="image/png" href="{% static 'logo.ico' %}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'logo.ico' %}">
-    <meta property="og:title" content="IPAYMATICS Inc.">
-    <meta property="og:description" content="Get higher COMMISSION on all transactions with life changing opportunity to Earn unlimited Incomes and lifetime Achievements">
-    <meta property="og:image" content="{% static 'download.png' %}">
-    <meta content="{% static 'logo.png' %}" itemprop="image">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700,700i,800&display=swap" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <title>M2Plus</title>
-    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <link href="{% static 'css/demo.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+<html lang="zxx">
 
-    <link rel="shortcut icon" href="{% static 'logo.ico' %}" />
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-K457S78');</script>
-<script async custom-element="amp-auto-ads"
-        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-</script>
-<!-- End Google Tag Manager -->
+<head>
+    <!--Meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Title-->
+    <title>M2Plus</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+    <!--CSS sheet-->
+    <link rel="stylesheet" href="{% static 'assets/css/vendor.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}" />
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600%7cNunito:400,600,700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{% static 'assets/js/jquery-3.5.1.min.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .progress {
+            margin-bottom: 10px;
+        }
+
+        #bonanzaModal {
+            display: block;
+            position: fixed;
+            width: 100%;
+            z-index: 99999;
+            top: 0;
+            height: 100vh;
+            background: #082a43b0;
+            backdrop-filter: blur(4px);
+            padding-top: 80px;
+        }
+
+
+        #bonanzaModal {
+            display: none;
+        }
+
+        .signctn {
+            width: 100%;
+            background: #000;
+            padding: 20px 30px;
+            max-width: 404px;
+            border-radius: 0;
+        }
+        #closeModal {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            cursor: pointer;
+        }
+
+            #closeModal img {
+                width: 33px;
+            }
+
+        .textredcolor {
+            color: #ff2914;
+        }
+
+        .textgoldcolor {
+            color: #febd59;
+        }
+    </style>
+
+    <script type="text/javascript">
+        //            $(window).load(function () {
+        $(document).ready(function () {
+            //$('#bonanzaModal').fadeIn();
+            setTimeout(function () {
+                $("#bonanzaModal").delay(100).fadeIn();
+            }, 1000);
+            $('#closeModal').click(function (e) {
+                $('#bonanzaModal').fadeOut();
+            });
+            $('#closeModal2').click(function (e) {
+                $('#bonanzaModal').fadeOut();
+            });
+        });
+    </script>
 </head>
-<body style="background-color: white">
-    {% block all %}
-    <div class='maineheader'>
-        <div class='navigation-wrap bg-light start-header start-style'>
-            <div class='container'>
-                <div class='row'>
-                    <div class='col-12'>
-                        <nav class='navbar navbar-expand-md navbar-light'>
-                            <a class='navbar-brand normal-logo' href='/' target='blank' ><img style="width: 200px" src='{% static "images/white-logo.png" %}' class='normal-logo' alt='logo' /><img style="width: 200px;margin-bottom: 10px;margin-top: 10px;" src='{% static "images/logoblack.png" %}'  class='scroll-logo' alt='logo' /> </a>
-                            <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
-                                <span class='navbar-toggler-icon'></span>
-                            </button>
-                            <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-                                <ul class='navbar-nav py-4 py-md-0' style="justify-content: flex-end;">
-                                    <li class='nav-item pl-4 pl-md-0 ml-0 ml-md-4'>
-                                        <a class='nav-link' href='/'>Home</a>
-                                    </li>
-                                    <li class='nav-item pl-4 pl-md-0 ml-0 ml-md-4'>
-                                        <a class="nav-link" href='/#aboutus'>About Us</a>
-                                    </li>
-                                    <li class='nav-item pl-4 pl-md-0 ml-0 ml-md-4'>
-                                        <a class="nav-link" href='/plan/'>Business Plan</a>
-                                    </li>
-                                    <li class='nav-item pl-4 pl-md-0 ml-0 ml-md-4'>
-                                        <a class="nav-link" href='/contact/'>Contact Us</a>
-                                    </li>
-                                    <li class='nav-item pl-4 pl-md-0 ml-0 ml-md-4 btnheader'><a href='/accounts/logout/' class='btn login-btn ml-50'>Login!</a></li>
-                                </ul>
-                            </div>
-                        </nav>
+<body>
+
+   <!--<div class="" id="bonanzaModal">
+
+        <div class="signctn" style="position:relative; border: 3px solid #fff;     margin: 0 auto;">
+            <h3 class="textwhitecolor text-center signheading">Important <span class="textredcolor">Message</span></h3>
+          
+                <p class="textwhitecolor text-center">" An Attitude of Positive Expectations is the Mark of superior Personality! So always carry a Positive attitude."</p>
+              
+
+                    <p class="form-check-label text-center text-white">
+                        We are updating something special for you on M2Plus Finance. And we can't wait for you to see it.
+                    </p>
+
+                    <h5 class="text-center textgoldcolor">
+                        PLEASE CHECK BACK LITTLE BIT LATER</h5>
+
+
+
+                        <div class="" id="closeModal"><img src="{% static 'images/close.png' %}" /></div>
+</div>
+    </div>-->
+
+    <!-- preloader area start -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- navbar start -->
+    <div class="navbar-area">
+        <nav class="navbar navbar-area navbar-expand-lg">
+            <div class="container-fluid nav-container">
+                <div class="responsive-mobile-menu">
+                    <button class="menu toggle-btn d-block d-lg-none" data-target="#news_main_menu"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-left"></span>
+                        <span class="icon-right"></span>
+                    </button>
+                </div>
+                <div class="logo">
+                    <a href="index.html"><img src="{% static 'assets/img/logo.png' %}" /></a>
+                </div>
+                <div class="collapse navbar-collapse show" id="news_main_menu">
+                    <ul class="navbar-nav menu-open">
+                        <li class="current-menu-item">
+                            <a href="#home">Home</a>
+
+                        </li>
+                        <li><a href="#Feature">Features</a></li>
+                        <li><a href="#Roadmap">Roadmap</a></li>
+                        <li><a href="/users/">Sign In</a></li>
+                    </ul>
+                </div>
+                <div class="nav-right-part nav-right-part-desktop">
+
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- navbar end -->
+    <!--Banner area-->
+    <section class="banner-area" style="background-image:url({% static 'assets/img/banner/bg.png' %}); background-size:cover; padding-top:190px;" id="home">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-lg-4 d-block d-md-block  d-lg-none d-xl-none pull-left">
+                    <div class="banner-img">
+
+                        <div id="ripple"></div>
+                        <div id="ripple2"></div>
+                        <div id="ripple3"></div>
+
+
+                        <img class="banner-img-3 pulse2" src="{% static 'assets/img/banner/bull.png' %}" alt="img">
+                        <img class="banner-img-4 imager-top-bounce  d-lg-block d-none" src="{% static 'assets/img/banner/dots.png' %}" alt="img">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8">
+                    <div class="banner-inner text-lg-left text-center">
+                        <ul class="banner-social-area">
+                            <li><a href="" target="_blank">Linkedin</a></li>
+                            <li><a href="" target="_blank">Twitter</a></li>
+                            <li><a href="" target="_blank">Instagram</a></li>
+                        </ul>
+                        <h6 class="sub-title"><img src="{% static 'assets/img/saas/1.png' %}" alt="" style="margin-right:10px;">We are M2Plus, the world's most popular companies <img src="{% static 'assets/img/saas/3line.png' %}" alt="" class="after"></h6>
+                        <h1 class="title wow fadeInUp ">M2Plus is an open network for storing and <span class="color">moving money</span>. </h1>
+                        <p>Send, receive & exchange Bitcoin and 100+ cryptocurrencies with ease on the world's leading Desktop, Mobile and Hardware M2Plus</p>
+
+
+                        <div class="fugu--btn-wrap fugu--hero-btn wow fadeInUpX" data-wow-delay="0.20s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUpX;">
+                            <a class="btn btn-main active" href="#">Connect Wallet</a>
+                            <a class="btn btn-primary" href="#">Start Mining</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 pull-left d-none d-md-none d-lg-block d-xl-block">
+                    <div class="banner-img">
+
+                        <div id="ripple"></div>
+                        <div id="ripple2"></div>
+                        <div id="ripple3"></div>
+
+
+                        <img class="banner-img-3" src="{% static 'assets/img/banner/bull.png' %}" alt="img">
+                        <img class="banner-img-4 imager-top-bounce  d-lg-block d-none" src="{% static 'assets/img/banner/dots.png' %}" alt="img">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--Banner area end-->
+    <!--fun fact area start-->
+    <!--<section class="fun-fact-area text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title mt-5">
+                        <h2 class="title">Trusted by users</h2>
+                    </div>
+                </div>
+                <div class="col-lg-3 wow zoomIn col-sm-6">
+                    <div class="single-fact-wrap">
+                        <h2><span class="counter">120</span><span>k</span></h2>
+                        <p class="fact-title">Active user</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 wow zoomIn col-sm-6">
+                    <div class="single-fact-wrap style-2">
+                        <h2><span class="counter">70</span><span>k</span></h2>
+                        <p class="fact-title">Download app</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 wow zoomIn col-sm-6">
+                    <div class="single-fact-wrap style-3">
+                        <h2><span class="counter">150</span><span>k</span></h2>
+                        <p class="fact-title">Customer</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 wow zoomIn col-sm-6">
+                    <div class="single-fact-wrap">
+                        <h2><span class="counter">60</span><span>k</span></h2>
+                        <p class="fact-title">5 Star Rating</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    {% block book %}
-    {% block content %}
-
-   
-   
-    <section class='header-banner-sec'>
-        <div class='container'>
-            <div class='row'>
-                <div class='col-12 col-lg-6 col-md-12'>
-                    <div class='welcome-content text-left'>
-                        <div class='smalltext-section'>
-                            <h3 class='paltform'> Trusted & Complete Trading Platform</h3>
-                        </div>
-                        <div class='heading-intro'>
-                            <h1>
-                                <span class='w-text bold'>Trading platform with multiple incomes</span>
-                            </h1>
-                        </div>
-                        <div class='provide-section'><!-- 
-                            <h3>We are AI based Trading</h3> -->
-                        </div>
+    </section>-->
+    <!--fun fact area end-->
+    <!--featured-area start-->
+    <section class="featured-area text-center" id="Feature">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title">
+                        <h6 class="sub-title">Features of BNXG Tokens</h6>
+                        <h2 class="title">Everybody enjoy our features on your life </h2>
                     </div>
                 </div>
-                <div class='col-12 col-lg-6 col-md-12'>
-                    <div class='image-right'>
-                        <div class='large-image'>
-                            <img src='https://wallstreetglitches.com/wp-content/uploads/2021/02/Easy-start-trading.png' alt='' />
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-sm-6">
+                    <div class="single-featured-wrap">
+                        <div class="thumb">
+                            <div class="after-2"></div>
+                            <i class="fa fa-shield"></i>
                         </div>
-                        <div class='small-image'>
-                            <img src='{% static "images/about-12.png" %}' alt='' />
+                        <h5><a href="#">Create a Secure Decentralize</a></h5>
+                        <p>BNXG Tokens are decentralized tokens, created on Binance Smart Chain. These tokens are unstoppable, decentralized and available for all.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="single-featured-wrap">
+                        <div class="thumb">
+                            <div class="after-2"></div>
+                            <i class="fa fa-sliders"></i>
+                        </div>
+                        <h5><a href="#">Blockchain and Technology </a></h5>
+                        <p>M2Plus  Tokens are based on latest technology and the trustworthy Binance blockchain. Is has been designed to meet the future challenges.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="single-featured-wrap">
+                        <div class="thumb">
+                            <div class="after-2"></div>
+                            <i class="fa fa-home"></i>
+                        </div>
+                        <h5><a href="#">Transparency</a></h5>
+                        <p>Distributed Ledger Containing Information About all the Activities that have taken place on a blockchain network is shared by everyone.</p>
+                    </div>
+                </div>
+                <!--<div class="col-lg-3 col-sm-6">
+                    <div class="single-featured-wrap">
+                        <div class="thumb">
+                            <div class="after-2"></div>
+                            <i class="fa fa-desktop"></i>
+                        </div>
+                        <h5><a href="#">Support 24/7</a></h5>
+                        <p>A team of professionals speaking your mother tongue are always here to support you. </p>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </section>
+    <!--featured-area end-->
+    <!--featured-area-2 start-->
+    <section class="featured-area-2 pd-top-105">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-5 col-md-6 d-md-block d-none">
+                    <div class="thumb mt-4">
+                        <img src="{% static 'assets/img/other/1.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                    <div class="ibn-inner ml-xl-4">
+                        <h2>
+
+                            Global Freedom
+                        </h2>
+                        <p>
+
+                            Our vision is to increase the freedom of money globally. We believe that by spreading this freedom, we can significantly improve lives around the world
+                        </p>
+                        <div class="media pt-3">
+                            <div class="thumb align-self-center">
+                                <i class="fa fa-balance-scale"></i>
+                            </div>
+                            <div class="media-body">
+                                <h5><a href="#"> Stable Currency</a></h5>
+                                <p>M2Plus converts cash into digital currency, to anchor or M2Plus the value to the price of national currencies like the US dollar, the Euro, and the offshore Chinese yuan.</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="thumb style-1 align-self-center">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <div class="media-body">
+                                <h5><a href="#">Transparent</a></h5>
+                                <p>The value of our reserves is published daily. The value of our reserves matches or exceeds the value of all M2Pluss in circulation.</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="thumb style-2 align-self-center">
+                                <i class="fa fa-shield"></i>
+                            </div>
+                            <div class="media-body">
+                                <h5><a href="#">Secure</a></h5>
+                                <p>M2Plus’s blockchain-enabled technology delivers world-class security while meeting international compliance standards and regulations.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <style type="text/css">
-        @media screen and (min-width: 480px) {
-            .flagw {
-                position: fixed;
-                top: 2%;
-                left: 1%;
-                width: 60px;
-                z-index: 1000;
-                display: block;
-            }
-            .flagm {
-                display:none;
-            }
-        }
-        @media screen and (max-width: 479px) {
-            .flagm {
-                position: fixed;
-                top: 2%;
-                left: 59%;
-                width: 20%;
-                z-index: 1000;
-                display:block;
-            }
-            .flagw {
-                display:none;
-            }
-        }
-    </style>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Animated-Flag-India.gif" class="flagw">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Animated-Flag-India.gif" class="flagm">
-    <section class='registelogin-sec'>
-        <div class='container'>
-            <div class='row'>
-                <div class='services-text'>
-                    <h3>For businesses who want to grow as brands</h3>
-                    <p>Our team of experts help your startups and local business to grow as BRANDS. We provide platform to sell, uniquely designed products by different startups using unique selling and marketing technologies and strategies.</p>
+    <!--featured-area-2 end-->
+    <!--cta-area start-->
+    <!--<section class="cta-area bg-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 text-lg-left text-center">
+                    <h2>Global Trading Platform-</h2>
+                    <p>Discover how specific cryptocurrencies work — and get a bit of each crypto to try out for yourself.</p>
+                </div>
+                <div class="col-lg-4 text-lg-right text-center align-self-center">
+                    <a class="btn" href="#">Download app <i class="fas fa-cloud-download-alt"></i></a>
                 </div>
             </div>
-            <div class='row'>
-                <div class='col-12 col-lg-6 col-md-12'>
-                    <div class='welcome-content text-left'>
-                        <div class='left-image'>
-                            <img src='{% static "images/payment.png" %}' alt='' />
-                        </div>
-                    </div>
-                </div>
-                <div class='col-12 col-lg-6 col-md-12'>
-                    <div class='all-services'>
-                        <div class='services-block-four transparent'>
-                            <div class='inner-box'>
-                                <div class='icon-icon bg4'>
-                                    <img src='{% static "images/income-img.png" %}' alt='' />
-                                </div>
-                                <h3>Return on Investment</h3>
-                                <p class='text'>We provide return on every penny spent on our AI based Trading platform.
-                                </p>
-                            </div>
-                        </div>
-                        <div class='services-block-four transparent'>
-                            <div class='inner-box'>
-                                <div class='icon-icon bg4'>
-                                    <img src='{% static "images/team.png" %}' alt='' />
-                                </div>
-                                <h3>Dedicated Team</h3>
-                                <p class='text'>Our teams are working on the most advanced technologies such as AI in Ecommerce domain to provide maximum profitability for your brands.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-             </div>
-         </div>
-     </div>
- </section>
- <section class='aboutus-sec' id='aboutus'>
-    <div class='container'>
-        <div class='row'>
-            <div class='services-text text-global'>
+        </div>
+    </section>-->
+    <!--cta-area end-->
+    <!--overview-area start-->
+    <section class="overview-area pd-top-140 mg-bottom-135" id="Benefits">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="ibn-inner">
+                        <div class="section-title mb-0">
+                            <h6 class="sub-title">Overview</h6>
+                            <h2 class="title">Why Choose BNXG Tokens? </h2>
+                            <p>BNXG Tokens has been designed in such way to become the most useful defi token. The token  concept will keep  tokens from supply consistently.</p>
 
-                <h3>About Us</h3>
-                <p>IPAYMATICS Inc. as a leading AI Based Trading company which provides services to maximize your profits, which enables you to take good incomes and We believe in our startups and local businesses for strong & positive relationships that are open and honest.</p>
-                <p>IPAYMATICS Inc. which started it's operations in the year 2019, is now becoming a leading smart Trading company leading in services and products. IPAYMATICS Inc. is constantly growing at a phenomenal rate every month. The growth rate in itself speaks volumes about the quality of products, the marketing technologies, strategies and the management that is able to deliver such a rewarding and sustainable system.</p>
-                <p class='abt'>IPAYMATICS Inc. is constantly expanding its services range to introduce innovative products. IPAYMATICS Inc. is an also MCA Certified company and believes in world class service levels to all its customers. IPAYMATICS Inc. has been building a widespread network of businesses which is constantly growing every month.</p>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-12 col-md-6 col-lg-4'>
-                <div class='service_single_content'>
-                    <div class='service_icon'>
-                        <img src='{% static "images/vissionimg.png" %}' alt='' />
+                            <div class="media pt-3">
+                                <div class="thumb align-self-center">
+                                    <i class="fa fa-cube"></i>
+                                </div>
+                                <div class="media-body">
+                                    <h5><a href="#"> Decentralized</a></h5>
+                                    <p>BNXG Tokens are decentralized tokens, created on Binance Smart Chain. These tokens are unstoppable, decentralized and available for all.</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="thumb style-1 align-self-center">
+                                    <i class="fa fa-assistive-listening-systems"></i>
+                                </div>
+                                <div class="media-body">
+                                    <h5><a href="#">Technology</a></h5>
+                                    <p>M2Plus  Tokens are based on latest technology and the trustworthy Binance blockchain. Is has been designed to meet the future challenges and can be upgraded accordingly.</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="thumb style-2 align-self-center">
+                                    <i class="fa fa-database"></i>
+                                </div>
+                                <div class="media-body">
+                                    <h5><a href="#">Distribution</a></h5>
+                                    <p>No Team Token, No Reserve Token!! All tokens are available for fair distribution. 38% Token is available for Presale, 2% Token is reserve for Airdrop & remaining 60% Tokens will be transferred to pancakeswap AMM.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <h6 class='bold'>Vision</h6>
-                    <p>The vision of IPAYMATICS is to provide all types of services under one roof and create modern E-commerce business world wide through AI based Model in near future.
+                </div>
+                <div class="col-lg-6 text-lg-right d-none d-lg-block align-self-center">
+                    <div class="thumb">
+                        <img src="{% static 'assets/img/other/overview-3.png' %}" alt="img">
+                    </div>
+                </div>
+            </div>
+            <div class="row pd-top-120 overview-section">
+                <div class="col-lg-6 align-self-center d-none d-lg-block">
+                    <div class="thumb">
+                        <img src="{% static 'assets/img/other/overview-2.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="col-lg-6 align-self-center pl-xl-5">
+                    <div class="section-title">
+                        <h2 class="title">Start investing with M2Plus.</h2>
+                    </div>
+                    <p>
+                        Peer-to-peer itself means M2Plus runs without having a central server. The storage server is decentralized and distributed-divided into various servers run by each user connected to the network.
                     </p>
-                </div>
-            </div>
-            <div class='col-12 col-md-6 col-lg-4'>
-                <div class='service_single_content'>
-                    <div class='service_icon'>
-                        <img src='{% static "images/missionimg.png" %}' alt='' />
-                    </div>
-                    <h6 class='bold'>Mission
-                    </h6>
-                    <p>To become the benchmark in providing Trading services to local businesses and startups.
+                    <p>
+                        M2Plus has no owner; if anything it’s owned by the public. The software runs across a decentralized, open network and handles millions of transactions each day. Like Bitcoin and Ethereum, M2Plus relies on blockchain to keep the network in sync, but the end-user experience is more like cash—M2Plus is much faster, cheaper, and more energy-efficient than typical blockchain-based systems.
                     </p>
-                </div>
-            </div>
-            <div class='col-12 col-md-6 col-lg-4'>
-                <div class='service_single_content'>
-                    <div class='service_icon'>
-                        <img src='{% static "images/w4.png" %}' alt='' />
-                    </div>
-                    <h6 class='bold'>Why Choose us?</h6>
-                    <p>IPAYMATICS uses different types of profit making opportunities also providing high-quality services with higher cashback.
-                    </p>
+                    <a class="btn btn-main" href="#">Read More</a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<section class='reliable-payment-sec'>
-    <div class='container'>
-        <div class='row main-paymentsec'>
-            <div class='col-md-6'>
-                <div class='payment-image' style="margin-bottom: 15%;">
-                    <img src='{% static "images/payment-image.png" %}' alt='' />
-                    <div class='payment-dotted'>
-                        <img src='{% static "images/dotted1.svg' alt='' />
+    </section>
+    <!--overview-area end-->
+    <!-- screenshot area start -->
+    <section id="screenshot" class="screenshot-area bg-main pd-top-140 pd-bottom-131" style="display:none;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title style-two text-center">
+                        <h6 class="sub-title">screenshots</h6>
+                        <h2 class="title text-white">Example Our Apps Screenshots</h2>
                     </div>
                 </div>
-            </div>
-            <div class='col-md-6'>
-                <div class='payment-text'>
-                    <span class='gradient-text blue'>Reliable Online Payment Platform</span>
-                    <h4>Types of Income</h4>
-                    <p>IPAYMATICS Inc. provide different types of income opportunity including high-quality services with higher cashback.</p>
-                    <div class='services-block-four'>
-                        <div class='inner-box'>
-                            <div class='icon-font-box'>
-                                <i class='fa fa-check'></i>
-                            </div>
-                            <h3>Trading Income</h3>
-                            <div class='text'>When you upgrade to prime, for every pair in specific ratio you get 180 from company in form of matching income.</div>
-                        </div>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <!-- item -->
+                        <div class="swiper-slide"><img src="{% static 'assets/img/screenshot/3.png' %}" alt="img"></div>
+                        <!-- item -->
+                        <div class="swiper-slide"><img src="{% static 'assets/img/screenshot/1.png' %}" alt="img"></div>
+                        <!-- item -->
+                        <div class="swiper-slide"><img src="{% static 'assets/img/screenshot/2.png' %}" alt="img"></div>
+                        <!-- item -->
+                        <div class="swiper-slide"><img src="{% static 'assets/img/screenshot/2.png' %}" alt="img"></div>
+                        <!-- item -->
+                        <div class="swiper-slide"><img src="{% static 'assets/img/screenshot/1.png' %}" alt="img"></div>
                     </div>
-                    <div class='services-block-four'>
-                        <div class='inner-box'>
-                            <div class='icon-font-box'>
-                                <i class='fa fa-check'></i>
-                            </div>
-                            <h3>Referral Income</h3>
-                            <div class='text'>After upgrading succesfully you will be opened to different levels time to time where you get income share from your downlines forever</div>
-                        </div>
-                    </div>
-                    <div class='services-block-four'>
-                        <div class='inner-box'>
-                            <div class='icon-font-box'>
-                                <i class='fa fa-check'></i>
-                            </div>
-                            <h3>Fixed Return</h3>
-                            <div class='text'>Company provides different rewards time to time, Just keep an eye on website and stay up to date.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-     </div>
- </div>
-</section>
-<section class='global-growth-sec'>
-    <div class='container'>
-        <div class='row'>
-            <div class='text-global'>
-                <span class='gradient-text blue'>OUR EXPECTED GROWTH</span>
-                <h2>Our System Growth</h2>
-                <p>IPAYMATICS which started it's operations in the year 2019, is now becoming a leading Ecommerce company. <br></br>
-                    IPAYMATICS is constantly growing at a phenomenal rate every month. The growth rate in itself speaks <br></br>
-                    volumes about the quality of products, the marketing plan, technology and ML based Strategy that has able to deliver<br></br>
-                    such a rewarding and sustainable system.
-                </p>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-12 col-lg-3'>
-                <div class='row'>
-                    <div class='col-lg-12 col-sm-6 col-xs-12'>
-                        <div class='article hover box-shadow'>
-                            <img src='{% static "images/encrypted.png" %}' alt='' />
-                            <h3>Fully Encrypted </h3>
-                            <p>Our system is fully encrypted and flexible in use.</p>
-                        </div>
-                    </div>
-                    <div class='col-lg-12 col-sm-6 col-xs-12'>
-                        <div class='article hover box-shadow'>
-                            <img src='{% static "images/secure.png" %}' alt='' />
-                            <h3>Safe and Secure</h3>
-                            <p>Our team of experts have great efficiency to secure our system. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='col-12 col-lg-6'>
-                <div class='map-image'>
-                    <img src='{% static "images/map.png" %}' alt='' />
-                </div>
-            </div>
-            <div class='col-12 col-lg-3'>
-                <div class='row'>
-                    <div class='col-lg-12 col-sm-6 col-xs-12'>
-                        <div class='article hover box-shadow'>
-                            <img src='{% static "images/services.png" %}' alt='' />
-                            <h3>24/7 Services</h3>
-                            <p>our support system is very powerful. If you mail us then we guarantee to get back to you within a working day.
-                            </p>
-                        </div>
-                    </div>
-                    <div class='col-lg-12 col-sm-6 col-xs-12'>
-                        <div class='article hover box-shadow'>
-                            <img src='{% static "images/cashout.png" %}' alt='' />
-                            <h3>Instant Payouts</h3>
-                            <p>Very next day when user orders a products, your income is transferred to your Bank Acoounts.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-     </div>
- </div>
-</section>
-<!-- <section class='our-services'>
-    <div class='container'>
-        <div class='row'>
-            <div class='text-global'>
-                <span class='gradient-text blue'>OUR SERVICES</span>
-                <h2>Our Core Services</h2>
-                <p>We provide free high-quality services with higher cashback from all types of <br></br>transactions and also provide innovative ways of earning.
-             </p>
-         </div>
-     </div>
-     <div class='row'>
-        <div class='col-12 col-md-6 col-lg-4'>
-            <div class='service_single_content'>
-                <div class='service_icon'>
-                    <img src='{% static "images/s1.png" %}' alt='' />
-                </div>
-                <h6 class='bold'>Secure Payment Service</h6>
-                <p>We provide 100% secure payment service. </p>
-            </div>
-        </div>
-        <div class='col-12 col-md-6 col-lg-4'>
-            <div class='service_single_content'>
-                <div class='service_icon'>
-                    <img src='{% static "images/s2.png" %}' alt='' />
-                </div>
-                <h6 class='bold'>Our Product</h6>
-                <p>We provide Reward Points as a product which is used in our services.</p>
-            </div>
-        </div>
-        <div class='col-12 col-md-6 col-lg-4'>
-            <div class='service_single_content'>
-                <div class='service_icon'>
-                    <img src='{% static "images/s3.png" %}' alt='' />
-                </div>
-                <h6 class='bold'>Low Transaction fees</h6>
-                <p>All transactions will be done immediately without any problems. with 0% NEFT Charges</p>
-            </div>
-        </div>
-    </div>
-    <div class='row bottom-sec'>
-        <div class='col-12 col-md-6 col-lg-4'>
-            <div class='service_single_content'>
-                <div class='service_icon'>
-                    <img src='{% static "images/s4.png" %}' alt='' />
-                </div>
-                <h6 class='bold'>Recharge</h6>
-                <p>We provide multiple recharge with higher cashback and reward point 1% use in prepaid and DTH and you got 2% cashback and 1.4% distribution in up-to 10 level. </p>
-            </div>
-        </div>
-        <div class='col-12 col-md-6 col-lg-4'>
-            <div class='service_single_content'>
-                <div class='service_icon'>
-                    <img src='{% static "images/s5.png" %}' alt='' />
-                </div>
-                <h6 class='bold'>Bill Payments</h6>
-                <p>There is no use reward point and no cashback on bill payments.</p>
-            </div>
-        </div>
-        <div class='col-12 col-md-6 col-lg-4'>
-            <div class='service_single_content'>
-                <div class='service_icon'>
-                    <img src='{% static "images/s6.png" %}' alt='' />
-                </div>
-                <h6 class='bold'>Dedicated Team</h6>
-                <p> Our team of experts will help you to startups this business and experts will strongly support to expand your business to become a brand.</p>
-            </div>
-        </div>
-    </div>
-</div>
-</section> -->
-<section class='accordion-sec'>
-    <div class='container'>
-        <div class='row'>
-            <div class='text-global'>
-                <span class='gradient-text blue'>Our Platform FAQ</span>
-                <h2>Frequently Questions</h2>
-                <p>In our system almost all startups and businesses are fully satisfied because we strongly support to enhance <br></br>
-                    our system but some new users don’t know about the system, we covered all questions with complete <br></br>
-                    answers which are given below.
-                </p>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-12 col-lg-6'>
-                <div class='map-image'>
-                    <img src='{% static "images/fqa.png" %}' alt='' />
-                </div>
-            </div>
-            <div class='col-12 col-lg-6'>
-                <div class='row'>
-                    <div id='accordion' class='accordion'>
-                        <div class='card mb-0'>
-                            <div class='card-header collapsed' data-toggle='collapse' href='#collapseOne' >
-                                <a class='card-title'>
-                                    How to start this business?
-                                </a>
-                            </div>
-                            <div id='collapseOne' class='card-body collapse show' data-parent='#accordion'>
-                                <p>First understand complete outcomes and return on investments.
-                                </p>
-                            </div>
-                            <div class='card-header collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapseTwo'>
-                                <a class='card-title'>
-                                    What are the best features and services we deiver?
-                                </a>
-                            </div>
-                            <div id='collapseTwo' class='card-body collapse' data-parent='#accordion' >
-                                <p>One of the best AI based Trading invented according to indian scenarios and we provide high-quality services with higher cashback.
-                                </p>
-                            </div>
-                            <div class='card-header collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapseThree'>
-                                <a class='card-title'>
-                                    Why this Platform important to me?
-                                </a>
-                            </div>
-                            <div id='collapseThree' class='collapse' data-parent='#accordion' >
-                                <div class='card-body'>
-                                    <p>It's completely digital platform that boosts your business.</p>
-                                </div>
-                            </div>
-                            <div class='card-header collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapseFour'>
-                                <a class='card-title'>
-                                   how may I Upgrade on this Platform?
-                               </a>
-                           </div>
-                           <div id='collapseFour' class='collapse' data-parent='#accordion' >
-                            <div class='card-body'>
-                                <p>Register with us then according to plans upgrade your account.</p>
-                            </div>
-                        </div>
-                        <div class='card-header collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapseFive'>
-                            <a class='card-title'>
-                                Can I use services for free?
-                            </a>
-                        </div>
-                        <div id='collapseFive' class='collapse' data-parent='#accordion' >
-                            <div class='card-body'><p>Yes you can use our services free, just signup and check the insider view.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-</section>
-            <!-- <section class='achievers-sec'>
-                <div class='container'>
-                    <div class='row'>
-                        <div class='text-global'>
-                            <span class='gradient-text blue'>Leaders of the Month</span>
-                            <h2>Top Achievers</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
-                        </div>
-                    </div>
-                    <div class='row'>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='top-achievers'>
-                                <div class='content-achiever'>
-                                    <img src='{% static "images/member1.png" %}' alt='' />
-                                </div>
-                                <div class='team-content'>
-                                    <h4>Randy crishen</h4>
-                                    <span>Dubai</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='top-achievers'>
-                                <div class='content-achiever'>
-                                    <img src='{% static "images/member1.png" %}' alt='' />
-                                </div>
-                                <div class='team-content'>
-                                    <h4>Randy crishen</h4>
-                                    <span>Paris</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='top-achievers'>
-                                <div class='content-achiever'>
-                                    <img src='{% static "images/member1.png" %}' alt='' />
-                                </div>
-                                <div class='team-content'>
-                                    <h4>Randy crishen</h4>
-                                    <span>New York</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='top-achievers'>
-                                <div class='content-achiever'>
-                                    <img src='{% static "images/member1.png" %}' alt='' />
-                                </div>
-                                <div class='team-content'>
-                                    <h4>Randy crishen</h4>
-                                    <span>Himalayas</span>
-                                </div>
-                            </div>
-                        </div>
+    </section>
+    <!-- screenshot area end -->
+    <!--Pricing-area start-->
+    <section class="pricing-area text-center pd-top-140 pd-bottom-110" style="display:none;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h6 class="sub-title">Pricing</h6>
+                        <h2 class="title">Get in reasonable pricing plean</h2>
                     </div>
                 </div>
-            </section> -->
-            {% endblock %}
-            <section class="contact-form">
-                <div class='container'>
-                    <div class="row">
-                       <div class="text-global">
-                          <span class="gradient-text blue">Contact Us</span>
-                          <h2>We Guarantee To Get Back <br>To Within A Working Day.</h2>
-                          <p>Please write to us using the form below if you would like to know more about<br> the opportunity, share ideas, give feedback, have complaints.</p>
-                       </div>
-                    </div>
-                    <div class="col-12 col-md-10 col-lg-8 mx-auto">
-                       <form>
-                          <div class="row">
-                             <div class="col-12 col-md-6">
-                                <div class="form-group"><input style="color: #030cc7;" type="text" class="form-control" name="name" id="name" placeholder="Name" autocomplete="off" value=""><span class="highlight"></span><span class="bar"></span><label>Name:</label></div>
-                             </div>
-                             <div class="col-12 col-md-6">
-                                <div class="form-group"><input style="color: #030cc7;" type="text" class="form-control" id="usr" name="last_name" placeholder="Last Name" autocomplete="off" value=""><span class="highlight"></span><span class="bar"></span><label>Last Name:</label></div>
-                             </div>
-                             <div class="col-12 col-md-6">
-                                <div class="form-group"><input style="color: #030cc7;" type="text" class="form-control" name="email" placeholder="Email" autocomplete="off" value=""><span class="highlight"></span><span class="bar"></span><label>Email:</label></div>
-                             </div>
-                             <div class="col-12 col-md-6">
-                                <div class="form-group"><input style="color: #030cc7;" type="text" class="form-control" name="phoneno" placeholder="Phone Number" autocomplete="off" value=""><span class="highlight"></span><span class="bar"></span><label>Phone Number:</label></div>
-                             </div>
-                             <div class="col-12 col-md-12">
-                                <div class="form-group"><textarea style="color: #030cc7;" type="text" class="form-control" name="comment" placeholder="Your Comments" autocomplete="off"></textarea><span class="highlight"></span><span class="bar"></span><label>Your Comments</label></div>
-                             </div>
-                             <div class="submit-btn"><button type="submit">Submit</button></div>
-                          </div>
-                       </form>
-                    </div>
-                </div>
-            </section>
-            {% endblock %}
-            <section class='partners-sec'>
-                <div class='container'>
-                    <div class='row main-log-sec'>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://dibortfx.com/assets/img/payment_gateway/payment_gateway1.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://dibortfx.com/assets/img/payment_gateway/payment_gateway2.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://dibortfx.com/assets/img/payment_gateway/payment_gateway3.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://dibortfx.com/assets/img/payment_gateway/payment_gateway4.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='row'>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://dibortfx.com/assets/img/payment_gateway/payment_gateway5.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://dibortfx.com/assets/img/payment_gateway/payment_gateway6.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://dibortfx.com/assets/img/payment_gateway/payment_gateway7.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6 col-lg-3'>
-                            <div class='logos-sec'>
-                                <div class='logo-inner'>
-                                    <img src='https://resize.indiatvnews.com/en/resize/newbucket/715_-/2019/08/rupay-card-1566468196.jpg' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class='footer-sec'>
-                <div class='container'>
-                    <div class='row '>
-                        <div class='col-12 col-lg-6 col-md-6'>
-                            <div class='footer-info-sec'>
-                                <div class='footer-text'>
-                                    <div class='footer-logo'>
-                                        <a href='javascript:void(0)'><img src='{% static "images/white-logo.png" %}' alt='logo' /> </a>
+                <div class="col-12">
+                    <ul class="pricing-nav nav nav-pills d-inline-flex">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="pill" href="#pills-home">Monthly</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-2" data-toggle="pill" href="#pills-profile">Yearly</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="pills-home">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single-price-wrap">
+                                        <h5 class="pricing-title">Basic plan</h5>
+                                        <h2 class="pricing-cost">$0<span>/month</span></h2>
+                                        <ul class="pricing-list">
+                                            <li><a href="#">Offline Synchronization.</a></li>
+                                            <li><a href="#">24/7 Supports.</a></li>
+                                            <li><a href="#">Free Update.</a></li>
+                                            <li><a href="#">Source files.</a></li>
+                                            <li><a href="#">7 Days License.</a></li>
+                                        </ul>
+                                        <a class="btn" href="#">Free Trial</a>
                                     </div>
-                                    <p>IPAYMATICS which started it's operations in the year 2019, is now becoming a leading smart Trading company leading in services and products. IPAYMATICS Inc. is constantly growing at a phenomenal rate every month. The growth rate in itself speaks volumes about the quality of products, the marketing technologies, strategies and the management that is able to deliver such a rewarding and sustainable system.
-                                    </p>
                                 </div>
-                                <div class='footer-social-info'>
-                                    <a href='https://www.facebook.com/ipaymatics/'><i class='fa fa-facebook' aria-hidden='true'></i></a>
-                                    <a href='https://twitter.com/ipaymatics'> <i class='fa fa-twitter' aria-hidden='true'></i></a>
-                                    <a href='Live:.cid.7899b1986fe2c6'><i class='fa fa-skype' aria-hidden='true'></i></a>
-                                    <a href='https://www.instagram.com/ipaymatics/'><i class='fa fa-instagram' aria-hidden='true'></i></a>
-
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single-price-wrap">
+                                        <h5 class="pricing-title">Standard plan</h5>
+                                        <h2 class="pricing-cost">$45<span>/month</span></h2>
+                                        <ul class="pricing-list">
+                                            <li><a href="#">Offline Synchronization.</a></li>
+                                            <li><a href="#">24/7 Supports.</a></li>
+                                            <li><a href="#">Free Update.</a></li>
+                                            <li><a href="#">Source files.</a></li>
+                                            <li><a href="#">7 Days License.</a></li>
+                                        </ul>
+                                        <a class="btn" href="#">Buy Now</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single-price-wrap">
+                                        <h5 class="pricing-title">Premium plan</h5>
+                                        <h2 class="pricing-cost">$110<span>/month</span></h2>
+                                        <ul class="pricing-list">
+                                            <li><a href="#">Offline Synchronization.</a></li>
+                                            <li><a href="#">24/7 Supports.</a></li>
+                                            <li><a href="#">Free Update.</a></li>
+                                            <li><a href="#">Source files.</a></li>
+                                            <li><a href="#">7 Days License.</a></li>
+                                        </ul>
+                                        <a class="btn" href="#">Buy Now</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class='col-12 col-lg-2 col-md-6 '>
-                        </div>
-                        <div class='col-12 col-lg-4 col-md-6 '>
-                            <div class='contact_info_area address_sec'>
-                                <div class='contact_info '>
-                                    <h5>CONTACT US</h5>
-                                    <p>Phone No. (+44)1297 824050</p>
-                                    <p>Timings - Mon. to Fri., 11AM to 5PM PST</p>
-                                    <p><a href='mailto:support@ipaymatics.com' class='email-sec'><i class='fa fa-envelope-o' aria-hidden='true'></i> support@ipaymatics.com</a></p>
+                        <div class="tab-pane fade" id="pills-profile">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single-price-wrap">
+                                        <h5 class="pricing-title">Basic plan</h5>
+                                        <h2 class="pricing-cost">$0<span>/month</span></h2>
+                                        <ul class="pricing-list">
+                                            <li><a href="#">Offline Synchronization.</a></li>
+                                            <li><a href="#">24/7 Supports.</a></li>
+                                            <li><a href="#">Free Update.</a></li>
+                                            <li><a href="#">Source files.</a></li>
+                                            <li><a href="#">7 Days License.</a></li>
+                                        </ul>
+                                        <a class="btn" href="#">Free Trial</a>
+                                    </div>
                                 </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single-price-wrap">
+                                        <h5 class="pricing-title">Standard plan</h5>
+                                        <h2 class="pricing-cost">$99<span>/month</span></h2>
+                                        <ul class="pricing-list">
+                                            <li><a href="#">Offline Synchronization.</a></li>
+                                            <li><a href="#">24/7 Supports.</a></li>
+                                            <li><a href="#">Free Update.</a></li>
+                                            <li><a href="#">Source files.</a></li>
+                                            <li><a href="#">7 Days License.</a></li>
+                                        </ul>
+                                        <a class="btn" href="#">Buy Now</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single-price-wrap">
+                                        <h5 class="pricing-title">Premium plan</h5>
+                                        <h2 class="pricing-cost">$159<span>/month</span></h2>
+                                        <ul class="pricing-list">
+                                            <li><a href="#">Offline Synchronization.</a></li>
+                                            <li><a href="#">24/7 Supports.</a></li>
+                                            <li><a href="#">Free Update.</a></li>
+                                            <li><a href="#">Source files.</a></li>
+                                            <li><a href="#">7 Days License.</a></li>
+                                        </ul>
+                                        <a class="btn" href="#">Buy Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Pricing-area end-->
+    <!--download-area start-->
+    <section class="download-area text-center" style="background: url(assets/img/other/download.png);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <h2>
+                        Join Our Community & Earn Rewards
+                    </h2>
+                    <p>Never miss an opportunity for a little competition. Join our latest campaigns to earn rewards. </p>
+                    <a class="btn " href="#"><i class="fa fa-lock"></i>Login Now</a>
+                    <a class="btn " href="#"><i class="fa fa-user-plus"></i>Join us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--download-area end-->
+    <!--testimonial-area start-->
+    <section class="testimonial-area text-center pd-top-140" id="Roadmap">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title mb-2">
+
+                        <h2 class="title">
+                            Roadmap to Success
+                        </h2>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="testimonial-slider owl-carousel owl-theme">
+
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="{% static 'assets/img/banner/3.png' %}" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 2 </h5>
+                                <p class="designation text-green">Website and White Paper </p>
+                                <ul>
+                                    <li>Whitepaper development</li>
+                                    <li>Website development (beta)</li>
+                                    <li>Website redesign/update/ testing</li>
+                                    <li>Creating social accounts</li>
+                                    <li>
+                                        Whitepaper redesign/update
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="{% static 'assets/img/banner/3.png' %}" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 3 </h5>
+                                <p class="designation text-green">Socials Media </p>
+                                <ul>
+                                    <li>Creating social Media accounts</li>
+                                    <li>Promotion activities</li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="{% static 'assets/img/banner/3.png' %}" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 4 </h5>
+                                <p class="designation text-green">Token Launch and Listing </p>
+                                <ul>
+                                    <li>Code deployment on BSCSCAN</li>
+                                    <li>
+                                        Airdrop to subscribers with task
+                                    </li>
+                                    <li>
+                                        Presale announcement on social media
+                                    </li>
+                                    <li>
+                                        Dapp Listing on Pancake Swap
+                                    </li>
+                                    <li>1000 holder completed  Trust wallet Integrating</li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="{% static 'assets/img/banner/3.png' %}" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 5 </h5>
+                                <p class="designation">CMC Listing</p>
+                                <ul>
+                                    <li>After 3000 holder completed Listing on Coingecko</li>
+                                    <li>After 5000 holder completed Listing on Coin Market Cap</li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="{% static 'assets/img/banner/3.png' %}" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 6 </h5>
+                                <p class="designation">Gaming  platform</p>
+                                <ul>
+                                    <li>Fantasy gaming platform</li>
+                                    <li>Online metaverse gaming</li>
+                                    <li>Play to earn gaming platform</li>
+                                    <li>Kids educational gaming platform</li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="{% static 'assets/img/banner/3.png' %}" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 7 </h5>
+                                <p class="designation">New App Developments </p>
+                                <ul>
+                                    <li>Share video App ( create profile and add videos share friend end earn BNXG Tokens</li>
+                                    <li>
+                                        Marketing development app
+                                    </li>
+                                    <li>Utility bill & ecommerce services app develop</li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="{% static 'assets/img/banner/3.png' %}" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 8 </h5>
+                                <p class="designation">Exchanges Listing After 100000 Holders   </p>
+                                <ul>
+                                    <li>Hotbit</li>
+                                    <li>
+                                        Gate io
+                                    </li>
+                                    <li>
+                                        Wazix
+                                    </li>
+                                    <li>
+                                        Kucoin
+                                    </li>
+                                    <li>Bitmart</li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="{% static 'assets/img/banner/3.png' %}" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 9 </h5>
+                                <p class="designation">NEFT Marketing Place </p>
+                            </div>
+                        </div>
+
+
+
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="{% static 'assets/img/banner/3.png' %}" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 1 </h5>
+                                <p class="designation text-green">Development strategy </p>
+                                <ul>
+                                    <li>Coding and development</li>
+                                    <li>Multilevel testing.</li>
+                                    <li>Road map and initial marketing strategy Unstoppable</li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row align-items-center" style="display:none;">
+                <div class="col-lg-7">
+                    <div class="o-distribution text-left wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+                        <h2>Token Distribution</h2>
+                        <p>
+                            To calculate the number of tokens you’ll receive, you can follow the following formula. Note that this applies to public presale contributions only. If you participated through a syndicate or private presale,
+
+                        </p>
+                        <div class="progressbar-block row">
+                            <div class="col-md-6">
+                                <span class="progress-label">Advisory Board: 8%</span>
+                                <div class="progress bar-1">
+                                    <div class="progress-bar" data-transitiongoal="5" style="width: 5%;" aria-valuenow="5"></div>
+                                </div>
+                                <!-- End of .progress -->
+                                <span class="progress-label">Project Team Share: 10%</span>
+                                <div class="progress bar-2">
+                                    <div class="progress-bar" data-transitiongoal="5" style="width: 5%;" aria-valuenow="5"></div>
+                                </div>
+                                <!-- End of .progress -->
+                                <span class="progress-label">Bonus and Reserve: 9%</span>
+                                <div class="progress bar-3">
+                                    <div class="progress-bar" data-transitiongoal="10" style="width: 10%;" aria-valuenow="10"></div>
+                                </div>
+                                <!-- End of .progress -->
+                            </div>
+                            <!-- End of .col-md-6 -->
+                            <div class="col-md-6">
+                                <span class="progress-label">Bounties: 3%</span>
+                                <div class="progress bar-4">
+                                    <div class="progress-bar" data-transitiongoal="10" style="width: 10%;" aria-valuenow="10"></div>
+                                </div>
+                                <!-- End of .progress -->
+                                <!--<span class="progress-label">Infrastructure: 20%</span>
+                                <div class="progress bar-5">
+                                    <div class="progress-bar" data-transitiongoal="20" style="width: 20%;" aria-valuenow="20"></div>
+                                </div>-->
+                                <!-- End of .progress -->
+                                <span class="progress-label">Token Sale: 70%</span>
+                                <div class="progress bar-6">
+                                    <div class="progress-bar" data-transitiongoal="50" style="width: 50%;" aria-valuenow="50"></div>
+                                </div>
+                                <!-- End of .progress -->
+                            </div>
+                            <!-- End of .col-md-6 -->
+                        </div>
+                        <!-- End of .progressbar-block -->
+                    </div>
+                    <!-- End of .o-distribution -->
+                </div>
+                <!-- End of .col-md-5 -->
+                <div class="col-lg-5">
+                    <div id="chartdiv" class="token-distribution-chart wow fadeIn" style="visibility: visible; animation-name: fadeIn; overflow: hidden; text-align: left;"><div style="position: relative;" class="amcharts-main-div"><div style="overflow: hidden; position: relative; text-align: left; width: 483px; height: 500px; padding: 0px; touch-action: auto;" class="amcharts-chart-div"><svg version="1.1" style="position: absolute; width: 483px; height: 500px; top: -0.216797px; left: -0.450012px;"><desc>JavaScript chart by amCharts 3.21.12</desc><g><path cs="100,100" d="M0.5,0.5 L482.5,0.5 L482.5,499.5 L0.5,499.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0" class="amcharts-bg"></path></g><g></g><g></g><g></g><g></g><g></g><g><g class="amcharts-pie-item" aria-label="Reserve: 10.00% 1 "><path cs="1000,1000" d=" M205.64509961015912,200.6499633431282 L150.9810711469591,125.41138286625811 A154,154,0,0,1,241.49999999999997,96 L241.49999999999997,189 A61,61,0,0,0,205.64509961015912,200.6499633431282 Z" fill="#B0DE09" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path></g><g class="amcharts-pie-item" aria-label="Presel: 20.00% 2 "><path cs="1000,1000" d=" M183.48555250599563,268.8500366568718 L95.03729649054637,297.58861713374193 A154,154,0,0,1,150.9810711469591,125.41138286625811 L205.64509961015912,200.6499633431282 A61,61,0,0,0,183.48555250599563,268.8500366568718 Z" fill="#ff9b53" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path></g><g class="amcharts-pie-item" aria-label="Advisory Board: 5.00% 0.5 "><path cs="1000,1000" d=" M241.5,189 L241.5,96 A154,154,0,0,1,289.0886171337419,103.53729649054637 L260.3500366568718,191.98555250599563 A61,61,0,0,0,241.5,189 Z" fill="#448aff" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path></g><g class="amcharts-pie-item" aria-label="Dispensaries: 5.00% 0.5 "><path cs="1000,1000" d=" M260.3500366568718,191.98555250599563 L289.0886171337419,103.53729649054637 A154,154,0,0,1,332.01892885304085,125.4113828662581 L277.35490038984085,200.6499633431282 A61,61,0,0,0,260.3500366568718,191.98555250599563 Z" fill="#543bcc" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path></g><g class="amcharts-pie-item" aria-label="Bounties: 10.00% 1 "><path cs="1000,1000" d=" M277.35490038984085,200.6499633431282 L332.01892885304085,125.4113828662581 A154,154,0,0,1,387.9627035094536,202.4113828662581 L299.51444749400434,231.1499633431282 A61,61,0,0,0,277.35490038984085,200.6499633431282 Z" fill="#07d79c" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path></g><g class="amcharts-pie-item" aria-label="Token Sale: 50.00% 5 "><path cs="1000,1000" d=" M299.51444749400434,231.1499633431282 L387.9627035094536,202.4113828662581 A154,154,0,0,1,95.03729649054637,297.58861713374193 L183.48555250599563,268.8500366568718 A61,61,0,0,0,299.51444749400434,231.1499633431282 Z" fill="#f5354e" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path></g></g><g></g><g></g><g></g><g></g><g></g><g><g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg><a href="http://www.amcharts.com" title="JavaScript charts" target="_self" style="position: absolute; text-decoration: none; color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; opacity: 0.7; display: block; left: 5px; top: 5px;">JS chart by amCharts</a></div></div></div>
+                </div>
+                <!-- End of.col-md-7 -->
+            </div>
+        </div>
+    </section>
+    <!--testimonial-area end-->
+    <!--blog-area start-->
+
+    <section class="blog-area pd-top-130 pd-bottom-110" id="Token">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="ibn-inner">
+                        <div class="section-title mb-0">
+                            <h6 class="sub-title">Information</h6>
+                            <h2 class="title">BNXG Token Information</h2>
+                            <p></p>
+
+                            <ul>
+                                <li>
+                                    <span class="token-color">Token Name </span> <span class="token">OpenSea Network</span>
+                                </li>
+                                <li>
+                                    <span class="token-color">Ticker </span> <span class="token">BNXG</span>
+                                </li>
+                                <li>
+                                    <span class="token-color">Total Supply </span> <span class="token">2.1 Million</span>
+                                </li>
+                                <!--<li>
+                                <span class="token-color">Burning </span> <span class="token">7.70 Million</span>
+                            </li>-->
+                                <!--<li>
+                                <span class="token-color">Cir.. Supply</span> <span class="token">5.0 Million</span>
+                            </li>-->
+
+                                <li>
+                                    <span class="token-color">Token Decimal </span> <span class="token">18</span>
+                                </li>
+
+                                <li>
+                                    <span class="token-color">Network </span> <span class="token">Bep20</span>
+                                </li>
+
+
+                            </ul>
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="col-lg-4 text-lg-right  d-lg-block align-self-center" style="text-align:center;">
+                    <div class="thumb">
+                        <img src="{% static 'assets/img/other/overview-1.png' %}" alt="img" style="width:100%; max-width:420px;">
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="shape_items">
+            <img src="{% static 'assets/img/1.png' %}" alt="" class="one">
+            <img src="{% static 'assets/img/2.png' %}" alt="" class="two">
+            <img src="{% static 'assets/img/3.png' %}" alt="" class="three">
+            <img src="{% static 'assets/img/4.png' %}" alt="" class="four">
+        </div>
+    </section>
+
+
+    <section id="roadmap" class="pd-bottom-110" style="display:none;">
+        <div class="container-fluid">
+            <div class="row roadmap_list small_space align-items-end">
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.0065</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$65359.45 Coin</p>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.0098</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$65359.46 To $98039.18</p>
+                    </div>
+                </div>
+
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.016</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$98039.19 To $130718.90</p>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.020</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$130718.91 To $163398.63</p>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.023</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$163398.64 To $196078.35</p>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.026</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$196078.35 To $261437.80</p>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.033</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$261437.81 To $294117.53</p>
+                    </div>
+                </div>
+
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.036</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$294117.53 To $326797.25</p>
+                    </div>
+                </div>
+
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.039</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$326797.25 To $392156.70</p>
+                    </div>
+                </div>
+
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.046</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$392156.70 To $457516.15</p>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.052</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$457516.15 To $522875.60</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="blog-area pd-top-130 pd-bottom-110" id="Token" style="">
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-5 text-lg-right  d-lg-block align-self-center" style="text-align:center;">
+                    <div class="col-lg-5 hidden-xs">
+                        <!--<img src="{% static 'images/banner/home-banner.png' %}" class="donut-img" alt="CICO">-->
+                        <svg id="donut-chart"></svg>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="ibn-inner">
+                        <div class="section-title mb-0">
+                            <h6 class="sub-title">Allocation </h6>
+                            <h2 class="title">
+                                BNXG Tokens Allocation
+                            </h2>
+                            <p>To calculate the number of tokens you’ll receive, you can follow the following formula. </p>
+                        </div>
+
+                        <div class="progressbar-block row">
+                            <div class="col-md-6">
+
+                                <span class="progress-label">Staking : 20%</span>
+                                <div class="progress bar-6">
+                                    <div class="progress-bar" data-transitiongoal="50" style="width: 20%;" aria-valuenow="50"></div>
+                                </div>
+
+                                <span class="progress-label">Airdrop : 10%</span>
+                                <div class="progress bar-4">
+                                    <div class="progress-bar" data-transitiongoal="10" style="width: 10%;" aria-valuenow="10"></div>
+                                </div>
+
+                                <span class="progress-label">CEX/Dex Liquidity : 15%</span>
+                                <div class="progress bar-3">
+                                    <div class="progress-bar" data-transitiongoal="10" style="width: 15%;" aria-valuenow="10"></div>
+                                </div>
+
+                                <span class="progress-label">Founder : 11%</span>
+                                <div class="progress bar-6">
+                                    <div class="progress-bar" data-transitiongoal="50" style="width: 11%;" aria-valuenow="50"></div>
+                                </div>
+
+                                <span class="progress-label">Director : 5%</span>
+                                <div class="progress bar-6">
+                                    <div class="progress-bar" data-transitiongoal="50" style="width: 5%;" aria-valuenow="50"></div>
+                                </div>
+                                <!-- End of .progress -->
+                                <!-- End of .progress -->
+                            </div>
+                            <!-- End of .col-md-6 -->
+                            <div class="col-md-6">
+
+                                <span class="progress-label">Advisor: 5%</span>
+                                <div class="progress bar-4">
+                                    <div class="progress-bar" data-transitiongoal="10" style="width: 5%;" aria-valuenow="10"></div>
+                                </div>
+
+                                <span class="progress-label">Marketing : 14%</span>
+                                <div class="progress bar-6">
+                                    <div class="progress-bar" data-transitiongoal="50" style="width: 14%;" aria-valuenow="50"></div>
+                                </div>
+
+                                <span class="progress-label">Emergency Fund : 10%</span>
+                                <div class="progress bar-1">
+                                    <div class="progress-bar" data-transitiongoal="5" style="width: 10%;" aria-valuenow="5"></div>
+                                </div>
+
+                                <span class="progress-label">Development : 5%</span>
+                                <div class="progress bar-1">
+                                    <div class="progress-bar" data-transitiongoal="5" style="width: 5%;" aria-valuenow="5"></div>
+                                </div>
+
+                                <span class="progress-label"> Team : 5%</span>
+                                <div class="progress bar-6">
+                                    <div class="progress-bar" data-transitiongoal="50" style="width: 15%;" aria-valuenow="50"></div>
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+
+
+
+                            </div>
+                            <!-- End of .col-md-6 -->
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="blog-area pd-top-130 pd-bottom-110" id="Token" style="display:none;">
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-7">
+                    <div class="ibn-inner">
+                        <div class="section-title mb-0">
+                            <h6 class="sub-title">Distribution</h6>
+                            <h2 class="title">BNXG Tokens Distribution</h2>
+                            <p>To calculate the number of tokens you’ll receive, you can follow the following formula. Note that this applies to public presale contributions only. If you participated through a syndicate or private presale,</p>
+                        </div>
+
+                        <div class="progressbar-block row">
+                            <div class="col-md-6">
+                                <span class="progress-label">Development : 1%</span>
+                                <div class="progress bar-1">
+                                    <div class="progress-bar" data-transitiongoal="5" style="width: 5%;" aria-valuenow="5"></div>
+                                </div>
+                                <!-- End of .progress -->
+                                <span class="progress-label">Liquidity : 2%</span>
+                                <div class="progress bar-2">
+                                    <div class="progress-bar" data-transitiongoal="5" style="width: 5%;" aria-valuenow="5"></div>
+                                </div>
+                                <!-- End of .progress -->
+                            </div>
+                            <!-- End of .col-md-6 -->
+                            <div class="col-md-6">
+                                <span class="progress-label">Redistribution : 5%</span>
+                                <div class="progress bar-4">
+                                    <div class="progress-bar" data-transitiongoal="10" style="width: 10%;" aria-valuenow="10"></div>
+                                </div>
+                                <span class="progress-label">Slippage Tolerance : 10% to 20%</span>
+                                <div class="progress bar-6">
+                                    <div class="progress-bar" data-transitiongoal="50" style="width: 50%;" aria-valuenow="50"></div>
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- End of .col-md-6 -->
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="col-lg-5 text-lg-right  d-lg-block align-self-center" style="text-align:center;">
+                    <div id="chartdiv" class="token-distribution-chart wow fadeIn" style="visibility: visible; animation-name: fadeIn; overflow: hidden; text-align: left;">
+                        <div style="position: relative;" class="amcharts-main-div">
+                            <div style="overflow: hidden; position: relative; text-align: left; width: 483px; height: 500px; padding: 0px; touch-action: auto;" class="amcharts-chart-div">
+                                <svg version="1.1" style="position: absolute; width: 483px; height: 500px; top: -0.216797px; left: -0.450012px;">
+                                    <desc>JavaScript chart by amCharts 3.21.12</desc>
+                                    <g>
+                                        <path cs="100,100" d="M0.5,0.5 L482.5,0.5 L482.5,499.5 L0.5,499.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0" class="amcharts-bg"></path>
+                                    </g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g>
+                                        <g class="amcharts-pie-item" aria-label="Reserve: 10.00% 1 ">
+                                            <path cs="1000,1000" d=" M205.64509961015912,200.6499633431282 L150.9810711469591,125.41138286625811 A154,154,0,0,1,241.49999999999997,96 L241.49999999999997,189 A61,61,0,0,0,205.64509961015912,200.6499633431282 Z" fill="#B0DE09" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path>
+                                        </g>
+                                        <g class="amcharts-pie-item" aria-label="Presel: 20.00% 2 ">
+                                            <path cs="1000,1000" d=" M183.48555250599563,268.8500366568718 L95.03729649054637,297.58861713374193 A154,154,0,0,1,150.9810711469591,125.41138286625811 L205.64509961015912,200.6499633431282 A61,61,0,0,0,183.48555250599563,268.8500366568718 Z" fill="#ff9b53" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path>
+                                        </g>
+                                        <g class="amcharts-pie-item" aria-label="Advisory Board: 5.00% 0.5 ">
+                                            <path cs="1000,1000" d=" M241.5,189 L241.5,96 A154,154,0,0,1,289.0886171337419,103.53729649054637 L260.3500366568718,191.98555250599563 A61,61,0,0,0,241.5,189 Z" fill="#448aff" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path>
+                                        </g>
+                                        <g class="amcharts-pie-item" aria-label="Dispensaries: 5.00% 0.5 ">
+                                            <path cs="1000,1000" d=" M260.3500366568718,191.98555250599563 L289.0886171337419,103.53729649054637 A154,154,0,0,1,332.01892885304085,125.4113828662581 L277.35490038984085,200.6499633431282 A61,61,0,0,0,260.3500366568718,191.98555250599563 Z" fill="#543bcc" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path>
+                                        </g>
+                                        <g class="amcharts-pie-item" aria-label="Bounties: 10.00% 1 ">
+                                            <path cs="1000,1000" d=" M277.35490038984085,200.6499633431282 L332.01892885304085,125.4113828662581 A154,154,0,0,1,387.9627035094536,202.4113828662581 L299.51444749400434,231.1499633431282 A61,61,0,0,0,277.35490038984085,200.6499633431282 Z" fill="#07d79c" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path>
+                                        </g>
+                                        <g class="amcharts-pie-item" aria-label="Token Sale: 50.00% 5 ">
+                                            <path cs="1000,1000" d=" M299.51444749400434,231.1499633431282 L387.9627035094536,202.4113828662581 A154,154,0,0,1,95.03729649054637,297.58861713374193 L183.48555250599563,268.8500366568718 A61,61,0,0,0,299.51444749400434,231.1499633431282 Z" fill="#f5354e" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path>
+                                        </g>
+                                    </g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g>
+                                        <g></g>
+                                    </g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                </svg>
+                                <a href="#" title="JavaScript charts" target="_self" style="position: absolute; text-decoration: none; color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; opacity: 0.7; display: block; left: 5px; top: 5px;">JS chart by amCharts</a>
                             </div>
                         </div>
                     </div>
 
                 </div>
-            </section>
-            <section class='copyrightsec'>
-                <div class='container'>
-                    <div class='row '>
-                        <div class='col-12 col-lg-4 col-md-4'>
-                            <div class='conditionsec textcondition-left'>
-                              <p> <a href='/terms'>Terms & Conditions</a></p>
-                          </div>
-                      </div>
-                      <div class='col-12 col-lg-4 col-md-4'>
-                        <div class='conditionsec textcondition-center'>
-                         <p>Copyright © 2019 - 2020 | All right reserved by IPAYMATICS INC.
-                         </p>
-                     </div>
-                 </div>
 
 
-             </div>
-         </div>
-     </section>
-     <div id="gb-widget-7781" style="bottom: 21px; left: 23px; opacity: 1; transition: opacity 0.5s ease 0s; box-sizing: border-box; direction: ltr; position: fixed !important; z-index: 16000160 !important;">
-        <div>
-            <div class="q8c6tt-2 dJvETY">
-                <a href="https://wa.me/+441297824050" target="_blank" style="    width: 50px;
-    height: 50px;
-    order: 1;
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 50%;
-    cursor: pointer;
-    overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 6px;
-    transition: all 0.5s ease 0s;
-    position: relative;
-    z-index: 200;
-    display: block;
-    border: 0px;
-    background: #4dc247 !important;">
-                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 100%; height: 100%; fill: rgb(255, 255, 255); stroke: none;"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z"></path></svg>
-            </a>
+
+
+            </div>
+
         </div>
-    </div>
-</div>
-<script type="text/javascript">
-        $(function() {
-            var header = $(".start-style");
-            $(window).scroll(function() {    
-                var scroll = $(window).scrollTop();
+    </section>
 
-                if (scroll >= 10) {
-                    header.removeClass('start-style').addClass('scroll-on');
-                } else {
-                    header.removeClass('scroll-on').addClass('start-style');
-                }
-            });
-        });
-    </script>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5f57c9b4f0e7167d000e8ad8/1eregigo5';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K457S78"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
-        <script type="text/javascript"> var infolinks_pid = 3293690; var infolinks_wsid = 0; </script> 
-        <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
-        {% endblock %}
-    </body>
-    </html>
+    <!--blog-area end-->
+    <!--faq-area start-->
+    <section class="faq-area pd-top-80  pb-5" style="background: url(https://terra.droitlab.com/html/assets/img/testi_bg.png);">
+
+        <div class="container">
+            <div class="row justify-content-center" style="display:none;">
+                <div class="col-lg-10">
+                    <div class="section-title style-two text-center">
+
+                        <h2 class="title text-dark">Frequently asked questions</h2>
+                    </div>
+                    <div class="faq-accordion accordion" id="faq_accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <button class="btn" data-toggle="collapse" data-target="#collapseOne">Do I need to make a payment?<i class="fas fa-angle-right"></i></button>
+                            </div>
+                            <div id="collapseOne" class="collapse" data-parent="#faq_accordion">
+                                <div class="card-body">Lorem ipsum justo duis cras scelerisque porttitor sociosqu ut, ullamcorper ut a volutpat mattis interd um tempor torquent, cras tempus varius eros ac ornare volutpat magna malesuada aenean curae fusce lacus maecenas fames non.</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <button class="btn collapsed" data-toggle="collapse" data-target="#collapseTwo">Lorem ipsum justo duis cras scelerisque porttitor sociosqu?<i class="fas fa-angle-right"></i></button>
+                            </div>
+                            <div id="collapseTwo" class="collapse" data-parent="#faq_accordion">
+                                <div class="card-body">Lorem ipsum justo duis cras scelerisque porttitor sociosqu ut, ullamcorper ut a volutpat mattis interd um tempor torquent, cras tempus varius eros ac ornare volutpat magna malesuada aenean curae fusce lacus maecenas fames non.</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <button class="btn collapsed" data-toggle="collapse" data-target="#collapseThree">Lorem ipsum justo duis cras scelerisque porttitor?<i class="fas fa-angle-right"></i></button>
+                            </div>
+                            <div id="collapseThree" class="collapse" data-parent="#faq_accordion">
+                                <div class="card-body">Lorem ipsum justo duis cras scelerisque porttitor sociosqu ut, ullamcorper ut a volutpat mattis interd um tempor torquent, cras tempus varius eros ac ornare volutpat magna malesuada aenean curae fusce lacus maecenas fames non.</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <button class="btn collapsed" data-toggle="collapse" data-target="#collapseFour">How does this plena work?<i class="fas fa-angle-right"></i></button>
+                            </div>
+                            <div id="collapseFour" class="collapse" data-parent="#faq_accordion">
+                                <div class="card-body">Lorem ipsum justo duis cras scelerisque porttitor sociosqu ut, ullamcorper ut a volutpat mattis interd um tempor torquent, cras tempus varius eros ac ornare volutpat magna malesuada aenean curae fusce lacus maecenas fames non.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row  overview-section">
+                <div class="col-lg-6 align-self-center d-none d-lg-block">
+                    <div class="thumb obj">
+                        <img src="{% static 'assets/img/featured/gaming.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="col-lg-6 align-self-center pl-xl-5">
+                    <div class="section-title">
+                        <h2 class="title">BEP-20 is a token standard on BNB Smart Chain (BSC) that extends ERC-20.</h2>
+                    </div>
+                    <p>
+
+                        BEP-20 is a token standard on BNB Smart Chain (BSC) that extends ERC-20, the most common Ethereum token standard. You can think of it as a blueprint for tokens that defines how they can be spent, who can spend them, and other rules for their usage. Due to its similarity to BNB Beacon Chain’s BEP-2 and Ethereum’s ERC-20, it’s compatible with both.
+                    </p>
+
+                    <a class="btn btn-main" href="#">Read More</a>
+                </div>
+            </div>
+
+            <div class="row  overview-section pt-50" style="padding-top:100px;">
+                <div class="col-lg-6 align-self-center pl-xl-5">
+                    <div class="section-title">
+                        <h2 class="title"> M2Plus Metaverse Gaming Eco-System</h2>
+                    </div>
+                    <p>
+
+                        The Eco-System is intertwined to support itself using the $ to seamlessy to encourage it users to use multiple products from the M2Plus Eco- system exposing them to more crypto products in a more user friendly experience.
+
+                        Holders of the BNXG Tokens will be able to strake on Paraswap Dec to stake for yield returns varying based on the length of your stake. This process of staking will give you permission to take part in our Parapad Launchpad Listing.
+                    </p>
+
+                    <a class="btn btn-main" href="#">Read More</a>
+                </div>
+                <div class="col-lg-6 align-self-center d-none d-lg-block">
+                    <div class="thumb obj">
+                        <img src="{% static 'assets/img/meta.png' %}" alt="img">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact-area pd-top-130" id="Contact">
+        <div class="container">
+            <div class="trusted-partners section-padding">
+                <div class="section-title mb-5 text-center">
+
+                    <h2 class="title">
+                        Our Partners
+                    </h2>
+                </div>
+
+                <!-- End of .section-heading -->
+                <div class="partners">
+                    <div class="row justify-content-center">
+                        <div class="partners-logo">
+                            <img src="{% static 'assets/img/payment/1.png' %}" alt="partners logo">
+                        </div>
+                        <div class="partners-logo">
+                            <img src="{% static 'assets/img/payment/6.png' %}" alt="partners logo">
+                        </div>
+                        <div class="partners-logo">
+                            <img src="{% static 'assets/img/payment/5.png' %}" alt="partners logo">
+                        </div>
+
+                    </div>
+                    <!-- End of .row -->
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <a class="footer-logo" href="index.html"><img src="{% static 'assets/img/logo.png' %}"></a>
+                    </div>
+
+
+                    <div class="col-lg-12 col-md-6 text-center">
+                        <div class="footer-widget widget">
+                            <div class="widget_subscribe">
+                                <ul class="social-area">
+                                    <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+
+                                    <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-telegram"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- End of .partners -->
+            </div>
+            <!-- End of .trusted-partners -->
+        </div>
+        <!-- End of . container -->
+    </section>
+
+    <!--faq-area end-->
+    <!--contact-area start-->
+    <!--<section class="contact-area pd-top-130 pd-bottom-120" id="Contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center">
+                        <h6 class="sub-title">Contact</h6>
+                        <h2 class="title">Contact with us</h2>
+                        <p>Support for service-related technical issues. Unavailable under the Basic Support Plan. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-10">
+                    <form class="contact-form">
+                        <div class="single-input-wrap">
+                            <input type="text" class="form-control" placeholder="Your First Name">
+                        </div>
+                        <div class="single-input-wrap">
+                            <input type="text" class="form-control" placeholder="Your Last Name">
+                        </div>
+                        <div class="single-input-wrap">
+                            <input type="text" class="form-control" placeholder="Phone Number">
+                        </div>
+                        <div class="single-input-wrap">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                        </div>
+                        <div class="single-input-wrap">
+                            <textarea rows="4" placeholder="Message..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-main">Send Message</button>
+                    </form>
+                </div>
+                <div class="col-xl-5 offset-xl-1 col-lg-6">
+                    <div class="contact-wrap">
+                        <h4>Appointment with our consultants.</h4>
+                        <p>Please contact us using the information below. For additional information on our management consulting services.</p>
+                        <div class="media">
+                            <div class="thumb">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            <div class="media-body">
+                                <h5>Email Us</h5>
+                                <p>info@M2Plus.io</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="thumb style-2">
+                                <i class="fa fa-phone-alt"></i>
+                            </div>
+                            <div class="media-body">
+                                <h5>Call Us</h5>
+                                <p>+1526 2456 245</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="thumb style-3">
+                                <i class="fa fa-location-arrow"></i>
+                            </div>
+                            <div class="media-body">
+                                <h5>Visit Us</h5>
+                                <p>985 Delgen Boston, Massachusetts 56</p>
+                                <p>United States</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+    <!--contact-area end-->
+    <!--footer-area start-->
+    <footer class="footer-area">
+        <!--Footer bottom-->
+        <div class="copyright-area text-center">
+            <div class="container">
+                <p>Copyrights © 2023. All rights reserved by M2Plus</p>
+            </div>
+        </div>
+    </footer>
+    <!--footer-area end-->
+    <!--JS Script-->
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js'></script>
+
+
+
+    <script src="{% static 'assets/js/vendor.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+    <script src="{% static 'assets/js/wow.min.js' %}"></script>
+</body>
+
+</html>

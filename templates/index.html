@@ -1,51 +1,1488 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Login Bonus</title>
-		<meta name="description" content="Merry Christmas 2013 from Codrops" />
-		<meta name="keywords" content="bursting gift box, merry christmas, svg icons, css animation" />
-		<meta name="author" content="Codrops" />
-		<link rel="stylesheet" type="text/css" href='{% static "bonus/css/normalize.css" %}' />
-		<link rel="stylesheet" type="text/css" href='{% static "bonus/css/demo.css" %}' />
-		<link rel="stylesheet" type="text/css" href='{% static "bonus/css/component.css" %}' />
-		<!--[if IE]>
-  			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-	</head>
-	<body>
-		<div class="container" style="background-image: url('{% static 'bonus/img/winterforest.jpg' %}');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;">
-			<canvas id="snowfall"></canvas>
-			<div id="merrywrap" class="merrywrap">
-				<div class="giftbox">
-					<div class="cover">
-						<div></div>
-					</div>
-					
-					<div class="box"></div>
-				</div>
+﻿<!DOCTYPE html>
+<html lang="zxx">
 
-				<div class="icons" style="padding-top: 40%;">
+<head>
+    <!--Meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Title-->
+    <title>OS Network</title>
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <!--CSS sheet-->
+    <link rel="stylesheet" href="assets/css/vendor.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600%7cNunito:400,600,700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-					<span style="width: 100%; background-color: #ffffff; border-radius: 10px;     line-height: 30px; height: 60%;" class="letter">
-						<p>Congratulations!</p>
-						<p>आपको ₹ 0.02 का लॉगिन बोनस प्राप्त हुआ है!</p>
-						<form action="/users/"><button>OK</button></form>
-					</span>
+        .progress {
+            margin-bottom: 10px;
+        }
 
-				</div>
-			</div>
-		</div>
-		<!-- /container -->
-		<script src="{% static 'bonus/js/rectangleEmitter.js' }"></script>
-		<script src="{% static 'bonus/js/snow.js' %}"></script>
-		<script src="{% static 'bonus/js/classie.js' %}"></script>
-		<script src="{% static 'bonus/js/main.js' %}"></script>
-	</body>
+        #bonanzaModal {
+            display: block;
+            position: fixed;
+            width: 100%;
+            z-index: 99999;
+            top: 0;
+            height: 100vh;
+            background: #082a43b0;
+            backdrop-filter: blur(4px);
+            padding-top: 80px;
+        }
+
+
+        #bonanzaModal {
+            display: none;
+        }
+
+        .signctn {
+            width: 100%;
+            background: #000;
+            padding: 20px 30px;
+            max-width: 404px;
+            border-radius: 0;
+        }
+        #closeModal {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            cursor: pointer;
+        }
+
+            #closeModal img {
+                width: 33px;
+            }
+
+        .textredcolor {
+            color: #ff2914;
+        }
+
+        .textgoldcolor {
+            color: #febd59;
+        }
+    </style>
+
+    <script type="text/javascript">
+        //            $(window).load(function () {
+        $(document).ready(function () {
+            //$('#bonanzaModal').fadeIn();
+            setTimeout(function () {
+                $("#bonanzaModal").delay(100).fadeIn();
+            }, 1000);
+            $('#closeModal').click(function (e) {
+                $('#bonanzaModal').fadeOut();
+            });
+            $('#closeModal2').click(function (e) {
+                $('#bonanzaModal').fadeOut();
+            });
+        });
+    </script>
+</head>
+<body>
+
+   <!--<div class="" id="bonanzaModal">
+
+        <div class="signctn" style="position:relative; border: 3px solid #fff;     margin: 0 auto;">
+            <h3 class="textwhitecolor text-center signheading">Important <span class="textredcolor">Message</span></h3>
+          
+                <p class="textwhitecolor text-center">" An Attitude of Positive Expectations is the Mark of superior Personality! So always carry a Positive attitude."</p>
+              
+
+                    <p class="form-check-label text-center text-white">
+                        We are updating something special for you on OS Network Finance. And we can't wait for you to see it.
+                    </p>
+
+                    <h5 class="text-center textgoldcolor">
+                        PLEASE CHECK BACK LITTLE BIT LATER</h5>
+
+
+
+                        <div class="" id="closeModal"><img src="images/close.png" /></div>
+</div>
+    </div>-->
+
+    <!-- preloader area start -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- navbar start -->
+    <div class="navbar-area">
+        <nav class="navbar navbar-area navbar-expand-lg">
+            <div class="container-fluid nav-container">
+                <div class="responsive-mobile-menu">
+                    <button class="menu toggle-btn d-block d-lg-none" data-target="#news_main_menu"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-left"></span>
+                        <span class="icon-right"></span>
+                    </button>
+                </div>
+                <div class="logo">
+                    <a href="index.html"><img src="assets/img/logo.png" /></a>
+                </div>
+                <div class="collapse navbar-collapse show" id="news_main_menu">
+                    <ul class="navbar-nav menu-open">
+                        <li class="current-menu-item">
+                            <a href="#home">Home</a>
+
+                        </li>
+                        <li><a href="#Feature">Features</a></li>
+                        <!--<li><a href="#Benefits">Benefits</a></li>-->
+                        <li><a href="#Roadmap">Roadmap</a></li>
+                        <!--<li><a href="#Token">Coin Distribution</a></li>-->
+                        <li><a href="#Contact">Contact us</a></li>
+                        <li><a href="images/OS Network_FINANCE_LTD.pdf" target="_blank">Legal Document</a></li>
+                        <li><a href="images/OS Network-Plan.pdf" target="_blank">Business Plan</a></li>
+
+                        <li><a href="Sign-in">Sign In</a></li>
+                        <li><a href="Sign-up">Sign Up</a></li>
+                    </ul>
+                </div>
+                <div class="nav-right-part nav-right-part-desktop">
+                    <a class="btn btn-white btn-main" href="images/OS Network.live.pdf" target="_blank">White Papar</a>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- navbar end -->
+    <!--Banner area-->
+    <section class="banner-area" style="background-image:url('assets/img/banner/bg.png'); background-size:cover; padding-top:190px;" id="home">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-lg-4 d-block d-md-block  d-lg-none d-xl-none pull-left">
+                    <div class="banner-img">
+
+                        <div id="ripple"></div>
+                        <div id="ripple2"></div>
+                        <div id="ripple3"></div>
+
+
+                        <img class="banner-img-3 pulse2" src="assets/img/banner/bull.png" alt="img">
+                        <img class="banner-img-4 imager-top-bounce  d-lg-block d-none" src="assets/img/banner/dots.png" alt="img">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8">
+                    <div class="banner-inner text-lg-left text-center">
+                        <ul class="banner-social-area">
+                            <li><a href="" target="_blank">Linkedin</a></li>
+                            <li><a href="" target="_blank">Twitter</a></li>
+                            <li><a href="" target="_blank">Instagram</a></li>
+                        </ul>
+                        <h6 class="sub-title"><img src="assets/img/saas/1.png" alt="" style="margin-right:10px;">We are OS Network, the world's most popular companies <img src="assets/img/saas/3line.png" alt="" class="after"></h6>
+                        <h1 class="title wow fadeInUp ">OS Network is an open network for storing and <span class="color">moving money</span>. </h1>
+                        <p>Send, receive & exchange Bitcoin and 100+ cryptocurrencies with ease on the world's leading Desktop, Mobile and Hardware OS Network</p>
+
+
+                        <div class="fugu--btn-wrap fugu--hero-btn wow fadeInUpX" data-wow-delay="0.20s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUpX;">
+                            <a class="btn btn-main active" href="#">Connect Wallet</a>
+                            <a class="btn btn-primary" href="#">Start Mining</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 pull-left d-none d-md-none d-lg-block d-xl-block">
+                    <div class="banner-img">
+
+                        <div id="ripple"></div>
+                        <div id="ripple2"></div>
+                        <div id="ripple3"></div>
+
+
+                        <img class="banner-img-3" src="assets/img/banner/bull.png" alt="img">
+                        <img class="banner-img-4 imager-top-bounce  d-lg-block d-none" src="assets/img/banner/dots.png" alt="img">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--Banner area end-->
+    <!--fun fact area start-->
+    <!--<section class="fun-fact-area text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title mt-5">
+                        <h2 class="title">Trusted by users</h2>
+                    </div>
+                </div>
+                <div class="col-lg-3 wow zoomIn col-sm-6">
+                    <div class="single-fact-wrap">
+                        <h2><span class="counter">120</span><span>k</span></h2>
+                        <p class="fact-title">Active user</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 wow zoomIn col-sm-6">
+                    <div class="single-fact-wrap style-2">
+                        <h2><span class="counter">70</span><span>k</span></h2>
+                        <p class="fact-title">Download app</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 wow zoomIn col-sm-6">
+                    <div class="single-fact-wrap style-3">
+                        <h2><span class="counter">150</span><span>k</span></h2>
+                        <p class="fact-title">Customer</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 wow zoomIn col-sm-6">
+                    <div class="single-fact-wrap">
+                        <h2><span class="counter">60</span><span>k</span></h2>
+                        <p class="fact-title">5 Star Rating</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+    <!--fun fact area end-->
+    <!--featured-area start-->
+    <section class="featured-area text-center" id="Feature">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title">
+                        <h6 class="sub-title">Features of OSN Tokens</h6>
+                        <h2 class="title">Everybody enjoy our features on your life </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-sm-6">
+                    <div class="single-featured-wrap">
+                        <div class="thumb">
+                            <div class="after-2"></div>
+                            <i class="fa fa-shield"></i>
+                        </div>
+                        <h5><a href="#">Create a Secure Decentralize</a></h5>
+                        <p>OSN Tokens are decentralized tokens, created on Binance Smart Chain. These tokens are unstoppable, decentralized and available for all.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="single-featured-wrap">
+                        <div class="thumb">
+                            <div class="after-2"></div>
+                            <i class="fa fa-sliders"></i>
+                        </div>
+                        <h5><a href="#">Blockchain and Technology </a></h5>
+                        <p>OS Network  Tokens are based on latest technology and the trustworthy Binance blockchain. Is has been designed to meet the future challenges.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="single-featured-wrap">
+                        <div class="thumb">
+                            <div class="after-2"></div>
+                            <i class="fa fa-home"></i>
+                        </div>
+                        <h5><a href="#">Transparency</a></h5>
+                        <p>Distributed Ledger Containing Information About all the Activities that have taken place on a blockchain network is shared by everyone.</p>
+                    </div>
+                </div>
+                <!--<div class="col-lg-3 col-sm-6">
+                    <div class="single-featured-wrap">
+                        <div class="thumb">
+                            <div class="after-2"></div>
+                            <i class="fa fa-desktop"></i>
+                        </div>
+                        <h5><a href="#">Support 24/7</a></h5>
+                        <p>A team of professionals speaking your mother tongue are always here to support you. </p>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </section>
+    <!--featured-area end-->
+    <!--featured-area-2 start-->
+    <section class="featured-area-2 pd-top-105">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-5 col-md-6 d-md-block d-none">
+                    <div class="thumb mt-4">
+                        <img src="assets/img/other/1.png" alt="img">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                    <div class="ibn-inner ml-xl-4">
+                        <h2>
+
+                            Global Freedom
+                        </h2>
+                        <p>
+
+                            Our vision is to increase the freedom of money globally. We believe that by spreading this freedom, we can significantly improve lives around the world
+                        </p>
+                        <div class="media pt-3">
+                            <div class="thumb align-self-center">
+                                <i class="fa fa-balance-scale"></i>
+                            </div>
+                            <div class="media-body">
+                                <h5><a href="#"> Stable Currency</a></h5>
+                                <p>OS Network converts cash into digital currency, to anchor or OS Network the value to the price of national currencies like the US dollar, the Euro, and the offshore Chinese yuan.</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="thumb style-1 align-self-center">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <div class="media-body">
+                                <h5><a href="#">Transparent</a></h5>
+                                <p>The value of our reserves is published daily. The value of our reserves matches or exceeds the value of all OS Networks in circulation.</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="thumb style-2 align-self-center">
+                                <i class="fa fa-shield"></i>
+                            </div>
+                            <div class="media-body">
+                                <h5><a href="#">Secure</a></h5>
+                                <p>OS Network’s blockchain-enabled technology delivers world-class security while meeting international compliance standards and regulations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--featured-area-2 end-->
+    <!--cta-area start-->
+    <!--<section class="cta-area bg-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 text-lg-left text-center">
+                    <h2>Global Trading Platform-</h2>
+                    <p>Discover how specific cryptocurrencies work — and get a bit of each crypto to try out for yourself.</p>
+                </div>
+                <div class="col-lg-4 text-lg-right text-center align-self-center">
+                    <a class="btn" href="#">Download app <i class="fas fa-cloud-download-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>-->
+    <!--cta-area end-->
+    <!--overview-area start-->
+    <section class="overview-area pd-top-140 mg-bottom-135" id="Benefits">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="ibn-inner">
+                        <div class="section-title mb-0">
+                            <h6 class="sub-title">Overview</h6>
+                            <h2 class="title">Why Choose OSN Tokens? </h2>
+                            <p>OSN Tokens has been designed in such way to become the most useful defi token. The token  concept will keep  tokens from supply consistently.</p>
+
+                            <div class="media pt-3">
+                                <div class="thumb align-self-center">
+                                    <i class="fa fa-cube"></i>
+                                </div>
+                                <div class="media-body">
+                                    <h5><a href="#"> Decentralized</a></h5>
+                                    <p>OSN Tokens are decentralized tokens, created on Binance Smart Chain. These tokens are unstoppable, decentralized and available for all.</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="thumb style-1 align-self-center">
+                                    <i class="fa fa-assistive-listening-systems"></i>
+                                </div>
+                                <div class="media-body">
+                                    <h5><a href="#">Technology</a></h5>
+                                    <p>OS Network  Tokens are based on latest technology and the trustworthy Binance blockchain. Is has been designed to meet the future challenges and can be upgraded accordingly.</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="thumb style-2 align-self-center">
+                                    <i class="fa fa-database"></i>
+                                </div>
+                                <div class="media-body">
+                                    <h5><a href="#">Distribution</a></h5>
+                                    <p>No Team Token, No Reserve Token!! All tokens are available for fair distribution. 38% Token is available for Presale, 2% Token is reserve for Airdrop & remaining 60% Tokens will be transferred to pancakeswap AMM.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-6 text-lg-right d-none d-lg-block align-self-center">
+                    <div class="thumb">
+                        <img src="assets/img/other/overview-3.png" alt="img">
+                    </div>
+                </div>
+            </div>
+            <div class="row pd-top-120 overview-section">
+                <div class="col-lg-6 align-self-center d-none d-lg-block">
+                    <div class="thumb">
+                        <img src="assets/img/other/overview-2.png" alt="img">
+                    </div>
+                </div>
+                <div class="col-lg-6 align-self-center pl-xl-5">
+                    <div class="section-title">
+                        <h2 class="title">Start investing with OS Network.</h2>
+                    </div>
+                    <p>
+                        Peer-to-peer itself means OS Network runs without having a central server. The storage server is decentralized and distributed-divided into various servers run by each user connected to the network.
+                    </p>
+                    <p>
+                        OS Network has no owner; if anything it’s owned by the public. The software runs across a decentralized, open network and handles millions of transactions each day. Like Bitcoin and Ethereum, OS Network relies on blockchain to keep the network in sync, but the end-user experience is more like cash—OS Network is much faster, cheaper, and more energy-efficient than typical blockchain-based systems.
+                    </p>
+                    <a class="btn btn-main" href="#">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--overview-area end-->
+    <!-- screenshot area start -->
+    <section id="screenshot" class="screenshot-area bg-main pd-top-140 pd-bottom-131" style="display:none;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title style-two text-center">
+                        <h6 class="sub-title">screenshots</h6>
+                        <h2 class="title text-white">Example Our Apps Screenshots</h2>
+                    </div>
+                </div>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <!-- item -->
+                        <div class="swiper-slide"><img src="assets/img/screenshot/3.png" alt="img"></div>
+                        <!-- item -->
+                        <div class="swiper-slide"><img src="assets/img/screenshot/1.png" alt="img"></div>
+                        <!-- item -->
+                        <div class="swiper-slide"><img src="assets/img/screenshot/2.png" alt="img"></div>
+                        <!-- item -->
+                        <div class="swiper-slide"><img src="assets/img/screenshot/2.png" alt="img"></div>
+                        <!-- item -->
+                        <div class="swiper-slide"><img src="assets/img/screenshot/1.png" alt="img"></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- screenshot area end -->
+    <!--Pricing-area start-->
+    <section class="pricing-area text-center pd-top-140 pd-bottom-110" style="display:none;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h6 class="sub-title">Pricing</h6>
+                        <h2 class="title">Get in reasonable pricing plean</h2>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <ul class="pricing-nav nav nav-pills d-inline-flex">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="pill" href="#pills-home">Monthly</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-2" data-toggle="pill" href="#pills-profile">Yearly</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="pills-home">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single-price-wrap">
+                                        <h5 class="pricing-title">Basic plan</h5>
+                                        <h2 class="pricing-cost">$0<span>/month</span></h2>
+                                        <ul class="pricing-list">
+                                            <li><a href="#">Offline Synchronization.</a></li>
+                                            <li><a href="#">24/7 Supports.</a></li>
+                                            <li><a href="#">Free Update.</a></li>
+                                            <li><a href="#">Source files.</a></li>
+                                            <li><a href="#">7 Days License.</a></li>
+                                        </ul>
+                                        <a class="btn" href="#">Free Trial</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single-price-wrap">
+                                        <h5 class="pricing-title">Standard plan</h5>
+                                        <h2 class="pricing-cost">$45<span>/month</span></h2>
+                                        <ul class="pricing-list">
+                                            <li><a href="#">Offline Synchronization.</a></li>
+                                            <li><a href="#">24/7 Supports.</a></li>
+                                            <li><a href="#">Free Update.</a></li>
+                                            <li><a href="#">Source files.</a></li>
+                                            <li><a href="#">7 Days License.</a></li>
+                                        </ul>
+                                        <a class="btn" href="#">Buy Now</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single-price-wrap">
+                                        <h5 class="pricing-title">Premium plan</h5>
+                                        <h2 class="pricing-cost">$110<span>/month</span></h2>
+                                        <ul class="pricing-list">
+                                            <li><a href="#">Offline Synchronization.</a></li>
+                                            <li><a href="#">24/7 Supports.</a></li>
+                                            <li><a href="#">Free Update.</a></li>
+                                            <li><a href="#">Source files.</a></li>
+                                            <li><a href="#">7 Days License.</a></li>
+                                        </ul>
+                                        <a class="btn" href="#">Buy Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-profile">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single-price-wrap">
+                                        <h5 class="pricing-title">Basic plan</h5>
+                                        <h2 class="pricing-cost">$0<span>/month</span></h2>
+                                        <ul class="pricing-list">
+                                            <li><a href="#">Offline Synchronization.</a></li>
+                                            <li><a href="#">24/7 Supports.</a></li>
+                                            <li><a href="#">Free Update.</a></li>
+                                            <li><a href="#">Source files.</a></li>
+                                            <li><a href="#">7 Days License.</a></li>
+                                        </ul>
+                                        <a class="btn" href="#">Free Trial</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single-price-wrap">
+                                        <h5 class="pricing-title">Standard plan</h5>
+                                        <h2 class="pricing-cost">$99<span>/month</span></h2>
+                                        <ul class="pricing-list">
+                                            <li><a href="#">Offline Synchronization.</a></li>
+                                            <li><a href="#">24/7 Supports.</a></li>
+                                            <li><a href="#">Free Update.</a></li>
+                                            <li><a href="#">Source files.</a></li>
+                                            <li><a href="#">7 Days License.</a></li>
+                                        </ul>
+                                        <a class="btn" href="#">Buy Now</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single-price-wrap">
+                                        <h5 class="pricing-title">Premium plan</h5>
+                                        <h2 class="pricing-cost">$159<span>/month</span></h2>
+                                        <ul class="pricing-list">
+                                            <li><a href="#">Offline Synchronization.</a></li>
+                                            <li><a href="#">24/7 Supports.</a></li>
+                                            <li><a href="#">Free Update.</a></li>
+                                            <li><a href="#">Source files.</a></li>
+                                            <li><a href="#">7 Days License.</a></li>
+                                        </ul>
+                                        <a class="btn" href="#">Buy Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Pricing-area end-->
+    <!--download-area start-->
+    <section class="download-area text-center" style="background: url(assets/img/other/download.png);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <h2>
+                        Join Our Community & Earn Rewards
+                    </h2>
+                    <p>Never miss an opportunity for a little competition. Join our latest campaigns to earn rewards. </p>
+                    <a class="btn " href="#"><i class="fa fa-lock"></i>Login Now</a>
+                    <a class="btn " href="#"><i class="fa fa-user-plus"></i>Join us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--download-area end-->
+    <!--testimonial-area start-->
+    <section class="testimonial-area text-center pd-top-140" id="Roadmap">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title mb-2">
+
+                        <h2 class="title">
+                            Roadmap to Success
+                        </h2>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="testimonial-slider owl-carousel owl-theme">
+
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="assets/img/banner/3.png" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 2 </h5>
+                                <p class="designation text-green">Website and White Paper </p>
+                                <ul>
+                                    <li>Whitepaper development</li>
+                                    <li>Website development (beta)</li>
+                                    <li>Website redesign/update/ testing</li>
+                                    <li>Creating social accounts</li>
+                                    <li>
+                                        Whitepaper redesign/update
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="assets/img/banner/3.png" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 3 </h5>
+                                <p class="designation text-green">Socials Media </p>
+                                <ul>
+                                    <li>Creating social Media accounts</li>
+                                    <li>Promotion activities</li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="assets/img/banner/3.png" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 4 </h5>
+                                <p class="designation text-green">Token Launch and Listing </p>
+                                <ul>
+                                    <li>Code deployment on BSCSCAN</li>
+                                    <li>
+                                        Airdrop to subscribers with task
+                                    </li>
+                                    <li>
+                                        Presale announcement on social media
+                                    </li>
+                                    <li>
+                                        Dapp Listing on Pancake Swap
+                                    </li>
+                                    <li>1000 holder completed  Trust wallet Integrating</li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="assets/img/banner/3.png" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 5 </h5>
+                                <p class="designation">CMC Listing</p>
+                                <ul>
+                                    <li>After 3000 holder completed Listing on Coingecko</li>
+                                    <li>After 5000 holder completed Listing on Coin Market Cap</li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="assets/img/banner/3.png" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 6 </h5>
+                                <p class="designation">Gaming  platform</p>
+                                <ul>
+                                    <li>Fantasy gaming platform</li>
+                                    <li>Online metaverse gaming</li>
+                                    <li>Play to earn gaming platform</li>
+                                    <li>Kids educational gaming platform</li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="assets/img/banner/3.png" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 7 </h5>
+                                <p class="designation">New App Developments </p>
+                                <ul>
+                                    <li>Share video App ( create profile and add videos share friend end earn OSN Tokens</li>
+                                    <li>
+                                        Marketing development app
+                                    </li>
+                                    <li>Utility bill & ecommerce services app develop</li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="assets/img/banner/3.png" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 8 </h5>
+                                <p class="designation">Exchanges Listing After 100000 Holders   </p>
+                                <ul>
+                                    <li>Hotbit</li>
+                                    <li>
+                                        Gate io
+                                    </li>
+                                    <li>
+                                        Wazix
+                                    </li>
+                                    <li>
+                                        Kucoin
+                                    </li>
+                                    <li>Bitmart</li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="assets/img/banner/3.png" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 9 </h5>
+                                <p class="designation">NEFT Marketing Place </p>
+                            </div>
+                        </div>
+
+
+
+                        <div class="item">
+                            <div class="testimonial-wrap">
+                                <div class="thumb">
+                                    <img src="assets/img/banner/3.png" alt="img">
+                                </div>
+                                <h5 class="name"> Phase 1 </h5>
+                                <p class="designation text-green">Development strategy </p>
+                                <ul>
+                                    <li>Coding and development</li>
+                                    <li>Multilevel testing.</li>
+                                    <li>Road map and initial marketing strategy Unstoppable</li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row align-items-center" style="display:none;">
+                <div class="col-lg-7">
+                    <div class="o-distribution text-left wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+                        <h2>Token Distribution</h2>
+                        <p>
+                            To calculate the number of tokens you’ll receive, you can follow the following formula. Note that this applies to public presale contributions only. If you participated through a syndicate or private presale,
+
+                        </p>
+                        <div class="progressbar-block row">
+                            <div class="col-md-6">
+                                <span class="progress-label">Advisory Board: 8%</span>
+                                <div class="progress bar-1">
+                                    <div class="progress-bar" data-transitiongoal="5" style="width: 5%;" aria-valuenow="5"></div>
+                                </div>
+                                <!-- End of .progress -->
+                                <span class="progress-label">Project Team Share: 10%</span>
+                                <div class="progress bar-2">
+                                    <div class="progress-bar" data-transitiongoal="5" style="width: 5%;" aria-valuenow="5"></div>
+                                </div>
+                                <!-- End of .progress -->
+                                <span class="progress-label">Bonus and Reserve: 9%</span>
+                                <div class="progress bar-3">
+                                    <div class="progress-bar" data-transitiongoal="10" style="width: 10%;" aria-valuenow="10"></div>
+                                </div>
+                                <!-- End of .progress -->
+                            </div>
+                            <!-- End of .col-md-6 -->
+                            <div class="col-md-6">
+                                <span class="progress-label">Bounties: 3%</span>
+                                <div class="progress bar-4">
+                                    <div class="progress-bar" data-transitiongoal="10" style="width: 10%;" aria-valuenow="10"></div>
+                                </div>
+                                <!-- End of .progress -->
+                                <!--<span class="progress-label">Infrastructure: 20%</span>
+                                <div class="progress bar-5">
+                                    <div class="progress-bar" data-transitiongoal="20" style="width: 20%;" aria-valuenow="20"></div>
+                                </div>-->
+                                <!-- End of .progress -->
+                                <span class="progress-label">Token Sale: 70%</span>
+                                <div class="progress bar-6">
+                                    <div class="progress-bar" data-transitiongoal="50" style="width: 50%;" aria-valuenow="50"></div>
+                                </div>
+                                <!-- End of .progress -->
+                            </div>
+                            <!-- End of .col-md-6 -->
+                        </div>
+                        <!-- End of .progressbar-block -->
+                    </div>
+                    <!-- End of .o-distribution -->
+                </div>
+                <!-- End of .col-md-5 -->
+                <div class="col-lg-5">
+                    <div id="chartdiv" class="token-distribution-chart wow fadeIn" style="visibility: visible; animation-name: fadeIn; overflow: hidden; text-align: left;"><div style="position: relative;" class="amcharts-main-div"><div style="overflow: hidden; position: relative; text-align: left; width: 483px; height: 500px; padding: 0px; touch-action: auto;" class="amcharts-chart-div"><svg version="1.1" style="position: absolute; width: 483px; height: 500px; top: -0.216797px; left: -0.450012px;"><desc>JavaScript chart by amCharts 3.21.12</desc><g><path cs="100,100" d="M0.5,0.5 L482.5,0.5 L482.5,499.5 L0.5,499.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0" class="amcharts-bg"></path></g><g></g><g></g><g></g><g></g><g></g><g><g class="amcharts-pie-item" aria-label="Reserve: 10.00% 1 "><path cs="1000,1000" d=" M205.64509961015912,200.6499633431282 L150.9810711469591,125.41138286625811 A154,154,0,0,1,241.49999999999997,96 L241.49999999999997,189 A61,61,0,0,0,205.64509961015912,200.6499633431282 Z" fill="#B0DE09" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path></g><g class="amcharts-pie-item" aria-label="Presel: 20.00% 2 "><path cs="1000,1000" d=" M183.48555250599563,268.8500366568718 L95.03729649054637,297.58861713374193 A154,154,0,0,1,150.9810711469591,125.41138286625811 L205.64509961015912,200.6499633431282 A61,61,0,0,0,183.48555250599563,268.8500366568718 Z" fill="#ff9b53" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path></g><g class="amcharts-pie-item" aria-label="Advisory Board: 5.00% 0.5 "><path cs="1000,1000" d=" M241.5,189 L241.5,96 A154,154,0,0,1,289.0886171337419,103.53729649054637 L260.3500366568718,191.98555250599563 A61,61,0,0,0,241.5,189 Z" fill="#448aff" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path></g><g class="amcharts-pie-item" aria-label="Dispensaries: 5.00% 0.5 "><path cs="1000,1000" d=" M260.3500366568718,191.98555250599563 L289.0886171337419,103.53729649054637 A154,154,0,0,1,332.01892885304085,125.4113828662581 L277.35490038984085,200.6499633431282 A61,61,0,0,0,260.3500366568718,191.98555250599563 Z" fill="#543bcc" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path></g><g class="amcharts-pie-item" aria-label="Bounties: 10.00% 1 "><path cs="1000,1000" d=" M277.35490038984085,200.6499633431282 L332.01892885304085,125.4113828662581 A154,154,0,0,1,387.9627035094536,202.4113828662581 L299.51444749400434,231.1499633431282 A61,61,0,0,0,277.35490038984085,200.6499633431282 Z" fill="#07d79c" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path></g><g class="amcharts-pie-item" aria-label="Token Sale: 50.00% 5 "><path cs="1000,1000" d=" M299.51444749400434,231.1499633431282 L387.9627035094536,202.4113828662581 A154,154,0,0,1,95.03729649054637,297.58861713374193 L183.48555250599563,268.8500366568718 A61,61,0,0,0,299.51444749400434,231.1499633431282 Z" fill="#f5354e" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path></g></g><g></g><g></g><g></g><g></g><g></g><g><g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg><a href="http://www.amcharts.com" title="JavaScript charts" target="_self" style="position: absolute; text-decoration: none; color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; opacity: 0.7; display: block; left: 5px; top: 5px;">JS chart by amCharts</a></div></div></div>
+                </div>
+                <!-- End of.col-md-7 -->
+            </div>
+        </div>
+    </section>
+    <!--testimonial-area end-->
+    <!--blog-area start-->
+
+    <section class="blog-area pd-top-130 pd-bottom-110" id="Token">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="ibn-inner">
+                        <div class="section-title mb-0">
+                            <h6 class="sub-title">Information</h6>
+                            <h2 class="title">OSN Token Information</h2>
+                            <p></p>
+
+                            <ul>
+                                <li>
+                                    <span class="token-color">Token Name </span> <span class="token">OpenSea Network</span>
+                                </li>
+                                <li>
+                                    <span class="token-color">Ticker </span> <span class="token">OSN</span>
+                                </li>
+                                <li>
+                                    <span class="token-color">Total Supply </span> <span class="token">2.1 Million</span>
+                                </li>
+                                <!--<li>
+                                <span class="token-color">Burning </span> <span class="token">7.70 Million</span>
+                            </li>-->
+                                <!--<li>
+                                <span class="token-color">Cir.. Supply</span> <span class="token">5.0 Million</span>
+                            </li>-->
+
+                                <li>
+                                    <span class="token-color">Token Decimal </span> <span class="token">18</span>
+                                </li>
+
+                                <li>
+                                    <span class="token-color">Network </span> <span class="token">Bep20</span>
+                                </li>
+
+
+                            </ul>
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="col-lg-4 text-lg-right  d-lg-block align-self-center" style="text-align:center;">
+                    <div class="thumb">
+                        <img src="assets/img/other/overview-1.png" alt="img" style="width:100%; max-width:420px;">
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="shape_items">
+            <img src="assets/img/1.png" alt="" class="one">
+            <img src="assets/img/2.png" alt="" class="two">
+            <img src="assets/img/3.png" alt="" class="three">
+            <img src="assets/img/4.png" alt="" class="four">
+        </div>
+    </section>
+
+
+    <section id="roadmap" class="pd-bottom-110" style="display:none;">
+        <div class="container-fluid">
+            <div class="row roadmap_list small_space align-items-end">
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.0065</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$65359.45 Coin</p>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.0098</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$65359.46 To $98039.18</p>
+                    </div>
+                </div>
+
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.016</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$98039.19 To $130718.90</p>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.020</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$130718.91 To $163398.63</p>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.023</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$163398.64 To $196078.35</p>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.026</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$196078.35 To $261437.80</p>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.033</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$261437.81 To $294117.53</p>
+                    </div>
+                </div>
+
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.036</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$294117.53 To $326797.25</p>
+                    </div>
+                </div>
+
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.039</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$326797.25 To $392156.70</p>
+                    </div>
+                </div>
+
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.046</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$392156.70 To $457516.15</p>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="single_roadmap roadmap_done">
+                        <div class="roadmap_icon"></div>
+                        <h6 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">Price : $0.052</h6>
+                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.3s">$457516.15 To $522875.60</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="blog-area pd-top-130 pd-bottom-110" id="Token" style="">
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-5 text-lg-right  d-lg-block align-self-center" style="text-align:center;">
+                    <div class="col-lg-5 hidden-xs">
+                        <!--<img src="images/banner/home-banner.png" class="donut-img" alt="CICO">-->
+                        <svg id="donut-chart"></svg>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="ibn-inner">
+                        <div class="section-title mb-0">
+                            <h6 class="sub-title">Allocation </h6>
+                            <h2 class="title">
+                                OSN Tokens Allocation
+                            </h2>
+                            <p>To calculate the number of tokens you’ll receive, you can follow the following formula. </p>
+                        </div>
+
+                        <div class="progressbar-block row">
+                            <div class="col-md-6">
+
+                                <span class="progress-label">Staking : 20%</span>
+                                <div class="progress bar-6">
+                                    <div class="progress-bar" data-transitiongoal="50" style="width: 20%;" aria-valuenow="50"></div>
+                                </div>
+
+                                <span class="progress-label">Airdrop : 10%</span>
+                                <div class="progress bar-4">
+                                    <div class="progress-bar" data-transitiongoal="10" style="width: 10%;" aria-valuenow="10"></div>
+                                </div>
+
+                                <span class="progress-label">CEX/Dex Liquidity : 15%</span>
+                                <div class="progress bar-3">
+                                    <div class="progress-bar" data-transitiongoal="10" style="width: 15%;" aria-valuenow="10"></div>
+                                </div>
+
+                                <span class="progress-label">Founder : 11%</span>
+                                <div class="progress bar-6">
+                                    <div class="progress-bar" data-transitiongoal="50" style="width: 11%;" aria-valuenow="50"></div>
+                                </div>
+
+                                <span class="progress-label">Director : 5%</span>
+                                <div class="progress bar-6">
+                                    <div class="progress-bar" data-transitiongoal="50" style="width: 5%;" aria-valuenow="50"></div>
+                                </div>
+                                <!-- End of .progress -->
+                                <!-- End of .progress -->
+                            </div>
+                            <!-- End of .col-md-6 -->
+                            <div class="col-md-6">
+
+                                <span class="progress-label">Advisor: 5%</span>
+                                <div class="progress bar-4">
+                                    <div class="progress-bar" data-transitiongoal="10" style="width: 5%;" aria-valuenow="10"></div>
+                                </div>
+
+                                <span class="progress-label">Marketing : 14%</span>
+                                <div class="progress bar-6">
+                                    <div class="progress-bar" data-transitiongoal="50" style="width: 14%;" aria-valuenow="50"></div>
+                                </div>
+
+                                <span class="progress-label">Emergency Fund : 10%</span>
+                                <div class="progress bar-1">
+                                    <div class="progress-bar" data-transitiongoal="5" style="width: 10%;" aria-valuenow="5"></div>
+                                </div>
+
+                                <span class="progress-label">Development : 5%</span>
+                                <div class="progress bar-1">
+                                    <div class="progress-bar" data-transitiongoal="5" style="width: 5%;" aria-valuenow="5"></div>
+                                </div>
+
+                                <span class="progress-label"> Team : 5%</span>
+                                <div class="progress bar-6">
+                                    <div class="progress-bar" data-transitiongoal="50" style="width: 15%;" aria-valuenow="50"></div>
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+
+
+
+                            </div>
+                            <!-- End of .col-md-6 -->
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="blog-area pd-top-130 pd-bottom-110" id="Token" style="display:none;">
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-7">
+                    <div class="ibn-inner">
+                        <div class="section-title mb-0">
+                            <h6 class="sub-title">Distribution</h6>
+                            <h2 class="title">OSN Tokens Distribution</h2>
+                            <p>To calculate the number of tokens you’ll receive, you can follow the following formula. Note that this applies to public presale contributions only. If you participated through a syndicate or private presale,</p>
+                        </div>
+
+                        <div class="progressbar-block row">
+                            <div class="col-md-6">
+                                <span class="progress-label">Development : 1%</span>
+                                <div class="progress bar-1">
+                                    <div class="progress-bar" data-transitiongoal="5" style="width: 5%;" aria-valuenow="5"></div>
+                                </div>
+                                <!-- End of .progress -->
+                                <span class="progress-label">Liquidity : 2%</span>
+                                <div class="progress bar-2">
+                                    <div class="progress-bar" data-transitiongoal="5" style="width: 5%;" aria-valuenow="5"></div>
+                                </div>
+                                <!-- End of .progress -->
+                            </div>
+                            <!-- End of .col-md-6 -->
+                            <div class="col-md-6">
+                                <span class="progress-label">Redistribution : 5%</span>
+                                <div class="progress bar-4">
+                                    <div class="progress-bar" data-transitiongoal="10" style="width: 10%;" aria-valuenow="10"></div>
+                                </div>
+                                <span class="progress-label">Slippage Tolerance : 10% to 20%</span>
+                                <div class="progress bar-6">
+                                    <div class="progress-bar" data-transitiongoal="50" style="width: 50%;" aria-valuenow="50"></div>
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- End of .col-md-6 -->
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="col-lg-5 text-lg-right  d-lg-block align-self-center" style="text-align:center;">
+                    <div id="chartdiv" class="token-distribution-chart wow fadeIn" style="visibility: visible; animation-name: fadeIn; overflow: hidden; text-align: left;">
+                        <div style="position: relative;" class="amcharts-main-div">
+                            <div style="overflow: hidden; position: relative; text-align: left; width: 483px; height: 500px; padding: 0px; touch-action: auto;" class="amcharts-chart-div">
+                                <svg version="1.1" style="position: absolute; width: 483px; height: 500px; top: -0.216797px; left: -0.450012px;">
+                                    <desc>JavaScript chart by amCharts 3.21.12</desc>
+                                    <g>
+                                        <path cs="100,100" d="M0.5,0.5 L482.5,0.5 L482.5,499.5 L0.5,499.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0" class="amcharts-bg"></path>
+                                    </g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g>
+                                        <g class="amcharts-pie-item" aria-label="Reserve: 10.00% 1 ">
+                                            <path cs="1000,1000" d=" M205.64509961015912,200.6499633431282 L150.9810711469591,125.41138286625811 A154,154,0,0,1,241.49999999999997,96 L241.49999999999997,189 A61,61,0,0,0,205.64509961015912,200.6499633431282 Z" fill="#B0DE09" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path>
+                                        </g>
+                                        <g class="amcharts-pie-item" aria-label="Presel: 20.00% 2 ">
+                                            <path cs="1000,1000" d=" M183.48555250599563,268.8500366568718 L95.03729649054637,297.58861713374193 A154,154,0,0,1,150.9810711469591,125.41138286625811 L205.64509961015912,200.6499633431282 A61,61,0,0,0,183.48555250599563,268.8500366568718 Z" fill="#ff9b53" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path>
+                                        </g>
+                                        <g class="amcharts-pie-item" aria-label="Advisory Board: 5.00% 0.5 ">
+                                            <path cs="1000,1000" d=" M241.5,189 L241.5,96 A154,154,0,0,1,289.0886171337419,103.53729649054637 L260.3500366568718,191.98555250599563 A61,61,0,0,0,241.5,189 Z" fill="#448aff" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path>
+                                        </g>
+                                        <g class="amcharts-pie-item" aria-label="Dispensaries: 5.00% 0.5 ">
+                                            <path cs="1000,1000" d=" M260.3500366568718,191.98555250599563 L289.0886171337419,103.53729649054637 A154,154,0,0,1,332.01892885304085,125.4113828662581 L277.35490038984085,200.6499633431282 A61,61,0,0,0,260.3500366568718,191.98555250599563 Z" fill="#543bcc" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path>
+                                        </g>
+                                        <g class="amcharts-pie-item" aria-label="Bounties: 10.00% 1 ">
+                                            <path cs="1000,1000" d=" M277.35490038984085,200.6499633431282 L332.01892885304085,125.4113828662581 A154,154,0,0,1,387.9627035094536,202.4113828662581 L299.51444749400434,231.1499633431282 A61,61,0,0,0,277.35490038984085,200.6499633431282 Z" fill="#07d79c" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path>
+                                        </g>
+                                        <g class="amcharts-pie-item" aria-label="Token Sale: 50.00% 5 ">
+                                            <path cs="1000,1000" d=" M299.51444749400434,231.1499633431282 L387.9627035094536,202.4113828662581 A154,154,0,0,1,95.03729649054637,297.58861713374193 L183.48555250599563,268.8500366568718 A61,61,0,0,0,299.51444749400434,231.1499633431282 Z" fill="#f5354e" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0" fill-opacity="1" class="amcharts-pie-slice"></path>
+                                        </g>
+                                    </g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g>
+                                        <g></g>
+                                    </g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                    <g></g>
+                                </svg>
+                                <a href="#" title="JavaScript charts" target="_self" style="position: absolute; text-decoration: none; color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; opacity: 0.7; display: block; left: 5px; top: 5px;">JS chart by amCharts</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </section>
+
+    <!--blog-area end-->
+    <!--faq-area start-->
+    <section class="faq-area pd-top-80  pb-5" style="background: url(https://terra.droitlab.com/html/assets/img/testi_bg.png);">
+
+        <div class="container">
+            <div class="row justify-content-center" style="display:none;">
+                <div class="col-lg-10">
+                    <div class="section-title style-two text-center">
+
+                        <h2 class="title text-dark">Frequently asked questions</h2>
+                    </div>
+                    <div class="faq-accordion accordion" id="faq_accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <button class="btn" data-toggle="collapse" data-target="#collapseOne">Do I need to make a payment?<i class="fas fa-angle-right"></i></button>
+                            </div>
+                            <div id="collapseOne" class="collapse" data-parent="#faq_accordion">
+                                <div class="card-body">Lorem ipsum justo duis cras scelerisque porttitor sociosqu ut, ullamcorper ut a volutpat mattis interd um tempor torquent, cras tempus varius eros ac ornare volutpat magna malesuada aenean curae fusce lacus maecenas fames non.</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <button class="btn collapsed" data-toggle="collapse" data-target="#collapseTwo">Lorem ipsum justo duis cras scelerisque porttitor sociosqu?<i class="fas fa-angle-right"></i></button>
+                            </div>
+                            <div id="collapseTwo" class="collapse" data-parent="#faq_accordion">
+                                <div class="card-body">Lorem ipsum justo duis cras scelerisque porttitor sociosqu ut, ullamcorper ut a volutpat mattis interd um tempor torquent, cras tempus varius eros ac ornare volutpat magna malesuada aenean curae fusce lacus maecenas fames non.</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <button class="btn collapsed" data-toggle="collapse" data-target="#collapseThree">Lorem ipsum justo duis cras scelerisque porttitor?<i class="fas fa-angle-right"></i></button>
+                            </div>
+                            <div id="collapseThree" class="collapse" data-parent="#faq_accordion">
+                                <div class="card-body">Lorem ipsum justo duis cras scelerisque porttitor sociosqu ut, ullamcorper ut a volutpat mattis interd um tempor torquent, cras tempus varius eros ac ornare volutpat magna malesuada aenean curae fusce lacus maecenas fames non.</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <button class="btn collapsed" data-toggle="collapse" data-target="#collapseFour">How does this plena work?<i class="fas fa-angle-right"></i></button>
+                            </div>
+                            <div id="collapseFour" class="collapse" data-parent="#faq_accordion">
+                                <div class="card-body">Lorem ipsum justo duis cras scelerisque porttitor sociosqu ut, ullamcorper ut a volutpat mattis interd um tempor torquent, cras tempus varius eros ac ornare volutpat magna malesuada aenean curae fusce lacus maecenas fames non.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row  overview-section">
+                <div class="col-lg-6 align-self-center d-none d-lg-block">
+                    <div class="thumb obj">
+                        <img src="assets/img/featured/gaming.png" alt="img">
+                    </div>
+                </div>
+                <div class="col-lg-6 align-self-center pl-xl-5">
+                    <div class="section-title">
+                        <h2 class="title">BEP-20 is a token standard on BNB Smart Chain (BSC) that extends ERC-20.</h2>
+                    </div>
+                    <p>
+
+                        BEP-20 is a token standard on BNB Smart Chain (BSC) that extends ERC-20, the most common Ethereum token standard. You can think of it as a blueprint for tokens that defines how they can be spent, who can spend them, and other rules for their usage. Due to its similarity to BNB Beacon Chain’s BEP-2 and Ethereum’s ERC-20, it’s compatible with both.
+                    </p>
+
+                    <a class="btn btn-main" href="#">Read More</a>
+                </div>
+            </div>
+
+            <div class="row  overview-section pt-50" style="padding-top:100px;">
+                <div class="col-lg-6 align-self-center pl-xl-5">
+                    <div class="section-title">
+                        <h2 class="title"> OS Network Metaverse Gaming Eco-System</h2>
+                    </div>
+                    <p>
+
+                        The Eco-System is intertwined to support itself using the $ to seamlessy to encourage it users to use multiple products from the OS Network Eco- system exposing them to more crypto products in a more user friendly experience.
+
+                        Holders of the OSN Tokens will be able to strake on Paraswap Dec to stake for yield returns varying based on the length of your stake. This process of staking will give you permission to take part in our Parapad Launchpad Listing.
+                    </p>
+
+                    <a class="btn btn-main" href="#">Read More</a>
+                </div>
+                <div class="col-lg-6 align-self-center d-none d-lg-block">
+                    <div class="thumb obj">
+                        <img src="assets/img/meta.png" alt="img">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact-area pd-top-130" id="Contact">
+        <div class="container">
+            <div class="trusted-partners section-padding">
+                <div class="section-title mb-5 text-center">
+
+                    <h2 class="title">
+                        Our Partners
+                    </h2>
+                </div>
+
+                <!-- End of .section-heading -->
+                <div class="partners">
+                    <div class="row justify-content-center">
+                        <div class="partners-logo">
+                            <img src="assets/img/payment/1.png" alt="partners logo">
+                        </div>
+                        <div class="partners-logo">
+                            <img src="assets/img/payment/6.png" alt="partners logo">
+                        </div>
+                        <div class="partners-logo">
+                            <img src="assets/img/payment/5.png" alt="partners logo">
+                        </div>
+
+                    </div>
+                    <!-- End of .row -->
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <a class="footer-logo" href="index.html"><img src="assets/img/logo.png"></a>
+                    </div>
+
+
+                    <div class="col-lg-12 col-md-6 text-center">
+                        <div class="footer-widget widget">
+                            <div class="widget_subscribe">
+                                <ul class="social-area">
+                                    <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+
+                                    <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-telegram"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- End of .partners -->
+            </div>
+            <!-- End of .trusted-partners -->
+        </div>
+        <!-- End of . container -->
+    </section>
+
+    <!--faq-area end-->
+    <!--contact-area start-->
+    <!--<section class="contact-area pd-top-130 pd-bottom-120" id="Contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center">
+                        <h6 class="sub-title">Contact</h6>
+                        <h2 class="title">Contact with us</h2>
+                        <p>Support for service-related technical issues. Unavailable under the Basic Support Plan. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-10">
+                    <form class="contact-form">
+                        <div class="single-input-wrap">
+                            <input type="text" class="form-control" placeholder="Your First Name">
+                        </div>
+                        <div class="single-input-wrap">
+                            <input type="text" class="form-control" placeholder="Your Last Name">
+                        </div>
+                        <div class="single-input-wrap">
+                            <input type="text" class="form-control" placeholder="Phone Number">
+                        </div>
+                        <div class="single-input-wrap">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                        </div>
+                        <div class="single-input-wrap">
+                            <textarea rows="4" placeholder="Message..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-main">Send Message</button>
+                    </form>
+                </div>
+                <div class="col-xl-5 offset-xl-1 col-lg-6">
+                    <div class="contact-wrap">
+                        <h4>Appointment with our consultants.</h4>
+                        <p>Please contact us using the information below. For additional information on our management consulting services.</p>
+                        <div class="media">
+                            <div class="thumb">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            <div class="media-body">
+                                <h5>Email Us</h5>
+                                <p>info@OS Network.io</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="thumb style-2">
+                                <i class="fa fa-phone-alt"></i>
+                            </div>
+                            <div class="media-body">
+                                <h5>Call Us</h5>
+                                <p>+1526 2456 245</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="thumb style-3">
+                                <i class="fa fa-location-arrow"></i>
+                            </div>
+                            <div class="media-body">
+                                <h5>Visit Us</h5>
+                                <p>985 Delgen Boston, Massachusetts 56</p>
+                                <p>United States</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+    <!--contact-area end-->
+    <!--footer-area start-->
+    <footer class="footer-area">
+        <!--Footer bottom-->
+        <div class="copyright-area text-center">
+            <div class="container">
+                <p>Copyrights © 2023. All rights reserved by OS Network</p>
+            </div>
+        </div>
+    </footer>
+    <!--footer-area end-->
+    <!--JS Script-->
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js'></script>
+
+
+
+    <script src="assets/js/vendor.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/wow.min.js"></script>
+</body>
+
 </html>

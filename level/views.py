@@ -457,6 +457,9 @@ def payment(request):
     context = {'user': user, 'oid': txnid, 'amount': amount}
     return render(request,"level/joined.html",context)
 
+def binary(request):
+    return render(request,"binary/tree.html")
+
 @csrf_exempt
 def payment_success(request):
     if request.method =="POST":
