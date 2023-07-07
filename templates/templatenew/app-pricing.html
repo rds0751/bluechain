@@ -1,0 +1,1242 @@
+<!doctype html>
+<html lang="en" class="dark-mode">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="generator" content="">
+    <title>AdminUX - Admin, Dashboard, Web Application HTML template, UI kit, UI templates</title>
+
+    <!--  Essential META Tags -->
+    <meta property="og:title" content="AdminUX mobile Admin, Dashboard, micro web application HTML template">
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://maxartkiller.com/website/adminux2/html/assets/img/sidebar-pushcontent.png">
+    <meta property="og:url" content="https://maxartkiller.com/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!--  Non-Essential, But Recommended -->
+    <meta property="og:description" content="AdminUX Mobile - Admin, Dashboard, micro web Application HTML template, UI kit, UI templates">
+    <meta property="og:site_name" content="AdminUX Mobile by Maxartkiller">
+    <meta name="twitter:image:alt" content="AdminUX Mobile Creative Unique & Nature inspired petal to the beautiful world">
+
+    <!--  Non-Essential, But Required for Analytics -->
+    <meta name="twitter:site" content="@maxartkiller">
+
+    <!-- manifest meta -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="assets/img/favicon180.png" sizes="180x180">
+    <link rel="icon" href="assets/img/favicon32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="assets/img/favicon16.png" sizes="16x16" type="image/png">
+
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <!-- chosen css -->
+    <link rel="stylesheet" href="assets/vendor/chosen_v1.8.7/chosen.min.css">
+
+    <!-- date range picker -->
+    <link rel="stylesheet" href="assets/vendor/daterangepicker/daterangepicker.css">
+
+    <!-- swiper carousel css -->
+    <link rel="stylesheet" href="assets/vendor/swiper-7.3.1/swiper-bundle.min.css">
+
+    <!-- style css for this template -->
+    <link href="assets/scss/style.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100 sidebar-pushcontent sidebar-filled" data-sidebarstyle="sidebar-pushcontent">
+
+    <!-- page loader -->
+    <div class="container-fluid h-100 position-fixed loader-wrap bg-blur">
+        <div class="row justify-content-center h-100">
+            <div class="col-auto align-self-center text-center px-5 leaf">
+                <h2 class="mb-1">Admin<b class="fw-bold">UX</b></h2>
+                <h6 class="mb-4 text-secondary">Mobile Dashboard UI UX</h6>
+                <div class="logo-square animated mb-4">
+                    <div class="icon-logo">
+                        <img src="assets/img/logo-icon.png" alt="" />
+                    </div>
+                </div>
+                <p class="text-secondary small">Petal of flower being ready to <span class="text-gradient">blossom</span></p>
+
+                <div class="dotslaoder">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <!-- page loader ends -->
+
+
+    <!-- Header -->
+    <header class="header">
+        <!-- Fixed navbar -->
+        <nav class="navbar fixed-top">
+            <div class="container-fluid">
+                <button class="btn btn-link btn-square menu-btn me-2" type="button">
+                    <i class="bi bi-list fs-4"></i>
+                </button>
+                <div class="header-title align-self-center">
+                    <h5 class="mb-0">Pricing</h5>
+                    <p class="text-secondary small">Demo page</p>
+                </div>
+                <div class="ms-auto">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <a class="btn btn-link" href="index.html#colorscheme">
+                                <i class="bi bi-palette"></i>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="app-support.html" class="ms-2 vm">❤️ <span class="d-none d-md-inline-block">Support Us</span></a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="app-pricing.html" class="btn btn-rounded btn-theme ms-2 vm"><i class="bi bi-basket h5 me-1 vm"></i> <span class="d-none d-md-inline-block">Buy Now</span></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <!-- Header ends -->
+
+    <!-- Sidebar -->
+    <div class="sidebar-wrap">
+        <div class="sidebar">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col align-self-center">
+                        <h6>Main navigation</h6>
+                    </div>
+                    <div class="col-auto">
+                        <a class="" data-bs-toggle="collapse" data-bs-target="#usersidebarprofile" aria-expanded="false" role="button" aria-controls="usersidebarprofile">
+                            <i class="bi bi-person-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- user information -->
+                <div class="row text-center collapse " id="usersidebarprofile">
+                    <div class="col-12">
+                        <div class="avatar avatar-100 rounded-circle shadow-sm mb-3 bg-white">
+                            <figure class="avatar avatar-90 rounded-circle coverimg">
+                                <img src="assets/img/user-1.jpg" alt="" id="userphotoonboarding">
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <h6 class="mb-1" id="usernamedisplay">The Maxartkiller</h6>
+                        <p class="text-secondary small">United States</p>
+                    </div>
+                </div>
+
+                <!-- user menu navigation -->
+                <div class="row mb-4">
+                    <div class="col-12 px-0">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="home.html">
+                                    <div class="avatar avatar-40 icon"><i class="bi bi-house-door"></i></div>
+                                    <div class="col">Home</div>
+                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                    <div class="avatar avatar-40 icon"><i class="bi bi-coin"></i></div>
+                                    <div class="col">Finance</div>
+                                    <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="finance-dashboard.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-speedometer2"></i>
+                                            </div>
+                                            <div class="col align-self-center">Finance Dashboard</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="finance-crypto.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-currency-bitcoin"></i>
+                                            </div>
+                                            <div class="col align-self-center">Crypto</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="finance-banks.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-bank"></i>
+                                            </div>
+                                            <div class="col align-self-center">Banks</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="finance-wallet.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-wallet2"></i>
+                                            </div>
+                                            <div class="col align-self-center">Wallet</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="finance-rewards.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-award"></i>
+                                            </div>
+                                            <div class="col align-self-center">Rewards</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                    <div class="avatar avatar-40 icon"><i class="bi bi-hdd-network"></i></div>
+                                    <div class="col">Network</div>
+                                    <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="network-dashboard.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-grid"></i>
+                                            </div>
+                                            <div class="col align-self-center">Network Dashboard</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="network-performance.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-speedometer"></i>
+                                            </div>
+                                            <div class="col align-self-center">Performance</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="network-devices.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-pc-display-horizontal"></i>
+                                            </div>
+                                            <div class="col align-self-center">Devices</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                    <div class="avatar avatar-40 icon"><i class="bi bi-boxes"></i></div>
+                                    <div class="col">Inventory</div>
+                                    <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="inventory-dashboard.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-box"></i>
+                                            </div>
+                                            <div class="col align-self-center">Inventory Dash</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="inventory-stock.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-clipboard-check"></i>
+                                            </div>
+                                            <div class="col align-self-center">Stock</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="inventory-orders.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-bag-check"></i>
+                                            </div>
+                                            <div class="col align-self-center">Orders</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                    <div class="avatar avatar-40 icon"><i class="bi bi-people"></i></div>
+                                    <div class="col">Social</div>
+                                    <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="social-dashboard.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-bullseye"></i>
+                                            </div>
+                                            <div class="col align-self-center">Social Dashboard</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="social-analytics.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-bar-chart"></i>
+                                            </div>
+                                            <div class="col align-self-center">Analytics</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="social-schedule.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-calendar-week"></i>
+                                            </div>
+                                            <div class="col align-self-center">Schedule</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                    <div class="avatar avatar-40 icon"><i class="bi bi-folder"></i></div>
+                                    <div class="col">Project</div>
+                                    <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="project-dashboard.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-file-post"></i>
+                                            </div>
+                                            <div class="col align-self-center">Project Dashboard</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="project-projects.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-folder-check"></i>
+                                            </div>
+                                            <div class="col align-self-center">Projects</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                    <div class="avatar avatar-40 icon"><i class="bi bi-book"></i></div>
+                                    <div class="col">Learning</div>
+                                    <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="learning-dashboard.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-box"></i>
+                                            </div>
+                                            <div class="col align-self-center">Learning Dashboard</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="learning-courses.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-award"></i>
+                                            </div>
+                                            <div class="col align-self-center">Courses</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="learning-institutes.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-building"></i>
+                                            </div>
+                                            <div class="col align-self-center">Institutions</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- applications -->
+                <div class="row mb-3">
+                    <div class="col align-self-center">
+                        <h6>Applications</h6>
+                    </div>
+                    <div class="col-auto">
+                        <div class="dropdown">
+                            <a class="text-theme dd-arrow-none dropdown-toggle" id="sidebaredits" data-bs-display="display" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                                <i class="bi bi-sliders"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-dontclose mt-2 w-200" aria-labelledby="sidebaredits">
+                                <ul class="list-group list-group-flush bg-none">
+                                    <li class="list-group-item">
+                                        <div class="row">
+                                            <div class="col">Email</div>
+                                            <div class="col-auto pe-0">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="sidebaredits1" checked>
+                                                    <label class="form-check-label" for="sidebaredits1"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row">
+                                            <div class="col">Explorer</div>
+                                            <div class="col-auto pe-0">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="sidebaredits2" checked>
+                                                    <label class="form-check-label" for="sidebaredits2"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row">
+                                            <div class="col">Calendar</div>
+                                            <div class="col-auto pe-0">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="sidebaredits3" checked>
+                                                    <label class="form-check-label" for="sidebaredits3"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row">
+                                            <div class="col">Chat</div>
+                                            <div class="col-auto pe-0">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="sidebaredits4" checked>
+                                                    <label class="form-check-label" for="sidebaredits4"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row">
+                                            <div class="col">Support</div>
+                                            <div class="col-auto pe-0">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" role="switch" id="sidebaredits5">
+                                                    <label class="form-check-label" for="sidebaredits5"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-12 px-0">
+                        <ul class="nav nav-pills nav-iconic">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="app-email.html">
+                                    <div class="avatar avatar-36 icon"><i class="bi bi-envelope"></i></div>
+                                    <div class="col">Email</div>
+                                    <div class="col-auto align-self-center">
+                                        <figure class="avatar avatar-24 coverimg rounded-circle">
+                                            <img src="assets/img/user-2.jpg" alt="" />
+                                        </figure>
+                                        <figure class="avatar avatar-24 coverimg rounded-circle">
+                                            <img src="assets/img/user-3.jpg" alt="" />
+                                        </figure>
+                                        <figure class="avatar avatar-24 bg-dark-theme rounded-circle">
+                                            <small class="fs-10 vm">9+</small>
+                                        </figure>
+                                    </div>
+                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="app-explorer.html">
+                                    <div class="avatar avatar-36 icon">
+                                        <span class="bi bi-folder position-relative">
+                                            <span class="position-absolute top-0 start-100 p-1 bg-danger border border-light rounded-circle">
+                                                <span class="visually-hidden">New alerts</span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="col">Explorer</div>
+                                    <div class="arrow">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="app-calendar.html">
+                                    <div class="avatar avatar-36 icon"><i class="bi bi-calendar-event"></i></div>
+                                    <div class="col">Calendar</div>
+                                    <div class="col-auto">
+                                        <figure class="avatar avatar-24 rounded-circle bg-theme ">
+                                            <i class="bi bi-calendar-event fs-10 vm"></i>
+                                        </figure>
+                                    </div>
+                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- user secondary menu navigation -->
+                <h6>Pages</h6>
+                <div class="row mb-4">
+                    <div class="col-12 px-0">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                    <div class="avatar avatar-40 icon"><i class="bi bi-person-circle"></i></div>
+                                    <div class="col">Profile</div>
+                                    <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="profile.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-briefcase"></i>
+                                            </div>
+                                            <div class="col align-self-center">Professional</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="profile-social.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-people"></i>
+                                            </div>
+                                            <div class="col align-self-center">Social</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="profile-analytics.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-bar-chart"></i>
+                                            </div>
+                                            <div class=" col align-self-center">Analytical</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                    <div class="avatar avatar-40 icon"><i class="bi bi-building"></i></div>
+                                    <div class="col">Company</div>
+                                    <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="company-profile.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-easel2"></i>
+                                            </div>
+                                            <div class="col align-self-center">Company Profile</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="company-branding.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-palette"></i>
+                                            </div>
+                                            <div class="col align-self-center">Branding</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="company-userroles.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-people"></i>
+                                            </div>
+                                            <div class="col align-self-center">User Roles</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="company-resources.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-journal-bookmark"></i>
+                                            </div>
+                                            <div class="col align-self-center">Resources</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="management.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-stopwatch"></i>
+                                            </div>
+                                            <div class="col align-self-center">Management</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="career.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-file-earmark-person"></i>
+                                            </div>
+                                            <div class="col align-self-center">Career</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="help-center.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-life-preserver"></i>
+                                            </div>
+                                            <div class="col align-self-center">Help Center</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="contact-us.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-envelope"></i>
+                                            </div>
+                                            <div class="col align-self-center">Contact us</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                    <div class="avatar avatar-40 icon"><i class="bi bi-question-circle"></i></div>
+                                    <div class="col">Forum</div>
+                                    <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="forum.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-question-circle"></i>
+                                            </div>
+                                            <div class="col align-self-center">Forum</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="forum-details.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-people"></i>
+                                            </div>
+                                            <div class="col align-self-center">Forum Details</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                    <div class="avatar avatar-40 icon"><i class="bi bi-window-stack"></i></div>
+                                    <div class="col">Supportive Pages</div>
+                                    <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="supportive-signin.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-person"></i>
+                                            </div>
+                                            <div class="col align-self-center">Sign in</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="supportive-signup.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-person-plus"></i>
+                                            </div>
+                                            <div class="col align-self-center">Sign up</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="supportive-password.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-key"></i>
+                                            </div>
+                                            <div class="col align-self-center">Change Password</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="supportive-verify.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-person-check"></i>
+                                            </div>
+                                            <div class="col align-self-center">Verify</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="supportive-maintenance.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-gear"></i>
+                                            </div>
+                                            <div class="col align-self-center">Maintenance</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="supportive-comingsoon.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-alarm"></i>
+                                            </div>
+                                            <div class="col align-self-center">Coming soon</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="supportive-error.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-exclamation-circle"></i>
+                                            </div>
+                                            <div class="col align-self-center">Error</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="supportive-onboarding.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-emoji-smile"></i>
+                                            </div>
+                                            <div class="col align-self-center">Onboarding</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="supportive-search.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-search"></i>
+                                            </div>
+                                            <div class="col align-self-center">Search</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="supportive-contact.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-envelope"></i>
+                                            </div>
+                                            <div class="col align-self-center">Contact</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="supportive-timeline.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-calendar-week"></i>
+                                            </div>
+                                            <div class="col align-self-center">Timeline</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                    <div class="avatar avatar-40 icon"><i class="bi bi-layers"></i></div>
+                                    <div class="col">Components</div>
+                                    <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="component-cards.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-card-list"></i>
+                                            </div>
+                                            <div class="col align-self-center">Cards</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="component-forms.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-input-cursor-text"></i>
+                                            </div>
+                                            <div class="col align-self-center">Forms</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="component-charts.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-bar-chart"></i>
+                                            </div>
+                                            <div class="col align-self-center">Charts</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="component-events.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-calendar-event"></i>
+                                            </div>
+                                            <div class=" col align-self-center">Events</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="component-files.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-folder"></i>
+                                            </div>
+                                            <div class="col align-self-center">Files</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="component-summary.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-list"></i>
+                                            </div>
+                                            <div class="col align-self-center">Summary</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="component-news.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-newspaper"></i>
+                                            </div>
+                                            <div class=" col align-self-center">News</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="component-rating.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-star"></i>
+                                            </div>
+                                            <div class="col align-self-center">Ratings</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="component-users.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-people"></i>
+                                            </div>
+                                            <div class="col align-self-center">Users</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="component-progress.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-clock-history"></i>
+                                            </div>
+                                            <div class=" col align-self-center">Progress</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="component-pricing.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-cash-stack"></i>
+                                            </div>
+                                            <div class="col align-self-center">Pricing</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="supportive-wizard.html">
+                                            <div class="avatar avatar-40 icon"><i class="bi bi-list-nested"></i>
+                                            </div>
+                                            <div class=" col align-self-center">Wizards</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Quick links -->
+                <div class="row mb-3">
+                    <div class="col align-self-center">
+                        <h6>Quick Links</h6>
+                    </div>
+                    <div class="col-auto">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-12 px-0">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="get-started.html">
+                                    <div class="avatar avatar-40 icon"><i class="bi bi-journal-code"></i></div>
+                                    <div class="col">Documentation</div>
+                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Sidebar ends -->
+
+    <main class="main">
+        <!-- Begin page content -->
+            <section class="container py-4">
+                <div class="row vh-80 justify-content-center align-items-center text-center">
+                    <div class="col-10 col-md-12">
+                        <h5 class="text-gradient mb-3 mb-md-4 d-inline-block">Stand out from competitors & change trend</h5>
+                        <h2 class="fw-bold mb-4">Pick up a license to grow your brand and your business with AdminUX</h2>
+                        <h5 class="mb-1">Save more & grow more for Individuals, Business, Applications</h5>
+                        <p class="text-secondary">Be polite, Be genuine, Be confident & Let's grow together.</p>
+                    </div>
+                </div>
+            </section>
+
+        <!-- pricing -->
+        <section class="main mx-3 z-index-1 overflow-hidden" id="section-1">
+            <div class="py-5 position-relative">
+                <section class="container-fluid mt-4 mt-lg-5 pb-5">
+                    <div class="row h-100 justify-content-center text-center">
+                        <div class="col-auto">
+                            <h2 class="fw-bold mb-4 md-lg-5">Taking first step is important,<br>no matter how small or big it is</h2>
+                            <p class="text-secondary">We are happy to give you choices as much as possible.<br>Spread a little word and spread 😃.</p>
+                        </div>
+                    </div>
+                </section>
+                <div class="container pb-5">
+                    <div class="row mb-4 mb-lg-5">
+                        <div class="col-12 col-md-4">
+                            <div class="card mb-4 border-0 bg-gradient-theme-light theme-red">
+                                <div class="card-body bg-none p-xl-4 p-xxl-5">
+                                    <div class="row mb-4">
+                                        <div class="col-auto">
+                                            <i class="avatar avatar-60 rounded-circle bg-dark-theme text-theme h4 bi bi-gift vm"></i>
+                                        </div>
+                                        <div class="col">
+                                            <h4 class="mb-1">Free</h4>
+                                            <p class="text-secondary">Perfect to tryout</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-secondary mb-4">Our free version comes with limited features for exploration and free to use with limited access. </p>
+                                    <h6>Includes:</h6>
+                                    <ul class="list-group list-group-flush no-border bg-none mb-4">
+                                        <li class="list-group-item text-secondary"><i class="bi bi-check-circle vm me-1"></i> HTML Template v1.0.0</li>
+                                        <li class="list-group-item text-secondary"><i class="bi bi-check-circle vm me-1"></i> 10+ Predefined Colors</li>
+                                        <li class="list-group-item text-secondary"><i class="bi bi-check-circle vm me-1"></i> Light Dark Mode</li>
+                                        <li class="list-group-item text-secondary"><i class="bi bi-check-circle vm me-1"></i> 10+ pages, Logins, Dashboards</li>
+                                        <li class="list-group-item text-secondary"><i class="bi bi-check-circle vm me-1"></i> 100+ widgets & Components</li>
+                                    </ul>
+
+                                    <div class="row gx-2 align-items-center mb-4">
+                                        <div class="col-auto">
+                                            <h1><span class="text-secondary fw-normal">$</span>0</h1>
+                                        </div>
+                                        <div class="col">
+                                            <p class="text-secondary">per project</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" target="_blank" class="btn btn-lg btn-outline-theme btn-rounded w-100">Download</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="card mb-4 bg-gradient-theme-light theme-green border-0">
+                                <div class="card-body p-xl-4 p-xxl-5 bg-none">
+                                    <div class="row mb-4">
+                                        <div class="col-auto">
+                                            <i class="avatar avatar-60 rounded-circle bg-dark-theme text-theme h4 bi bi-people vm"></i>
+                                        </div>
+                                        <div class="col">
+                                            <h4 class="mb-1">Business</h4>
+                                            <p class="text-secondary">Designed for Development</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-secondary mb-4">Our business license comes with more elastic features to start web development projects.</p>
+                                    <h6>Includes:</h6>
+                                    <ul class="list-group list-group-flush no-border bg-none mb-4">
+                                        <li class="list-group-item text-secondary"><i class="bi bi-check-circle vm me-1"></i> HTML Template latest</li>
+                                        <li class="list-group-item text-secondary"><i class="bi bi-check-circle vm me-1"></i> Personalization <i class="bi bi-palette mx-1"></i></li>
+                                        <li class="list-group-item text-secondary"><i class="bi bi-check-circle vm me-1"></i> 10+ Predefined Colors</li>
+                                        <li class="list-group-item text-secondary"><i class="bi bi-check-circle vm me-1"></i> Light Dark Mode</li>
+                                        <li class="list-group-item text-secondary"><i class="bi bi-check-circle vm me-1"></i> SCSS variables</li>
+                                        <li class="list-group-item text-secondary"><i class="bi bi-check-circle vm me-1"></i> 100+ pages</li>
+                                        <li class="list-group-item text-secondary"><i class="bi bi-check-circle vm me-1"></i> 300+ widgets & Components</li>
+                                        <li class="list-group-item text-secondary"><i class="bi bi-check-circle vm me-1"></i> HTML Future updates <a href="change-log.html" target="_blank">Change log</a></li>
+                                    </ul>
+
+                                    <div class="row gx-2 align-items-center mb-4">
+                                        <div class="col-auto">
+                                            <h1><span class="text-secondary fw-normal">$</span>48.00</h1>
+                                        </div>
+                                        <div class="col">
+                                            <p class="text-secondary">per project</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" target="_blank" class="btn btn-lg btn-theme btn-rounded w-100">Buy now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="card mb-4 border-0 bg-radial-gradient theme-purple">
+                                <div class="card-body bg-none p-xl-4 p-xxl-5">
+                                    <div class="row mb-4">
+                                        <div class="col-auto">
+                                            <i class="avatar avatar-60 rounded-circle bg-dark-white text-white h4 bi bi-building vm"></i>
+                                        </div>
+                                        <div class="col">
+                                            <h4 class="mb-1">Business Pro</h4>
+                                            <p class="text-muted">Quick Start Application</p>
+                                        </div>
+                                    </div>
+                                    <p class="mb-4">To quick start web development with Technology, We have created UI starter kit to make it easy to start for developer with different pages styles. This will reduce UI integration issues, save time and save money.</p>
+                                    <h6>Includes:</h6>
+                                    <ul class="list-group list-group-flush no-border bg-none mb-4">
+                                        <li class="list-group-item text-white"><i class="bi bi-check-circle vm me-1"></i> Includes features from Business License</li>
+                                        <li class="list-group-item text-white"><i class="bi bi-check-circle vm me-1"></i> Angular 13.9 Starter Kit | <a href="angular/" target="_blank">View Demo</a></li>
+                                        <li class="list-group-item text-white"><i class="bi bi-check-circle vm me-1"></i> Technology Future updates <a href="change-log.html" target="_blank">Change log</a></li>
+
+                                    </ul>
+
+                                    <div class="row gx-2 align-items-center mb-4">
+                                        <div class="col-auto">
+                                            <h1><span class="text-muted fw-normal">$</span>98.00</h1>
+                                        </div>
+                                        <div class="col">
+                                            <p class="text-muted">per project</p>
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-1">Save 100+ hrs of UI integration</h5>
+                                    <h6 class="mb-4">Quick start project made easy</h6>
+
+                                    <a href="#" target="_blank" class="btn btn-lg btn-outline-light btn-rounded w-100">Buy now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- buy me a coffee -->
+        <section class=" container-fluid text-center py-5 z-index-1 my-4 mt-lg-5 border-bottom">
+            <h5 class="text-gradient mb-4 d-inline-block">Found anything that is useful from our product or content?</h5><br>
+            <h2 class="fw-bold mb-4 md-lg-5">Help by buying a coffee to us.</h2>
+            <p class="text-secondary mb-4 mb-lg-5">Your kind and helpful nature take you to here, we wish this short journey will add 1 more star for you.<br>
+                In life's any stage be kind and helpful to others not matter what brings back to you.</p>
+            <a href="" class="btn btn-theme btn-lg btn-rounded ">Buy me a coffee</a>
+            <br>
+        </section>
+
+
+        <!-- Footer -->
+        <div class="container-fluid mb-4">
+                <div class="container footer-page bg-radial-gradient-theme mt-4 py-4">
+                    <div class="row mb-3">
+                        <div class="col-12 col-xl-11 mx-auto">
+                            <div class="row">
+                                <div class="col-12 col-xxl-4 mb-xxl-0 mb-3">
+                                    <h4 class="mb-3"><span class="text-gradient">#1 Creative</span> &<br /><span class="text-gradient">Multipurpose</span> HTML Template</h4>
+                                    <h5>Clean & Trending UI design with<br />a great user experience</h5>
+                                    <p>AdminUX is creative and multipurpose template.</p>
+                                </div>
+                                <div class="col-6 col-sm-6 col-md-4 col-xxl-2 ms-xxl-auto mb-5 mb-md-0">
+                                    <h5 class="mb-3">Main <span class="text-gradient">Dashboards</span></h5>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link px-0" href="finance-dashboard.html">Finance</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link px-0" href="network-dashboard.html">Network</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link px-0" href="inventory-dashboard.html">Inventory</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link px-0" href="social-dashboard.html">Social</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link px-0" href="project-dashboard.html">Project</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link px-0" href="learning-dashboard.html">Learning</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-6 col-sm-6 col-md-4 col-xxl-2 mb-5 mb-md-0">
+                                    <h5 class="mb-3">Creative <span class="text-gradient">Pages</span></h5>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link px-0" href="app-calendar.html">Calendar</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link px-0" href="app-email.html">Email</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link px-0" href="app-explorer.html">Explorer</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link px-0" href="app-support.html">We need Support <i class="bi bi-heart-fill text-red"></i></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link px-0" href="app-pricing.html" target="_blank">Buy Now <i class="bi bi-arrow-up-right-square"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 col-md-4 col-xxl-3">
+                                    <a class="navbar-brand d-block mb-3" href="#">
+                                        <div class="row">
+                                            <div class="col-auto"><span class="logo-icon"><img src="assets/img/logo-icon.png" class="mx-100" alt="" /></span></div>
+                                            <div class="col ps-0 align-self-center">
+                                                <h4 class="fw-normal text-white mb-0">AdminUX</h4>
+                                                <p class="text-muted">Mobile Dashboard UI</p>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <p class="mb-2"><b>Main office:</b></p>
+                                    <p class="mb-1"><a href="https://maxartkiller.com" target="_blank">www.maxartkiller.com</a></p>
+                                    <p class="mb-4">Test data 103909 Witamer CR, Niagara Falls, NY 14305, United States</p>
+
+                                    <div class="row align-items-center mb-3">
+                                        <div class="col-auto"><i class="bi bi-clock text-white h4"></i></div>
+                                        <div class="col ps-0">0441-215-518625<br /><span>Mon - Sat, 9:00 am - 10:00pm</span></div>
+                                    </div>
+                                    <div class="row align-items-center mb-3">
+                                        <div class="col-auto"><i class="bi bi-telephone text-white h4"></i></div>
+                                        <div class="col ps-0">+1-000 000 100000</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-xxl-11 mx-auto">
+                            <div class="row align-items-center">
+                                <div class="col-12 col-md-auto mb-3 mb-md-0">
+                                    <ul class="nav justify-content-center">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://www.facebook.com/maxartkiller/" target="_blank">
+                                                <i class="bi bi-facebook h5"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://twitter.com/maxartkiller" target="_blank">
+                                                <i class="bi bi-twitter h5"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://linkedin.com/company/maxartkiller" target="_blank">
+                                                <i class="bi bi-linkedin h5"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://www.instagram.com/maxartkiller/" target="_blank">
+                                                <i class="bi bi-instagram h5"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 col-md-auto ms-auto">
+                                    <ul class="nav justify-content-center">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-center" href="#">
+                                                <i class="bi bi-microsoft h4 d-block mb-3"></i>
+                                                <p class="mb-0 small">Microsoft</p>
+                                                <p>Store</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-center" href="#">
+                                                <i class="bi bi-play-fill h3 d-block mb-3"></i>
+                                                <p class="mb-0 small">Get this on</p>
+                                                <p>Google Play</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-center" href="#">
+                                                <i class="bi bi-apple h4 d-block mb-3"></i>
+                                                <p class="mb-0 small">Download on</p>
+                                                <p>App Store</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+    <!-- footer -->
+    <footer class="footer text-white mt-auto border-top">
+        <div class="container-fluid">
+            <div class="row text-center justify-content-center">
+                <div class="col-12 col-md col-lg py-2">
+                    <span class="text-secondary">Designed by <a href="https://maxartkiller.com" target="_blank">Maxartkiller</a> on Earth ❤️</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer ends -->
+
+
+    <!-- Required jquery and libraries -->
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap-5/dist/js/bootstrap.bundle.js"></script>
+
+    <!-- Customized jquery file  -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/color-scheme.js"></script>
+
+    <!-- PWA app service registration and works -->
+    <script src="assets/js/pwa-services.js"></script>
+
+    <!-- date range picker -->
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="assets/vendor/daterangepicker/daterangepicker.js"></script>
+
+    <!-- chosen script -->
+    <script src="assets/vendor/chosen_v1.8.7/chosen.jquery.min.js"></script>
+
+    <!-- Chart js script -->
+    <script src="assets/vendor/chart-js-3.3.1/chart.min.js"></script>
+
+    <!-- Progress circle js script -->
+    <script src="assets/vendor/progressbar-js/progressbar.min.js"></script>
+
+    <!-- swiper js script -->
+    <script src="assets/vendor/swiper-7.3.1/swiper-bundle.min.js"></script>
+
+    <!-- page level script-->
+    <script>
+        "use strict"
+        $(window).on('load', function () {
+            var doc = $('html');
+
+            //* loader hider *//
+            setTimeout(function () {
+                $('.loader-wrap').hide();
+            }, 200);
+
+            $('.mainheight').css({ 'min-height': ($(window).height() - $('.navbar').outerHeight() - 80) + 'px', 'margin-top': $('.navbar').outerHeight() + 20 })
+
+            //* coverimg *//
+            $('.coverimg').each(function () {
+                var imgpath = $(this).find('img');
+                $(this).css('background-image', 'url(' + imgpath.attr('src') + ')');
+                imgpath.hide();
+            });
+
+        });
+        $(window).on('scroll', function () {
+            /* scroll from top and add class */
+            if ($(document).scrollTop() > '30') {
+                $('.header').addClass('active');
+            } else {
+                $('.header').removeClass('active');
+            }
+        });
+    </script>
+</body>
+
+</html>

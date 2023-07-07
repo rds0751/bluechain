@@ -1,0 +1,290 @@
+.bg-theme,
+.card.bg-theme {
+    background-color: var(--adminux-theme) !important;
+    color: var(--adminux-theme-color);
+
+    .border,
+    .border-start,
+    .border-top,
+    .border-bottom,
+    .border-end {
+        border-color: rgba(var(--adminux-theme-bg-rgb), 0.25) !important;
+    }
+
+    a,
+    .btn-link {
+        color: var(--adminux-theme-color);
+    }
+}
+
+.bg-dark-theme {
+    background-color: rgba(var(--adminux-theme-rgb), 0.15) !important;
+    color: var(--adminux-theme);
+}
+
+.bg-dark-white {
+    background-color: rgba(255, 255, 255, 0.20) !important;
+}
+
+.bg-blue {
+    background-color: $blue !important;
+}
+
+.bg-dark-blue {
+    background-color: rgba($blue, 0.15) !important;
+
+    i,
+    .icon {
+        color: $blue;
+    }
+}
+
+.text-blue {
+    color: $blue !important;
+}
+
+.bg-indigo {
+    background-color: $indigo !important;
+}
+
+.bg-dark-indigo {
+    background-color: rgba($indigo, 0.15) !important;
+
+    i,
+    .icon {
+        color: $indigo;
+    }
+}
+
+.text-indigo {
+    color: $indigo !important;
+}
+
+.bg-purple {
+    background-color: $purple !important;
+}
+
+.bg-dark-purple {
+    background-color: rgba($purple, 0.15) !important;
+
+    i,
+    .icon {
+        color: $purple;
+    }
+}
+
+.text-cyan {
+    color: $purple !important;
+}
+
+.bg-pink {
+    background-color: $pink !important;
+}
+
+.bg-dark-pink {
+    background-color: rgba($pink, 0.15) !important;
+
+    i,
+    .icon {
+        color: $pink;
+    }
+}
+
+.text-pink {
+    color: $pink !important;
+}
+
+.bg-red {
+    background-color: $red !important;
+}
+
+.bg-dark-red {
+    background-color: rgba($red, 0.15) !important;
+
+    i,
+    .icon {
+        color: $red;
+    }
+}
+
+.text-red {
+    color: $red !important;
+}
+
+.bg-orange {
+    background-color: $orange !important;
+}
+
+.bg-dark-orange {
+    background-color: rgba($orange, 0.15) !important;
+
+    i,
+    .icon {
+        color: $orange;
+    }
+}
+
+.text-orange {
+    color: $orange !important;
+}
+
+.bg-yellow {
+    background-color: $yellow !important;
+}
+
+.bg-dark-yellow {
+    background-color: rgba($yellow, 0.15) !important;
+
+    i,
+    .icon {
+        color: $yellow;
+    }
+}
+
+.text-yellow {
+    color: $yellow !important;
+}
+
+.bg-green {
+    background-color: $green !important;
+}
+
+.bg-dark-green {
+    background-color: rgba($green, 0.15) !important;
+
+    i,
+    .icon {
+        color: $green;
+    }
+}
+
+.text-green {
+    color: $green !important;
+}
+
+.bg-teal {
+    background-color: $teal !important;
+}
+
+.bg-dark-teal {
+    background-color: rgba($teal, 0.15) !important;
+
+    i,
+    .icon {
+        color: $teal;
+    }
+}
+
+.text-teal {
+    color: $teal !important;
+}
+
+.bg-cyan {
+    background-color: $cyan !important;
+}
+
+.bg-dark-cyan {
+    background-color: rgba($cyan, 0.15) !important;
+
+    i,
+    .icon {
+        color: $cyan;
+    }
+}
+
+.text-cyan {
+    color: $cyan !important;
+}
+
+.border-theme {
+    border-color: var(--adminux-theme) !important;
+}
+
+.bg-radial-gradient {
+    background: radial-gradient(at 10% 10%, var(--adminux-theme-lighten) 0%, var(--adminux-theme) 40%, var(--adminux-theme-darken) 100%);
+    color: var(--adminux-theme-color);
+
+    a,
+    .btn-link {
+        color: var(--adminux-theme-color);
+
+        &:hover,
+        &:focus {
+            color: var(--adminux-theme-color);
+        }
+    }
+
+    .btn-dark-theme {
+        background-color: rgba(var(--adminux-theme-bg-rgb), 0.15);
+        color: var(--adminux-theme-color);
+    }
+
+    .btn-outline-light {
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: var(--adminux-theme);
+        }
+    }
+
+}
+ 
+
+.bg-radial-gradient-theme {
+    background: radial-gradient(at 10% 10%, var(--adminux-theme-grad-1) 0%, var(--adminux-theme-grad-2) 48%, var(--adminux-theme-grad-3) 100%);
+    color: var(--adminux-theme-color);
+
+    a,
+    .btn-link {
+        color: var(--adminux-theme-color);
+
+        &:hover,
+        &:focus {
+            color: var(--adminux-theme-color);
+        }
+    }
+
+    .btn-dark-theme {
+        background-color: rgba(var(--adminux-theme-bg-rgb), 0.15);
+        color: var(--adminux-theme-color);
+    }
+
+    .btn-outline-light {
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: var(--adminux-theme);
+        }
+    }
+
+}
+
+.bg-gradient-theme-light {
+    background-image: linear-gradient(170deg, rgba(255, 255, 255, 1) 0%, rgba(var(--adminux-theme-rgb), 0.15) 100%);
+}
+
+.bg-gradient-pink-light {
+    background-image: linear-gradient(170deg, rgba(0, 0, 0, 0) 0%, rgba(255, 42, 124, 0.15) 100%);
+}
+
+.bg-gradient-red-light {
+    background-image: linear-gradient(170deg, rgba(0, 0, 0, 0) 0%, rgba(255, 42, 42, 0.15) 100%);
+}
+
+.bg-gradient-orange-light {
+    background-image: linear-gradient(170deg, rgba(0, 0, 0, 0) 0%, rgba(255, 120, 42, 0.15) 100%);
+}
+
+.bg-gradient-cyan-light {
+    background-image: linear-gradient(170deg, rgba(0, 0, 0, 0) 0%, rgba(42, 195, 255, 0.15) 100%);
+}
+
+.bg-gradient-yellow-light {
+    background-image: linear-gradient(170deg, rgba(0, 0, 0, 0) 0%, rgba(255, 217, 0, 0.18) 100%);
+}
+
+.bg-gradient-green-light {
+    background-image: linear-gradient(170deg, rgba(0, 0, 0, 0) 0%, rgba(42, 255, 166, 0.15) 100%);
+}

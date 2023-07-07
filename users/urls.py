@@ -4,11 +4,7 @@ from . import views
 
 app_name = "users"
 urlpatterns = [
-    url(r'^success/', views.success, name='success'),
-    url(r'^failure/$', views.failure, name='failure'),
     url(r'^coming_soon/', views.coming_soon, name='coming_soon'),
-    url(r'^cancel/$', views.cancel, name='cancel'),
-    url(r"^shop-wallet/$", views.booking, name="booking"),
     url(r"^change-passcode/$", views.passcode, name="passcode"),
     url(r'^ajax/validate_username/$', views.validate_username, name='validate_username'),
     url(r'^lock/$', views.lockscreen, name='lockscreen'),

@@ -1,205 +1,169 @@
 {% load static i18n %} 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="dark-mode">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>IPAYMATICS Inc. | {% block title %}{% endblock title %}</title>
-  <meta property="og:title" content="JR India">
-  <meta property="og:description" content="Get higher COMMISSION on all transactions with life changing opportunity to Earn unlimited Incomes and lifetime Achievements">
-  <meta property="og:image" content="{% static 'logo.ico' %}">
-  <meta content="{% static 'logo.ico' %}" itemprop="image">
-  <!-- plugins:css -->      
-  {% block css %}
-  <link rel="stylesheet" href="{% static 'assets/vendors/mdi/css/materialdesignicons.min.css' %}">
-  <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css' %}">
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="{% static 'assets/vendors/flag-icon-css/css/flag-icon.min.css' %}">
-  <link rel="stylesheet" href="{% static 'assets/vendors/jvectormap/jquery-jvectormap.css' %}">
-  <!-- End plugin css for this page -->
-  <!-- Layout styles -->
-  <link rel="stylesheet" href="{% static 'assets/css/demo/style.css' %}">
-  <!-- End layout styles -->
-  <link rel="shortcut icon" href="{% static 'logo.ico' %}" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <!-- <script type="text/javascript" src="{% static 'js/jquery.fireworks.js' %}"></script> -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
-  {% endblock css %}
-  {% block head %}{% endblock head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="generator" content="">
+    <title>M2Plus Services Ltd. | {% block title %}{% endblock title %}</title>
+
+    <!-- manifest meta -->
+    <meta name="apple-mobile-web-app-capable" content="no">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="{% static 'img/favicon180.png' %}" sizes="180x180">
+    <link rel="icon" href="{% static 'img/favicon32.png' %}" sizes="32x32" type="image/png">
+    <link rel="icon" href="{% static 'img/favicon16.png' %}" sizes="16x16" type="image/png">
+
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    {% block css %}
+
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <!-- chosen css -->
+    <link rel="stylesheet" href="{% static 'vendor/chosen_v1.8.7/chosen.min.css' %}">
+
+    <!-- date range picker -->
+    <link rel="stylesheet" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+
+    <!-- swiper carousel css -->
+    <link rel="stylesheet" href="{% static 'vendor/swiper-7.3.1/swiper-bundle.min.css' %}">
+
+    <!-- simple lightbox css -->
+    <link rel="stylesheet" href="{% static 'vendor/simplelightbox/simple-lightbox.min.css' %}">
+
+    <!-- app tour css -->
+    <link rel="stylesheet" href="{% static 'vendor/Product-Tour-Plugin-jQuery/lib.css' %}">
+
+    <!-- Footable table master css -->
+    <link rel="stylesheet" href="{% static 'vendor/fooTable/css/footable.bootstrap.min.css' %}">
+
+    <!-- style css for this template -->
+    <link href="{% static 'scss/style.css' %}" rel="stylesheet">
+    {% endblock css %}
+    {% block head %}{% endblock head %}
 </head>
-<body style="    background: #e9eaef;">
-  <amp-auto-ads type="adsense"
-        data-ad-client="ca-pub-2476399156226109">
-</amp-auto-ads>
-<script src="{% static 'assets/js/preloader.js' %}"></script>
-<input type="input" style="width:10px; position:absolute; z-index: -100 !important;" value="https://ipaymatics.com/register={{ user.username }}" id="copy-to-clipboard-input">
-<script type="text/javascript">
-  var code = $("#copy-to-clipboard-input");
-    var btnCopy = $("#btn-copy");
 
-    btnCopy.on("click", function () {
-        code.select();
-        document.execCommand("copy");
-        /* Alert the copied text */
-        document.getElementById("copy-text").innerHTML = '<i style="vertical-align: bottom;" class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon style " aria-hidden="true">content_copy</i>Link Copied!';
-    });
-</script>
-<script>
-function myyFunction() {
-  var copyText = document.getElementById("copy-to-clipboard-input");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999)
-  document.execCommand("copy");
-  alert("Copied the text: " + copyText.value);
-}
-</script>
-{% block body %}
-  <div style="background: white" class="body-wrapper" id="body-wrapper">
+<body class="d-flex flex-column h-100 sidebar-pushcontent menu-close" data-sidebarstyle="sidebar-pushcontent">
+    {% block body %}
   
-    {% if request.user.is_authenticated %}
-    {% include 'partial.html' %}              
-        {% endif %}
-{% block wrapper %}
-{% if user.is_authenticated %}
-  <div align="center" style="background: white;" class="pt-4">
-  <div style="background: white" class="page-wrapper mdc-toolbar-fixed-adjust pt-5">
-    <main>
-      <div>
-        <div class="mdc-layout-grid__inner">
-          <div class="stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone">
-            <div style="padding-left: 25%;" id="btn-copy" class="mdc-list-item mdc-drawer-item">
-              <a onclick="myyFunction()" class="mdc-drawer-link" id='copy-text' style='color: #0ba0b0;
-    font-size: bold;
-    font-weight: bold;
-    font-size: 11px;'>
-                <i style="vertical-align: bottom;" class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon style " aria-hidden="true">content_copy</i>
-                {% trans "Copy Link" %}
-              </a>
+
+    <!-- page loader -->
+    <div class="container-fluid h-100 position-fixed loader-wrap bg-blur">
+        <div class="row justify-content-center h-100">
+            <div class="col-auto align-self-center text-center px-5 leaf">
+                <h2 class="mb-1">M2+<b class="fw-bold">Finance</b></h2>
+                <h6 class="mb-4 text-secondary">Making banking decentralized</h6>
+                <div class="logo-square animated mb-4">
+                    <div class="icon-logo">
+                        <img src="{% static 'img/logo-icon.png' %}" alt="" />
+                    </div>
+                </div>
+                <p class="text-secondary small">Vista creating personalized experience for you!</p>
+
+                <div class="dotslaoder">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <br>
             </div>
-          </div>
-          <div class="stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone">
-            <div style="padding-left: 25%;" class="mdc-list-item mdc-drawer-item">
-              <a href="whatsapp://send?text=Get higher COMMISSION on all transactions with life changing opportunity to Earn unlimited Incomes and lifetime Achievements. Join Now! https://ipaymatics.com/register={{ user.username }}" class="mdc-drawer-link" style='color: #0ba0b0;
-    font-size: bold;
-    font-weight: bold;
-    font-size: 11px;' href="/users/">
-                <i style="vertical-align: bottom;" class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon style " aria-hidden="true">share</i>
-                {% trans "Share Link" %}
-              </a>
-            </div>
-            </div>
-          </div>
         </div>
-      </main>
     </div>
-  </div>
-  <div align="center">
-  <div class="page-wrapper mdc-toolbar-fixed-adjust">
-    <main>
-      <div>
-        <div style="padding-top: 8px; padding-bottom: 8px; background: white" class="info-card info-card--success">
-        <div class="mdc-layout-grid__inner">
-            <div class="stretch-card mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-              <marquee scrollamount="8"
-direction="left"
-behavior="scroll">
-<h4 style="color: #0ba0b0; vertical-align: middle; margin-bottom: 0">{% trans news.news %}</h4>
-</marquee>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- page loader ends -->
+
+    {% include 'partials/nav.html' %}
+    {% block wrapper %}
+
+    <!-- Begin page content -->
+    
+    
+    <main class="main mainheight">
+        
+            
+            {% block content %}
+            {% endblock content %}
+        
+
+        {% include 'partials/footer.html' %}
+        
     </main>
-  </div>
-</div>
-{% endif %}
-        {% block content %}
-        {% endblock content %}
-{% endblock wrapper %}
-  </div>
-    <script type="text/javascript">
-    var div = document.getElementById("full");
 
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++ ) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
+    {% endblock wrapper %}
 
-function changeColor(){
-  div.style.backgroundColor= getRandomColor();
-}
-changeColor();
+    {% include 'partials/copyright.html' %}
 
-setInterval(changeColor,5000);
-  </script>
+    {% include 'partials/right-bar.html' %}
 
-  <!-- <script>
-$('.body-wrapper').fireworks({ sound: true, opacity: 0.9, width: '100%', height: '100%' });
-</script> -->
-  {% block javascript %}
-  <!-- plugins:js -->
-  <script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <script src="{% static 'assets/vendors/chartjs/Chart.min.js' %}"></script>
-  <script src="{% static 'assets/vendors/jvectormap/jquery-jvectormap.min.js' %}"></script>
-  <script src="{% static 'assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="{% static 'assets/js/material.js' %}"></script>
-  <script src="{% static 'assets/js/misc.js' %}"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="{% static 'assets/js/dashboard.js' %}"></script>
-  <!-- End custom js for this page-->
+    {% include 'partials/chat.html' %}
+    
+    {% block javascript %}
 
-        <!-- Required by Bootstrap v4 -->
 
-        <script type="text/javascript">
-          var currentUser = "{{ request.user.username }}"
-          $(function() {
-            source: "{% url 'searchy:suggestions' %}",
-            minLength=2
-          });
-        </script>
-        <script>
-          window.history.replaceState( null, null, window.location.href );
-          var Backlen=history.length;
-          history.go(-Backlen); 
-          // window.location.href={{ request.get_full_path }}
-        </script>
-<script data-ad-client="ca-pub-2476399156226109" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5f57c9b4f0e7167d000e8ad8/1eregigo5';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<style type="text/css">
-  .mdc-button:focus {
-    background-color: #21bbce;
-  }
-</style>
-<!--End of Tawk.to Script-->
-      {% endblock javascript %}
+    <!-- Required jquery and libraries -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap-5/dist/js/bootstrap.bundle.js' %}"></script>
 
-      {% block modal %}
-      {% endblock modal %}
-  {% endblock body %}
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K457S78"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <!-- Customized jquery file  -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/color-scheme.js' %}"></script>
+
+    <!-- PWA app service registration and works -->
+    <script src="{% static 'js/pwa-services.js' %}"></script>
+
+    <!-- date range picker -->
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+
+    <!-- chosen script -->
+    <script src="{% static 'vendor/chosen_v1.8.7/chosen.jquery.min.js' %}"></script>
+
+    <!-- Chart js script -->
+    <script src="{% static 'vendor/chart-js-3.3.1/chart.min.js' %}"></script>
+
+    <!-- Progress circle js script -->
+    <script src="{% static 'vendor/progressbar-js/progressbar.min.js' %}"></script>
+
+    <!-- swiper js script -->
+    <script src="{% static 'vendor/swiper-7.3.1/swiper-bundle.min.js' %}"></script>
+
+    <!-- Simple lightbox script -->
+    <script src="{% static 'vendor/simplelightbox/simple-lightbox.jquery.min.js' %}"></script>
+
+    <!-- app tour script-->
+    <script src="{% static 'vendor/Product-Tour-Plugin-jQuery/lib.js' %}"></script>
+
+    <!-- Footable table master script-->
+    <script src="{% static 'vendor/fooTable/js/footable.min.js' %}"></script>
+
+    <!-- page level script here -->
+    <script src="{% static 'js/header-title.js' %}"></script>
+    <script src="{% static 'js/finance-dashboard.js' %}"></script>
+    
+    {% endblock javascript %}
+
+    {% block modal %}
+    {% endblock modal %}
+
+    {% endblock body %}
+
+
 </body>
+
 </html>

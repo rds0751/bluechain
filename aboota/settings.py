@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
+    # 'debug_toolbar',
     'django.contrib.humanize',
     'corsheaders',
     'django.contrib.admindocs',
@@ -79,15 +79,27 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_countries',
     'storages',
-    "django_comments",
-    "graphene_django",
     "markdownx",
-    "taggit",
+    # "taggit",
     "home",
     'maintenancemode',
-    'kyc',
     'django_crontab',
-    'cryptopay',
+    # Machina dependencies
+    'haystack',
+    'mptt',
+
+    # Machina apps:
+    'machina',
+    'machina.apps.forum',
+    'machina.apps.forum_conversation',
+    'machina.apps.forum_conversation.forum_attachments',
+    'machina.apps.forum_conversation.forum_polls',
+    'machina.apps.forum_feeds',
+    'machina.apps.forum_moderation',
+    'machina.apps.forum_search',
+    'machina.apps.forum_tracking',
+    'machina.apps.forum_member',
+    'machina.apps.forum_permission',
 ]
 
 
@@ -97,7 +109,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -108,6 +120,7 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
 ]
 
 ROOT_URLCONF = 'aboota.urls'
@@ -121,12 +134,6 @@ CHANNEL_LAYERS = {
     },
 }
 
-INTERNAL_IPS = [
-    # ...
-    '127.0.0.1',
-    # ...
-]
-
 _TEMPLATE_CONTEXT_PROCESSORS = [
                 'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.request',
@@ -137,7 +144,8 @@ _TEMPLATE_CONTEXT_PROCESSORS = [
                 'django.contrib.messages.context_processors.messages',
                 "django.template.context_processors.tz",
 
-                'aboota.processor.universally_used_data'
+                'aboota.processor.universally_used_data',
+                'machina.core.context_processors.metadata',
             ]
 
 TEMPLATES = [
@@ -145,7 +153,7 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'templates/oscar'),
+            os.path.join(BASE_DIR, 'templates/machina'),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -158,23 +166,25 @@ TEMPLATES = [
     },
 ]
 
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    },
+}
+
+
+
 WSGI_APPLICATION = 'aboota.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db1.sqlite3'),
-#     }
-# }
-
-import dj_database_url
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://dbmasteruser:pb2d80740f512c8cb41341e3291ed05b6b3d480a@ls-dff3f02526dec6fd6545926edd21f876ed074863.cz4lglmvud83.ap-south-1.rds.amazonaws.com:5432/postgres',
-        conn_max_age=600)}
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db1.sqlite3'),
+    }
+}
 
 ATOMIC_REQUESTS = True
 
@@ -182,12 +192,6 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
-        'PATH': location('whoosh_index'),
-    },
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -232,50 +236,88 @@ mimetypes.add_type("text/css", ".css", True)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-AWS_ACCESS_KEY_ID = 'AKIA2G5C7FQ6DCI3B5H5'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'ipaymaticsbucket'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
+# AWS_ACCESS_KEY_ID = 'AKIA2G5C7FQ6DCI3B5H5'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'ipaymaticsbucket'
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
 
-AWS_STATIC_LOCATION = 'static'
+# AWS_STATIC_LOCATION = 'static'
 
-ADMIN_MEDIA_PREFIX = 'https://punchline-app.s3.amazonaws.com/static/admin/'
+# ADMIN_MEDIA_PREFIX = 'https://punchline-app.s3.amazonaws.com/static/admin/'
 
-# STATIC_URL = '/static/'
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
+# # STATIC_URL = '/static/'
+# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
 
-STATICFILES_STORAGE = 'aboota.storage_backends.StaticStorage'
+# STATICFILES_STORAGE = 'aboota.storage_backends.StaticStorage'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static/'),
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static/'),
+# )
+
+# # STATIC
+# # ------------------------------------------------------------------------------
+# # https://docs.djangoproject.com/en/dev/ref/settings/#static-root
+# STATIC_ROOT = os.path.join(BASE_DIR, 'public/static')
+# # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
+# STATICFILES_FINDERS = [
+#     "django.contrib.staticfiles.finders.FileSystemFinder",
+#     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+#     'compressor.finders.CompressorFinder'
+# ]
+
+# AWS_PUBLIC_MEDIA_LOCATION = 'media/public'
+# DEFAULT_FILE_STORAGE = 'aboota.storage_backends.PublicMediaStorage'
+
+# AWS_PRIVATE_MEDIA_LOCATION = 'media/private'
+# PRIVATE_FILE_STORAGE = 'aboota.storage_backends.PrivateMediaStorage'
+
+# MEDIA_ROOT_URL = '.'
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# LOCALE_PATHS = (
+#     os.path.join(BASE_DIR, 'locale'),
+# )
+
+COMPRESS_CSS_FILTERS = [
+    "compressor.filters.css_default.CssAbsoluteFilter",
+    "compressor.filters.cssmin.CSSMinFilter",
+]
+COMPRESS_JS_FILTERS = ["compressor.filters.jsmin.JSMinFilter"]
+COMPRESS_REBUILD_TIMEOUT = 5400
+
+
+CKEDITOR_UPLOAD_PATH=os.path.join(BASE_DIR, "rich")
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_URL = "/static/"
+
+ADMIN_MEDIA_PREFIX = STATIC_URL + "admin/"
+COMPRESS_OUTPUT_DIR = "CACHE"
+COMPRESS_URL = STATIC_URL
+COMPRESS_ENABLED = True
+COMPRESS_PRECOMPILERS = (
+    ("text/less", "lessc {infile} {outfile}"),
+    ("text/x-sass", "sass {infile} {outfile}"),
+    ("text/x-scss", "sass {infile} {outfile}"),
 )
 
-# STATIC
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = os.path.join(BASE_DIR, 'public/static')
-# https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
-STATICFILES_FINDERS = [
-    "django.contrib.staticfiles.finders.FileSystemFinder",
+COMPRESS_OFFLINE_CONTEXT = {
+    "STATIC_URL": "STATIC_URL",
+}
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
+STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    'compressor.finders.CompressorFinder'
-]
-
-AWS_PUBLIC_MEDIA_LOCATION = 'media/public'
-DEFAULT_FILE_STORAGE = 'aboota.storage_backends.PublicMediaStorage'
-
-AWS_PRIVATE_MEDIA_LOCATION = 'media/private'
-PRIVATE_FILE_STORAGE = 'aboota.storage_backends.PrivateMediaStorage'
-
-MEDIA_ROOT_URL = '.'
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'locale'),
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "compressor.finders.CompressorFinder"
 )
 
 SITE_ID = 1
@@ -374,3 +416,13 @@ CRYPTOCURRENCY_PAYMENT = {
         "ALLOW_ANONYMOUS_PAYMENT": True,
     }
  }
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    },
+    'machina_attachments': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/tmp',
+    },
+}

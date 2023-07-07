@@ -1,0 +1,256 @@
+.dark-mode {
+
+
+    /* color schemes */
+    --adminux-theme: #5c6798;
+    --adminux-theme-rgb: 92, 103, 152;
+    --adminux-theme-lighten: #7079a5;
+    --adminux-theme-darken: #02092c;
+    --adminux-theme-color: #ffffff;
+    --adminux-theme-text: #ffffff;
+    --adminux-formelement-bg: rgba(0, 0, 0, 0.85);
+    --adminux-theme-text-secondary: rgba(255, 255, 255, 0.55);
+    --adminux-border-color: rgba(255, 255, 255, 0.15);
+    --adminux-header-text: #ffffff;
+
+    /* background */
+    --adminux-theme-bg-rgb: 2, 4, 12;
+    --adminux-theme-bg: rgb(2, 4, 12);
+    --adminux-theme-bg-2: #252e53;
+
+    /* gradient bg colors */
+    --adminux-theme-grad-1: #19a3d6;
+    --adminux-theme-grad-2: #0488be;
+    --adminux-theme-grad-3: #02538a;
+
+    /* gradient text colors */
+    --adminux-theme-text-grad-1: #D7E1EC;
+    --adminux-theme-text-grad-2: #ffffff;
+
+
+    /*============================*/
+    /* theme colors customization */
+    /*============================*/
+
+    .theme-blue {
+        /* color schemes */
+        --adminux-theme: #2b81e2;
+        --adminux-theme-rgb: 34, 117, 211;
+        --adminux-theme-lighten: #67a8f1;
+        --adminux-theme-darken: #002855;
+
+        /* background */
+        --adminux-theme-bg-rgb: 0, 14, 44;
+        --adminux-theme-bg: rgb(0, 14, 44);
+        --adminux-theme-bg-2: #17325f;
+
+        /* gradient bg colors */
+        --adminux-theme-grad-1: #19a3d6;
+        --adminux-theme-grad-2: #0488be;
+        --adminux-theme-grad-3: #02538a;
+
+        /* gradient text colors */
+        --adminux-theme-text-grad-1: #D7E1EC;
+        --adminux-theme-text-grad-2: #c2b013;
+    }
+
+    .theme-indigo {
+        /* color schemes */
+        --adminux-theme: #8181c9;
+        --adminux-theme-rgb: 43, 43, 121;
+        --adminux-theme-lighten: #6666ad;
+        --adminux-theme-darken: #0e0e44;
+
+        /* background */
+        --adminux-theme-bg-rgb: 2, 2, 34;
+        --adminux-theme-bg: rgb(2, 2, 34);
+        --adminux-theme-bg-2: #2b2b79;
+
+        /* gradient bg colors */
+        --adminux-theme-grad-1: #e7c5d5;
+        --adminux-theme-grad-2: #dd949f;
+        --adminux-theme-grad-3: #8f4a74;
+
+        /* gradient text colors */
+        --adminux-theme-text-grad-1: #ff5722;
+        --adminux-theme-text-grad-2: #9c27b0;
+    }
+
+    .theme-purple {
+        /* color schemes */
+        --adminux-theme: #5a4cad;
+        --adminux-theme-rgb: 69, 57, 133;
+        --adminux-theme-lighten: #9d95c4;
+        --adminux-theme-darken: #0d0241;
+
+        /* background */
+        --adminux-theme-bg-rgb: 8, 4, 34;
+        --adminux-theme-bg: rgb(8, 4, 34);
+        --adminux-theme-bg-2: #281d66;
+
+        /* gradient bg colors */
+        --adminux-theme-grad-1: #ebdfbf;
+        --adminux-theme-grad-2: #c9a248;
+        --adminux-theme-grad-3: #a06c1f;
+
+        /* gradient text colors */
+        --adminux-theme-text-grad-1: #e91e63;
+        --adminux-theme-text-grad-2: #3f51b5;
+    }
+
+    .theme-pink {
+        /* color schemes */
+        --adminux-theme: #da2d6f;
+        --adminux-theme-rgb: 218, 45, 111;
+        --adminux-theme-lighten: #dfbbc6;
+        --adminux-theme-darken: #500126;
+
+        /* background */
+        --adminux-theme-bg-rgb: 31, 2, 13;
+        --adminux-theme-bg: #1f020d;
+        --adminux-theme-bg-2: #5c1f36;
+
+        /* gradient bg colors */
+        --adminux-theme-grad-1: #dadfc8;
+        --adminux-theme-grad-2: #a8ad94;
+        --adminux-theme-grad-3: #778a61;
+
+        /* gradient text colors */
+        --adminux-theme-text-grad-1: #b33cc7;
+        --adminux-theme-text-grad-2: #3f51b5;
+    }
+
+    .theme-red {
+        /* color schemes */
+        --adminux-theme: #dd2255;
+        --adminux-theme-rgb: 221, 34, 85;
+        --adminux-theme-lighten: #FD5D5B;
+        --adminux-theme-darken: #44000A;
+
+        /* background */
+        --adminux-theme-bg-rgb: 29, 0, 8;
+        --adminux-theme-bg: rgb(29, 0, 8);
+        --adminux-theme-bg-2: #581f2f;
+
+        /* gradient bg colors */
+        --adminux-theme-grad-1: #f7dfb3;
+        --adminux-theme-grad-2: #f3c36a;
+        --adminux-theme-grad-3: #d39420;
+
+        /* gradient text colors */
+        --adminux-theme-text-grad-1: #ff073d;
+        --adminux-theme-text-grad-2: #9c27b0;
+    }
+
+    .theme-yellow {
+        /* color schemes */
+        --adminux-theme: #a78b30;
+        --adminux-theme-rgb: 235, 187, 31;
+        --adminux-theme-lighten: #b99958;
+        --adminux-theme-darken: #705600;
+
+        /* background */
+        --adminux-theme-bg-rgb: 20, 16, 1;
+        --adminux-theme-bg: rgb(20, 16, 1);
+        --adminux-theme-bg-2: #504111;
+
+        /* gradient bg colors */
+        --adminux-theme-grad-1: #caaa9d;
+        --adminux-theme-grad-2: #968078;
+        --adminux-theme-grad-3: #46405a;
+
+        /* gradient text colors */
+        --adminux-theme-text-grad-1: #e91e63;
+        --adminux-theme-text-grad-2: #6477e0;
+    }
+
+    .theme-green {
+        /* color schemes */
+        --adminux-theme: #2e9c65;
+        --adminux-theme-rgb: 46, 156, 101;
+        --adminux-theme-lighten: #91c9a8;
+        --adminux-theme-darken: #013b17;
+
+        /* background */
+        --adminux-theme-bg-rgb: 1, 24, 12;
+        --adminux-theme-bg: rgb(1, 24, 12);
+        --adminux-theme-bg-2: #093f24;
+
+        /* gradient bg colors */
+        --adminux-theme-grad-1: #8c8be0;
+        --adminux-theme-grad-2: #4d5f9c;
+        --adminux-theme-grad-3: #2b3d7c;
+
+        /* gradient text colors */
+        --adminux-theme-text-grad-1: #ff50f6;
+        --adminux-theme-text-grad-2: #ffa807;
+    }
+
+    .theme-orange {
+        /* color schemes */
+        --adminux-theme: #ee8946;
+        --adminux-theme-rgb: 238, 137, 70;
+        --adminux-theme-lighten: #f5be99;
+        --adminux-theme-darken: #742e00;
+
+        /* background */
+        --adminux-theme-bg-rgb: 36, 15, 1;
+        --adminux-theme-bg: rgb(24, 10, 0);
+        --adminux-theme-bg-2: #42230d;
+
+        /* gradient bg colors */
+        --adminux-theme-grad-1: #b39198;
+        --adminux-theme-grad-2: #8d777a;
+        --adminux-theme-grad-3: #6B434C;
+
+        /* gradient text colors */
+        --adminux-theme-text-grad-1: #00bcd4;
+        --adminux-theme-text-grad-2: #203191;
+    }
+
+    .theme-cyan {
+        /* color schemes */
+        --adminux-theme: #2f94a3;
+        --adminux-theme-rgb: 28, 173, 196;
+        --adminux-theme-lighten: #77cbd8;
+        --adminux-theme-darken: #006170;
+
+        /* background */
+        --adminux-theme-bg-rgb: 0, 24, 27;
+        --adminux-theme-bg: rgb(0, 24, 27);
+        --adminux-theme-bg-2: #104952;
+
+        /* gradient bg colors */
+        --adminux-theme-grad-1: #daaec3;
+        --adminux-theme-grad-2: #976b7a;
+        --adminux-theme-grad-3: #56465c;
+
+        /* gradient text colors */
+        --adminux-theme-text-grad-1: #e91e63;
+        --adminux-theme-text-grad-2: #566be0;
+    }
+
+    .theme-teal {
+        /* color schemes */
+        --adminux-theme: #50afa9;
+        --adminux-theme-rgb: 101, 175, 170;
+        --adminux-theme-lighten: #68b1ad;
+        --adminux-theme-darken: #1a554c;
+
+        /* background */
+        --adminux-theme-bg-rgb: 0, 26, 23;
+        --adminux-theme-bg: rgb(0, 26, 23);
+        --adminux-theme-bg-2: #0e4744;
+
+        /* gradient bg colors */
+        --adminux-theme-grad-1: #e2c08d;
+        --adminux-theme-grad-2: #d38c64;
+        --adminux-theme-grad-3: #d46043;
+
+
+        /* gradient text colors */
+        --adminux-theme-text-grad-1: #f11569;
+        --adminux-theme-text-grad-2: #6f4ac5;
+    }
+
+}

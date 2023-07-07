@@ -8,7 +8,7 @@ from binary.models import BinaryTree
 import datetime
 from django.utils import timezone
 from binary.models import Shopping
-from pcard.models import ImageUploadModel
+from kyc.models import ImageUploadModel
 from django.db.models import F, Sum
 
 class Command(BaseCommand):

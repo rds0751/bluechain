@@ -19,7 +19,6 @@ from random import randint
 import datetime
 from level.models import UserTotal
 
-from kyc.models import ImageUploadModel
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.template.loader import render_to_string

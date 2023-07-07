@@ -23,7 +23,6 @@ from django.contrib.auth import load_backend, login
 
 from wallets.models import WalletHistory, Withdrawal, PaymentOption
 from users.models import User
-from kyc.models import ImageUploadModel
 import random
 from level.models import Activation, LevelIncomeSettings, UserTotal
 import csv

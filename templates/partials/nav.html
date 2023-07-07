@@ -1,0 +1,508 @@
+{% load static i18n %}
+<!-- Header -->
+<header class="header">
+    <!-- Fixed navbar -->
+    <nav class="navbar fixed-top">
+        <div class="container-fluid">
+            <button class="btn btn-link btn-square menu-btn me-2" type="button">
+                <i class="bi bi-list fs-4"></i>
+            </button>
+            <div class="header-title align-self-center">
+                <h5 class="mb-0">M2+</h5>
+                <p class="text-secondary small">Finance</p>
+            </div>
+            <div class="ms-auto">
+                <div class="row">
+                    <div class="col-auto">
+                        <marquee style="width: 14rem"></marquee>
+                    </div>
+                </div>
+            </div>
+            <div class="ms-auto">
+                <div class="row">
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-square btn-link text-center" id="showNotification" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Notifications">
+                            <span class="bi bi-bell position-relative">
+                                <span class="position-absolute top-0 start-100 p-1 bg-danger border border-light rounded-circle">
+                                    <span class="visually-hidden">New alerts</span>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="col-auto align-self-center">
+                        <div class="dropdown">
+                            <a class="dd-arrow-none dropdown-toggle" id="userprofiledd" data-bs-toggle="dropdown" aria-expanded="false" role="button">
+                                <div class="row">
+                                    <div class="col-auto align-self-center">
+                                        <figure class="avatar avatar-30 rounded-circle coverimg vm">
+                                            <img src="{% static 'img/user-1.jpg' %}" alt="" id="userphotoonboarding2" />
+                                        </figure>
+                                    </div>
+                                    <div class="col ps-0 align-self-center d-none d-lg-block">
+                                        <p class="mb-0">
+                                            <span class="text-dark username">{{ request.user.username }}</span><br>
+                                            {% if rquest.user.city %}<small class="small">{{ request.user.city }}</small>{% endif %}
+                                        </p>
+                                    </div>
+                                    <div class="col ps-0 align-self-center d-none d-lg-block">
+                                        <i class="bi bi-chevron-down small vm"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end w-250" aria-labelledby="userprofiledd">
+                                <div class="dropdown-info bg-radial-gradient-theme">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <figure class="avatar avatar-50 rounded-circle coverimg vm">
+                                                <img src="{% static 'img/user-1.jpg' %}" alt="" id="userphotoonboarding3" />
+                                            </figure>
+                                        </div>
+                                        <div class="col align-self-center ps-0">
+                                            <h6 class="mb-0"><span class="username">{{ request.user.name }}</span></h6>
+                                            <p class="text-muted small">Balance: $100.00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div><a class="dropdown-item" href="profile.html">My Profile</a></div>
+                                <div>
+                                    <a class="dropdown-item" href="index.html">
+                                        <div class="row g-0">
+                                            <div class="col align-self-center">My Dashboard</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="dropdown open-left dropdown-dontclose">
+                                    <a class="dropdown-item" data-bs-toggle="dropdown" aria-expanded="false" role="button">
+                                        <div class="row">
+                                            <div class="col">Subscription</div>
+                                            <div class="col-auto pe-0">
+                                                <p class="small text-success">Upgrade</p>
+                                            </div>
+                                            <div class="col-auto ps-0"><span class="arrow bi bi-chevron-right"></span></div>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <div><a class="dropdown-item" href="subscription.html">Plan</a></div>
+                                        <div><a class="dropdown-item" href="your-earning.html">Earning</a></div>
+                                        <div><a class="dropdown-item" href="your-payment.html">Payment</a></div>
+                                        <div><a class="dropdown-item" href="your-statement.html">Statement</a></div>
+                                    </div>
+                                </div>
+                                <div class="dropdown open-left dropdown-dontclose">
+                                    <a class="dropdown-item" data-bs-toggle="dropdown" aria-expanded="false" role="button">
+                                        <div class="row">
+                                            <div class="col">Language</div>
+                                            <div class="col-auto pe-0"><small class="vm"> English</small> <i class="bi bi-translate"></i></div>
+                                            <div class="col-auto ps-0"><span class="arrow bi bi-chevron-right"></span></div>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <div><a class="dropdown-item active" data-value="EN">English</a></div>
+                                        <div><a class="dropdown-item" data-value="FR">French</a></div>
+                                        <div><a class="dropdown-item" data-value="CH">Chinese</a></div>
+                                        <div><a class="dropdown-item" data-value="HI">Hindi</a></div>
+                                    </div>
+                                </div>
+                                <div><a class="dropdown-item" href="your-settings.html">Account Setting</a></div>
+                                <div><a class="dropdown-item" href="/users/logout">Logout</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- Header ends -->
+
+<!-- Sidebar -->
+<div class="sidebar-wrap">
+    <div class="sidebar">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col align-self-center">
+                    <h6>Main navigation</h6>
+                </div>
+                <div class="col-auto">
+                    <a class="" data-bs-toggle="collapse" data-bs-target="#usersidebarprofile" aria-expanded="false" role="button" aria-controls="usersidebarprofile">
+                        <i class="bi bi-person-circle"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- user information -->
+            <div class="row text-center collapse " id="usersidebarprofile">
+                <div class="col-12">
+                    <div class="avatar avatar-100 rounded-circle shadow-sm mb-3 bg-white">
+                        <figure class="avatar avatar-90 rounded-circle coverimg">
+                            <img src="{% static 'img/user-1.jpg' %}" alt="" id="userphotoonboarding">
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <h6 class="mb-1" id="usernamedisplay">{{ request.user.name }}</h6>
+                    <p class="text-secondary small">{{ request.user.city }}</p>
+                </div>
+            </div>
+
+            <!-- user menu navigation -->
+            <div class="row mb-4">
+                <div class="col-12 px-0">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">
+                                <div class="avatar avatar-40 icon"><i class="bi bi-house-door"></i></div>
+                                <div class="col">Home</div>
+                                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                <div class="avatar avatar-40 icon"><i class="bi bi-coin"></i></div>
+                                <div class="col">Profile</div>
+                                <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item nav-link" href="/users/~update/">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-speedometer2"></i>
+                                        </div>
+                                        <div class="col align-self-center">Update Profile</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="/kyc/pancard/">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-currency-bitcoin"></i>
+                                        </div>
+                                        <div class="col align-self-center">KYC</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="/wallet/account/">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-bank"></i>
+                                        </div>
+                                        <div class="col align-self-center">Payment Details</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="/level/activation/">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-wallet2"></i>
+                                        </div>
+                                        <div class="col align-self-center">Wallet</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="finance-rewards.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-award"></i>
+                                        </div>
+                                        <div class="col align-self-center">Rewards</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                <div class="avatar avatar-40 icon"><i class="bi bi-hdd-network"></i></div>
+                                <div class="col">Network</div>
+                                <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item nav-link" href="network-dashboard.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-grid"></i>
+                                        </div>
+                                        <div class="col align-self-center">Auto Pool</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="/level/team/{{request.user.username}}/0/">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-speedometer"></i>
+                                        </div>
+                                        <div class="col align-self-center">Levels Data</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="network-devices.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-pc-display-horizontal"></i>
+                                        </div>
+                                        <div class="col align-self-center">Royalty Info</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                <div class="avatar avatar-40 icon"><i class="bi bi-boxes"></i></div>
+                                <div class="col">Wallet</div>
+                                <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item nav-link" href="inventory-dashboard.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-box"></i>
+                                        </div>
+                                        <div class="col align-self-center">Payouts</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="inventory-stock.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-clipboard-check"></i>
+                                        </div>
+                                        <div class="col align-self-center">Spendings</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="inventory-orders.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-bag-check"></i>
+                                        </div>
+                                        <div class="col align-self-center">All Transactions</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                <div class="avatar avatar-40 icon"><i class="bi bi-people"></i></div>
+                                <div class="col">Social</div>
+                                <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item nav-link" href="social-dashboard.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-bullseye"></i>
+                                        </div>
+                                        <div class="col align-self-center">My Network</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="social-analytics.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-bar-chart"></i>
+                                        </div>
+                                        <div class="col align-self-center">Posts</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="social-schedule.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-calendar-week"></i>
+                                        </div>
+                                        <div class="col align-self-center">New Post +</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="social-schedule.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-calendar-week"></i>
+                                        </div>
+                                        <div class="col align-self-center">Messages</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                <div class="avatar avatar-40 icon"><i class="bi bi-book"></i></div>
+                                <div class="col">Account</div>
+                                <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item nav-link" href="learning-dashboard.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-box"></i>
+                                        </div>
+                                        <div class="col align-self-center">Change Password</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/accounts/logout/">
+                                <div class="avatar avatar-40 icon"><i class="bi bi-person-dash"></i></div>
+                                <div class="col">Logout</div>
+                                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- user secondary menu navigation -->
+            <h6>M2Plus</h6>
+            <div class="row mb-4">
+                <div class="col-12 px-0">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                <div class="avatar avatar-40 icon"><i class="bi bi-person-circle"></i></div>
+                                <div class="col">Profile</div>
+                                <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item nav-link" href="profile.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-briefcase"></i>
+                                        </div>
+                                        <div class="col align-self-center">Professional</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="profile-social.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-people"></i>
+                                        </div>
+                                        <div class="col align-self-center">Social</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="profile-analytics.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-bar-chart"></i>
+                                        </div>
+                                        <div class=" col align-self-center">Analytics</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                <div class="avatar avatar-40 icon"><i class="bi bi-building"></i></div>
+                                <div class="col">M2Plus</div>
+                                <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item nav-link" href="company-profile.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-easel2"></i>
+                                        </div>
+                                        <div class="col align-self-center">M2Plus Profile</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="company-branding.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-palette"></i>
+                                        </div>
+                                        <div class="col align-self-center">Branding</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="company-resources.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-journal-bookmark"></i>
+                                        </div>
+                                        <div class="col align-self-center">Resources</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="management.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-stopwatch"></i>
+                                        </div>
+                                        <div class="col align-self-center">Management</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="career.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-file-earmark-person"></i>
+                                        </div>
+                                        <div class="col align-self-center">Career</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="help-center.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-life-preserver"></i>
+                                        </div>
+                                        <div class="col align-self-center">Help Center</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="contact-us.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-envelope"></i>
+                                        </div>
+                                        <div class="col align-self-center">Contact us</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="false" data-bs-display="static" href="#" role="button" aria-expanded="false">
+                                <div class="avatar avatar-40 icon"><i class="bi bi-question-circle"></i></div>
+                                <div class="col">Forum</div>
+                                <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i class="bi bi-chevron-up minus"></i>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item nav-link" href="forum.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-question-circle"></i>
+                                        </div>
+                                        <div class="col align-self-center">Forum</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="forum-details.html">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-people"></i>
+                                        </div>
+                                        <div class="col align-self-center">Forum Details</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Quick links -->
+            <div class="row mb-3">
+                <div class="col align-self-center">
+                    <h6>Quick Links</h6>
+                </div>
+                <div class="col-auto">
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-12 px-0">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="get-started.html">
+                                <div class="avatar avatar-40 icon"><i class="bi bi-journal-code"></i></div>
+                                <div class="col">Documentation</div>
+                                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Sidebar ends -->
