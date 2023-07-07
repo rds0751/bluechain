@@ -40,6 +40,7 @@ class LevelUser(models.Model):
     def __str__(self):
         return str(self.user)
      
+    
 
 class PoolUser(models.Model):
     user = models.CharField(max_length=25, blank=True, null=True)
@@ -48,6 +49,9 @@ class PoolUser(models.Model):
     active = models.BooleanField(default=False)
     upline = models.CharField(max_length=10)
     downlines = models.IntegerField(default=0)
+    plan = models.ForeignKey(LevelIncomeSettings, on_delete=models.CASCADE)
+    active = models.BooleanField(default=False)
+    upline = models.CharField(max_length=10)
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True)
     activated_at = models.DateTimeField(null=True, blank=True)

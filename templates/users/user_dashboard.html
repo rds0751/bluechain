@@ -34,22 +34,41 @@
               <div class="row">
                   {% comment %} <div class="col col-md col-lg-auto mnw-100 text-center">
                       <i class="bi bi-trophy h5 avatar avatar-50 bg-dark-orange text-orange rounded-circle mb-2"></i>
+<<<<<<< HEAD
                       <h4 class="increamentcount mb-0">{{ levelp.level }}</h4>
                       <p class="small text-secondary">My Package</p>
                   </div> {% endcomment %}
                   {% comment %} <div class="col col-md col-lg-auto mnw-100 text-center">
                       <i class="bi bi-award h5 avatar avatar-50 bg-dark-green text-green rounded-circle mb-2"></i>
                       <h4 class="increamentcount mb-0">{{ request.user.my_rank }}</h4>
+=======
+                      <h4 class="increamentcount mb-0">$0.00</h4>
+                      <p class="small text-secondary">My Package</p>
+                  </div>
+                  <div class="col col-md col-lg-auto mnw-100 text-center">
+                      <i class="bi bi-award h5 avatar avatar-50 bg-dark-green text-green rounded-circle mb-2"></i>
+                      <h4 class="increamentcount mb-0">1583</h4>
+>>>>>>> 61d60f6 (hello)
                       <p class="small text-secondary">My Rank</p>
                   </div>
                   <div class="col col-md col-lg-auto mnw-100 text-center mb-3">
                       <i class="bi bi-clipboard-check h5 avatar avatar-50 bg-dark-yellow text-yellow rounded-circle mb-2"></i>
+<<<<<<< HEAD
                       <h4 class="increamentcount mb-0">{{ request.user.my_achievement }}</h4>
                       <p class="small text-secondary">My Achievement</p>
                   </div> {% endcomment %}
                   <div class="progress h-20 mb-4 bg-red">
                     <div class="progress-bar bg-green" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">my progress</div>
                        <br> Capping Progress
+=======
+                      <h4 class="increamentcount mb-0">1356</h4>
+                      <p class="small text-secondary">Tasks Done</p>
+                  </div>
+                  <div class="progress h-20 mb-4">
+                    <div class="progress-bar bg-purple" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
+                    <div class="progress-bar bg-pink" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20%</div>
+                    <div class="progress-bar bg-yellow" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
+>>>>>>> 61d60f6 (hello)
                 </div>
               </div>
           </div>
@@ -85,7 +104,11 @@
                           </div>
                           <div class="col">
                               <p class="text-muted small mb-1">My Team</p>
+<<<<<<< HEAD
                               <h5>{{request.user.my_team}}</h5>
+=======
+                              <h5>$ {{ ret|floatformat:2 }}</small></h5>
+>>>>>>> 61d60f6 (hello)
                           </div>
                       </div>
                   </div>
@@ -102,7 +125,11 @@
                           </div>
                           <div class="col">
                               <p class="text-muted small mb-1">My Directs</p>
+<<<<<<< HEAD
                               <h5>{{ request.user.my_directs }}</h5>
+=======
+                              <h5>$ {{ request.user.traditional_withdrawal|floatformat:2 }}</small></h5>
+>>>>>>> 61d60f6 (hello)
                           </div>
                       </div>
                   </div>
@@ -119,12 +146,36 @@
                           </div>
                           <div class="col">
                               <p class="text-muted small mb-1">Ewallet</p>
+<<<<<<< HEAD
                               <h5 class="fw-medium">$ {{request.user.wallet|add:request.user.pool_wallet}}</h5>
+=======
+                              <h5 class="fw-medium">12550</h5>
+>>>>>>> 61d60f6 (hello)
                           </div>
                       </div>
                   </div>
               </div>
           </div>
+<<<<<<< HEAD
+=======
+          <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xxl-3">
+            <div class="card border-0 mb-4 theme-red bg-radial-gradient text-white">
+                <div class="card-body bg-none">
+                    <div class="row gx-2 align-items-center">
+                        <div class="col-auto">
+                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
+                                <i class="bi bi-coin"></i>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <p class="text-muted small mb-1">Total Income</p>
+                            <h5 class="fw-medium">1525<small>k USD</small></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+>>>>>>> 61d60f6 (hello)
         <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xxl-3">
             <div class="card border-0 mb-4 theme-blue bg-radial-gradient text-white">
                 <div class="card-body bg-none">
@@ -136,7 +187,11 @@
                         </div>
                         <div class="col">
                             <p class="text-muted small mb-1">Today Income</p>
+<<<<<<< HEAD
                             <h5 class="fw-medium">$ {{request.user.today_income}}</h5>
+=======
+                            <h5 class="fw-medium">1525<small>k USD</small></h5>
+>>>>>>> 61d60f6 (hello)
                         </div>
                     </div>
                 </div>
@@ -153,7 +208,11 @@
                         </div>
                         <div class="col">
                             <p class="text-muted small mb-1">Total Business</p>
+<<<<<<< HEAD
                             <h5 class="fw-medium">$ {{ request.user.total_business }}</h5>
+=======
+                            <h5 class="fw-medium">1525<small>k USD</small></h5>
+>>>>>>> 61d60f6 (hello)
                         </div>
                     </div>
                 </div>
@@ -170,7 +229,11 @@
                         </div>
                         <div class="col">
                             <p class="text-muted small mb-1">Sponsor Income</p>
+<<<<<<< HEAD
                             <h5 class="fw-medium">$ {{request.user.sponsor_income}}</h5>
+=======
+                            <h5 class="fw-medium">1525<small>k USD</small></h5>
+>>>>>>> 61d60f6 (hello)
                         </div>
                     </div>
                 </div>
@@ -187,7 +250,11 @@
                         </div>
                         <div class="col">
                             <p class="text-muted small mb-1">Autopool Income</p>
+<<<<<<< HEAD
                             <h5 class="fw-medium">$ {{request.user.autopool_income}}</h5>
+=======
+                            <h5 class="fw-medium">1525<small>k USD</small></h5>
+>>>>>>> 61d60f6 (hello)
                         </div>
                     </div>
                 </div>
@@ -204,7 +271,11 @@
                         </div>
                         <div class="col">
                             <p class="text-muted small mb-1">My Daily ROI</p>
+<<<<<<< HEAD
                             <h5 class="fw-medium">$ {{request.user.my_daily_roi}}</h5>
+=======
+                            <h5 class="fw-medium">1525<small>k USD</small></h5>
+>>>>>>> 61d60f6 (hello)
                         </div>
                     </div>
                 </div>
@@ -221,7 +292,11 @@
                         </div>
                         <div class="col">
                             <p class="text-muted small mb-1">Rewards</p>
+<<<<<<< HEAD
                             <h5 class="fw-medium">$ {{request.user.rewards}}</h5>
+=======
+                            <h5 class="fw-medium">1525<small>k USD</small></h5>
+>>>>>>> 61d60f6 (hello)
                         </div>
                     </div>
                 </div>
@@ -238,7 +313,11 @@
                         </div>
                         <div class="col">
                             <p class="text-muted small mb-1">Lifetime Royalty Income</p>
+<<<<<<< HEAD
                             <h5 class="fw-medium">$ {{request.user.lifetime_royalty}}</h5>
+=======
+                            <h5 class="fw-medium">1525<small>k USD</small></h5>
+>>>>>>> 61d60f6 (hello)
                         </div>
                     </div>
                 </div>
@@ -254,9 +333,14 @@
                             </div>
                         </div>
                         <div class="col">
+<<<<<<< HEAD
                             <p class="text-muted small mb-1">Tokens</p>
                             {% widthratio levelp.level.amount 1 10 as c %}
                             <h5 class="fw-medium">{{ 250 }}</h5>
+=======
+                            <p class="text-muted small mb-1">Team Club Income</p>
+                            <h5 class="fw-medium">1525<small>k USD</small></h5>
+>>>>>>> 61d60f6 (hello)
                         </div>
                     </div>
                 </div>
@@ -276,6 +360,28 @@
                               <h4 class="text-theme">Earn 100% Referral Income</h4>
                               <h5 class="fw-medium">Make your wallet even bigger</h5>
                               <p class="text-secondary">Share your referral code to your friends.</p>
+<<<<<<< HEAD
+=======
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-6 col-xxl-6 mb-4">
+              <div class="card border-0 h-100 theme-blue overflow-hidden">
+                  <div class="card-body p-0">
+                      <div class="row h-100">
+                          <div class=" col position-relative text-white text-center">
+                              <div class="coverimg position-absolute end-0 top-0 w-100 h-100" style="background-image: url({% static 'img/payment.png' %});">
+                                  <img src="{% static 'img/payment.png' %}" alt="" style="display: none;">
+                              </div>
+                              <div class="row h-100">
+                                  <div class="col-12 align-self-center">
+                                      <h4 class="mb-0">2%</h4>
+                                      <p>Lifetime Royalty Income</p>
+                                  </div>
+                              </div>
+>>>>>>> 61d60f6 (hello)
                           </div>
                       </div>
                   </div>
@@ -303,6 +409,7 @@
         </script>
       <!-- best reward products -->
       <div class="row mb-4 py-2">
+<<<<<<< HEAD
         <div class="col-12 col-lg-12 col-xl-12 col-xxl-12">
             <div class="card bg-gradient-theme-light theme-purple border-0 mb-4">
                 <div class="card-body">
@@ -316,6 +423,11 @@
                 </div>
             </div>
         </div>
+=======
+          <div class="col text-center">
+              <h4>Best value of <span class="text-gradient">Staking Bonus</span> by BNXG Token</h4>
+          </div>
+>>>>>>> 61d60f6 (hello)
       </div>
     </div>
     <!-- Progress circle js script -->

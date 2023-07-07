@@ -24,7 +24,11 @@ from django.contrib.auth import load_backend, login
 from wallets.models import WalletHistory, Withdrawal, PaymentOption
 from users.models import User
 import random
+<<<<<<< HEAD
 from level.models import Activation, LevelIncomeSettings, LevelUser, PoolUser
+=======
+from level.models import Activation, LevelIncomeSettings, LevelUser
+>>>>>>> 61d60f6 (hello)
 import csv
 
 @staff_member_required
@@ -1266,7 +1270,10 @@ def activate(user, amount):
                     upline_user = 'blank'
                 try:
                     upgraded = LevelUser.objects.get(user=upline, active=True)
+<<<<<<< HEAD
                     capping = upgraded.level.amount * 2.5
+=======
+>>>>>>> 61d60f6 (hello)
                 except Exception as e:
                     upgraded = 'blank'
                     capping = 0
@@ -1343,8 +1350,13 @@ def activate(user, amount):
                     print('outside')
                 level = level + 1
             
+<<<<<<< HEAD
             model, created = LevelUser.objects.get_or_create(user=userid.username, level=levelp, active=True)
             model, created = LevelUser.objects.get_or_create(user=userid.username, level=levelp, active=True)
+=======
+            model, created = LevelUser.objects.get_or_create(user=userid.username)
+            model, created = LevelUser.objects.get_or_create(user=userid.username)
+>>>>>>> 61d60f6 (hello)
             model.user = userid.username
             model.level = levelp
             model.active = True
