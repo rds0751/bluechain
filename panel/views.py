@@ -451,7 +451,7 @@ def activation(request, id):
         act.comments = comment
         act.save()
         return redirect('/panel/activations/')
-    return render(request, 'panel/activation.html', {'w': w, 'u': u, 'k': k, 'b': b, 'message': message})
+    return render(request, 'panel/activation.html', {'w': w, 'u': u, 'message': message})
 
 @staff_member_required
 def withdrawal(request, id):
