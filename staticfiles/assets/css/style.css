@@ -71,7 +71,7 @@ html {
 }
 
 body {
-    color: #4e4e4e;
+    color: #ffffff;
     font-family: Poppins;
     line-height: var(--line-height30);
     font-size: 14px;
@@ -108,13 +108,13 @@ h6 {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #262B34;
+    color: #ffffff;
     font-family: var(--heading-font);
     font-weight: 700;
 }
 
 p {
-    color: #6c6f70;
+    color: #138ce9
     -webkit-hyphens: auto;
     hyphens: auto;
     margin-bottom: 10px;
@@ -669,7 +669,7 @@ ul {
 
 
     .section-title p {
-        color: #6c6f70;
+        color: #138ce9
         font-size: 16px;
         font-weight: 400;
         line-height: 1.7;
@@ -1260,7 +1260,7 @@ ul {
   display: inline-block;
   text-align: center;
   background: rgba(114, 2, 187, 0.05);
-  color: #6c6f70;
+  color: #138ce9
   font-size: 15px;
   font-weight: 900;
   line-height: 30px;
@@ -2145,7 +2145,7 @@ ul {
 }
 .banner-inner .sub-title {
     margin-bottom: 11px;
-    color: #262B34;
+    color: #ffffff;
     font-weight: 500;
     font-size: 13px;
     line-height: 24px;
@@ -2404,7 +2404,7 @@ ul {
     .single-featured-wrap p {
         font-size: 14px;
         font-weight: 400;
-        color: #6c6f70;
+        color: #138ce9
         line-height: 1.7;
     }
 
@@ -2562,7 +2562,7 @@ ul {
 }
 .ibn-inner ul li {
   font-size: 15px;
-  color: #6c6f70;
+  color: #138ce9
   margin-bottom: 25px;
 }
     .ibn-inner ul li i {
@@ -2614,7 +2614,7 @@ ul {
   transition: all 0.3s ease-in;
 }
     .ibn-inner .media .media-body p {
-        color: #6c6f70;
+        color: #138ce9
         line-height: 1.7;
         margin-bottom: 0;
     }
@@ -2776,7 +2776,7 @@ ul {
 .single-price-wrap .pricing-list li {
   font-size: 15px;
   font-weight: 400;
-  color: #6c6f70;
+  color: #138ce9
   line-height: 20px;
   margin-bottom: 16px;
 }
@@ -2901,7 +2901,7 @@ ul {
         font-size: 16px;
     }
 .testimonial-wrap p {
-  color: #6c6f70;
+  color: #138ce9
   line-height: 1.7;
 }
     .testimonial-wrap p.designation {
@@ -2946,7 +2946,7 @@ ul {
   color: var(--main-color);
 }
 .single-blog-wrap .blog-details p {
-  color: #6c6f70;
+  color: #138ce9
   line-height: 1.7;
   margin-bottom: 11px;
 }
@@ -3027,7 +3027,7 @@ ul {
   margin-bottom: 21px;
 }
 .contact-wrap p {
-  color: #6c6f70;
+  color: #138ce9
   font-weight: 300;
   margin-bottom: 36px;
 }
@@ -3061,7 +3061,7 @@ ul {
   margin-bottom: 1px;
 }
 .contact-wrap .media .media-body p {
-  color: #6c6f70;
+  color: #138ce9
   font-weight: 400;
   margin-bottom: -2px;
 }
