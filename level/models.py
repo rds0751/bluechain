@@ -46,13 +46,8 @@ class PoolUser(models.Model):
     user = models.CharField(max_length=25, blank=True, null=True)
     level = models.IntegerField(default=0)
     plan = models.ForeignKey(LevelIncomeSettings, null=True, on_delete=models.CASCADE)
-<<<<<<< HEAD
-    active = models.BooleanField(default=False)
-    upline = models.CharField(max_length=10)
     downlines = models.IntegerField(default=0)
     plan = models.ForeignKey(LevelIncomeSettings, on_delete=models.CASCADE)
-=======
->>>>>>> 6a781b8 (hello)
     active = models.BooleanField(default=False)
     upline = models.CharField(max_length=10)
     created_at = models.DateTimeField(default=timezone.now, blank=True)
