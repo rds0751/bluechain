@@ -12,7 +12,7 @@ from django.urls import reverse
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView, FormView, CreateView
 from django.shortcuts import render, redirect
 from users.models import User
-from .models import Activation, LevelIncomeSettings, LevelUser
+from .models import Activation, LevelIncomeSettings, LevelUser, PoolUser
 from django.contrib.auth.decorators import login_required
 from wallets.models import WalletHistory, MetatraderAccount
 from django.core.paginator import Paginator
@@ -503,7 +503,22 @@ def payment(request):
     context = {'user': user, 'oid': txnid, 'amount': amount}
     return render(request,"level/joined.html",context)
 
-def binary(request):
+def binary(request, plan):
+    level = LevelIncomeSettings.objects.get(level=int(plan))
+    plan1 = PoolUser.objects.filter(user=request.user.username, plan=level, level=1)
+    plan2 = PoolUser.objects.filter(user=request.user.username, plan=level, level=2)
+    plan3 = PoolUser.objects.filter(user=request.user.username, plan=level, level=3)
+    downlines1 = PoolUser.objects.filter(upline=request.user.username, plan=level, level=1)
+    downlines2 = PoolUser.objects.filter(upline=request.user.username, plan=level, level=2)
+    downlines3 = PoolUser.objects.filter(upline=request.user.username, plan=level, level=3)
+    contex = {
+        'plan1': plan1,
+        'plan2': plan2,
+        'plan3': plan3,
+        'downlines1': downlines1,
+        'downlines2': downlines2,
+        'downlines3': downlines3
+    }
     return render(request,"binary/tree.html")
 
 @csrf_exempt

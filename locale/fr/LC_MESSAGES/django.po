@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: IPAYMAtics\n"
+"Project-Id-Version: BNXG\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-20 11:16+0530\n"
 "PO-Revision-Date: 2021-07-20 10:38+0553\n"
@@ -949,7 +949,7 @@ msgstr ""
 "ouvrables !"
 
 #: templates/users/mt5.html:87
-msgid "Note: For payment queries write us at support@ipaymatics.com"
+msgid "Note: For payment queries write us at support@BNXG.com"
 msgstr ""
 
 #: templates/users/onboarding.html:3 templates/users/profile.html:4

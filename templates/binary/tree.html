@@ -19,52 +19,141 @@
     float:left;
   }
 </style>
-<div class="container text-center">
-  <div class="row">
-    <div class="col-12"><img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"></div>
+
+<div class="container  mt-5 mb-5">
+  <div class="row align-items-center">
+    <div class="col-12 col-sm-12 col-md-4 btn-group moderation-dropdown mb-5">
+      <button id="id_dropdown_moderation_menu_button" class="btn btn-primary btn-sm dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">Select Package<span class="caret"></span></button>
+      <div class="dropdown-menu" aria-labelledby="id_dropdown_moderation_menu_button" style="min-width:13rem;">
+      <a class="dropdown-item" href='/level/pool/1/'>$25.00/-</a>
+      <a class="dropdown-item" href='/level/pool/2/'>$50.00/-</a>
+      <a class="dropdown-item" href='/level/pool/3/'>$100.00/-</a>
+      <a class="dropdown-item" href='/level/pool/4/'>$250.00/-</a>
+      <a class="dropdown-item" href='/level/pool/5/'>$500.00/-</a>
+      <a class="dropdown-item" href='/level/pool/6/'>$1000.00/-</a>
+      <a class="dropdown-item" href='/level/pool/7/'>$2000.00/-</a>
+      <a class="dropdown-item" href='/level/pool/8/'>$5000.00/-</a>
+      </div>
+    </div>
   </div>
-  <div class="row">
-    <div class="col-6 right-line"></div>
-    <div class="col-6"></div>
-  </div>
-  <div class="row">
-    <div class="col-3 right-line"></div>
-    <div class="col-2 top-line"></div>
-    <div class="col-2 top-line"></div>
-    <div class="col-2 right-line top-line"></div>
-    <div class="col-3"></div>
-  </div>
-  <div class="row">
-    <div class="col-2"></div>
-    <div class="col-2"><img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"></div>
-    <div class="col-4"></div>
-    <div class="col-2"><img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"></div>
-    <div class="col-2"></div>
-  </div>
-  <div class="row">
-    <div class="col-3 right-line"></div>
-    <div class="col-3"></div>
-    <div class="col-3 right-line"></div>
-    <div class="col-3"></div>
-  </div>
-  <div class="row">
-    <div class="col-2 right-line"></div>
-    <div class="col-1 top-line"></div>
-    <div class="col-1 right-line top-line"></div>
-    <div class="col-2"></div>
-    <div class="col-2 right-line"></div>
-    <div class="col-1 top-line"></div>
-    <div class="col-1 right-line top-line"></div>
-    <div class="col-2"></div>
-  </div>
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-2"><img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"></div>
-    <div class="col-2"><img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"></div>
-    <div class="col-2"></div>
-    <div class="col-2"><img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"></div>
-    <div class="col-2"><img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"></div>
-    <div class="col-1"></div>
+  <div class="row align-items-center">
+    <div class="col-12 col-sm-12 col-md-4 text-center">
+      <h4 class="username">Level 1</h4>
+      <div class="row">
+        <div class="col-12">
+        {% if plan1 %}
+        <img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ request.user.username }}
+        {% else %}
+        <img width="150px" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png"><br>{{ request.user.username }}        
+        {% endif %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 right-line"></div>
+        <div class="col-6"></div>
+      </div>
+      <div class="row">
+        <div class="col-3 right-line"></div>
+        <div class="col-2 top-line"></div>
+        <div class="col-2 top-line"></div>
+        <div class="col-2 right-line top-line"></div>
+        <div class="col-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+        {% if downlines1.0 %}
+        <img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ downlines1.0 }}
+        {% else %}
+        <img width="150px" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">     
+        {% endif %}
+        </div>
+        <div class="col-6">
+        {% if downlines1.1 %}
+        <img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ downlines1.1 }}
+        {% else %}
+        <img width="150px" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">
+        {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-4 text-center">
+      <h4 class="username">Level 2</h4>
+      <div class="row">
+        <div class="col-12">
+        {% if plan1 %}
+        <img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ request.user.username }}
+        {% else %}
+        <img width="150px" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png"><br>{{ request.user.username }}        
+        {% endif %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 right-line"></div>
+        <div class="col-6"></div>
+      </div>
+      <div class="row">
+        <div class="col-3 right-line"></div>
+        <div class="col-2 top-line"></div>
+        <div class="col-2 top-line"></div>
+        <div class="col-2 right-line top-line"></div>
+        <div class="col-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+        {% if downlines2.0 %}
+        <img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ downlines2.0 }}
+        {% else %}
+        <img width="150px" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">     
+        {% endif %}
+        </div>
+        <div class="col-6">
+        {% if downlines2.1 %}
+        <img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ downlines2.1 }}
+        {% else %}
+        <img width="150px" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">
+        {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-4 text-center">
+      <h4 class="username">Level 3</h4>
+      <div class="row">
+        <div class="col-12">
+        {% if plan1 %}
+        <img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ request.user.username }}
+        {% else %}
+        <img width="150px" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png"><br>{{ request.user.username }}        
+        {% endif %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 right-line"></div>
+        <div class="col-6"></div>
+      </div>
+      <div class="row">
+        <div class="col-3 right-line"></div>
+        <div class="col-2 top-line"></div>
+        <div class="col-2 top-line"></div>
+        <div class="col-2 right-line top-line"></div>
+        <div class="col-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+        {% if downlines3.0 %}
+        <img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ downlines3.0 }}
+        {% else %}
+        <img width="150px" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">     
+        {% endif %}
+        </div>
+        <div class="col-6">
+        {% if downlines3.1 %}
+        <img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ downlines3.1 }}
+        {% else %}
+        <img width="150px" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">
+        {% endif %}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock content %}

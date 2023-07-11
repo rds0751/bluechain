@@ -473,7 +473,7 @@ strong {
 }
 
 small, .small {
-  font-size: 0.875em;
+  font-size: 1em;
 }
 
 mark, .mark {
@@ -523,7 +523,7 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   overflow: auto;
-  font-size: 0.875em;
+  font-size: 1em;
 }
 pre code {
   font-size: inherit;
@@ -532,7 +532,7 @@ pre code {
 }
 
 code {
-  font-size: 0.875em;
+  font-size: 1em;
   color: var(--bs-code-color);
   word-wrap: break-word;
 }
@@ -542,7 +542,7 @@ a > code {
 
 kbd {
   padding: 0.1875rem 0.375rem;
-  font-size: 0.875em;
+  font-size: 1em;
   color: var(--bs-body-bg);
   background-color: var(--bs-body-color);
   border-radius: 0.25rem;
@@ -833,7 +833,7 @@ progress {
 }
 
 .initialism {
-  font-size: 0.875em;
+  font-size: 1em;
   text-transform: uppercase;
 }
 
@@ -848,7 +848,7 @@ progress {
 .blockquote-footer {
   margin-top: -1rem;
   margin-bottom: 1rem;
-  font-size: 0.875em;
+  font-size: 1em;
   color: #6c757d;
 }
 .blockquote-footer::before {
@@ -879,7 +879,7 @@ progress {
 }
 
 .figure-caption {
-  font-size: 0.875em;
+  font-size: 1em;
   color: #6c757d;
 }
 
@@ -2239,12 +2239,12 @@ progress {
 .col-form-label-sm {
   padding-top: calc(0.25rem + 1px);
   padding-bottom: calc(0.25rem + 1px);
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .form-text {
   margin-top: 0.25rem;
-  font-size: 0.875em;
+  font-size: 1em;
   color: rgba(var(--bs-body-color-rgb), 0.75);
 }
 
@@ -2368,7 +2368,7 @@ progress {
 .form-control-sm {
   min-height: calc(1.5em + 0.5rem + 2px);
   padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   border-radius: 0.25rem;
 }
 .form-control-sm::-webkit-file-upload-button {
@@ -2477,7 +2477,7 @@ textarea.form-control-lg {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   border-radius: 0.25rem;
 }
 
@@ -2845,7 +2845,7 @@ textarea.form-control-lg {
 .input-group-sm > .input-group-text,
 .input-group-sm > .btn {
   padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   border-radius: 0.25rem;
 }
 
@@ -2874,7 +2874,7 @@ textarea.form-control-lg {
   display: none;
   width: 100%;
   margin-top: 0.25rem;
-  font-size: 0.875em;
+  font-size: 1em;
   color: #2e9c65;
 }
 
@@ -2886,7 +2886,7 @@ textarea.form-control-lg {
   max-width: 100%;
   padding: 0.25rem 0.5rem;
   margin-top: 0.1rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: #000;
   background-color: rgba(46, 156, 101, 0.9);
   border-radius: 0.375rem;
@@ -2967,7 +2967,7 @@ textarea.form-control-lg {
   display: none;
   width: 100%;
   margin-top: 0.25rem;
-  font-size: 0.875em;
+  font-size: 1em;
   color: #dd2255;
 }
 
@@ -2979,7 +2979,7 @@ textarea.form-control-lg {
   max-width: 100%;
   padding: 0.25rem 0.5rem;
   margin-top: 0.1rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: #fff;
   background-color: rgba(221, 34, 85, 0.9);
   border-radius: 0.375rem;
@@ -3411,7 +3411,7 @@ textarea.form-control-lg {
 .btn-sm, .btn-group-sm > .btn {
   --bs-btn-padding-y: 0.25rem;
   --bs-btn-padding-x: 0.5rem;
-  --bs-btn-font-size: 0.875rem;
+  --bs-btn-font-size: 1rem;
   --bs-btn-border-radius: 0.25rem;
 }
 
@@ -3741,7 +3741,7 @@ textarea.form-control-lg {
   display: block;
   padding: var(--bs-dropdown-header-padding-y) var(--bs-dropdown-header-padding-x);
   margin-bottom: 0;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--bs-dropdown-header-color);
   white-space: nowrap;
 }
@@ -4849,7 +4849,7 @@ textarea.form-control-lg {
 .pagination-sm {
   --bs-pagination-padding-x: 0.5rem;
   --bs-pagination-padding-y: 0.25rem;
-  --bs-pagination-font-size: 0.875rem;
+  --bs-pagination-font-size: 1rem;
   --bs-pagination-border-radius: 0.25rem;
 }
 
@@ -5440,7 +5440,7 @@ textarea.form-control-lg {
   --bs-toast-padding-y: 0.5rem;
   --bs-toast-spacing: 1.5rem;
   --bs-toast-max-width: 350px;
-  --bs-toast-font-size: 0.875rem;
+  --bs-toast-font-size: 1rem;
   --bs-toast-color: ;
   --bs-toast-bg: rgba(255, 255, 255, 0.85);
   --bs-toast-border-width: 1px;
@@ -5800,7 +5800,7 @@ textarea.form-control-lg {
   --bs-tooltip-padding-x: 0.5rem;
   --bs-tooltip-padding-y: 0.25rem;
   --bs-tooltip-margin: ;
-  --bs-tooltip-font-size: 0.875rem;
+  --bs-tooltip-font-size: 1rem;
   --bs-tooltip-color: #fff;
   --bs-tooltip-bg: #000;
   --bs-tooltip-border-radius: 0.375rem;
@@ -5900,7 +5900,7 @@ textarea.form-control-lg {
 .popover {
   --bs-popover-zindex: 1070;
   --bs-popover-max-width: 276px;
-  --bs-popover-font-size: 0.875rem;
+  --bs-popover-font-size: 1rem;
   --bs-popover-bg: #fff;
   --bs-popover-border-width: 1px;
   --bs-popover-border-color: var(--bs-border-color-translucent);
@@ -13001,7 +13001,7 @@ p code {
 }
 .form-control.form-control-lg,
 .form-select.form-control-lg {
-  padding: 0.875rem 1rem;
+  padding: 1rem 1rem;
 }
 .form-control.amount-input,
 .form-select.amount-input {
@@ -17048,7 +17048,7 @@ a.card {
   color: var(--adminux-theme-text-secondary);
   border-radius: 0;
   position: relative;
-  padding: 0.875rem 1rem;
+  padding: 1rem 1rem;
 }
 .footer-tabs .nav-item > .nav-link:hover, .footer-tabs .nav-item > .nav-link:focus {
   background-color: rgba(var(--adminux-theme-rgb), 0.05);

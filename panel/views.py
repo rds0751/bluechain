@@ -291,7 +291,7 @@ def activate(user, amount):
         except Exception as e:
             pool_direct = PoolUser.objects.filter(plan=levelp, downlines__lte=1).order_by('created_at')[0]
             model = PoolUser()
-            model.user=upline_user
+            model.user=pool_direct
             model.upline = pool_direct
             model.level = 1
             model.plan = levelp
@@ -300,7 +300,10 @@ def activate(user, amount):
             pool_direct.downlines += 1
             pool_direct.save()
             downlines = pool_direct.downlines
+            capping = pool_direct.plan.amount * 2.5
             if downlines == 2:
+                pool_user = User.objects.get(username=pool_direct.user)
+                level_upline_user = User.objects.get(username=pool_user.referral)
                 level = pool_direct.level
                 plan = pool_direct.plan
                 if level == 1:
@@ -310,200 +313,296 @@ def activate(user, amount):
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 2:
                         extra  = 8
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 3:
                         extra  = 16
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 4:
                         extra  = 40
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 5:
                         extra  = 80
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 6:
                         extra  = 160
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 7:
                         extra  = 320
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 8:
                         extra  = 800
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                 if level == 2:
                     if plan.level == 1:
                         extra  = 8
@@ -511,200 +610,296 @@ def activate(user, amount):
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 2:
                         extra  = 16
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 3:
                         extra  = 32
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 4:
                         extra  = 80
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 5:
                         extra  = 160
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 6:
                         extra  = 320
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 7:
                         extra  = 640
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 8:
                         extra  = 1600
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                 if level == 3:
                     if plan.level == 1:
                         extra  = 16
@@ -712,200 +907,296 @@ def activate(user, amount):
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 2:
                         extra  = 32
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 3:
                         extra  = 64
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 4:
                         extra  = 160
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 5:
                         extra  = 320
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 6:
                         extra  = 640
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 7:
                         extra  = 1280
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
                     elif plan.level == 8:
                         extra  = 3200
                         amount = plan.amount*2*0.8 - plan.amount
                         Eextra = amount * 0.95
                         upline_benefit = amount * 0.05
                         upline_user = LevelUser.objects.get(user=pool_direct.user).direct
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = extra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool reward Income"
-                        upline_wallet.save()
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = pool_direct  
-                        upline_wallet.amount = Eextra    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Autopool Completion Income"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + extra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = extra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool reward Income"
+                            upline_wallet.save()
+                            pool_user.total_income += extra
+                            pool_user.autopool_income += extra
+                            pool_user.save()
+                        if capping >= pool_user.total_income + Eextra:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = pool_direct  
+                            upline_wallet.amount = Eextra    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Autopool Completion Income"
+                            upline_wallet.save()
+                            pool_user.total_income += Eextra
+                            pool_user.autopool_income += Eextra
+                            pool_user.save()
                         lp = LevelUser.objects.get(user=pool_direct.user)
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = lp.direct
-                        upline_wallet.amount = upline_benefit    
-                        upline_wallet.type = "credit"   
-                        upline_wallet.comment = "Pool Completion upline benefit"
-                        upline_wallet.save()
+                        if capping >= pool_user.total_income + upline_benefit:
+                            upline_wallet = WalletHistory()   
+                            upline_wallet.user_id = lp.direct
+                            upline_wallet.amount = upline_benefit    
+                            upline_wallet.type = "credit"   
+                            upline_wallet.comment = "Pool Completion upline benefit"
+                            upline_wallet.save()
+                            level_upline_user.total_income += upline_benefit
+                            level_upline_user.sponsor_income += upline_benefit
+                            level_upline_user.save()
 
                 autopool(pool_direct.user, package)
         return 0
@@ -923,8 +1214,15 @@ def activate(user, amount):
             userwallet = WalletHistory()
             userwallet.user_id = user_id
             userwallet.amount = packamount
+            userwallet.type = "credit"
+            userwallet.comment = "Cash for Prime Upgrade"
+
+            
+            userwallet = WalletHistory()
+            userwallet.user_id = user_id
+            userwallet.amount = packamount
             userwallet.type = "debit"
-            userwallet.comment = "Prime Upgradation"
+            userwallet.comment = "Buying Package"
 
             userid = user   
 
@@ -968,8 +1266,10 @@ def activate(user, amount):
                     upline_user = 'blank'
                 try:
                     upgraded = LevelUser.objects.get(user=upline, active=True)
+                    capping = upgraded.level.amount * 2.5
                 except Exception as e:
                     upgraded = 'blank'
+                    capping = 0
                 if upline_user != 'blank' and upgraded != 'blank':  
                     directs = LevelUser.objects.filter(direct=upline_user, active=True)
                     if user.referral == upline_user.username:
@@ -986,7 +1286,14 @@ def activate(user, amount):
                         upline_wallet.comment = "New Upgrade by {} in level {}".format(user, level+1)
                         upgraded.business += upline_amount
                         upline_wallet.save()
-                        upline_user.save()
+                        upline_user.my_directs +=1
+                        upline_user.my_team += 1
+                        upline_user.total_business += amount
+                        if capping < upline_user.total_income + upline_amount:
+                            upline_user.wallet += upline_amount
+                            upline_user.total_income += upline_amount
+                            upline_user.progress += upline_amount/amount*100
+                            upline_user.save()
                         print('if')
                         if directs.count() > 1:
                             upline_wallets = WalletHistory()   
@@ -998,6 +1305,13 @@ def activate(user, amount):
                             upline_wallets.save()
                             upline_user.save()
                             print('if, if')
+                            upline_user.my_team += 1
+                            upline_user.total_business += amount
+                            if capping < upline_user.total_income + upline_amount:
+                                upline_user.wallet += upline_amount
+                                upline_user.total_income += upline_amount
+                                upline_user.progress += upline_amount/amount*100
+                                upline_user.save()
                         if directs.count() == 1:
                             autopool(upline_user.username, levelp)
                     elif directs.count() > level and not direct:   
@@ -1011,6 +1325,9 @@ def activate(user, amount):
                         upline_wallet.save()
                         upline_user.save()
                         print('elif')
+                        upline_user.my_team += 1
+                        upline_user.total_business += amount
+                        upline_user.save()
                     else:
                         upline_wallet = WalletHistory()   
                         upline_wallet.user_id = upline  
@@ -1019,12 +1336,15 @@ def activate(user, amount):
                         upline_wallet.comment = "{} joined but Level {} not opened!".format(user, level+1)
                         upline_wallet.save()
                         print('else')
+                        upline_user.my_team += 1
+                        upline_user.total_business += amount
+                        upline_user.save()
                     upgraded.save()
                     print('outside')
                 level = level + 1
             
-            model, created = LevelUser.objects.get_or_create(user=userid.username)
-            model, created = LevelUser.objects.get_or_create(user=userid.username)
+            model, created = LevelUser.objects.get_or_create(user=userid.username, level=levelp, active=True)
+            model, created = LevelUser.objects.get_or_create(user=userid.username, level=levelp, active=True)
             model.user = userid.username
             model.level = levelp
             model.active = True
@@ -1075,7 +1395,7 @@ def activation(request, id):
         act.comments = comment
         act.save()
         return redirect('/panel/activations/')
-    return render(request, 'panel/activation.html', {'w': w, 'u': u, 'k': k, 'b': b, 'message': message})
+    return render(request, 'panel/activation.html', {'w': w, 'u': u, 'message': message})
 
 @staff_member_required
 def withdrawal(request, id):

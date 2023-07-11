@@ -1,11 +1,10 @@
 {% extends "users/base.html" %}
 {% load static i18n %}
-{% load thumbnail %}
 {% block title %}{% trans 'Money Transfer' %}{% endblock %}
 
 {% block content %}
-<div class="body-wrapper">
-	<div class="main-wrapper">
+<div class="container">
+  <div class="row align-items-center">
 		<div class="page-wrapper full-page-wrapper">
 			<main>
 				<div>
@@ -21,7 +20,7 @@
 										<div class="mdc-card">
 											<div class="template-demo">
 												{% if dstatus != 'SUCCESS' and rstatus != 'SUCCESS' %}
-												<form method="POST" action="/wallet/imps-transfer/" class="mdc-layout-grid__inner">
+												<form class="mdc-layout-grid__inner">
 													{% csrf_token %}
 													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
 														<div class="mdc-text-field mdc-text-field--outlined">
@@ -38,7 +37,7 @@
 													</div>
 													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
 														<div class="mdc-text-field mdc-text-field--outlined">
-															<input name="name" class="mdc-text-field__input" id="text-field-hero-input">
+															<input name="name" class="form-control border-start-0" id="text-field-hero-input">
 															<div class="mdc-notched-outline">
 																<div class="mdc-notched-outline__leading"></div>
 																<div class="mdc-notched-outline__notch">
@@ -50,7 +49,7 @@
 														</div>
 													</div>
 													<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop">
-														<button type="submit" class="mdc-button mdc-button--raised w-100">
+														<button type="submit" class="btn btn-primary">
 															Send OTP
 														</button>
 													</div>

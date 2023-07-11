@@ -203,7 +203,7 @@ textarea {
 body {
   margin: 0;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 0.875em;
+  font-size: 1em;
   line-height: 20px;
   color: #595959;
   background-color: #ffffff;
@@ -842,7 +842,7 @@ h3 small {
   font-size: 0.66666667em;
 }
 h4 small {
-  font-size: 0.875em;
+  font-size: 1em;
 }
 h1,
 h2,
@@ -5674,7 +5674,7 @@ html[xmlns] .slides {
 .span3 .promotion_single .well,
 .span2 .promotion_single .well,
 .span1 .promotion_single .well {
-  font-size: 0.875em;
+  font-size: 1em;
   background: #F2F2F2;
 }
 .span4 .promotion_single [class*="span"],

@@ -835,7 +835,7 @@ msgid ""
 msgstr ""
 
 #: templates/users/mt5.html:87
-msgid "Note: For payment queries write us at support@ipaymatics.com"
+msgid "Note: For payment queries write us at support@BNXG.com"
 msgstr ""
 
 #: templates/users/onboarding.html:3 templates/users/profile.html:4

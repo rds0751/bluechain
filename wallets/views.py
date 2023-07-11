@@ -529,10 +529,10 @@ def neft(request):
         mt.user = request.user
         mt.save()
         user_id = request.user
-        subject = 'MT5 Account Generate Request from IPAYMATICS'
+        subject = 'MT5 Account Generate Request from BNXG'
         html_message = render_to_string('account/email/ipay-generate.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':account, 'amount':password, 'id': mt.id})
         plain_message = strip_tags(html_message)
-        from_email = 'support@ipaymatics.com'
+        from_email = 'support@BNXG.com'
         to = 'partner@dibortfx.com'
 
         send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
@@ -588,10 +588,10 @@ def neft(request):
                             userwallet.save()
                             user_id.save()
                             model.save()
-                            subject = 'MT5 Transfer Request from IPAYMATICS'
+                            subject = 'MT5 Transfer Request from BNXG'
                             html_message = render_to_string('account/email/ipay.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':payment_o.mt5_account, 'amount':amount*0.95, 'id': model.id})
                             plain_message = strip_tags(html_message)
-                            from_email = 'support@ipaymatics.com'
+                            from_email = 'support@BNXG.com'
                             to = 'partner@dibortfx.com'
 
                             send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
@@ -599,7 +599,7 @@ def neft(request):
                             payload = "{'From': 'TFCTOR', 'Msg': 'Hello World', 'To': '7000934949,'}"
                             response = requests.request("GET", url, data=payload)
                             print(response.text)
-                            # send_mail("", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@ipaymatics.com", ['rds0751@gmail.com',])
+                            # send_mail("", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@BNXG.com", ['rds0751@gmail.com',])
                             message = "MT5 Transfer Request Received!"
                         else:
                             message = "Not Enough Balance in Redeemable Wallet!"
@@ -676,10 +676,10 @@ def neft(request):
                             userwallet.save()
                             user_id.save()
                             model.save()
-                            subject = 'DCXa Transfer Request from IPAYMATICS'
+                            subject = 'DCXa Transfer Request from BNXG'
                             html_message = render_to_string('account/email/ipay.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':payment_o.mt5_account, 'amount':amount*0.95, 'id': model.id})
                             plain_message = strip_tags(html_message)
-                            from_email = 'support@ipaymatics.com'
+                            from_email = 'support@BNXG.com'
                             to = 'support@dcxa.io'
 
                             send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
@@ -687,7 +687,7 @@ def neft(request):
                             payload = "{'From': 'TFCTOR', 'Msg': 'Hello World', 'To': '7000934949,'}"
                             response = requests.request("GET", url, data=payload)
                             print(response.text)
-                            # send_mail("", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@ipaymatics.com", ['rds0751@gmail.com',])
+                            # send_mail("", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@BNXG.com", ['rds0751@gmail.com',])
                             message = "DCXa Transfer Request Received!"
                         else:
                             message = "Not Enough Balance in Redeemable Wallet!"
@@ -760,178 +760,311 @@ def history(request):
     page_range = list(paginator.page_range)[start_index:end_index]
     print(dincome,mincome,wincome)
     return render(request, 'users/incomehistory.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome})
+@login_required
+def referral(request):
+    user = request.user
+    page = request.GET.get('page', 1)
+    history_list = WalletHistory.objects.filter(user_id=str(user)).order_by('-created_at')
+    paginator = Paginator(history_list, 20)
+    try:
+        page = int(request.GET.get('page', '1'))
+    except:
+        page = 1
+
+    try:
+        histories = paginator.page(page)
+    except(EmptyPage, InvalidPage):
+        histories = paginator.page(1)
+
+    wstart_date = datetime.datetime.now() + datetime.timedelta(-1)
+    wend_date = datetime.datetime.now()
+    dstart_date = datetime.datetime.now() + datetime.timedelta(-600)
+    dend_date = datetime.datetime.now()
+    mstart_date = datetime.datetime.now() + datetime.timedelta(-30)
+    mend_date = datetime.datetime.now()
+    mwhs = WalletHistory.objects.filter(created_at__range=(mstart_date, mend_date), user_id=str(user))
+    wwhs = WalletHistory.objects.filter(created_at__range=(wstart_date, wend_date), user_id=str(user))
+    dwhs = WalletHistory.objects.filter(created_at__range=(dstart_date, dend_date), user_id=str(user))
+    dincome = 0
+    wincome = 0
+    mincome = 0
+    try:
+        fake = FakeHistory.objects.get(user=user)
+    except Exception as e:
+        fake = 'blank'
+    if fake == 'blank':
+        for wh in wwhs:
+            if 'Shopping Income from' in wh.comment or 'Shopping Self Earning' in wh.comment:
+                wincome += wh.amount
+        for wh in dwhs:
+            if wh.type != None:
+                if 'credit' in wh.type or 'income' in wh.type:
+                    dincome += wh.amount
+        for wh in mwhs:
+            if 'Shopping Income from' in wh.comment or 'Shopping Self Earning' in wh.comment:
+                mincome += wh.amount
+    else:
+        dincome = fake.total
+        mincome = fake.month
+        wincome = fake.week
+
+    # Get the index of the current page
+    index = histories.number - 1  # edited to something easier without index
+    # This value is maximum index of your pages, so the last page - 1
+    max_index = len(paginator.page_range)
+    # You want a range of 7, so lets calculate where to slice the list
+    start_index = index - 2 if index >= 2 else 0
+    end_index = index + 3 if index <= max_index - 3 else max_index
+    # Get our new page range. In the latest versions of Django page_range returns 
+    # an iterator. Thus pass it to list, to make our slice possible again.
+    page_range = list(paginator.page_range)[start_index:end_index]
+    print(dincome,mincome,wincome)
+    return render(request, 'wallets/referral.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome})
+@login_required
+def pool(request):
+    user = request.user
+    page = request.GET.get('page', 1)
+    history_list = WalletHistory.objects.filter(user_id=str(user)).order_by('-created_at')
+    paginator = Paginator(history_list, 20)
+    try:
+        page = int(request.GET.get('page', '1'))
+    except:
+        page = 1
+
+    try:
+        histories = paginator.page(page)
+    except(EmptyPage, InvalidPage):
+        histories = paginator.page(1)
+
+    wstart_date = datetime.datetime.now() + datetime.timedelta(-1)
+    wend_date = datetime.datetime.now()
+    dstart_date = datetime.datetime.now() + datetime.timedelta(-600)
+    dend_date = datetime.datetime.now()
+    mstart_date = datetime.datetime.now() + datetime.timedelta(-30)
+    mend_date = datetime.datetime.now()
+    mwhs = WalletHistory.objects.filter(created_at__range=(mstart_date, mend_date), user_id=str(user))
+    wwhs = WalletHistory.objects.filter(created_at__range=(wstart_date, wend_date), user_id=str(user))
+    dwhs = WalletHistory.objects.filter(created_at__range=(dstart_date, dend_date), user_id=str(user))
+    dincome = 0
+    wincome = 0
+    mincome = 0
+    try:
+        fake = FakeHistory.objects.get(user=user)
+    except Exception as e:
+        fake = 'blank'
+    if fake == 'blank':
+        for wh in wwhs:
+            if 'Shopping Income from' in wh.comment or 'Shopping Self Earning' in wh.comment:
+                wincome += wh.amount
+        for wh in dwhs:
+            if wh.type != None:
+                if 'credit' in wh.type or 'income' in wh.type:
+                    dincome += wh.amount
+        for wh in mwhs:
+            if 'Shopping Income from' in wh.comment or 'Shopping Self Earning' in wh.comment:
+                mincome += wh.amount
+    else:
+        dincome = fake.total
+        mincome = fake.month
+        wincome = fake.week
+
+    # Get the index of the current page
+    index = histories.number - 1  # edited to something easier without index
+    # This value is maximum index of your pages, so the last page - 1
+    max_index = len(paginator.page_range)
+    # You want a range of 7, so lets calculate where to slice the list
+    start_index = index - 2 if index >= 2 else 0
+    end_index = index + 3 if index <= max_index - 3 else max_index
+    # Get our new page range. In the latest versions of Django page_range returns 
+    # an iterator. Thus pass it to list, to make our slice possible again.
+    page_range = list(paginator.page_range)[start_index:end_index]
+    print(dincome,mincome,wincome)
+    return render(request, 'wallets/pool.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome})
+@login_required
+def sponsor(request):
+    user = request.user
+    page = request.GET.get('page', 1)
+    history_list = WalletHistory.objects.filter(user_id=str(user)).order_by('-created_at')
+    paginator = Paginator(history_list, 20)
+    try:
+        page = int(request.GET.get('page', '1'))
+    except:
+        page = 1
+
+    try:
+        histories = paginator.page(page)
+    except(EmptyPage, InvalidPage):
+        histories = paginator.page(1)
+
+    wstart_date = datetime.datetime.now() + datetime.timedelta(-1)
+    wend_date = datetime.datetime.now()
+    dstart_date = datetime.datetime.now() + datetime.timedelta(-600)
+    dend_date = datetime.datetime.now()
+    mstart_date = datetime.datetime.now() + datetime.timedelta(-30)
+    mend_date = datetime.datetime.now()
+    mwhs = WalletHistory.objects.filter(created_at__range=(mstart_date, mend_date), user_id=str(user))
+    wwhs = WalletHistory.objects.filter(created_at__range=(wstart_date, wend_date), user_id=str(user))
+    dwhs = WalletHistory.objects.filter(created_at__range=(dstart_date, dend_date), user_id=str(user))
+    dincome = 0
+    wincome = 0
+    mincome = 0
+    try:
+        fake = FakeHistory.objects.get(user=user)
+    except Exception as e:
+        fake = 'blank'
+    if fake == 'blank':
+        for wh in wwhs:
+            if 'Shopping Income from' in wh.comment or 'Shopping Self Earning' in wh.comment:
+                wincome += wh.amount
+        for wh in dwhs:
+            if wh.type != None:
+                if 'credit' in wh.type or 'income' in wh.type:
+                    dincome += wh.amount
+        for wh in mwhs:
+            if 'Shopping Income from' in wh.comment or 'Shopping Self Earning' in wh.comment:
+                mincome += wh.amount
+    else:
+        dincome = fake.total
+        mincome = fake.month
+        wincome = fake.week
+
+    # Get the index of the current page
+    index = histories.number - 1  # edited to something easier without index
+    # This value is maximum index of your pages, so the last page - 1
+    max_index = len(paginator.page_range)
+    # You want a range of 7, so lets calculate where to slice the list
+    start_index = index - 2 if index >= 2 else 0
+    end_index = index + 3 if index <= max_index - 3 else max_index
+    # Get our new page range. In the latest versions of Django page_range returns 
+    # an iterator. Thus pass it to list, to make our slice possible again.
+    page_range = list(paginator.page_range)[start_index:end_index]
+    print(dincome,mincome,wincome)
+    return render(request, 'wallets/sponsor.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome})
+@login_required
+def cto(request):
+    user = request.user
+    page = request.GET.get('page', 1)
+    history_list = WalletHistory.objects.filter(user_id=str(user)).order_by('-created_at')
+    paginator = Paginator(history_list, 20)
+    try:
+        page = int(request.GET.get('page', '1'))
+    except:
+        page = 1
+
+    try:
+        histories = paginator.page(page)
+    except(EmptyPage, InvalidPage):
+        histories = paginator.page(1)
+
+    wstart_date = datetime.datetime.now() + datetime.timedelta(-1)
+    wend_date = datetime.datetime.now()
+    dstart_date = datetime.datetime.now() + datetime.timedelta(-600)
+    dend_date = datetime.datetime.now()
+    mstart_date = datetime.datetime.now() + datetime.timedelta(-30)
+    mend_date = datetime.datetime.now()
+    mwhs = WalletHistory.objects.filter(created_at__range=(mstart_date, mend_date), user_id=str(user))
+    wwhs = WalletHistory.objects.filter(created_at__range=(wstart_date, wend_date), user_id=str(user))
+    dwhs = WalletHistory.objects.filter(created_at__range=(dstart_date, dend_date), user_id=str(user))
+    dincome = 0
+    wincome = 0
+    mincome = 0
+    try:
+        fake = FakeHistory.objects.get(user=user)
+    except Exception as e:
+        fake = 'blank'
+    if fake == 'blank':
+        for wh in wwhs:
+            if 'Shopping Income from' in wh.comment or 'Shopping Self Earning' in wh.comment:
+                wincome += wh.amount
+        for wh in dwhs:
+            if wh.type != None:
+                if 'credit' in wh.type or 'income' in wh.type:
+                    dincome += wh.amount
+        for wh in mwhs:
+            if 'Shopping Income from' in wh.comment or 'Shopping Self Earning' in wh.comment:
+                mincome += wh.amount
+    else:
+        dincome = fake.total
+        mincome = fake.month
+        wincome = fake.week
+
+    # Get the index of the current page
+    index = histories.number - 1  # edited to something easier without index
+    # This value is maximum index of your pages, so the last page - 1
+    max_index = len(paginator.page_range)
+    # You want a range of 7, so lets calculate where to slice the list
+    start_index = index - 2 if index >= 2 else 0
+    end_index = index + 3 if index <= max_index - 3 else max_index
+    # Get our new page range. In the latest versions of Django page_range returns 
+    # an iterator. Thus pass it to list, to make our slice possible again.
+    page_range = list(paginator.page_range)[start_index:end_index]
+    print(dincome,mincome,wincome)
+    return render(request, 'wallets/cto.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome})
+@login_required
+def direct(request):
+    user = request.user
+    page = request.GET.get('page', 1)
+    history_list = WalletHistory.objects.filter(user_id=str(user)).order_by('-created_at')
+    paginator = Paginator(history_list, 20)
+    try:
+        page = int(request.GET.get('page', '1'))
+    except:
+        page = 1
+
+    try:
+        histories = paginator.page(page)
+    except(EmptyPage, InvalidPage):
+        histories = paginator.page(1)
+
+    wstart_date = datetime.datetime.now() + datetime.timedelta(-1)
+    wend_date = datetime.datetime.now()
+    dstart_date = datetime.datetime.now() + datetime.timedelta(-600)
+    dend_date = datetime.datetime.now()
+    mstart_date = datetime.datetime.now() + datetime.timedelta(-30)
+    mend_date = datetime.datetime.now()
+    mwhs = WalletHistory.objects.filter(created_at__range=(mstart_date, mend_date), user_id=str(user))
+    wwhs = WalletHistory.objects.filter(created_at__range=(wstart_date, wend_date), user_id=str(user))
+    dwhs = WalletHistory.objects.filter(created_at__range=(dstart_date, dend_date), user_id=str(user))
+    dincome = 0
+    wincome = 0
+    mincome = 0
+    try:
+        fake = FakeHistory.objects.get(user=user)
+    except Exception as e:
+        fake = 'blank'
+    if fake == 'blank':
+        for wh in wwhs:
+            if 'Shopping Income from' in wh.comment or 'Shopping Self Earning' in wh.comment:
+                wincome += wh.amount
+        for wh in dwhs:
+            if wh.type != None:
+                if 'credit' in wh.type or 'income' in wh.type:
+                    dincome += wh.amount
+        for wh in mwhs:
+            if 'Shopping Income from' in wh.comment or 'Shopping Self Earning' in wh.comment:
+                mincome += wh.amount
+    else:
+        dincome = fake.total
+        mincome = fake.month
+        wincome = fake.week
+
+    # Get the index of the current page
+    index = histories.number - 1  # edited to something easier without index
+    # This value is maximum index of your pages, so the last page - 1
+    max_index = len(paginator.page_range)
+    # You want a range of 7, so lets calculate where to slice the list
+    start_index = index - 2 if index >= 2 else 0
+    end_index = index + 3 if index <= max_index - 3 else max_index
+    # Get our new page range. In the latest versions of Django page_range returns 
+    # an iterator. Thus pass it to list, to make our slice possible again.
+    page_range = list(paginator.page_range)[start_index:end_index]
+    print(dincome,mincome,wincome)
+    return render(request, 'wallets/direct.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome})
 
 @login_required
 def imps(request):
-    message = ""
-    def generateid():
-        txnid = get_random_string(8)
-        try:
-            txn = WalletHistory.objects.get(txnid = txnid)
-        except WalletHistory.DoesNotExist:
-            txn = 0
-        if txn:
-            generateid()
-        else:
-            return 'JR{}'.format(txnid)
-
-
-    def details(mobile):
-        url = "https://www.mobilerechargenow.com/api/v2/dmt/cusdetails.php?username=MRN1747997&apikey=1348504980&number={}&format=json".format(mobile)
-        r = requests.get(url)
-        data = r.json()
-        status = data[
-        'Status'
-        ]
-        return status, data
     
-
-    def register(mobile, name):
-        url = "https://mobilerechargenow.com/api/v2/dmt/cusregistration.php?username=MRN1747997&apikey=1348504980&number={}&name={}&format=json".format(mobile, name)
-        r = requests.get(url)
-        data = r.json()
-        status = data[
-        'Status'
-        ]
-        return status, data    
-
-    def registerotp(mobile, otp):
-        url = "https://www.mobilerechargenow.com/api/v2/dmt/customerverify.php?username=MRN1747997&apikey=1348504980&number={}&otp={}&format=json".format(mobile, otp)
-        r = requests.get(url)
-        data = r.json()
-        status = data[
-        'Status'
-        ]
-        return status, data    
-
-    def addbene(mobile, bname, bmobile, bacc, ifsc):
-        url = "https://www.mobilerechargenow.com/api/v2/dmt/addbeneficiary.php?username=MRN1747997&apikey=1348504980&number={}&beneficiaryname={}&beneficiaryno={}&beneficiaryacc={}&ifsccode={}".format(mobile, bname, bmobile, bacc, ifsc)
-        r = requests.get(url)
-        data = r.json()
-        status = data[
-        'Status'
-        ]
-        return status, data    
-
-    def beneotp(bmobile, otp, bid):
-        url = "https://www.mobilerechargenow.com/api/v2/dmt/beneficiaryverifiy.php?username=MRN1747997&apikey=1348504980&number={}&otp={}&beneficiaryid={}".format(mobile, otp, bid)
-        r = requests.get(url)
-        data = r.json()
-        status = data[
-        'Status'
-        ]
-        return status, data
-
-    def bankvalidate(mobile, bacc, ifsc, txnid):
-        url = "http://mobilerechargenow.com/api/v2/dmt/bankvalidate.php?username=MRN1747997&apikey=1348504980&mobile={}&accountno={}&ifsccode={}&txnid={}&format=json".format(mobile, bacc, ifsc, txnid)
-        r = requests.get(url)
-        data = r.json()
-        status = data[
-        'verifyStatus'
-        ]
-        return status, data
-
-    def benelist(mobile):
-        url = "http://mobilerechargenow.com/api/v2/dmt/beneficiarylist.php?username=MRN1747997&apikey=1348504980&number={}".format(mobile)
-        r = requests.get(url)
-        data = r.json()
-        status = data[
-        'Status'
-        ]
-        return status, data    
-
-    def registermain():
-        mobile = request.POST.get('mobile')
-        rstatus = 'do it'
-        rdata = 'doing'
-        rostatus = 'not yet received'
-        rodata = "not received yet"
-        if request.method == 'POST' and 'registerotp' in request.POST:
-            mobile = request.POST.get('mobile')
-            rotp = request.POST.get('rotp')
-            rostatus, rodata = registerotp(mobile, rotp)
-        elif 'name' in request.POST:
-            name = request.POST.get('name')
-            rstatus, rdata = register(mobile, name)
-        return rstatus, rdata, rostatus, rodata
-
-    mobile = request.user.mobile
-    bname = 'none'
-    bmobile = 'none'
-    bacc = 'none'
-    ifsc = 'none'
-    abstatus = abdata = 'blank'
-
-    def addbenemain():
-        mobile = bname = bmobile = bacc = ifsc = 'none'
-        benelist = Beneficiary.objects.filter(user_id=str(request.user))
-        abstatus = abdata = bostatus = bodata = 'blank'
-        if request.method == 'POST' and 'addbene' in request.POST:
-            mobile = request.user.mobile
-            bname = request.POST.get('bname')
-            bmobile = request.POST.get('bmobile')
-            bacc = request.POST.get('bacc')
-            ifsc = request.POST.get('ifsc')
-            txnid = generateid()
-            abstatus, abdata = addbene(mobile, bname, bmobile, bacc, ifsc)
-        
-        if request.method == 'POST' and 'botp' in request.POST:
-            otp = request.POST.get('botp')
-            bid = request.POST.get('bid')
-            bmobile = request.POST.get('bmobile')
-            bacc = request.POST.get('bacc')
-            ifsc = request.POST.get('ifsc')
-            txnid = generateid()
-            bostatus, bodata = beneotp(bmobile, otp, bid)
-            # bvstatus, bvdata = bankvalidate(bmobile, bacc, ifsc, txnid)
-            if bostatus == 'SUCCESS':
-                # if bvstatus == 'VERIFIED':
-                b = Beneficiary()
-                b.name = request.POST.get('bname')
-                b.mobile_number = request.POST.get('bmobile')
-                b.account_number = request.POST.get('bacc')
-                b.ifsc = request.POST.get('ifsc')
-                b.status = 'Active'
-                b.bene_id = request.POST.get('bid')
-                b.user_id = request.user.username
-                b.save()
-                # else:
-                    # message = "Bank Not Valid"
-        return benelist, abstatus, abdata, bostatus, bodata, mobile, bname, bmobile, bacc, ifsc, bvstatus
-
-
-    mobile = request.user.mobile
-    dstatus, ddata = details(mobile)
-    bvstatus = bvdata = ''
-
-
-    
-    if dstatus != 'SUCCESS':
-        rstatus, rdata, rostatus, rodata = registermain()
-        dstatus, ddata = details(mobile)
-    elif dstatus == 'SUCCESS':
-        rostatus = "not needed"
-        rstatus = "not needed"
-        benelist, abstatus, abdata, bostatus, bodata, mobile, bname, bmobile, bacc, ifsc, bvdata = addbenemain()
-
-
-    return render(request, 'users/moneytransfer.html',
-        {
-        'bvdata': bvdata,
-        'bvstatus': bvstatus,
-        'abstatus': abstatus,
-        'abdata': abdata,
-        'dstatus': dstatus,
-        'rostatus': rostatus,
-        'rstatus': rstatus,
-        'benelist': benelist,
-        'mobile': mobile,
-        'bname': bname,
-        'bmobile': bmobile,
-        'bacc': bacc,
-        'ifsc': ifsc,
-        'message': message,
-        })
+    return render(request, 'users/moneytransfer.html')
 
 @login_required
 def mt5t(request):
