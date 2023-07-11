@@ -42,7 +42,7 @@ class SimpleSignupForm(SignupForm):
 		try:
 			userr = User.objects.get(username=referral)
 		except Exception as e:
-			raise e
+			userr = 'blank'
 		if userr == 'blank':
 			referral = 'BN999999'
 		plan = LevelUser()

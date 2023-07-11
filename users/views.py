@@ -155,8 +155,11 @@ def referalsignup(request, use):
     logout(request)
     user = User.objects.get(username=use)
     user_name = user.name
+    print(request.POST)
     if request.method == 'POST':
         form = SimpleSignupForm()
+        print(form.errors)
+        print(form.is_valid())
         if form.is_valid():
             form.save()
             return redirect('/signup/onboarding/')
