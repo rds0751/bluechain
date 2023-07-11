@@ -41,11 +41,7 @@
       <h4 class="username">Level 1</h4>
       <div class="row">
         <div class="col-12">
-        {% if plan1 %}
         <img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ request.user.username }}
-        {% else %}
-        <img width="150px" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png"><br>{{ request.user.username }}        
-        {% endif %}
         </div>
       </div>
       <div class="row">
@@ -80,7 +76,7 @@
       <h4 class="username">Level 2</h4>
       <div class="row">
         <div class="col-12">
-        {% if plan1 %}
+        {% if plan2.length %}
         <img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ request.user.username }}
         {% else %}
         <img width="150px" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png"><br>{{ request.user.username }}        
@@ -119,7 +115,7 @@
       <h4 class="username">Level 3</h4>
       <div class="row">
         <div class="col-12">
-        {% if plan1 %}
+        {% if plan3.length %}
         <img width="150px" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ request.user.username }}
         {% else %}
         <img width="150px" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png"><br>{{ request.user.username }}        
