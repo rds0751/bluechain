@@ -36,7 +36,7 @@
                                     <td class="hidden-xs">{{ x.created_at|date:'y-m-d' }}</td>
                                     <td class="text-center">
                                             {% if x.status == 0 %}
-                                        <form action="/panel/franchise/" method="POST" target="_blank">
+                                        <form action="/m2/admin/franchise/" method="POST" target="_blank">
                                             {% csrf_token %}
                                             <select name='status' style="width: 200px; color: white; font-weight: bolder; background-color: {% if x.status == 0 %}orange{% elif x.status == 1 %}green{% elif x.status == -1 %}red{% endif %}">
                                                 <option style="color: green; background-color: white" value="1">Activate</option>

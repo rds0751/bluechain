@@ -51,7 +51,7 @@
                                     <td class="hidden-xs">{{ x.order.date_placed|date:'d M' }}</td>
                                     <td class="hidden-xs">{{ x.order.shipping_address }}</td>
                                     <td class="text-center">
-                                        <form action="/panel/orders/" method="POST" target="_blank">
+                                        <form action="/m2/admin/orders/" method="POST" target="_blank">
                                             {% csrf_token %}
                                             <select name='status' style="width: 200px; color: black; font-weight: bolder; background-color: {% if x.order.status == 'Being Processed' %}orange{% elif x.order.status == 'Processed' %}lightgreen{% elif x.order.status == 'Cancelled' %}pink{% else %}yellow{% endif %}">
                                                 <option style="color: white; background-color: white">{{ x.order.status }}</option>
@@ -63,7 +63,7 @@
                                             <textarea name='comment' style="width: 200px;" placeholder="Comment on changing order status">{% if x.order.comment %}{{ x.order.comment }}{% endif %}</textarea>
                                             <input type="hidden" name="order" value="{{ x.order.number }}">
                                             <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="View User">Change Status</button>
-                                            <a href="/panel/invoice/{{ x.order.number }}/" class="btn btn-xs btn-default" target="blank">Invoice</a>
+                                            <a href="/m2/admin/invoice/{{ x.order.number }}/" class="btn btn-xs btn-default" target="blank">Invoice</a>
                                         </form>
                                     </td>
                                 </tr>

@@ -170,7 +170,7 @@ def vendorsignup(request):
         form = SimpleSignupForm()
         if form.is_valid():
             form.save()
-            return redirect('/panel/')
+            return redirect('/m2/admin/')
     else:
         form = SimpleSignupForm()
     return render(request, 'account/vendorsignup.html', {'form': form})
@@ -226,10 +226,13 @@ class UserDashboardView(LoginRequiredMixin, ListView):
         self.request.session['user_id'] = self.request.user.username
         context = super().get_context_data(*args, **kwargs)
         amount = 0
+        print(self.request.user)
         try:
-            levelp = LevelUser.objects.get(user=self.request.user)
+            levelp = LevelUser.objects.filter(user=self.request.user.username).order_by('-created_at')[0]
         except Exception as e:
             levelp = 'None'
+
+        print(levelp.level.amount, 'wedfrghnbgvfdsasdfghgfdewqedfgh                          55555555555555555555555555555555555555555555')
 
         user = User.objects.get(username=self.request.user)
         try:

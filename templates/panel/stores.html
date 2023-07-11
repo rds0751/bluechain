@@ -51,7 +51,7 @@
                                     <td class="font-500">{{ x.name|truncatewords:"3" }}</td>
                                     <td class="hidden-xs">{{ x.primary_address }}</td>
                                     <td class="text-center">
-                                        <form action="/panel/stores/" method="POST">
+                                        <form action="/m2/admin/stores/" method="POST">
                                             {% csrf_token %}
                                             <input type="hidden" name="store" value="{{ x.id }}">
                                             <button type="submit">Edit</button>
