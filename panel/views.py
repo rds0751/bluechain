@@ -1343,13 +1343,8 @@ def activate(user, amount):
                     print('outside')
                 level = level + 1
             
-<<<<<<< HEAD
             model, created = LevelUser.objects.get_or_create(user=userid.username, level=levelp, active=True)
             model, created = LevelUser.objects.get_or_create(user=userid.username, level=levelp, active=True)
-=======
-            model, created = LevelUser.objects.get_or_create(user=userid.username)
-            model, created = LevelUser.objects.get_or_create(user=userid.username)
->>>>>>> 61d60f6 (hello)
             model.user = userid.username
             model.level = levelp
             model.active = True
