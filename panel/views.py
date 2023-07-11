@@ -1266,10 +1266,7 @@ def activate(user, amount):
                     upline_user = 'blank'
                 try:
                     upgraded = LevelUser.objects.get(user=upline, active=True)
-<<<<<<< HEAD
                     capping = upgraded.level.amount * 2.5
-=======
->>>>>>> 61d60f6 (hello)
                 except Exception as e:
                     upgraded = 'blank'
                     capping = 0
