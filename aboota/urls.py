@@ -37,7 +37,7 @@ urlpatterns = [
     path('soon/', TemplateView.as_view(template_name='users/coming_soon.html')),
     path('users/', include('users.urls', namespace="users")),
     path('level/', include('level.urls', namespace="level")),
-    path('/m2/admin/', include('panel.urls', namespace="panel")),
+    path('m2/admin/', include('panel.urls', namespace="panel")),
     path('search/', include("search.urls", namespace="searchy")),
     path("signup/onboarding/", views.signuponboarding, name="signup-onboarding"),
     path("api-auth/", include("rest_framework.urls")),
