@@ -47,15 +47,15 @@
                                     <td class="hidden-xs">{% if x.top != 0 and x.top.level.amount != 0 %}{{x.top.level.amount}}{% else %}Inactive{% endif %}</td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <form style="float: left;" action="/panel/users/{{ x.id }}/">
+                                            <form style="float: left;" action="/m2/admin/users/{{ x.id }}/">
                                                 <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="View User"><i style="color: green" class="ion-information-circled"></i></button>
                                             </form>
-                                            <form style="float: left;" action="/panel/users/{{ x.id }}/"  method="POST" onsubmit="if(!confirm('Are you sure?')){return false;}">
+                                            <form style="float: left;" action="/m2/admin/users/{{ x.id }}/"  method="POST" onsubmit="if(!confirm('Are you sure?')){return false;}">
                                                 {% csrf_token %}
                                                 <input type="hidden" name="block">
                                                 <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Block User"><i style="color: yellow" class="ion-minus-circled"></i></button>
                                             </form>
-                                            <form style="float: right;" action="/panel/login/" method="POST">
+                                            <form style="float: right;" action="/m2/admin/login/" method="POST">
                                             {% csrf_token %}
                                             <input type="hidden" name="username" value="{{ x.username }}">
                                             <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="Login User"><i style="color: violet" class="ion-cube"></i></button>

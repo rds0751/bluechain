@@ -63,8 +63,8 @@
                                     <td>{{ x.directs }}</td>
                                     <td>{{ x.user.wallet }}</td>
                                     <td>{{ x.ccm_pool }} Months</td>
-                                    <td>{% if x.kyc.approved == True %}Approved{% elif x.kyc.approved == False %}Rejected{% elif x.kyc %}Pending<a href="/panel/users/{{x.user.id}}">click</a>{% else %}None{% endif %}</td>
-                                    <td>{% if x.bank.status == True %}Approved{% elif x.bank.status == False %}Rejected{% elif x.bank %}Pending<a href="/panel/users/{{x.user.id}}">click</a>{% else %}None{% endif %}</td>
+                                    <td>{% if x.kyc.approved == True %}Approved{% elif x.kyc.approved == False %}Rejected{% elif x.kyc %}Pending<a href="/m2/admin/users/{{x.user.id}}">click</a>{% else %}None{% endif %}</td>
+                                    <td>{% if x.bank.status == True %}Approved{% elif x.bank.status == False %}Rejected{% elif x.bank %}Pending<a href="/m2/admin/users/{{x.user.id}}">click</a>{% else %}None{% endif %}</td>
                                     <td>{{ x.comments }}</td>
                                 </tr>
                                 {% endfor %}

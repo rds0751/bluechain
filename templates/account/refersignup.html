@@ -101,7 +101,7 @@
                               </div>
                           </div>  
                       <div class="mb-2 text-dark">
-                          <div class="form-group mb-2 position-relative check-valid is-valid">
+                          <div onLoad="loadUsername()" class="form-group mb-2 position-relative check-valid is-valid">
                               <div class="input-group input-group-lg">
                                   <div class="form-floating">
                                   <input style="font-size: .8rem;" placeholder="Sponsor Name" type="text" minlength="1" maxlength="150" class="form-control border-start-0" id="user_name" readonly="">
@@ -218,8 +218,8 @@
 <script src="{% static '/vendor/swiper-7.3.1/swiper-bundle.min.js' %}"></script>
 
 <script>
-  $("#id_username").change(function () {
-    var username = $(this).val();
+  function loadUsername() {
+    var username = document.getElementById("id_username").value;
 
     $.ajax({
       url: '/users/ajax/validate_username/',
@@ -233,7 +233,6 @@
         }
       }
     });
-
-  });
+}
 </script>
 {% endblock %}

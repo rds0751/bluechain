@@ -150,7 +150,7 @@ def user(request, id):
         user = User.objects.get(id=id)
         user.is_active = False
         user.save()
-        return redirect('/panel/users/')
+        return redirect('/m2/admin/users/')
     
     u = User.objects.get(id=id)
     try:
@@ -1366,7 +1366,7 @@ def activation(request, id):
     if request.method == 'POST' and 'delete' in request.POST:
         act = Activation.objects.get(id=id)
         act.delete()
-        return redirect('/panel/activations/')
+        return redirect('/m2/admin/activations/')
 
     w = Activation.objects.get(id=id)
     u = User.objects.get(username=w.user)
@@ -1387,14 +1387,14 @@ def activation(request, id):
             act.comments = comment
             act.status = "Rejected"
             act.save()
-        return redirect('/panel/activations/')
+        return redirect('/m2/admin/activations/')
     if request.method == "POST" and 'cmnt' in request.POST:
         comment = request.POST.get('comment')
         act_id = request.POST.get('id')
         act = Activation.objects.get(id=act_id)
         act.comments = comment
         act.save()
-        return redirect('/panel/activations/')
+        return redirect('/m2/admin/activations/')
     return render(request, 'panel/activation.html', {'w': w, 'u': u, 'message': message})
 
 @staff_member_required

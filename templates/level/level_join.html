@@ -103,7 +103,7 @@
                 </section>
         <div class="mdc-layout-grid">
           <div class="mdc-layout-grid__inner">
-                  <div style="border-right: 1px dotted;" class="mdc-layout-grid__cell--span-6 stretch-card">
+                  <div style="border-right: 1px dotted;" class="mdc-layout-grid__cell--span-6 stretch-card mb-3">
                     <div>
                       <form class="template-demo" method="POST" action="/level/activation/" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -120,22 +120,16 @@
                           </div>
                       </div>
                             <br>
-                          <div style="width: 80%; margin-bottom: 10%;" class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+                          <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
                           <select class="form-select border-0" id="type" name="type" required="">
                               <option value='cash'>Pay in Cash</option>
                               <option value='online'>Pay by Service Wallet</option>
                           </select>
                           </div>
                           <br>
-                          {% if actp == 0 and acta == 0%}
-                          <button style="width: 80%; margin-bottom: 10%;" type="submit" class="btn btn-primary">
+                          <button type="submit" class="btn btn-primary">
                             Purchase Now
                           </button>
-                          {% elif actp > 0 %}
-                          <p style="color: orange">Note: Activation is in process!</p>
-                          {% elif acta > 0 %}
-                          ID Activated
-                          {% endif %}
                           </form>
                           <p>{{ message }}</p>
                       </div>
@@ -144,9 +138,9 @@
                     <div>
                       <form class="template-demo" method="POST" action="/level/payment/" enctype="multipart/form-data">{% csrf_token %}
                         <h5>Add Money to Service Balance</h5>
-                          <input style="width: 78%; -moz-appearance: textfield;" type="number" min="1" max="6000" name="amounta" placeholder="Amount in Dollars" class="amount">
-                          <p style="color: green;">Service Balance: $ {{ request.user.c }}</p>
-                          <button style="width: 80%" type="submit" class="btn btn-secondary">
+                          <input name="amounta" placeholder="Amount in Dollars" class="form-control border-start-0">
+                          <p>Service Balance: $ {{ request.user.c }}</p>
+                          <button type="submit" class="btn btn-primary">
                             Top Up Service Balance
                           </button>
                           </form>
