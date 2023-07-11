@@ -92,7 +92,7 @@
                               <div class="input-group input-group-lg">
                                   <div class="form-floating">
                                     {% if user %}
-                                  <input onkeyup="this.value = this.value.toUpperCase();" style="font-size: .8rem;" type="text" value="{{ user }}" disabled name="referal_code" placeholder="Sponsor ID" class="form-control border-start-0" id="id_username" autocomplete="off">
+                                  <input onkeyup="this.value = this.value.toUpperCase();" style="font-size: .8rem;" type="text" value="{{ user }}" name="referal_code" placeholder="Sponsor ID" class="form-control border-start-0" id="id_username" readonly>
                                   {% endif %}
                                   <label>Sponsor ID</label>
                                 </div>  
@@ -103,7 +103,7 @@
                           <div onLoad="loadUsername()" class="form-group mb-2 position-relative check-valid is-valid">
                               <div class="input-group input-group-lg">
                                   <div class="form-floating">
-                                  <input style="font-size: .8rem;" placeholder="Sponsor Name" type="text" minlength="1" maxlength="150" class="form-control border-start-0" id="user_name" readonly="">
+                                  <input style="font-size: .8rem;" value="{{name}}" placeholder="Sponsor Name" type="text" minlength="1" maxlength="150" class="form-control border-start-0" id="user_name" readonly="">
                                   <label>Sponsor Name</label>
                                 </div>  
                                 </div>
@@ -145,7 +145,7 @@
                         <div class="form-group mb-2 position-relative check-valid is-valid">
                               <div class="input-group input-group-lg">
                                   <div class="form-floating">
-                                  <input  style="font-size: .8rem;" autocomplete="sedrctvghb" type="text" placeholder="Enter 6 digit password" name="password1" class="form-control border-start-0" id="text-field-hero-input">
+                                  <input  style="font-size: .8rem;" autocomplete="sedrctvghb" type="password" placeholder="Enter 6 digit password" name="password1" class="form-control border-start-0" id="text-field-hero-input">
                                   <label>Password</label>
                                 </div>  
                                 </div>

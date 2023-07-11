@@ -34,7 +34,7 @@ urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('wallet/', include('wallets.urls', namespace="wallet")),
     url(r'api/', include('api.urls')),
-    url(r"register=(?P<use>\w{0,50})/", views.referalsignup, name="refersignup"),
+    url(r"register/(?P<use>\w{0,50})/", views.referalsignup, name="refersignup"),
     path('contact/', TemplateView.as_view(template_name='contact.html')),
     path('plan/', RedirectView.as_view(url=staticfiles_storage.url("IPM_23July_Final_Presentation-1.pdf")),),
     path('', TemplateView.as_view(template_name='apnabase.html')),

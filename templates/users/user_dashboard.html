@@ -311,12 +311,12 @@
             <div class="card bg-gradient-theme-light theme-purple border-0 mb-4">
                 <div class="card-body">
                     <h6 class="fw-medium">My Refer Link</h6>
-                    <p class="text-secondary">https://m2plus.io/register={{ request.user.username }}</p>
-                    <input type="input" style="width:10px; position:absolute; z-index: -100 !important;" value="https:/m2plus.io/register={{ user.username }}" id="copy-to-clipboard-input">
+                    <p class="text-secondary">https://m2plus.io/register/{{ request.user.username }}</p>
+                    <input type="input" style="width:10px; position:absolute; z-index: -100 !important;" value="https:/m2plus.io/register/{{ user.username }}" id="copy-to-clipboard-input">
                 </div>
                 <div class="card-footer text-center">
                     <a onclick="myyFunction()" class="btn btn-success">Copy</a>
-                    <a href="whatsapp://send?text=https://m2plus.io/register={{ user.username }}" class="btn btn-danger">Share</a>
+                    <a href="whatsapp://send?text=https://m2plus.io/register/{{ user.username }}" class="btn btn-danger">Share</a>
                 </div>
             </div>
         </div>
