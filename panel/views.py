@@ -24,11 +24,7 @@ from django.contrib.auth import load_backend, login
 from wallets.models import WalletHistory, Withdrawal, PaymentOption
 from users.models import User
 import random
-<<<<<<< HEAD
 from level.models import Activation, LevelIncomeSettings, LevelUser, PoolUser
-=======
-from level.models import Activation, LevelIncomeSettings, LevelUser
->>>>>>> 61d60f6 (hello)
 import csv
 
 @staff_member_required
