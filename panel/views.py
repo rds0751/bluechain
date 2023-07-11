@@ -291,7 +291,7 @@ def activate(user, amount):
         except Exception as e:
             pool_direct = PoolUser.objects.filter(plan=levelp, downlines__lte=1).order_by('created_at')[0]
             model = PoolUser()
-            model.user=pool_direct
+            model.user=user
             model.upline = pool_direct
             model.level = 1
             model.plan = levelp
@@ -1298,7 +1298,7 @@ def activate(user, amount):
                         if directs.count() > 1:
                             upline_wallets = WalletHistory()   
                             upline_wallets.user_id = upline  
-                            upline_wallets.amount = upline_amount    
+                            upline_wallets.amount = amount    
                             upline_wallets.type = "credit"   
                             upline_wallets.comment = "More than 2 direct upgrades"
                             upgraded.business += amount
