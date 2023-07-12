@@ -25,7 +25,7 @@ admin.site.index_title = "Welcome to M2Plus"
 admin.site.site_title = "M2Plus"
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^super-user/', admin.site.urls),
     url(r'^tickets/', include('ticket.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     path('accounts/login/', views.customlogin, name='customlogin'),
