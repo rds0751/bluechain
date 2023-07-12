@@ -6,66 +6,75 @@
 
     {% block content %}
     <style>
-        $r-pad: 6em;
-$b: $r-pad/3;
-$w-rng: .125*$b;
 
-@property --p {
-	syntax: '<integer>';
-	initial-value: 0;
-	inherits: true
+.progress {
+  width: 150px;
+  height: 150px;
+  background: none;
+  position: relative;
 }
 
-
-.loader {
-	--p: 0;
-	/* display: grid; */
-	place-content: center;
-	transform: scale(5);
-	clip-path: circle(49%);
-	animation: p 10s steps(100) infinite;
-	color: HSL(calc(var(--p)*2), 100%, 65%);
-	
-	&:before, &:after {
-		grid-row: 1;
-		grid-column: 1;
-	}	
-	
-	&:before {
-		border: solid $b transparent;
-		padding: $r-pad;
-		border-radius: 50%;
-		box-shadow: inset 0 0 0 2*$w-rng currentcolor;
-		--slice: calc(360deg/var(--n));
-		--s-gap: calc(var(--f)*var(--slice));
-		--solid: calc((1 - var(--f))*var(--slice));
-		background: 
-			repeating-conic-gradient(from calc(.5*var(--s-gap)), 
-					currentcolor 0% var(--solid), 
-					transparent 0% var(--slice)) border-box;
-		filter: blur(.5px);
-		--mask: 
-			conic-gradient(red 0% calc(var(--p)*1%), #{rgba(red, .3)} 0%), 
-			linear-gradient(red, red) border-box, 
-			radial-gradient(
-					red 0% #{$r-pad - 2*$w-rng}, 
-					transparent calc(#{$r-pad - 2*$w-rng} + 1px) calc(#{$r-pad - $w-rng} - 1px), 
-					red #{$r-pad - $w-rng} calc(#{$r-pad} + 1px), 
-					transparent calc(#{$r-pad} + 2px));
-		-webkit-mask: var(--mask);
-		-webkit-mask-composite: source-in, source-out;
-		content: ''
-	}
-	
-	&:after {
-		place-self: center;
-		counter-reset: p var(--p);
-		font: .625*$r-pad consolas, monaco, ubuntu mono, monospace;
-		content: counter(p) '%'
-	}
+.progress::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-@keyframes p { 90%, 10% { --p: 10 } }
+.progress>span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.progress .progress-left {
+  left: 0;
+}
+
+.progress .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 6px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+}
+
+.progress .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.progress .progress-right {
+  right: 0;
+}
+
+.progress .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+
+.progress .progress-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
     </style>
     <div class="container-fluid mb-4">
       <div class="row align-items-center page-title">
@@ -97,22 +106,14 @@ $w-rng: .125*$b;
                   <div class="col col-md col-lg-auto mnw-100 text-center">
                       <i class="bi bi-trophy h5 avatar avatar-50 bg-dark-orange text-orange rounded-circle mb-2"></i>
                       {% if amount != 'None' %}
-<<<<<<< HEAD
-=======
                         {% widthratio amount.level.amount 1 10 as c %}
->>>>>>> 91b36ebe10f3a11e751df14d1953014bc36b2d1d
                         <h4 class="increamentcount mb-0">{{ amount.level.amount }}</h4>
                         {% else %}
                         <h4 class="increamentcount mb-0">{{ 0 }}</h4>
                         {% endif %}
                       <p class="small text-secondary">My Package</p>
-<<<<<<< HEAD
-                  </div>
-                  {% comment %} <div class="col col-md col-lg-auto mnw-100 text-center">
-=======
                   </div> 
                   <div class="col col-md col-lg-auto mnw-100 text-center">
->>>>>>> 91b36ebe10f3a11e751df14d1953014bc36b2d1d
                       <i class="bi bi-award h5 avatar avatar-50 bg-dark-green text-green rounded-circle mb-2"></i>
                       <h4 class="increamentcount mb-0">{{ request.user.my_rank }}</h4>
                       <p class="small text-secondary">My Rank</p>
@@ -121,23 +122,12 @@ $w-rng: .125*$b;
                       <i class="bi bi-clipboard-check h5 avatar avatar-50 bg-dark-yellow text-yellow rounded-circle mb-2"></i>
                       <h4 class="increamentcount mb-0">{{ request.user.my_achievement }}</h4>
                       <p class="small text-secondary">My Achievement</p>
-<<<<<<< HEAD
-                  </div> {% endcomment %}
-                  <div class="col col-md col-lg-auto mnw-100 text-center">
-                        <div class='loader' style='--n: 16; --f: .2'></div>
-=======
                   </div>
-                  <div class="progress h-20 mb-4 bg-dark-theme textwhitecolor">
-                    <div class="progress-bar bg-orange" role="progressbar" style="width: 40%">my progress</div>
->>>>>>> 91b36ebe10f3a11e751df14d1953014bc36b2d1d
-                       <br> Capping Progress
-                </div>
               </div>
           </div>
       </div>
 
       <div class="row">
-          <!-- summary blocks -->
           <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6">
             <div class="card border-0 mb-4 theme-red bg-radial-gradient text-white">
                 <div class="card-body bg-none">
@@ -396,10 +386,39 @@ $w-rng: .125*$b;
                     <div style="height: 100px" class="coverimg w-100 h-100 end-0 top-0 position-absolute cover-left-center-img" style="background-image: url({% static 'img/offer-2.png' %});">
                         <img src="{% static 'img/offer-2.png' %}" class="w-100" alt="" style="display: none;">
                     </div>
-                    
                 </div>
             </div>
         </div>
+        
+          <!-- summary blocks -->
+          <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6 theme-blue bg-radial-gradient text-white rounded-lg p-5 shadow rounded-end">
+            <h2 class="h6 font-weight-bold text-center mb-4">Server time</h2>
+    
+            <!-- Progress bar 3 -->
+            <div class="progress mx-auto" data-value="76">
+              <span class="progress-left">
+                            <span class="progress-bar border-success" style="transform: rotate(93.6deg);"></span>
+              </span>
+              <span class="progress-right">
+                            <span class="progress-bar border-success" style="transform: rotate(180deg);"></span>
+              </span>
+              <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                <div class="h2 font-weight-bold">76<sup class="small">%</sup></div>
+              </div>
+            </div>
+            <!-- END -->
+    
+            <!-- Demo info -->
+            <div class="row text-center mt-4">
+              <div class="col-6 border-right">
+                <div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Last week</span>
+              </div>
+              <div class="col-6">
+                <div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Last month</span>
+              </div>
+            </div>
+            <!-- END -->
+          </div>
       </div>
       <script>
         function myyFunction() {
