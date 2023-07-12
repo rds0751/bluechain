@@ -2973,7 +2973,7 @@ output {
 .form-control {
 	display: block;
 	width: 100%;
-	height: 315px;
+	
 	padding: 6px 12px;
 	font-size: 16px;
 	line-height: 1.5;
@@ -3026,7 +3026,7 @@ input[type="search"] {
 	input[type="time"],
 	input[type="datetime-local"],
 	input[type="month"] {
-		line-height: 315px;
+		line-
 	}
 	input[type="date"].input-sm, .input-group-sm > input[type="date"].form-control,
 	.input-group-sm > input[type="date"].input-group-addon,
@@ -3288,8 +3288,8 @@ select[multiple].input-lg,
 	z-index: 2;
 	display: block;
 	width: 315px;
-	height: 315px;
-	line-height: 315px;
+	
+	line-
 	text-align: center;
 	pointer-events: none;
 }

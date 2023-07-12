@@ -2656,7 +2656,7 @@ svg.mdc-button__icon {
   padding: 0 20px;
   width: auto;
   max-width: 100%;
-  height: 415px;
+  height: 41px;
 }
 
 .mdc-fab--extended .mdc-fab__icon {
@@ -3027,7 +3027,7 @@ svg.mdc-button__icon {
   position: absolute;
   bottom: 0;
   box-sizing: border-box;
-  height: 415px;
+  height: 41px;
   padding: 16px;
 }
 
@@ -3140,8 +3140,8 @@ svg.mdc-button__icon {
 }
 
 .mdc-icon-button {
-  width: 415px;
-  height: 415px;
+  width: 41px;
+  height: 41px;
   padding: 12px;
   font-size: 24px;
   display: inline-block;
@@ -3360,7 +3360,7 @@ svg.mdc-button__icon {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 415px;
+  height: 41px;
   padding: 0 16px;
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
@@ -4395,7 +4395,7 @@ svg.mdc-button__icon {
   position: relative;
   align-items: center;
   justify-content: flex-start;
-  height: 415px;
+  height: 41px;
   padding: 0 26px;
   overflow: hidden;
 }
@@ -6451,7 +6451,7 @@ a.mdc-list-item {
 .mdc-slider {
   position: relative;
   width: 100%;
-  height: 415px;
+  height: 41px;
   cursor: pointer;
   touch-action: pan-x;
   -webkit-tap-highdark-color: rgba(0, 0, 0, 0);
@@ -6941,7 +6941,7 @@ a.mdc-list-item {
   position: absolute;
   top: 0;
   width: 615px;
-  height: 415px;
+  height: 41px;
   margin: 0;
   opacity: 0;
   cursor: pointer;
@@ -6975,8 +6975,8 @@ a.mdc-list-item {
   top: -17px;
   align-items: center;
   justify-content: center;
-  width: 415px;
-  height: 415px;
+  width: 41px;
+  height: 41px;
   transform: translateX(0);
   transition: transform 90ms cubic-bezier(0.4, 0, 0.2, 1), background-color 90ms cubic-bezier(0.4, 0, 0.2, 1), border-color 90ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -8049,7 +8049,7 @@ a.mdc-list-item {
 }
 
 .mdc-text-field--outlined.mdc-text-field--dense {
-  height: 415px;
+  height: 41px;
 }
 
 .mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--float-above {
@@ -9370,7 +9370,7 @@ a.mdc-list-item {
 }
 
 .mdc-top-app-bar--dense .mdc-top-app-bar__row {
-  height: 415px;
+  height: 41px;
 }
 
 .mdc-top-app-bar--dense .mdc-top-app-bar__section {
@@ -22940,7 +22940,7 @@ address p {
 .mdc-drawer .mdc-drawer__content .mdc-drawer-menu .mdc-drawer-item .mdc-expansion-panel-link,
 .mdc-drawer .mdc-drawer__content .mdc-drawer-menu .mdc-drawer-item .mdc-drawer-link {
   height: 40px;
-  line-height: 415px;
+  line-height: 41px;
   padding: 0 0.75rem;
   display: -webkit-flex;
   display: flex;
