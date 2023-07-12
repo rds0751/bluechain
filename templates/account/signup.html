@@ -69,30 +69,28 @@
               <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 col-xxl-3 text-center text-white py-3">
                   <h3 class="mb-3 mb-lg-4">Create Account</h3>
                   <p>Welcome to M2Plus</p>
+                  {% if form.errors %}
+                    <div class="alert alert-danger">
+                      <strong>Kindly check the data!</strong>
+                    </div>
+                  {% endif %}
                   
                     <form class="mb-4 text-start " id="signup_form" autocomplete="sedrctvghb" method="post" action="{% url 'account_signup' %}">
                       {% csrf_token %}
-                      <!-- alert messages -->
-                      {% if form.errors %}
-                        <div class="alert alert-danger fade show d-none mb-2 global-alert text-start" role="alert">
-                            <div class="row">
-                              <div class="col"><strong>You might get locked for 24 Hours! Use accurate details!</div>
-                          </div>
-                        </div>
-                      {% endif %}     
+                      <!-- alert messages -->    
                       
                       <div class="mb-2 text-dark">
                           <div class="form-group mb-2 position-relative check-valid is-valid">
                               <div class="input-group input-group-lg">
                                   <div class="form-floating">
-                                  <input onkeyup="this.value = this.value.toUpperCase();" style="font-size: .8rem;" type="text" name="referal_code" placeholder="Sponsor ID" class="form-control border-start-0" id="id_username" autocomplete="off">
+                                  <input onkeyup="this.value = this.value.toUpperCase();" style="font-size: .8rem;" type="text" name="referal_code" placeholder="Sponsor ID" class="form-control border-start-0" id="id_username">
                                   <label>Sponsor ID</label>
                                 </div>  
                                 </div>
                               </div>
                           </div>  
                       <div class="mb-2 text-dark">
-                          <div class="form-group mb-2 position-relative check-valid is-valid">
+                          <div onLoad="loadUsername()" class="form-group mb-2 position-relative check-valid is-valid">
                               <div class="input-group input-group-lg">
                                   <div class="form-floating">
                                   <input style="font-size: .8rem;" placeholder="Sponsor Name" type="text" minlength="1" maxlength="150" class="form-control border-start-0" id="user_name" readonly="">
@@ -137,17 +135,17 @@
                         <div class="form-group mb-2 position-relative check-valid is-valid">
                               <div class="input-group input-group-lg">
                                   <div class="form-floating">
-                                  <input  style="font-size: .8rem;" autocomplete="sedrctvghb" type="text" placeholder="Enter 6 digit password" name="password1" class="form-control border-start-0" id="text-field-hero-input">
+                                  <input  style="font-size: .8rem;" autocomplete="sedrctvghb" type="password" placeholder="Enter 6 digit password" name="password1" class="form-control border-start-0" id="password1">
                                   <label>Password</label>
-                                  
-                                  <input style="font-size: .8rem;" placeholder="Confirm Password" autocomplete="sedrctvghb" name="password2" class="form-control border-start-0" type="hidden" id="text-field-hero-input">
                                 </div>  
                                 </div>
                               </div>
                           </div>
-                        </div>
+                          <input style="font-size: .8rem;" value="" placeholder="Confirm Password" autocomplete="sedrctvghb" name="password2" class="form-control border-start-0" type="hidden" id="password2">
+                                  
+                                  
                           
-                          <button class="btn btn-lg btn-theme top-0 end-0 z-index-5 w-100 mt-4" type="submit" id="submitsignup">Signup <i class="bi bi-arrow-right"></i></button>
+                          <button class="btn btn-lg btn-primary top-0 end-0 z-index-5 w-100 mt-4" type="submit" id="submitsignup">Signup <i class="bi bi-arrow-right"></i></button>
                   </form>
 
                   <!-- or continue with options -->
@@ -200,18 +198,11 @@
     });
 
   });
+</script>
+<script>
   $("#password1").change(function () {
     var password = $(this).val();
-
-    $.ajax({
-      
-      dataType: 'json',
-      success: function (data) {
-        if (true) {
-          document.getElementById("user_name").value = data.is_taken;
-        }
-      }
-    });
+    document.getElementById("password2").value = password;
 
   });
 </script>
