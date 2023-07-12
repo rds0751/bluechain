@@ -107,16 +107,16 @@
                   <div class="col col-md col-lg-auto mnw-100 text-center">
                       <i class="bi bi-trophy h5 avatar avatar-50 bg-dark-orange text-orange rounded-circle mb-2"></i>
                       {% if amount != 'None' %}
-                        <h4 class="increamentcount mb-0">{{ amount.level.amount }}</h4>
+                        <h4 class="increamentcount mb-0">$ {{ amount.level.amount }}</h4>
                         {% else %}
-                        <h4 class="increamentcount mb-0">{{ 0 }}</h4>
+                        <h4 class="increamentcount mb-0">$ 0</h4>
                         {% endif %}
                       <p class="small text-secondary">My Package</p>
                   </div>
                   <div class="col col-md col-lg-auto mnw-100 text-center">
                       <i class="bi bi-award h5 avatar avatar-50 bg-dark-green text-green rounded-circle mb-2"></i>
-                      <h4 class="increamentcount mb-0">{{ request.user.my_rank }}</h4>
-                      <p class="small text-secondary">My Rank</p>
+                      <h4 class="increamentcount mb-0">{{ directs }}</h4>
+                      <p class="small text-secondary">My Directs</p>
                   </div>
                   <div class="col col-md col-lg-auto mnw-100 text-center mb-3">
                       <i class="bi bi-clipboard-check h5 avatar avatar-50 bg-dark-yellow text-yellow rounded-circle mb-2"></i>
@@ -160,7 +160,7 @@
                               <h5 class="text-muted fw-medium mb-1">My Team</p>
                           </div>
                           <div class="col">
-                              <h5>{{request.user.my_team}}</h5>
+                              <h5>{{all}}</h5>
                           </div>
                       </div>
                   </div>
@@ -179,7 +179,7 @@
                               <h5 class="text-muted fw-medium mb-1">My Directs</p>
                           </div>
                           <div class="col">
-                              <h5>{{ request.user.my_directs }}</h5>
+                              <h5>{{ directs }}</h5>
                           </div>
                       </div>
                   </div>

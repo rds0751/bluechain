@@ -233,63 +233,74 @@ class UserDashboardView(LoginRequiredMixin, ListView):
             levelp = LevelUser.objects.filter(user=self.request.user.username).order_by('-created_at')[0]
         except Exception as e:
             levelp = 'None'
+            print(e)
 
         user = User.objects.get(username=self.request.user)
         try:
             s = LevelUser.objects.get(user=user.username)
         except Exception as e:
             s = e
-        directs = LevelUser.objects.filter(direct=user).count()
-        level1 = LevelUser.objects.filter(direct=user.username).order_by('id')
+        directs = User.objects.filter(referral=user).count()
+        level1 = User.objects.filter(referral=user.username).order_by('id')
         level1n = []
         for x in level1:
             level1n.append(x)
         level2n = []
         for y in level1n:
-            level2 = LevelUser.objects.filter(direct=y).order_by('id')
+            level2 = User.objects.filter(referral=y).order_by('id')
             for z in level2:
                 level2n.append(z)
         level3n = []
         for y in level2n:
-            level3 = LevelUser.objects.filter(direct=y).order_by('id')
+            level3 = User.objects.filter(referral=y).order_by('id')
             for z in level3:
                 level3n.append(z)
         level4n = []
         for y in level3n:
-            level4 = LevelUser.objects.filter(direct=y).order_by('id')
+            level4 = User.objects.filter(referral=y).order_by('id')
             for z in level4:
                 level4n.append(z)
         level5n = []
         for y in level4n:
-            level5 = LevelUser.objects.filter(direct=y).order_by('id')
+            level5 = User.objects.filter(referral=y).order_by('id')
             for z in level5:
                 level5n.append(z)
         level6n = []
         for y in level5n:
-            level6 = LevelUser.objects.filter(direct=y).order_by('id')
+            level6 = User.objects.filter(referral=y).order_by('id')
             for z in level6:
                 level6n.append(z)
         level7n = []
         for y in level6n:
-            level7 = LevelUser.objects.filter(direct=y).order_by('id')
+            level7 = User.objects.filter(referral=y).order_by('id')
             for z in level7:
                 level7n.append(z)
         level8n = []
         for y in level7n:
-            level8 = LevelUser.objects.filter(direct=y).order_by('id')
+            level8 = User.objects.filter(referral=y).order_by('id')
             for z in level8:
                 level8n.append(z)
+        level9n = []
+        for y in level8n:
+            level9 = User.objects.filter(referral=y).order_by('id')
+            for z in level9:
+                level9n.append(z)
+        level10n = []
+        for y in level9n:
+            level10 = User.objects.filter(referral=y).order_by('id')
+            for z in level10:
+                level10n.append(z)
 
-        all_levels = [level1n, level2n, level3n, level4n, level5n, level6n, level7n, level8n]
+        all_levels = [level1n, level2n, level3n, level4n, level5n, level6n, level7n, level8n, level9n, level10n]
 
-        business = {}
-        level = 0
-        for a in all_levels:
-            level += 1
-            b = 0
-            for x in a:
-                b += x.level.amount
-            business['{}'.format(level)] = b
+        # business = {}
+        # level = 0
+        # for a in all_levels:
+        #     level += 1
+        #     b = 0
+        #     for x in a:
+        #         b += x.level.amount
+        #     business['{}'.format(level)] = b
 
         recent = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-created_at')[:10]
         large = WalletHistory.objects.filter(user_id=str(self.request.user)).order_by('-amount')[:10]
@@ -316,7 +327,9 @@ class UserDashboardView(LoginRequiredMixin, ListView):
         context['ret'] = return_total
         context['recent'] = recent
         context['large'] = large
-        context['business'] = business
+        # context['business'] = business
+        context['directs'] = directs
+        context['all'] = len(all_levels)
         return context
 
 
