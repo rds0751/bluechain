@@ -233,7 +233,6 @@ class UserDashboardView(LoginRequiredMixin, ListView):
             levelp = LevelUser.objects.filter(user=self.request.user.username).order_by('-created_at')[0]
         except Exception as e:
             levelp = 'None'
-            print(e)
 
         user = User.objects.get(username=self.request.user)
         try:
