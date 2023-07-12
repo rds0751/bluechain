@@ -2360,8 +2360,8 @@ ul {
   position: relative;
 }
     .single-featured-wrap .thumb::before {
-        height: 615px;
-        width: 615px;
+        height: 68px;
+        width: 68px;
         background: #14a2fc;
         border-radius: 15px;
         transform: rotate(45deg);
@@ -2372,8 +2372,8 @@ ul {
         left: -23px;
     }
     .single-featured-wrap .thumb::after {
-        height: 615px;
-        width: 615px;
+        height: 68px;
+        width: 68px;
         transform: rotate(45deg);
         content: "";
         position: absolute;
@@ -2384,8 +2384,8 @@ ul {
         left: -215px;
     }
 .single-featured-wrap .thumb .after-2 {
-  height: 615px;
-  width: 615px;
+  height: 68px;
+  width: 68px;
   transform: rotate(45deg);
   content: "";
   position: absolute;
