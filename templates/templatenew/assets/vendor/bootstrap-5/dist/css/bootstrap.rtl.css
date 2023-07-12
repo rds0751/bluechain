@@ -646,7 +646,7 @@ progress {
     max-width: 540px;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
   .container-md, .container-sm, .container {
     max-width: 720px;
   }
@@ -1105,7 +1105,7 @@ progress {
     --bs-gutter-y: 3rem;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
   .col-md {
     flex: 1 0 0%;
   }
@@ -2150,31 +2150,31 @@ progress {
   -webkit-overflow-scrolling: touch;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 575.915px) {
   .table-responsive-sm {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 767.915px) {
   .table-responsive-md {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
 }
-@media (max-width: 991.98px) {
+@media (max-width: 991.915px) {
   .table-responsive-lg {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1199.915px) {
   .table-responsive-xl {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
 }
-@media (max-width: 1399.98px) {
+@media (max-width: 1399.915px) {
   .table-responsive-xxl {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -3504,7 +3504,7 @@ textarea.form-control-lg {
     right: auto;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
   .dropdown-menu-md-start {
     --bs-position: start;
   }
@@ -4116,7 +4116,7 @@ textarea.form-control-lg {
     overflow-y: visible;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
   .navbar-expand-md {
     flex-wrap: nowrap;
     justify-content: flex-start;
@@ -5134,7 +5134,7 @@ textarea.form-control-lg {
     border-right-width: var(--bs-list-group-border-width);
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
   .list-group-horizontal-md {
     flex-direction: row;
   }
@@ -5646,7 +5646,7 @@ textarea.form-control-lg {
   overflow-y: auto;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 575.915px) {
   .modal-fullscreen-sm-down {
     width: 100vw;
     max-width: none;
@@ -5666,7 +5666,7 @@ textarea.form-control-lg {
     overflow-y: auto;
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 767.915px) {
   .modal-fullscreen-md-down {
     width: 100vw;
     max-width: none;
@@ -5686,7 +5686,7 @@ textarea.form-control-lg {
     overflow-y: auto;
   }
 }
-@media (max-width: 991.98px) {
+@media (max-width: 991.915px) {
   .modal-fullscreen-lg-down {
     width: 100vw;
     max-width: none;
@@ -5706,7 +5706,7 @@ textarea.form-control-lg {
     overflow-y: auto;
   }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1199.915px) {
   .modal-fullscreen-xl-down {
     width: 100vw;
     max-width: none;
@@ -5726,7 +5726,7 @@ textarea.form-control-lg {
     overflow-y: auto;
   }
 }
-@media (max-width: 1399.98px) {
+@media (max-width: 1399.915px) {
   .modal-fullscreen-xxl-down {
     width: 100vw;
     max-width: none;
@@ -6147,8 +6147,8 @@ textarea.form-control-lg {
   background-color: #fff;
   background-clip: padding-box;
   border: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
   opacity: 0.5;
   transition: opacity 0.6s ease;
 }
@@ -6274,7 +6274,7 @@ textarea.form-control-lg {
   --bs-offcanvas-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 575.915px) {
   .offcanvas-sm {
     position: fixed;
     bottom: 0;
@@ -6290,22 +6290,22 @@ textarea.form-control-lg {
     transition: transform 0.3s ease-in-out;
   }
 }
-@media (max-width: 575.98px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 575.915px) and (prefers-reduced-motion: reduce) {
   .offcanvas-sm {
     transition: none;
   }
 }
-@media (max-width: 575.98px) {
+@media (max-width: 575.915px) {
   .offcanvas-sm.showing, .offcanvas-sm.show:not(.hiding) {
     transform: none;
   }
 }
-@media (max-width: 575.98px) {
+@media (max-width: 575.915px) {
   .offcanvas-sm.showing, .offcanvas-sm.hiding, .offcanvas-sm.show {
     visibility: visible;
   }
 }
-@media (max-width: 575.98px) {
+@media (max-width: 575.915px) {
   .offcanvas-sm.offcanvas-start {
     top: 0;
     right: 0;
@@ -6314,7 +6314,7 @@ textarea.form-control-lg {
     transform: translateX(100%);
   }
 }
-@media (max-width: 575.98px) {
+@media (max-width: 575.915px) {
   .offcanvas-sm.offcanvas-end {
     top: 0;
     left: 0;
@@ -6323,7 +6323,7 @@ textarea.form-control-lg {
     transform: translateX(-100%);
   }
 }
-@media (max-width: 575.98px) {
+@media (max-width: 575.915px) {
   .offcanvas-sm.offcanvas-top {
     top: 0;
     left: 0;
@@ -6334,7 +6334,7 @@ textarea.form-control-lg {
     transform: translateY(-100%);
   }
 }
-@media (max-width: 575.98px) {
+@media (max-width: 575.915px) {
   .offcanvas-sm.offcanvas-bottom {
     left: 0;
     right: 0;
@@ -6362,7 +6362,7 @@ textarea.form-control-lg {
   }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 767.915px) {
   .offcanvas-md {
     position: fixed;
     bottom: 0;
@@ -6378,22 +6378,22 @@ textarea.form-control-lg {
     transition: transform 0.3s ease-in-out;
   }
 }
-@media (max-width: 767.98px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 767.915px) and (prefers-reduced-motion: reduce) {
   .offcanvas-md {
     transition: none;
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 767.915px) {
   .offcanvas-md.showing, .offcanvas-md.show:not(.hiding) {
     transform: none;
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 767.915px) {
   .offcanvas-md.showing, .offcanvas-md.hiding, .offcanvas-md.show {
     visibility: visible;
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 767.915px) {
   .offcanvas-md.offcanvas-start {
     top: 0;
     right: 0;
@@ -6402,7 +6402,7 @@ textarea.form-control-lg {
     transform: translateX(100%);
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 767.915px) {
   .offcanvas-md.offcanvas-end {
     top: 0;
     left: 0;
@@ -6411,7 +6411,7 @@ textarea.form-control-lg {
     transform: translateX(-100%);
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 767.915px) {
   .offcanvas-md.offcanvas-top {
     top: 0;
     left: 0;
@@ -6422,7 +6422,7 @@ textarea.form-control-lg {
     transform: translateY(-100%);
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 767.915px) {
   .offcanvas-md.offcanvas-bottom {
     left: 0;
     right: 0;
@@ -6432,7 +6432,7 @@ textarea.form-control-lg {
     transform: translateY(100%);
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
   .offcanvas-md {
     --bs-offcanvas-height: auto;
     --bs-offcanvas-border-width: 0;
@@ -6450,7 +6450,7 @@ textarea.form-control-lg {
   }
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 991.915px) {
   .offcanvas-lg {
     position: fixed;
     bottom: 0;
@@ -6466,22 +6466,22 @@ textarea.form-control-lg {
     transition: transform 0.3s ease-in-out;
   }
 }
-@media (max-width: 991.98px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 991.915px) and (prefers-reduced-motion: reduce) {
   .offcanvas-lg {
     transition: none;
   }
 }
-@media (max-width: 991.98px) {
+@media (max-width: 991.915px) {
   .offcanvas-lg.showing, .offcanvas-lg.show:not(.hiding) {
     transform: none;
   }
 }
-@media (max-width: 991.98px) {
+@media (max-width: 991.915px) {
   .offcanvas-lg.showing, .offcanvas-lg.hiding, .offcanvas-lg.show {
     visibility: visible;
   }
 }
-@media (max-width: 991.98px) {
+@media (max-width: 991.915px) {
   .offcanvas-lg.offcanvas-start {
     top: 0;
     right: 0;
@@ -6490,7 +6490,7 @@ textarea.form-control-lg {
     transform: translateX(100%);
   }
 }
-@media (max-width: 991.98px) {
+@media (max-width: 991.915px) {
   .offcanvas-lg.offcanvas-end {
     top: 0;
     left: 0;
@@ -6499,7 +6499,7 @@ textarea.form-control-lg {
     transform: translateX(-100%);
   }
 }
-@media (max-width: 991.98px) {
+@media (max-width: 991.915px) {
   .offcanvas-lg.offcanvas-top {
     top: 0;
     left: 0;
@@ -6510,7 +6510,7 @@ textarea.form-control-lg {
     transform: translateY(-100%);
   }
 }
-@media (max-width: 991.98px) {
+@media (max-width: 991.915px) {
   .offcanvas-lg.offcanvas-bottom {
     left: 0;
     right: 0;
@@ -6538,7 +6538,7 @@ textarea.form-control-lg {
   }
 }
 
-@media (max-width: 1199.98px) {
+@media (max-width: 1199.915px) {
   .offcanvas-xl {
     position: fixed;
     bottom: 0;
@@ -6554,22 +6554,22 @@ textarea.form-control-lg {
     transition: transform 0.3s ease-in-out;
   }
 }
-@media (max-width: 1199.98px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 1199.915px) and (prefers-reduced-motion: reduce) {
   .offcanvas-xl {
     transition: none;
   }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1199.915px) {
   .offcanvas-xl.showing, .offcanvas-xl.show:not(.hiding) {
     transform: none;
   }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1199.915px) {
   .offcanvas-xl.showing, .offcanvas-xl.hiding, .offcanvas-xl.show {
     visibility: visible;
   }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1199.915px) {
   .offcanvas-xl.offcanvas-start {
     top: 0;
     right: 0;
@@ -6578,7 +6578,7 @@ textarea.form-control-lg {
     transform: translateX(100%);
   }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1199.915px) {
   .offcanvas-xl.offcanvas-end {
     top: 0;
     left: 0;
@@ -6587,7 +6587,7 @@ textarea.form-control-lg {
     transform: translateX(-100%);
   }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1199.915px) {
   .offcanvas-xl.offcanvas-top {
     top: 0;
     left: 0;
@@ -6598,7 +6598,7 @@ textarea.form-control-lg {
     transform: translateY(-100%);
   }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1199.915px) {
   .offcanvas-xl.offcanvas-bottom {
     left: 0;
     right: 0;
@@ -6626,7 +6626,7 @@ textarea.form-control-lg {
   }
 }
 
-@media (max-width: 1399.98px) {
+@media (max-width: 1399.915px) {
   .offcanvas-xxl {
     position: fixed;
     bottom: 0;
@@ -6642,22 +6642,22 @@ textarea.form-control-lg {
     transition: transform 0.3s ease-in-out;
   }
 }
-@media (max-width: 1399.98px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 1399.915px) and (prefers-reduced-motion: reduce) {
   .offcanvas-xxl {
     transition: none;
   }
 }
-@media (max-width: 1399.98px) {
+@media (max-width: 1399.915px) {
   .offcanvas-xxl.showing, .offcanvas-xxl.show:not(.hiding) {
     transform: none;
   }
 }
-@media (max-width: 1399.98px) {
+@media (max-width: 1399.915px) {
   .offcanvas-xxl.showing, .offcanvas-xxl.hiding, .offcanvas-xxl.show {
     visibility: visible;
   }
 }
-@media (max-width: 1399.98px) {
+@media (max-width: 1399.915px) {
   .offcanvas-xxl.offcanvas-start {
     top: 0;
     right: 0;
@@ -6666,7 +6666,7 @@ textarea.form-control-lg {
     transform: translateX(100%);
   }
 }
-@media (max-width: 1399.98px) {
+@media (max-width: 1399.915px) {
   .offcanvas-xxl.offcanvas-end {
     top: 0;
     left: 0;
@@ -6675,7 +6675,7 @@ textarea.form-control-lg {
     transform: translateX(-100%);
   }
 }
-@media (max-width: 1399.98px) {
+@media (max-width: 1399.915px) {
   .offcanvas-xxl.offcanvas-top {
     top: 0;
     left: 0;
@@ -6686,7 +6686,7 @@ textarea.form-control-lg {
     transform: translateY(-100%);
   }
 }
-@media (max-width: 1399.98px) {
+@media (max-width: 1399.915px) {
   .offcanvas-xxl.offcanvas-bottom {
     left: 0;
     right: 0;
@@ -7054,7 +7054,7 @@ textarea.form-control-lg {
     z-index: 1020;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
   .sticky-md-top {
     position: -webkit-sticky;
     position: sticky;
@@ -9185,7 +9185,7 @@ textarea.form-control-lg {
     text-align: center !important;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
   .float-md-start {
     float: right !important;
   }

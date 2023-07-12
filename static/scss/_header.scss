@@ -15,7 +15,7 @@
         width: 40px;
         padding: 5px;
         line-height: 30px;
-        border-radius: 10px;
+        border-radius: 20px;
         display: block;
         text-align: center;
         vertical-align: middle;
@@ -106,7 +106,7 @@
 
     &.active {
         &>.navbar {
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.10);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.10);
         }
     }
 }

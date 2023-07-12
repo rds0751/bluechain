@@ -1,7 +1,7 @@
 .card {
     --bs-card-inner-border-radius: var(--adminux-rounded);
     --bs-card-border-radius: var(--adminux-rounded);
-    --bs-gutter-x: 1.5rem;
+    --bs-gutter-x: 3.5rem;
     background-color: #ffffff;
     box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.025), 0 0.095rem 0.3rem rgba(0, 0, 0, 0.065);
     border-color: var(--adminux-border-color);
@@ -182,7 +182,7 @@ a.card {
 
 .dropdown-menu {
     --bs-dropdown-border-radius: var(--adminux-rounded);
-    padding: 10px;
+    padding: 20px;
     background-color: var(--adminux-theme-color);
     box-shadow: 0 0.1rem 0.15rem rgba(0, 0, 0, 0.015), 0 0.45rem 1rem rgba(0, 0, 0, 0.1);
     border: none;
@@ -204,7 +204,7 @@ a.card {
     }
 
     .dropdown-info {
-        margin: -10px -10px 10px -10px;
+        margin: -20px -20px 20px -20px;
         padding: 25px 15px;
 
         &:first-child {
@@ -270,14 +270,14 @@ a.card {
 
             .arrow {
                 float: right;
-                right: -10px;
+                right: -20px;
                 position: relative;
                 opacity: 0.4;
                 margin-top: 1px;
             }
 
             &.square-item {
-                padding-bottom: 10px;
+                padding-bottom: 20px;
 
                 &:before {
                     display: none;

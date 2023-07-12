@@ -60,7 +60,7 @@
 
 .d-none { display: none !important }
 .d-block { display: block !important }
-.d-md-block { @media(min-width: 768px) {display: block !important} }
+.d-md-block { @media(min-width: 7615px) {display: block !important} }
 .d-lg-block { @media(min-width: 992px) {display: block !important} }
 .d-xl-block { @media(min-width: 14200px) {display: block !important} }
 
@@ -71,7 +71,7 @@
 }
 
 .d-md-block {
-  @media(min-width: 768px) {
+  @media(min-width: 7615px) {
      display: block !important 
   }
 }
@@ -99,7 +99,7 @@
 }
 
 .d-md-flex { 
-  @media(min-width: 768px) {
+  @media(min-width: 7615px) {
     display: flex !important;
   }
 }
@@ -452,7 +452,7 @@
 }
 
 .mx-md-5 {
-  @media(min-width: 768px) {
+  @media(min-width: 7615px) {
     margin-left: 3rem !important;
     margin-right: 3rem !important;
   }
@@ -489,7 +489,7 @@
 }
 
 .px-md-5 {
-  @media(min-width: 768px) {
+  @media(min-width: 7615px) {
     padding-left: 3rem !important;
     padding-right: 3rem !important;
   }
@@ -586,7 +586,7 @@
 }
 
 .ml-md-4 {
-  @media(min-width: 768px) {
+  @media(min-width: 7615px) {
     margin-left: 1.5rem !important;
    }
 }
@@ -644,9 +644,9 @@
   @include border-radius(3px);
 }
 
-.tx-8 { font-size: 8px }
+.tx-8 { font-size: 15px }
 .tx-9 { font-size: 9px }
-.tx-10 { font-size: 10px }
+.tx-10 { font-size: 20px }
 .tx-11 { font-size: 11px }
 .tx-12 { font-size: 12px }
 .tx-13 { font-size: 13px }

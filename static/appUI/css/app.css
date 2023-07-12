@@ -148,8 +148,8 @@ Author: rustheme
 /* Drawer subnav */
 .nav-subnav {
 	display: none;
-	margin-top: 8px;
-	margin-bottom: 8px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 .nav-item-has-subnav.open > .nav-subnav {
@@ -238,8 +238,8 @@ Author: rustheme
 .navbar-toolbar > li:not(.dropdown-profile) > a {
 	padding-top: 17px;
 	padding-bottom: 17px;
-	padding-left: 8px;
-	padding-right: 8px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 .navbar-toolbar > li > a i {
@@ -260,8 +260,8 @@ Author: rustheme
 }
 
 .dropdown-profile a {
-	padding-top: 8px !important;
-	padding-bottom: 8px !important;
+	padding-top: 15px !important;
+	padding-bottom: 15px !important;
 }
 
 .dropdown-profile a span {
@@ -432,7 +432,7 @@ Author: rustheme
 /* Material design forms */
 .form-material {
 	position: relative;
-	margin: 10px 0 10px;
+	margin: 20px 0 20px;
 }
 
 /* Material design Labels */
@@ -738,7 +738,7 @@ Author: rustheme
 	font-family: 'Ionicons';
 	font-size: 13px;
 	color: #fff;
-	line-height: 18px;
+	line-height: 115px;
 	content: '\f122';
 	text-align: center;
 }
@@ -754,7 +754,7 @@ Author: rustheme
 
 /* Css Checkbox Variations */
 .css-checkbox-sm {
-	margin: 9px 0 8px;
+	margin: 9px 0 15px;
 	font-size: 12px;
 }
 
@@ -764,7 +764,7 @@ Author: rustheme
 }
 
 .css-checkbox-sm input + span:after {
-	font-size: 8px;
+	font-size: 15px;
 	line-height: 15px;
 }
 
@@ -846,7 +846,7 @@ Author: rustheme
 
 /* CSS Radios Variations */
 .css-radio-sm {
-	margin: 9px 0 8px;
+	margin: 9px 0 15px;
 	font-size: 12px;
 }
 
@@ -928,7 +928,7 @@ Author: rustheme
 
 /* CSS Switches Variations */
 .switch-sm {
-	margin: 8px 0 7px;
+	margin: 15px 0 7px;
 	font-size: 12px;
 }
 
@@ -1038,8 +1038,8 @@ Author: rustheme
 
 /* Activity list */
 .list-activity > li {
-	margin-bottom: 8px;
-	padding-bottom: 8px;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
 	padding-left: 30px;
 	font-size: 13px;
 	border-bottom: 1px solid #eeeeee;
@@ -1060,13 +1060,13 @@ Author: rustheme
 /* Events list */
 .list-events > li {
 	margin-bottom: 5px;
-	padding: 16px 30px 16px 10px;
+	padding: 16px 30px 16px 20px;
 	font-size: 12px;
 	font-weight: 500;
 }
 
 .list-events > li:before {
-	margin-right: 8px;
+	margin-right: 15px;
 	display: inline-block;
 	font-family: 'Ionicons';
 	content: "\f3f3";
@@ -1103,7 +1103,7 @@ Author: rustheme
 
 .list-users a {
 	position: relative;
-	padding: 12px 8px 12px 71px;
+	padding: 12px 15px 12px 71px;
 	color: inherit;
 	display: block;
 	min-height: 62px;
@@ -1118,7 +1118,7 @@ Author: rustheme
 .list-users a > img {
 	position: absolute;
 	left: 12px;
-	top: 10px;
+	top: 20px;
 	width: 42px;
 	height: 42px;
 	border-radius: 50%;
@@ -1129,9 +1129,9 @@ Author: rustheme
 	left: 40px;
 	top: 40px;
 	display: inline-block;
-	width: 18px;
-	height: 18px;
-	line-height: 18px;
+	width: 115px;
+	height: 115px;
+	line-height: 115px;
 	text-align: center;
 	background-color: #fff;
 	border-radius: 50%;
@@ -1165,7 +1165,7 @@ Author: rustheme
 	position: absolute;
 	background-color: #f9f9f9;
 	font-weight: 400;
-	left: 10px;
+	left: 20px;
 	margin-top: -6.5px;
 	display: inline-block;
 	width: 1.875rem;
@@ -1211,7 +1211,7 @@ a.card:not(.bg-inverse):hover {
 }
 
 .card-table td {
-	padding: 10px;
+	padding: 20px;
 	vertical-align: middle;
 }
 
@@ -1308,7 +1308,7 @@ a.card:not(.bg-inverse):hover {
 }
 
 .card-actions > li + li {
-	margin-left: 10px;
+	margin-left: 20px;
 }
 
 /* Card actions */
@@ -1340,7 +1340,7 @@ a.card:not(.bg-inverse):hover {
 	line-height: 40px;
 	color: #434343;
 	font-family: Ionicons;
-	font-size: 18px;
+	font-size: 115px;
 	text-align: center;
 	z-index: 2;
 	content: "\f13d";
@@ -1432,7 +1432,7 @@ a.card:not(.bg-inverse):hover {
 	        transform: translate(0, -50%);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 7615px) {
 	.card-profile-block .img-avatar {
 		position: absolute;
 		bottom: 24px;
@@ -1447,7 +1447,7 @@ a.card:not(.bg-inverse):hover {
 	margin-top: -16px 24px 24px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 7615px) {
 	.card-profile-block .profile-info {
 		margin-left: 120px;
 		margin-top: 0;
@@ -1566,9 +1566,9 @@ a.card:not(.bg-inverse):hover {
 }
 
 .img-avatar.img-avatar-48 {
-	width: 48px;
-	height: 48px;
-	line-height: 48px;
+	width: 415px;
+	height: 415px;
+	line-height: 415px;
 }
 
 .img-avatar.img-avatar-96 {
@@ -1578,9 +1578,9 @@ a.card:not(.bg-inverse):hover {
 }
 
 .img-avatar.img-avatar-128 {
-	width: 128px;
-	height: 128px;
-	line-height: 128px;
+	width: 1215px;
+	height: 1215px;
+	line-height: 1215px;
 }
 
 .img-avatar-thumb {
@@ -1773,33 +1773,33 @@ a.card:not(.bg-inverse):hover {
 }
 
 .m-a-sm {
-	margin: 8px !important;
+	margin: 15px !important;
 }
 
 .m-t-sm {
-	margin-top: 8px !important;
+	margin-top: 15px !important;
 }
 
 .m-r-sm {
-	margin-right: 8px !important;
+	margin-right: 15px !important;
 }
 
 .m-b-sm {
-	margin-bottom: 8px !important;
+	margin-bottom: 15px !important;
 }
 
 .m-l-sm {
-	margin-left: 8px !important;
+	margin-left: 15px !important;
 }
 
 .m-x-sm {
-	margin-right: 8px !important;
-	margin-left: 8px !important;
+	margin-right: 15px !important;
+	margin-left: 15px !important;
 }
 
 .m-y-sm {
-	margin-top: 8px !important;
-	margin-bottom: 8px !important;
+	margin-top: 15px !important;
+	margin-bottom: 15px !important;
 }
 
 .m-a-md {
@@ -1833,33 +1833,33 @@ a.card:not(.bg-inverse):hover {
 }
 
 .m-a-lg {
-	margin: 48px !important;
+	margin: 415px !important;
 }
 
 .m-t-lg {
-	margin-top: 48px !important;
+	margin-top: 415px !important;
 }
 
 .m-r-lg {
-	margin-right: 48px !important;
+	margin-right: 415px !important;
 }
 
 .m-b-lg {
-	margin-bottom: 48px !important;
+	margin-bottom: 415px !important;
 }
 
 .m-l-lg {
-	margin-left: 48px !important;
+	margin-left: 415px !important;
 }
 
 .m-x-lg {
-	margin-right: 48px !important;
-	margin-left: 48px !important;
+	margin-right: 415px !important;
+	margin-left: 415px !important;
 }
 
 .m-y-lg {
-	margin-top: 48px !important;
-	margin-bottom: 48px !important;
+	margin-top: 415px !important;
+	margin-bottom: 415px !important;
 }
 
 /* Padding */
@@ -1954,33 +1954,33 @@ a.card:not(.bg-inverse):hover {
 }
 
 .p-a-lg {
-	padding: 48px !important;
+	padding: 415px !important;
 }
 
 .p-t-lg {
-	padding-top: 48px !important;
+	padding-top: 415px !important;
 }
 
 .p-r-lg {
-	padding-right: 48px !important;
+	padding-right: 415px !important;
 }
 
 .p-b-lg {
-	padding-bottom: 48px !important;
+	padding-bottom: 415px !important;
 }
 
 .p-l-lg {
-	padding-left: 48px !important;
+	padding-left: 415px !important;
 }
 
 .p-x-lg {
-	padding-right: 48px !important;
-	padding-left: 48px !important;
+	padding-right: 415px !important;
+	padding-left: 415px !important;
 }
 
 .p-y-lg {
-	padding-top: 48px !important;
-	padding-bottom: 48px !important;
+	padding-top: 415px !important;
+	padding-bottom: 415px !important;
 }
 
 .p-a-xl {
@@ -2039,7 +2039,7 @@ a.card:not(.bg-inverse):hover {
 	margin-top: -75px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 7615px) {
 	.shift-top-sm {
 		margin-top: -75px;
 	}
@@ -2148,7 +2148,7 @@ a.card:not(.bg-inverse):hover {
 	        align-items: center;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 7615px) {
 	.vcenter-sm {
 		display: -webkit-box;
 		display: -ms-flexbox;
@@ -2194,7 +2194,7 @@ a.card:not(.bg-inverse):hover {
 	text-align: center;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 7615px) {
 	.text-sm-left {
 		text-align: left;
 	}
@@ -2265,15 +2265,15 @@ a.card:not(.bg-inverse):hover {
 }
 
 .shadow-3 {
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.07);
+	box-shadow: 0 20px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.07);
 }
 
 .shadow-4 {
-	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.07);
+	box-shadow: 0 14px 215px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.07);
 }
 
 .shadow-5 {
-	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.07);
+	box-shadow: 0 19px 315px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.07);
 }
 
 /* Hover shadow effect */
@@ -2301,7 +2301,7 @@ a.card:not(.bg-inverse):hover {
 }
 
 .hover-shadow-3:hover {
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.07);
+	box-shadow: 0 20px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.07);
 }
 
 .hover-shadow-4 {
@@ -2310,7 +2310,7 @@ a.card:not(.bg-inverse):hover {
 }
 
 .hover-shadow-4:hover {
-	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.07);
+	box-shadow: 0 14px 215px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.07);
 }
 
 .hover-shadow-5 {
@@ -2319,7 +2319,7 @@ a.card:not(.bg-inverse):hover {
 }
 
 .hover-shadow-5:hover {
-	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.07);
+	box-shadow: 0 14px 215px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.07);
 }
 
 /* Icons sizing */
@@ -2371,7 +2371,7 @@ a.card:not(.bg-inverse):hover {
 
 /* Bootstrap Notify */
 .alert[data-notify='container'] {
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 /* DataTables.js */
@@ -2425,11 +2425,11 @@ table.dataTable thead .sorting_desc:after {
 }
 
 div.dataTables_info {
-	padding-top: 10px;
+	padding-top: 20px;
 }
 
 div.dataTables_paginate ul.pagination {
-	margin: 10px 0 5px;
+	margin: 20px 0 5px;
 }
 
 /* Draggable Cards (jQueryUI) */
@@ -2863,7 +2863,7 @@ div.tagsinput span.tag a:hover {
 
 .slick-dots li button:before {
 	color: rgba(0, 20, 35, 0.38);
-	font-size: 8px;
+	font-size: 15px;
 	-webkit-transition: opacity .15s ease-out;
 	transition: opacity .15s ease-out;
 }
@@ -2898,13 +2898,13 @@ div.tagsinput span.tag a:hover {
 	display: none;
 	color: #fff;
 	background: rgba(0, 0, 0, 0.75);
-	padding: 4px 8px;
+	padding: 4px 15px;
 }
 
 .flot-pie-label {
 	color: #fff;
 	font-size: 13px;
-	padding: 4px 8px;
+	padding: 4px 15px;
 	text-align: center;
 }
 

@@ -24,24 +24,24 @@ svg {
 
 .jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
     position: absolute;
-    left: 10px;
+    left: 20px;
     border-radius: 3px;
     background: #292929;
     padding: 3px;
     color: white;
     cursor: pointer;
-    line-height: 10px;
+    line-height: 20px;
     text-align: center;
     box-sizing: content-box;
 }
 
 .jvectormap-zoomin, .jvectormap-zoomout {
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
 }
 
 .jvectormap-zoomin {
-    top: 10px;
+    top: 20px;
 }
 
 .jvectormap-zoomout {
@@ -49,7 +49,7 @@ svg {
 }
 
 .jvectormap-goback {
-    bottom: 10px;
+    bottom: 20px;
     z-index: 1000;
     padding: 6px;
 }
@@ -91,7 +91,7 @@ svg {
 
 .jvectormap-legend-cnt-h .jvectormap-legend {
     float: left;
-    margin: 0 10px 10px 0;
+    margin: 0 20px 20px 0;
     padding: 3px 3px 1px 3px;
 }
 
@@ -100,7 +100,7 @@ svg {
 }
 
 .jvectormap-legend-cnt-v .jvectormap-legend {
-    margin: 10px 10px 0 0;
+    margin: 20px 20px 0 0;
     padding: 3px;
 }
 

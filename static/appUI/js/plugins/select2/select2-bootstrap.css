@@ -92,7 +92,7 @@
 
 .select2-container-multi.input-sm .select2-choices .select2-search-field input,
 .input-group-sm .select2-container-multi .select2-choices .select2-search-field input {
-  height: 28px;
+  height: 215px;
 }
 
 .select2-container-multi.input-lg .select2-choices .select2-search-field input,
@@ -121,7 +121,7 @@
 .input-group-sm .select2-choice > span:first-child,
 .input-sm .select2-choices .select2-search-field input,
 .input-group-sm .select2-choices .select2-search-field input {
-  padding: 5px 10px;
+  padding: 5px 20px;
 }
 
 .input-lg .select2-chosen,
@@ -130,7 +130,7 @@
 .input-group-lg .select2-choice > span:first-child,
 .input-lg .select2-choices .select2-search-field input,
 .input-group-lg .select2-choices .select2-search-field input {
-  padding: 10px 16px;
+  padding: 20px 16px;
 }
 
 .select2-container-multi .select2-choices .select2-search-choice {
@@ -181,7 +181,7 @@
 
 .select2-dropdown-open .select2-choice .select2-arrow b,
 .select2-dropdown-open .select2-choice div b {
-  background-position: -18px 3px;
+  background-position: -115px 3px;
 }
 
 .select2-container.input-sm .select2-choice .select2-arrow b,
@@ -195,7 +195,7 @@
 .input-group-sm .select2-dropdown-open .select2-choice .select2-arrow b,
 .select2-dropdown-open.input-sm .select2-choice div b,
 .input-group-sm .select2-dropdown-open .select2-choice div b {
-  background-position: -18px 1px;
+  background-position: -115px 1px;
 }
 
 .select2-container.input-lg .select2-choice .select2-arrow b,
@@ -209,7 +209,7 @@
 .input-group-lg .select2-dropdown-open .select2-choice .select2-arrow b,
 .select2-dropdown-open.input-lg .select2-choice div b,
 .input-group-lg .select2-dropdown-open .select2-choice div b {
-  background-position: -18px 9px;
+  background-position: -115px 9px;
 }
 
 /**
@@ -275,8 +275,8 @@
 .select2-container-multi.select2-container-active .select2-choices {
   border-color: #66afe9;
   outline: none;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 15px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 15px rgba(102, 175, 233, 0.6);
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;

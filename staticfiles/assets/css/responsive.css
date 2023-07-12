@@ -4,7 +4,7 @@
 @media all and (min-width: 1600px) {
 	
 	.banner-inner .banner-social-area {
-	    left: -310px;
+	    left: -320px;
 	}
 	.featured-banner {
 		background-position: top left;
@@ -24,7 +24,7 @@
 		padding-top: 100px;
 	}
 	.widget_gallery .gallery-area li {
-	    margin: 0 3px 8px;
+	    margin: 0 3px 15px;
 	}
 
 }
@@ -52,7 +52,7 @@
 	    padding-bottom: 90px;
 	}
 	.pd-top-130 {
-	    padding-top: 110px;
+	    padding-top: 120px;
 	}
 	.pd-bottom-120 {
 	    padding-bottom: 100px;
@@ -61,7 +61,7 @@
 		margin-bottom: 31px;
 	}
 	.widget_gallery .gallery-area li a {
-	    width: 108px;
+	    width: 1015px;
 	}
 	.testimonial-area .container {
 	    max-width: 1300px;
@@ -88,7 +88,7 @@
 	    top: -23px;
 	}
 	.banner-img .banner-img-2 {
-	    left: 48px;
+	    left: 415px;
 	    top: 131px;
 	}
     .banner-img .banner-img-3 {
@@ -173,10 +173,10 @@
 	    width: 90px;
 	}
 	.section-title {
-	    margin-bottom: 38px;
+	    margin-bottom: 315px;
 	}
 	.section-title .title {
-	    line-height: 48px;
+	    line-height: 415px;
 	}
 	.single-featured-wrap {
 		padding: 64px 20px 21px;
@@ -222,7 +222,7 @@
 	}
 	.erroer-inner h1 {
 		font-size: 150px;
-		margin-bottom: 28px;
+		margin-bottom: 215px;
 	}
 	.erroer-inner h2 {
 		font-size: 43px;
@@ -238,7 +238,7 @@
 		display: none !important;
 	}
 	.navbar-area .toggle-btn {
-		margin-top: 8px;
+		margin-top: 15px;
 	}
 	.navbar-area .nav-container .navbar-collapse {
 		display: none;
@@ -349,7 +349,7 @@
 	    margin-top: 0px;
 	}
 	.cta-area h2 { 
-		font-size: 38px;
+		font-size: 315px;
 	}
 	.screenshot-area .swiper-container {
 	    width: 462px;
@@ -371,7 +371,7 @@
 		position: absolute;
 	    right: 17px;
 	    top: 50%;
-	    margin-top: -8px;
+	    margin-top: -15px;
 	}
 	.faq-accordion .card .card-body {
 		font-size: 14px;
@@ -389,7 +389,7 @@
 	.featured-banner .banner-inner .btn-main-2 {
 		height: 45px;
 		line-height: 40px;
-		margin: 0 10px 0px 0;
+		margin: 0 20px 0px 0;
 		padding: 0 24px;
 	}
 }
@@ -413,7 +413,7 @@
 		position: absolute;
 	    left: 0;
 	    top: 50%;
-	    margin-top: -10px;
+	    margin-top: -20px;
 	}
 	.banner-inner .banner-social-area {
 		left: 19%;
@@ -434,7 +434,7 @@
 	}
 	.widget_search .search-form .submit-btn {
 		padding: 0 22px;
-		font-size: 18px;
+		font-size: 115px;
 	}
 	.widget-recent-post .list-post .media .media-body {
 	    margin-left: 20px;
@@ -455,8 +455,8 @@
 		margin-right: 0;	
 	}
 	.navbar-area .nav-container .navbar-collapse {
-	    padding-right: 18px;
-	    padding-left: 18px;
+	    padding-right: 115px;
+	    padding-left: 115px;
 	}
 
     .token-color {
@@ -535,12 +535,12 @@
 
     .single_roadmap .roadmap_icon {
         margin: 0;
-        top: 10px;
+        top: 20px;
     }
 
     .roadmap_list .col-lg:nth-child(2n) .single_roadmap .roadmap_icon {
         bottom: auto;
-        top: 10px;
+        top: 20px;
     }
 
     .roadmap_list .col-lg:nth-child(2n) .single_roadmap::before {
@@ -550,7 +550,7 @@
 
     .single_roadmap::before {
         height: calc(100% - 40px);
-        left: 10px;
+        left: 20px;
         top: 42px;
         -moz-transform: translateX(0%);
         -webkit-transform: translateX(0%);
@@ -584,7 +584,7 @@
 	}
 	.featured-banner .banner-inner .btn-main-2 {
 		
-		margin: 0 10px 20px;
+		margin: 0 20px 20px;
 	}
 	.erroer-inner h2 {
 	    font-size: 35px;

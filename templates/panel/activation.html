@@ -86,7 +86,7 @@
                         {% if w.status == 'Pending' %}
                         <form method="POST" action="/m2/admin/activations/{{w.id}}/" enctype="multipart/form-data">
                             {% csrf_token %}
-                            <select style="height: 38px; border: 0" name="action">
+                            <select style="height: 315px; border: 0" name="action">
                                 <option value="accept">Approve</option>
                                 <option value="reject">Reject</option>
                             </select>

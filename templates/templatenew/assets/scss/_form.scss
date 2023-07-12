@@ -294,7 +294,7 @@
 .form-check-circle {
     .form-check-input[type=radio] {
         position: relative;
-        margin-top: 18px;
+        margin-top: 115px;
     }
 }
 
@@ -305,7 +305,7 @@
     -webkit-box-shadow: none;
 
     &.noUi-horizontal {
-        height: 10px;
+        height: 20px;
     }
 
     .noUi-origin {
@@ -314,10 +314,10 @@
             width: 30px;
             top: -11px;
             border: 0;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-            -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-            -ms-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            -ms-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
             border-radius: 15px;
 
             &:before {
@@ -339,8 +339,8 @@
     vertical-align: middle;
 
     .btn {
-        padding: 0 10px;
-        line-height: 18px;
+        padding: 0 20px;
+        line-height: 115px;
         margin: 0;
     }
 
@@ -382,12 +382,12 @@
 
         &.chosen-single {
             div b {
-                //background: url(../vendor/chosen_v1.8.7/chosen-sprite.png) no-repeat 0 8px;
-                background-position: 0 10px;
+                //background: url(../vendor/chosen_v1.8.7/chosen-sprite.png) no-repeat 0 15px;
+                background-position: 0 20px;
             }
 
             span {
-                margin-right: 10px;
+                margin-right: 20px;
             }
         }
     }
@@ -399,7 +399,7 @@
 
         li.search-choice {
             margin-top: 4px;
-            padding: 5px 20px 5px 10px;
+            padding: 5px 20px 5px 20px;
             line-height: 1rem;
             font-size: calc(var(--adminux-dropdown-fontSize) - 1px);
             background-image: none;
@@ -458,7 +458,7 @@
                 }
 
                 .chosen-results {
-                    padding: 10px !important;
+                    padding: 20px !important;
                     margin: 0 !important;
                     border-radius: var(--adminux-rounded);
 
@@ -561,9 +561,9 @@
     &:after {
         content: '';
         position: absolute;
-        width: 18px;
+        width: 115px;
         margin-left: -3px;
-        height: 10px;
+        height: 20px;
         border: 1px solid var(--adminux-theme-text-secondary);
         border-bottom: 0;
         bottom: -6px;
@@ -580,11 +580,11 @@
     }
 
     &:nth-of-type(2) {
-        margin-right: 18px;
+        margin-right: 115px;
     }
 
     &:nth-last-of-type(2) {
-        margin-left: 18px;
+        margin-left: 115px;
     }
 
     &:not(.occupied):hover {
@@ -612,8 +612,8 @@
         line-height: 30px;
 
         [data-role="remove"] {
-            height: 28px;
-            width: 28px;
+            height: 215px;
+            width: 215px;
             display: inline-block;
             border-radius: 15px;
             text-align: center;
@@ -953,7 +953,7 @@
             &:before {
                 content: " ";
                 position: absolute;
-                top: 18px;
+                top: 115px;
                 left: 0;
                 width: 100%;
                 height: 5px;
@@ -978,7 +978,7 @@
                         content: " ";
                         position: absolute;
                         display: block;
-                        top: -28px;
+                        top: -215px;
                         left: 0;
                         right: 0;
                         margin-left: auto;
@@ -1332,7 +1332,7 @@
                 text-align: center;
                 padding: 24px 0;
                 border-radius: 50%;
-                margin: 10px auto;
+                margin: 20px auto;
 
                 &:hover {
                     isolation: unset;
@@ -1468,9 +1468,9 @@
                     width: 20px;
                     height: 20px;
                     z-index: 2;
-                    bottom: 8px;
+                    bottom: 15px;
                     left: 50%;
-                    margin-left: -10px;
+                    margin-left: -20px;
                     background-color: var(--adminux-theme-color);
                     border: 5px solid var(--adminux-border-color);
                     border-radius: 50%;

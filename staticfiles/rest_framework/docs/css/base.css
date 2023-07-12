@@ -83,8 +83,8 @@ pre.highlight code {
   font-family: FontAwesome;
   content: "\f078";
   display: inline-block;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   vertical-align: middle;
   float: right;
 }
@@ -112,9 +112,9 @@ pre.highlight code {
   border-bottom: 1px solid #23282e;
   margin-left: 0px;
   line-height: 1.4;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
   padding-left: 25px;
 }
 
@@ -154,7 +154,7 @@ pre.highlight code {
 }
 
 .sidebar .menu-list li a i {
-  padding-left: 10px;
+  padding-left: 20px;
   width: 20px;
   padding-right: 20px;
 }
@@ -180,7 +180,7 @@ body {
 
 .coredocs-section-title {
     margin-top: 20px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     border-bottom: 1px solid lightgrey;
 }
 
@@ -260,7 +260,7 @@ body {
   .sidebar {
     position: relative;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     overflow: visible;
   }
 
@@ -268,8 +268,8 @@ body {
     display: block;
     cursor: pointer;
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: 20px;
+    top: 20px;
     z-index: 10 !important;
     padding: 3px;
     width: 40px;
@@ -313,7 +313,7 @@ body {
 }
 
 .api-modal .modal-body .request-awaiting {
-  padding: 35px 10px;
+  padding: 35px 20px;
   color: #7F8177;
   text-align: center;
 }
@@ -352,7 +352,7 @@ body {
     font-weight: bold
 }
 
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
     .navbar-nav.navbar-right:last-child {
         margin-right: 0 !important;
     }

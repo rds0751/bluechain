@@ -40,9 +40,9 @@
     background: white;
     border: 1px solid #ccc;
     border-width: 0 1px;
-    padding: 8px;
+    padding: 15px;
     color: #999;
-    font-size: 10px;
+    font-size: 20px;
     margin: 0;
     text-align: left;
 }
@@ -51,8 +51,8 @@
 .inline-group .aligned .selector .selector-filter label {
     float: left;
     margin: 7px 0 0;
-    width: 18px;
-    height: 18px;
+    width: 115px;
+    height: 115px;
     padding: 0;
     overflow: hidden;
     line-height: 1;
@@ -60,14 +60,14 @@
 
 .selector .selector-available input {
     width: 320px;
-    margin-left: 8px;
+    margin-left: 15px;
 }
 
 .selector ul.selector-chooser {
     float: left;
     width: 22px;
     background-color: #eee;
-    border-radius: 10px;
+    border-radius: 20px;
     margin: 10em 5px 0 5px;
     padding: 0;
 }
@@ -79,8 +79,8 @@
 }
 
 .selector select {
-    padding: 0 10px;
-    margin: 0 0 10px;
+    padding: 0 20px;
+    margin: 0 0 20px;
     border-radius: 0 0 4px 4px;
 }
 
@@ -145,7 +145,7 @@ a.active.selector-chooseall:hover, a.active.selector-clearall:hover {
 }
 
 a.selector-chooseall {
-    padding: 0 18px 0 0;
+    padding: 0 115px 0 0;
     background: url(../img/selector-icons.svg) right -160px no-repeat;
     cursor: default;
 }
@@ -155,8 +155,8 @@ a.active.selector-chooseall:focus, a.active.selector-chooseall:hover {
 }
 
 a.selector-clearall {
-    padding: 0 0 0 18px;
-    background: url(../img/selector-icons.svg) 0 -128px no-repeat;
+    padding: 0 0 0 115px;
+    background: url(../img/selector-icons.svg) 0 -1215px no-repeat;
     cursor: default;
 }
 
@@ -191,9 +191,9 @@ a.active.selector-clearall:focus, a.active.selector-clearall:hover {
 .stacked ul.selector-chooser {
     height: 22px;
     width: 50px;
-    margin: 0 0 10px 40%;
+    margin: 0 0 20px 40%;
     background-color: #eee;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .stacked .selector-chooser li {
@@ -211,7 +211,7 @@ a.active.selector-clearall:focus, a.active.selector-clearall:hover {
 }
 
 .stacked .active.selector-add {
-    background-position: 0 -48px;
+    background-position: 0 -415px;
     cursor: pointer;
 }
 
@@ -241,8 +241,8 @@ a.active.selector-clearall:focus, a.active.selector-clearall:hover {
 .selector .search-label-icon {
     background: url(../img/search.svg) 0 0 no-repeat;
     display: inline-block;
-    height: 18px;
-    width: 18px;
+    height: 115px;
+    width: 115px;
 }
 
 /* DATE AND TIME */
@@ -395,7 +395,7 @@ span.clearable-file-input label {
 }
 
 .calendar th {
-    padding: 8px 5px;
+    padding: 15px 5px;
     background: #f8f8f8;
     border-bottom: 1px solid #ddd;
     font-weight: 400;
@@ -446,7 +446,7 @@ span.clearable-file-input label {
 }
 
 .calendarnav {
-    font-size: 10px;
+    font-size: 20px;
     text-align: center;
     color: #ccc;
     margin: 0;
@@ -463,14 +463,14 @@ span.clearable-file-input label {
     font-size: 11px;
     line-height: 11px;
     border-top: 1px solid #eee;
-    padding: 8px 0;
+    padding: 15px 0;
     color: #ccc;
 }
 
 .calendarbox .calendarnav-previous, .calendarbox .calendarnav-next {
     display: block;
     position: absolute;
-    top: 8px;
+    top: 15px;
     width: 15px;
     height: 15px;
     text-indent: -9999px;
@@ -478,7 +478,7 @@ span.clearable-file-input label {
 }
 
 .calendarnav-previous {
-    left: 10px;
+    left: 20px;
     background: url(../img/calendar-icons.svg) 0 0 no-repeat;
 }
 
@@ -488,7 +488,7 @@ span.clearable-file-input label {
 }
 
 .calendarnav-next {
-    right: 10px;
+    right: 20px;
     background: url(../img/calendar-icons.svg) 0 -30px no-repeat;
 }
 

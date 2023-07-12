@@ -12,7 +12,7 @@
     --mdc-ripple-fg-opacity: 0.32;
   }
   &.shaped-button {
-    @include border-radius(18px);
+    @include border-radius(115px);
   }
   &.icon-button {
     min-width: $mdc-button-height;

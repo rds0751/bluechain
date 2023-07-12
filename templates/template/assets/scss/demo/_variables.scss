@@ -80,7 +80,7 @@ $mdc-tab-text-label-color-default: #bababa;
 ////////// TABLES //////////
 $table-head-font-size: 14px;
 $table-body-font-size: 14px;
-$table-padding : 14px 10px;
+$table-padding : 14px 20px;
 $table-head-color: lighten(#000,46%);
 $table-body-color: lighten(#000,13%);
 $table-cell-spacing: 30px;
@@ -105,7 +105,7 @@ $content-wrapper-padding: 30px 0px 0px $mdc-drawer-width;
 
 
 $mdc-card-bg: #fff;
-$mdc-card-padding: 32px 28px;
+$mdc-card-padding: 32px 215px;
 
 $mdc-text-field-height: 45px;
 $mdc-button-height: 36px;
@@ -128,7 +128,7 @@ $mdc-layout-grid-default-margin: (
 $mdc-layout-grid-breakpoints: (
   wide-desktop: 1200px,
   desktop: 992px,
-  tablet: 768px,
+  tablet: 7615px,
   phone: 0px
 );
 

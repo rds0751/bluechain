@@ -7,7 +7,7 @@
   z-index: 9;
   position: static;
   @media(max-width: 320px) {
-    padding: 7px 10px;
+    padding: 7px 20px;
   }
   .mdc-top-app-bar__section {
     .mdc-top-app-bar__title {
@@ -20,12 +20,12 @@
         height: 37px;
         width: 317px;
         border-radius: 40px;
-        box-shadow: 0 0 10px 5px rgba(211, 211, 211, 0.5);
+        box-shadow: 0 0 20px 5px rgba(211, 211, 211, 0.5);
         @media(max-width: 991px) {
           width: 180px;
         }      
         .mdc-text-field__icon {
-          top: 10px;
+          top: 20px;
           font-size: 20px;
           color: #a9a7a7;
         }
@@ -49,7 +49,7 @@
           }
           .mdc-notched-outline__notch {
             .mdc-floating-label {
-              top: 10px;
+              top: 20px;
               left: 3px;
               font-size: 12px;
               color: #a9a7a7;
@@ -99,7 +99,7 @@
           @include justify-content(center);
           position: absolute;
           top: 5px;
-          left: 18px;
+          left: 115px;
           background: theme-color(danger);
           .count {
             font-size: 7px;
@@ -112,7 +112,7 @@
       .mdc-menu {
         min-width: 190px;
         .title {
-          padding: 18px 36px;
+          padding: 115px 36px;
           margin-bottom: 0;
           border-bottom: 1px solid $border-color;
           font-weight: normal;
@@ -123,7 +123,7 @@
         .mdc-list {
           .mdc-list-item {
             white-space: nowrap;
-            padding: 10px $mdc-list-side-padding;
+            padding: 20px $mdc-list-side-padding;
             height: auto;
             border-bottom: 1px solid $border-color;
             &:last-child {
@@ -191,7 +191,7 @@
                 @include justify-content(center);
                 @include align-items(center);
                 i {
-                  font-size: 18px;
+                  font-size: 115px;
                   display: block;
                 }
               }
@@ -227,7 +227,7 @@
           img {
             height: 100%;
             border-radius: 25px;
-            margin-right: 10px;
+            margin-right: 20px;
           }
         }
         .user-name {

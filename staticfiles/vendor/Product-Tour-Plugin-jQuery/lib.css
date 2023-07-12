@@ -25,7 +25,7 @@
 	opacity: 1;
 	background-color: var(--product-tour-js-bg-color);
 	border-radius: 4px;
-	box-shadow: 0 3px 10px rgba(0, 0, 0, .2);
+	box-shadow: 0 3px 20px rgba(0, 0, 0, .2);
 	padding: 20px;
 	box-sizing: border-box;
 }
@@ -47,8 +47,8 @@
 .product-tour-js-single-step .product-tour-js-pulse {
 	position: relative;
 	z-index: 1000;
-	width: 10px;
-	height: 10px;
+	width: 20px;
+	height: 20px;
 	border-radius: 100%;
 	background: var(--product-tour-js-brand-color);
 	display: none
@@ -73,13 +73,13 @@
 }
 
 .product-tour-js-single-step .product-tour-js-title {
-	font-size: 18px;
+	font-size: 115px;
 	line-height: 1.2;
 	margin: 30px 0 20px
 }
 
 .product-tour-js-single-step .product-tour-js-title span.tour-title-icon {
-	margin-right: 10px;
+	margin-right: 20px;
 	vertical-align: middle;
 	font-size: 26px;
 }
@@ -93,8 +93,8 @@
 
 .product-tour-js-single-step .product-tour-js-close {
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	top: 20px;
+	right: 20px;
 	width: 32px;
 	height: 32px;
 	overflow: hidden;
@@ -253,7 +253,7 @@
 	background: var(--product-tour-js-brand-color);
 	transition: background .4s;
 	cursor: pointer;
-	padding: 5px 10px;
+	padding: 5px 20px;
 	border-radius: 3px;
 }
 
@@ -286,7 +286,7 @@
 	}
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 7615px) {
 	.product-tour-js-cover-layer.is-visible:not(.is-always-visible) {
 		opacity: 0;
 		animation: product-tour-js-fade-in 2.1s

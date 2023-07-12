@@ -1353,7 +1353,7 @@ th {
 }
 
 html {
-	font-size: 10px;
+	font-size: 20px;
 	-webkit-tap-highlight-color: transparent;
 }
 
@@ -1530,7 +1530,7 @@ h3, .h3 {
 }
 
 h4, .h4 {
-	font-size: 18px;
+	font-size: 115px;
 }
 
 h5, .h5 {
@@ -1547,12 +1547,12 @@ p {
 
 .lead {
 	margin-bottom: 24px;
-	font-size: 18px;
+	font-size: 115px;
 	font-weight: 300;
 	line-height: 1.4;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
 	.lead {
 		font-size: 24px;
 	}
@@ -1671,7 +1671,7 @@ a.text-danger:hover {
 
 .page-header {
 	padding-bottom: 11px;
-	margin: 48px 0 24px;
+	margin: 415px 0 24px;
 	border-bottom: 1px solid #eeeeee;
 }
 
@@ -1894,7 +1894,7 @@ pre code {
 	clear: both;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
 	.container {
 		width: 750px;
 	}
@@ -2157,7 +2157,7 @@ pre code {
 	margin-left: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
 	.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
 		float: left;
 	}
@@ -2860,7 +2860,7 @@ table th[class*="col-"] {
 @media screen and (max-width: 767px) {
 	.table-responsive {
 		width: 100%;
-		margin-bottom: 18px;
+		margin-bottom: 115px;
 		overflow-y: hidden;
 		-ms-overflow-style: -ms-autohiding-scrollbar;
 		border: 1px solid #eee;
@@ -2973,7 +2973,7 @@ output {
 .form-control {
 	display: block;
 	width: 100%;
-	height: 38px;
+	height: 315px;
 	padding: 6px 12px;
 	font-size: 16px;
 	line-height: 1.5;
@@ -2990,7 +2990,7 @@ output {
 .form-control:focus {
 	border-color: #d2d5d7;
 	outline: 0;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(210, 213, 215, 0.6);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 15px rgba(210, 213, 215, 0.6);
 }
 
 .form-control::-moz-placeholder {
@@ -3026,7 +3026,7 @@ input[type="search"] {
 	input[type="time"],
 	input[type="datetime-local"],
 	input[type="month"] {
-		line-height: 38px;
+		line-height: 315px;
 	}
 	input[type="date"].input-sm, .input-group-sm > input[type="date"].form-control,
 	.input-group-sm > input[type="date"].input-group-addon,
@@ -3086,8 +3086,8 @@ input[type="search"] {
 .checkbox {
 	position: relative;
 	display: block;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .radio label,
@@ -3126,7 +3126,7 @@ input[type="search"] {
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
 	margin-top: 0;
-	margin-left: 10px;
+	margin-left: 20px;
 }
 
 input[type="radio"][disabled], input[type="radio"].disabled,
@@ -3173,7 +3173,7 @@ fieldset[disabled]
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
 	height: 33px;
-	padding: 5px 10px;
+	padding: 5px 20px;
 	font-size: 14px;
 	line-height: 1.5;
 	border-radius: 2px;
@@ -3198,7 +3198,7 @@ select[multiple].input-sm,
 
 .form-group-sm .form-control {
 	height: 33px;
-	padding: 5px 10px;
+	padding: 5px 20px;
 	font-size: 14px;
 	line-height: 1.5;
 	border-radius: 2px;
@@ -3216,7 +3216,7 @@ select[multiple].input-sm,
 
 .form-group-sm .form-control-static {
 	height: 33px;
-	padding: 5px 10px;
+	padding: 5px 20px;
 	font-size: 14px;
 	line-height: 1.5;
 }
@@ -3225,7 +3225,7 @@ select[multiple].input-sm,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
 	height: 49px;
-	padding: 10px 16px;
+	padding: 20px 16px;
 	font-size: 20px;
 	line-height: 1.33333;
 	border-radius: 4px;
@@ -3250,7 +3250,7 @@ select[multiple].input-lg,
 
 .form-group-lg .form-control {
 	height: 49px;
-	padding: 10px 16px;
+	padding: 20px 16px;
 	font-size: 20px;
 	line-height: 1.33333;
 	border-radius: 4px;
@@ -3268,7 +3268,7 @@ select[multiple].input-lg,
 
 .form-group-lg .form-control-static {
 	height: 49px;
-	padding: 10px 16px;
+	padding: 20px 16px;
 	font-size: 20px;
 	line-height: 1.33333;
 }
@@ -3287,9 +3287,9 @@ select[multiple].input-lg,
 	right: 0;
 	z-index: 2;
 	display: block;
-	width: 38px;
-	height: 38px;
-	line-height: 38px;
+	width: 315px;
+	height: 315px;
+	line-height: 315px;
 	text-align: center;
 	pointer-events: none;
 }
@@ -3420,11 +3420,11 @@ select[multiple].input-lg,
 .help-block {
 	display: block;
 	margin-top: 5px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	color: #838383;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
 	.form-inline .form-group {
 		display: inline-block;
 		margin-bottom: 0;
@@ -3503,7 +3503,7 @@ select[multiple].input-lg,
 	clear: both;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
 	.form-horizontal .control-label {
 		text-align: right;
 		margin-bottom: 0;
@@ -3515,13 +3515,13 @@ select[multiple].input-lg,
 	right: 15px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
 	.form-horizontal .form-group-lg .control-label {
 		padding-top: 14.33333px;
 	}
 }
 
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
 	.form-horizontal .form-group-sm .control-label {
 		padding-top: 6px;
 	}
@@ -3809,14 +3809,14 @@ fieldset[disabled] .btn-link:focus {
 }
 
 .btn-lg, .btn-group-lg > .btn {
-	padding: 10px 16px;
+	padding: 20px 16px;
 	font-size: 20px;
 	line-height: 1.33333;
 	border-radius: 4px;
 }
 
 .btn-sm, .btn-group-sm > .btn {
-	padding: 5px 10px;
+	padding: 5px 20px;
 	font-size: 14px;
 	line-height: 1.5;
 	border-radius: 2px;
@@ -4134,8 +4134,8 @@ tbody.collapse.in {
 }
 
 .btn-group > .btn + .dropdown-toggle {
-	padding-left: 8px;
-	padding-right: 8px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 .btn-group > .btn-lg + .dropdown-toggle, .btn-group-lg.btn-group > .btn + .dropdown-toggle {
@@ -4310,7 +4310,7 @@ tbody.collapse.in {
 .input-group-addon.input-sm,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .input-group-addon.btn {
-	padding: 5px 10px;
+	padding: 5px 20px;
 	font-size: 14px;
 	border-radius: 2px;
 }
@@ -4318,7 +4318,7 @@ tbody.collapse.in {
 .input-group-addon.input-lg,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .input-group-addon.btn {
-	padding: 10px 16px;
+	padding: 20px 16px;
 	font-size: 20px;
 	border-radius: 4px;
 }
@@ -4409,7 +4409,7 @@ tbody.collapse.in {
 .nav > li > a {
 	position: relative;
 	display: block;
-	padding: 10px 15px;
+	padding: 20px 15px;
 }
 
 .nav > li > a:hover, .nav > li > a:focus {
@@ -4516,7 +4516,7 @@ tbody.collapse.in {
 	left: auto;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
 	.nav-justified > li, .nav-tabs.nav-justified > li {
 		display: table-cell;
 		width: 1%;
@@ -4541,7 +4541,7 @@ tbody.collapse.in {
 	border: 1px solid #ddd;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
 	.nav-tabs-justified > li > a, .nav-tabs.nav-justified > li > a {
 		border-bottom: 1px solid #ddd;
 		border-radius: 3px 3px 0 0;
@@ -4746,7 +4746,7 @@ tbody.collapse.in {
 	position: relative;
 	float: right;
 	margin-right: 15px;
-	padding: 9px 10px;
+	padding: 9px 20px;
 	margin-top: 15px;
 	margin-bottom: 15px;
 	background-color: transparent;
@@ -4777,12 +4777,12 @@ tbody.collapse.in {
 }
 
 .navbar-nav {
-	margin: 10px -15px;
+	margin: 20px -15px;
 }
 
 .navbar-nav > li > a {
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	line-height: 24px;
 }
 
@@ -4825,7 +4825,7 @@ tbody.collapse.in {
 .navbar-form {
 	margin-left: -15px;
 	margin-right: -15px;
-	padding: 10px 15px;
+	padding: 20px 15px;
 	border-top: 1px solid transparent;
 	border-bottom: 1px solid transparent;
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -4833,7 +4833,7 @@ tbody.collapse.in {
 	margin-bottom: 13px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
 	.navbar-form .form-group {
 		display: inline-block;
 		margin-bottom: 0;
@@ -5256,7 +5256,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 
 .pagination-lg > li > a,
 .pagination-lg > li > span {
-	padding: 10px 16px;
+	padding: 20px 16px;
 	font-size: 20px;
 }
 
@@ -5274,7 +5274,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 
 .pagination-sm > li > a,
 .pagination-sm > li > span {
-	padding: 5px 10px;
+	padding: 5px 20px;
 	font-size: 14px;
 }
 
@@ -5422,7 +5422,7 @@ a.label:hover, a.label:focus {
 
 .badge {
 	display: inline-block;
-	min-width: 10px;
+	min-width: 20px;
 	padding: 3px 7px;
 	font-size: 14px;
 	font-weight: 500;
@@ -5432,7 +5432,7 @@ a.label:hover, a.label:focus {
 	white-space: nowrap;
 	text-align: center;
 	background-color: #7dc855;
-	border-radius: 10px;
+	border-radius: 20px;
 }
 
 .badge:empty {
@@ -5504,9 +5504,9 @@ a.badge:hover, a.badge:focus {
 	max-width: 100%;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 7615px) {
 	.jumbotron {
-		padding: 48px 0;
+		padding: 415px 0;
 	}
 	.container .jumbotron,
 	.container-fluid .jumbotron {
@@ -5783,12 +5783,12 @@ a.thumbnail.active {
 
 .media-right,
 .media > .pull-right {
-	padding-left: 10px;
+	padding-left: 20px;
 }
 
 .media-left,
 .media > .pull-left {
-	padding-right: 10px;
+	padding-right: 20px;
 }
 
 .media-left,
@@ -5824,7 +5824,7 @@ a.thumbnail.active {
 .list-group-item {
 	position: relative;
 	display: block;
-	padding: 10px 15px;
+	padding: 20px 15px;
 	margin-bottom: -1px;
 	background-color: #fff;
 	border: 1px solid #eee;
@@ -6031,7 +6031,7 @@ a.list-group-item-danger.active, a.list-group-item-danger.active:hover, a.list-g
 .panel-title {
 	margin-top: 0;
 	margin-bottom: 0;
-	font-size: 18px;
+	font-size: 115px;
 	color: inherit;
 }
 
@@ -6532,7 +6532,7 @@ button.close {
 .modal-dialog {
 	position: relative;
 	width: auto;
-	margin: 10px;
+	margin: 20px;
 }
 
 .modal-content {
@@ -6620,7 +6620,7 @@ button.close {
 	overflow: scroll;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
 	.modal-dialog {
 		width: 600px;
 		margin: 30px auto;
@@ -6679,7 +6679,7 @@ button.close {
 
 .tooltip-inner {
 	max-width: 200px;
-	padding: 3px 8px;
+	padding: 3px 15px;
 	color: #fff;
 	text-align: center;
 	text-decoration: none;
@@ -6777,29 +6777,29 @@ button.close {
 	border: 1px solid #ccc;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	border-radius: 4px;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 	white-space: normal;
 }
 
 .popover.top {
-	margin-top: -10px;
+	margin-top: -20px;
 }
 
 .popover.right {
-	margin-left: 10px;
+	margin-left: 20px;
 }
 
 .popover.bottom {
-	margin-top: 10px;
+	margin-top: 20px;
 }
 
 .popover.left {
-	margin-left: -10px;
+	margin-left: -20px;
 }
 
 .popover-title {
 	margin: 0;
-	padding: 8px 14px;
+	padding: 15px 14px;
 	font-size: 16px;
 	background-color: #f7f7f7;
 	border-bottom: 1px solid #ebebeb;
@@ -6824,7 +6824,7 @@ button.close {
 }
 
 .popover > .arrow:after {
-	border-width: 10px;
+	border-width: 20px;
 	content: "";
 }
 
@@ -6840,7 +6840,7 @@ button.close {
 .popover.top > .arrow:after {
 	content: " ";
 	bottom: 1px;
-	margin-left: -10px;
+	margin-left: -20px;
 	border-bottom-width: 0;
 	border-top-color: #fff;
 }
@@ -6857,7 +6857,7 @@ button.close {
 .popover.right > .arrow:after {
 	content: " ";
 	left: 1px;
-	bottom: -10px;
+	bottom: -20px;
 	border-left-width: 0;
 	border-right-color: #fff;
 }
@@ -6874,7 +6874,7 @@ button.close {
 .popover.bottom > .arrow:after {
 	content: " ";
 	top: 1px;
-	margin-left: -10px;
+	margin-left: -20px;
 	border-top-width: 0;
 	border-bottom-color: #fff;
 }
@@ -6893,7 +6893,7 @@ button.close {
 	right: 1px;
 	border-right-width: 0;
 	border-left-color: #fff;
-	bottom: -10px;
+	bottom: -20px;
 }
 
 .carousel {
@@ -7038,20 +7038,20 @@ button.close {
 .carousel-control .icon-prev,
 .carousel-control .glyphicon-chevron-left {
 	left: 50%;
-	margin-left: -10px;
+	margin-left: -20px;
 }
 
 .carousel-control .icon-next,
 .carousel-control .glyphicon-chevron-right {
 	right: 50%;
-	margin-right: -10px;
+	margin-right: -20px;
 }
 
 .carousel-control .icon-prev,
 .carousel-control .icon-next {
 	width: 20px;
 	height: 20px;
-	margin-top: -10px;
+	margin-top: -20px;
 	line-height: 1;
 	font-family: serif;
 }
@@ -7066,7 +7066,7 @@ button.close {
 
 .carousel-indicators {
 	position: absolute;
-	bottom: 10px;
+	bottom: 20px;
 	left: 50%;
 	z-index: 15;
 	width: 60%;
@@ -7078,12 +7078,12 @@ button.close {
 
 .carousel-indicators li {
 	display: inline-block;
-	width: 10px;
-	height: 10px;
+	width: 20px;
+	height: 20px;
 	margin: 1px;
 	text-indent: -999px;
 	border: 1px solid #fff;
-	border-radius: 10px;
+	border-radius: 20px;
 	cursor: pointer;
 	background-color: #000 \9;
 	background-color: transparent;
@@ -7113,7 +7113,7 @@ button.close {
 	text-shadow: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 7615px) {
 	.carousel-control .glyphicon-chevron-left,
 	.carousel-control .glyphicon-chevron-right,
 	.carousel-control .icon-prev,
@@ -7262,7 +7262,7 @@ button.close {
 	}
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 7615px) and (max-width: 991px) {
 	.visible-sm {
 		display: block !important;
 	}
@@ -7278,19 +7278,19 @@ button.close {
 	}
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 7615px) and (max-width: 991px) {
 	.visible-sm-block {
 		display: block !important;
 	}
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 7615px) and (max-width: 991px) {
 	.visible-sm-inline {
 		display: inline !important;
 	}
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 7615px) and (max-width: 991px) {
 	.visible-sm-inline-block {
 		display: inline-block !important;
 	}
@@ -7370,7 +7370,7 @@ button.close {
 	}
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 7615px) and (max-width: 991px) {
 	.hidden-sm {
 		display: none !important;
 	}
@@ -7534,11 +7534,11 @@ code {
 }
 
 .lead {
-	font-size: 18px;
+	font-size: 115px;
 	line-height: 1.45;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
 	.lead {
 		font-size: 22px;
 	}
@@ -7841,7 +7841,7 @@ a.bg-inverse, a.bg-inverse:hover, a.bg-inverse:focus {
 
 .page-header {
 	margin: 0;
-	padding: 48px 0 24px;
+	padding: 415px 0 24px;
 }
 
 /* Grid */
@@ -8662,8 +8662,8 @@ label {
 }
 
 .form-bordered .form-group {
-	padding-bottom: 10px;
-	margin-bottom: 10px;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
 	border-bottom: 1px solid #777777;
 }
 
@@ -8932,7 +8932,7 @@ label {
 	float: left;
 	display: block;
 	width: 24px;
-	margin-right: 10px;
+	margin-right: 20px;
 	content: '';
 	color: #fff;
 	font-family: Ionicons;
@@ -9063,7 +9063,7 @@ label {
 
 .nav-tabs.nav-tabs-icons > li > a i {
 	display: inline;
-	font-size: 18px;
+	font-size: 115px;
 	line-height: 1;
 	margin-right: 5px;
 	vertical-align: baseline;
@@ -9177,32 +9177,32 @@ label {
 .popover {
 	border-color: #777777;
 	border-radius: 3px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
 }
 
 /* Dropdowns */
 .dropdown-menu {
 	min-width: 180px;
 	padding: 7px 0;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
 }
 
 .dropdown-menu > li > a {
-	padding: 8px 15px;
+	padding: 15px 15px;
 }
 
 .dropdown-menu > li > a i.pull-right,
 .dropdown-menu > li > a .badge.pull-right {
 	right: 0;
 	margin-top: 3px;
-	margin-left: 10px;
+	margin-left: 20px;
 }
 
 .dropdown-menu > li > a i.pull-left,
 .dropdown-menu > li > a .badge.pull-left {
 	left: 0;
 	margin-top: 3px;
-	margin-right: 10px;
+	margin-right: 20px;
 }
 
 .dropdown-menu > li > a .badge.pull-right {
@@ -9214,7 +9214,7 @@ label {
 }
 
 .dropdown-header {
-	padding: 8px 15px;
+	padding: 15px 15px;
 	font-weight: 500;
 	letter-spacing: .5px;
 	text-transform: uppercase;

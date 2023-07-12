@@ -4,7 +4,7 @@
 
 .form-row {
     overflow: hidden;
-    padding: 10px;
+    padding: 20px;
     font-size: 13px;
     border-bottom: 1px solid #eee;
 }
@@ -69,7 +69,7 @@ form ul.inline li {
 
 .aligned label {
     display: block;
-    padding: 4px 10px 0 0;
+    padding: 4px 20px 0 0;
     float: left;
     width: 160px;
     word-wrap: break-word;
@@ -106,7 +106,7 @@ form ul.inline li {
 
 form .aligned ul {
     margin-left: 160px;
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 form .aligned ul.radiolist {
@@ -120,7 +120,7 @@ form .aligned div.help {
     clear: left;
     margin-top: 0;
     margin-left: 160px;
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 form .aligned label + p.help,
@@ -142,7 +142,7 @@ form .aligned input + div.help,
 form .aligned textarea + div.help,
 form .aligned select + div.help {
     margin-left: 160px;
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 form .aligned ul li {
@@ -168,7 +168,7 @@ form .aligned table p {
 }
 
 .colM .aligned .vLargeTextField, .colM .aligned .vXMLLargeTextField {
-    width: 610px;
+    width: 620px;
 }
 
 .checkbox-row p.help,
@@ -196,7 +196,7 @@ form .wide input + div.help {
 
 form .wide p.help,
 form .wide div.help {
-    padding-left: 38px;
+    padding-left: 315px;
 }
 
 form div.help ul {
@@ -268,7 +268,7 @@ body.popup .submit-row {
 }
 
 .submit-row input.default {
-    margin: 0 0 0 8px;
+    margin: 0 0 0 15px;
     text-transform: uppercase;
 }
 
@@ -285,7 +285,7 @@ body.popup .submit-row {
     display: block;
     background: #ba2121;
     border-radius: 4px;
-    padding: 10px 15px;
+    padding: 20px 15px;
     height: 15px;
     line-height: 15px;
     color: #fff;
@@ -295,7 +295,7 @@ body.popup .submit-row {
     display: inline-block;
     background: #bbbbbb;
     border-radius: 4px;
-    padding: 10px 15px;
+    padding: 20px 15px;
     height: 15px;
     line-height: 15px;
     margin: 0 0 0 5px;
@@ -377,7 +377,7 @@ body.popup .submit-row {
 }
 
 .inline-group thead th {
-    padding: 8px 10px;
+    padding: 15px 20px;
 }
 
 .inline-group .aligned label {
@@ -478,12 +478,12 @@ body.popup .submit-row {
 .inline-group .tabular tr.add-row td {
     color: #666;
     background: #f8f8f8;
-    padding: 8px 10px;
+    padding: 15px 20px;
     border-bottom: 1px solid #eee;
 }
 
 .inline-group .tabular tr.add-row td {
-    padding: 8px 10px;
+    padding: 15px 20px;
     border-bottom: 1px solid #eee;
 }
 

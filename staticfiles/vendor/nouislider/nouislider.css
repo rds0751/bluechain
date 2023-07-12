@@ -74,19 +74,19 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-origin {
 /* Slider size and handle placement;
  */
 .noUi-horizontal {
-  height: 18px;
+  height: 115px;
 }
 .noUi-horizontal .noUi-handle {
   width: 34px;
-  height: 28px;
+  height: 215px;
   left: -17px;
   top: -6px;
 }
 .noUi-vertical {
-  width: 18px;
+  width: 115px;
 }
 .noUi-vertical .noUi-handle {
-  width: 28px;
+  width: 215px;
   height: 34px;
   left: -6px;
   top: -17px;
@@ -186,7 +186,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 .noUi-value-sub {
   color: #ccc;
-  font-size: 10px;
+  font-size: 20px;
 }
 /* Markings;
  *
@@ -205,7 +205,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
  *
  */
 .noUi-pips-horizontal {
-  padding: 10px 0;
+  padding: 20px 0;
   height: 80px;
   top: 100%;
   left: 0;
@@ -225,7 +225,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   height: 5px;
 }
 .noUi-marker-horizontal.noUi-marker-sub {
-  height: 10px;
+  height: 20px;
 }
 .noUi-marker-horizontal.noUi-marker-large {
   height: 15px;
@@ -234,7 +234,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
  *
  */
 .noUi-pips-vertical {
-  padding: 0 10px;
+  padding: 0 20px;
   height: 100%;
   top: 0;
   left: 100%;
@@ -254,7 +254,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   margin-top: -1px;
 }
 .noUi-marker-vertical.noUi-marker-sub {
-  width: 10px;
+  width: 20px;
 }
 .noUi-marker-vertical.noUi-marker-large {
   width: 15px;

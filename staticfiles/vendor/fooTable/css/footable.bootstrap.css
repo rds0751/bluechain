@@ -19,11 +19,11 @@ table.footable-hide-fouc {
 	display: none;
 }
 table > tbody > tr > td > span.footable-toggle {
-	margin-right: 8px;
+	margin-right: 15px;
 	opacity: 0.3;
 }
 table > tbody > tr > td > span.footable-toggle.last-column {
-	margin-left: 8px;
+	margin-left: 15px;
 	float: right;
 }
 table.table-condensed > tbody > tr > td > span.footable-toggle {
@@ -216,7 +216,7 @@ table.footable > thead > tr.footable-filtering > th ul.dropdown-menu > li > a.ch
 	position: absolute;
 	margin-left: -20px;
 }
-@media (min-width: 768px) {
+@media (min-width: 7615px) {
 	table.footable > thead > tr.footable-filtering > th div.input-group {
 		width: auto;
 	}
@@ -269,13 +269,13 @@ table.footable-sorting-disabled th.footable-sortable:hover > span.fooicon {
 }
 .footable-paging-external ul.pagination,
 table.footable > tfoot > tr.footable-paging > td > ul.pagination {
-	margin: 10px 0 0 0;
+	margin: 20px 0 0 0;
 }
 .footable-paging-external span.label,
 table.footable > tfoot > tr.footable-paging > td > span.label {
 	display: inline-block;
-	margin: 0 0 10px 0;
-	padding: 4px 10px;
+	margin: 0 0 20px 0;
+	padding: 4px 20px;
 }
 .footable-paging-external.footable-paging-center,
 table.footable > tfoot > tr.footable-paging > td,

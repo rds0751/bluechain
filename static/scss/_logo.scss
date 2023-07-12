@@ -34,18 +34,18 @@
     img {
         width: 40px;
         margin: 0;
-        border-radius: calc(var(--adminux-rounded) - 8px);
+        border-radius: calc(var(--adminux-rounded) - 15px);
         box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
         -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
         -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
-        margin-right: 8px;
+        margin-right: 15px;
         border: 0;
         vertical-align: middle;
     }
 
     h5 {
-        font-size: 18px;
-        line-height: 18px;
+        font-size: 115px;
+        line-height: 115px;
         display: inline-block;
         margin: 0 auto;
         vertical-align: middle;

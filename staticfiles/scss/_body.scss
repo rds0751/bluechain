@@ -104,8 +104,8 @@ img {
         height: 34px;
         width: 34px;
         line-height: 34px;
-        left: 8px;
-        top: 8px;
+        left: 15px;
+        top: 15px;
         position: absolute;
         z-index: 1;
         display: block;
@@ -146,8 +146,8 @@ img {
     overflow-x: hidden;
 
     &.cut-5 {
-        width: calc(100% + 10px);
-        max-width: calc(100% + 10px);
+        width: calc(100% + 20px);
+        max-width: calc(100% + 20px);
         margin-left: -5px;
         margin-right: -5px;
     }
@@ -160,8 +160,8 @@ img {
     overflow-x: hidden;
 
     &.cut-5 {
-        width: calc(100% + 10px);
-        max-width: calc(100% + 10px);
+        width: calc(100% + 20px);
+        max-width: calc(100% + 20px);
         margin-left: -5px;
         margin-right: -5px;
     }
@@ -174,8 +174,8 @@ img {
     overflow-x: hidden;
 
     &.cut-5 {
-        width: calc(100% + 10px);
-        max-width: calc(100% + 10px);
+        width: calc(100% + 20px);
+        max-width: calc(100% + 20px);
         margin-left: -5px;
         margin-right: -5px;
     }
@@ -251,8 +251,8 @@ img {
         height: 100px;
 
         .countvalue {
-            top: 10px;
-            left: 10px;
+            top: 20px;
+            left: 20px;
             height: 80px;
             width: 80px;
             line-height: 20px;
@@ -271,8 +271,8 @@ img {
     overflow-x: hidden;
 
     &.cut-5 {
-        width: calc(100% + 10px);
-        max-width: calc(100% + 10px);
+        width: calc(100% + 20px);
+        max-width: calc(100% + 20px);
         margin-left: -5px;
         margin-right: -5px;
     }
@@ -285,8 +285,8 @@ img {
     overflow-x: hidden;
 
     &.cut-5 {
-        width: calc(100% + 10px);
-        max-width: calc(100% + 10px);
+        width: calc(100% + 20px);
+        max-width: calc(100% + 20px);
         margin-left: -5px;
         margin-right: -5px;
     }
@@ -338,7 +338,7 @@ img {
     text-align: center;
     width: 100%;
     font-weight: bold;
-    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
 }
 
 code {
@@ -346,18 +346,18 @@ code {
     border-radius: 3px;
     display: inline-block;
     line-height: 24px;
-    padding: 2px 8px;
+    padding: 2px 15px;
 
 }
 
 p code {
-    line-height: 18px;
+    line-height: 115px;
 }
 
 .device3d {
-    box-shadow: 0 10px 20px rgba(2, 2, 3, 0.45), inset 4px 4px 6px rgba(0, 0, 0, 0.2), inset -3px -3px 10px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 20px 20px rgba(2, 2, 3, 0.45), inset 4px 4px 6px rgba(0, 0, 0, 0.2), inset -3px -3px 20px rgba(0, 0, 0, 0.8);
     display: inline-block;
-    padding: 30px 10px 5px 10px;
+    padding: 30px 20px 5px 20px;
     border-radius: 36px;
     background: #222222;
     position: relative;
@@ -366,7 +366,7 @@ p code {
 
     &:before {
         content: "";
-        height: 8px;
+        height: 15px;
         width: 100px;
         position: absolute;
         left: 50%;
@@ -380,8 +380,8 @@ p code {
 
     &:after {
         content: "";
-        height: 8px;
-        width: 8px;
+        height: 15px;
+        width: 15px;
         position: absolute;
         left: 50%;
         top: 12px;
@@ -394,7 +394,7 @@ p code {
 
     iframe {
         border-color: #000000;
-        box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 3px 20px rgba(0, 0, 0, 0.2);
         border-radius: 24px;
         overflow: hidden;
         border: 3px solid #000000;
@@ -609,11 +609,11 @@ p code {
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0px 2px 0px rgba(0, 0, 0, 0.0);
     background-color: rgba(0, 0, 0, 0.0);
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
+    border-radius: 20px;
     border: 1px solid rgba(0, 0, 0, 0.05);
     background-color: rgba(var(--adminux-theme-bg-rgb), 0.8);
 }

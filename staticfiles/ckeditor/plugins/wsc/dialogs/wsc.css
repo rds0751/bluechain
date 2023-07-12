@@ -12,7 +12,7 @@ html, body
 
 body
 {
-	padding: 10px;
+	padding: 20px;
 }
 
 body, td, input, select, textarea
@@ -24,13 +24,13 @@ body, td, input, select, textarea
 .midtext
 {
 	padding:0px;
-	margin:10px;
+	margin:20px;
 }
 
 .midtext p
 {
 	padding:0px;
-	margin:10px;
+	margin:20px;
 }
 
 .Button
@@ -52,7 +52,7 @@ body, td, input, select, textarea
 }
 .PopupTabEmptyArea
 {
-	padding-left: 10px;
+	padding-left: 20px;
 	border-bottom: #d5d59d 1px solid;
 }
 

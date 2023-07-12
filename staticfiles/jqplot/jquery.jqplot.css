@@ -14,20 +14,20 @@
 }
 
 .jqplot-xaxis {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .jqplot-x2axis {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .jqplot-yaxis {
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .jqplot-y2axis, .jqplot-y3axis, .jqplot-y4axis, .jqplot-y5axis, .jqplot-y6axis, .jqplot-y7axis, .jqplot-y8axis, .jqplot-y9axis, .jqplot-yMidAxis {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 /*rules applied to all axis tick divs*/
@@ -41,7 +41,7 @@
     top: 0px;
     /* initial position untill tick is drawn in proper place */
     left: 15px;
-/*    padding-top: 10px;*/
+/*    padding-top: 20px;*/
     vertical-align: top;
 }
 
@@ -49,7 +49,7 @@
     bottom: 0px;
     /* initial position untill tick is drawn in proper place */
     left: 15px;
-/*    padding-bottom: 10px;*/
+/*    padding-bottom: 20px;*/
     vertical-align: bottom;
 }
 
@@ -57,7 +57,7 @@
     right: 0px;
     /* initial position untill tick is drawn in proper place */
     top: 15px;
-/*    padding-right: 10px;*/
+/*    padding-right: 20px;*/
     text-align: right;
 }
 
@@ -74,7 +74,7 @@
     left: 0px;
     /* initial position untill tick is drawn in proper place */
     top: 15px;
-/*    padding-left: 10px;*/
+/*    padding-left: 20px;*/
 /*    padding-right: 15px;*/
     text-align: left;
 }
@@ -85,19 +85,19 @@
 }
 
 .jqplot-xaxis-label {
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 11pt;
     position: absolute;
 }
 
 .jqplot-x2axis-label {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-size: 11pt;
     position: absolute;
 }
 
 .jqplot-yaxis-label {
-    margin-right: 10px;
+    margin-right: 20px;
 /*    text-align: center;*/
     font-size: 11pt;
     position: absolute;
@@ -111,7 +111,7 @@
 .jqplot-y2axis-label, .jqplot-y3axis-label, .jqplot-y4axis-label, .jqplot-y5axis-label, .jqplot-y6axis-label, .jqplot-y7axis-label, .jqplot-y8axis-label, .jqplot-y9axis-label {
 /*    text-align: center;*/
     font-size: 11pt;
-    margin-left: 10px;
+    margin-left: 20px;
     position: absolute;
 }
 

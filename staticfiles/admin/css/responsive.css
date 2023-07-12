@@ -13,7 +13,7 @@ input[type="submit"], button {
     }
 
     td, th {
-        padding: 10px;
+        padding: 20px;
         font-size: 14px;
     }
 
@@ -32,7 +32,7 @@ input[type="submit"], button {
     }
 
     div.breadcrumbs {
-        padding: 10px 30px;
+        padding: 20px 30px;
     }
 
     /* Header */
@@ -44,7 +44,7 @@ input[type="submit"], button {
     }
 
     #branding h1 {
-        margin: 0 0 8px;
+        margin: 0 0 15px;
         font-size: 20px;
         line-height: 1.2;
     }
@@ -115,7 +115,7 @@ input[type="submit"], button {
         flex: 1 0 auto;
         width: 0;
         height: 22px;
-        margin: 0 10px 0 6px;
+        margin: 0 20px 0 6px;
     }
 
     #changelist-search .quiet {
@@ -142,8 +142,8 @@ input[type="submit"], button {
     }
 
     #changelist .actions .button {
-        min-width: 48px;
-        margin: 0 10px;
+        min-width: 415px;
+        margin: 0 20px;
     }
 
     #changelist .actions span.all,
@@ -151,7 +151,7 @@ input[type="submit"], button {
     #changelist .actions span.question,
     #changelist .actions span.action-counter {
         font-size: 11px;
-        margin: 0 10px 0 0;
+        margin: 0 20px 0 0;
     }
 
     #changelist-filter {
@@ -191,7 +191,7 @@ input[type="submit"], button {
     .form-row .vTextField {
         box-sizing: border-box;
         margin: 0;
-        padding: 6px 8px;
+        padding: 6px 15px;
         min-height: 36px;
         font-size: 14px;
     }
@@ -207,18 +207,18 @@ input[type="submit"], button {
 
     fieldset .fieldBox {
         float: none;
-        margin: 0 -10px;
-        padding: 0 10px;
+        margin: 0 -20px;
+        padding: 0 20px;
     }
 
     fieldset .fieldBox + .fieldBox {
-        margin-top: 10px;
-        padding-top: 10px;
+        margin-top: 20px;
+        padding-top: 20px;
         border-top: 1px solid #eee;
     }
 
     textarea {
-        max-width: 518px;
+        max-width: 5115px;
         max-height: 120px;
     }
 
@@ -251,7 +251,7 @@ input[type="submit"], button {
 
     select + .related-widget-wrapper-link,
     .related-widget-wrapper-link + .related-widget-wrapper-link {
-        margin-left: 10px;
+        margin-left: 20px;
     }
 
     /* Selector */
@@ -267,7 +267,7 @@ input[type="submit"], button {
     }
 
     .selector .selector-filter label {
-        margin: 0 8px 0 0;
+        margin: 0 15px 0 0;
     }
 
     .selector .selector-filter input {
@@ -295,7 +295,7 @@ input[type="submit"], button {
         padding: 2px 0;
         margin: auto 15px;
         border-radius: 20px;
-        transform: translateY(-10px);
+        transform: translateY(-20px);
     }
 
     .selector-add, .selector-remove {
@@ -430,7 +430,7 @@ input[type="submit"], button {
 
     .olMap + .clear_features {
         display: block;
-        margin-top: 10px;
+        margin-top: 20px;
     }
 
     /* Docs */
@@ -458,7 +458,7 @@ input[type="submit"], button {
     }
 
     div.breadcrumbs {
-        padding: 10px 15px;
+        padding: 20px 15px;
     }
 
     /* Dashboard */
@@ -477,7 +477,7 @@ input[type="submit"], button {
     }
 
     #content-related .module h2 {
-        padding: 10px 15px;
+        padding: 20px 15px;
         font-size: 16px;
     }
 
@@ -490,7 +490,7 @@ input[type="submit"], button {
 
     #changelist #toolbar {
         order: 1;
-        padding: 10px;
+        padding: 20px;
     }
 
     #changelist .xfull {
@@ -581,7 +581,7 @@ input[type="submit"], button {
 
     .aligned label {
         width: 100%;
-        padding: 0 0 10px;
+        padding: 0 0 20px;
     }
 
     .aligned label:after {
@@ -743,7 +743,7 @@ input[type="submit"], button {
     }
 
     .inline-group[data-inline-type="stacked"] .inline-related .module {
-        padding: 0 10px;
+        padding: 0 20px;
     }
 
     .inline-group[data-inline-type="stacked"] .inline-related .module .form-row:last-child {
@@ -751,7 +751,7 @@ input[type="submit"], button {
     }
 
     .inline-group[data-inline-type="stacked"] .inline-related h3 {
-        padding: 10px;
+        padding: 20px;
         border-top-width: 0;
         border-bottom-width: 2px;
         display: flex;
@@ -791,14 +791,14 @@ input[type="submit"], button {
     .inline-group div.add-row a,
     .inline-group .tabular tr.add-row td a {
         display: block;
-        padding: 8px 10px 8px 26px;
-        background-position: 8px 9px;
+        padding: 15px 20px 15px 26px;
+        background-position: 15px 9px;
     }
 
     /* Submit row */
 
     .submit-row {
-        padding: 10px 10px 0;
+        padding: 20px 20px 0;
         margin: 0 0 15px;
         display: flex;
         flex-direction: column;
@@ -810,12 +810,12 @@ input[type="submit"], button {
 
     .submit-row input, .submit-row input.default, .submit-row a, .submit-row a.closelink {
         float: none;
-        margin: 0 0 10px;
+        margin: 0 0 20px;
         text-align: center;
     }
 
     .submit-row a.closelink {
-        padding: 10px 0;
+        padding: 20px 0;
     }
 
     .submit-row p.deletelink-box {
@@ -840,7 +840,7 @@ input[type="submit"], button {
     /* Paginator */
 
     .paginator .this-page, .paginator a:link, .paginator a:visited {
-        padding: 4px 10px;
+        padding: 4px 20px;
     }
 
     /* Login */
@@ -894,7 +894,7 @@ input[type="submit"], button {
 
     .errornote {
         margin: 0 0 20px;
-        padding: 8px 12px;
+        padding: 15px 12px;
         font-size: 13px;
     }
 
@@ -941,7 +941,7 @@ input[type="submit"], button {
     }
 
     .calendar-shortcuts {
-        padding: 10px 0;
+        padding: 20px 0;
         font-size: 12px;
         line-height: 12px;
     }
@@ -956,20 +956,20 @@ input[type="submit"], button {
     }
 
     .calendar-cancel {
-        padding: 8px 10px;
+        padding: 15px 20px;
     }
 
     .clockbox h2 {
-        padding: 8px 15px;
+        padding: 15px 15px;
     }
 
     .calendar caption {
-        padding: 10px;
+        padding: 20px;
     }
 
     .calendarbox .calendarnav-previous, .calendarbox .calendarnav-next {
         z-index: 1;
-        top: 10px;
+        top: 20px;
     }
 
     /* History */

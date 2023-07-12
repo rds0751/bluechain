@@ -419,7 +419,7 @@ $paragraph-margin-bottom:   1rem !default;
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
-  md: 768px,
+  md: 7615px,
   lg: 992px,
   xl: 1200px,
   xxl: 1400px
@@ -1527,7 +1527,7 @@ $carousel-control-transition:        opacity .15s ease !default;
 
 $carousel-indicator-width:           30px !default;
 $carousel-indicator-height:          3px !default;
-$carousel-indicator-hit-area-height: 10px !default;
+$carousel-indicator-hit-area-height: 20px !default;
 $carousel-indicator-spacer:          3px !default;
 $carousel-indicator-opacity:         .5 !default;
 $carousel-indicator-active-bg:       $white !default;

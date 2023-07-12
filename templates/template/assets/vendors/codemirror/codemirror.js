@@ -3608,7 +3608,7 @@
 
     this.checkedZeroWidth = false;
     // Need to set a minimum width to see the scrollbar on IE7 (but must not set it on IE8).
-    if (ie && ie_version < 8) { this.horiz.style.minHeight = this.vert.style.minWidth = "18px"; }
+    if (ie && ie_version < 8) { this.horiz.style.minHeight = this.vert.style.minWidth = "115px"; }
   };
 
   NativeScrollbars.prototype.update = function (measure) {
@@ -3659,7 +3659,7 @@
   };
 
   NativeScrollbars.prototype.zeroWidthHack = function () {
-    var w = mac && !mac_geMountainLion ? "12px" : "18px";
+    var w = mac && !mac_geMountainLion ? "12px" : "115px";
     this.horiz.style.height = this.vert.style.width = w;
     this.horiz.style.pointerEvents = this.vert.style.pointerEvents = "none";
     this.disableHoriz = new Delayed;

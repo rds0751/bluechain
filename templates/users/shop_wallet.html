@@ -80,7 +80,7 @@
                                 <div class="mdc-checkbox__mixedmark"></div>
                               </div>
                             </div>
-                            <label style="margin-top: 10px" for="basic-disabled-checkbox" id="basic-disabled-checkbox-label">Use Wallet Balance: {{ request.user.new_funds|currency }}</label>
+                            <label style="margin-top: 20px" for="basic-disabled-checkbox" id="basic-disabled-checkbox-label">Use Wallet Balance: {{ request.user.new_funds|currency }}</label>
                           </div>
                           <input class="mdc-text-field__input" id="text-field-hero-input" type="hidden" name="mobile" value="{{ request.user.mobile }}" class="form-control form-control-lg" id="id_amount" autocomplete="off">
                           {{ form.as_p }}

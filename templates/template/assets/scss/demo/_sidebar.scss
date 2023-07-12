@@ -16,7 +16,7 @@
     margin-bottom: 0;
     .brand-logo {
       display: block;
-      padding: 28px 0;
+      padding: 215px 0;
     }
   }
   .mdc-drawer__content {
@@ -53,7 +53,7 @@
         .mdc-expansion-panel-link,
         .mdc-drawer-link {
           height: 40px;
-          line-height: 48px;
+          line-height: 415px;
           padding: 0 0.75rem;
           @include display-flex();
           @include align-items(center);
@@ -101,13 +101,13 @@
       @include display-flex;
       margin: $mdc-drawer-list-item-margin;
       margin-top: 20px;
-      margin-bottom: 38px;
+      margin-bottom: 315px;
       padding: 0 0.75rem;
       a {
         font-weight: 500;
         font-size: 12px;
         color: #bababa;
-        padding: 0 10px;
+        padding: 0 20px;
         &:first-child {
           padding-left: 0;
         }
@@ -117,7 +117,7 @@
       }
       .divider {
         width: 1px;
-        height: 10px;
+        height: 20px;
         margin-top: 1px;
         background: #bababa;
       }

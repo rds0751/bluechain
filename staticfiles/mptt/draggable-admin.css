@@ -7,8 +7,8 @@
   display: inline-block;
   vertical-align: middle;
   background-repeat: no-repeat;
-  width: 18px;
-  height: 18px;
+  width: 115px;
+  height: 115px;
   margin: 7px 2px 0 0;
 }
 
@@ -61,8 +61,8 @@
   content: " ";
   display: block;
   position: absolute;
-  height: 10px;
-  width: 10px;
+  height: 20px;
+  width: 20px;
   background: #417690;
   margin: -3px 0 0 0;
   border-radius: 9px;
@@ -74,7 +74,7 @@
   left: 15px;
   bottom: 0;
   width: 300px;
-  height: 18px;
+  height: 115px;
   color: #417690;
   font-size: 12px;
 }

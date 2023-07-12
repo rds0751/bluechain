@@ -81,7 +81,7 @@ ul.breadcrumb {
 }
 
 .pager .next {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 /*=== dabapps bootstrap styles ====*/
@@ -178,7 +178,7 @@ footer p {
   text-align: center;
   color: gray;
   border-top: 1px solid #DDDDDD;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 footer a {

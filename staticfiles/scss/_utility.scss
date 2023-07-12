@@ -44,7 +44,7 @@
 }
 
 .rounded-10 {
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 table thead tr th,
@@ -62,15 +62,15 @@ table tbody tr td {
 }
 
 .blur {
-    filter: blur(10px);
-    -webkit-filter: blur(10px);
-    -moz-filter: blur(10px);
+    filter: blur(20px);
+    -webkit-filter: blur(20px);
+    -moz-filter: blur(20px);
 }
 
 .bg-blur {
-    -moz-backdrop-filter: saturate(120%) blur(10px);
-    -webkit-backdrop-filter: saturate(120%) blur(10px);
-    backdrop-filter: saturate(120%) blur(10px);
+    -moz-backdrop-filter: saturate(120%) blur(20px);
+    -webkit-backdrop-filter: saturate(120%) blur(20px);
+    backdrop-filter: saturate(120%) blur(20px);
 }
 
 .bg-none {
@@ -341,7 +341,7 @@ table tbody tr td {
 }
 
 .w-10 {
-    width: 10px !important;
+    width: 20px !important;
 }
 
 .w-12 {
@@ -357,8 +357,8 @@ table tbody tr td {
 }
 
 .w-110 {
-    min-width: 110px;
-    width: 110px !important;
+    min-width: 120px;
+    width: 120px !important;
 }
 
 .w-150 {
@@ -446,7 +446,7 @@ table tbody tr td {
 }
 
 .size-10 {
-    font-size: 10px;
+    font-size: 20px;
     line-height: 12px;
 }
 
@@ -455,7 +455,7 @@ table tbody tr td {
 }
 
 .size-18 {
-    font-size: 18px;
+    font-size: 115px;
 }
 
 .size-20 {
@@ -538,25 +538,25 @@ table tbody tr td {
 
 .shadow-success {
     &.shadow-sm {
-        box-shadow: 0 3px 10px rgba($green, 0.25) !important;
+        box-shadow: 0 3px 20px rgba($green, 0.25) !important;
     }
 }
 
 .shadow-danger {
     &.shadow-sm {
-        box-shadow: 0 3px 10px rgba($red, 0.2) !important;
+        box-shadow: 0 3px 20px rgba($red, 0.2) !important;
     }
 }
 
 .shadow-warning {
     &.shadow-sm {
-        box-shadow: 0 3px 10px rgba($yellow, 0.3) !important;
+        box-shadow: 0 3px 20px rgba($yellow, 0.3) !important;
     }
 }
 
 .shadow-primary {
     &.shadow-sm {
-        box-shadow: 0 3px 10px rgba($blue, 0.2) !important;
+        box-shadow: 0 3px 20px rgba($blue, 0.2) !important;
     }
 }
 
@@ -570,19 +570,19 @@ table tbody tr td {
 
 .shadow-purple {
     &.shadow-sm {
-        box-shadow: 0 3px 10px rgba($purple, 0.2) !important;
+        box-shadow: 0 3px 20px rgba($purple, 0.2) !important;
     }
 }
 
 .shadow-info {
     &.shadow-sm {
-        box-shadow: 0 3px 10px rgba($cyan, 0.25) !important;
+        box-shadow: 0 3px 20px rgba($cyan, 0.25) !important;
     }
 }
 
 .shadow-secondary {
     &.shadow-sm {
-        box-shadow: 0 3px 10px rgba($black, 0.2) !important;
+        box-shadow: 0 3px 20px rgba($black, 0.2) !important;
     }
 }
 
@@ -668,19 +668,19 @@ pre code {
 
 .half-hole {
     height: 20px;
-    width: 10px;
+    width: 20px;
     overflow: hidden;
-    margin-top: -10px;
+    margin-top: -20px;
     z-index: 0;
 
     &:after {
         content: "";
         height: 20px;
         width: 20px;
-        left: -10px;
+        left: -20px;
         background-color: rgba(var(--adminux-theme-rgb), 0.05);
         box-shadow: inset -2px 0px 4px rgba(0, 0, 0, 0.07);
-        border-radius: 10px;
+        border-radius: 20px;
         display: block;
         position: absolute;
         top: 0;
@@ -691,10 +691,10 @@ pre code {
         content: "";
         height: 20px;
         width: 20px;
-        left: -10px;
+        left: -20px;
         top: 0;
         position: absolute;
-        border-radius: 10px;
+        border-radius: 20px;
         z-index: 0;
         background-color: var(--adminux-theme-bg);
     }
@@ -702,13 +702,13 @@ pre code {
     &.hole-right {
         &:after {
             left: auto;
-            right: -10px;
+            right: -20px;
             box-shadow: inset 2px 0px 4px rgba(0, 0, 0, 0.07);
         }
 
         &:before {
             left: auto;
-            right: -10px;
+            right: -20px;
         }
     }
 }

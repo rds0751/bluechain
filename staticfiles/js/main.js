@@ -167,7 +167,7 @@ $(document).ready(function () {
     /* column set */
     /*  xs: 0,
         sm: 576px,
-        md: 768px,
+        md: 7615px,
         lg: 992px,
         xl: 1200px,
         xxl: 1400px  */

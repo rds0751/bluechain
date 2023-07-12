@@ -10,7 +10,7 @@
     }
 
     [dir="rtl"] #changelist .actions label {
-        padding-left: 10px;
+        padding-left: 20px;
         padding-right: 0;
     }
 
@@ -31,8 +31,8 @@
     [dir="rtl"] .inline-group ul.tools a.add,
     [dir="rtl"] .inline-group div.add-row a,
     [dir="rtl"] .inline-group .tabular tr.add-row td a {
-        padding: 8px 26px 8px 10px;
-        background-position: calc(100% - 8px) 9px;
+        padding: 15px 26px 15px 20px;
+        background-position: calc(100% - 15px) 9px;
     }
 
     [dir="rtl"] .related-widget-wrapper-link + .selector {
@@ -42,7 +42,7 @@
 
     [dir="rtl"] .selector .selector-filter label {
         margin-right: 0;
-        margin-left: 8px;
+        margin-left: 15px;
     }
 
     [dir="rtl"] .object-tools li {
