@@ -32,9 +32,14 @@
           <!-- rank and progress -->
           <div class="col-12 col-md-6 mb-6 ms-auto align-self-center">
               <div class="row">
-                  {% comment %} <div class="col col-md col-lg-auto mnw-100 text-center">
+                  <div class="col col-md col-lg-auto mnw-100 text-center">
                       <i class="bi bi-trophy h5 avatar avatar-50 bg-dark-orange text-orange rounded-circle mb-2"></i>
-                      <h4 class="increamentcount mb-0">{{ levelp.level }}</h4>
+                      {% if amount != 'None' %}
+                        {% widthratio amount.level.amount 1 10 as c %}
+                        <h4 class="increamentcount mb-0">{{ c }}</h4>
+                        {% else %}
+                        <h4 class="increamentcount mb-0">{{ 0 }}</h4>
+                        {% endif %}
                       <p class="small text-secondary">My Package</p>
                   </div> {% endcomment %}
                   {% comment %} <div class="col col-md col-lg-auto mnw-100 text-center">

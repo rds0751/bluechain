@@ -139,22 +139,13 @@
                                   <div class="form-floating">
                                   <input  style="font-size: .8rem;" autocomplete="sedrctvghb" type="text" placeholder="Enter 6 digit password" name="password1" class="form-control border-start-0" id="text-field-hero-input">
                                   <label>Password</label>
+                                  
+                                  <input style="font-size: .8rem;" placeholder="Confirm Password" autocomplete="sedrctvghb" name="password2" class="form-control border-start-0" type="hidden" id="text-field-hero-input">
                                 </div>  
                                 </div>
                               </div>
                           </div>
-                        </div>            
-                      <div class="mb-2 text-dark">
-                          <div class="form-group mb-2 position-relative check-valid is-valid">
-                              <div class="input-group input-group-lg">
-                                  <div class="form-floating">
-                                  <input style="font-size: .8rem;" placeholder="Confirm Password" autocomplete="sedrctvghb" name="password2" class="form-control border-start-0" type="password" id="text-field-hero-input">
-                                  <label>Confirm Password</label>
-                                  </div>
-                                  <span class="input-group-text text-secondary  border-end-0" id="viewpassword2"><i class="bi bi-eye"></i></span>
-                                  </div>
-                              </div>
-                          </div>
+                        </div>
                           
                           <button class="btn btn-lg btn-theme top-0 end-0 z-index-5 w-100 mt-4" type="submit" id="submitsignup">Signup <i class="bi bi-arrow-right"></i></button>
                   </form>
@@ -200,6 +191,20 @@
       data: {
         'username': username
       },
+      dataType: 'json',
+      success: function (data) {
+        if (true) {
+          document.getElementById("user_name").value = data.is_taken;
+        }
+      }
+    });
+
+  });
+  $("#password1").change(function () {
+    var password = $(this).val();
+
+    $.ajax({
+      
       dataType: 'json',
       success: function (data) {
         if (true) {
