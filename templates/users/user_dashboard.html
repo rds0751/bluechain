@@ -97,13 +97,22 @@ $w-rng: .125*$b;
                   <div class="col col-md col-lg-auto mnw-100 text-center">
                       <i class="bi bi-trophy h5 avatar avatar-50 bg-dark-orange text-orange rounded-circle mb-2"></i>
                       {% if amount != 'None' %}
+<<<<<<< HEAD
+=======
+                        {% widthratio amount.level.amount 1 10 as c %}
+>>>>>>> 91b36ebe10f3a11e751df14d1953014bc36b2d1d
                         <h4 class="increamentcount mb-0">{{ amount.level.amount }}</h4>
                         {% else %}
                         <h4 class="increamentcount mb-0">{{ 0 }}</h4>
                         {% endif %}
                       <p class="small text-secondary">My Package</p>
+<<<<<<< HEAD
                   </div>
                   {% comment %} <div class="col col-md col-lg-auto mnw-100 text-center">
+=======
+                  </div> 
+                  <div class="col col-md col-lg-auto mnw-100 text-center">
+>>>>>>> 91b36ebe10f3a11e751df14d1953014bc36b2d1d
                       <i class="bi bi-award h5 avatar avatar-50 bg-dark-green text-green rounded-circle mb-2"></i>
                       <h4 class="increamentcount mb-0">{{ request.user.my_rank }}</h4>
                       <p class="small text-secondary">My Rank</p>
@@ -112,9 +121,15 @@ $w-rng: .125*$b;
                       <i class="bi bi-clipboard-check h5 avatar avatar-50 bg-dark-yellow text-yellow rounded-circle mb-2"></i>
                       <h4 class="increamentcount mb-0">{{ request.user.my_achievement }}</h4>
                       <p class="small text-secondary">My Achievement</p>
+<<<<<<< HEAD
                   </div> {% endcomment %}
                   <div class="col col-md col-lg-auto mnw-100 text-center">
                         <div class='loader' style='--n: 16; --f: .2'></div>
+=======
+                  </div>
+                  <div class="progress h-20 mb-4 bg-dark-theme textwhitecolor">
+                    <div class="progress-bar bg-orange" role="progressbar" style="width: 40%">my progress</div>
+>>>>>>> 91b36ebe10f3a11e751df14d1953014bc36b2d1d
                        <br> Capping Progress
                 </div>
               </div>
