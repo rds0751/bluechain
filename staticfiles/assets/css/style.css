@@ -71,10 +71,10 @@ html {
 }
 
 body {
-    color: #ffffff;
+    color: #2595eb;
     font-family: Poppins;
     line-height: var(--line-height30);
-    font-size: 14px;
+    font-size: 17px;
 }
 
 h1 {
@@ -107,12 +107,16 @@ h6 {
   line-height: 1.2380952381;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: #ffffff;
+h1, h2, h3, h4, h6 {
+    color: #d3d8dd;
     font-family: var(--heading-font);
     font-weight: 700;
 }
-
+h5 {
+    color: #0b77e3;
+    font-family: var(--heading-font);
+   font-weight: 700;
+}}
 p {
     color: #138ce9
     -webkit-hyphens: auto;
@@ -559,20 +563,20 @@ ul {
     margin-left: 0;
     position: relative;
     display: block;
-    color: #1f54c5;
+    color: greenyellow;
     font-weight: 500;
     overflow: hidden;
-    background: #f4f6f9;
 }
 
 .token-color {
+    border: 2px solid #e9ecf2;
     line-height: 36px;
     margin-bottom: 0;
     font-size: 20px;
     background:;
     background-clip: border-box;
-    /* -webkit-background-clip: text; */
-    /* -webkit-text-fill-color: transparent; */
+    /* -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
     text-transform: capitalize;
     width: 180px;
     position: relative;
@@ -580,7 +584,7 @@ ul {
     margin-right: 20px;
     float: left;
     font-size: 15px;
-    color: #000;
+    color: #f7f0f0;
 }
 
     .btn:focus, .btn:active {
@@ -637,7 +641,7 @@ ul {
         position: relative;
         display: inline-block;
         color: #318FFF;
-        font-size: 115px;
+        font-size: 56px;
         font-weight: 700;
         margin-bottom: 20px;
         z-index: 1;
@@ -2145,7 +2149,7 @@ ul {
 }
 .banner-inner .sub-title {
     margin-bottom: 11px;
-    color: #ffffff;
+    color: #0e96e5;
     font-weight: 500;
     font-size: 13px;
     line-height: 24px;
@@ -2377,7 +2381,7 @@ ul {
         background: rgb(190, 234, 255);
         border-radius: 15px;
         top: -20px;
-        left: -215px;
+        left: --41px;
     }
 .single-featured-wrap .thumb .after-2 {
   height: 68px;
@@ -2402,7 +2406,7 @@ ul {
         font-size: 17px;
     }
     .single-featured-wrap p {
-        font-size: 14px;
+        font-size: 17px;
         font-weight: 400;
         color: #138ce9
         line-height: 1.7;
@@ -2905,7 +2909,7 @@ ul {
   line-height: 1.7;
 }
     .testimonial-wrap p.designation {
-        font-size: 22px;
+        font-size: 34px;
         font-weight: 400;
         margin-top: 7px;
         color: #F00;
@@ -3421,7 +3425,6 @@ ul {
 
 
 .testimonial-area {
-    background: #f4f6f9;
     padding-bottom: 50px;
     padding-top: 50px !important;
 }
