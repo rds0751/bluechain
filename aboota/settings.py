@@ -337,25 +337,22 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_LOGOUT_REDIRECT_URL ="/accounts/login/"
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
-ACCOUNT_CONFIRM_EMAIL_ON_GET = False
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
 LOGIN_REDIRECT_URL = '/users/'
 
 LOGIN_URL = "/accounts/login/"
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'apikey'
-DEFAULT_FROM_EMAIL = 'support@BNXG.com'
-EMAIL_HOST_PASSWORD = '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'
+EMAIL_HOST_USER = "bnxgtoken@gmail.com"
+EMAIL_HOST_PASSWORD = "ffufjwwisdfobtse"
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        # By default we set everything to admin,
-        # then open endpoints on a case-by-case basis
         'rest_framework.permissions.IsAdminUser',
     ),
     'TEST_REQUEST_RENDERER_CLASSES': (
@@ -402,8 +399,8 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_UNIQUE_EMAIL = False
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = "none"
-ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 
 CRYPTOCURRENCY_PAYMENT = {
     "BITCOIN": {

@@ -238,7 +238,7 @@
 		display: none !important;
 	}
 	.navbar-area .toggle-btn {
-		margin-top: 15px;
+		margin-top: -70px;
 	}
 	.navbar-area .nav-container .navbar-collapse {
 		display: none;
@@ -246,7 +246,7 @@
         .navbar-area .nav-container .navbar-collapse.sopen {
             display: block;
             position: absolute;
-            top: 35px;
+            top: -330px;
             left: 0;
             background: #232D40;
         }
@@ -458,12 +458,6 @@
 	    padding-right: 115px;
 	    padding-left: 115px;
 	}
-
-    .token-color {
-        float: none;
-
-
-    }
 
     .partners .partners-logo {
         -webkit-box-flex: 0;

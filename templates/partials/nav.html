@@ -8,15 +8,7 @@
                 <i class="bi bi-list fs-4"></i>
             </button>
             <div class="header-title align-self-center">
-                <h5 class="mb-0">M2+</h5>
-                <p class="text-secondary small">Finance</p>
-            </div>
-            <div class="ms-auto">
-                <div class="row">
-                    <div class="col-auto">
-                        <marquee style="width: 14rem"></marquee>
-                    </div>
-                </div>
+                <h5 class="mb-0"><img src="{% static '/assets/img/logo.png' %}" width="100px" /></h5>
             </div>
             <div class="ms-auto">
                 <div class="row">
@@ -63,7 +55,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div><a class="dropdown-item" href="">My Profile</a></div>
+                                <div><a class="dropdown-item" href="/users/~update/">My Profile</a></div>
                                 <div>
                                     <a class="dropdown-item" href="/users/">
                                         <div class="row g-0">
@@ -75,8 +67,7 @@
                                     <a class="dropdown-item" data-bs-toggle="dropdown" aria-expanded="false" role="button">
                                         <div class="row">
                                             <div class="col">Language</div>
-                                            <div class="col-auto pe-0"><small class="vm"> English</small> <i class="bi bi-translate"></i></div>
-                                            <div class="col-auto ps-0"><span class="arrow bi bi-chevron-right"></span></div>
+                                            <div class="col-auto pe-0"><small class="vm"> English</small></div>
                                         </div>
                                     </a>
                                     <div class="dropdown-menu">
@@ -190,7 +181,15 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item nav-link" href="/level/team/{{request.user.username}}/0/">
+                                    <a class="dropdown-item nav-link" href="/directs/">
+                                        <div class="avatar avatar-40 icon"><i class="bi bi-speedometer"></i>
+                                        </div>
+                                        <div class="col align-self-center">My Directs</div>
+                                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="/level/staking/">
                                         <div class="avatar avatar-40 icon"><i class="bi bi-speedometer"></i>
                                         </div>
                                         <div class="col align-self-center">BNXG Staking</div>

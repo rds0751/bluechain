@@ -89,43 +89,41 @@
     <div class="container">
       <div class="row align-items-center">
           <!-- welcome message -->
-          <div class="col-6 col-md-4 col-lg-3 mb-4">
+          <div class="col-5 col-md-4 col-lg-3 mb-4">
               <div class="row align-items-center">
-                    <div class="col-auto">
-                        <i class="bi bi-star h6 avatar avatar-40 bg-yellow text-white rounded-circle"></i>
-                    </div>
-                    <div class="col">
-                        <h4 class="username">{{ request.user.name|truncatewords:1|slice:"-2" }}</h4>
-                        <p class="fw-light text-secondary"><i class="bi bi-person-fill"></i> ID: {{ request.user.username }}</p>
-                    </div>
+                <h4 class="username">{{ request.user.name|truncatewords:1|slice:"-2" }}</h4>
+                <p class="fw-light text-secondary"><i class="bi bi-person-fill"></i> ID: {{ request.user.username }}</p>
               </div>
           </div>
 
           <!-- rank and progress -->
-          <div class="col-auto col-md-6 mb-6 ms-auto align-self-center mb-4">
+          <div class="col-7 col-md-8 mb-6 ms-auto align-self-center mb-4">
               <div class="row">
-                  <div class="col col-md col-lg-auto mnw-100 text-center">
-                      <i class="bi bi-trophy h5 avatar avatar-50 bg-dark-orange text-orange rounded-circle mb-2"></i>
-                      {% if amount != 'None' %}
-                        <h4 class="mb-0">$ {{ amount.level.amount }}</h4>
-                        {% else %}
-                        <h4 class="increamentcount mb-0">$ 0</h4>
-                        {% endif %}
-                      <p class="small text-secondary">My Package</p>
-                  </div>
-                  <div class="col col-md col-lg-auto mnw-100 text-center">
-                      <i class="bi bi-award h5 avatar avatar-50 bg-dark-green text-green rounded-circle mb-2"></i>
-                      <h4 class="increamentcount mb-0">{{ directs }}</h4>
-                      <p class="small text-secondary">My Directs</p>
-                  </div>
+                <div class="col-auto mnw-100 text-center">
+                    {% if amount != 'None' %}
+                      <h4 class="mb-0">$ {{ amount.level.amount }}</h4>
+                      {% else %}
+                      <h4 class="increamentcount mb-0">$ 0</h4>
+                      {% endif %}
+                    <p class="small text-secondary">My Plan</p>
+                </div>
+                <div class="col mnw-100 text-center">
+                    {% if amount != 'None' %}
+                    {% widthratio amount.level.amount 1 10 as c %}
+                      <h4 class="mb-0">{{ c }}</h4>
+                      {% else %}
+                      <h4 class="increamentcount mb-0">0</h4>
+                      {% endif %}
+                    <p class="small text-secondary">Tokens</p>
+                </div>
               </div>
           </div>
       </div>
 
       <div class="row">
-          <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6">
-            <div class="card border-0 mb-4 theme-red bg-radial-gradient text-white">
-                <div class="card-body bg-none">
+          <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+            <div class="card border-0 mb-4 theme-green bg-radial-gradient text-white">
+                <div style="height: 103px;" class="card-body bg-none">
                     <div class="row gx-2 align-items-center">
                         <div class="col-auto">
                             <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
@@ -142,9 +140,9 @@
                 </div>
             </div>
         </div>
-          <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6">
+          <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
               <div class="card border-0 mb-4 theme-blue bg-radial-gradient text-white">
-                  <div class="card-body bg-none">
+                  <div style="height: 103px;" class="card-body bg-none">
                       <div class="row gx-2 align-items-center">
                           <div class="col-auto">
                               <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
@@ -161,9 +159,9 @@
                   </div>
               </div>
           </div>
-          <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6">
+          <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
               <div class="card border-0 mb-4 theme-green bg-radial-gradient text-white">
-                  <div class="card-body bg-none">
+                  <div style="height: 103px;" class="card-body bg-none">
                       <div class="row gx-2 align-items-center">
                           <div class="col-auto">
                               <div class="avatar avatar-40 h5 bg-dark-white text-white rounded-circle">
@@ -180,9 +178,9 @@
                   </div>
               </div>
           </div>
-          <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6">
-              <div class="card border-0 mb-4 theme-yellow bg-radial-gradient text-white">
-                  <div class="card-body bg-none">
+          <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+              <div class="card border-0 mb-4 theme-blue bg-radial-gradient text-white">
+                  <div style="height: 103px;" class="card-body bg-none">
                       <div class="row gx-2 align-items-center">
                           <div class="col-auto">
                               <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
@@ -199,123 +197,9 @@
                   </div>
               </div>
           </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6">
-            <div class="card border-0 mb-4 theme-blue bg-radial-gradient text-white">
-                <div class="card-body bg-none">
-                    <div class="row gx-2 align-items-center">
-                        <div class="col-auto">
-                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
-                                <i class="bi bi-coin"></i>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <h5 class="text-muted fw-medium mb-1">Today Income</p>
-                        </div>
-                        <div class="col">
-                            <h5 class="fw-medium">$ {{request.user.today_income}}</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6">
+        <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
             <div class="card border-0 mb-4 theme-green bg-radial-gradient text-white">
-                <div class="card-body bg-none">
-                    <div class="row gx-2 align-items-center">
-                        <div class="col-auto">
-                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
-                                <i class="bi bi-coin"></i>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <h5 class="text-muted fw-medium mb-1">Total Business</p>
-                        </div>
-                        <div class="col">
-                            <h5 class="fw-medium">$ {{ request.user.total_business }}</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6">
-            <div class="card border-0 mb-4 theme-yellow bg-radial-gradient text-white">
-                <div class="card-body bg-none">
-                    <div class="row gx-2 align-items-center">
-                        <div class="col-auto">
-                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
-                                <i class="bi bi-coin"></i>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <h5 class="text-muted fw-medium mb-1">Sponsor Income</p>
-                        </div>
-                        <div class="col">
-                            <h5 class="fw-medium">$ {{request.user.sponsor_income}}</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6">
-            <div class="card border-0 mb-4 theme-red bg-radial-gradient text-white">
-                <div class="card-body bg-none">
-                    <div class="row gx-2 align-items-center">
-                        <div class="col-auto">
-                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
-                                <i class="bi bi-coin"></i>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <h5 class="text-muted fw-medium mb-1">Autopool Income</p>
-                        </div>
-                        <div class="col">
-                            <h5 class="fw-medium">$ {{request.user.autopool_income}}</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6">
-            <div class="card border-0 mb-4 theme-green bg-radial-gradient text-white">
-                <div class="card-body bg-none">
-                    <div class="row gx-2 align-items-center">
-                        <div class="col-auto">
-                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
-                                <i class="bi bi-coin"></i>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <h5 class="text-muted fw-medium mb-1">My Daily ROI</p>
-                        </div>
-                        <div class="col">
-                            <h5 class="fw-medium">$ {{request.user.my_daily_roi}}</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6">
-            <div class="card border-0 mb-4 theme-yellow bg-radial-gradient text-white">
-                <div class="card-body bg-none">
-                    <div class="row gx-2 align-items-center">
-                        <div class="col-auto">
-                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
-                                <i class="bi bi-coin"></i>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <h5 class="text-muted fw-medium  mb-1">Rewards</p>
-                        </div>
-                        <div class="col">
-                            <h5 class="fw-medium">$ {{request.user.rewards}}</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6">
-            <div class="card border-0 mb-4 theme-red bg-radial-gradient text-white">
-                <div class="card-body bg-none">
+                <div style="height: 103px;" class="card-body bg-none">
                     <div class="row gx-2 align-items-center">
                         <div class="col-auto">
                             <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
@@ -332,9 +216,123 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6">
+        <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
             <div class="card border-0 mb-4 theme-blue bg-radial-gradient text-white">
-                <div class="card-body bg-none">
+                <div style="height: 103px;" class="card-body bg-none">
+                    <div class="row gx-2 align-items-center">
+                        <div class="col-auto">
+                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
+                                <i class="bi bi-coin"></i>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h5 class="text-muted fw-medium mb-1">Today Income</p>
+                        </div>
+                        <div class="col">
+                            <h5 class="fw-medium">$ {{request.user.today_income}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+            <div class="card border-0 mb-4 theme-green bg-radial-gradient text-white">
+                <div style="height: 103px;" class="card-body bg-none">
+                    <div class="row gx-2 align-items-center">
+                        <div class="col-auto">
+                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
+                                <i class="bi bi-coin"></i>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h5 class="text-muted fw-medium mb-1">Total Business</p>
+                        </div>
+                        <div class="col">
+                            <h5 class="fw-medium">$ {{ request.user.total_business }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+            <div class="card border-0 mb-4 theme-blue bg-radial-gradient text-white">
+                <div style="height: 103px;" class="card-body bg-none">
+                    <div class="row gx-2 align-items-center">
+                        <div class="col-auto">
+                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
+                                <i class="bi bi-coin"></i>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h5 class="text-muted fw-medium mb-1">Sponsor Income</p>
+                        </div>
+                        <div class="col">
+                            <h5 class="fw-medium">$ {{request.user.sponsor_income}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+            <div class="card border-0 mb-4 theme-green bg-radial-gradient text-white">
+                <div style="height: 103px;" class="card-body bg-none">
+                    <div class="row gx-2 align-items-center">
+                        <div class="col-auto">
+                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
+                                <i class="bi bi-coin"></i>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h5 class="text-muted fw-medium mb-1">Autopool Income</p>
+                        </div>
+                        <div class="col">
+                            <h5 class="fw-medium">$ {{request.user.autopool_income}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+            <div class="card border-0 mb-4 theme-blue bg-radial-gradient text-white">
+                <div style="height: 103px;" class="card-body bg-none">
+                    <div class="row gx-2 align-items-center">
+                        <div class="col-auto">
+                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
+                                <i class="bi bi-coin"></i>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h5 class="text-muted fw-medium  mb-1">Rewards</p>
+                        </div>
+                        <div class="col">
+                            <h5 class="fw-medium">$ {{request.user.rewards}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+            <div class="card border-0 mb-4 theme-green bg-radial-gradient text-white">
+                <div style="height: 103px;" class="card-body bg-none">
+                    <div class="row gx-2 align-items-center">
+                        <div class="col-auto">
+                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
+                                <i class="bi bi-coin"></i>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h5 class="text-muted fw-medium mb-1">My Daily ROI</p>
+                        </div>
+                        <div class="col">
+                            <h5 class="fw-medium">$ {{request.user.my_daily_roi}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+            <div class="card border-0 mb-4 theme-blue bg-radial-gradient text-white">
+                <div style="height: 103px;" class="card-body bg-none">
                     <div class="row gx-2 align-items-center">
                         <div class="col-auto">
                             <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
@@ -359,61 +357,55 @@
       </div>
 
       <div class="row">
-          <div class="col-12 col-md-12 col-lg-6 col-xxl-6 mb-4">
-              <div class="card border-0 h-100 overflow-hidden">
-                  <div class="card-body position-relative">
-                      <div class="coverimg w-75 h-100 end-0 top-0 position-absolute cover-right-center-img" style="background-image: url({% static 'img/offer-1.png' %});">
-                          <img src="{% static 'img/offer-1.png' %}" class="w-100" alt="" style="display: none;">
-                      </div>
-                      <div class="row align-items-center h-100">
-                          <div class="col-9 py-2">
-                              <h4 class="text-theme">Earn 100% Referral Income</h4>
-                              <h5 class="fw-medium">Make your wallet even bigger</h5>
-                              <p class="text-secondary">Share your referral code to your friends.</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-12 col-md-12 col-lg-6 col-xxl-6 mb-4">
+        <div class="col-12 col-md-12 col-lg-6 col-xxl-6 mb-4">
             <div class="card border-0 h-100 overflow-hidden">
-                <div style="height: 170px" class="card-body position-relative">
-                    <div style="height: 100px" class="coverimg w-100 h-100 end-0 top-0 position-absolute cover-left-center-img" style="background-image: url({% static 'img/offer-2.png' %});">
-                        <img src="{% static 'img/offer-2.png' %}" class="w-100" alt="" style="display: none;">
+                <div class="card-body position-relative">
+                    <div class="coverimg w-75 h-100 end-0 top-0 position-absolute cover-right-center-img" style="background-image: url({% static 'img/offer-1.png' %});">
+                        <img src="{% static 'img/offer-1.png' %}" class="w-100" alt="" style="display: none;">
+                    </div>
+                    <div class="row align-items-center h-100">
+                        <div class="col-9 py-2">
+                            <h4 class="text-theme">Earn 100% Referral Income</h4>
+                            <h5 class="fw-medium">Make your wallet even bigger</h5>
+                            <p class="text-secondary">Share your referral code to your friends.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-          <!-- summary blocks -->
-          <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xxl-6 theme-blue bg-radial-gradient text-white rounded-lg p-5 shadow rounded-end">
-            <h2 class="h6 font-weight-bold text-center mb-4">Server time</h2>
+        <div class="col-12 col-md-12 col-lg-6 col-xxl-6 mb-4">
+            <div class="card border-0 h-100 overflow-hidden">
+                <div class="card-body position-relative">
+                    <h2 class="h6 font-weight-bold text-center mb-4">Capping Progress</h2>
     
-            <!-- Progress bar 3 -->
-            <div class="progress mx-auto" data-value="76">
-              <span class="progress-left">
-                            <span class="progress-bar border-success" style="transform: rotate(93.6deg);"></span>
-              </span>
-              <span class="progress-right">
-                            <span class="progress-bar border-success" style="transform: rotate(180deg);"></span>
-              </span>
-              <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                <div class="h2 font-weight-bold">76<sup class="small">%</sup></div>
-              </div>
+                    <!-- Progress bar 3 -->
+                    <div class="progress mx-auto" data-value="76">
+                    <span class="progress-left">
+                                    <span class="progress-bar border-success" style="transform: rotate(93.6deg);"></span>
+                    </span>
+                    <span class="progress-right">
+                                    <span class="progress-bar border-success" style="transform: rotate(180deg);"></span>
+                    </span>
+                    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                        <div class="h4 font-weight-bold">76%</div>
+                    </div>
+                    </div>
+                    <!-- END -->
+            
+                    <!-- Demo info -->
+                    <div class="row text-center mt-4">
+                    <div class="col-6 border-right">
+                        <div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Last week</span>
+                    </div>
+                    <div class="col-6">
+                        <div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Last month</span>
+                    </div>
+                    </div>
+                    <!-- END -->
+                    </div>
+                </div>
             </div>
-            <!-- END -->
-    
-            <!-- Demo info -->
-            <div class="row text-center mt-4">
-              <div class="col-6 border-right">
-                <div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Last week</span>
-              </div>
-              <div class="col-6">
-                <div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Last month</span>
-              </div>
-            </div>
-            <!-- END -->
-          </div>
+        </div>
       </div>
       <script>
         function myyFunction() {

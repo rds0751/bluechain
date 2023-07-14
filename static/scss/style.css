@@ -2287,15 +2287,15 @@ progress {
   height: 1.5em;
 }
 .form-control::-moz-placeholder {
-  color: #6c757d;
+  color: #ffffff;
   opacity: 1;
 }
 .form-control:-ms-input-placeholder {
-  color: #6c757d;
+  color: #ffffff;
   opacity: 1;
 }
 .form-control::placeholder {
-  color: #6c757d;
+  color: #ffffff;
   opacity: 1;
 }
 .form-control:disabled, .form-control[readonly] {
@@ -11513,10 +11513,10 @@ textarea.form-control-lg {
 }
 .dark-mode .theme-green {
   /* color schemes */
-  --adminux-theme: #2e9c65;
-  --adminux-theme-rgb: 46, 156, 101;
-  --adminux-theme-lighten: #91c9a8;
-  --adminux-theme-darken: #013b17;
+  --adminux-theme: #452c63;
+  --adminux-theme-rgb: 101, 221, 239;
+  --adminux-theme-lighten: #662d91;
+  --adminux-theme-darken: #1d1160;
   /* background */
   --adminux-theme-bg-rgb: 1, 24, 12;
   --adminux-theme-bg: rgb(1, 24, 12);

@@ -10,5 +10,5 @@ urlpatterns = [
     path('success/',views.payment_success,name="payment-success"),
     path('activation/',views.activation,name="activation"),
     path('pool/<plan>/',views.binary,name="pool"),
-    
+    path('staking/', views.staking, name="staking")
 ]

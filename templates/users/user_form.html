@@ -91,48 +91,54 @@
 				{% csrf_token %}
 				<div id="edit" class="mdc-layout-grid">
 					<div class="mdc-layout-grid__inner mb-3">
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -415px;">
-								<input type="text" readonly name="name" value="{{ request.user.name }}" maxlength="255" class="form-control border-start-0" id="text-field-hero-input">
-								<div class="mdc-line-ripple"></div>
-								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Name" %} </span></label>
-							</div>
-						</div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -415px;">
-								<input type="text" name="email" value="{{ request.user.email }}" maxlength="255" class="form-control border-start-0" id="text-field-hero-input">
-								<div class="mdc-line-ripple"></div>
-								<label style="" for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Email" %} </span></label>
-							</div>
-						</div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -415px; ">
-								<input type="text" name="mobile" value="{{ request.user.mobile }}" maxlength="255" class="form-control border-start-0" id="text-field-hero-input">
-								<div class="mdc-line-ripple"></div>
-								<label style="" for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Mobile" %} </span></label>
-							</div>
-						</div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -415px;">
-								<input type="text" name="address" value="{{ request.user.address }}" maxlength="255" class="form-control border-start-0" id="text-field-hero-input">
-								<div class="mdc-line-ripple"></div>
-								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Address" %} </span></label>
-							</div>
-						</div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -415px;">
-								<input type="text" name="city" value="{{ request.user.city }}" maxlength="255" class="form-control border-start-0" id="text-field-hero-input">
-								<div class="mdc-line-ripple"></div>
-								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "City" %} </span></label>
-							</div>
-						</div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-							<div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -415px;">
-								<input type="text" name="state" value="{{ request.user.state }}" maxlength="255" class="form-control border-start-0" id="text-field-hero-input">
-								<div class="mdc-line-ripple"></div>
-								<label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "State" %} </span></label>
-							</div>
-						</div>
+						<div class="form-group mb-2 position-relative check-valid text-dark">
+                            <div class="input-group input-group-lg">
+                                <div class="form-floating">
+                                  <input autocomplete="off" style="font-size: 22px; background: cornflowerblue;" autocomplete="sedrctvghb" type="text" class="form-control border-start-0" name="password" placeholder="Password" id="password">
+                                    <label for="password">Name of User</label>
+                                </div>
+                            </div>
+                        </div>
+						<div class="form-group mb-2 position-relative check-valid text-dark">
+                            <div class="input-group input-group-lg">
+                                <div class="form-floating">
+                                  <input autocomplete="off" style="font-size: 22px; background: cornflowerblue;" autocomplete="sedrctvghb" type="text" class="form-control border-start-0" name="password" placeholder="Email" id="password">
+                                    <label for="password">Email</label>
+                                </div>
+                            </div>
+                        </div>
+						<div class="form-group mb-2 position-relative check-valid text-dark">
+                            <div class="input-group input-group-lg">
+                                <div class="form-floating">
+                                  <input autocomplete="off" style="font-size: 22px; background: cornflowerblue;" autocomplete="sedrctvghb" type="text" class="form-control border-start-0" name="password" placeholder="Mobile" id="password">
+                                    <label for="password">Mobile</label>
+                                </div>
+                            </div>
+                        </div>
+						<div class="form-group mb-2 position-relative check-valid text-dark">
+                            <div class="input-group input-group-lg">
+                                <div class="form-floating">
+                                  <input autocomplete="off" style="font-size: 22px; background: cornflowerblue;" autocomplete="sedrctvghb" type="text" class="form-control border-start-0" name="password" placeholder="Address" id="password">
+                                    <label for="password">Address</label>
+                                </div>
+                            </div>
+                        </div>
+						<div class="form-group mb-2 position-relative check-valid text-dark">
+                            <div class="input-group input-group-lg">
+                                <div class="form-floating">
+                                  <input autocomplete="off" style="font-size: 22px; background: cornflowerblue;" autocomplete="sedrctvghb" type="text" class="form-control border-start-0" name="password" placeholder="City" id="password">
+                                    <label for="password">City</label>
+                                </div>
+                            </div>
+                        </div>
+						<div class="form-group mb-2 position-relative check-valid text-dark">
+                            <div class="input-group input-group-lg">
+                                <div class="form-floating">
+                                  <input autocomplete="off" style="font-size: 22px; background: cornflowerblue;" autocomplete="sedrctvghb" type="text" class="form-control border-start-0" name="password" placeholder="Password" id="password">
+                                    <label for="password">State</label>
+                                </div>
+                            </div>
+                        </div>
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
 							<label class="mdc-button mdc-button--unelevated filled-button--secondary w-100" style="
 										    display: inline-block;

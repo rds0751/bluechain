@@ -23,6 +23,24 @@ from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+import math
+import random
+
+def generateOTP() :
+     digits = "0123456789"
+     OTP = ""
+     for i in range(4) :
+         OTP += digits[math.floor(random.random() * 10)]
+     return OTP
+
+def send_otp(request):
+     email=request.GET.get("email")
+     print(email)
+     o=generateOTP()
+     print(o)
+     htmlgen = '<p>Your OTP is <strong>o</strong></p>'
+     send_mail('OTP request',o,'<your gmail id>',[email], fail_silently=False, html_message=htmlgen)
+     return HttpResponse(o)
 
 class SearchListView(LoginRequiredMixin, ListView):
     model = User
@@ -1064,7 +1082,7 @@ def direct(request):
 @login_required
 def imps(request):
     
-    return render(request, 'users/moneytransfer.html')
+    return render(request, 'users/transferamount.html')
 
 @login_required
 def mt5t(request):

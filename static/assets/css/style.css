@@ -98,7 +98,7 @@ h4 {
 }
 
 h5 {
-    font-size: 115px;
+    font-size: 34px;
     line-height: 1.3380952381;
 }
 
@@ -718,8 +718,8 @@ ul {
         transition: all 0.3s ease-in;
     }
 .single-input-wrap input::placeholder {
-  color: #9699A8;
-  font-size: 15px;
+  color: #ffffff;
+  font-size: 22px;
   line-height: 55px;
 }
         .single-input-wrap input:hover, .single-input-wrap input:active, .single-input-wrap input:focus {
@@ -741,8 +741,8 @@ ul {
         transition: all 0.3s ease-in;
     }
 .single-input-wrap textarea::placeholder {
-  color: #9699A8;
-  font-size: 15px;
+  color: #ffffff;
+  font-size: 22px;
 }
         .single-input-wrap textarea:hover, .single-input-wrap textarea:active, .single-input-wrap textarea:focus {
             box-shadow: none;
@@ -2148,22 +2148,22 @@ ul {
   margin-right: 0;
 }
 .banner-inner .sub-title {
-    margin-bottom: 11px;
-    color: #0e96e5;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 24px;
-    background: #fff;
-    padding: 15px 20px;
-    border-radius: 20px;
-    border: 1px solid #f1f1f2;
-    position: relative;
-    margin-bottom: 22px;
-    width: fit-content;
+  margin-bottom: 11px;
+  color: #000000;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 24px;
+  background: #f9d810;
+  padding: 15px 20px;
+  border-radius: 20px;
+  border: 1px solid #f1f1f2;
+  position: relative;
+  margin-bottom: 22px;
+  width: fit-content;
 }
 .banner-inner .title {
     font-size: 45px;
-    margin-bottom: 215px;
+    margin-bottom: 26px;
     /* margin-left: -3px; */
     text-transform: none;
 }
@@ -2381,7 +2381,7 @@ ul {
         background: rgb(190, 234, 255);
         border-radius: 15px;
         top: -20px;
-        left: --41px;
+        left: -41px;
     }
 .single-featured-wrap .thumb .after-2 {
   height: 68px;
@@ -2804,7 +2804,7 @@ ul {
     background-position: center !important;
     background-size: cover !important;
     background-attachment: fixed !important;
-    padding: 60px 0 60px;
+    padding: 0px 0 60px;
 }
     .download-area::before {
         content: "";
@@ -2897,10 +2897,10 @@ ul {
   border-radius: 50%;
 }
     .testimonial-wrap .name {
-        font-weight: 400;
+        font-weight: 700;
         margin-top: 17px;
-        margin-bottom: -7px;
-        font-size: 16px;
+        margin-bottom: 8px;
+        font-size: 34px;
     }
 .testimonial-wrap p {
   color: #138ce9
@@ -3391,7 +3391,7 @@ ul {
   border-radius: 3px;
 }
 .widget_subscribe .subscribe-form input::placeholder {
-  color: #9699A8;
+  color: #ffffff;
 }
     .widget_subscribe .subscribe-form button {
         
@@ -3435,7 +3435,7 @@ ul {
 
 
 .navbar-area.navbar-area-fixed .logo a img {
-    margin-top: -20px;
+    margin-top: 0px;
 }
 
 

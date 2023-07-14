@@ -521,6 +521,9 @@ def binary(request, plan):
     }
     return render(request,"binary/tree.html", context)
 
+def staking(request):
+    return render(request,"binary/staking.html")
+
 @csrf_exempt
 def payment_success(request):
     if request.method =="POST":

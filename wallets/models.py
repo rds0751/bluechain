@@ -19,10 +19,8 @@ class Beneficiary(models.Model):
 # Create your models here.
 class Mtw(models.Model):
     user_id = models.CharField(max_length=255, blank=True, null=True)
-    name = models.CharField(max_length=255, blank=True, null=True)
-    account_number = models.CharField(max_length=255, blank=True, null=True)
-    ifsc = models.CharField(max_length=255, blank=True, null=True)
-    status = models.CharField(max_length=255)
+    wallet_address = models.CharField(max_length=255, null=True, blank=True)
+    private_key = models.CharField(max_length=255, null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(default=timezone.now, blank=True)
     
