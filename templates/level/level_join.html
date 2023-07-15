@@ -53,9 +53,11 @@
                       <img src="{% static 'assets/img/scan.png' %}">
 
                       <form class="template-demo" method="POST" action="/level/payment/" enctype="multipart/form-data">{% csrf_token %}
+                        <br>
                         <h5>Scan, Pay, and submit the Txn Hash</h5>
                         <input name="amounta" placeholder="Amount in Dollars" class="form-control border-start-0">
-                        <input name="hash" placeholder="Amount in Dollars" class="form-control border-start-0">
+                        <br>
+                        <input name="hash" placeholder="Transaction Hash" class="form-control border-start-0">
                           <p>Service Balance: $ {{ request.user.c }}</p>
                           <button type="submit" class="btn btn-primary">
                             Top Up Service Balance

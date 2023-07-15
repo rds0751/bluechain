@@ -273,7 +273,19 @@ def ids(request):
 
     return render(request, 'panel/ids.html', {'w': w})
 
+from django.utils.crypto import get_random_string
 def activate(user, amount):
+    def generateid():
+        txnid = get_random_string(8)
+        try:
+            txn = WalletHistory.objects.get(txnid = txnid)
+        except WalletHistory.DoesNotExist:
+            txn = 0
+        if txn:
+            generateid()
+        else:
+            return txnid
+        
     def userjoined(user):
         try:
             user = LevelUser.objects.get(user=str(user), active=True)
@@ -343,6 +355,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $4 from level 1"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -358,6 +371,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $8 from level 1"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -372,6 +386,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $16 from level 1"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -386,6 +401,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $40 from level 1"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -400,6 +416,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $80 from level 1"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -414,6 +431,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $160 from level 1"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -428,6 +446,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $320 from level 1"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -442,6 +461,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $800 from level 1"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -457,6 +477,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $8 from level 2"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -471,6 +492,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $16 from level 2"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -485,6 +507,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $32 from level 2"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -499,6 +522,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $80 from level 2"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -513,6 +537,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $160 from level 2"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -527,6 +552,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $320 from level 2"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -541,6 +567,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $640 from level 2"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -555,6 +582,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $1600 from level 2"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -570,6 +598,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $16 from level 3"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -584,6 +613,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $32 from level 3"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -598,6 +628,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $64 from level 3"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -612,6 +643,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $160 from level 3"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -626,6 +658,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $320 from level 3"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -640,6 +673,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $640 from level 3"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -654,6 +688,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $1280 from level 3"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -668,6 +703,7 @@ def activate(user, amount):
                             upline_wallet.balance += extra   
                             upline_wallet.type = "credit"   
                             upline_wallet.comment = "Global autopool non working income of $3200 from level 3"
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             pool_user.total_income += extra
                             pool_user.autopool_income += extra
@@ -693,6 +729,7 @@ def activate(user, amount):
             userwallet.type = "credit"
             userwallet.comment = "Cash for Prime Upgrade"
             userwallet.balance += packamount
+            userwallet.txnid = generateid()
             userwallet.save()
 
             
@@ -702,6 +739,7 @@ def activate(user, amount):
             userwallet.type = "debit"
             userwallet.comment = "Buying Package"
             userwallet.balance -= packamount
+            userwallet.txnid = generateid()
             userwallet.save()
 
             userid = user   
@@ -776,6 +814,7 @@ def activate(user, amount):
                             upline_wallet.comment = "Level Income for New Upgrade by {} in level {}".format(user, level+1)
                             upline_wallet.balance = upline_amount
                             upline_user.total_income += upline_amount
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             upline_user.wallet += upline_amount
                             upline_user.total_income += upline_amount
@@ -789,6 +828,7 @@ def activate(user, amount):
                             upline_wallet.type = "credit"
                             upline_wallet.comment = "2 Directs Completion"
                             upline_wallet.balance += packamount
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             upline_user.wallet += packamount
                             upline_user.total_income += packamount
@@ -802,6 +842,7 @@ def activate(user, amount):
                             upline_wallet.type = "debit"
                             upline_wallet.comment = "2 Directs Completion"
                             upline_wallet.balance -= packamount * 0.2
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             upline_user.wallet -= packamount * 0.2
                             upline_user.total_income -= packamount * 0.2
@@ -815,6 +856,7 @@ def activate(user, amount):
                             upline_wallet.type = "debit"
                             upline_wallet.comment = "Autopool ID Activation"
                             upline_wallet.balance -= packamount * 0.5
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             upline_user.wallet -= packamount * 0.5
                             upline_user.total_income -= packamount * 0.5
@@ -828,6 +870,7 @@ def activate(user, amount):
                             upline_wallet.type = "debit"
                             upline_wallet.comment = "5% Upline Benefit"
                             upline_wallet.balance -= packamount * 0.05
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             upline_user.wallet -= packamount * 0.05
                             upline_user.total_income -= packamount * 0.05
@@ -841,6 +884,7 @@ def activate(user, amount):
                             upline_wallet.type = "credit"
                             upline_wallet.comment = "Permanent Tripod Reward"
                             upline_wallet.balance += levelp.permanent_reward
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             upline_user.wallet += levelp.permanent_reward
                             upline_user.total_income += levelp.permanent_reward
@@ -856,6 +900,7 @@ def activate(user, amount):
                             upline_wallet.type = "credit"
                             upline_wallet.comment = "More than 2 direct upgrades"
                             upline_wallet.balance += packamount * 0.8
+                            upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             upline_user.wallet += packamount * 0.8
                             upline_user.total_income += packamount * 0.8
@@ -871,6 +916,7 @@ def activate(user, amount):
                         upline_wallet.type = "credit"
                         upline_wallet.comment = "New Upgrade by {} in level {}".format(user, level+1)
                         upgraded.business += upline_amount
+                        upline_wallet.txnid = generateid()
                         upline_wallet.save()
                         upline_user.save()
                         print('elif')
@@ -883,6 +929,7 @@ def activate(user, amount):
                         upline_wallet.amount = upline_amount    
                         upline_wallet.type = "credit"   
                         upline_wallet.comment = "{} joined but Level {} not opened!".format(user, level+1)
+                        upline_wallet.txnid = generateid()
                         upline_wallet.save()
                         print('else')
                         upline_user.my_team += 1
@@ -900,6 +947,7 @@ def activate(user, amount):
             model.direct = user.referral
             model.activated_at = datetime.datetime.now()
             model.save()
+            userwallet.txnid = generateid()
             userwallet.save()
             user_id.save()
             message = "Plan purchased"
@@ -975,6 +1023,7 @@ def orders(request):
             wallet.balance_after = model.user.new_funds + model.user.added_amount + model.user.received_amount + model.user.shopping_wallet + model.user.income + model.user.binary_income
             wallet.type = "credit"
             wallet.comment = "Shopping Refund"
+            wallet.txnid = generateid()
             wallet.save()
         model.status = status
         model.comment = comment
@@ -1011,6 +1060,7 @@ def franchise(request):
             wallet.balance_after = request.user.new_funds + request.user.added_amount + request.user.received_amount + request.user.shopping_wallet + request.user.income + request.user.binary_income
             wallet.type = "credit"
             wallet.comment = "Franchise Wallet Updated"
+            wallet.txnid = generateid()
             wallet.save()
             wallet1 = WalletHistory()
             wallet1.user_id = model.user
@@ -1139,6 +1189,7 @@ def neft(request):
                         userwallet.filter = "NEFT"
                         userwallet.comment = "NEFT"
 
+                        userwallet.txnid = generateid()
                         userwallet.save()
                         user_id.save()
                         model.save()
