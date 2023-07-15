@@ -805,8 +805,8 @@ def activate(user, amount):
                     upline_amount = levels['level{}'.format(level+1)]*amount
                     print(directs.count(), level, direct)
 
-                    if direct and directs.count() == 1 and directs[0].level.amount >= upgraded.level.amount and packamount >= upgraded.level.amount:
-                        if capping <= upline_user.total_income + upline_amount + levelp.permanent_reward + 0.3 * packamount:
+                    if direct and directs.count() == 1:
+                        if True:
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
                             upline_wallet.amount = upline_amount
@@ -1209,3 +1209,5 @@ def guestlogin(request):
         user = User.objects.get(username=user)
     login(request, user, backend=settings.AUTHENTICATION_BACKENDS[0])
     return redirect('/users/')
+
+

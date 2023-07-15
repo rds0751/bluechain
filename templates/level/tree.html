@@ -162,7 +162,7 @@
                               <td>{{ usern.username }}</td>
                               <td><a href="tel:{{ usern.mobile }}">{{ usern.mobile }}</a></td>
                               <td>$ {{ shopn.level.amount }}</td>
-                              <td>$ {% mul shopn.level.amount 0.20 as shopnres %}{{ shopnres }}</td>
+                              <td>$ {% mul shopn.level.amount 0.01 as shopnres %}{{ shopnres }}</td>
                               <td><a href="/level/team/{{ usern.username }}/1/">View</a></td>
                               {% endfor %}
                           </tbody>
