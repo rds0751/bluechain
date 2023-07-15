@@ -314,7 +314,7 @@ $(window).on('load', function () {
             }
         } else {
             setTimeout(function () {
-                $('.mainheight').css({ 'min-height': maincontentheight - header.outerHeight(), 'margin-top': header.outerHeight(), 'padding-top': 'env(safe-area-inset-top)', 'padding-bottom': 'env(safe-area-inset-bottom)' });
+                $('.mainheight').css({'margin-top': header.outerHeight(), 'padding-top': 'env(safe-area-inset-top)', 'padding-bottom': 'env(safe-area-inset-bottom)' });
             }, 100);
         }
 
@@ -384,7 +384,7 @@ $(window).on('resize', function () {
             }
         } else {
             setTimeout(function () {
-                $('.mainheight').css({ 'min-height': maincontentheight - header.outerHeight(), 'margin-top': header.outerHeight(), 'padding-top': 'env(safe-area-inset-top)', 'padding-bottom': 'env(safe-area-inset-bottom)' });
+                $('.mainheight').css({'margin-top': header.outerHeight(), 'padding-top': 'env(safe-area-inset-top)', 'padding-bottom': 'env(safe-area-inset-bottom)' });
             }, 100);
         }
 

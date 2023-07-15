@@ -34,7 +34,7 @@
 
   <!-- Begin page content -->
   <main class="main mainheight container-fluid">
-    <form method="POST" class="row h-100 justify-content-center" autocomplete="off" action="{% url 'account_login' %}">
+    <div class="row h-100 justify-content-center">
       {% csrf_token %}
 
       {% if redirect_field_value %}
@@ -81,26 +81,8 @@
                       </div>
                       {% endfor %}
                     {% endif %}
-                    <div class="mb-4 text-start">
-                        <!-- alert messages -->
-                        <div class="alert alert-danger fade show d-none mb-2 global-alert text-start" role="alert">
-                            <div class="row">
-                                <div class="col"><strong>Requierd!</strong> Please enter valid data.</div>
-                            </div>
-                        </div>
-                        <div class="alert alert-success fade show d-none mb-2 global-success text-start" role="alert">
-                            <div class="row">
-                                <div class="col-auto align-self-center ">
-                                    <div class="spinner-border spinner-border-sm text-success me-2" role="status">
-                                        <span class="visually-hidden">Loading...</span>
-                                    </div>
-                                </div>
-                                <div class="col ps-0">
-                                    <strong>Awesome!</strong> Taking you to the next page.
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Form elements -->
+                    <form method="POST" class="mb-4 text-start" autocomplete="off" action="{% url 'account_login' %}">
+                        <div class="mb-2 text-dark">
                         <div class="form-group mb-2 position-relative check-valid text-dark">
                             <div class="input-group input-group-lg">
                                 <span class="input-group-text text-theme border-end-0"><i class="bi bi-envelope"></i></span>
@@ -110,8 +92,10 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
 
                         <!-- Form elements -->
+                        <div class="mb-2 text-dark">
                         <div class="form-group mb-2 position-relative check-valid text-dark">
                             <div class="input-group input-group-lg">
                                 <span class="input-group-text text-theme border-end-0"><i class="bi bi-key"></i></span>
@@ -122,18 +106,18 @@
                                 <span class="input-group-text text-secondary  border-end-0" id="viewpassword"><i class="bi bi-eye"></i></span>
                             </div>
                         </div>
+                        </div>
                     </div>
 
                     <!-- or continue with options -->
                     <p>Don't have an account? <a style="color: #0ba0b0" href="/accounts/signup/"><strong> Register</strong></a>  here.</p>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 col-xxl-3 mt-5 mb-4 text-center d-grid">
+            </div>
             <!-- submit button -->
-            <button class="btn btn-primary z-index-5 mb-4 mt-2" type="submit" id="submitbtn">Sign in <i class="bi bi-arrow-right"></i></button>
-        </div>
+            <button class="btn btn-lg btn-primary top-0 end-0 z-index-5 w-100 mt-4" type="submit" id="submitsignup">Login <i class="bi bi-arrow-right"></i></button>
     </form>
+    </main>
 </main>
 
 

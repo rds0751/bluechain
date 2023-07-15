@@ -301,12 +301,12 @@ $(window).on('load', function () {
         if (footer.length > 0) {
             if ($('.footer-sticky').length > 0) {
                 setTimeout(function () {
-                    $('.mainheight').css({ 'min-height': maincontentheight - header.outerHeight() - footer.outerHeight(), 'margin-top': header.outerHeight(), 'padding-bottom': 'env(safe-area-inset-bottom)' });
+                    $('.mainheight').css({'margin-top': header.outerHeight(), 'padding-bottom': 'env(safe-area-inset-bottom)' });
                     footer.css({ 'padding-bottom': 'calc( env(safe-area-inset-bottom)' + ($('.footer-sticky').height() + 20) + 'px)' });
                 }, 110);
             } else {
                 setTimeout(function () {
-                    $('.mainheight').css({ 'min-height': maincontentheight - header.outerHeight() - footer.outerHeight(), 'margin-top': header.outerHeight(), 'padding-top': 'env(safe-area-inset-top)', 'padding-bottom': 'env(safe-area-inset-bottom)' });
+                    $('.mainheight').css({'margin-top': header.outerHeight(), 'padding-top': 'env(safe-area-inset-top)', 'padding-bottom': 'env(safe-area-inset-bottom)' });
                 }, 100);
             }
             if (rightbarwrap.length > 0) {
@@ -371,12 +371,12 @@ $(window).on('resize', function () {
         if (footer.length > 0) {
             if ($('.footer-sticky').length > 0) {
                 setTimeout(function () {
-                    $('.mainheight').css({ 'min-height': maincontentheight - header.outerHeight() - footer.outerHeight(), 'margin-top': header.outerHeight(), 'padding-bottom': 'env(safe-area-inset-bottom)' });
+                    $('.mainheight').css({'margin-top': header.outerHeight(), 'padding-bottom': 'env(safe-area-inset-bottom)' });
                     footer.css({ 'padding-bottom': 'calc( env(safe-area-inset-bottom)' + ($('.footer-sticky').height() + 20) + 'px)' });
                 }, 110);
             } else {
                 setTimeout(function () {
-                    $('.mainheight').css({ 'min-height': maincontentheight - header.outerHeight() - footer.outerHeight(), 'margin-top': header.outerHeight(), 'padding-top': 'env(safe-area-inset-top)', 'padding-bottom': 'env(safe-area-inset-bottom)' });
+                    $('.mainheight').css({'margin-top': header.outerHeight(), 'padding-top': 'env(safe-area-inset-top)', 'padding-bottom': 'env(safe-area-inset-bottom)' });
                 }, 100);
             }
             if (rightbarwrap.length > 0) {
