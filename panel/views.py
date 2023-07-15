@@ -781,7 +781,7 @@ def activate(user, amount):
                 try:
                     upline_user = User.objects.get(username=upline) 
                 except Exception as e:  
-                    upline_user = 'blank'
+                    upline_user = User.objects.get(username='BN999999')
                 try:
                     upgraded = LevelUser.objects.get(user=upline, active=True)
                     capping = upgraded.level.amount * 4
