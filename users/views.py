@@ -290,7 +290,7 @@ class UserDashboardView(LoginRequiredMixin, ListView):
             for z in level10:
                 level10n.append(z)
 
-        all_levels = [level1n, level2n, level3n, level4n, level5n, level6n, level7n, level8n, level9n, level10n]
+        all_levels = level1n+level2n+level3n+level4n+level5n+level6n+level7n+level8n+level9n+level10n
 
         # business = {}
         # level = 0

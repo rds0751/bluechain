@@ -72,10 +72,12 @@ def users(request):
         try:
             x.referral = User.objects.get(username=x.referral)
         except Exception as e:
+            print(e)
             x.referral = x.referral
         try:
             x.top = LevelUser.objects.get(user=x.username)
         except Exception as e:
+            print(e)
             x.top = 0
     return render(request, 'panel/users.html', {'u': u, 'q': q})
 
@@ -107,6 +109,7 @@ def user(request, id):
             try:
                 p = PaymentOption.objects.get(id=id_)
             except Exception as e:
+                print(e)
                 p = PaymentOption()
         account1 = request.POST.get('account1')
         account2 = request.POST.get('account2')
@@ -133,6 +136,7 @@ def user(request, id):
             try:
                 k = ImageUploadModel.objects.get(id=id_)
             except Exception as e:
+                print(e)
                 k = ImageUploadModel()
         file1 = request.FILES.get('front')
         file2 = request.FILES.get('back')
@@ -156,10 +160,12 @@ def user(request, id):
     try:
         k = ImageUploadModel.objects.get(user=u.username)
     except Exception as e:
+        print(e)
         k = 'blank'
     try:
         b = PaymentOption.objects.get(user=u.username)
     except Exception as e:
+        print(e)
         b = 'blank'
     w = Withdrawal.objects.filter(user=u.username)
     return render(request, 'panel/user.html', {'u': u, 'k': k, 'b': b, 'w': w})
@@ -210,14 +216,17 @@ def activations(request):
         try:
             x.user = User.objects.get(username=x.user)
         except Exception as e:
+            print(e)
             pass
         try:
             x.user.referral = User.objects.get(username=x.user.referral)
         except Exception as e:
+            print(e)
             pass
         try:
             x.user.referral.top = LevelUser.objects.get(user=x.user.referral)
         except Exception as e:
+            print(e)
             pass
     return render(request, 'panel/activations.html', {'w': w})
 
@@ -234,23 +243,28 @@ def ids(request):
         try:
             x.comments = Activation.objects.get(user=x.user).comments
         except Exception as e:
+            print(e)
             x.comments = 'not present'
         try:
             x.user = User.objects.get(username=x.user)
         except Exception as e:
+            print(e)
             pass
         try:
             x.user.referral = User.objects.get(username=x.user.referral)
         except Exception as e:
+            print(e)
             pass
         x.directs = LevelUser.objects.filter(direct=x.user).count()
         try:
             x.kyc = ImageUploadModel.objects.get(user=x.user)
         except Exception as e:
+            print(e)
             pass
         try:
             x.bank = PaymentOption.objects.get(user=x.user)
         except Exception as e:
+            print(e)
             pass
         start_date = x.activated_at
         end_date = x.activated_at + datetime.timedelta(days=7)
@@ -290,6 +304,7 @@ def activate(user, amount):
         try:
             user = LevelUser.objects.get(user=str(user), active=True)
         except Exception as e:
+            print(e)
             user = 'blank'
         print(user, '---------------')
         if user == 'blank':
@@ -301,26 +316,14 @@ def activate(user, amount):
         try:
             model = PoolUser.objects.get(user=user, plan=package)
         except Exception as e:
-            try:
-                pool_direct = PoolUser.objects.filter(plan=levelp, downlines__lte=1).order_by('created_at')[0]
-                model = PoolUser()
-                model.user=user
-                model.upline = pool_direct
-                model.level = 1
-                model.plan = levelp
-                model.active = True
-                model.save()
-                pool_direct.downlines += 1
-                pool_direct.save()
-            except Exception as e:
-                pool_direct = PoolUser.objects.filter(user='BN999999').order_by('created_at')[0]
-                model = PoolUser()
-                model.user=user
-                model.upline = pool_direct
-                model.level = 1
-                model.plan = levelp
-                model.active = True
-                model.save()
+            pool_direct = PoolUser.objects.all().order_by('created_at')[0]
+            model = PoolUser()
+            model.user=user
+            model.upline = pool_direct
+            model.level = 1
+            model.plan = levelp
+            model.active = True
+            model.save()
             downlines = PoolUser.objects.filter(upline=pool_direct)
             if downlines.count() >= 2:
                 l1 = True
@@ -780,104 +783,91 @@ def activate(user, amount):
             for upline in uplines:
                 try:
                     upline_user = User.objects.get(username=upline) 
-                except Exception as e:  
+                except Exception as e:
+                    print(e)  
                     upline_user = 'blank'
                 try:
                     upgraded = LevelUser.objects.get(user=upline, active=True)
                     capping = upgraded.level.amount * 4
                 except Exception as e:
+                    print(e)
                     upgraded = LevelUser.objects.get(user='BN999999')
                     capping = 0
-                upline_user.my_directs +=1
-                upline_user.my_team += 1
-                upline_user.total_business += packamount
-                upline_user.save()
                 try:
                     upline_user = User.objects.get(username=upline) 
-                except Exception as e:  
+                except Exception as e:
+                    print(e)  
                     upline_user = 'blank'
-                if upline_user != 'blank' and upgraded.active:  
+                if upline_user != 'blank' and upgraded.active:
+                    upline_user.my_directs +=1 
+                    upline_user.my_team += 1
+                    upline_user.total_business += packamount
+                    upline_user.save()
                     directs = LevelUser.objects.filter(direct=upline_user, active=True, level=levelp)
                     if user.referral == upline_user.username:
                         direct = True
                     else:
                         direct = False
                     upline_amount = levels['level{}'.format(level+1)]*amount
-                    print(directs.count(), level, direct)
 
-                    if direct and directs.count() == 1 and directs[0].level.amount >= upgraded.level.amount and packamount >= upgraded.level.amount:
-                        if capping <= upline_user.total_income + upline_amount + levelp.permanent_reward + 0.3 * packamount:
+                    if direct and directs.count() == 1 and packamount >= upgraded.level.amount:
+                        if True:
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
-                            upline_wallet.amount = upline_amount
-                            upline_wallet.type = "credit"
-                            upline_wallet.comment = "Level Income for New Upgrade by {} in level {}".format(user, level+1)
-                            upline_wallet.balance = upline_amount
-                            upline_user.total_income += upline_amount
-                            upline_wallet.txnid = generateid()
-                            upline_wallet.save()
-                            upline_user.wallet += upline_amount
-                            upline_user.total_income += upline_amount
-                            upline_user.progress += upline_amount
-                            upline_user.save()
-                            upline_user = User.objects.get(username=upline)
-                            capping += upline_amount
-                            upline_wallet = WalletHistory()
-                            upline_wallet.user_id = upline
-                            upline_wallet.amount = packamount
+                            upline_wallet.amount = 2 * packamount
                             upline_wallet.type = "credit"
                             upline_wallet.comment = "2 Directs Completion"
-                            upline_wallet.balance += packamount
+                            upline_wallet.balance += 2 * packamount
                             upline_wallet.txnid = generateid()
                             upline_wallet.save()
-                            upline_user.wallet += packamount
-                            upline_user.total_income += packamount
-                            upline_user.progress += packamount
+                            upline_user.wallet += 2 * packamount
+                            upline_user.total_income += 2 * packamount
+                            upline_user.progress += 2 * packamount
                             upline_user.save()
                             upline_user = User.objects.get(username=upline)
-                            capping += packamount
+                            capping += 2 * packamount
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
-                            upline_wallet.amount = packamount * 0.2 
+                            upline_wallet.amount = 2 * packamount * 0.2 
                             upline_wallet.type = "debit"
                             upline_wallet.comment = "2 Directs Completion"
-                            upline_wallet.balance -= packamount * 0.2
+                            upline_wallet.balance -= 2 * packamount * 0.2
                             upline_wallet.txnid = generateid()
                             upline_wallet.save()
-                            upline_user.wallet -= packamount * 0.2
-                            upline_user.total_income -= packamount * 0.2
-                            upline_user.progress -= packamount * 0.2
+                            upline_user.wallet -= 2 * packamount * 0.2
+                            upline_user.total_income -= 2 * packamount * 0.2
+                            upline_user.progress -= 2 * packamount * 0.2
                             upline_user.save()
                             upline_user = User.objects.get(username=upline)
-                            capping -= packamount * 0.2
+                            capping -= 2 * packamount * 0.2
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
-                            upline_wallet.amount = packamount * 0.5
+                            upline_wallet.amount = 2 * packamount * 0.5
                             upline_wallet.type = "debit"
                             upline_wallet.comment = "Autopool ID Activation"
-                            upline_wallet.balance -= packamount * 0.5
+                            upline_wallet.balance -= 2 * packamount * 0.5
                             upline_wallet.txnid = generateid()
                             upline_wallet.save()
-                            upline_user.wallet -= packamount * 0.5
-                            upline_user.total_income -= packamount * 0.5
-                            upline_user.progress -= packamount * 0.5
+                            upline_user.wallet -= 2 * packamount * 0.5
+                            upline_user.total_income -= 2 * packamount * 0.5
+                            upline_user.progress -= 2 * packamount * 0.5
                             upline_user.save()
                             upline_user = User.objects.get(username=upline)
-                            capping -= packamount * 0.5
+                            capping -= 2 * packamount * 0.5
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
-                            upline_wallet.amount = packamount * 0.05
+                            upline_wallet.amount = 2 * packamount * 0.05
                             upline_wallet.type = "debit"
                             upline_wallet.comment = "5% Upline Benefit"
-                            upline_wallet.balance -= packamount * 0.05
+                            upline_wallet.balance -= 2 * packamount * 0.05
                             upline_wallet.txnid = generateid()
                             upline_wallet.save()
-                            upline_user.wallet -= packamount * 0.05
-                            upline_user.total_income -= packamount * 0.05
-                            upline_user.progress -= packamount * 0.05
+                            upline_user.wallet -= 2 * packamount * 0.05
+                            upline_user.total_income -= 2 * packamount * 0.05
+                            upline_user.progress -= 2 * packamount * 0.05
                             upline_user.save()
                             upline_user = User.objects.get(username=upline)
-                            capping -= packamount * 0.05
+                            capping -= 2 * packamount * 0.05
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
                             upline_wallet.amount = levelp.permanent_reward
@@ -893,22 +883,22 @@ def activate(user, amount):
                             upline_user = User.objects.get(username=upline)
                             capping += levelp.permanent_reward
                             autopool(upline_user.username, levelp)
-                        if directs.count() > 1:
+                        if directs.count() > 1 and capping <= upline_user.total_income + 2 * packamount * 0.8:
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
-                            upline_wallet.amount = packamount * 0.8
+                            upline_wallet.amount = packamount * 0.8 * 2
                             upline_wallet.type = "credit"
                             upline_wallet.comment = "More than 2 direct upgrades"
-                            upline_wallet.balance += packamount * 0.8
+                            upline_wallet.balance += packamount * 0.8 * 2
                             upline_wallet.txnid = generateid()
                             upline_wallet.save()
-                            upline_user.wallet += packamount * 0.8
-                            upline_user.total_income += packamount * 0.8
-                            upline_user.progress += packamount * 0.8
+                            upline_user.wallet += packamount * 0.8 * 2
+                            upline_user.total_income += packamount * 0.8 * 2
+                            upline_user.progress += packamount * 0.8 * 2
                             upline_user.save()
                             upline_user = User.objects.get(username=upline)
                             capping += packamount * 0.8
-                    elif directs.count() > level and not direct:   
+                    elif directs.count() >= level:   
                         upline_amount = levels['level{}'.format(level+1)]*amount
                         upline_wallet = WalletHistory()   
                         upline_wallet.user_id = upline
@@ -999,6 +989,7 @@ def withdrawal(request, id):
         k = ImageUploadModel.objects.get(user=w.user)
         b = Paymentoptions.objects.get(user=w.user)
     except Exception as e:
+        print(e)
         k = 'blank'
         b = 'blank'
     return render(request, 'panel/withdrawal.html', {'w': w, 'u': u, 'k': k, 'b': b})
@@ -1043,6 +1034,7 @@ def franchise(request):
         try:
             model = Franchise.objects.get(user=request_.user)
         except Exception as e:
+            print(e)
             model = Franchise()
         
         if status == '1':
@@ -1103,6 +1095,7 @@ def stores(request):
         try:
             address = PartnerAddress.objects.get(partner__id=store.id)
         except Exception as e:
+            print(e)
             address = None
         if 'line1' in request.POST:
             if address == None:
@@ -1199,6 +1192,7 @@ def neft(request):
             else:
                 message = "NEFT Services, not started yet"
         except Exception as e:
+            print(e)
             message = "Error 500 {}".format(e)
 
     return render(request, 'panel/neft.html', {'message': message, 'withdrawals': withdrawals})
