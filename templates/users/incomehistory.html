@@ -78,18 +78,26 @@
 					<div class="row align-items-center text-center">
 						<div class="col-12 mb-2">
 							<span class="hide-if-no-paging">Showing 
-								{% for pg in page_range %}
-									{% if histories.number == pg %}
-									<a href="?page={{pg}}" class="mdc-button mdc-button--raised icon-button filled-button--success">
-										{{pg}}
-									</a>
-									{% else %}
-									<a href="?page={{pg}}" class="mdc-button mdc-button--raised icon-button filled-button--primary">{{pg}}</a>
-									{% endif %}
-								{% endfor %}
+								
 							</span>
 						</div>
-						<div class="col-12 footable-paging-external footable-paging-center" id="footable-pagination"><div class="footable-pagination-wrapper"><ul class="pagination"><li class="footable-page-nav" data-page="first"><a class="footable-page-link" href="#">«</a></li><li class="footable-page-nav" data-page="prev"><a class="footable-page-link" href="#">‹</a></li><li class="footable-page visible" data-page="1"><a class="footable-page-link" href="#">1</a></li><li class="footable-page visible active" data-page="2"><a class="footable-page-link" href="#">2</a></li><li class="footable-page-nav disabled" data-page="next"><a class="footable-page-link" href="#">›</a></li><li class="footable-page-nav disabled" data-page="last"><a class="footable-page-link" href="#">»</a></li></ul><div class="divider"></div><span class="label label-default">2 of 2</span></div></div>
+						<div class="col-12 footable-paging-external footable-paging-center" id="footable-pagination">
+							<div class="footable-pagination-wrapper">
+								<ul class="pagination">
+									{% for pg in page_range %}
+									{% if histories.number == pg %}
+									<li class="footable-page-nav" data-page="1">
+										<a href="?page={{pg}}" class="mdc-button mdc-button--raised icon-button filled-button--success">{{pg}}</a>
+									</li>
+									{% else %}
+									<li class="footable-page-nav" data-page="2">
+										<a href="?page={{pg}}" class="mdc-button mdc-button--raised icon-button filled-button--primary">{{pg}}</a>
+									</li>
+									{% endif %}
+								{% endfor %}
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
