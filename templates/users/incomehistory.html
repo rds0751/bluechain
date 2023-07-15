@@ -30,7 +30,7 @@
 							<th data-breakpoints="xs md" class="footable-sortable" style="display: table-cell;">Amount<span class="fooicon fooicon-sort"></span></th>
 							<th data-breakpoints="xs" class="footable-sortable" style="display: table-cell;">Comment<span class="fooicon fooicon-sort"></span></th>
 							<th data-breakpoints="xs md" class="footable-sortable" style="display: table-cell;">Date<span class="fooicon fooicon-sort"></span></th>
-							<th data-breakpoints="xs md" class="footable-sortable" style="display: table-cell;">filter<span class="fooicon fooicon-sort"></span></th>
+							<th data-breakpoints="xs md" class="footable-sortable" style="display: table-cell;">Status<span class="fooicon fooicon-sort"></span></th>
 							<th data-breakpoints="all" data-title="Deliver to" class="footable-sortable" style="display: table-cell">txn ID<span class="fooicon fooicon-sort"></span></th>
 							<th data-breakpoints="all" data-title="Address" class="footable-sortable" style="display: table-cell">Type<span class="fooicon fooicon-sort"></span></th>
 							<th data-breakpoints="all" data-title="Location" class="footable-sortable" style="display: table-cell">Balance<span class="fooicon fooicon-sort"></span></th>
@@ -53,19 +53,19 @@
 																		<p class="mb-0">{{history.comment}}</p>
 																	</td>
 																	<td style="display: table-cell;">
-																		<p class="mb-0">{{history.date}}</p>
+																		<p class="mb-0">{{history.created_at}}</p>
 																	</td>
 																	<td style="display: table-cell;">
-																		<p class="mb-0">{{history.filter}}</p>
+																		<p class="mb-0">Success</p>
 																	</td>
 																	<td style="display: table-cell;">
-																		<p class="mb-0">{{history.filter}}</p>
+																		<p class="mb-0">{{history.txnid}}</p>
 																	</td>
 																	<td style="display: table-cell">
 																		<p class="mb-0">{{history.type}}</p>
 																	</td>
 																	<td style="display: table-cell">
-																		<p class="mb-0">{{history.filter}}</p>
+																		<p class="mb-0">{{history.balance}}</p>
 																	</td>
 																</tr>
 															{% endif %}
