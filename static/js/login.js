@@ -29,14 +29,6 @@ $(window).on('load', function () {
     setInterval(function () { startTime() }, 500);
 
     /* change images based on time zones */
-    var date = new Date;
-    if (date.getHours() < 12 && date.getHours() >= 7) {
-        $('#image-daytime').css('background-image', 'url("assets/img/bg-3.jpg")');
-    } else if (date.getHours() >= 12 && date.getHours() <= 19) {
-        $('#image-daytime').css('background-image', 'url("assets/img/bg-20.jpg")');
-    } else {
-        $('#image-daytime').css('background-image', 'url("assets/img/bg-11.jpg")');
-    }
 
     /* temperature data */
     var cityname = 'London';
