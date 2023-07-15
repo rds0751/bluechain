@@ -29,6 +29,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# CACHES = {
+#    'default': {
+#       'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+#       'LOCATION': 'aboota_cache',
+#       'TIMEOUT': '3000000',
+#         'OPTIONS': {
+#             'MAX_ENTRIES': 10000000
+#         }
+#    }
+# }
 
 APPEND_SLASH = True 
 
@@ -409,3 +419,13 @@ CRYPTOCURRENCY_PAYMENT = {
         "ALLOW_ANONYMOUS_PAYMENT": True,
     }
  }
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    },
+    'machina_attachments': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/tmp',
+    },
+}
