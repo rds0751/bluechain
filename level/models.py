@@ -21,8 +21,8 @@ class LevelIncomeSettings(models.Model):
     level = models.IntegerField()
     amount = models.IntegerField()
     name = models.CharField(max_length=125, null=True, blank=True)
-    return_amount = models.IntegerField()
-    expiration_period = models.IntegerField()
+    permanent_reward = models.FloatField()
+    active = models.BooleanField(default=True)
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True)
 
@@ -30,7 +30,6 @@ class LevelUser(models.Model):
     user = models.CharField(max_length=25, blank=True, null=True)
     level = models.ForeignKey(LevelIncomeSettings, on_delete=models.CASCADE)
     active = models.BooleanField()
-    left_months = models.IntegerField(null=True,blank=True)
     direct = models.CharField(max_length=25, blank=True, null=True)
     business = models.IntegerField(default=0)
     created_at = models.DateTimeField(default=timezone.now, blank=True)
