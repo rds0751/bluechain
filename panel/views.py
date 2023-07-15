@@ -947,9 +947,6 @@ def activate(user, amount):
             model.direct = user.referral
             model.activated_at = datetime.datetime.now()
             model.save()
-            userwallet.txnid = generateid()
-            userwallet.save()
-            user_id.save()
             message = "Plan purchased"
         else:
             message = "user already joined, please upgrade another ID"
