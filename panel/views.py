@@ -807,7 +807,7 @@ def activate(user, amount):
                     else:
                         direct = False
                     upline_amount = levels['level{}'.format(level+1)]*amount
-                    packamount = upgraded.level.amount
+                    packamount = min(amount, upgraded.level.amount)
 
                     if direct and directs.count() == 1 and amount >= packamount:
                         if True: 
