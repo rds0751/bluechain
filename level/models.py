@@ -42,7 +42,7 @@ class LevelUser(models.Model):
     
 
 class PoolUser(models.Model):
-    user = models.CharField(max_length=25, blank=True, null=True)
+    user = models.CharField(max_length=25, blank=True, null=True, unique=True)
     level = models.IntegerField(default=0)
     plan = models.ForeignKey(LevelIncomeSettings, null=True, on_delete=models.CASCADE)
     downlines = models.IntegerField(default=0)
