@@ -505,21 +505,35 @@ def payment(request):
 
 def binary(request, plan):
     level = LevelIncomeSettings.objects.get(level=int(plan))
-    plan1 = PoolUser.objects.filter(user=request.user.username, plan=level)
-    plan2 = PoolUser.objects.filter(user=request.user.username, plan=level)
-    plan3 = PoolUser.objects.filter(user=request.user.username, plan=level)
-    downlines1 = PoolUser.objects.filter(upline=request.user.username, plan=level)
-    downlines2 = PoolUser.objects.filter(upline=request.user.username, plan=level)
-    downlines3 = PoolUser.objects.filter(upline=request.user.username, plan=level)
+    user = PoolUser.objects.filter(user=request.user.username)
+    if user.count()>0:
+        d1 = PoolUser.objects.filter(upline=user)
+    else:
+        d1 = 0
+    if d1.count() == 2:
+        d2 = PoolUser.objects.filter(Q(upline=d1[1]) | Q(upline=d1[0])) # 4
+    elif d1.count() == 1:
+        d2 = PoolUser.objects.filter(upline=d1[0]) # 2
+    if d2 == 4:
+        d3 = PoolUser.objects.filter(Q(upline=d2[0]) | Q(upline=d2[1]) | Q(upline=d2[2]) | Q(upline=d2[3])) # 8
+    if d2 == 3:
+        d3 = PoolUser.objects.filter(Q(upline=d2[0]) | Q(upline=d2[1]) | Q(upline=d2[2])) # 8
+    if d2 == 2:
+        d3 = PoolUser.objects.filter(Q(upline=d2[0]) | Q(upline=d2[1])) # 8
+    if d2 == 1:
+        d3 = PoolUser.objects.filter(upline=d2[0]) # 8
     context = {
-        'plan1': plan1,
-        'plan2': plan2,
-        'plan3': plan3,
-        'downlines1': downlines1,
-        'downlines2': downlines2,
-        'downlines3': downlines3
+        'user': user,
+        'd1': d1,
+        'd2': d2,
+        'd3': d3        
     }
     return render(request,"binary/tree.html", context)
+
+#                    1                          u
+#            2               3                  d1
+#      4         5       6         7            d2
+# 8        9 10     11 12   13 14       15      d3
 
 def staking(request):
     return render(request,"binary/staking.html")

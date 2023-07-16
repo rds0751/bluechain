@@ -856,18 +856,19 @@ def activate(user, amount):
                             print('if1')
                     print(directs.count(), direct, upline_user, upline_user.referral)
                     if directs.count() > 1 and direct:
+                        abc = min(amount, packamount)
                         upline_wallet = WalletHistory()
                         upline_wallet.user_id = upline
-                        upline_wallet.amount = packamount * 0.8
+                        upline_wallet.amount = abc * 0.8
                         upline_wallet.type = "credit"
                         upline_wallet.comment = "More than 2 direct upgrades"
-                        upline_wallet.balance += packamount * 0.8
+                        upline_wallet.balance += abc * 0.8
                         upline_wallet.txnid = generateid()
                         upline_wallet.save()
-                        upline_user.wallet += packamount * 0.8
-                        upline_user.today_income += packamount * 0.8
-                        upline_user.total_income += packamount * 0.8
-                        upline_user.progress += packamount * 0.8
+                        upline_user.wallet += abc * 0.8
+                        upline_user.today_income += abc * 0.8
+                        upline_user.total_income += abc * 0.8
+                        upline_user.progress += abc * 0.8
                         upline_user.save()
                         upline_user = User.objects.get(username=upline)
                         print('elif1')
@@ -889,9 +890,9 @@ def activate(user, amount):
                         upline_user = User.objects.get(username=upline)
                     else:
                         upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = upline  
-                        upline_wallet.amount = upline_amount    
-                        upline_wallet.type = "NA"   
+                        upline_wallet.user_id = upline
+                        upline_wallet.amount = upline_amount 
+                        upline_wallet.type = "NA"
                         upline_wallet.comment = "{} joined but Level {} not opened!".format(user, level+1)
                         upline_wallet.txnid = generateid()
                         upline_wallet.save()

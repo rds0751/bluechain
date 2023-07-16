@@ -26,7 +26,7 @@
       <h4 class="username">My Network</h4>
       <div class="row">
         <div class="col-12">
-        {% if plan1 %}
+        {% if user %}
         <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ request.user.username }}
         {% else %}
         <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png"><br>{{ request.user.username }}        
@@ -46,8 +46,8 @@
       </div>
       <div class="row">
         <div class="col-6">
-        {% if plan1.0 %}
-        <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ downlines1.0 }}
+        {% if d1.0 %}
+        <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d1.0 }}
         {% else %}
         <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">     
         {% endif %}
