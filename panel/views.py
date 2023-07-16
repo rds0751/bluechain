@@ -856,7 +856,7 @@ def activate(user, amount):
                             upline_user = User.objects.get(username=upline)
                             autopool(upline_user.username, levelp)
                             print('if1')
-                    elif directs.count() > 1 and direct:
+                    if directs.count() > 1 and direct:
                         upline_wallet = WalletHistory()
                         upline_wallet.user_id = upline
                         upline_wallet.amount = packamount * 0.8
@@ -872,7 +872,7 @@ def activate(user, amount):
                         upline_user.save()
                         upline_user = User.objects.get(username=upline)
                         print('elif1')
-                    elif directs.count() >= level:
+                    if directs.count() >= level:
                         upline_amount = levels['level{}'.format(level+1)]*amount
                         upline_wallet = WalletHistory()
                         upline_wallet.user_id = upline

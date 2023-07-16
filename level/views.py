@@ -505,12 +505,12 @@ def payment(request):
 
 def binary(request, plan):
     level = LevelIncomeSettings.objects.get(level=int(plan))
-    plan1 = PoolUser.objects.filter(user=request.user.username, plan=level, level=1)
-    plan2 = PoolUser.objects.filter(user=request.user.username, plan=level, level=2)
-    plan3 = PoolUser.objects.filter(user=request.user.username, plan=level, level=3)
-    downlines1 = PoolUser.objects.filter(upline=request.user.username, plan=level, level=1)
-    downlines2 = PoolUser.objects.filter(upline=request.user.username, plan=level, level=2)
-    downlines3 = PoolUser.objects.filter(upline=request.user.username, plan=level, level=3)
+    plan1 = PoolUser.objects.filter(user=request.user.username, plan=level)
+    plan2 = PoolUser.objects.filter(user=request.user.username, plan=level)
+    plan3 = PoolUser.objects.filter(user=request.user.username, plan=level)
+    downlines1 = PoolUser.objects.filter(upline=request.user.username, plan=level)
+    downlines2 = PoolUser.objects.filter(upline=request.user.username, plan=level)
+    downlines3 = PoolUser.objects.filter(upline=request.user.username, plan=level)
     context = {
         'plan1': plan1,
         'plan2': plan2,
