@@ -859,16 +859,16 @@ def activate(user, amount):
                     elif directs.count() > 1 and direct:
                         upline_wallet = WalletHistory()
                         upline_wallet.user_id = upline
-                        upline_wallet.amount = packamount * 0.8 * 2
+                        upline_wallet.amount = packamount * 0.8
                         upline_wallet.type = "credit"
                         upline_wallet.comment = "More than 2 direct upgrades"
-                        upline_wallet.balance += packamount * 0.8 * 2
+                        upline_wallet.balance += packamount * 0.8
                         upline_wallet.txnid = generateid()
                         upline_wallet.save()
-                        upline_user.wallet += packamount * 0.8 * 2
-                        upline_user.today_income += packamount * 0.8 * 2
-                        upline_user.total_income += packamount * 0.8 * 2
-                        upline_user.progress += packamount * 0.8 * 2
+                        upline_user.wallet += packamount * 0.8
+                        upline_user.today_income += packamount * 0.8
+                        upline_user.total_income += packamount * 0.8
+                        upline_user.progress += packamount * 0.8
                         upline_user.save()
                         upline_user = User.objects.get(username=upline)
                         print('elif1')
