@@ -504,24 +504,50 @@ def payment(request):
     return render(request,"level/joined.html",context)
 
 def binary(request, plan):
+    a = 1
+    d1 = 0
+    d2 = 0
+    d3 = 0
     level = LevelIncomeSettings.objects.get(level=int(plan))
-    user = PoolUser.objects.filter(user=request.user.username)
-    if user.count()>0:
-        d1 = PoolUser.objects.filter(upline=user)
-    else:
-        d1 = 0
-    if d1.count() == 2:
-        d2 = PoolUser.objects.filter(Q(upline=d1[1]) | Q(upline=d1[0])) # 4
-    elif d1.count() == 1:
-        d2 = PoolUser.objects.filter(upline=d1[0]) # 2
-    if d2 == 4:
-        d3 = PoolUser.objects.filter(Q(upline=d2[0]) | Q(upline=d2[1]) | Q(upline=d2[2]) | Q(upline=d2[3])) # 8
-    if d2 == 3:
-        d3 = PoolUser.objects.filter(Q(upline=d2[0]) | Q(upline=d2[1]) | Q(upline=d2[2])) # 8
-    if d2 == 2:
-        d3 = PoolUser.objects.filter(Q(upline=d2[0]) | Q(upline=d2[1])) # 8
-    if d2 == 1:
-        d3 = PoolUser.objects.filter(upline=d2[0]) # 8
+    try:
+        user = PoolUser.objects.get(user=request.user.username)
+    except Exception as e:
+        user = 'blank'
+        print(e, 1)
+
+    try:
+        if user:
+            d1 = PoolUser.objects.filter(upline=user)
+        else:
+            d1 = PoolUser.objects.filter(upline='useresdrtfgyhuji')
+    except Exception as e:
+        print(e, 2)
+        a = 0
+
+    if a != 0:
+        try:
+            if d1.count():
+                d2 = PoolUser.objects.filter(upline=d1[0]) #2
+            elif d1.count() == 2:
+                d2 = PoolUser.objects.filter(Q(upline=d1[1]) | Q(upline=d1[0])) #4
+        except Exception as e:
+            print(e,3)
+            a = 0
+
+    if a != 0:
+        try:
+            if d2:
+                d3 = PoolUser.objects.filter(upline=d2[0]) #8
+            elif d2.count() == 2:
+                d3 = PoolUser.objects.filter(Q(upline=d2[0]) | Q(upline=d2[1])) #8
+            elif d2.count() == 3:
+                d3 = PoolUser.objects.filter(Q(upline=d2[0]) | Q(upline=d2[1]) | Q(upline=d2[2])) #8
+            elif d2.count() == 4:
+                d3 = PoolUser.objects.filter(Q(upline=d2[0]) | Q(upline=d2[1]) | Q(upline=d2[2]) | Q(upline=d2[3])) #8
+        except Exception as e:
+            print(e, 4)
+            a = 0
+
     context = {
         'user': user,
         'd1': d1,
