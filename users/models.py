@@ -27,7 +27,7 @@ class User(AbstractUser, PermissionsMixin):
     my_team = models.IntegerField(default=0)
     my_directs = models.IntegerField(default=0)
     today_income = models.FloatField(default=0)
-    total_business = models.IntegerField(default=0)
+    total_business = models.FloatField(default=0)
     sponsor_income = models.FloatField(default=0) #bahut moti 5%
     autopool_income = models.FloatField(default=0)
     my_daily_roi = models.FloatField(default=0)

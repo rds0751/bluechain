@@ -822,6 +822,7 @@ def activate(user, amount):
                             upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             upline_user.wallet += 2 * packamount * 0.95 * 0.3
+                            upline_user.today_income += 2 * packamount * 0.95 * 0.3
                             upline_user.total_income += 2 * packamount * 0.95 * 0.3
                             upline_user.progress += 2 * packamount * 0.95 * 0.3
                             upline_user.save()
@@ -848,6 +849,7 @@ def activate(user, amount):
                             upline_wallet.txnid = generateid()
                             upline_wallet.save()
                             upline_user.wallet += levelp.permanent_reward
+                            upline_user.today_income += levelp.permanent_reward
                             upline_user.total_income += levelp.permanent_reward
                             upline_user.progress += levelp.permanent_reward
                             upline_user.save()
@@ -864,6 +866,7 @@ def activate(user, amount):
                         upline_wallet.txnid = generateid()
                         upline_wallet.save()
                         upline_user.wallet += packamount * 0.8 * 2
+                        upline_user.today_income += packamount * 0.8 * 2
                         upline_user.total_income += packamount * 0.8 * 2
                         upline_user.progress += packamount * 0.8 * 2
                         upline_user.save()
@@ -880,6 +883,7 @@ def activate(user, amount):
                         upline_wallet.txnid = generateid()
                         upline_wallet.save()
                         upline_user.wallet += upline_amount
+                        upline_user.today_income += upline_amount
                         upline_user.total_income += upline_amount
                         upline_user.progress += upline_amount
                         upline_user.save()
