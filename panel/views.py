@@ -809,65 +809,36 @@ def activate(user, amount):
                     else:
                         direct = False
                     upline_amount = levels['level{}'.format(level+1)]*amount
+                    packamount = upgraded.level.amount
 
-                    if direct and directs.count() == 1 and packamount >= upgraded.level.amount:
-                        if True:
+                    if direct and directs.count() == 1 and amount >= packamount:
+                        if True: 
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
-                            upline_wallet.amount = 2 * packamount
+                            upline_wallet.amount = 2 * packamount * 0.95 * 0.3
                             upline_wallet.type = "credit"
-                            upline_wallet.comment = "2 Directs Completion"
-                            upline_wallet.balance += 2 * packamount
+                            upline_wallet.comment = "1st Pair Income"
+                            upline_wallet.balance += 2 * packamount * 0.95 * 0.3
                             upline_wallet.txnid = generateid()
                             upline_wallet.save()
-                            upline_user.wallet += 2 * packamount
-                            upline_user.total_income += 2 * packamount
-                            upline_user.progress += 2 * packamount
+                            upline_user.wallet += 2 * packamount * 0.95 * 0.3
+                            upline_user.total_income += 2 * packamount * 0.95 * 0.3
+                            upline_user.progress += 2 * packamount * 0.95 * 0.3
                             upline_user.save()
-                            upline_user = User.objects.get(username=upline)
-                            capping += 2 * packamount
+                            upline_level_user = User.objects.get(username=upline_user.referral)
                             upline_wallet = WalletHistory()
-                            upline_wallet.user_id = upline
-                            upline_wallet.amount = 2 * packamount * 0.2 
-                            upline_wallet.type = "debit"
-                            upline_wallet.comment = "20% Admin Charges on 2 Directs Completion"
-                            upline_wallet.balance -= 2 * packamount * 0.2
-                            upline_wallet.txnid = generateid()
-                            upline_wallet.save()
-                            upline_user.wallet -= 2 * packamount * 0.2
-                            upline_user.total_income -= 2 * packamount * 0.2
-                            upline_user.progress -= 2 * packamount * 0.2
-                            upline_user.save()
-                            upline_user = User.objects.get(username=upline)
-                            capping -= 2 * packamount * 0.2
-                            upline_wallet = WalletHistory()
-                            upline_wallet.user_id = upline
-                            upline_wallet.amount = 2 * packamount * 0.5
-                            upline_wallet.type = "debit"
-                            upline_wallet.comment = "Autopool ID Activation"
-                            upline_wallet.balance -= 2 * packamount * 0.5
-                            upline_wallet.txnid = generateid()
-                            upline_wallet.save()
-                            upline_user.wallet -= 2 * packamount * 0.5
-                            upline_user.total_income -= 2 * packamount * 0.5
-                            upline_user.progress -= 2 * packamount * 0.5
-                            upline_user.save()
-                            upline_user = User.objects.get(username=upline)
-                            capping -= 2 * packamount * 0.5
-                            upline_wallet = WalletHistory()
-                            upline_wallet.user_id = upline
+                            upline_wallet.user_id = upline_level_user.username
                             upline_wallet.amount = 2 * packamount * 0.05 * 0.3
-                            upline_wallet.type = "debit"
-                            upline_wallet.comment = "5% Upline Benefit"
-                            upline_wallet.balance -= 2 * packamount * 0.05 * 0.3
+                            upline_wallet.type = "credit"
+                            upline_wallet.comment = "5% Upline Benefit from user {}".format(upline_user.username)
+                            upline_wallet.balance += 2 * packamount * 0.05 * 0.3
                             upline_wallet.txnid = generateid()
                             upline_wallet.save()
-                            upline_user.wallet -= 2 * packamount * 0.05
-                            upline_user.total_income -= 2 * packamount * 0.05 * 0.3
-                            upline_user.progress -= 2 * packamount * 0.05 * 0.3
-                            upline_user.save()
+                            upline_level_user.wallet += 2 * packamount * 0.05 * 0.3
+                            upline_level_user.total_income += 2 * packamount * 0.05 * 0.3
+                            upline_level_user.progress += 2 * packamount * 0.05 * 0.3
+                            upline_level_user.save()
                             upline_user = User.objects.get(username=upline)
-                            capping -= 2 * packamount * 0.05
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
                             upline_wallet.amount = levelp.permanent_reward
@@ -881,38 +852,38 @@ def activate(user, amount):
                             upline_user.progress += levelp.permanent_reward
                             upline_user.save()
                             upline_user = User.objects.get(username=upline)
-                            capping += levelp.permanent_reward
                             autopool(upline_user.username, levelp)
-                        if directs.count() > 1 and capping <= upline_user.total_income + 2 * packamount * 0.8:
-                            upline_wallet = WalletHistory()
-                            upline_wallet.user_id = upline
-                            upline_wallet.amount = packamount * 0.8 * 2
-                            upline_wallet.type = "credit"
-                            upline_wallet.comment = "More than 2 direct upgrades"
-                            upline_wallet.balance += packamount * 0.8 * 2
-                            upline_wallet.txnid = generateid()
-                            upline_wallet.save()
-                            upline_user.wallet += packamount * 0.8 * 2
-                            upline_user.total_income += packamount * 0.8 * 2
-                            upline_user.progress += packamount * 0.8 * 2
-                            upline_user.save()
-                            upline_user = User.objects.get(username=upline)
-                            capping += packamount * 0.8
-                    elif directs.count() >= level:   
+                            print('if1')
+                    elif directs.count() > 1 and direct:
+                        upline_wallet = WalletHistory()
+                        upline_wallet.user_id = upline
+                        upline_wallet.amount = packamount * 0.8 * 2
+                        upline_wallet.type = "credit"
+                        upline_wallet.comment = "More than 2 direct upgrades"
+                        upline_wallet.balance += packamount * 0.8 * 2
+                        upline_wallet.txnid = generateid()
+                        upline_wallet.save()
+                        upline_user.wallet += packamount * 0.8 * 2
+                        upline_user.total_income += packamount * 0.8 * 2
+                        upline_user.progress += packamount * 0.8 * 2
+                        upline_user.save()
+                        upline_user = User.objects.get(username=upline)
+                        print('elif1')
+                    elif directs.count() >= level:
                         upline_amount = levels['level{}'.format(level+1)]*amount
-                        upline_wallet = WalletHistory()   
+                        upline_wallet = WalletHistory()
                         upline_wallet.user_id = upline
                         upline_wallet.amount = upline_amount
                         upline_wallet.type = "credit"
                         upline_wallet.comment = "New Upgrade by {} in level {}".format(user, level+1)
-                        upgraded.business += upline_amount
+                        upline_wallet.balance += upline_amount
                         upline_wallet.txnid = generateid()
                         upline_wallet.save()
+                        upline_user.wallet += upline_amount
+                        upline_user.total_income += upline_amount
+                        upline_user.progress += upline_amount
                         upline_user.save()
-                        print('elif')
-                        upline_user.my_team += 1
-                        upline_user.total_business += amount
-                        upline_user.save()
+                        upline_user = User.objects.get(username=upline)
                     else:
                         upline_wallet = WalletHistory()   
                         upline_wallet.user_id = upline  
@@ -922,11 +893,7 @@ def activate(user, amount):
                         upline_wallet.txnid = generateid()
                         upline_wallet.save()
                         print('else')
-                        upline_user.my_team += 1
-                        upline_user.total_business += amount
-                        upline_user.save()
-                    upgraded.save()
-                    print('outside')
+                print('outside')
                 level = level + 1
             
             model, created = LevelUser.objects.get_or_create(user=userid.username, level=levelp, active=True)
