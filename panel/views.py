@@ -712,8 +712,6 @@ def activate(user, amount):
                             pool_user.autopool_income += extra
                             pool_user.pool_wallet += extra
                             pool_user.save()
-
-                autopool(pool_direct.user, package)
         return 0
 
 
@@ -803,7 +801,7 @@ def activate(user, amount):
                     upline_user.my_team += 1
                     upline_user.total_business += packamount
                     upline_user.save()
-                    directs = LevelUser.objects.filter(direct=upline_user, active=True, level=levelp)
+                    directs = LevelUser.objects.filter(direct=upline_user, active=True)
                     if user.referral == upline_user.username:
                         direct = True
                     else:
@@ -856,6 +854,7 @@ def activate(user, amount):
                             upline_user = User.objects.get(username=upline)
                             autopool(upline_user.username, levelp)
                             print('if1')
+                    print(directs.count(), direct, upline_user, upline_user.referral)
                     if directs.count() > 1 and direct:
                         upline_wallet = WalletHistory()
                         upline_wallet.user_id = upline

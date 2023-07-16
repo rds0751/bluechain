@@ -229,7 +229,7 @@ LANGUAGES = (
     ('ja', _('Japanese'))
 )
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 

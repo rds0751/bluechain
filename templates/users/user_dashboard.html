@@ -131,9 +131,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <h5 class="text-muted fw-medium mb-1">Total Income</p>
-                        </div>
-                        <div class="col">
+                            <h5 class="text-muted fw-medium mb-1">Total Income</h5>
                             <h5 class="fw-medium">$ {{ request.user.total_income }}</h5>
                         </div>
                     </div>
@@ -151,8 +149,6 @@
                           </div>
                           <div class="col">
                               <h5 class="text-muted fw-medium mb-1">My Team</p>
-                          </div>
-                          <div class="col">
                               <h5>{{all}}</h5>
                           </div>
                       </div>
@@ -170,8 +166,6 @@
                           </div>
                           <div class="col">
                               <h5 class="text-muted fw-medium mb-1">My Directs</p>
-                          </div>
-                          <div class="col">
                               <h5>{{ directs }}</h5>
                           </div>
                       </div>
@@ -188,9 +182,7 @@
                               </div>
                           </div>
                           <div class="col">
-                              <h5 class="text-muted fw-medium mb-1">Withdrawal Wallet</p>
-                          </div>
-                          <div class="col">
+                              <h5 class="text-muted fw-medium mb-1">Withdrawal Wallet</h5>
                               <h5 class="fw-medium">$ {{request.user.wallet|add:request.user.pool_wallet}}</h5>
                           </div>
                       </div>
@@ -207,9 +199,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <h5 class="text-muted fw-medium mb-1">Lifetime Royalty Income</p>
-                        </div>
-                        <div class="col">
+                            <h5 class="text-muted fw-medium mb-1">Lifetime Royalty Income</h5>
                             <h5 class="fw-medium">$ {{request.user.lifetime_royalty}}</h5>
                         </div>
                     </div>
@@ -226,9 +216,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <h5 class="text-muted fw-medium mb-1">Today Income</p>
-                        </div>
-                        <div class="col">
+                            <h5 class="text-muted fw-medium mb-1">Today Income</h5>
                             <h5 class="fw-medium">$ {{request.user.today_income}}</h5>
                         </div>
                     </div>
@@ -245,9 +233,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <h5 class="text-muted fw-medium mb-1">Total Business</p>
-                        </div>
-                        <div class="col">
+                            <h5 class="text-muted fw-medium mb-1">Total Business</h5>
                             <h5 class="fw-medium">$ {{ request.user.total_business }}</h5>
                         </div>
                     </div>
@@ -264,9 +250,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <h5 class="text-muted fw-medium mb-1">Sponsor Income</p>
-                        </div>
-                        <div class="col">
+                            <h5 class="text-muted fw-medium mb-1">Sponsor Income</h5>
                             <h5 class="fw-medium">$ {{request.user.sponsor_income}}</h5>
                         </div>
                     </div>
@@ -283,9 +267,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <h5 class="text-muted fw-medium mb-1">Autopool Income</p>
-                        </div>
-                        <div class="col">
+                            <h5 class="text-muted fw-medium mb-1">Autopool Income</h5>
                             <h5 class="fw-medium">$ {{request.user.autopool_income}}</h5>
                         </div>
                     </div>
@@ -302,9 +284,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <h5 class="text-muted fw-medium  mb-1">Rewards</p>
-                        </div>
-                        <div class="col">
+                            <h5 class="text-muted fw-medium  mb-1">Rewards</h5>
                             <h5 class="fw-medium">$ {{request.user.rewards}}</h5>
                         </div>
                     </div>
@@ -321,9 +301,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <h5 class="text-muted fw-medium mb-1">My Daily ROI</p>
-                        </div>
-                        <div class="col">
+                            <h5 class="text-muted fw-medium mb-1">My Daily ROI</h5>
                             <h5 class="fw-medium">$ {{request.user.my_daily_roi}}</h5>
                         </div>
                     </div>
@@ -341,8 +319,6 @@
                         </div>
                         <div class="col">
                             <h5 class="text-muted fw-medium mb-1">Tokens</h5>
-                        </div>
-                        <div class="col">
                             {% if amount != 'None' %}
                             {% widthratio amount.level.amount 1 10 as c %}
                             <h5 class="fw-medium">{{ c }}</h5>
