@@ -856,7 +856,7 @@ def activate(user, amount):
                             print('if1')
                     print(directs.count(), direct, upline_user, upline_user.referral)
                     if directs.count() > 1 and direct:
-                        abc = min(amount, packamount)
+                        abc = 
                         upline_wallet = WalletHistory()
                         upline_wallet.user_id = upline
                         upline_wallet.amount = abc * 0.8
