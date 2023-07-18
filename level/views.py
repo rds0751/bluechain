@@ -479,7 +479,15 @@ def activation(request):
             return render(request,"level/thankyou.html", {'title': title, 'message': message})
     return render(request,"level/level_join.html", {'packages': packages, 'acta': acta, 'actp': actp})
 
+
+from eth_account import Account
+import secrets
+from wallets.models import Mtw
+
 def payment(request):
+    if request.method == 'POST' and 'check' in request.POST:
+        print('hello')
+
     def generateid():
         txnid = get_random_string(8)
         try:
@@ -494,13 +502,25 @@ def payment(request):
     amount = int(int(request.POST.get('amounta'))*75 + 0.02*int(request.POST.get('amounta'))*75)
     user = request.user
     txnid = generateid()
+    priv = secrets.token_hex(32)
+    private_key = "0x" + priv
+    print ("SAVE BUT DO NOT SHARE THIS:", private_key)
+    acct = Account.from_key(private_key)
+    print("Address:", acct.address)
+
+    p = Mtw()
+    p.user_id = request.user.username
+    p.wallet_address = acct.address
+    p.private_key = private_key
+    p.save()
+
     w = WalletHistory()
     w.user_id = user.username
     w.amount = int(request.POST.get('amounta'))
-    w.comment = 'Money added using razorpay'
+    w.comment = 'Money Added using BUSD'
     w.txnid = txnid
     w.save()
-    context = {'user': user, 'oid': txnid, 'amount': amount}
+    context = {'address': acct.address, 'amount': amount}
     return render(request,"level/joined.html",context)
 
 def binary(request, plan):

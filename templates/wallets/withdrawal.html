@@ -12,23 +12,23 @@
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
               <div class="mdc-card p-0">
                 <section style="padding: 30px 30px 20px 30px;" class="error-header">
-                  <h1>{% trans "Top Up Service Balance" %}</h1>
+                  <h1>{% trans "Withdraw Funds" %}</h1>
                 </section>
         <div class="mdc-layout-grid">
           <div class="mdc-layout-grid__inner">
                   <div style="border-right: 1px dotted;" class="row stretch-card mb-3">
                     <div>
-                    <h5>Top Up Service Balance</h5>
                     <div class="row">
                     <div class="col">
-                      <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{address}}&choe=UTF-8" style="width: 150px;">
 
-                      <form class="template-demo" action="/users/" enctype="multipart/form-data">
+                      <form class="template-demo" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <input type="hidden" name="check">
                         <br>
-                        <h5>Scan, Pay, and push the submit button after cmpletion!</h5>
-                          <p>{{address}}</p>
+                        <input class="form-control border-start-0" name="otp" placeholder="Enter OTP">
+                        <h5>Enter the Email OTP</h5>
+                        
+                        <br>
                           <button type="submit" class="btn btn-primary">
                             Top Up Service Balance
                           </button>

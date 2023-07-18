@@ -21,6 +21,7 @@ class Mtw(models.Model):
     user_id = models.CharField(max_length=255, blank=True, null=True)
     wallet_address = models.CharField(max_length=255, null=True, blank=True)
     private_key = models.CharField(max_length=255, null=True, blank=True)
+    txnid = models.CharField(max_length=125, default='drftgvbh')
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(default=timezone.now, blank=True)
     

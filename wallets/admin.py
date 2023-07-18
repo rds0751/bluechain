@@ -66,10 +66,13 @@ class withdrawalAdmin(admin.ModelAdmin):
     export_as_csv.short_description = "Export Selected"
 
 
+class mtwsAdmin(admin.ModelAdmin):
+    list_display = [f.name for f in Mtw._meta.fields]
+
 admin.site.register(PaymentOption, accountsAdmin)
 
 admin.site.register(Beneficiary, BeneficiaryAdmin)
 admin.site.register(AddFund, AddFundAdmin)
 admin.site.register(Withdrawal, withdrawalAdmin)
 admin.site.register(MetatraderAccount)
-admin.site.register(Mtw)
+admin.site.register(Mtw, mtwsAdmin)
