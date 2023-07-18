@@ -108,22 +108,6 @@ $(window).on('load', function () {
         }
     })
 
-    $('#submitsignup').on('click', function () {
-        if ($(this).closest('form').find('.check-valid').not('.is-valid').length > 0) {
-            $(this).closest('form').addClass('was-validated').find('.global-alert').removeClass('d-none');
-            setTimeout(function () {
-                $('.global-alert').addClass('d-none');
-            }, 3000)
-        } else {
-
-            $(this).closest('form').find('.global-success').removeClass('d-none');
-            $(this).closest('form').find('.global-alert').addClass('d-none');
-            setTimeout(function () {
-                window.location.replace("verify.html");
-            }, 2000)
-        }
-    })
-
     /* passsword strenght checker */
     $('#password1').first().keyup(function () {
         var fieldpass = $(this);

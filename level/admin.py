@@ -31,8 +31,13 @@ class LevelUserAdmin(ImportExportModelAdmin):
     list_display = [f.name for f in LevelUser._meta.fields]
     search_fields = ('user_id', )
 
+class PoolUserAdmin(ImportExportModelAdmin):
+    resource_class = PoolUser
+    list_display = [f.name for f in PoolUser._meta.fields]
+    search_fields = ('user_id', )
+
 
 admin.site.register(Activation, LevelAdmin)
 admin.site.register(LevelIncomeSettings, LevelIncomeSettingAdmin)
 admin.site.register(LevelUser, LevelUserAdmin)
-admin.site.register(PoolUser)
+admin.site.register(PoolUser, PoolUserAdmin)

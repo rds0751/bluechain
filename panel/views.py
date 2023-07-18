@@ -316,7 +316,7 @@ def activate(user, amount):
         try:
             model = PoolUser.objects.get(user=user, plan=package)
         except Exception as e:
-            pool_direct = PoolUser.objects.all().order_by('created_at')[0]
+            pool_direct = PoolUser.objects.filter(downlines__lt=2).order_by('created_at')[0]
             model = PoolUser()
             model.user=user
             model.upline = pool_direct
@@ -324,6 +324,8 @@ def activate(user, amount):
             model.plan = levelp
             model.active = True
             model.save()
+            pool_direct.downlines += 1
+            pool_direct.save()
             downlines = PoolUser.objects.filter(upline=pool_direct)
             if downlines.count() >= 2:
                 l1 = True
@@ -824,19 +826,23 @@ def activate(user, amount):
                             upline_user.total_income += 2 * packamount * 0.95 * 0.3
                             upline_user.progress += 2 * packamount * 0.95 * 0.3
                             upline_user.save()
-                            upline_level_user = User.objects.get(username=upline_user.referral)
-                            upline_wallet = WalletHistory()
-                            upline_wallet.user_id = upline_level_user.username
-                            upline_wallet.amount = 2 * packamount * 0.05 * 0.3
-                            upline_wallet.type = "credit"
-                            upline_wallet.comment = "5% Upline Benefit from user {}".format(upline_user.username)
-                            upline_wallet.balance += 2 * packamount * 0.05 * 0.3
-                            upline_wallet.txnid = generateid()
-                            upline_wallet.save()
-                            upline_level_user.wallet += 2 * packamount * 0.05 * 0.3
-                            upline_level_user.total_income += 2 * packamount * 0.05 * 0.3
-                            upline_level_user.progress += 2 * packamount * 0.05 * 0.3
-                            upline_level_user.save()
+                            try:
+                                upline_level_user = User.objects.get(username=upline_user.referral)
+                            except Exception as e:
+                                upline_level_user = 'blank'
+                            if upline_level_user != 'blank':
+                                upline_wallet = WalletHistory()
+                                upline_wallet.user_id = upline_level_user.username
+                                upline_wallet.amount = 2 * packamount * 0.05 * 0.3
+                                upline_wallet.type = "credit"
+                                upline_wallet.comment = "5% Upline Benefit from user {}".format(upline_user.username)
+                                upline_wallet.balance += 2 * packamount * 0.05 * 0.3
+                                upline_wallet.txnid = generateid()
+                                upline_wallet.save()
+                                upline_level_user.wallet += 2 * packamount * 0.05 * 0.3
+                                upline_level_user.total_income += 2 * packamount * 0.05 * 0.3
+                                upline_level_user.progress += 2 * packamount * 0.05 * 0.3
+                                upline_level_user.save()
                             upline_user = User.objects.get(username=upline)
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
@@ -900,8 +906,8 @@ def activate(user, amount):
                 print('outside')
                 level = level + 1
             
-            model, created = LevelUser.objects.get_or_create(user=userid.username, level=levelp, active=True)
-            model, created = LevelUser.objects.get_or_create(user=userid.username, level=levelp, active=True)
+            model, created = LevelUser.objects.get_or_create(user=userid.username)
+            model, created = LevelUser.objects.get_or_create(user=userid.username)
             model.user = userid.username
             model.level = levelp
             model.active = True
