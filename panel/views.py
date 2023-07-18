@@ -816,52 +816,52 @@ def activate(user, amount):
                     packamount = min(amount, upgraded.level.amount)
 
                     if direct and directs.count() == 1 and amount >= packamount:
-                        # if True: 
-                        #     upline_wallet = WalletHistory()
-                        #     upline_wallet.user_id = upline
-                        #     upline_wallet.amount = 2 * packamount * 0.95 * 0.3
-                        #     upline_wallet.type = "credit"
-                        #     upline_wallet.comment = "1st Pair Income"
-                        #     upline_wallet.balance += 2 * packamount * 0.95 * 0.3
-                        #     upline_wallet.txnid = generateid()
-                        #     upline_wallet.save()
-                        #     upline_user.wallet += 2 * packamount * 0.95 * 0.3
-                        #     upline_user.today_income += 2 * packamount * 0.95 * 0.3
-                        #     upline_user.total_income += 2 * packamount * 0.95 * 0.3
-                        #     upline_user.progress += 2 * packamount * 0.95 * 0.3
-                        #     upline_user.save()
-                        #     try:
-                        #         upline_level_user = User.objects.get(username=upline_user.referral)
-                        #     except Exception as e:
-                        #         upline_level_user = 'blank'
-                        #     if upline_level_user != 'blank':
-                        #         upline_wallet = WalletHistory()
-                        #         upline_wallet.user_id = upline_level_user.username
-                        #         upline_wallet.amount = 2 * packamount * 0.05 * 0.3
-                        #         upline_wallet.type = "credit"
-                        #         upline_wallet.comment = "5% Upline Benefit from user {}".format(upline_user.username)
-                        #         upline_wallet.balance += 2 * packamount * 0.05 * 0.3
-                        #         upline_wallet.txnid = generateid()
-                        #         upline_wallet.save()
-                        #         upline_level_user.wallet += 2 * packamount * 0.05 * 0.3
-                        #         upline_level_user.total_income += 2 * packamount * 0.05 * 0.3
-                        #         upline_level_user.progress += 2 * packamount * 0.05 * 0.3
-                        #         upline_level_user.save()
-                        #     upline_user = User.objects.get(username=upline)
-                        #     upline_wallet = WalletHistory()
-                        #     upline_wallet.user_id = upline
-                        #     upline_wallet.amount = levelp.permanent_reward
-                        #     upline_wallet.type = "credit"
-                        #     upline_wallet.comment = "Permanent Tripod Reward"
-                        #     upline_wallet.balance += levelp.permanent_reward
-                        #     upline_wallet.txnid = generateid()
-                        #     upline_wallet.save()
-                        #     upline_user.wallet += levelp.permanent_reward
-                        #     upline_user.today_income += levelp.permanent_reward
-                        #     upline_user.total_income += levelp.permanent_reward
-                        #     upline_user.progress += levelp.permanent_reward
-                        #     upline_user.save()
-                        #     upline_user = User.objects.get(username=upline)
+                        if True: 
+                            upline_wallet = WalletHistory()
+                            upline_wallet.user_id = upline
+                            upline_wallet.amount = 2 * packamount * 0.95 * 0.3
+                            upline_wallet.type = "credit"
+                            upline_wallet.comment = "1st Pair Income"
+                            upline_wallet.balance += 2 * packamount * 0.95 * 0.3
+                            upline_wallet.txnid = generateid()
+                            upline_wallet.save()
+                            upline_user.wallet += 2 * packamount * 0.95 * 0.3
+                            upline_user.today_income += 2 * packamount * 0.95 * 0.3
+                            upline_user.total_income += 2 * packamount * 0.95 * 0.3
+                            upline_user.progress += 2 * packamount * 0.95 * 0.3
+                            upline_user.save()
+                            try:
+                                upline_level_user = User.objects.get(username=upline_user.referral)
+                            except Exception as e:
+                                upline_level_user = 'blank'
+                            if upline_level_user != 'blank':
+                                upline_wallet = WalletHistory()
+                                upline_wallet.user_id = upline_level_user.username
+                                upline_wallet.amount = 2 * packamount * 0.05 * 0.3
+                                upline_wallet.type = "credit"
+                                upline_wallet.comment = "5% Upline Benefit from user {}".format(upline_user.username)
+                                upline_wallet.balance += 2 * packamount * 0.05 * 0.3
+                                upline_wallet.txnid = generateid()
+                                upline_wallet.save()
+                                upline_level_user.wallet += 2 * packamount * 0.05 * 0.3
+                                upline_level_user.total_income += 2 * packamount * 0.05 * 0.3
+                                upline_level_user.progress += 2 * packamount * 0.05 * 0.3
+                                upline_level_user.save()
+                            upline_user = User.objects.get(username=upline)
+                            upline_wallet = WalletHistory()
+                            upline_wallet.user_id = upline
+                            upline_wallet.amount = levelp.permanent_reward
+                            upline_wallet.type = "credit"
+                            upline_wallet.comment = "Permanent Tripod Reward"
+                            upline_wallet.balance += levelp.permanent_reward
+                            upline_wallet.txnid = generateid()
+                            upline_wallet.save()
+                            upline_user.wallet += levelp.permanent_reward
+                            upline_user.today_income += levelp.permanent_reward
+                            upline_user.total_income += levelp.permanent_reward
+                            upline_user.progress += levelp.permanent_reward
+                            upline_user.save()
+                            upline_user = User.objects.get(username=upline)
                             autopool(upline_user.username, levelp)
                             print('if1')
                     print(directs.count(), direct, upline_user, upline_user.referral)
