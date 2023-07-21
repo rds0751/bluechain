@@ -845,6 +845,7 @@ def activate(user, amount):
                                 upline_wallet.save()
                                 upline_level_user.wallet += 2 * packamount * 0.05 * 0.3
                                 upline_level_user.total_income += 2 * packamount * 0.05 * 0.3
+                                upline_level_user.sponsor_income += 2 * packamount * 0.05 * 0.3
                                 upline_level_user.progress += 2 * packamount * 0.05 * 0.3
                                 upline_level_user.save()
                             upline_user = User.objects.get(username=upline)
