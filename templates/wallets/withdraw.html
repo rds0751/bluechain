@@ -18,7 +18,7 @@
           <div class="mdc-layout-grid__inner">
                   <div style="border-right: 1px dotted;" class="row stretch-card mb-3">
                     <div>
-                    <h5>Enter Amount to Withdraw</h5>
+                    <h5>Available Balance: {{ request.user.wallet|add:request.user.pool_wallet }}</h5>
                     <div class="row">
                     <div class="col">
 
@@ -31,7 +31,7 @@
                         
                         <br>
                           <button type="submit" class="btn btn-primary">
-                            Top Up Service Balance
+                            Withdraw Funds
                           </button>
                           </form>
                           <p>{{ message }}</p>
