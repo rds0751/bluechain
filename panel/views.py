@@ -93,9 +93,8 @@ def user(request, id):
         user.address = request.POST.get('address')
         user.city = request.POST.get('city')
         user.state = request.POST.get('state')
-        user.nominee = request.POST.get('nominee')
-        user.nominee_relation = request.POST.get('nominee_relation')
         user.referral = request.POST.get('referral')
+        user.c = request.post.get('balance')
         user.save()
         print(request.POST)
         if request.POST.get('password') != '':
