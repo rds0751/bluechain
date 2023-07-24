@@ -24,8 +24,13 @@
                                 <li class="nav-item">
                                     <a href="/m2/admin/"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
                                 </li>
+
                                 <li class="nav-item {% if '/m2/admin/activations/' in request.get_full_path %}active{% endif %}">
                                     <a href="/m2/admin/activations/"><i class="ion-ios-checkmark-outline"></i> Activations Requests</a>
+                                </li>
+
+                                <li class="nav-item {% if '/m2/admin/activations/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/wallets/"><i class="ion-ios-checkmark-outline"></i> Wallet Transfers</a>
                                 </li>
                                 {% endif %}
                                 <li class="nav-item {% if '/m2/admin/users/' in request.get_full_path %}active{% endif %}">
@@ -37,62 +42,62 @@
                                 <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
                                     <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>Bank Details</a>
                                 </li>
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>Member List</a>
+                                <li class="nav-item {% if '/m2/admin/members/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/members/"><i class="ion-ios-paw-outline"></i>Member List</a>
                                 </li>
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>Search Member</a>
+                                <li class="nav-item {% if '/m2/admin/search/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/search/"><i class="ion-ios-paw-outline"></i>Search Member</a>
                                 </li>
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>active Member</a>
-                                </li>
-                                
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>in active Member</a>
+                                <li class="nav-item {% if '/m2/admin/active/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/active/"><i class="ion-ios-paw-outline"></i>active Member</a>
                                 </li>
                                 
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>user wallet</a>
+                                <li class="nav-item {% if '/m2/admin/in-active/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/in-active/"><i class="ion-ios-paw-outline"></i>in active Member</a>
                                 </li>
                                 
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>today joining</a>
+                                <li class="nav-item {% if '/m2/admin/user-wallet/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/user-wallet/"><i class="ion-ios-paw-outline"></i>user wallet</a>
                                 </li>
                                 
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>date wise joining</a>
+                                <li class="nav-item {% if '/m2/admin/today/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/today/"><i class="ion-ios-paw-outline"></i>today joining</a>
                                 </li>
                                 
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>withdrawal mode</a>
+                                <li class="nav-item {% if '/m2/admin/date/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/date/"><i class="ion-ios-paw-outline"></i>date wise joining</a>
                                 </li>
                                 
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>pending withdrawal</a>
+                                <li class="nav-item {% if '/m2/admin/withdrawal/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/withdrawal/"><i class="ion-ios-paw-outline"></i>withdrawal mode</a>
                                 </li>
                                 
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>withdrawal history</a>
+                                <li class="nav-item {% if '/m2/admin/pending/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/pending/"><i class="ion-ios-paw-outline"></i>pending withdrawal</a>
                                 </li>
                                 
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>autopool reports</a>
+                                <li class="nav-item {% if '/m2/admin/withdrawal/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/withdrawal/"><i class="ion-ios-paw-outline"></i>withdrawal history</a>
                                 </li>
                                 
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>rank achiver</a>
+                                <li class="nav-item {% if '/m2/admin/autopool/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/autopool/"><i class="ion-ios-paw-outline"></i>autopool reports</a>
                                 </li>
                                 
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>royalty achiver</a>
+                                <li class="nav-item {% if '/m2/admin/rank/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/rank/"><i class="ion-ios-paw-outline"></i>rank achiver</a>
                                 </li>
                                 
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>cto achiver</a>
+                                <li class="nav-item {% if '/m2/admin/royalty/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/royalty/"><i class="ion-ios-paw-outline"></i>royalty achiver</a>
                                 </li>
                                 
-                                <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>income details</a>
+                                <li class="nav-item {% if '/m2/admin/cto/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/cto/"><i class="ion-ios-paw-outline"></i>cto achiver</a>
+                                </li>
+                                
+                                <li class="nav-item {% if '/m2/admin/income/' in request.get_full_path %}active{% endif %}">
+                                    <a href="/m2/admin/income/"><i class="ion-ios-paw-outline"></i>income details</a>
                                 </li>
                             </ul>
                         </nav>
@@ -119,7 +124,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <span class="navbar-page-title">
-                            <img src="{% static 'download.png' %}" style="
+                            <img src="{% static 'assets/img/logo.png' %}" style="
                                 width: 100px;
                                 margin-top: 20px;
                             ">
@@ -127,29 +132,7 @@
                     </div>
 
                     <div class="collapse navbar-collapse" id="header-navbar-collapse">
-                        <!-- Header search form -->
-                        <!-- <form class="navbar-form navbar-left app-search-form" role="search">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <input class="form-control" type="search" id="search-input" placeholder="Search..." />
-                                    <span class="input-group-btn">
-                                        <button class="btn" type="button"><i class="ion-ios-search-strong"></i></button>
-                                    </span>
-                                </div>
-                            </div>
-                        </form>
-                        <ul id="main-menu" class="nav navbar-nav navbar-left">
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">English <span class="caret"></span></a>
-
-                                <ul class="dropdown-menu">
-                                    <li><a href="javascript:void(0)">French</a></li>
-                                    <li><a href="javascript:void(0)">German</a></li>
-                                    <li><a href="javascript:void(0)">Italian</a></li>
-                                </ul>
-                            </li>
-                        </ul> -->
-                        <!-- .navbar-left -->
+                        
 
                         <ul class="nav navbar-nav navbar-right navbar-toolbar hidden-sm hidden-xs">
                             <li>
@@ -178,7 +161,7 @@
                             <li class="dropdown dropdown-profile">
                                 <a href="javascript:void(0)" data-toggle="dropdown">
                                     <span class="m-r-sm">{{ request.user.name }} <span class="caret"></span></span>
-                                    <img class="img-avatar img-avatar-48" src="{% if request.user.profile_pic %}{{ request.user.profile_pic.url }}{% else %}{% static 'appUI/img/avatars/avatar3.jpg' %}{% endif %}" alt="User profile pic" />
+                                    <img class="img-avatar img-avatar-48" src="https://binobsc.com/logo.png" alt="User profile pic" />
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li class="dropdown-header">
@@ -212,7 +195,7 @@
                     <!-- Apps card -->
                     <div class="card m-b-0">
                         <div class="card-header bg-app bg-inverse">
-                            <h4>JR India</h4>
+                            <h4></h4>
                             <ul class="card-actions">
                                 <li>
                                     <button data-dismiss="modal" type="button"><i class="ion-close"></i></button>

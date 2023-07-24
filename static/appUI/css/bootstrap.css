@@ -1362,7 +1362,7 @@ body {
 	font-size: 16px;
 	line-height: 1.5;
 	color: #7549e5;
-	background-color: #2104049d;
+	background-color: #ffffff;
 }
 
 input,
@@ -1530,7 +1530,7 @@ h3, .h3 {
 }
 
 h4, .h4 {
-	font-size: 115px;
+	font-size: 22px;
 }
 
 h5, .h5 {
@@ -7806,10 +7806,6 @@ a.text-gray-lighter:hover {
 
 .bg-gray-o {
 	background-color: #000;
-}
-
-.bg-gray-dark-o {
-	background-color: #333333;
 }
 
 .bg-gray-darker-o {
