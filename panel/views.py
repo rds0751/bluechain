@@ -1194,25 +1194,8 @@ def admin(request):
     return render(request, 'panel/admin.html', {})
 
 
-def activations(request):
-    return render(request, 'panel/activations.html', {})
-
-
 def wallets(request):
     return render(request, 'panel/wallets.html', {})
-
-
-def users(request):
-    return render(request, 'panel/users.html', {})
-
-
-def ids(request):
-    return render(request, 'panel/ids.html', {})
-
-
-def bankdetails(request):
-    return render(request, 'panel/bankdetails.html', {})
-
 
 def active(request):
     return render(request, 'panel/active.html', {})
@@ -1225,17 +1208,8 @@ def today(request):
 def date(request):
     return render(request, 'panel/date.html', {})
 
-
-def withdrawal(request):
-    return render(request, 'panel/withdrawal.html', {})
-
-
 def pending(request):
     return render(request, 'panel/pending.html', {})
-
-
-def withdrawal(request):
-    return render(request, 'panel/withdrawal.html', {})
 
 
 def autopool(request):
