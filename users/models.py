@@ -21,7 +21,7 @@ class User(AbstractUser, PermissionsMixin):
     referral = models.CharField(max_length=25, blank=True, null=True)
     wallet = models.FloatField(default=0)
     pool_wallet = models.FloatField(default=0)
-    c = models.IntegerField(default=0)
+    c = models.FloatField(default=0)
     withdrawal = models.FloatField(default=0, null=True, blank=True)
     traditional_withdrawal = models.FloatField(default=0)
     my_team = models.IntegerField(default=0)
