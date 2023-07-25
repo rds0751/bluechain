@@ -385,6 +385,19 @@
                     </div>
                 </div>
             </div>
+            <div class="col-6 col-lg-6 col-xl-6 col-xxl-6">
+                <div class="card bg-gradient-theme-light theme-purple border-0 mb-4">
+                    <div class="card-body">
+                        <h6 class="">My Refer Link</h6>
+                        <p class="text-secondary">https://m2plus.io/register/{{ request.user.username }}</p>
+                        <input type="input" style="width:20px; position:absolute; z-index: -100 !important;" value="https:/m2plus.io/register/{{ user.username }}" id="copy-to-clipboard-input">
+                    </div>
+                    <div class="card-footer text-center">
+                        <a onclick="myyFunction()" class="btn btn-success">Copy</a>
+                        <a href="whatsapp://send?text=https://m2plus.io/register/{{ user.username }}" class="btn btn-danger">Share</a>
+                    </div>
+                </div>
+            </div>
         </div>
       </div>
       <script>
@@ -396,22 +409,6 @@
           alert("Copied the link: " + copyText.value);
         }
         </script>
-      <!-- best reward products -->
-      <div class="row mb-4 py-2">
-        <div class="col-12 col-lg-12 col-xl-12 col-xxl-12">
-            <div class="card bg-gradient-theme-light theme-purple border-0 mb-4">
-                <div class="card-body">
-                    <h6 class="">My Refer Link</h6>
-                    <p class="text-secondary">https://m2plus.io/register/{{ request.user.username }}</p>
-                    <input type="input" style="width:20px; position:absolute; z-index: -100 !important;" value="https:/m2plus.io/register/{{ user.username }}" id="copy-to-clipboard-input">
-                </div>
-                <div class="card-footer text-center">
-                    <a onclick="myyFunction()" class="btn btn-success">Copy</a>
-                    <a href="whatsapp://send?text=https://m2plus.io/register/{{ user.username }}" class="btn btn-danger">Share</a>
-                </div>
-            </div>
-        </div>
-      </div>
     </div>
     <!-- Progress circle js script -->
     <script src="{% static 'vendor/progressbar-js/progressbar.min.js' %}"></script>

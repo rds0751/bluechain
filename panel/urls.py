@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^activations/(?P<id>[\w.@+-]+)/$', views.activation, name='activation'),  
     url(r'^withdrawals/(?P<id>[\w.@+-]+)/$', views.withdrawal, name='withdrawal'),  
     url(regex=r"^~profile/$", view=views.UserProfileView.as_view(), name="profile"),
+    
     url(r'^wallets/', views.wallets, name="wallets"),
     url(r'^active/', views.active, name="active"),
     url(r'^today/', views.today, name="today"),
@@ -31,4 +32,4 @@ urlpatterns = [
     url(r'^royalty/', views.royalty, name="royalty"),
     url(r'^cto/', views.cto, name="cto"),
     url(r'^income/', views.income, name="income"),
-]
+] 

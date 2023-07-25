@@ -15,10 +15,6 @@
                         <!-- Drawer navigation -->
                         <nav class="drawer-main">
                             <ul class="nav nav-drawer">
-                                {% if not request.user.is_superuser %}
-
-                                {% endif %}
-                                {% if request.user.is_superuser %}
                                 <li class="nav-item nav-drawer-header">Admin</li>
 
                                 <li class="nav-item">
@@ -32,7 +28,7 @@
                                 <li class="nav-item {% if '/m2/admin/activations/' in request.get_full_path %}active{% endif %}">
                                     <a href="/m2/admin/wallets/"><i class="ion-ios-shuffle"></i> Wallet Transfers</a>
                                 </li>
-                                {% endif %}
+                                
                                 <li class="nav-item {% if '/m2/admin/users/' in request.get_full_path %}active{% endif %}">
                                     <a href="/m2/admin/users/"><i class="ion-ios-people-outline"></i> All Users</a>
                                 </li>
@@ -42,12 +38,6 @@
                                 <li class="nav-item {% if '/m2/admin/bankdetails/' in request.get_full_path %}active{% endif %}">
                                     <a href="/m2/admin/bankdetails/"><i class="ion-ios-paw-outline"></i>Bank Details</a>
                                 </li>
-                                                                                                                        
-                                <li class="nav-item {% if '/m2/admin/in-active/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/in-active/"><i class="ion-ios-alarm-outline"></i>in active Member</a>
-                                </li>
-                                
-                               
                                 
                                 <li class="nav-item {% if '/m2/admin/today/' in request.get_full_path %}active{% endif %}">
                                     <a href="/m2/admin/today/"><i class="ion-ios-calendar-outline"></i>today joining</a>
@@ -55,10 +45,6 @@
                                 
                                 <li class="nav-item {% if '/m2/admin/date/' in request.get_full_path %}active{% endif %}">
                                     <a href="/m2/admin/date/"><i class="ion-ios-flower-outline"></i>date wise joining</a>
-                                </li>
-                                
-                                <li class="nav-item {% if '/m2/admin/withdrawal/' in request.get_full_path %}active{% endif %}">
-                                    <a href="/m2/admin/withdrawal/"><i class="ion-ios-gear-outline"></i>withdrawal mode</a>
                                 </li>
                                 
                                 <li class="nav-item {% if '/m2/admin/pending/' in request.get_full_path %}active{% endif %}">

@@ -29,13 +29,10 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-APPEND_SLASH = True 
+APPEND_SLASH = True
 
 ACCOUNT_EMAIL_REQUIRED = False
-ACCOUNT_EMAIL_VERIFICATION = "none"
-# ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
-
-# Application definition
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 
 INSTALLED_APPS = [
     'django.contrib.sites',
