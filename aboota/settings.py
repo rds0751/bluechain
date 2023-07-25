@@ -25,20 +25,9 @@ location = lambda x: os.path.join(
 SECRET_KEY = 'at%j%u*wv4&ahb_cir-3c8!@$nxy0g7_&m!&^sucme3-5=+hhj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-
-# CACHES = {
-#    'default': {
-#       'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-#       'LOCATION': 'aboota_cache',
-#       'TIMEOUT': '3000000',
-#         'OPTIONS': {
-#             'MAX_ENTRIES': 10000000
-#         }
-#    }
-# }
 
 APPEND_SLASH = True 
 
@@ -84,22 +73,8 @@ INSTALLED_APPS = [
     "home",
     'maintenancemode',
     'django_crontab',
-    # Machina dependencies
     'haystack',
-    'mptt',
-
-    # Machina apps:
-    'machina',
-    'machina.apps.forum',
-    'machina.apps.forum_conversation',
-    'machina.apps.forum_conversation.forum_attachments',
-    'machina.apps.forum_conversation.forum_polls',
-    'machina.apps.forum_feeds',
-    'machina.apps.forum_moderation',
-    'machina.apps.forum_search',
-    'machina.apps.forum_tracking',
-    'machina.apps.forum_member',
-    'machina.apps.forum_permission',
+    'mptt'
 ]
 
 
@@ -119,8 +94,7 @@ MIDDLEWARE = [
 
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
+    'django.middleware.common.CommonMiddleware'
 ]
 
 ROOT_URLCONF = 'aboota.urls'
@@ -145,7 +119,6 @@ _TEMPLATE_CONTEXT_PROCESSORS = [
                 "django.template.context_processors.tz",
 
                 'aboota.processor.universally_used_data',
-                'machina.core.context_processors.metadata',
             ]
 
 TEMPLATES = [
@@ -153,7 +126,6 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'templates/machina'),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -399,33 +371,5 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_UNIQUE_EMAIL = False
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
-
-CRYPTOCURRENCY_PAYMENT = {
-    "BITCOIN": {
-        "CODE": "btc",
-        "BACKEND": "merchant_wallet.backends.btc.BitcoinBackend",
-        "FEE": 0.00,
-        "REFRESH_PRICE_AFTER_MINUTE": 15,
-        "REUSE_ADDRESS": False,
-        "ACTIVE": True,
-        "MASTER_PUBLIC_KEY": 'PUT_YOUR_WALLET_MASTER_PUBLIC_KEY',
-        "CANCEL_UNPAID_PAYMENT_HRS": 24,
-        "CREATE_NEW_UNDERPAID_PAYMENT": True,
-        "IGNORE_UNDERPAYMENT_AMOUNT": 10,
-        "IGNORE_CONFIRMED_BALANCE_WITHOUT_SAVED_HASH_MINS": 20,
-        "BALANCE_CONFIRMATION_NUM": 1,
-        "ALLOW_ANONYMOUS_PAYMENT": True,
-    }
- }
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-    },
-    'machina_attachments': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/tmp',
-    },
-}

@@ -1187,23 +1187,14 @@ def guestlogin(request):
     return redirect('/users/')
 
 
-
-
-
-def admin(request):
-    return render(request, 'panel/admin.html', {})
-
-
 def wallets(request):
     return render(request, 'panel/wallets.html', {})
 
 def active(request):
     return render(request, 'panel/active.html', {})
 
-
 def today(request):
     return render(request, 'panel/today.html', {})
-
 
 def date(request):
     return render(request, 'panel/date.html', {})
@@ -1211,23 +1202,17 @@ def date(request):
 def pending(request):
     return render(request, 'panel/pending.html', {})
 
-
 def autopool(request):
     return render(request, 'panel/autopool.html', {})
-
 
 def rank(request):
     return render(request, 'panel/rank.html', {})
 
-
 def royalty(request):
     return render(request, 'panel/royalty.html', {})
-
 
 def cto(request):
     return render(request, 'panel/cto.html', {})
 
-
 def income(request):
     return render(request, 'panel/income.html', {})
-
