@@ -4,22 +4,28 @@ from bs4 import BeautifulSoup
 import json
 from users.models import User
 from wallets.models import WalletHistory
+from level.models import LevelIncomeSettings, PoolUser
 import datetime
 
 class Command(BaseCommand):
 	help = "Count Binary Data"
 
 	def handle(self, *args, **options):
-		start_date = datetime.datetime.now() + datetime.timedelta(-100)
-		end_date = datetime.datetime.now() + datetime.timedelta(-15)
-		w = WalletHistory.objects.filter(created_at__range=(start_date, end_date), comment__icontains="New Upgrade by").exclude(filter__icontains="payment done")
-		for x in w:
+
+		p = PoolUser.objects.all()
+		for x in p:
 			try:
-				user = User.objects.get(username=x.user_id)
+				user = User.objects.get(username=x.user)
 			except Exception as e:
 				user = 'blank'
-			if user != 'blank':
-				user.wallet += x.amount
-				user.save()
-				x.filter = 'payment done'
-				x.save()
+
+			today = datetime.datetime.now().date()
+			created = x.created_at.date()
+
+			print(today, created, today.day - created.day)
+			dif = today.day - created.day
+			roi = x.plan.pool_roi
+			amount = x.plan.amount * roi / 100
+			print(amount)
+			for x in range(0, dif):
+				

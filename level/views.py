@@ -98,7 +98,7 @@ def leveltree(request, user, level):
     counting = {}
     level = 0
     for a in all_levels:
-        level += 1
+        level += 1 
         counting['{}'.format(level)] = len(a)
 
     levels = {  

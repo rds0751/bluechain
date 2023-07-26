@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from datetime import datetime
 from django.utils.html import mark_safe
+from level.models import PoolUser
 
 
 class User(AbstractUser, PermissionsMixin):
@@ -30,7 +31,6 @@ class User(AbstractUser, PermissionsMixin):
     total_business = models.FloatField(default=0)
     sponsor_income = models.FloatField(default=0) #bahut moti 5%
     autopool_income = models.FloatField(default=0)
-    my_daily_roi = models.FloatField(default=0)
     rewards = models.FloatField(default=0)
     lifetime_royalty = models.FloatField(default=0)
     team_club_income = models.FloatField(default=0)
@@ -59,3 +59,14 @@ class User(AbstractUser, PermissionsMixin):
     def get_profile_name(self):
         if self.name:
             return self.name
+        
+    def my_daily_roi(self):
+        try:
+            p = PoolUser.objects.get(user=self.username)
+        except Exception as e:
+            p = 'blank'
+        if p != 'blank':
+            amount = p.plan.pool_roi * p.plan.amount / 100
+        else:
+            amount = 0
+        return amount
