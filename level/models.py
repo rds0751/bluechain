@@ -23,6 +23,7 @@ class LevelIncomeSettings(models.Model):
     name = models.CharField(max_length=125, null=True, blank=True)
     permanent_reward = models.FloatField()
     active = models.BooleanField(default=True)
+    pool_roi = models.FloatField(default=0)
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True)
 
