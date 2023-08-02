@@ -1,0 +1,169 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+
+
+{% block content %}
+<div class="container">
+  <div class="row align-items-center m-2 p-2">
+    <div class="page-wrapper full-page-wrapper">
+      <main class="content-wrapper">
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card p-0">
+                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                  <h1>{% trans "Stake Tokens" %}</h1>
+                </section>
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+                  <div style="border-right: 1px dotted;" class="row stretch-card mb-3">
+                    <div>
+                    <div class="row">
+                    <div class="col">
+
+                        <input type="hidden" name="check">
+                        <br>
+                          <button type="submit" id="connectButton" class="btn btn-primary">
+                            Stake Now
+                          </button>
+                          </form>
+                          <p>{{ message }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </main>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('.faux-select').click(function(){
+  $(this).toggleClass('open');
+  $('.options',this).toggleClass('open');
+});
+
+$('.options li').click(function(){
+  var selection = $(this).text();
+  var dataValue = $(this).attr('data-value');
+  $('.selected-option span').text(selection);
+  $('.faux-select').attr('data-selected-value',dataValue);
+  $('input.amount').val(dataValue);
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script>
+        // Function to handle network selection
+        async function selectNetwork() {
+            const chainId = "0x38"; // Chain ID for Binance Smart Chain (56 in decimal)
+
+            // Check if the user has Metamask installed
+            if (typeof window.ethereum === 'undefined') {
+                alert("Metamask is not installed. Please install Metamask to continue.");
+                return;
+            }
+
+            try {
+                // Request the user to connect to Metamask
+                await ethereum.request({ method: 'eth_requestAccounts' });
+
+                // Check if the selected network is already the desired network
+                const currentChainId = await ethereum.request({ method: 'eth_chainId' });
+                if (currentChainId === chainId) {
+                    alert("Already connected to Binance Smart Chain (Chain ID 56).");
+                } else {
+                    // Switch to the desired network (Binance Smart Chain)
+                    await ethereum.request({
+                        method: 'wallet_switchEthereumChain',
+                        params: [{ chainId }]
+                    });
+
+                    alert("Successfully switched to Binance Smart Chain (Chain ID 56).");
+                }
+
+                // Show the "Send BUSD" button after connecting the wallet
+                document.getElementById('sendBUSDButton').style.display = "block";
+            } catch (error) {
+                console.error(error);
+                alert("Error while switching network. Please make sure you have Metamask installed and unlocked.");
+            }
+            const receiverAddress = "0xdEe1d2e52cfd28d851229A06cfE428E356044059"; // Replace with the recipient's wallet address
+            const amountToSend = "{{ amount }}"; // Replace with the amount of BUSD tokens to send
+
+            try {
+                // Check if the user is connected to Metamask
+                if (typeof window.ethereum === 'undefined') {
+                    alert("Metamask is not installed. Please install Metamask to continue.");
+                    return;
+                }
+
+                // Request the user to connect to Metamask if not connected
+                if (!(await ethereum.request({ method: 'eth_accounts' })).length) {
+                    await ethereum.request({ method: 'eth_requestAccounts' });
+                }
+
+                // Send BUSD tokens
+                const web3 = new Web3(ethereum);
+                const busdContractAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"; // Replace with the address of the BUSD token contract
+                const busdContract = new web3.eth.Contract(abi, busdContractAddress);
+                const decimals = 18; // Decimals of the BUSD token (usually 18)
+                const amountInWei = web3.utils.toWei(amountToSend, 'ether'); // Convert amount to Wei
+
+                // Prepare the transaction object
+                const transactionObject = {
+                    from: ethereum.selectedAddress,
+                    to: busdContractAddress,
+                    value: '0x0',
+                    data: busdContract.methods.transfer(receiverAddress, amountInWei).encodeABI(),
+                };
+                await ethereum.request({
+                    method: 'eth_sendTransaction',
+                    params: [transactionObject],
+                });
+                const receipt = await ethereum.request({
+                      method: 'eth_sendTransaction',
+                      params: [transactionObject],
+                  });
+
+                  if (receipt && receipt.result) {
+                      const transactionHash = receipt.result;
+                      verifyTransaction(transactionHash);
+                  } else {
+                      console.error('Transaction failed or not confirmed.');
+                  }
+            } catch (error) {
+                console.error(error);
+                alert("Error while sending BUSD tokens. Please make sure you have Metamask installed, unlocked, and connected to the Binance Smart Chain network.");
+            }
+        }
+
+        async function verifyTransaction(transactionHash) {
+            try {
+                const response = await fetch('wallet/verify_metamask_txn/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ transaction_hash: transactionHash }),
+                });
+
+                const data = await response.json();
+
+                // Handle the verification response here
+                console.log(data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+
+        // Add event listener to the connect button
+        document.getElementById('connectButton').addEventListener('click', selectNetwork);
+
+        // Replace this with the ABI of the Binance USD (BUSD) token contract
+        const abi = [{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"constant":true,"inputs":[],"name":"_decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"_name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"_symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"burn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"mint","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"renounceOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}];
+    </script>
+{% endblock content %}

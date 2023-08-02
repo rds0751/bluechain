@@ -584,6 +584,84 @@ def binary(request, plan):
 def staking(request):
     return render(request,"binary/staking.html")
 
+def staked(request):
+    if request.method == 'POST' and 'check' in request.POST:
+        print('hello')
+
+    def generateid():
+        txnid = get_random_string(8)
+        try:
+            txn = WalletHistory.objects.get(txnid = txnid)
+        except WalletHistory.DoesNotExist:
+            txn = 0
+        if txn:
+            generateid()
+        else:
+            return txnid
+
+    amount = int(request.POST.get('amounta'))
+    user = request.user
+    txnid = generateid()
+    priv = secrets.token_hex(32)
+    private_key = "0x" + priv
+    print ("SAVE BUT DO NOT SHARE THIS:", private_key)
+    acct = Account.from_key(private_key)
+    print("Address:", acct.address)
+
+    p = Mtw()
+    p.user_id = request.user.username
+    p.wallet_address = acct.address
+    p.private_key = private_key
+    p.save()
+
+    w = WalletHistory()
+    w.user_id = user.username
+    w.amount = int(request.POST.get('amounta'))
+    w.comment = 'Money Added using BUSD'
+    w.txnid = txnid
+    w.save()
+    context = {'address': acct.address, 'amount': amount}
+    return render(request,"binary/staked.html",context)
+
+def payment(request):
+    if request.method == 'POST' and 'check' in request.POST:
+        print('hello')
+
+    def generateid():
+        txnid = get_random_string(8)
+        try:
+            txn = WalletHistory.objects.get(txnid = txnid)
+        except WalletHistory.DoesNotExist:
+            txn = 0
+        if txn:
+            generateid()
+        else:
+            return txnid
+
+    amount = int(request.POST.get('amounta'))
+    user = request.user
+    txnid = generateid()
+    priv = secrets.token_hex(32)
+    private_key = "0x" + priv
+    print ("SAVE BUT DO NOT SHARE THIS:", private_key)
+    acct = Account.from_key(private_key)
+    print("Address:", acct.address)
+
+    p = Mtw()
+    p.user_id = request.user.username
+    p.wallet_address = acct.address
+    p.private_key = private_key
+    p.save()
+
+    w = WalletHistory()
+    w.user_id = user.username
+    w.amount = int(request.POST.get('amounta'))
+    w.comment = 'Money Added using BUSD'
+    w.txnid = txnid
+    w.save()
+    context = {'address': acct.address, 'amount': amount}
+    return render(request,"level/joined.html",context)
+
 @csrf_exempt
 def payment_success(request):
     if request.method =="POST":
