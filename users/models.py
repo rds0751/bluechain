@@ -66,7 +66,8 @@ class User(AbstractUser, PermissionsMixin):
             p = PoolUser.objects.get(user=self.username)
         except Exception as e:
             p = 'blank'
-        if p != 'blank':
+        a = PoolUser.objects.filter(upline=p.user).count()
+        if a >= 2:
             amount = p.plan.pool_roi * p.plan.amount / 100
         else:
             amount = 0
