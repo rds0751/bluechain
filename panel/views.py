@@ -153,7 +153,8 @@ def user(request, id):
         user = User.objects.get(id=id)
         if user.is_active:
             user.is_active = False
-            
+        else:
+            user.is_active = True
         user.save()
         return redirect('/m2/admin/users/')
     
