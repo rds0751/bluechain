@@ -1627,8 +1627,6 @@ def bnxg_verification(request):
                 contract_address = '0x5DFb9C077FbDF7579ACCdd6184Ee896a16aA3942'
                 token_decimals = 18  # Adjust if your token has a different number of decimals
 
-                # Connect to BSC network
-
                 # Create an account object from the private key
                 account = Account.from_key(private_key)
 

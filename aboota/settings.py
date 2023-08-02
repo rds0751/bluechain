@@ -25,7 +25,7 @@ location = lambda x: os.path.join(
 SECRET_KEY = 'at%j%u*wv4&ahb_cir-3c8!@$nxy0g7_&m!&^sucme3-5=+hhj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 

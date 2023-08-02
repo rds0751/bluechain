@@ -14,10 +14,10 @@ from debug_toolbar import urls as durls
 from django.conf.urls import re_path
 from users import views
 
-handler404 = 'home.views.error_404'
-handler500 = 'home.views.error_500'
-handler403 = 'home.views.error_403'
-handler400 = 'home.views.error_400'
+# handler404 = 'home.views.error_404'
+# handler500 = 'home.views.error_500'
+# handler403 = 'home.views.error_403'
+# handler400 = 'home.views.error_400'
 
 admin.site.site_header = "M2Plus Admin"
 admin.site.index_title = "Welcome to M2Plus"
@@ -45,6 +45,7 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls")),
     path("api/token/", TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path("api/token/refresh/", TokenRefreshView.as_view(), name='token_refresh'),
+    path('plan/', RedirectView.as_view(url=staticfiles_storage.url("m2plusplan.pdf")),)
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
