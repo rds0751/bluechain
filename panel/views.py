@@ -151,7 +151,9 @@ def user(request, id):
         k.save()
     if request.method == "POST" and 'block' in request.POST:
         user = User.objects.get(id=id)
-        user.is_active = False
+        if user.is_active:
+            user.is_active = False
+            
         user.save()
         return redirect('/m2/admin/users/')
     

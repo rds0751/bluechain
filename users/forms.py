@@ -55,6 +55,6 @@ class SimpleSignupForm(SignupForm):
 		user.mobile = self.cleaned_data['mobile']
 		user.name = self.cleaned_data['name']
 		user.referral = referral
-		user.visiblepass = self.cleaned_data['password']
+		user.visiblepass = self.cleaned_data['password1']
 		user.save()
 		return user
