@@ -20,6 +20,18 @@
                     <div>
                     <div class="row">
                     <div class="col">
+                      <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=0xdEe1d2e52cfd28d851229A06cfE428E356044059&choe=UTF-8" style="width: 150px;">
+
+                      <form class="template-demo" action="/users/" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="check">
+                        <br>
+                        <h5>Scan, Pay, and push the submit button after cmpletion!</h5>
+                          <p>0xdEe1d2e52cfd28d851229A06cfE428E356044059</p>
+                          <button type="submit" class="btn btn-primary">
+                            Top Up Service Balance
+                          </button>
+                          </form>
 
                         <input type="hidden" name="check">
                         <br>
