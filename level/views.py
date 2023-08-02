@@ -499,7 +499,7 @@ def payment(request):
         else:
             return txnid
 
-    amount = int(int(request.POST.get('amounta'))*75 + 0.02*int(request.POST.get('amounta'))*75)
+    amount = int(request.POST.get('amounta'))
     user = request.user
     txnid = generateid()
     priv = secrets.token_hex(32)

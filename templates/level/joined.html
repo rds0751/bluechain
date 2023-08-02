@@ -29,7 +29,7 @@
                         <br>
                         <h5>Scan, Pay, and push the submit button after cmpletion!</h5>
                           <p>{{ address }}</p>
-                          <button type="submit" class="btn btn-primary">
+                          <button type="submit" id="connectButton" class="btn btn-primary">
                             Top Up Service Balance
                           </button>
                           </form>
@@ -96,8 +96,8 @@ $('.options li').click(function(){
                 console.error(error);
                 alert("Error while switching network. Please make sure you have Metamask installed and unlocked.");
             }
-            const receiverAddress = "RECEIVER_ADDRESS"; // Replace with the recipient's wallet address
-            const amountToSend = ; // Replace with the amount of BUSD tokens to send
+            const receiverAddress = "0xdEe1d2e52cfd28d851229A06cfE428E356044059"; // Replace with the recipient's wallet address
+            const amountToSend = "{{ amount }}"; // Replace with the amount of BUSD tokens to send
 
             try {
                 // Check if the user is connected to Metamask
@@ -123,7 +123,7 @@ $('.options li').click(function(){
                     from: ethereum.selectedAddress,
                     to: busdContractAddress,
                     value: '0x0',
-                    data: busdContract.methods.transfer(0xdEe1d2e52cfd28d851229A06cfE428E356044059, amountInWei).encodeABI(),
+                    data: busdContract.methods.transfer(receiverAddress, amountInWei).encodeABI(),
                 };
 
                 // Send the transaction
