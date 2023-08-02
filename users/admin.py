@@ -42,7 +42,7 @@ class MyUser1ChangeForm(UserChangeForm):
     new_funds = forms.FloatField(required=False)
     referal = forms.CharField(required = False)
     shopping_wallet = forms.FloatField(required=False)
-    recharge_limit = forms.FloatField(required=False)
+    wallet = forms.FloatField(required=False)
     added_amount = forms.FloatField(required=False)
     total_income = forms.FloatField(required=False)
 
