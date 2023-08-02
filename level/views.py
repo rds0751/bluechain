@@ -532,7 +532,7 @@ def binary(request, plan):
     try:
         user = PoolUser.objects.get(user=request.user.username)
     except Exception as e:
-        user = 'blank'
+        user = 0
         print(e, 1)
 
     try:

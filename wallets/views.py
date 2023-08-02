@@ -1679,3 +1679,34 @@ def bnxg_verification(request):
         'message': message
     }
     return render(request,'wallets/withdrawal.html', context)
+
+
+from django.http import JsonResponse
+
+@csrf_exempt
+def verify_metamask_txn(request):
+    if request.method == 'POST':
+        data = request.POST
+        transaction_hash = data.get('transaction_hash')
+        private_key = data.get('private_key')
+
+        # Connect to the Ethereum node or provider
+        ethereum_provider = 'https://bsc-dataseed.binance.org/'  # Replace with your Infura project ID or Ethereum node URL
+        w3 = Web3(Web3.HTTPProvider(ethereum_provider))
+
+        try:
+            # Get the transaction receipt from the Ethereum blockchain
+            transaction_receipt = w3.eth.getTransactionReceipt(transaction_hash)
+
+            if transaction_receipt is None:
+                return JsonResponse({'status': 'pending', 'message': 'Transaction is pending.'})
+
+            if transaction_receipt['status'] == 1:
+
+                return JsonResponse({'status': 'success', 'message': 'Transaction successful.'})
+            else:
+                return JsonResponse({'status': 'error', 'message': 'Transaction failed.'})
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})

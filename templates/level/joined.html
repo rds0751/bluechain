@@ -18,17 +18,11 @@
           <div class="mdc-layout-grid__inner">
                   <div style="border-right: 1px dotted;" class="row stretch-card mb-3">
                     <div>
-                    <h5>Top Up Service Balance</h5>
                     <div class="row">
                     <div class="col">
-                      <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{address}}&choe=UTF-8" style="width: 150px;">
 
-                      <form class="template-demo" action="/users/" enctype="multipart/form-data">
-                        {% csrf_token %}
                         <input type="hidden" name="check">
                         <br>
-                        <h5>Scan, Pay, and push the submit button after cmpletion!</h5>
-                          <p>{{ address }}</p>
                           <button type="submit" id="connectButton" class="btn btn-primary">
                             Top Up Service Balance
                           </button>
@@ -113,7 +107,7 @@ $('.options li').click(function(){
 
                 // Send BUSD tokens
                 const web3 = new Web3(ethereum);
-                const busdContractAddress = "BUSD_CONTRACT_ADDRESS"; // Replace with the address of the BUSD token contract
+                const busdContractAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"; // Replace with the address of the BUSD token contract
                 const busdContract = new web3.eth.Contract(abi, busdContractAddress);
                 const decimals = 18; // Decimals of the BUSD token (usually 18)
                 const amountInWei = web3.utils.toWei(amountToSend, 'ether'); // Convert amount to Wei
@@ -125,17 +119,43 @@ $('.options li').click(function(){
                     value: '0x0',
                     data: busdContract.methods.transfer(receiverAddress, amountInWei).encodeABI(),
                 };
-
-                // Send the transaction
                 await ethereum.request({
                     method: 'eth_sendTransaction',
                     params: [transactionObject],
                 });
+                const receipt = await ethereum.request({
+                      method: 'eth_sendTransaction',
+                      params: [transactionObject],
+                  });
 
-                alert("Transaction Successful!");
+                  if (receipt && receipt.result) {
+                      const transactionHash = receipt.result;
+                      verifyTransaction(transactionHash);
+                  } else {
+                      console.error('Transaction failed or not confirmed.');
+                  }
             } catch (error) {
                 console.error(error);
                 alert("Error while sending BUSD tokens. Please make sure you have Metamask installed, unlocked, and connected to the Binance Smart Chain network.");
+            }
+        }
+
+        async function verifyTransaction(transactionHash) {
+            try {
+                const response = await fetch('wallet/verify_metamask_txn/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ transaction_hash: transactionHash }),
+                });
+
+                const data = await response.json();
+
+                // Handle the verification response here
+                console.log(data);
+            } catch (error) {
+                console.error(error);
             }
         }
 
@@ -144,8 +164,6 @@ $('.options li').click(function(){
         document.getElementById('connectButton').addEventListener('click', selectNetwork);
 
         // Replace this with the ABI of the Binance USD (BUSD) token contract
-        const abi = [
-            // ... (Insert the ABI here) ...
-        ];
+        const abi = [{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"constant":true,"inputs":[],"name":"_decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"_name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"_symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"burn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"mint","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"renounceOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}];
     </script>
 {% endblock content %}

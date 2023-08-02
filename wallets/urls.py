@@ -25,4 +25,6 @@ urlpatterns = [
     url(r"^confirm-generate/(?P<id>[\w.@+-]+)/$", views.confirm_generate, name="confirm"),
     url(r"^withdrawbnxg/$", views.withdrawBNXG, name="confirm"),
     path("otp/",views.bnxg_verification,name="send otp"),
+    path("verify_metamask_txn/",views.verify_metamask_txn,name="verify_metamask_txn"),
 ]
+
