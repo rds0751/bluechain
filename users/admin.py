@@ -67,7 +67,7 @@ class UserAdmin(UserAdmin):
         if request.user.is_superuser:
             self.fieldsets = (
                     (None, {'fields': ('username', 'password', 'referral',)}),
-                    (_('Personal info'), {'fields': ( 'name', 'email', 'mobile', )}),
+                    (_('Personal info'), {'fields': ( 'name', 'email', 'mobile', 'wallet',)}),
                     (_('Permissions'), {'fields': ('is_active', 'is_staff', 'user_permissions', )}),
                     (_('Important dates'), {'fields': ('last_login', )}),
                     (_('Groups'), {'fields': ('groups',)}),

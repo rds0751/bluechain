@@ -269,11 +269,9 @@ def ids(request):
             print(e)
             pass
         start_date = x.activated_at
-        end_date = x.activated_at + datetime.timedelta(days=7)
-        directs = LevelUser.objects.filter(direct=x.user, activated_at__range=(start_date, end_date))
+        
         ccm = 0
-        for y in directs:
-            ccm += y.level.amount
+        
         ccm_pool = 0
         if ccm >= 10000:
             ccm_pool = 12
@@ -285,7 +283,6 @@ def ids(request):
             ccm_pool = 48
         if ccm >= 50000:
             ccm_pool = 60
-        x.ccm_pool = ccm_pool
 
     return render(request, 'panel/ids.html', {'w': w})
 
