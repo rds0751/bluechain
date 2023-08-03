@@ -638,7 +638,7 @@ def payment(request):
         else:
             return txnid
 
-    amount = int(request.POST.get('amounta'))
+    amount = 100
     user = request.user
     txnid = generateid()
     priv = secrets.token_hex(32)
@@ -655,7 +655,7 @@ def payment(request):
 
     w = WalletHistory()
     w.user_id = user.username
-    w.amount = int(request.POST.get('amounta'))
+    w.amount = 100
     w.comment = 'Money Added using BUSD'
     w.txnid = txnid
     w.save()
