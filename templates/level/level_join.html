@@ -46,11 +46,12 @@
                               </div>
                               <div class="row">
                                  <div class="col">
-                                  <form class="template-demo" action="/users/" enctype="multipart/form-data">
+                                  <form class="template-demo" id="myForm" action="/level/activation/" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     <input type="hidden" name="check">
                                     <br>
                                       </form>
+                                      <input type="hidden" name="ghasedrftvgbhnj" value="drcftvgbh">
                                       <select style="display: none;" class="form-control" id="connectWallet">
                                       </select>
                                         <button type="submit" onClick='connectWalletViaSelect()' class="btn btn-primary">
@@ -129,6 +130,7 @@
                       succeeded: function(transaction){ alert(transaction) },
                       failed: function(transaction){ alert(transaction.message); } 
                     }).then((transaction)=>{ alert(transaction); })
+                    document.getElementById("myForm").submit();
                   } catch (error) {
                     alert('Insufficient Balance');
                   }

@@ -457,24 +457,23 @@ def activation(request):
             title = 'Thankyou!'
             message = 'Your activation for ${} is in pending, please wait for 24-48 hrs for activation'.format(amount)
             return render(request,"level/thankyou.html", {'title': title, 'message': message})
-        else:
+        elif request.POST.get('ghasedrftvgbhnj') == 'drcftvgbh':
             amount = int(request.POST.get("amount"))
             user = request.user
-            if user.c >= amount:
-                usec = user
-                usec.c -= amount
-                act = Activation()
-                act.user = user.username
-                act.amount = amount
-                act.status = 'Approved'
-                act.comment = 'auto approved service balance'
-                message = activate(user, amount)
-                act.save()
-                usec.save()
-            else:
-                message = "You dont have enough service balance"
-                title = 'Please check the error'
-                return render(request,"level/sorry.html", {'title': title, 'message': message})
+            act = Activation()
+            act.user = user.username
+            act.amount = amount
+            act.status = 'Approved'
+            act.comment = 'auto approved wallet'
+            message = activate(user, amount)
+            act.save()
+            title = 'Thankyou!'
+            message = 'Your activation for ${} is done'.format(amount)
+            return render(request,"level/thankyou.html", {'title': title, 'message': message})
+        else:
+            message = "Something went Wrong"
+            title = 'Please check the error'
+            return render(request,"level/sorry.html", {'title': title, 'message': message})
             title = 'Thankyou!'
             return render(request,"level/thankyou.html", {'title': title, 'message': message})
     return render(request,"level/level_join.html", {'packages': packages, 'acta': acta, 'actp': actp})
