@@ -35,7 +35,9 @@
 
                         <input type="hidden" name="check">
                         <br>
-                          <button type="submit" id="connectButton" class="btn btn-primary">
+                        <select style="display: none;" class="form-control" id="connectWallet">
+                        </select>
+                          <button type="submit" onClick='connectWalletViaSelect()' class="btn btn-primary">
                             Use DAPP
                           </button>
                           </form>
@@ -66,78 +68,61 @@ $('.options li').click(function(){
   $('input.amount').val(dataValue);
 });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@binance-chain/bsc-connector@1.0.0/dist/index.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
-<script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+
+<script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="application/javascript"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/@uiw/copy-to-clipboard/dist/copy-to-clipboard.umd.js"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/@depay/solana-web3.js@1.24.0"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/@depay/web3-blockchains@8"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/@depay/web3-client@10"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/@depay/walletconnect-v1@1"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/@depay/walletconnect-v2@2"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/@depay/coinbase-wallet-sdk@3"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/@depay/web3-tokens@10"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/qr-code-styling@1"></script>
+<script crossorigin src="https://depayfi.github.io/web3-wallets/dist/umd/index.js?7"></script>
+<script crossorigin src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
 
     <script>
-      let web3;
-        let busdContract;
-        const busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"; // Binance-Peg BUSD Token address on BSC
-        async function connectWithTrustWallet() {
-            // Check if web3 is available
-            if (typeof window.ethereum !== 'undefined') {
-                try {
-                    await window.ethereum.enable();
-                    web3 = new Web3(window.ethereum);
-                    busdContract = new web3.eth.Contract(abi, busdAddress);
-
-                    const accounts = await web3.eth.getAccounts();
-                    const selectedAccount = accounts[0];
-                    alert(`Connected with Trust Wallet. Current account: ${selectedAccount}`);
-
-                    // Update the balance display after connecting
-                    updateBalance(selectedAccount);
-                } catch (error) {
-                    console.error("Error connecting to Trust Wallet:", error);
-                }
-            } else {
-                alert("Trust Wallet not detected. Please make sure you have Trust Wallet installed and try again.");
-            }
-
+      web3 = new Web3();
       const receiverAddress = "0xdEe1d2e52cfd28d851229A06cfE428E356044059"; // Replace with the recipient's wallet address
-      const amountToSend = "{{ amount }}"; // Replace with the amount of BUSD tokens to send
-
-            try {
-      
-                // Contract address of Binance USD (BUSD) on Binance Smart Chain
-                const busdContractAddress = '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56';
-
-                // Instantiate the BUSD contract using the contract address and ABI
-                const busdContract = new web3.eth.Contract(abi, busdContractAddress);
-
-                try {
-                const amount = web3.utils.toWei(amountToSend, "ether"); // Amount of BUSD to send (in this example, sending 10 BUSD)
-                const accounts = await web3.eth.getAccounts();
-                const selectedAccount = accounts[0];
-
-                // Send the BUSD tokens
-                await busdContract.methods.transfer(receiverAddress, amount).send({ from: selectedAccount });
-
-                // Update the balance display after the transaction is completed
-                updateBalance(selectedAccount);
-                alert(`Successfully sent 10 BUSD to ${receiverAddress}`);
-            } catch (error) {
-                console.error("Error sending BUSD:", error);
-            }
-          } catch (error) {
-                console.error("Error sending BUSD:", error);
-            }
-
-  }
-
-  async function updateBalance(account) {
-            const balance = await busdContract.methods.balanceOf(account).call();
-            document.getElementById('balance').innerText = `BUSD Balance: ${web3.utils.fromWei(balance)} BUSD`;
-        }
-
-        // Add event listener to the connect button
-        document.getElementById('connectButton').addEventListener('click', connectWithTrustWallet);
-
-        // Replace this with the ABI of the Binance USD (BUSD) token contract
-        const abi = [{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"constant":true,"inputs":[],"name":"_decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"_name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"_symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"burn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"mint","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"renounceOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}];
+      const amountToSend = "{{ amount }}"
+      const amount = web3.utils.toWei(amountToSend, "ether");
+      document.addEventListener("DOMContentLoaded", function() {
+        let select = document.getElementById('connectWallet')
+        setTimeout(()=>{
+          Web3Wallets.getWallets().then((availableWallets)=>{
+            availableWallets.forEach((wallet, index)=>{
+              let option = document.createElement("option")
+              option.setAttribute('value', index)
+              option.innerHTML = wallet.name
+              select.append(option)
+            })
+          })
+        }, 500)
+      })
+      window.connectWalletViaSelect = async ()=> {
+        try{
+          let wallets = await Web3Wallets.getWallets()
+          let wallet = wallets[parseInt(document.getElementById("connectWallet").value, 10)]
+          console.log(wallet)
+          let accounts = await wallet.connect()
+          window.wallet = wallet
+          console.log(accounts)
+          console.log('sendContractTransactionBsc')
+          await wallet.sendTransaction({ 
+          blockchain: "bsc", 
+          from: await wallet.account(), 
+          to: "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56", 
+          method: "transfer", 
+          params: [receiverAddress, amount ],
+          api: [{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"constant":true,"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"mint","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"renounceOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}],
+          sent: function(transaction){ alert(transaction) },
+          succeeded: function(transaction){ alert(transaction) },
+          failed: function(transaction){ alert(transaction.message); } 
+        }).then((transaction)=>{ alert(transaction); })
+      } catch (error) {
+        alert('Insufficient Balance');
+      }
+      }
     </script>
 {% endblock content %}
