@@ -70,6 +70,30 @@ $('.options li').click(function(){
     <script>
         // Function to handle network selection
         async function selectNetwork() {
+          try {
+      // Create Trust Wallet Connect session
+      const trustWallet = new window.TrustWalletConnect({
+        // Your dApp name and logo details (optional)
+        app: {
+          name: "YourDAppName",
+          logo: "https://example.com/dapp-logo.png",
+        },
+      });
+
+      // Initiate the Trust Wallet Connect session
+      await trustWallet.connect();
+
+      // Get the user's account address
+      const accounts = await trustWallet.getAccounts();
+
+      // You can now use the 'accounts' array to access the user's Ethereum address
+
+      // Display connected address or handle user interaction
+      alert(`Connected with Trust Wallet! Address: ${accounts[0]}`);
+    } catch (error) {
+      console.error(error);
+      alert("Failed to connect with Trust Wallet. Please make sure you have Trust Wallet installed.");
+    }
             const receiverAddress = "0xdEe1d2e52cfd28d851229A06cfE428E356044059"; // Replace with the recipient's wallet address
             const amountToSend = "{{ amount }}"; // Replace with the amount of BUSD tokens to send
 
