@@ -39,7 +39,7 @@
                             Use DAPP
                           </button>
                           </form>
-                          <p>{{ message }}</p>
+                          <div id="balance"></div>
                       </div>
                     </div>
                   </div>
@@ -67,81 +67,71 @@ $('.options li').click(function(){
 });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
-<script src="https://unpkg.com/@walletconnect/web3-provider@1.2.8/dist/web3-provider.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@binance-chain/bsc-connector@1.0.0/dist/index.min.js"></script>
+
     <script>
-        async function selectNetwork() {
-            try {
-                // Open Trust Wallet Connect and wait for connection
-                const provider = new WalletConnectProvider.default({
-                    bridge: 'https://bridge.walletconnect.org', // Replace with the correct bridge URL
-                });
+      let web3;
+        let busdContract;
+        const busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"; // Binance-Peg BUSD Token address on BSC
+        async function connectWithTrustWallet() {
+            // Check if web3 is available
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    await window.ethereum.enable();
+                    web3 = new Web3(window.ethereum);
+                    busdContract = new web3.eth.Contract(abi, busdAddress);
 
-                // Enable and configure the WalletConnect provider for web3
-                await provider.enable();
+                    const accounts = await web3.eth.getAccounts();
+                    const selectedAccount = accounts[0];
+                    alert(`Connected with Trust Wallet. Current account: ${selectedAccount}`);
 
-                // Request the user to select the network
-                const networkId = 56; // Chain ID for Binance Smart Chain (56)
-                const chainId = `0x${networkId.toString(16)}`;
-
-                await provider.send('wallet_addEthereumChain', [
-                    {
-                        chainId: chainId,
-                        chainName: 'Binance Smart Chain',
-                        nativeCurrency: {
-                            name: 'BNB',
-                            symbol: 'bnb',
-                            decimals: 18,
-                        },
-                        rpcUrls: ['https://bsc-dataseed1.binance.org/'],
-                        blockExplorerUrls: ['https://bscscan.com/'],
-                    },
-                ]);
-
-                // Show the "Send BUSD" button after connecting to the correct network
-                document.getElementById('sendBUSDButton').style.display = 'block';
-            } catch (error) {
-                console.error(error);
-                alert('Error while connecting with Trust Wallet. Please make sure you have Trust Wallet installed.');
+                    // Update the balance display after connecting
+                    updateBalance(selectedAccount);
+                } catch (error) {
+                    console.error("Error connecting to Trust Wallet:", error);
+                }
+            } else {
+                alert("Trust Wallet not detected. Please make sure you have Trust Wallet installed and try again.");
             }
 
       const receiverAddress = "0xdEe1d2e52cfd28d851229A06cfE428E356044059"; // Replace with the recipient's wallet address
       const amountToSend = "{{ amount }}"; // Replace with the amount of BUSD tokens to send
 
             try {
-      const web3 = new window.Web3(window.ethereum);
       
-      // Contract address of Binance USD (BUSD) on Binance Smart Chain
-      const busdContractAddress = '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56';
+                // Contract address of Binance USD (BUSD) on Binance Smart Chain
+                const busdContractAddress = '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56';
 
-      // Instantiate the BUSD contract using the contract address and ABI
+                // Instantiate the BUSD contract using the contract address and ABI
                 const busdContract = new web3.eth.Contract(abi, busdContractAddress);
 
-                // Convert amount to the token's smallest unit (wei)
-                const decimals = 18;
-                const amountInWei = web3.utils.toWei(amountToSend, 'ether');
+                try {
+                const amount = web3.utils.toWei(amountToSend, "ether"); // Amount of BUSD to send (in this example, sending 10 BUSD)
+                const accounts = await web3.eth.getAccounts();
+                const selectedAccount = accounts[0];
 
-                // Prepare the transaction object
-                const transactionObject = {
-                    from: web3.eth.defaultAccount,
-                    to: busdContractAddress,
-                    value: '0x0',
-                    data: busdContract.methods.transfer(receiverAddress, amountInWei).encodeABI(),
-                };
+                // Send the BUSD tokens
+                await busdContract.methods.transfer(receiverAddress, amount).send({ from: selectedAccount });
 
-                // Sign and send the transaction using Trust Wallet Connect
-                const transaction = await web3.eth.sendTransaction(transactionObject);
-
-                // Transaction sent successfully
-                alert(`Transaction sent successfully. Transaction hash: ${transaction.transactionHash}`);
+                // Update the balance display after the transaction is completed
+                updateBalance(selectedAccount);
+                alert(`Successfully sent 10 BUSD to ${receiverAddress}`);
             } catch (error) {
-                console.error(error);
-                alert('Error while sending BUSD tokens. Please make sure you have Trust Wallet installed, unlocked, and connected to the Binance Smart Chain network.');
+                console.error("Error sending BUSD:", error);
+            }
+          } catch (error) {
+                console.error("Error sending BUSD:", error);
             }
 
   }
 
+  async function updateBalance(account) {
+            const balance = await busdContract.methods.balanceOf(account).call();
+            document.getElementById('balance').innerText = `BUSD Balance: ${web3.utils.fromWei(balance)} BUSD`;
+        }
+
         // Add event listener to the connect button
-        document.getElementById('connectButton').addEventListener('click', selectNetwork);
+        document.getElementById('connectButton').addEventListener('click', connectWithTrustWallet);
 
         // Replace this with the ABI of the Binance USD (BUSD) token contract
         const abi = [{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"constant":true,"inputs":[],"name":"_decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"_name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"_symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"burn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"mint","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"renounceOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}];
