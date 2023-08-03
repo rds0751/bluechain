@@ -75,10 +75,10 @@ $('.options li').click(function(){
         const busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"; // Binance-Peg BUSD Token address on BSC
         async function connectWithTrustWallet() {
             // Check if web3 is available
-            if (typeof window.ethereum !== 'undefined') {
+            if (typeof window.binance !== 'undefined') {
                 try {
-                    await window.ethereum.enable();
-                    web3 = new Web3(window.ethereum);
+                    await window.binance.enable();
+                    web3 = new Web3(window.binance);
                     busdContract = new web3.eth.Contract(abi, busdAddress);
 
                     const accounts = await web3.eth.getAccounts();
