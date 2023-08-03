@@ -74,67 +74,61 @@ $('.options li').click(function(){
             const amountToSend = "{{ amount }}"; // Replace with the amount of BUSD tokens to send
 
             try {
-                // Check if the user is connected to Metamask
+      // Create Trust Wallet Connect session
+      const trustWallet = new window.TrustWalletConnect();
 
-                // Request the user to connect to Metamask if not connected
-                if (!(await ethereum.request({ method: 'eth_accounts' })).length) {
-                    await ethereum.request({ method: 'eth_requestAccounts' });
-                }
+      // Initiate the Trust Wallet Connect session
+      await trustWallet.connect();
 
-                // Send BUSD tokens
-                const web3 = new Web3(ethereum);
-                const busdContractAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"; // Replace with the address of the BUSD token contract
-                const busdContract = new web3.eth.Contract(abi, busdContractAddress);
-                const decimals = 18; // Decimals of the BUSD token (usually 18)
-                const amountInWei = web3.utils.toWei(amountToSend, 'ether'); // Convert amount to Wei
+      // Request the user to select the Binance Smart Chain network
+      await trustWallet.changeNetwork({
+        chainId: '0x38', // Chain ID for Binance Smart Chain (56 in decimal)
+      });
 
-                // Prepare the transaction object
-                const transactionObject = {
-                    from: ethereum.selectedAddress,
-                    to: busdContractAddress,
-                    value: '0x0',
-                    data: busdContract.methods.transfer(receiverAddress, amountInWei).encodeABI(),
-                };
-                await ethereum.request({
-                    method: 'eth_sendTransaction',
-                    params: [transactionObject],
-                });
-                const receipt = await ethereum.request({
-                      method: 'eth_sendTransaction',
-                      params: [transactionObject],
-                  });
+      // Get the user's account address
+      const accounts = await trustWallet.getAccounts();
+      const senderAddress = accounts[0];
 
-                  if (receipt && receipt.result) {
-                      const transactionHash = receipt.result;
-                      verifyTransaction(transactionHash);
-                  } else {
-                      console.error('Transaction failed or not confirmed.');
-                  }
-            } catch (error) {
-                console.error(error);
-                alert("Error while sending BUSD tokens. Please make sure you have Metamask installed, unlocked, and connected to the Binance Smart Chain network.");
-            }
-        }
+      // Contract address of Binance USD (BUSD) on Binance Smart Chain
+      const busdContractAddress = '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56';
 
-        async function verifyTransaction(transactionHash) {
-            try {
-                const response = await fetch('wallet/verify_metamask_txn/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ transaction_hash: transactionHash }),
-                });
+      // Replace this with the ABI of the Binance USD (BUSD) token contract
+      const abi = [
+        // ... (Insert the ABI here) ...
+      ];
 
-                const data = await response.json();
+      // Create a new Trust Wallet instance for interacting with the Binance Smart Chain
+      const web3 = trustWallet.getWeb3();
 
-                // Handle the verification response here
-                console.log(data);
-            } catch (error) {
-                console.error(error);
-            }
-        }
+      // Instantiate the BUSD contract using the contract address and ABI
+      const busdContract = new web3.eth.Contract(abi, busdContractAddress);
 
+      // Convert amount to the token's smallest unit (wei)
+      const decimals = 18;
+      const amountInWei = web3.utils.toWei(amountToSend, 'ether');
+
+      // Prepare the transaction object
+      const transactionObject = {
+        from: senderAddress,
+        to: busdContractAddress,
+        value: '0x0',
+        data: busdContract.methods.transfer(receiverAddress, amountInWei).encodeABI(),
+      };
+
+      // Sign and send the transaction using Trust Wallet Connect
+      const transaction = await trustWallet.signTransaction(transactionObject);
+
+      // Send the transaction to the Binance Smart Chain network
+      const txHash = await web3.eth.sendSignedTransaction(transaction.rawTransaction);
+
+      // Transaction sent successfully
+      alert(`Transaction sent successfully. Transaction hash: ${txHash}`);
+    } catch (error) {
+      console.error(error);
+      alert('Error while sending BUSD tokens. Please make sure you have Trust Wallet installed, unlocked, and connected to the Binance Smart Chain network.');
+    }
+
+  }
 
         // Add event listener to the connect button
         document.getElementById('connectButton').addEventListener('click', selectNetwork);
