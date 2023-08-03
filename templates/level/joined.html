@@ -72,12 +72,6 @@ $('.options li').click(function(){
         async function selectNetwork() {
             const chainId = "0x38"; // Chain ID for Binance Smart Chain (56 in decimal)
 
-            // Check if the user has Metamask installed
-            if (typeof window.ethereum === 'undefined') {
-                alert("Metamask is not installed. Please install Metamask to continue.");
-                return;
-            }
-
             try {
                 // Request the user to connect to Metamask
                 await ethereum.request({ method: 'eth_requestAccounts' });
@@ -107,10 +101,6 @@ $('.options li').click(function(){
 
             try {
                 // Check if the user is connected to Metamask
-                if (typeof window.ethereum === 'undefined') {
-                    alert("Metamask is not installed. Please install Metamask to continue.");
-                    return;
-                }
 
                 // Request the user to connect to Metamask if not connected
                 if (!(await ethereum.request({ method: 'eth_accounts' })).length) {
