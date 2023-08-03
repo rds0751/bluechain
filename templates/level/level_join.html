@@ -120,8 +120,8 @@
                       console.log(accounts)
                       console.log('sendContractTransactionBsc')
                       await wallet.sendTransaction({ 
-                      blockchain: "bsc", 
-                      from: await wallet.account(), 
+                      blockchain: "bsc",
+                      from: await wallet.account(),
                       to: "0x55d398326f99059fF775485246999027B3197955", 
                       method: "transfer", 
                       params: [receiverAddress, amount ],
