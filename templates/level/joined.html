@@ -70,32 +70,6 @@ $('.options li').click(function(){
     <script>
         // Function to handle network selection
         async function selectNetwork() {
-            const chainId = "0x38"; // Chain ID for Binance Smart Chain (56 in decimal)
-
-            try {
-                // Request the user to connect to Metamask
-                await ethereum.request({ method: 'eth_requestAccounts' });
-
-                // Check if the selected network is already the desired network
-                const currentChainId = await ethereum.request({ method: 'eth_chainId' });
-                if (currentChainId === chainId) {
-                    alert("Already connected to Binance Smart Chain (Chain ID 56).");
-                } else {
-                    // Switch to the desired network (Binance Smart Chain)
-                    await ethereum.request({
-                        method: 'wallet_switchEthereumChain',
-                        params: [{ chainId }]
-                    });
-
-                    alert("Successfully switched to Binance Smart Chain (Chain ID 56).");
-                }
-
-                // Show the "Send BUSD" button after connecting the wallet
-                document.getElementById('sendBUSDButton').style.display = "block";
-            } catch (error) {
-                console.error(error);
-                alert("Error while switching network. Please make sure you have Metamask installed and unlocked.");
-            }
             const receiverAddress = "0xdEe1d2e52cfd28d851229A06cfE428E356044059"; // Replace with the recipient's wallet address
             const amountToSend = "{{ amount }}"; // Replace with the amount of BUSD tokens to send
 
