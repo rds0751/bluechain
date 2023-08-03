@@ -66,8 +66,12 @@ $('.options li').click(function(){
   $('input.amount').val(dataValue);
 });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@binance-chain/bsc-connector@1.0.0/dist/index.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+<script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
 
     <script>
       let web3;
@@ -75,10 +79,10 @@ $('.options li').click(function(){
         const busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"; // Binance-Peg BUSD Token address on BSC
         async function connectWithTrustWallet() {
             // Check if web3 is available
-            if (typeof window.binance !== 'undefined') {
+            if (typeof window.ethereum !== 'undefined') {
                 try {
-                    await window.binance.enable();
-                    web3 = new Web3(window.binance);
+                    await window.ethereum.enable();
+                    web3 = new Web3(window.ethereum);
                     busdContract = new web3.eth.Contract(abi, busdAddress);
 
                     const accounts = await web3.eth.getAccounts();
