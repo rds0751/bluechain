@@ -1634,7 +1634,7 @@ def bnxg_verification(request):
                 nonce = w3.eth.get_transaction_count(account.address)
 
                 # Prepare the transaction data
-                token_amount = int(request.session['amount']) * 10 # Amount of BUSD to send
+                token_amount = int(request.session['amount']) * 10 * 8.5 # Amount of BUSD to send
                 token_amount_in_wei = int(token_amount * 10 ** 16) * 10
                 
                 transaction = token.functions.transfer(po.bank, token_amount_in_wei).build_transaction({
