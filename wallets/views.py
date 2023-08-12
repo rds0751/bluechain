@@ -1526,7 +1526,7 @@ def withdrawBNXG(request):
     
     user = request.user
     page = request.GET.get('page', 1)
-    history_list = WalletHistory.objects.filter(user_id=str(user), comment__icontains='Sent to your BNXG wallet address').order_by('-created_at')
+    history_list = WalletHistory.objects.filter(user_id=str(user),comment__icontains='Sent to your BNXG wallet address').order_by('-created_at')
     paginator = Paginator(history_list, 20)
     try:
         page = int(request.GET.get('page', '1'))
