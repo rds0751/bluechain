@@ -101,7 +101,7 @@
               <div class="row">
                 <div class="row mb-4">
                     <div class="col col-md col-lg-auto mnw-100 text-center">
-                        <i class="bi bi-award h5 avatar avatar-50 bg-radial-gradient theme-red text-white rounded-circle mb-2"></i>
+                        <i class="bi bi-award h5 avatar avatar-50 bg-radial-gradient theme-bg-none text-white rounded-circle mb-2"></i>
                             {% if amount != 'None' %}
                             <h4 class="mb-0">$ {{ amount.level.amount }}</h4>
                             {% else %}
@@ -109,16 +109,7 @@
                             {% endif %}
                         <p class="small text-secondary">My Plan</p>
                     </div>
-                    <div class="col col-md col-lg-auto mnw-100 text-center">
-                        <img src="https://binobsc.com/logo.png" class="bi bi-clipboard-check h5 avatar avatar-50 bg-radial-gradient theme-teal text-white rounded-circle mb-2"></i>
-                        {% if amount != 'None' %}
-                        {% widthratio amount.level.amount 1 10 as c %}
-                        <h4 class="mb-0">{{ c }}</h4>
-                        {% else %}
-                        <h4 class="increamentcount mb-0">0</h4>
-                        {% endif %}
-                        <p class="small text-secondary">Tokens</p>
-                    </div>
+                   
                 </div>
               </div>
           </div>
@@ -159,6 +150,23 @@
                   </div>
               </div>
           </div>
+          <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+            <div class="card border-0 mb-4 theme-green bg-radial-gradient text-white">
+                <div style="height: 103px;" class="card-body bg-none">
+                    <div class="row gx-2 align-items-center">
+                        <div class="col-auto">
+                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
+                                <i class="bi bi-coin"></i>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h5 style="font-size: small;" class="text-muted  mb-1">My Daily ROI</h5>
+                            <h5 class="">$ {{request.user.my_daily_roi}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
           <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
               <div class="card border-0 mb-4 theme-green bg-radial-gradient text-white">
                   <div style="height: 103px;" class="card-body bg-none">
@@ -203,7 +211,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <h5 style="font-size: small;" class="text-muted  mb-1">Lifetime Royalty Income</h5>
+                            <h5 style="font-size: small;" class="text-muted  mb-1">staking bonus</h5>
                             <h5 class="">$ {{request.user.lifetime_royalty}}</h5>
                         </div>
                     </div>
@@ -291,23 +299,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
-            <div class="card border-0 mb-4 theme-green bg-radial-gradient text-white">
-                <div style="height: 103px;" class="card-body bg-none">
-                    <div class="row gx-2 align-items-center">
-                        <div class="col-auto">
-                            <div class="avatar avatar-40 h5 bg-dark-white rounded-circle">
-                                <i class="bi bi-coin"></i>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <h5 style="font-size: small;" class="text-muted  mb-1">My Daily ROI</h5>
-                            <h5 class="">$ {{request.user.my_daily_roi}}</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
             <div class="card border-0 mb-4 theme-blue bg-radial-gradient text-white">
                 <div style="height: 103px;" class="card-body bg-none">
