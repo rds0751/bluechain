@@ -1266,6 +1266,66 @@ def staking(request):
     page_range = list(paginator.page_range)[start_index:end_index]
     print(dincome,mincome,wincome)
     return render(request, 'wallets/staking.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome})
+@login_required
+def royalty1(request):
+    user = request.user
+    page = request.GET.get('page', 1)
+    history_list = WalletHistory.objects.filter(user_id=str(user), comment__icontains='rank').order_by('-created_at')
+    paginator = Paginator(history_list, 20)
+    try:
+        page = int(request.GET.get('page', '1'))
+    except:
+        page = 1
+
+    try:
+        histories = paginator.page(page)
+    except(EmptyPage, InvalidPage):
+        histories = paginator.page(1)
+
+    wstart_date = datetime.datetime.now() + datetime.timedelta(-1)
+    wend_date = datetime.datetime.now()
+    dstart_date = datetime.datetime.now() + datetime.timedelta(-600)
+    dend_date = datetime.datetime.now()
+    mstart_date = datetime.datetime.now() + datetime.timedelta(-30)
+    mend_date = datetime.datetime.now()
+    mwhs = WalletHistory.objects.filter(created_at__range=(mstart_date, mend_date), user_id=str(user))
+    wwhs = WalletHistory.objects.filter(created_at__range=(wstart_date, wend_date), user_id=str(user))
+    dwhs = WalletHistory.objects.filter(created_at__range=(dstart_date, dend_date), user_id=str(user))
+    dincome = 0
+    wincome = 0
+    mincome = 0
+    try:
+        fake = FakeHistory.objects.get(user=user)
+    except Exception as e:
+        fake = 'blank'
+    if fake == 'blank':
+        for wh in wwhs:
+            if 'Shopping Income from' in wh.comment or 'Shopping Self Earning' in wh.comment:
+                wincome += wh.amount
+        for wh in dwhs:
+            if wh.type != None:
+                if 'credit' in wh.type or 'income' in wh.type:
+                    dincome += wh.amount
+        for wh in mwhs:
+            if 'Shopping Income from' in wh.comment or 'Shopping Self Earning' in wh.comment:
+                mincome += wh.amount
+    else:
+        dincome = fake.total
+        mincome = fake.month
+        wincome = fake.week
+
+    # Get the index of the current page
+    index = histories.number - 1  # edited to something easier without index
+    # This value is maximum index of your pages, so the last page - 1
+    max_index = len(paginator.page_range)
+    # You want a range of 7, so lets calculate where to slice the list
+    start_index = index - 2 if index >= 2 else 0
+    end_index = index + 3 if index <= max_index - 3 else max_index
+    # Get our new page range. In the latest versions of Django page_range returns 
+    # an iterator. Thus pass it to list, to make our slice possible again.
+    page_range = list(paginator.page_range)[start_index:end_index]
+    print(dincome,mincome,wincome)
+    return render(request, 'wallets/royalty1.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome})
 
 @login_required
 def booster(request):
