@@ -14,6 +14,7 @@ urlpatterns = [
     url(r"^referral/$", views.referral, name="referral"),
     url(r"^royalty/$", views.royalty, name="royalty"),
     url(r"^rank/$", views.rank, name="rank"),
+    url(r"^staking/$", views.staking, name="staking"),
     url(r"^booster/$", views.booster, name="booster"),
     url(r"^community/$", views.community, name="community"),
     url(r"^transfer/$", views.imps, name="imps"),
