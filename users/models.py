@@ -71,7 +71,7 @@ class User(AbstractUser, PermissionsMixin):
         except Exception as e:
             a = 0
         if True:
-            amount =  p.level.amount * 0.005 + p.level.amount * 0.005 * 0.01 * a
+            amount =  p.level.amount * 0.005 + p.level.amount * 0.005 * 0.1 * a
         else:
             amount = 0
         return amount
