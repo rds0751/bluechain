@@ -445,7 +445,9 @@ def activation(request):
     actp = Activation.objects.filter(user=request.user.username, status='Pending').count()
     acta = Activation.objects.filter(user=request.user.username, status='Approved').count()
     if request.method == "POST":
+        print(1)
         if request.POST.get('type') == 'cash':
+            print(2)
             amount = request.POST.get("amount")
             user = request.user
             act = Activation()
