@@ -107,4 +107,5 @@ class User(AbstractUser, PermissionsMixin):
             for x in a:
                 directs.append(x.level.amount)
             max = max(directs)
+        return 0
 
