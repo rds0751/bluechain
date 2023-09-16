@@ -26,12 +26,7 @@
                                        <div class="input-group input-group-lg">
                                           <span class="input-group-text text-theme border-end-0"><i class="bi bi-person"></i></span>
                                           <div class="form-floating">
-                                             <input type="hidden" name="type" value="cash">
-                                             <select onchange="val()" class="form-select border-0" id="amount" name="amount" required="">
-                                                {% for package in packages %}
-                                                <option value='{{ package.amount }}'>${{package.amount}}.00/-</option>
-                                                {% endfor %}
-                                             </select>
+                                             <input type="hidden" class="form-control border-0" name="type" value="cash">
                                              <label for="state">Package</label>
                                           </div>
                                        </div>
