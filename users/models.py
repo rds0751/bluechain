@@ -67,7 +67,7 @@ class User(AbstractUser, PermissionsMixin):
         except Exception as e:
             p = 'blank'
         try:
-            a = LevelUser.objects.filter(upline=p.user).count()
+            a = LevelUser.objects.filter(direct=p.user).count()
         except Exception as e:
             a = 0
         if True:
