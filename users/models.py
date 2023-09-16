@@ -40,6 +40,7 @@ class User(AbstractUser, PermissionsMixin):
     my_achievement = models.CharField(max_length=100, default='NA')
     progress = models.FloatField(default=0)
     visiblepass = models.CharField(max_length=100, null=True, blank=True)
+    
 
     
     USERNAME_FIELD = "username"
@@ -75,3 +76,35 @@ class User(AbstractUser, PermissionsMixin):
         else:
             amount = 0
         return amount
+    
+    def my_passive_income(self)
+        passive = [
+            {500, 5},
+            {2000, 10},
+            {5000, 20},
+            {11000, 40},
+            {23000, 80},
+            {47000, 120},
+            {95000, 360},
+            {191000, 640},
+            {383000, 1280},
+            {767000, 2560}
+            ]
+        matching = 0
+        try:
+            p = LevelUser.objects.get(user=self.username)
+        except Exception as e:
+            p = 'blank'
+        if p != 'blank':
+            try:
+                a = LevelUser.objects.filter(direct=p.user)
+            except Exception as e:
+                a = 0
+        else:
+            a = 0
+        if a != 0:
+            directs = []
+            for x in a:
+                directs.append(x.level.amount)
+            max = max(directs)
+

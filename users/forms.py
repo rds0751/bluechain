@@ -47,7 +47,7 @@ class SimpleSignupForm(SignupForm):
 			referral = 'BN999999'
 		plan = LevelUser()
 		plan.user = user
-		plan.level = LevelIncomeSettings.objects.get(id=9)
+		plan.level = LevelIncomeSettings.objects.get(id=5010)
 		plan.active = False
 		plan.left_months = 0
 		plan.direct = referral

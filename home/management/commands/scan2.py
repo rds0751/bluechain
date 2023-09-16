@@ -17,6 +17,7 @@ class Command(BaseCommand):
 
 	def handle(self, *args, **options):
 		l = LevelUser.objects.filter(level__amount__gte=20)
+		
 		def generateid():
 			txnid = get_random_string(8)
 			try:
