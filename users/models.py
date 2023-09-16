@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from datetime import datetime
 from django.utils.html import mark_safe
-from level.models import PoolUser
+from level.models import PoolUser, LevelUser
 
 
 class User(AbstractUser, PermissionsMixin):
@@ -63,15 +63,15 @@ class User(AbstractUser, PermissionsMixin):
         
     def my_daily_roi(self):
         try:
-            p = PoolUser.objects.get(user=self.username)
+            p = LevelUser.objects.get(user=self.username)
         except Exception as e:
             p = 'blank'
         try:
-            a = PoolUser.objects.filter(upline=p.user).count()
+            a = LevelUser.objects.filter(upline=p.user).count()
         except Exception as e:
             a = 0
         if a >= 2:
-            amount = p.plan.pool_roi * p.plan.amount / 100
+            amount =  p.level.amount * 0.005 + p.level.amount * 0.005 * 0.01 * a
         else:
             amount = 0
         return amount
