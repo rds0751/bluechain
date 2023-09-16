@@ -106,14 +106,17 @@ class User(AbstractUser, PermissionsMixin):
             directs = []
             for x in a:
                 directs.append(x.level.amount)
-            mayx = max(directs)
-            others = 0
-            for x in directs:
-                others += x
-            others -= mayx
-            for p in passive:
-                if mayx > p[0] and others > p[0]:
-                    amt = p[1]
+            try:
+                mayx = max(directs)
+                others = 0
+                for x in directs:
+                    others += x
+                others -= mayx
+                for p in passive:
+                    if mayx > p[0] and others > p[0]:
+                        amt = p[1]
+            except Exception as e:
+                amt = 0
 
         return amt
 
