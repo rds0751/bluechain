@@ -70,7 +70,7 @@ class User(AbstractUser, PermissionsMixin):
             a = LevelUser.objects.filter(upline=p.user).count()
         except Exception as e:
             a = 0
-        if a >= 2:
+        if True:
             amount =  p.level.amount * 0.005 + p.level.amount * 0.005 * 0.01 * a
         else:
             amount = 0
