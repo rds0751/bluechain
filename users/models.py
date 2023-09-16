@@ -79,6 +79,7 @@ class User(AbstractUser, PermissionsMixin):
     
     def my_passive_income(self):
         passive = [
+            {0, 0},
             {500, 5},
             {2000, 10},
             {5000, 20},
@@ -90,7 +91,7 @@ class User(AbstractUser, PermissionsMixin):
             {383000, 1280},
             {767000, 2560}
             ]
-        matching = 0
+        passive = 0
         try:
             p = LevelUser.objects.get(user=self.username)
         except Exception as e:
@@ -106,6 +107,14 @@ class User(AbstractUser, PermissionsMixin):
             directs = []
             for x in a:
                 directs.append(x.level.amount)
-            max = max(directs)
-        return 0
+            mayx = max(directs)
+            others = 0
+            for x in directs:
+                others += x
+            others -= mayx
+            for p, q in passive:
+                if mayx > p and others > p:
+                    passive = q
+
+        return passive
 
