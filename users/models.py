@@ -78,6 +78,7 @@ class User(AbstractUser, PermissionsMixin):
         return amount
     
     def my_passive_income(self):
+        amt = 0
         passive = [
             [0, 0],
             [500, 5],
