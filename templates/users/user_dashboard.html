@@ -160,8 +160,8 @@
                             </div>
                         </div>
                         <div class="col">
-                            <h5 style="font-size: small;" class="text-muted  mb-1">My Daily ROI</h5>
-                            <h5 class="">$ {{request.user.my_daily_roi}}</h5>
+                            <h5 style="font-size: small;" class="text-muted  mb-1">Profit Share</h5>
+                            <h5 class="">$ {{request.user.my_daily_roi|floatformat:2}}</h5>
                         </div>
                     </div>
                 </div>
