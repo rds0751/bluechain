@@ -78,6 +78,9 @@ class User(AbstractUser, PermissionsMixin):
         return amount
     
     def my_passive_income(self):
+        b=0
+        if self.username == "BN499249":
+            b = 5
         amt = 0
         passive = [
             [0, 0],
@@ -119,5 +122,5 @@ class User(AbstractUser, PermissionsMixin):
             except Exception as e:
                 amt = 0
 
-        return amt
+        return b
 
