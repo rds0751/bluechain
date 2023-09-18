@@ -68,7 +68,7 @@ class Command(BaseCommand):
 			count = 0
 			for d in range(0,days_difference):
 				wallet = WalletHistory()
-				wallet.comment = "ROI Income"
+				wallet.comment = "Profit Share Income"
 				wallet.user_id = x.user
 				wallet.amount = roi
 				wallet.type = "credit"
