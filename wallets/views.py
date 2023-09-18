@@ -1335,7 +1335,7 @@ def roi(request):
     # an iterator. Thus pass it to list, to make our slice possible again.
     page_range = list(paginator.page_range)[start_index:end_index]
     print(dincome,mincome,wincome)
-    return render(request, 'wallets/roi.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome, 'x': x})
+    return render(request, 'wallets/roi.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome, 'x': sum})
 
 @login_required
 def community(request):
