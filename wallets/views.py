@@ -1278,6 +1278,9 @@ def roi(request):
     user = request.user
     page = request.GET.get('page', 1)
     history_list = WalletHistory.objects.filter(user_id=str(user), comment__icontains='Share').order_by('-created_at')
+    sum = 0
+    for x in history_list:
+        sum += x.amount
     paginator = Paginator(history_list, 20)
     try:
         page = int(request.GET.get('page', '1'))
@@ -1332,7 +1335,7 @@ def roi(request):
     # an iterator. Thus pass it to list, to make our slice possible again.
     page_range = list(paginator.page_range)[start_index:end_index]
     print(dincome,mincome,wincome)
-    return render(request, 'wallets/roi.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome})
+    return render(request, 'wallets/roi.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome, 'x': x})
 
 @login_required
 def community(request):
