@@ -29,7 +29,7 @@
                                            <input type="hidden" name="type" value="cash">
                                            <select onchange="val()" class="form-select border-0" id="amount" name="amount" required="">
                                               {% for package in packages %}
-                                              <option value='{{ package.amount }}'>₹ {{package.amount}}.00/- {{package.name}}</option>
+                                              <option value='{{ package.amount }}'>₹ {{package.amount}}.00/-</option>
                                               {% endfor %}
                                            </select>
                                            <label for="state">Package</label>
