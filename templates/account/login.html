@@ -6,144 +6,78 @@
 {% block head_title %}{% trans "Login" %}{% endblock %}
 
 {% block inner %}
-  <!-- header -->
-  <header class="header">
-      <!-- Fixed navbar -->
-      <nav class="navbar fixed-top">
-          <div class="container-fluid">
-              <div class="col-auto">
-                  <a href="/" class="btn btn-link text-secondary text-center"><i class="bi bi-chevron-left"></i></a>
-              </div>
-              <div class="col-auto ms-2">
-                  <a class="navbar-brand d-block" href="#">
-                      <div class="row">
-                          <div class="col ps-0 align-self-center">
-                              <h5 class="fw-normal text-dark">M2Plus</h5>
-                              <p class="small text-secondary">Welcome to M2Plus!</p>
-                          </div>
-                      </div>
-                  </a>
-              </div>
-              <div class="col-auto ms-auto">
-                  <button type="button" class="btn btn-link text-secondary text-center" id="addtohome"><i class="bi bi-backspace-fill me-0 me-lg-1"></i> <span class="d-none d-lg-inline-block">Back</span></button>
-              </div>
-          </div>
-      </nav>
-  </header>
-  <!-- header ends -->
 
-  <!-- Begin page content -->
-  <main class="main mainheight container-fluid">
-    <div class="row h-100 justify-content-center">
-        <div class="col-12 mb-auto">
-            <!-- time and temperature -->
-            <div class="row text-white my-2">
-                <div class="col">
-                    <p class="display-3 mb-0"><span id="time"></span><small><span class="h4 text-uppercase" id="ampm"></span></small></p>
-                    <p class="lead fw-normal" id="date"></p>
-                </div>
-                <div class="col-auto text-end">
-                    <p class="display-3 mb-0">
-                        <img src="{% static 'img/cloud-sun.png' %}" alt="" class="vm me-0 tempimage" id="tempimage" />
-                        <span id="temperature">27.05</span><span class="h4 text-uppercase"> <sup>0</sup>C</span>
-                    </p>
 
-                    <a href="javascript:void()" class="btn btn-link text-white dd-arrow-none dropdown-toggle p-0" id="selectCity" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="h5 fw-normal" id="city">Delhi</span> <i class="bi bi-pencil-square small fw-light"></i>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="selectCity" id="citychange">
-                        <li class="dropdown-item" data-value="New York">New York</li>
-                        <li class="dropdown-item active" data-value="London">London</li>
-                        <li class="dropdown-item" data-value="Qatar">Qatar</li>
-                        <li class="dropdown-item" data-value="Delhi">Delhi</li>
-                        <li class="dropdown-item" data-value="Sydney">Sydney</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- time and temperature ends -->
-
-        </div>
-        <div class="col-12 align-self-center">
-            <div class="row align-items-center justify-content-center">
-                <div style="background: black; padding: 15px;" class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 col-xxl-3 text-center text-white">
-                    <img src="{% static '/assets/img/logo.png' %}" width="150px" style="width: 150px;" />
-                    <h3 class="mb-3 mb-lg-4">Sign in</h3>
-                    <p class="mb-4">Provide your credentials for<br>for entering world of M2Plus</p>
-                    {% if form.errors %}
-                    {% for error in form.errors %}
-                      <div class="alert alert-danger">
-                        <strong>Wrong {{ error.field }}</strong>
-                      </div>
-                      {% endfor %}
-                    {% endif %}
-                    <form method="POST" class="mb-4 text-start" autocomplete="off" action="{% url 'account_login' %}">
-                        {% csrf_token %}
-                  
-                        {% if redirect_field_value %}
-                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    <!-- Login Section -->
+    <section class="section-style site-auth">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5 col-lg-8 col-md-12">
+                    <div class="auth-content">
+                        <div class="logo">
+                            <a href="http://127.0.0.1/rajesh"><img src="http://127.0.0.1/rajesh/assets/global/images/JJYN2UUG94YOc0E0v7GA.png" alt=""/></a>
+                        </div>
+                        <div class="title">
+                            <h2> 👋 Welcome Back!</h2>
+                            <p>Sign in to continue with Hyiprio User Panel</p>
+                        </div>
+                        {% if form.errors %}
+                        {% for error in form.errors %}
+                        <div class="alert alert-danger">
+                            <strong>Wrong {{ error.field }}</strong>
+                        </div>
+                        {% endfor %}
                         {% endif %}
-                        <div class="mb-2 text-dark">
-                        <div class="form-group mb-2 position-relative check-valid text-dark">
-                            <div class="input-group input-group-lg">
-                                <span class="input-group-text text-theme border-end-0"><i class="bi bi-envelope"></i></span>
-                                <div class="form-floating">
-                                  <input autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" autocomplete="sedrctvghb" type="text" class="form-control border-start-0" id="username" name="username" placeholder="User ID" autofocus="autofocus" maxlength="150">
-                                    <label>user id</label>
+                        
+
+                        <div class="site-auth-form">
+                            <form method="POST" class="mb-4 text-start" autocomplete="off" action="{% url 'account_login' %}">
+                                {% csrf_token %}
+                          
+                                {% if redirect_field_value %}
+                                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                                {% endif %}                               <div class="single-field">
+                                    <label class="box-label" for="email">Username</label>
+                                    <input autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" autocomplete="sedrctvghb" type="text" class="form-control border-start-0" id="username" name="username" placeholder="User ID" autofocus="autofocus" maxlength="150">
                                 </div>
+                                <div class="single-field">
+                                    <label class="box-label" for="password">Password</label>
+                                    <div class="password">
+                                        <input autocomplete="off" autocomplete="sedrctvghb" type="password" class="form-control border-start-0" name="password" placeholder="Password" id="password">
+                                    </div>
+                                </div>
+
+                                
+                                <div class="single-field">
+                                    <input
+                                        class="form-check-input check-input"
+                                        type="checkbox"
+                                        name="remember"
+                                        id="flexCheckDefault"
+                                    />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Remember me
+                                    </label>
+
+                                                                            <span class="forget-pass-text"><a
+                                                href="#">Forget Password</a></span>
+                                                                    </div>
+                                <button type="submit" class="site-btn grad-btn w-100">
+                                    Account Login
+                                </button>
+                            </form>
+                            <div class="singnup-text">
+                                <p>
+                                    Don&#039;t have an account?
+                                    <a href="/accounts/signup/">Signup for free</a>
+                                </p>
                             </div>
                         </div>
-                        </div>
-
-                        <!-- Form elements -->
-                        <div class="mb-2 text-dark">
-                        <div class="form-group mb-2 position-relative check-valid text-dark">
-                            <div class="input-group input-group-lg">
-                                <span class="input-group-text text-theme border-end-0"><i class="bi bi-key"></i></span>
-                                <div class="form-floating">
-                                  <input autocomplete="off" autocomplete="sedrctvghb" type="password" class="form-control border-start-0" name="password" placeholder="Password" id="password">
-                                    <label for="password">Password</label>
-                                </div>
-                                <span class="input-group-text text-secondary  border-end-0" id="viewpassword"><i class="bi bi-eye"></i></span>
-                            </div>
-                        </div>
-                        </div>
-                        <button class="btn btn-lg btn-primary top-0 end-0 z-index-5 w-100 mt-4" type="submit" id="submitsignup">Login <i class="bi bi-arrow-right"></i></button>
-
-                    <!-- or continue with options -->
-                    <p>Don't have an account? <a style="color: #0ba0b0" href="/accounts/signup/"><strong> Register</strong></a>  here.</p>
+                    </div>
                 </div>
             </div>
-            </div>
-            <!-- submit button -->
-            
-
-      <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 col-xxl-3 mt-auto mb-4">
-        <!-- submit button -->
-    </div>
-            
-    </form>
-    </main>
-</main>
-
-
-<!-- Required jquery and libraries -->
-<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-<script src="{% static 'js/popper.min.js' %}"></script>
-<script src="{% static 'vendor/bootstrap-5/dist/js/bootstrap.bundle.js' %}"></script>
-
-<!-- Customized jquery file  -->
-<script src="{% static 'js/main.js' %}"></script>
-<script src="{% static 'js/color-scheme.js' %}"></script>
-
-<!-- Chart js script -->
-<script src="{% static 'vendor/chart-js-3.3.1/chart.min.js' %}"></script>
-
-<!-- Progress circle js script -->
-<script src="{% static 'vendor/progressbar-js/progressbar.min.js' %}"></script>
-
-<!-- swiper js script -->
-<script src="{% static 'vendor/swiper-7.3.1/swiper-bundle.min.js' %}"></script>
-<!-- page level script -->
-<script src="{% static 'js/login.js' %}"></script>
+        </div>
+    </section>
+    <!-- Login Section End -->
 
 {% endblock %}
