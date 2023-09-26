@@ -17,9 +17,9 @@ from users import views
 # handler403 = 'home.views.error_403'
 # handler400 = 'home.views.error_400'
 
-admin.site.site_header = "M2Plus Admin"
-admin.site.index_title = "Welcome to M2Plus"
-admin.site.site_title = "M2Plus"
+admin.site.site_header = "BizzTrixx Admin"
+admin.site.index_title = "Welcome to BizzTrixx"
+admin.site.site_title = "BizzTrixx"
 
 urlpatterns = [
     url(r'^super-user/', admin.site.urls),
@@ -40,7 +40,7 @@ urlpatterns = [
     path('m2/admin/', include('panel.urls', namespace="panel")),
     path('search/', include("search.urls", namespace="searchy")),
     path("signup/onboarding/", views.signuponboarding, name="signup-onboarding"),
-    path('plan/', RedirectView.as_view(url=staticfiles_storage.url("m2plusplan.pdf")),)
+    path('plan/', RedirectView.as_view(url=staticfiles_storage.url("BizzTrixxplan.pdf")),)
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
