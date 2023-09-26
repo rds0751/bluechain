@@ -7,10 +7,6 @@
 {% block content %}
 <style type="text/css">
   @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
-  body {
-    background-color: #37385F;
-    font-family: 'Lato', sans-serif;
-  }
 
   .file-drop-area1 {
     border: 1px dashed #7c7db3;
@@ -99,7 +95,7 @@
               <div class="file-drop-area1" align="center" >
                 {% if imageaf == '' %}
                 <img src="{% static 'id-front.png' %}" style="width: 100%; height: 100%; border-radius: 5%;">
-                <h5 class="js-set-number1">Choose Govt Approved ID Front</h5>
+                <h5 class="js-set-number1">Choose Aadhaar Card Front Photo</h5>
                 {% else %}
                 <img src="{{imageaf}}" style="width: 100%; height: 100%; border-radius: 5%;">
                 {% endif %}
@@ -108,7 +104,7 @@
               <div class="file-drop-area2" align="center">
                 {% if imageaf == '' %}
                 <img src="{% static 'id-back.png' %}" style="width: 100%; height: 100%; border-radius: 5%;">
-                <h5 class="js-set-number1">Choose Govt Approved ID Back</h5>
+                <h5 class="js-set-number1">Choose Aadhaar Card Back Photo</h5>
                 {% else %}
                 <img src="{{imageab}}" style="width: 100%; height: 100%; border-radius: 5%;">
                 {% endif %}
