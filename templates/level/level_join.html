@@ -24,13 +24,17 @@
                                        <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=0xdEe1d2e52cfd28d851229A06cfE428E356044059&choe=UTF-8" style="width: 150px;">
                                        <p>0xdEe1d2e52cfd28d851229A06cfE428E356044059</p>
                                        <div class="input-group input-group-lg">
-                                          <span class="input-group-text text-theme border-end-0"><i class="bi bi-person"></i></span>
-                                          <div class="form-floating">
-                                              <input type="hidden" name="type" value="cash">
-                                             <input type="amount" min="25" max="5000" class="form-control border-0" name="amount" value="25">
-                                             <label for="state">Package</label>
-                                          </div>
-                                       </div>
+                                        <span class="input-group-text text-theme border-end-0"><i class="bi bi-person"></i></span>
+                                        <div class="form-floating">
+                                           <input type="hidden" name="type" value="cash">
+                                           <select onchange="val()" class="form-select border-0" id="amount" name="amount" required="">
+                                              {% for package in packages %}
+                                              <option value='{{ package.amount }}'>${{package.amount}}.00/-</option>
+                                              {% endfor %}
+                                           </select>
+                                           <label for="state">Package</label>
+                                        </div>
+                                     </div>
                                        <br>
                                        <br>
                                        <button type="submit" class="btn btn-primary">
