@@ -481,8 +481,6 @@ def activation(request):
     return render(request,"level/level_join.html", {'packages': packages, 'acta': acta, 'actp': actp})
 
 
-from eth_account import Account
-import secrets
 from wallets.models import Mtw
 
 def payment(request):
