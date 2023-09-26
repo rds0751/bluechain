@@ -2,8 +2,8 @@
 <div class="panel-header">
     <div class="logo">
         <a href="">
-            <img class="logo-unfold" src="/assets/global/images/JJYN2UUG94YOc0E0v7GA.png" alt="Logo"/>
-            <img class="logo-fold" src="/assets/global/images/JJYN2UUG94YOc0E0v7GA.png" alt="Logo"/>
+            <img class="logo-unfold" src="{% static '/assets/global/images/JJYN2UUG94YOc0E0v7GA.png' %}" alt="Logo"/>
+            <img class="logo-fold" src="{% static '/assets/global/images/JJYN2UUG94YOc0E0v7GA.png' %}" alt="Logo"/>
         </a>
     </div>
     <div class="nav-wrap">
@@ -35,11 +35,6 @@
                         <li>
                             <a style="color: aliceblue;" href="/users/change-password/" class="dropdown-item" type="button">
                                 <i class="anticon anticon-lock"></i>Change Password
-                            </a>
-                        </li>
-                        <li>
-                            <a style="color: aliceblue;" href="#" class="dropdown-item" type="button">
-                                <i class="anticon anticon-customer-service"></i>Support Tickets
                             </a>
                         </li>
                         <li class="logout">
@@ -100,7 +95,6 @@
                         class="anticon anticon-inbox"></i><span>My KYC</span></a>
             </li>
 
-
             <li class="side-nav-item   ">
                 <a style="color: aliceblue;" href="/wallet/account/"><i
                         class="anticon anticon-file-add"></i><span>Bank Details</span></a>
@@ -112,7 +106,23 @@
 
             <li class="side-nav-item ">
                 <a style="color: aliceblue;" href="/level/team/{{request.user.username}}/1/"><i
-                        class="anticon anticon-transaction"></i><span>Direct Team</span></a>
+                        class="anticon anticon-transaction"></i><span>Direct Sponsors</span></a>
+            </li>
+            <li class="side-nav-item ">
+                <a style="color: aliceblue;" href="/wallet/level/"><i
+                        class="anticon anticon-transaction"></i><span>Level Income</span></a>
+            </li>
+            <li class="side-nav-item ">
+                <a style="color: aliceblue;" href="/wallet/pool/"><i
+                        class="anticon anticon-transaction"></i><span>Pool Income</span></a>
+            </li>
+            <li class="side-nav-item ">
+                <a style="color: aliceblue;" href="/wallet/direct/"><i
+                        class="anticon anticon-transaction"></i><span>Direct Income</span></a>
+            </li>
+            <li class="side-nav-item ">
+                <a style="color: aliceblue;" href="/wallet/passive/"><i
+                        class="anticon anticon-transaction"></i><span>Partnership Income</span></a>
             </li>
 
             <li class="side-nav-item   ">

@@ -1888,7 +1888,7 @@ img {
 }
 
 .grad-btn {
-    background: linear-gradient(90deg, #b1abcf, #3cabff);
+    background: linear-gradient(90deg, #0041ff, #747f7d);
     color: #ffffff;
 }
 
@@ -2343,7 +2343,7 @@ img {
     top: -70px;
     width: 250px;
     height: 250px;
-    background: linear-gradient(90deg, #b1abcf, #3cabff);
+    background: linear-gradient(90deg, #0041ff, #747f7d);
     border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
     will-change: border-radius, transform, opacity;
     animation: sliderShape 5s linear infinite;

@@ -406,7 +406,7 @@ def activate(user, amount):
 
                     if direct:
                         if True: 
-                            upline_amount = 0.1*amount
+                            upline_amount = 0.2*amount
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
                             upline_wallet.amount = upline_amount
@@ -417,6 +417,7 @@ def activate(user, amount):
                             upline_wallet.save()
                             upline_user.wallet += upline_amount
                             upline_user.today_income += upline_amount
+                            upline_user.direct_income += upline_amount
                             upline_user.total_income += upline_amount
                             upline_user.progress += upline_amount
                             upline_user.save()
@@ -438,6 +439,7 @@ def activate(user, amount):
                         upline_user.today_income += upline_amount
                         upline_user.total_income += upline_amount
                         upline_user.progress += upline_amount
+                        upline_user.level_income += upline_amount
                         upline_user.save()
                         upline_user = User.objects.get(username=upline)
                     else:

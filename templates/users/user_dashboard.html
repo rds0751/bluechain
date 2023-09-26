@@ -13,9 +13,9 @@
     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
         <div class="user-ranking" >
             <h4>Level 1</h4>
-            <p>BizzTrixx Member</p>
+            <p>BizzTrixx Member </p>
             <div class="rank" data-bs-toggle="tooltip" data-bs-placement="top" title="By signing up to the account">
-                <img src="http://127.0.0.1/rajesh/assets/global/images/sCQgIyl0OKzFiO73nmWF.svg" alt="">
+                <img src="{% static '/assets/global/images/sCQgIyl0OKzFiO73nmWF.svg' %}" alt="">
             </div>
         </div>
     </div>
@@ -27,16 +27,13 @@
                 <div class="site-card-body">
                     <div class="referral-link">
                         <div class="referral-link-form">
-                            <input type="text" value="http://127.0.0.1/rajesh/register?ref=f0a9f474-cd30-11ed-9a68-d85ed37761ff" id="refLink"/>
+                            <input type="text" value="" id="refLink"/>
                             <button type="submit" onclick="copyRef()">
                                 <i class="anticon anticon-copy"></i>
                                 <span id="copy">Copy Url</span>
                                 <input id="copied" hidden value="Copied">
                             </button>
                         </div>
-                        <p class="referral-joined">
-                            0 peoples are joined by using this URL
-                        </p>
                     </div>
                 </div>
             </div>
@@ -50,8 +47,12 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-inbox"></i></div>
             <div class="content">
-                <h4><span class="count">1</span></h4>
-                <p>All Transactions</p>
+                {% if amount != 'None' %}
+                                <h4 class="mb-0">₹ {{ amount.level.amount }}</h4>
+                            {% else %}
+                                <h4 class="increamentcount mb-0">₹ 0</h4>
+                            {% endif %}
+                        <p class="small text-secondary">My Plan</p>
             </div>
         </div>
     </div>
@@ -59,8 +60,8 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-file-add"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">0</span></h4>
-                <p>Total Deposit</p>
+                <h4><b>₹</b><span class="count">{{ request.user.total_income }}</span></h4>
+                <p>Total Income</p>
             </div>
         </div>
     </div>
@@ -68,8 +69,8 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-check-square"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">0</span></h4>
-                <p>Total Investment</p>
+                <h4><b></b><span class="count">{{all}}</span></h4>
+                <p>My Team</p>
             </div>
         </div>
     </div>
@@ -77,8 +78,8 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-credit-card"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">5</span></h4>
-                <p>Total Profit</p>
+                <h4><b></b><span class="count">{{ directs }}</span></h4>
+                <p>My Directs</p>
             </div>
         </div>
     </div>
@@ -86,8 +87,8 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-arrow-right"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">0</span></h4>
-                <p>Total Transfer </p>
+                <h4><b>₹</b><span class="count">{{request.user.wallet|add:request.user.pool_wallet}}</span></h4>
+                <p>Withdrawal Wallet</p>
             </div>
         </div>
     </div>
@@ -95,8 +96,8 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-money-collect"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">0</span></h4>
-                <p>Total Withdraw</p>
+                <h4><b>₹</b><span class="count">{{request.user.today_income}}</span></h4>
+                <p>Today Income</p>
             </div>
         </div>
     </div>
@@ -104,9 +105,9 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-gift"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">0</span>
+                <h4><b>₹</b><span class="count">{{ request.user.total_business }}</span>
                 </h4>
-                <p>Referral Bonus</p>
+                <p>Total Business</p>
             </div>
         </div>
     </div>
@@ -114,8 +115,8 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-account-book"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">0</span></h4>
-                <p>Deposit Bonus</p>
+                <h4><b>₹</b><span class="count">{{ requewst.user.level_income }}</span></h4>
+                <p>Level Income</p>
             </div>
         </div>
     </div>
@@ -123,8 +124,8 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-gold"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">0</span></h4>
-                <p>Investment Bonus</p>
+                <h4><b>₹</b><span class="count">{{ request.user.direct_income }}</span></h4>
+                <p>Direct Income</p>
             </div>
         </div>
     </div>
@@ -132,8 +133,8 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-inbox"></i></div>
             <div class="content">
-                <h4 class="count">0</h4>
-                <p>Total Referral</p>
+                <h4 class="count">{{ request.user.pool_bonus }}</h4>
+                <p>Level Pool Bonus</p>
             </div>
         </div>
     </div>
@@ -142,20 +143,12 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-radar-chart"></i></div>
             <div class="content">
-                <h4 class="count">1</h4>
-                <p>Rank Achieved</p>
+                <h4 class="count">{{ request.user.partnership_bonus }}</h4>
+                <p>Partnership Bonus</p>
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-        <div class="single">
-            <div class="icon"><i class="anticon anticon-question"></i></div>
-            <div class="content">
-                <h4 class="count">0</h4>
-                <p>Total Ticket</p>
-            </div>
-        </div>
-    </div>
+    
 </div>
 
     
@@ -167,56 +160,57 @@
             </div>
             <div class="site-card-body table-responsive">
                 <div class="site-datatable">
-                    <table class="display data-table">
-                        <thead>
-                        <tr>
-                            <th>Description</th>
-                            <th>Transactions ID</th>
-                            <th>Type</th>
-                            <th>Amount</th>
-                            <th>Fee</th>
-                            <th>Status</th>
-                            <th>Gateway</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                                                    <tr>
-                                <td>
-                                    <div class="table-description">
-                                        <div class="icon">
-                                            <i icon-name="backpack
-                                         ">
-                                            </i>
-                                        </div>
-
-
-                                        <div class="description">
-                                            <strong>Signup Bonus                                             </strong>
-                                            <div class="date">Sep 22 2023 05:48</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><strong>TRXAFSEAXWLM6</strong></td>
-                                <td>
-                                    <div
-                                        class="site-badge primary-bg">Signup bonus</div>
-                                </td>
-
-                                <td><strong
-                                        class="green-color">+5 INR</strong>
-                                </td>
-                                <td><strong>0 INR</strong></td>
-                                <td>
-
-
-                                                                            <div class="site-badge success">Success</div>
-                                                                    </td>
-                                <td><strong>System</strong></td>
+                        <table class="table table-borderless footable footable-1 footable-paging footable-paging-center breakpoint breakpoint-sm" data-show-toggle="true" style="">
+                            <thead>
+                                <tr class="text-muted footable-header">	
+                                <th class="w-12 footable-sortable footable-first-visible" style="display: table-cell;"><span class="fooicon fooicon-sort"></span></th>
+                                <th class="footable-sortable" style="display: table-cell;">User ID<span class="fooicon fooicon-sort"></span></th>
+                                <th data-breakpoints="xs md" class="footable-sortable" style="display: table-cell;">Amount<span class="fooicon fooicon-sort"></span></th>
+                                <th data-breakpoints="xs" class="footable-sortable" style="display: table-cell;">Comment<span class="fooicon fooicon-sort"></span></th>
+                                <th data-breakpoints="xs md" class="footable-sortable" style="display: table-cell;">Date<span class="fooicon fooicon-sort"></span></th>
+                                <th data-breakpoints="xs md" class="footable-sortable" style="display: table-cell;">Status<span class="fooicon fooicon-sort"></span></th>
+                                <th data-breakpoints="all" data-title="Deliver to" class="footable-sortable" style="display: table-cell">txn ID<span class="fooicon fooicon-sort"></span></th>
+                                <th data-breakpoints="all" data-title="Address" class="footable-sortable" style="display: table-cell">Type<span class="fooicon fooicon-sort"></span></th>
+                                <th data-breakpoints="all" data-title="Location" class="footable-sortable" style="display: table-cell">Balance<span class="fooicon fooicon-sort"></span></th>
                             </tr>
-                        
-
-                                                </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {% for history in histories %}
+                                                                {% if history.type == 'hidden' %}
+                                                                {% else %}
+                                                                <tr>
+                                                                    <td class="footable-first-visible" style="display: table-cell;">{{ forloop.counter }}</td>
+                                                                    <td style="display: table-cell;">
+                                                                        {{ history.user_id }}
+                                                                        </td>
+                                                                        <td style="display: table-cell;">
+                                                                            <p class="mb-0">{{ history.amount }}</p>
+                                                                            <p class="text-secondary small">USD</p>
+                                                                        </td>
+                                                                        <td style="display: table-cell;">
+                                                                            <p class="mb-0">{{history.comment}}</p>
+                                                                        </td>
+                                                                        <td style="display: table-cell;">
+                                                                            <p class="mb-0">{{history.created_at}}</p>
+                                                                        </td>
+                                                                        <td style="display: table-cell;">
+                                                                            <p class="mb-0">Success</p>
+                                                                        </td>
+                                                                        <td style="display: table-cell;">
+                                                                            <p class="mb-0">{{history.txnid}}</p>
+                                                                        </td>
+                                                                        <td style="display: table-cell">
+                                                                            <p class="mb-0">{{history.type}}</p>
+                                                                        </td>
+                                                                        <td style="display: table-cell">
+                                                                            <p class="mb-0">{{history.balance}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endif %}
+                                                                {% endfor %}
+                            
+                                </tbody>
+                        </table>
                 </div>
             </div>
         </div>

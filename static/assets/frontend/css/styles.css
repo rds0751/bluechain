@@ -1889,7 +1889,7 @@ img {
 }
 
 .grad-btn {
-    background: linear-gradient(90deg, #b1abcf, #3cabff);
+    background: linear-gradient(90deg, #0041ff, #747f7d);
     color: #ffffff;
 }
 
@@ -2341,7 +2341,7 @@ img {
     top: -70px;
     width: 250px;
     height: 250px;
-    background: linear-gradient(90deg, #b1abcf, #3cabff);
+    background: linear-gradient(90deg, #0041ff, #747f7d);
     border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
     will-change: border-radius, transform, opacity;
     animation: sliderShape 5s linear infinite;
@@ -4260,7 +4260,7 @@ img {
 }
 
 .grad-btn {
-    background: linear-gradient(90deg, #b1abcf, #3cabff);
+    background: linear-gradient(90deg, #0041ff, #747f7d);
     color: #ffffff;
 }
 
@@ -4712,7 +4712,7 @@ img {
     top: -70px;
     width: 250px;
     height: 250px;
-    background: linear-gradient(90deg, #b1abcf, #3cabff);
+    background: linear-gradient(90deg, #0041ff, #747f7d);
     border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
     will-change: border-radius, transform, opacity;
     animation: sliderShape 5s linear infinite;
@@ -6504,7 +6504,7 @@ img {
     left: -60px;
     top: 50px;
     border-radius: 50%;
-    background: linear-gradient(90deg, #b1abcf, #3cabff);
+    background: linear-gradient(90deg, #0041ff, #747f7d);
     content: "";
     opacity: 0.6;
 }
@@ -9118,7 +9118,7 @@ img {
 }
 
 .side-wallet-box.default-wallet .user-balance-card {
-    background: linear-gradient(90deg, #b1abcf, #3cabff);
+    background: linear-gradient(90deg, #0041ff, #747f7d);
     padding: 15px;
     margin-bottom: 10px;
 }

@@ -15,6 +15,7 @@ urlpatterns = [
     url(r"^royalty/$", views.royalty, name="royalty"),
     url(r"^rank/$", views.rank, name="rank"),
     url(r"^roi/$", views.roi, name="roi"),
+    url(r"^direct/$", views.direct, name="direct"),
     url(r"^passive/$", views.passive, name="passive"),
     url(r"^community/$", views.community, name="community"),
     url(r"^staking/$", views.staking, name="staking"),
