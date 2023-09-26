@@ -21,7 +21,6 @@
                       {% widthratio request.user.wallet|add:request.user.pool_wallet 1 10 as c %}
                       {% widthratio request.user.wallet|add:request.user.pool_wallet 1 85 as inr %}
                       <h6>Available Balance: $ {{ request.user.wallet|add:request.user.pool_wallet }}</h6>
-                      <h6>Available Balance: BNXG {{ c }}</h6>
                       <h6>Available Balance: INR {{ inr }}</h6>
                     <div class="row">
                     <div class="col">
