@@ -9,7 +9,6 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.template import RequestContext
 from django.conf.urls import url
-from debug_toolbar import urls as durls
 from django.conf.urls import re_path
 from users import views
 
