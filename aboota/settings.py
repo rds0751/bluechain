@@ -151,7 +151,7 @@ WSGI_APPLICATION = 'aboota.wsgi.application'
 import dj_database_url
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://dbmasteruser:LuN5EfVkW]oTctgvsSF8fbS4h[W|pxfrcgv0E8T@ls-9ab1cde4693443fe85dfc92bd0ef5370b47c63cf.c9lbdzu14me5.ap-south-1.rds.amazonaws.com:5432/postgres',
+        default='postgres://dbmasteruser:smarty24@ls-f9a60e00eb64305dc28372013967ca0601dc4543.cirkt2igw5rd.ap-southeast-1.rds.amazonaws.com:5432/postgres',
         conn_max_age=600)}
 
 ATOMIC_REQUESTS = True
