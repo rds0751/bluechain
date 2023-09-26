@@ -30,7 +30,6 @@ urlpatterns = [
     
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('wallet/', include('wallets.urls', namespace="wallet")),
-    url(r'api/', include('api.urls')),
     url(r"register/(?P<use>\w{0,50})/", views.referalsignup, name="refersignup"),
     path('contact/', TemplateView.as_view(template_name='contact.html')),
     path('', TemplateView.as_view(template_name='apnabase.html')),
@@ -40,7 +39,6 @@ urlpatterns = [
     path('m2/admin/', include('panel.urls', namespace="panel")),
     path('search/', include("search.urls", namespace="searchy")),
     path("signup/onboarding/", views.signuponboarding, name="signup-onboarding"),
-    path("api-auth/", include("rest_framework.urls")),
     path('plan/', RedirectView.as_view(url=staticfiles_storage.url("m2plusplan.pdf")),)
 ]
 if settings.DEBUG:
