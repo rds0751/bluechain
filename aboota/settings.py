@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'storages',
     # "taggit",
     "home",
+    "kyc",
 ]
 
 

@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
     path('accounts/login/', views.customlogin, name='customlogin'),
     path('accounts/', include("allauth.urls")),
+    url(r'^kyc/', include('kyc.urls')),
     
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('wallet/', include('wallets.urls', namespace="wallet")),
