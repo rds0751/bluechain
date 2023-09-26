@@ -9,7 +9,6 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.template import RequestContext
 from django.conf.urls import url
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from debug_toolbar import urls as durls
 from django.conf.urls import re_path
 from users import views
@@ -43,8 +42,6 @@ urlpatterns = [
     path('search/', include("search.urls", namespace="searchy")),
     path("signup/onboarding/", views.signuponboarding, name="signup-onboarding"),
     path("api-auth/", include("rest_framework.urls")),
-    path("api/token/", TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path("api/token/refresh/", TokenRefreshView.as_view(), name='token_refresh'),
     path('plan/', RedirectView.as_view(url=staticfiles_storage.url("m2plusplan.pdf")),)
 ]
 if settings.DEBUG:
