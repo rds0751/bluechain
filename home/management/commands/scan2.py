@@ -63,7 +63,7 @@ class Command(BaseCommand):
 		for x in l:
 			directs = LevelUser.objects.filter(direct=x.user).count()
 			time_difference = timezone.now() - x.activated_at
-			days_difference = time_difference.days
+			days_difference = 3
 			roi = x.level.amount * 0.005 + x.level.amount * 0.005 * 0.01 * directs
 			count = 0
 			for d in range(0,days_difference):

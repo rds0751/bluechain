@@ -349,28 +349,18 @@ def activate(user, amount):
                     upline = 'blank'    
                 return upline   
 
-            levels = {  
-                'level1': 1/100,  
-                'level2': 1.5/100, 
-                'level3': 1/100, 
-                'level4': 2.5/100, 
-                'level5': 3/100, 
-                'level6': 2.5/100, 
-                'level7': 2/100, 
-                'level8': 1.5/100,
-                'level9': 1/100,
-                'level10': 1/100,
-                'level11': 1/100,  
-                'level12': 1/100, 
-                'level13': 1/100, 
-                'level14': 1/100, 
-                'level15': 1/100, 
-                'level16': 1/100, 
-                'level17': 1/100, 
-                'level18': 1/100,
-                'level19': 1/100,
-                'level20': 1/100 
-                }
+            levels = {
+            'level1': 20/100, 
+            'level2': 10/100,
+            'level3': 8/100,
+            'level4': 8/100,
+            'level5': 6/100,
+            'level6': 5/100,
+            'level7': 2/100,
+            'level8': 1/100,
+            'level9': 0.5/100,
+            'level10': 0.5/100,
+            }
 
             level = 0   
             upline_user = userid.referral    
@@ -431,7 +421,7 @@ def activate(user, amount):
                             upline_user.progress += upline_amount
                             upline_user.save()
                             upline_user = User.objects.get(username=upline)
-                    if directs.count() >= level/2:
+                    if directs.count() >= level:
                         upline_amount = levels['level{}'.format(level+1)]*amount
                         upline_wallet = WalletHistory()
                         upline_wallet.user_id = upline
