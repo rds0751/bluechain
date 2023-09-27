@@ -21,8 +21,8 @@
                                        {% csrf_token %}
                                        <h5>Purchase Package</h5>
                                        <h5>Scan, Pay, and push the submit button after cmpletion!</h5>
-                                       <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=0xdEe1d2e52cfd28d851229A06cfE428E356044059&choe=UTF-8" style="width: 150px;">
-                                       <p>0xdEe1d2e52cfd28d851229A06cfE428E356044059</p>
+                                       <img src="{% static 'qr.png' %}" style="width: 150px;">
+                                       
                                        
                                        <div class="input-group input-group-lg">
                                         <span class="input-group-text text-theme border-end-0"><i class="bi bi-person"></i></span>
