@@ -1650,7 +1650,7 @@ img {
 }
 
 .green-color {
-    color: #2a9d8f;
+    color: #ffc300;
 }
 
 .red-color {
@@ -1769,7 +1769,7 @@ img {
     font-size: 16px;
     text-transform: uppercase;
     margin-bottom: 10px;
-    color: #2a9d8f;
+    color: #ffc300;
 }
 
 .section-title h2 {
@@ -1888,7 +1888,7 @@ img {
 }
 
 .grad-btn {
-    background: linear-gradient(90deg, #0041ff, #747f7d);
+    background: linear-gradient(90deg, #0041ff, #ffc300);
     color: #ffffff;
 }
 
@@ -2162,7 +2162,7 @@ img {
     line-height: 50px;
     border-radius: 50%;
     text-align: center;
-    background: rgba(255, 195, 0, 0.5);
+    background: #ffc300;
     color: #001219;
     margin-right: 8px;
     display: inline-block;
@@ -2179,7 +2179,7 @@ img {
 }
 
 .site-badge.badge-success {
-    background: #2a9d8f;
+    background: #ffc300;
 }
 
 .site-badge.badge-failed {
@@ -2343,7 +2343,7 @@ img {
     top: -70px;
     width: 250px;
     height: 250px;
-    background: linear-gradient(90deg, #0041ff, #747f7d);
+    background: linear-gradient(90deg, #0041ff, #ffc300);
     border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
     will-change: border-radius, transform, opacity;
     animation: sliderShape 5s linear infinite;
@@ -2523,7 +2523,7 @@ img {
 
 .dark-theme .panel-layout .site-card .site-card-body .progress-steps .single-step {
     background: rgba(42, 157, 143, 0.3);
-    border-color: rgba(255, 195, 0, 0.5);
+    border-color: #ffc300;
 }
 
 .dark-theme .panel-layout .site-card .site-card-body .progress-steps .single-step .content h4 {
@@ -2780,7 +2780,7 @@ img {
 
 .dark-theme .site-card .site-card-body .progress-steps .single-step {
     background: rgba(42, 157, 143, 0.3);
-    border-color: rgba(255, 195, 0, 0.5);
+    border-color: #ffc300;
 }
 
 .dark-theme .site-card .site-card-body .progress-steps .single-step .content h4 {
@@ -2962,7 +2962,7 @@ img {
 }
 
 .dark-theme .site-datatable .data-table tbody tr td .site-badge.success {
-    background: #2a9d8f;
+    background: #ffc300;
 }
 
 .dark-theme .site-datatable .data-table tbody tr td .site-badge.failed {
@@ -2979,7 +2979,7 @@ img {
 }
 
 .dark-theme .site-datatable .data-table tbody tr td .link:hover {
-    color: #2a9d8f;
+    color: #ffc300;
 }
 
 .dark-theme .site-datatable .data-table tbody tr td .investment-timeline {

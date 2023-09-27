@@ -19,7 +19,8 @@
             </div>
         </div>
     </div>
-            <div class="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
+    {% if amount != 'None' %}
+    <div class="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
             <div class="site-card">
                 <div class="site-card-header">
                     <h3 class="title">Referral URL</h3>
@@ -38,6 +39,10 @@
                 </div>
             </div>
         </div>
+    {% else %}
+    <div class="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12"></div>
+    {% endif %}
+            
     
 </div>
 
@@ -48,11 +53,11 @@
             <div class="icon"><i class="anticon anticon-inbox"></i></div>
             <div class="content">
                 {% if amount != 'None' %}
-                                <h4 class="mb-0">₹ {{ amount.level.amount }}</h4>
+                                <h4 class="mb-0"><b>₹</b><span class="count">{{ amount.level.amount }}</span></h4>
                             {% else %}
                                 <h4 class="increamentcount mb-0">₹ 0</h4>
                             {% endif %}
-                        <p class="small text-secondary">My Plan</p>
+                        <p class="small">My Plan</p>
             </div>
         </div>
     </div>
@@ -133,7 +138,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-inbox"></i></div>
             <div class="content">
-                <h4 class="count">{{ request.user.pool_bonus }}</h4>
+                <h4 class="count"><b>₹</b><span class="count">{{ request.user.pool_bonus }}</span></h4>
                 <p>Level Pool Bonus</p>
             </div>
         </div>
@@ -143,7 +148,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-radar-chart"></i></div>
             <div class="content">
-                <h4 class="count">{{ request.user.partnership_bonus }}</h4>
+                <h4 class="count"><b>₹</b><span class="count">{{ request.user.partnership_bonus }}</span></h4>
                 <p>Partnership Pool Bonus</p>
             </div>
         </div>

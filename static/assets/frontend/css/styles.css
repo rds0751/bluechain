@@ -1650,7 +1650,7 @@ img {
 }
 
 .green-color {
-    color: #2a9d8f;
+    color: #ffc300;
 }
 
 .red-color {
@@ -1769,7 +1769,7 @@ img {
     font-size: 16px;
     text-transform: uppercase;
     margin-bottom: 10px;
-    color: #2a9d8f;
+    color: #ffc300;
 }
 
 .section-title h2 {
@@ -1889,7 +1889,7 @@ img {
 }
 
 .grad-btn {
-    background: linear-gradient(90deg, #0041ff, #747f7d);
+    background: linear-gradient(90deg, #0041ff, #ffc300);
     color: #ffffff;
 }
 
@@ -2163,7 +2163,7 @@ img {
     line-height: 50px;
     border-radius: 50%;
     text-align: center;
-    background: rgba(255, 195, 0, 0.5);
+    background: #ffc300;
     color: #001219;
     margin-right: 8px;
     display: inline-block;
@@ -2180,7 +2180,7 @@ img {
 }
 
 .site-badge.badge-success {
-    background: #2a9d8f;
+    background: #ffc300;
 }
 
 .site-badge.badge-failed {
@@ -2341,7 +2341,7 @@ img {
     top: -70px;
     width: 250px;
     height: 250px;
-    background: linear-gradient(90deg, #0041ff, #747f7d);
+    background: linear-gradient(90deg, #0041ff, #ffc300);
     border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
     will-change: border-radius, transform, opacity;
     animation: sliderShape 5s linear infinite;
@@ -4021,7 +4021,7 @@ img {
 }
 
 .green-color {
-    color: #2a9d8f;
+    color: #ffc300;
 }
 
 .red-color {
@@ -4140,7 +4140,7 @@ img {
     font-size: 16px;
     text-transform: uppercase;
     margin-bottom: 10px;
-    color: #2a9d8f;
+    color: #ffc300;
 }
 
 .section-title h2 {
@@ -4260,7 +4260,7 @@ img {
 }
 
 .grad-btn {
-    background: linear-gradient(90deg, #0041ff, #747f7d);
+    background: linear-gradient(90deg, #0041ff, #ffc300);
     color: #ffffff;
 }
 
@@ -4534,7 +4534,7 @@ img {
     line-height: 50px;
     border-radius: 50%;
     text-align: center;
-    background: rgba(255, 195, 0, 0.5);
+    background: #ffc300;
     color: #001219;
     margin-right: 8px;
     display: inline-block;
@@ -4551,7 +4551,7 @@ img {
 }
 
 .site-badge.badge-success {
-    background: #2a9d8f;
+    background: #ffc300;
 }
 
 .site-badge.badge-failed {
@@ -4712,7 +4712,7 @@ img {
     top: -70px;
     width: 250px;
     height: 250px;
-    background: linear-gradient(90deg, #0041ff, #747f7d);
+    background: linear-gradient(90deg, #0041ff, #ffc300);
     border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
     will-change: border-radius, transform, opacity;
     animation: sliderShape 5s linear infinite;
@@ -4899,7 +4899,7 @@ img {
 
 .dark-theme .panel-layout .site-card .site-card-body .progress-steps .single-step {
     background: rgba(42, 157, 143, 0.3);
-    border-color: rgba(255, 195, 0, 0.5);
+    border-color: #ffc300;
 }
 
 .dark-theme .panel-layout .site-card .site-card-body .progress-steps .single-step .content h4 {
@@ -5156,7 +5156,7 @@ img {
 
 .dark-theme .site-card .site-card-body .progress-steps .single-step {
     background: rgba(42, 157, 143, 0.3);
-    border-color: rgba(255, 195, 0, 0.5);
+    border-color: #ffc300;
 }
 
 .dark-theme .site-card .site-card-body .progress-steps .single-step .content h4 {
@@ -5338,7 +5338,7 @@ img {
 }
 
 .dark-theme .site-datatable .data-table tbody tr td .site-badge.success {
-    background: #2a9d8f;
+    background: #ffc300;
 }
 
 .dark-theme .site-datatable .data-table tbody tr td .site-badge.failed {
@@ -5355,7 +5355,7 @@ img {
 }
 
 .dark-theme .site-datatable .data-table tbody tr td .link:hover {
-    color: #2a9d8f;
+    color: #ffc300;
 }
 
 .dark-theme .site-datatable .data-table tbody tr td .investment-timeline {
@@ -5481,7 +5481,7 @@ img {
 }
 
 .dark-theme .support-ticket-single-message .message-attachments .single-attachment .attach a {
-    color: #2a9d8f;
+    color: #ffc300;
 }
 
 .dark-theme .about-us .about-content .content {
@@ -6165,7 +6165,7 @@ img {
 }
 
 .earnings-calculator .single-box .input-group .form-control:disabled {
-    color: #2a9d8f;
+    color: #ffc300;
     border-color: rgba(42, 157, 143, 0.5);
 }
 
@@ -6504,7 +6504,7 @@ img {
     left: -60px;
     top: 50px;
     border-radius: 50%;
-    background: linear-gradient(90deg, #0041ff, #747f7d);
+    background: linear-gradient(90deg, #0041ff, #ffc300);
     content: "";
     opacity: 0.6;
 }
@@ -7437,7 +7437,7 @@ img {
     background: #0d6efd7;
     padding: 20px;
     border-radius: 8px;
-    border: 2px solid rgba(255, 195, 0, 0.5);
+    border: 2px solid #ffc300;
     margin-bottom: 30px;
     transition: 0.4s;
     cursor: default;
@@ -7454,7 +7454,7 @@ img {
     width: 65px;
     content: "";
     border-radius: 50%;
-    background: rgba(255, 195, 0, 0.5);
+    background: #ffc300;
     right: -25px;
     top: -25px;
 }
@@ -7578,7 +7578,7 @@ img {
 }
 
 .transaction-list .table tbody tr td .success {
-    background: #2a9d8f;
+    background: #ffc300;
 }
 
 .transaction-list .table tbody tr td .completed {
@@ -7590,7 +7590,7 @@ img {
     margin-bottom: 30px;
     height: 200px;
     width: 200px;
-    background: #5364f1;
+    background: #0041ff;
     border-radius: 50%;
     text-align: center;
     display: flex;
@@ -7642,7 +7642,7 @@ img {
     border-radius: 50%;
     right: 0px;
     top: 0px;
-    background: #5364f1;
+    background: #0041ff;
     line-height: 34px;
     border: 5px solid #ffc300;
 }
@@ -7830,7 +7830,7 @@ img {
 
 .progress-steps .single-step.current {
     opacity: 1;
-    background: #2a9d8f;
+    background: #ffc300;
 }
 
 .progress-steps .single-step.current::after {
@@ -8061,7 +8061,7 @@ img {
 }
 
 .progress-steps-form .transaction-status .icon.success {
-    background: #2a9d8f;
+    background: #ffc300;
 }
 
 .progress-steps-form .transaction-status .icon.cancelled {
@@ -9086,7 +9086,7 @@ img {
 
 .side-wallet-box .actions .user-sidebar-btn {
     width: 48%;
-    background: #5364f1;
+    background: #0041ff;
     padding: 10px 12px;
     border-radius: 4px;
     font-size: 16px;
@@ -9095,7 +9095,7 @@ img {
 }
 
 .side-wallet-box .actions .user-sidebar-btn:last-of-type {
-    background: #2a9d8f;
+    background: #ffc300;
     color: #ffffff;
     border-radius: 4px;
 }
@@ -9118,7 +9118,7 @@ img {
 }
 
 .side-wallet-box.default-wallet .user-balance-card {
-    background: linear-gradient(90deg, #0041ff, #747f7d);
+    background: linear-gradient(90deg, #0041ff, #ffc300);
     padding: 15px;
     margin-bottom: 10px;
 }
@@ -9184,7 +9184,7 @@ img {
     background: #0041ff;
     padding: 20px 15px;
     border-radius: 8px;
-    border: 2px solid rgba(255, 195, 0, 0.5);
+    border: 2px solid #ffc300;
     margin-bottom: 30px;
     transition: 0.4s;
     cursor: default;
@@ -9201,7 +9201,7 @@ img {
     width: 65px;
     content: "";
     border-radius: 50%;
-    background: rgba(255, 195, 0, 0.5);
+    background: #ffc300;
     right: -25px;
     top: -25px;
 }
@@ -9347,7 +9347,7 @@ img {
 }
 
 .site-transactions .single .right .amount .net.in {
-    color: #2a9d8f;
+    color: #ffc300;
 }
 
 .site-transactions .single .right .amount .net.out {
@@ -9604,7 +9604,7 @@ img {
 
 .access-device .content p .this-device {
     margin-left: 10px;
-    color: #2a9d8f;
+    color: #ffc300;
 }
 
 .access-device .content p .time {
@@ -9769,7 +9769,7 @@ img {
 }
 
 .site-datatable .data-table tbody tr td .site-badge.success {
-    background: #2a9d8f;
+    background: #ffc300;
 }
 
 .site-datatable .data-table tbody tr td .site-badge.failed {
@@ -9792,7 +9792,7 @@ img {
 }
 
 .site-datatable .data-table tbody tr td .link:hover {
-    color: #2a9d8f;
+    color: #ffc300;
 }
 
 .site-datatable .data-table tbody tr td .clock {
@@ -9875,7 +9875,7 @@ img {
 }
 
 .site-datatable .data-table tbody tr:nth-of-type(4n + 4) td .avatar-text {
-    background: #2a9d8f;
+    background: #ffc300;
 }
 
 .site-datatable .data-table tbody tr:nth-of-type(4n + 5) td .avatar-text {
@@ -10191,7 +10191,7 @@ img {
     content: "";
     left: 0;
     top: 0;
-    background: #2a9d8f;
+    background: #ffc300;
     opacity: 0.7;
     z-index: -1;
 }
@@ -10263,7 +10263,7 @@ img {
 }
 
 .site-badge.success {
-    background: #2a9d8f;
+    background: #ffc300;
 }
 
 .site-badge.failed {
@@ -10510,7 +10510,7 @@ img {
 .management-hierarchy .person>img {
     height: 50px;
     width: 50px;
-    border: 3px solid #5364f1;
+    border: 3px solid #0041ff;
     border-radius: 50%;
     overflow: hidden;
     background-color: #fff;
@@ -10520,7 +10520,7 @@ img {
     height: 50px;
     width: 50px;
     line-height: 43px;
-    border: 3px solid #5364f1;
+    border: 3px solid #0041ff;
     border-radius: 50%;
     overflow: hidden;
     background-color: #0d6efd7;
@@ -10532,7 +10532,7 @@ img {
 }
 
 .management-hierarchy .person>p.name {
-    background-color: #5364f1;
+    background-color: #0041ff;
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 12px;

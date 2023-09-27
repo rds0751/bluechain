@@ -144,7 +144,7 @@ img {
 }
 
 .green-color {
-    color: #2a9d8f;
+    color: #ffc300;
 }
 
 /* Backgrounds */
@@ -331,7 +331,7 @@ img {
 }
 
 .green-btn {
-    background: #2a9d8f;
+    background: #ffc300;
     color: #ffffff;
 }
 
@@ -690,7 +690,7 @@ img {
 }
 
 .can-toggle.demo-rebrand-1 input[type="checkbox"]:checked:focus ~ label .can-toggle__switch, .can-toggle.demo-rebrand-1 input[type="checkbox"]:checked:hover ~ label .can-toggle__switch {
-    background-color: #2a9d8f;
+    background-color: #ffc300;
 }
 
 .can-toggle.demo-rebrand-1 input[type="checkbox"]:checked:focus ~ label .can-toggle__switch:after, .can-toggle.demo-rebrand-1 input[type="checkbox"]:checked:hover ~ label .can-toggle__switch:after {
@@ -744,7 +744,7 @@ img {
 }
 
 .can-toggle.demo-rebrand-2 input[type="checkbox"]:checked:focus ~ label .can-toggle__switch, .can-toggle.demo-rebrand-2 input[type="checkbox"]:checked:hover ~ label .can-toggle__switch {
-    background-color: #2a9d8f;
+    background-color: #ffc300;
 }
 
 .can-toggle.demo-rebrand-2 input[type="checkbox"]:checked:focus ~ label .can-toggle__switch:after, .can-toggle.demo-rebrand-2 input[type="checkbox"]:checked:hover ~ label .can-toggle__switch:after {
@@ -1221,11 +1221,11 @@ img {
 
 .notify-live.notify--info {
     box-shadow: none;
-    border: 1px solid #2a9d8f;
+    border: 1px solid #ffc300;
 }
 
 .notify-live.notify--info .notify__icon {
-    background: #2a9d8f;
+    background: #ffc300;
     border-radius: 50%;
     color: #ffffff;
 }
@@ -1235,7 +1235,7 @@ img {
 }
 
 .notify-live.notify--info::before {
-    background-color: #2a9d8f !important;
+    background-color: #ffc300 !important;
 }
 
 /*# sourceMappingURL=utility.css.map */
