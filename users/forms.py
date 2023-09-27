@@ -27,11 +27,11 @@ class SimpleSignupForm(SignupForm):
 	def clean_username(self):
 		def generateuser():
 			r = random.randint(100001,999999)
-			u = User.objects.filter(username='BN{}'.format(r)).count()
+			u = User.objects.filter(username='BT{}'.format(r)).count()
 			if u > 0:
 				generateuser()
 			else:
-				return 'BN{}'.format(r)
+				return 'BT{}'.format(r)
 		u = generateuser()
 		username = u
 		return username
@@ -44,7 +44,7 @@ class SimpleSignupForm(SignupForm):
 		except Exception as e:
 			userr = 'blank'
 		if userr == 'blank':
-			referral = 'BN999999'
+			referral = 'BT999999'
 		plan = LevelUser()
 		plan.user = user
 		plan.level = LevelIncomeSettings.objects.get(id=5010)
