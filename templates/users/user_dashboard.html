@@ -20,27 +20,27 @@
         </div>
     </div>
     {% if amount != 'None' %}
+    <div class="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12"></div>
+    {% else %}
     <div class="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
-            <div class="site-card">
-                <div class="site-card-header">
-                    <h3 class="title">Referral URL</h3>
-                </div>
-                <div class="site-card-body">
-                    <div class="referral-link">
-                        <div class="referral-link-form">
-                            <input type="text" value="https://www.bizztrixx.com/register/{{ request.user.username }}" id="refLink"/>
-                            <button type="submit" onclick="copyRef()">
-                                <i class="anticon anticon-copy"></i>
-                                <span id="copy">Copy Url</span>
-                                <input id="copied" hidden value="Copied">
-                            </button>
-                        </div>
+        <div class="site-card">
+            <div class="site-card-header">
+                <h3 class="title">Referral URL</h3>
+            </div>
+            <div class="site-card-body">
+                <div class="referral-link">
+                    <div class="referral-link-form">
+                        <input type="text" value="https://www.bizztrixx.com/register/{{ request.user.username }}" id="refLink"/>
+                        <button type="submit" onclick="copyRef()">
+                            <i class="anticon anticon-copy"></i>
+                            <span id="copy">Copy Url</span>
+                            <input id="copied" hidden value="Copied">
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    {% else %}
-    <div class="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12"></div>
+    </div>
     {% endif %}
             
     
@@ -138,7 +138,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-inbox"></i></div>
             <div class="content">
-                <h4 class="count"><b>₹</b><span class="count">{{ request.user.pool_bonus }}</span></h4>
+                <h4 class="count"><b>₹</b><span class="count">0.0</span></h4>
                 <p>Level Pool Bonus</p>
             </div>
         </div>
@@ -148,7 +148,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-radar-chart"></i></div>
             <div class="content">
-                <h4 class="count"><b>₹</b><span class="count">{{ request.user.partnership_bonus }}</span></h4>
+                <h4 class="count"><b>₹</b><span class="count">0.0</span></h4>
                 <p>Partnership Pool Bonus</p>
             </div>
         </div>
