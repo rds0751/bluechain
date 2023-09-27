@@ -25,14 +25,14 @@
                 <h3 class="title">Referral URL</h3>
             </div>
             <div class="site-card-body">
-                <div class="referral-link">
-                    <div class="referral-link-form">
-                        <input type="text" value="https://www.bizztrixx.com/register/{{ request.user.username }}" id="refLink"/>
-                        <button type="submit" onclick="copyRef()">
-                            <i class="anticon anticon-copy"></i>
-                            <span id="copy">Copy Url</span>
-                            <input id="copied" hidden value="Copied">
-                        </button>
+                <div class="card bg-gradient-theme-light theme-purple border-0 mb-4">
+                    <div class="card-body">
+                        <p class="text-secondary">https://bizztrixx.com/register/{{ request.user.username }}</p>
+                        <input type="input" style="width:20px; position:absolute; z-index: -100 !important;" value="https:/bizztrixx.com/register/{{ user.username }}" id="copy-to-clipboard-input">
+                    </div>
+                    <div class="card-footer text-center">
+                        <a onclick="myyFunction()" class="btn btn-success">Copy</a>
+                        <a href="whatsapp://send?text=https://bizztrixx.com/register/{{ user.username }}" class="btn btn-danger">Share</a>
                     </div>
                 </div>
             </div>
@@ -216,5 +216,13 @@
             </div>
         </div>
     </div>
-    <style>
+    <script>
+        function myyFunction() {
+          var copyText = document.getElementById("copy-to-clipboard-input");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999)
+          document.execCommand("copy");
+          alert("Copied the link: " + copyText.value);
+        }
+        </script>
     {% endblock content %}
