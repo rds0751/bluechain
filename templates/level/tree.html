@@ -254,7 +254,7 @@
                               <td>{{ usern.username }}</td>
                               <td><a href="tel:{{ usern.mobile }}">{{ usern.mobile }}</a></td>
                               <td>₹ {{ shopn.level.amount }}</td>
-                              <td>₹ {% mul shopn.level.amount 0.01 as shopnres %}{{ shopnres }}</td>
+                              <td>₹ {% mul shopn.level.amount 0.2 as shopnres %}{{ shopnres }}</td>
                               <td><a href="/level/team/{{ usern.username }}/1/">View</a></td>
                               {% endfor %}
                           </tbody>
@@ -287,7 +287,7 @@
                               <td>{{ level2nu.username }}</td>
                               <td>{{ level2nu.referral }}</td>
                               <td>₹ {{ level2n.level.amount }}</td>
-                              <td>₹ {% mul level2n.level.amount 0.10 as level2nres %}{{ level2nres }}</td>
+                              <td>₹ {% mul level2n.level.amount 0.1 as level2nres %}{{ level2nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -354,7 +354,7 @@
                               <td>{{ level4nu.username }}</td>
                               <td>{{ level4n.direct }}</td>
                               <td>₹ {{ level4n.level.amount }}</td>
-                              <td>₹ {% mul level4n.level.amount 0.06 as level4nres %}{{ level4nres }}</td>
+                              <td>₹ {% mul level4n.level.amount 0.08 as level4nres %}{{ level4nres }}</td>
                             </tr>
                               {% endfor %}
                           </tbody>
@@ -387,7 +387,7 @@
                               <td>{{ level5nu.username }}</td>
                               <td>{{ level5n.direct }}</td>
                               <td>₹ {{ level5n.level.amount }}</td>
-                              <td>₹ {% mul level5n.level.amount 0.04 as level5nres %}{{ level5nres }}</td>
+                              <td>₹ {% mul level5n.level.amount 0.06 as level5nres %}{{ level5nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -420,7 +420,7 @@
                               <td>{{ level6nu.username }}</td>
                               <td>{{ level6n.direct }}</td>
                               <td>₹ {{ level6n.level.amount }}</td>
-                              <td>₹ {% mul level6n.level.amount 0.02 as level6nres %}{{ level6nres }}</td>
+                              <td>₹ {% mul level6n.level.amount 0.05 as level6nres %}{{ level6nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -486,7 +486,7 @@
                               <td>{{ level8nu.username }}</td>
                               <td>{{ level8n.direct }}</td>
                               <td>₹ {{ level8n.level.amount }}</td>
-                              <td>₹ {% mul level8n.level.amount 0.08 as level8nres %}{{ level8nres }}</td>
+                              <td>₹ {% mul level8n.level.amount 0.01 as level8nres %}{{ level8nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -519,7 +519,7 @@
                               <td>{{ level9nu.username }}</td>
                               <td>{{ level9n.direct }}</td>
                               <td>₹ {{ level9n.level.amount }}</td>
-                              <td>₹ {% mul level9n.level.amount 0.09 as level9nres %}{{ level9nres }}</td>
+                              <td>₹ {% mul level9n.level.amount 0.005 as level9nres %}{{ level9nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -552,7 +552,7 @@
                               <td>{{ level10nu.username }}</td>
                               <td>{{ level10n.direct }}</td>
                               <td>₹ {{ level10n.level.amount }}</td>
-                              <td>₹ {% mul level10n.level.amount 0.010 as level10nres %}{{ level10nres }}</td>
+                              <td>₹ {% mul level10n.level.amount 0.005 as level10nres %}{{ level10nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>

@@ -350,7 +350,7 @@ def activate(user, amount):
                 return upline   
 
             levels = {
-            'level1': 20/100, 
+            'level1': 0/100, 
             'level2': 10/100,
             'level3': 8/100,
             'level4': 8/100,
