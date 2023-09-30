@@ -42,7 +42,7 @@ def leveltree(request, user, level):
         s = LevelUser.objects.get(user=user.username)
     except Exception as e:
         s = e
-    directs = LevelUser.objects.filter(direct=user).count()
+    directs = LevelUser.objects.filter(direct=user, active=True).count()
     level1 = LevelUser.objects.filter(direct=user.username).order_by('id')
     level1n = []
     for x in level1:
