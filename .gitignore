@@ -446,3 +446,4 @@ dist
 .pnp.*
 
 .env
+/aboota/.env
