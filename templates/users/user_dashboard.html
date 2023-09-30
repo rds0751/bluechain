@@ -25,14 +25,14 @@
                 <h3 class="title">Referral URL</h3>
             </div>
             <div class="site-card-body">
-                <div class="card bg-gradient-theme-light theme-purple border-0 mb-4">
-                    <div class="card-body">
-                        <p class="text-secondary">https://bizztrixx.com/register/{{ request.user.username }}</p>
-                        <input type="input" style="width:20px; position:absolute; z-index: -100 !important;" value="https:/bizztrixx.com/register/{{ user.username }}" id="copy-to-clipboard-input">
+                <div class="row bg-gradient-theme-light theme-purple border-0 mb-2 row">
+                    <div class="col-sm-6 col-lg-9">
+                        <p class="text-secondary">https://bizztrixx.com/register/BT111111</p>
+                        <input type="input" style="width:20px; position:absolute; display: none;" value="https:/bizztrixx.com/register/BT111111" id="copy-to-clipboard-input">
                     </div>
-                    <div class="card-footer text-center">
+                    <div class="col-sm-6 col-lg-3 text-center">
                         <a onclick="myyFunction()" class="btn btn-success">Copy</a>
-                        <a href="whatsapp://send?text=https://bizztrixx.com/register/{{ user.username }}" class="btn btn-danger">Share</a>
+                        <a href="whatsapp://send?text=https://bizztrixx.com/register/BT111111" class="btn btn-danger">Share</a>
                     </div>
                 </div>
             </div>
