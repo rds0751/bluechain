@@ -92,7 +92,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-credit-card"></i></div>
             <div class="content">
-                <h4><b></b><span class="count">{{ directs|floatformat:2 }}</span></h4>
+                <h4><b></b><span class="count">{{ directs }}</span></h4>
                 <p>My Directs</p>
             </div>
         </div>
@@ -101,7 +101,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-arrow-right"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">{{request.user.wallet|add:request.user.pool_wallet}}</span></h4>
+                <h4><b>₹</b><span class="count">{{request.user.wallet|add:request.user.pool_wallet|floatformat:2 }}</span></h4>
                 <p>Withdrawal Wallet</p>
             </div>
         </div>
@@ -110,7 +110,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-money-collect"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">{{request.user.today_income}}</span></h4>
+                <h4><b>₹</b><span class="count">{{request.user.today_income|floatformat:2 }}</span></h4>
                 <p>Today Income</p>
             </div>
         </div>
