@@ -24,22 +24,22 @@ Primary Use:    BizzTrix Learning Website
 -------------------------------------------*/
 
 // Veriables
-$primary: #0d6efd7;
+$primary: #0041ff7;
 $black: #001219;
-$blue: #0041ff;
+$blue: #0d6efd;
 $blue2: #020d24;
-$blue3: #0041ff;
+$blue3: #0d6efd;
 $gray: #d2d3d8;
 $red: #ef476f;
 $yellow: #ffc300;
-$light-blue: #0d6efd;
+$light-blue: #0041ff;
 $green: #ffc300;
 $white: #ffffff;
 
 $grad-bg: linear-gradient(95deg, #059dff 15%, #6549d5 45%, #e33fa1 75%, #fb5343) 95%/200% 100%;
 $grad-bg-2: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
 $grad-bg-3: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
-$grad-bg-4: linear-gradient(90deg, #0041ff, #ffc300);
+$grad-bg-4: linear-gradient(90deg, #0d6efd, #ffc300);
 
 /* Font Family Sofia Pro */
 @font-face {
@@ -2372,7 +2372,7 @@ img {
         width: 250px;
         height: 250px;
         // background: rgba($white, $alpha: 0.3);
-        background: linear-gradient(90deg, #0041ff, #ffc300);
+        background: linear-gradient(90deg, #0d6efd, #ffc300);
         border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
         will-change: border-radius, transform, opacity;
         animation: sliderShape 5s linear infinite;

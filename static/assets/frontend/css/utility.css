@@ -1634,11 +1634,11 @@ img {
 }
 
 .blue-color {
-    color: #0041ff;
+    color: #0d6efd;
 }
 
 .primary-color {
-    color: #0d6efd7;
+    color: #0041ff7;
 }
 
 .white-color {
@@ -1663,11 +1663,11 @@ img {
 }
 
 .blue-bg {
-    background: #0041ff;
+    background: #0d6efd;
 }
 
 .primary-bg {
-    background: #0d6efd7;
+    background: #0041ff7;
 }
 
 .gray-bg {
@@ -1675,7 +1675,7 @@ img {
 }
 
 .light-blue-bg {
-    background: #0d6efd;
+    background: #0041ff;
 }
 
 .dark-blue-bg {
@@ -1694,7 +1694,7 @@ img {
     top: 0;
     height: 100%;
     width: 100%;
-    background: #0041ff;
+    background: #0d6efd;
     content: "";
     z-index: -1;
     opacity: 0.6;
@@ -1712,7 +1712,7 @@ img {
     top: 0;
     height: 100%;
     width: 100%;
-    background: #0d6efd7;
+    background: #0041ff7;
     content: "";
     z-index: -1;
     opacity: 0.3;
@@ -1803,20 +1803,20 @@ img {
 }
 
 .site-btn:hover {
-    background: #0d6efd7;
+    background: #0041ff7;
     color: #ffffff;
     transform: translate3d(0, -2px, 0);
 }
 
 .site-btn:focus {
-    background: #0d6efd7;
+    background: #0041ff7;
     color: #ffffff;
     border: 0;
     box-shadow: none;
 }
 
 .site-btn:active {
-    background: #0d6efd7;
+    background: #0041ff7;
     color: #ffffff;
     border: 0;
     box-shadow: none;
@@ -1838,7 +1838,7 @@ img {
 }
 
 .site-btn-sm:hover {
-    background: #0d6efd7;
+    background: #0041ff7;
     color: #ffffff;
     transform: translate3d(0, -2px, 0);
 }
@@ -1859,17 +1859,17 @@ img {
     border-radius: 50%;
     text-decoration: none;
     color: #ffffff;
-    background: #0d6efd7;
+    background: #0041ff7;
 }
 
 .site-btn-round:hover {
-    background: #0d6efd7;
+    background: #0041ff7;
     color: #ffffff;
 }
 
 .primary-btn {
     color: #ffffff;
-    background: #0d6efd7;
+    background: #0041ff7;
 }
 
 .primary-btn:hover {
@@ -1878,17 +1878,17 @@ img {
 }
 
 .blue-btn {
-    background: #0d6efd7;
+    background: #0041ff7;
     color: #ffffff;
 }
 
 .blue-btn:hover {
-    background: #0041ff;
+    background: #0d6efd;
     color: #ffffff;
 }
 
 .grad-btn {
-    background: linear-gradient(90deg, #0041ff, #ffc300);
+    background: linear-gradient(90deg, #0d6efd, #ffc300);
     color: #ffffff;
 }
 
@@ -1898,7 +1898,7 @@ img {
 }
 
 .red-btn:hover {
-    background: #0041ff;
+    background: #0d6efd;
     color: #ffffff;
 }
 
@@ -1915,7 +1915,7 @@ img {
     position: absolute;
     content: "";
     height: 2px;
-    background: #0d6efd7;
+    background: #0041ff7;
     width: 0px;
     transition: 0.3s;
     left: 0;
@@ -1923,7 +1923,7 @@ img {
 }
 
 .btn-link:hover {
-    color: #0d6efd7;
+    color: #0041ff7;
 }
 
 .btn-link:hover::after {
@@ -1937,18 +1937,18 @@ img {
 
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: #0d6efd7;
+    background: #0041ff7;
 }
 
 ::-webkit-scrollbar-track {
     border-radius: 10px;
-    background: #0041ff;
+    background: #0d6efd;
 }
 
 /* toTop Button */
 #scrollUp {
     background: rgba(231, 54, 103, 0.3);
-    color: #0d6efd7;
+    color: #0041ff7;
     right: 30px;
     bottom: 20px;
     width: 40px;
@@ -1960,7 +1960,7 @@ img {
 }
 
 #scrollUp:hover {
-    background: #0d6efd7;
+    background: #0041ff7;
     color: #ffffff;
 }
 
@@ -2042,7 +2042,7 @@ img {
 }
 
 .dropdown-menu-dark li .dropdown-item:hover {
-    background: #0d6efd7;
+    background: #0041ff7;
     color: #ffffff;
 }
 
@@ -2065,7 +2065,7 @@ img {
 }
 
 .site-card .site-card-header .title {
-    color: #0041ff;
+    color: #0d6efd;
     margin-bottom: 0;
     font-size: 18px;
     display: inline-block;
@@ -2078,7 +2078,7 @@ img {
 }
 
 .site-card .site-card-header .title-small {
-    color: #0041ff;
+    color: #0d6efd;
     margin-bottom: 0;
     font-size: 14px;
     font-weight: 700;
@@ -2086,7 +2086,7 @@ img {
 
 .site-card .site-card-header .card-header-links .card-header-link {
     display: inline-block;
-    background: #0d6efd7;
+    background: #0041ff7;
     border-radius: 3px;
     padding: 8px 18px;
     border: none;
@@ -2098,7 +2098,7 @@ img {
 }
 
 .site-card .site-card-header .card-header-links .card-header-link:hover {
-    background: #0041ff;
+    background: #0d6efd;
 }
 
 .site-card .site-card-header .search {
@@ -2239,7 +2239,7 @@ img {
 
 .wrap-custom-file label span {
     display: block;
-    color: #0041ff;
+    color: #0d6efd;
     font-size: 14px;
     transition: color 0.4s;
 }
@@ -2343,7 +2343,7 @@ img {
     top: -70px;
     width: 250px;
     height: 250px;
-    background: linear-gradient(90deg, #0041ff, #ffc300);
+    background: linear-gradient(90deg, #0d6efd, #ffc300);
     border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
     will-change: border-radius, transform, opacity;
     animation: sliderShape 5s linear infinite;
