@@ -3,7 +3,7 @@
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 2.25rem;
   font-weight: 500;
   letter-spacing: 0.08929em;
@@ -1264,7 +1264,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.25rem;
   font-weight: 400;
   letter-spacing: 0.01786em;
@@ -1573,7 +1573,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.25rem;
   font-weight: 400;
   letter-spacing: 0.01786em;
@@ -1670,7 +1670,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.25rem;
   font-weight: 400;
   letter-spacing: 0.01786em;
@@ -1691,7 +1691,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.375rem;
   font-weight: 500;
   letter-spacing: 0.00714em;
@@ -2002,7 +2002,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.5rem;
   font-weight: 400;
   letter-spacing: 0.03125em;
@@ -2224,7 +2224,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.375rem;
   font-weight: 500;
   letter-spacing: 0.00714em;
@@ -2247,7 +2247,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.25rem;
   font-weight: 400;
   letter-spacing: 0.01786em;
@@ -2348,7 +2348,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.25rem;
   font-weight: 400;
   letter-spacing: 0.01786em;
@@ -2646,7 +2646,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 2.25rem;
   font-weight: 500;
   letter-spacing: 0.08929em;
@@ -2817,7 +2817,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.75rem;
   font-weight: 400;
   letter-spacing: 0.00937em;
@@ -2883,7 +2883,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.25rem;
   font-weight: 400;
   letter-spacing: 0.01786em;
@@ -3038,7 +3038,7 @@ svg.mdc-button__icon {
   display: block;
   margin: 0;
   padding: 0;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1rem;
   font-weight: 500;
 }
@@ -3047,7 +3047,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.75rem;
   font-weight: 400;
   letter-spacing: 0.00937em;
@@ -3345,7 +3345,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.75rem;
   font-weight: 400;
   letter-spacing: 0.00937em;
@@ -4336,7 +4336,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.75rem;
   font-weight: 400;
   letter-spacing: 0.00937em;
@@ -4542,7 +4542,7 @@ svg.mdc-button__icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.25rem;
   font-weight: 400;
   letter-spacing: 0.01786em;
@@ -4708,7 +4708,7 @@ a.mdc-list-item {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.75rem;
   font-weight: 400;
   letter-spacing: 0.00937em;
@@ -5978,7 +5978,7 @@ a.mdc-list-item {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.75rem;
   font-weight: 400;
   letter-spacing: 0.00937em;
@@ -6115,7 +6115,7 @@ a.mdc-list-item {
 
 .mdc-select--outlined.mdc-notched-outline--upgraded .mdc-floating-label--float-above,
 .mdc-select--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .mdc-select--outlined .mdc-select__native-control,
@@ -6337,7 +6337,7 @@ a.mdc-list-item {
 
 .mdc-select--with-leading-icon.mdc-select--outlined.mdc-notched-outline--upgraded .mdc-floating-label--float-above,
 .mdc-select--with-leading-icon.mdc-select--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .mdc-select--with-leading-icon.mdc-select--outlined .mdc-floating-label--shake {
@@ -6637,7 +6637,7 @@ a.mdc-list-item {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.25rem;
   font-weight: 400;
   letter-spacing: 0.01786em;
@@ -6776,7 +6776,7 @@ a.mdc-list-item {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.25rem;
   font-weight: 400;
   letter-spacing: 0.01786em;
@@ -7167,7 +7167,7 @@ a.mdc-list-item {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 2.25rem;
   font-weight: 500;
   letter-spacing: 0.08929em;
@@ -7879,7 +7879,7 @@ a.mdc-list-item {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.75rem;
   font-weight: 400;
   letter-spacing: 0.00937em;
@@ -8005,7 +8005,7 @@ a.mdc-list-item {
 
 .mdc-text-field--outlined.mdc-notched-outline--upgraded .mdc-floating-label--float-above,
 .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .mdc-text-field--outlined::before, .mdc-text-field--outlined::after {
@@ -8067,7 +8067,7 @@ a.mdc-list-item {
 
 .mdc-text-field--outlined.mdc-text-field--dense.mdc-notched-outline--upgraded .mdc-floating-label--float-above,
 .mdc-text-field--outlined.mdc-text-field--dense .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--shake {
@@ -8181,7 +8181,7 @@ a.mdc-list-item {
 
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-notched-outline--upgraded .mdc-floating-label--float-above,
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-floating-label--shake {
@@ -8231,7 +8231,7 @@ a.mdc-list-item {
 
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense.mdc-notched-outline--upgraded .mdc-floating-label--float-above,
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--shake {
@@ -8576,7 +8576,7 @@ a.mdc-list-item {
 
 .mdc-text-field--textarea.mdc-notched-outline--upgraded .mdc-floating-label--float-above,
 .mdc-text-field--textarea .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .mdc-text-field--textarea .mdc-text-field-character-counter {
@@ -9572,7 +9572,7 @@ a.mdc-list-item {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.75rem;
   font-weight: 400;
   letter-spacing: 0.00937em;
@@ -9584,7 +9584,7 @@ a.mdc-list-item {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.375rem;
   font-weight: 500;
   letter-spacing: 0.00714em;
@@ -9596,7 +9596,7 @@ a.mdc-list-item {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.5rem;
   font-weight: 400;
   letter-spacing: 0.03125em;
@@ -9608,7 +9608,7 @@ a.mdc-list-item {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.25rem;
   font-weight: 400;
   letter-spacing: 0.01786em;
@@ -9632,7 +9632,7 @@ a.mdc-list-item {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 2.25rem;
   font-weight: 500;
   letter-spacing: 0.08929em;
@@ -19282,14 +19282,14 @@ a {
 
 /* Typography */
 body {
-  font-size: 1rem;
+  font-size: 14px;
   font-family: "Roboto", sans-serif;
   font-weight: initial;
   -webkit-font-smoothing: antialiased;
 }
 
 p {
-  font-size: 1rem;
+  font-size: 14px;
   margin-bottom: 0.5rem;
   margin-top: 0;
   line-height: 1.5rem;
@@ -19322,13 +19322,13 @@ h4 {
 .h5,
 .mdc-typography--headline5,
 h5 {
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .h6,
 .mdc-typography--headline6,
 h6 {
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 h1,
@@ -19342,7 +19342,7 @@ h6 {
 }
 
 a {
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .blockquote {
@@ -19420,7 +19420,7 @@ address p {
 }
 
 .text-small {
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .icon-lg {
@@ -20231,7 +20231,7 @@ address p {
 
 .documentation code {
   color: #ff420f;
-  font-size: 1rem;
+  font-size: 14px;
   font-family: "Roboto", sans-serif;
 }
 
@@ -22095,7 +22095,7 @@ address p {
 /* === Plugin Overides === */
 /* CodeMirror */
 .CodeMirror {
-  font-size: 1rem;
+  font-size: 14px;
   font-family: "Roboto", sans-serif;
   height: auto;
   text-align: left;
@@ -22946,7 +22946,7 @@ address p {
   display: flex;
   -webkit-align-items: center;
   align-items: center;
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 500;
   text-decoration: none;
   color: #fff;

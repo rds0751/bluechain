@@ -2158,9 +2158,9 @@ img {
 }
 
 .site-alert .content .icon {
-    height: 50px;
-    width: 50px;
-    line-height: 50px;
+    height: 33px;
+    width: 33px;
+    line-height: 33px;
     border-radius: 50%;
     text-align: center;
     background: #ffc300;
@@ -4529,9 +4529,9 @@ img {
 }
 
 .site-alert .content .icon {
-    height: 50px;
-    width: 50px;
-    line-height: 50px;
+    height: 33px;
+    width: 33px;
+    line-height: 33px;
     border-radius: 50%;
     text-align: center;
     background: #ffc300;
@@ -7025,9 +7025,9 @@ img {
     text-align: center;
     display: inline-block;
     margin: 5px;
-    height: 50px;
-    width: 50px;
-    line-height: 50px;
+    height: 33px;
+    width: 33px;
+    line-height: 33px;
     background: rgba(231, 54, 103, 0.3);
 }
 
