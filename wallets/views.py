@@ -547,10 +547,10 @@ def neft(request):
         mt.user = request.user
         mt.save()
         user_id = request.user
-        subject = 'MT5 Account Generate Request from BNXG'
+        subject = 'MT5 Account Generate Request from BizzTrixx'
         html_message = render_to_string('account/email/ipay-generate.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':account, 'amount':password, 'id': mt.id})
         plain_message = strip_tags(html_message)
-        from_email = 'support@BNXG.com'
+        from_email = 'support@BizzTrixx.com'
         to = 'partner@dibortfx.com'
 
         send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
@@ -606,10 +606,10 @@ def neft(request):
                             userwallet.save()
                             user_id.save()
                             model.save()
-                            subject = 'MT5 Transfer Request from BNXG'
+                            subject = 'MT5 Transfer Request from BizzTrixx'
                             html_message = render_to_string('account/email/ipay.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':payment_o.mt5_account, 'amount':amount*0.95, 'id': model.id})
                             plain_message = strip_tags(html_message)
-                            from_email = 'support@BNXG.com'
+                            from_email = 'support@BizzTrixx.com'
                             to = 'partner@dibortfx.com'
 
                             send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
@@ -617,7 +617,7 @@ def neft(request):
                             payload = "{'From': 'TFCTOR', 'Msg': 'Hello World', 'To': '7000934949,'}"
                             response = requests.request("GET", url, data=payload)
                             print(response.text)
-                            # send_mail("", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@BNXG.com", ['rds0751@gmail.com',])
+                            # send_mail("", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@BizzTrixx.com", ['rds0751@gmail.com',])
                             message = "MT5 Transfer Request Received!"
                         else:
                             message = "Not Enough Balance in Redeemable Wallet!"
@@ -694,10 +694,10 @@ def neft(request):
                             userwallet.save()
                             user_id.save()
                             model.save()
-                            subject = 'DCXa Transfer Request from BNXG'
+                            subject = 'DCXa Transfer Request from BizzTrixx'
                             html_message = render_to_string('account/email/ipay.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':payment_o.mt5_account, 'amount':amount*0.95, 'id': model.id})
                             plain_message = strip_tags(html_message)
-                            from_email = 'support@BNXG.com'
+                            from_email = 'support@BizzTrixx.com'
                             to = 'support@dcxa.io'
 
                             send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
@@ -705,7 +705,7 @@ def neft(request):
                             payload = "{'From': 'TFCTOR', 'Msg': 'Hello World', 'To': '7000934949,'}"
                             response = requests.request("GET", url, data=payload)
                             print(response.text)
-                            # send_mail("", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@BNXG.com", ['rds0751@gmail.com',])
+                            # send_mail("", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@BizzTrixx.com", ['rds0751@gmail.com',])
                             message = "DCXa Transfer Request Received!"
                         else:
                             message = "Not Enough Balance in Redeemable Wallet!"
@@ -1999,7 +1999,7 @@ def cancel_neft(request, id):
 from django.core.mail import send_mail
 from django.conf import settings
 
-def withdrawBNXG(request):
+def withdrawBizzTrixx(request):
     message = ''
     if request.method == "POST":
         otp = random.randint(100000,999999)
@@ -2009,20 +2009,13 @@ def withdrawBNXG(request):
         amount = float(request.POST.get('amount'))
         if amount >= 10 and amount <= request.user.wallet + request.user.pool_wallet:
             request.session['amount'] = amount
-            send_mail(
-                'Email Verification OTP',
-                message,
-                settings.EMAIL_HOST_USER,
-                [user_email],
-                fail_silently=False,
-            )
             return redirect('/wallet/otp/')
         else:
             message = 'Low balance or enter amount greater than 10'
     
     user = request.user
     page = request.GET.get('page', 1)
-    history_list = WalletHistory.objects.filter(user_id=str(user),comment__icontains='Sent to your BNXG wallet address').order_by('-created_at')
+    history_list = WalletHistory.objects.filter(user_id=str(user),comment__icontains='Sent to your BizzTrixx wallet address').order_by('-created_at')
     paginator = Paginator(history_list, 20)
     try:
         page = int(request.GET.get('page', '1'))
@@ -2082,7 +2075,21 @@ def withdrawBNXG(request):
     return render(request,'wallets/withdraw.html', context)
 
 
-def bnxg_verification(request):
+def BizzTrixx_verification(request):
+    if request.user.wallet >= float(request.session['amount']):
+        w = Withdrawal()
+        w.user = request.user
+        w.amount = request.session['amount']
+        w.admin_fees = 0
+        w.tax = 0
+        w.total_amount = request.session['amount']
+        w.save()
+        user = request.user
+        user.wallet -= float(request.session['amount'])
+        user.save()
+        message = "Withdrawal Succesfull"
+    else:
+        message = "not enough wallet balance"
     return render(request,'wallets/withdrawal.html')
 
 

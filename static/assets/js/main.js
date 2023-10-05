@@ -443,7 +443,7 @@ svg.append("text")
     .style("text-anchor", "middle")
     .attr("class", "inner-circle")
     .attr("fill", "#36454f")
-    .text(function (d) { return 'BNXG'; });
+    .text(function (d) { return 'BizzTrixx'; });
 
 svg.append("text")
     .attr("dy", "1.0em")
