@@ -38,9 +38,7 @@ class LevelUser(models.Model):
     activated_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return str(self.user)
-     
-    
+        return str(self.user)    
 
 class PoolUser(models.Model):
     user = models.CharField(max_length=25, blank=True, null=True, unique=True)
