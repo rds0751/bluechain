@@ -1,4 +1,4 @@
-// BizzTrixx main jQuery
+// DollarVridhix main jQuery
 
 
 (function ($) {
