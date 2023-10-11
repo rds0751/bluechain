@@ -1,4 +1,4 @@
-// DollarVridhix main jQuery
+// DollarVridhi main jQuery
 
 
 (function ($) {

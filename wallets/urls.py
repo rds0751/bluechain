@@ -31,8 +31,8 @@ urlpatterns = [
     url(r"^confirm/(?P<id>[\w.@+-]+)/$", views.confirm_neft, name="confirm"),
     url(r"^cancel-generate/(?P<id>[\w.@+-]+)/$", views.cancel_generate, name="cancel-generate"),
     url(r"^confirm-generate/(?P<id>[\w.@+-]+)/$", views.confirm_generate, name="confirm"),
-    url(r"^withdrawDollarVridhix/$", views.withdrawDollarVridhix, name="confirm"),
-    path("otp/",views.DollarVridhix_verification,name="send otp"),
+    url(r"^withdrawDollarVridhi/$", views.withdrawDollarVridhi, name="confirm"),
+    path("otp/",views.DollarVridhi_verification,name="send otp"),
     path("verify_metamask_txn/",views.verify_metamask_txn,name="verify_metamask_txn"),
 ]
 

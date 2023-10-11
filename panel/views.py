@@ -400,7 +400,7 @@ def activate(user, amount):
                     upline_amount = levels['level{}'.format(level+1)]*amount
 
                     if direct:
-                        if True: 
+                        if directs.count() : 
                             upline_amount = 0.2*amount
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
