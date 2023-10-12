@@ -400,23 +400,42 @@ def activate(user, amount):
                     upline_amount = levels['level{}'.format(level+1)]*amount
 
                     if direct:
-                        if directs.count() : 
+                        if directs.count() < 2: 
                             upline_amount = 0.2*amount
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
-                            upline_wallet.amount = upline_amount
+                            upline_wallet.amount = 25
                             upline_wallet.type = "credit"
-                            upline_wallet.comment = "Direct Income by {}".format(user)
-                            upline_wallet.balance += upline_amount
+                            upline_wallet.comment = "Direct Income for AB nodes by {}".format(user)
+                            upline_wallet.balance += 25
                             upline_wallet.txnid = generateid()
                             upline_wallet.save()
-                            upline_user.wallet += upline_amount
-                            upline_user.today_income += upline_amount
-                            upline_user.direct_income += upline_amount
-                            upline_user.total_income += upline_amount
-                            upline_user.progress += upline_amount
+                            upline_user.wallet += 25
+                            upline_user.today_income += 25
+                            upline_user.direct_income += 25
+                            upline_user.total_income += 25
+                            upline_user.progress += 25
                             upline_user.save()
                             upline_user = User.objects.get(username=upline)
+                        if directs.count() > 2: 
+                            upline_amount = 0.2*amount
+                            upline_wallet = WalletHistory()
+                            upline_wallet.user_id = upline
+                            upline_wallet.amount = 50
+                            upline_wallet.type = "credit"
+                            upline_wallet.comment = "Direct Income from Non-AB nodes by {}".format(user)
+                            upline_wallet.balance += 50
+                            upline_wallet.txnid = generateid()
+                            upline_wallet.save()
+                            upline_user.wallet += 50
+                            upline_user.today_income += 50
+                            upline_user.direct_income += 50
+                            upline_user.total_income += 50
+                            upline_user.progress += 50
+                            upline_user.save()
+                            upline_user = User.objects.get(username=upline)
+                        comment = ""
+                        while 
                     if directs.count() >= level:
                         upline_amount = levels['level{}'.format(level+1)]*amount
                         upline_wallet = WalletHistory()
