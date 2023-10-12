@@ -1,4 +1,4 @@
-from home.models import News
+from home.models import News, Company
 
 def universally_used_data(request):
 	try:
@@ -15,4 +15,6 @@ def universally_used_data(request):
 	dictionary_to_return['notification'] = v
 	dictionary_to_return['bst'] = binary
 	dictionary_to_return['sht'] = shop
+	dictionary_to_return['c'] = Company.objects.get(id=1)
+	
 	return dictionary_to_return
