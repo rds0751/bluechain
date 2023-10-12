@@ -442,6 +442,11 @@ def activate(user, amount):
                                     new_upline_user.save()
                                 except Exception as e:
                                     userx = upline_user.referral
+                                if not userx:
+                                    x = False
+                                if userx == upline_user.referral:
+                                    x = False
+                                
                         if directs.count() > 2:
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
