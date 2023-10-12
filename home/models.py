@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from level.models import LevelUser
 # Create your models here.
 class Device(models.Model):
 	devicename = models.CharField(max_length=200, null=True, blank=True)
@@ -23,3 +24,11 @@ class News(models.Model):
 
 	def __str__(self):
 		return self.news
+	
+class Company(models.Model):
+	total_turnover = models.FloatField()
+	today_turnover = models.FloatField()
+	
+	def total_active_ids(self):
+		c = LevelUser.objects.filter(active=True).count()
+		return c

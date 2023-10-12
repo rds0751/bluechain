@@ -26,6 +26,7 @@ from users.models import User
 import random
 from level.models import Activation, LevelIncomeSettings, LevelUser, PoolUser
 import csv
+from home.models import Company
 
 @staff_member_required
 def home(request):
@@ -400,8 +401,7 @@ def activate(user, amount):
                     upline_amount = levels['level{}'.format(level+1)]*amount
 
                     if direct:
-                        if directs.count() < 2: 
-                            upline_amount = 0.2*amount
+                        if directs.count() <= 2: 
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
                             upline_wallet.amount = 25
@@ -417,8 +417,31 @@ def activate(user, amount):
                             upline_user.progress += 25
                             upline_user.save()
                             upline_user = User.objects.get(username=upline)
-                        if directs.count() > 2: 
-                            upline_amount = 0.2*amount
+                            userx = upline_user.username
+                            x = True
+                            while x:
+                                try:
+                                    w = WalletHistory.objects.get(comment="Direct Income from Non-AB nodes by "+userx)
+                                    x = False
+                                    new_upline_user = User.objects.get(username=userx.referral)
+                                    new_upline_wallet = WalletHistory()
+                                    new_upline_wallet.user_id = new_upline_user.username
+                                    new_upline_wallet.amount = 25
+                                    new_upline_wallet.type = "credit"
+                                    new_upline_wallet.comment = "Diamond Income for AB nodes by {}".format(user)
+                                    new_upline_wallet.balance += 25
+                                    new_upline_wallet.txnid = generateid()
+                                    new_upline_wallet.save()
+                                    new_upline_user.wallet += 25
+                                    new_upline_user.today_income += 25
+                                    new_upline_user.direct_income += 25
+                                    new_upline_user.total_income += 25
+                                    new_upline_user.progress += 25
+                                    new_upline_user.save()
+                                    new_upline_user = User.objects.get(username=upline)
+                                except Exception as e:
+                                    userx = upline_user.referral
+                        if directs.count() > 2:
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
                             upline_wallet.amount = 50
@@ -434,7 +457,7 @@ def activate(user, amount):
                             upline_user.progress += 50
                             upline_user.save()
                             upline_user = User.objects.get(username=upline)
-                    if directs.count() >= level:
+                    if True:
                         upline_amount = levels['level{}'.format(level+1)]*amount
                         upline_wallet = WalletHistory()
                         upline_wallet.user_id = upline
@@ -454,15 +477,6 @@ def activate(user, amount):
                         upline_user.level_income += upline_amount
                         upline_user.save()
                         upline_user = User.objects.get(username=upline)
-                    else:
-                        upline_wallet = WalletHistory()   
-                        upline_wallet.user_id = upline
-                        upline_wallet.amount = upline_amount 
-                        upline_wallet.type = "NA"
-                        upline_wallet.comment = "{} joined but Level {} not opened!".format(user, level+1)
-                        upline_wallet.txnid = generateid()
-                        upline_wallet.save()
-                        print('else')
                 print('outside')
                 level = level + 1
             
