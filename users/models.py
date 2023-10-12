@@ -42,6 +42,7 @@ class User(AbstractUser, PermissionsMixin):
     direct_income = models.FloatField(default=0)
     level_income = models.FloatField(default=0)
     visiblepass = models.CharField(max_length=100, null=True, blank=True)
+    diamond_income = models.FloatField(default=0)
     
 
     

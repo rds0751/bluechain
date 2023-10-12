@@ -436,7 +436,7 @@ def activate(user, amount):
                                     new_upline_wallet.save()
                                     new_upline_user.wallet += 25
                                     new_upline_user.today_income += 25
-                                    new_upline_user.direct_income += 25
+                                    new_upline_user.diamond_income += 25
                                     new_upline_user.total_income += 25
                                     new_upline_user.progress += 25
                                     new_upline_user.save()
