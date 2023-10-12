@@ -1,282 +1,229 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="csrf-token" content="5RqdbDlYXSzB15NXCRCYS64ramxLb4wExT5J8oQc" />
+        <meta name="keywords" content="DollarVridhi" />
+        <meta name="description" content="DollarVridhi" />
+        <link rel="canonical" href="#" />
+        <link rel="shortcut icon" href="{% static 'assets/global/images/XhOgJpOfKdAgUrJcr0Va.png' %}" type="image/x-icon" />
 
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="csrf-token" content="5RqdbDlYXSzB15NXCRCYS64ramxLb4wExT5J8oQc">
-    <meta name="keywords" content="DollarVridhi">
-    <meta name="description" content="DollarVridhi">
-    <link rel="canonical" href="#"/>
-    <link rel="shortcut icon" href="{% static 'assets/global/images/XhOgJpOfKdAgUrJcr0Va.png' %}" type="image/x-icon"/>
+        <link rel="icon" href="{% static 'assets/global/images/XhOgJpOfKdAgUrJcr0Va.png' %}" type="image/x-icon" />
+        <link rel="stylesheet" href="{% static 'assets/global/css/fontawesome.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'assets/frontend/css/vendor/bootstrap.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'assets/frontend/css/owl.carousel.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'assets/frontend/css/nice-select.css' %}" />
+        <link rel="stylesheet" href="{% static 'assets/global/css/datatables.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/mckenziearts/laravel-notify/css/notify.css' %}" />
+        <link rel="stylesheet" href="{% static 'assets/global/css/custom.css' %}" />
+        <link rel="stylesheet" href="{% static 'assets/frontend/css/magnific-popup.css' %}" />
+        <link rel="stylesheet" href="{% static 'assets/frontend/css/aos.css' %}" />
+        <link rel="stylesheet" href="{% static 'assets/frontend/css/styles.css' %}" />
 
-    <link rel="icon" href="{% static 'assets/global/images/XhOgJpOfKdAgUrJcr0Va.png' %}" type="image/x-icon"/>
-    <link rel="stylesheet" href="{% static 'assets/global/css/fontawesome.min.css' %}"/>
-    <link rel="stylesheet" href="{% static 'assets/frontend/css/vendor/bootstrap.min.css' %}"/>
-    <link rel="stylesheet" href="{% static 'assets/frontend/css/owl.carousel.min.css' %}"/>
-    <link rel="stylesheet" href="{% static 'assets/frontend/css/nice-select.css' %}"/>
-    <link rel="stylesheet" href="{% static 'assets/global/css/datatables.min.css' %}"/>
-        <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/mckenziearts/laravel-notify/css/notify.css' %}"/>        
-        <link rel="stylesheet" href="{% static 'assets/global/css/custom.css' %}"/>
-    <link rel="stylesheet" href="{% static 'assets/frontend/css/magnific-popup.css' %}"/>
-            <link rel="stylesheet" href="{% static 'assets/frontend/css/aos.css' %}"/>
-        <link rel="stylesheet" href="{% static 'assets/frontend/css/styles.css' %}"/>
+        <style>
+            .site-head-tag {
+                margin: 0;
+                padding: 0;
+            }
+        </style>
 
-    <style>
-        //The Custom CSS will be added on the site head tag 
-.site-head-tag {
-	margin: 0;
-  	padding: 0;
-}
-    </style>
+        <title>DollarVridhi - Home</title>
+    </head>
 
-    <title>DollarVridhi -     Home
-</title>
+    <body class="light-theme">
+        <script>
+            var notify = {
+                timeout: "5000",
+            };
+        </script>
+        <!--Header Area-->
 
-
-</head>
-
-<body class="light-theme">
-    <script>
-        var notify = {
-            timeout: "5000",
-        }
-    </script>
-    <!--Header Area-->
-    
-    <header class="header">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-    
-                <a class="navbar-brand" id=""><img src="{% static '/assets/global/images/JJYN2UUG94YOc0E0v7GA.png' %}"
-                                                                      alt=""/></a>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav m-auto mb-2 mb-lg-0 main-nav">
-                                                                            <li class="nav-item">
-                                    <a class="nav-link  active "
-                                       id="">Home</a>
-                                </li>
-                                                                                                    <li class="nav-item">
-                                    <a class="nav-link "
-                                       id="/schema">Schema</a>
-                                </li>
-                                                                                                    <li class="nav-item">
-                                    <a class="nav-link "
-                                       id="/rankings">Ranking</a>
-                                </li>
-                                                                                                    
-                                                                                                    <li class="nav-item">
-                                    <a class="nav-link "
-                                       id="/about-us">About</a>
-                                </li>
-                                                                                                    <li class="nav-item">
-                                    <a class="nav-link "
-                                       id="/contact">Contact</a>
-                                </li>
-                                                                </ul>
-                    <div class="header-right-btn">
-                        <select name="language" id="" class="language-nice-select site-nice-select"
-                                onchange="window.location.href=this.options[this.selectedIndex].value;">
-                                                        <option
-                                    value="https://money.tdevs.co/language-update?name=en" selected>English</option>
-                                                        <option
-                                    value="https://money.tdevs.co/language-update?name=es" >Spanish</option>
-                                                        <option
-                                    value="https://money.tdevs.co/language-update?name=fr" >France</option>
-                                                </select>
-    
-                                                <a id="/users/" class="site-btn-sm grad-btn ms-3"><i
-                                    icon-name="user"></i>Account</a>
-    
-                        
+        <header class="header">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container">
+                    <a class="navbar-brand" id=""><img src="{% static '/assets/global/images/JJYN2UUG94YOc0E0v7GA.png' %}" alt="" /></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav m-auto mb-2 mb-lg-0 main-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="/schema">Plans</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="/rankings">Ranking</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="/about-us">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="/plan">Plan</a>
+                            </li>
+                        </ul>
+                        <a href="/users/" class="site-btn-sm grad-btn ms-3"><i icon-name="user"></i>Account</a>
                     </div>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <!--/Header Area End-->
-    
-                        <section class="banner bubble-ani-left bubble-ani-right"
-             style="background: url({% static 'assets/frontend/theme_base/money_invest/materials/banners/2.jpg' %});">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-7 col-lg-7 col-md-12 col-12">
-                    <div class="banner-content">
-                        <h5 class="ann-badge">🏆 Top Money Making App</h5>
-                        <h2 data-aos="fade-right" data-aos-duration="1000">A Complete Crowd Funding Platform.</h2>
-                        <p data-aos="fade-up" data-aos-duration="1500">
-                            We have considered our solutions to support every stage of your growth and get the potential service.
-                        </p>
-                        <div class="banner-anchors">
-                            <a href="#/register" class="site-btn-sm grad-btn mb-2" data-aos="fade-up"
-                               data-aos-duration="2000"><i
-                                    icon-name="nfc"></i>Make Crowd Funding</a>
-                            <a href="#/how-it-works" class="btn-link" data-aos="fade-up"
-                               data-aos-duration="2500">How it works<i
-                                    icon-name="move-right"></i></a>
+            </nav>
+        </header>
+        <!--/Header Area End-->
+
+        <section class="banner bubble-ani-left bubble-ani-right" style="background: url({% static 'assets/frontend/theme_base/money_invest/materials/banners/2.jpg' %});">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-12">
+                        <div class="banner-content">
+                            <h5 class="ann-badge">🏆 Top Money Making App</h5>
+                            <h2 data-aos="fade-right" data-aos-duration="1000">A Complete Crowd Funding Platform.</h2>
+                            <p data-aos="fade-up" data-aos-duration="1500">
+                                We have considered our solutions to support every stage of your growth and get the potential service.
+                            </p>
+                            <div class="banner-anchors">
+                                <a href="/users/" class="site-btn-sm grad-btn mb-2" data-aos="fade-up" data-aos-duration="2000"><i icon-name="nfc"></i>Make Crowd Funding</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-12">
+                        <div class="banner-right">
+                            <img src="{% static 'assets/global/images/CnheOBGdHvcDxbdYBEsO.png' %}" alt="" />
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-5 col-lg-5 col-md-12 col-12">
-                    <div class="banner-right">
-                        <img src="{% static 'assets/global/images/CnheOBGdHvcDxbdYBEsO.png' %}" alt="">
+            </div>
+            <div class="hero-bg-alimation">
+                <ul class="box">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </section>
+        <section class="white-bg section-style-2">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-10 col-lg-12">
+                        <div class="section-title text-center">
+                            <h4 data-aos="fade-down" data-aos-duration="2000">Our Crowd Funding Plans</h4>
+                            <h2 data-aos="fade-down" data-aos-duration="1500">The plans we offer is specifically made for you.</h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="hero-bg-alimation">
-            <ul class="box">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-    </section>
-                        <section class="white-bg section-style-2">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-10 col-lg-12">
-                    <div class="section-title text-center">
-                        <h4 data-aos="fade-down" data-aos-duration="2000">Our Crowd Funding Plans</h4>
-                        <h2 data-aos="fade-down" data-aos-duration="1500">The plans we offer is specifically made for you.</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
+                <div class="row justify-content-center">
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                         <div class="single-Crowd Funding-plan" data-aos="fade-up" data-aos-duration="1500">
                             <div class="Crowd Funding-plan-icon">
-                                <img src="{% static 'assets/global/images/eLRXrAVOvugA30BId9dU.jpg' %}" alt=""/>
-                                                                <div class="feature-plan">BEST CROWD FUNDING</div>
+                                <img src="{% static 'assets/global/images/eLRXrAVOvugA30BId9dU.jpg' %}" alt="" />
+                                <div class="feature-plan">BEST CROWD FUNDING</div>
                             </div>
                             <div class="content">
                                 <h3>Standard Plan</h3>
                                 <h4>$100</h4>
                                 <ul>
-                                    <li><i icon-name="check-check"></i>Direct Income
+                                    <li>
+                                        <i icon-name="check-check"></i>Direct Income
                                         <span>25%=50%</span>
                                     </li>
-                                    <li><i icon-name="check-check"></i>Diamond Income
-                                        <span>25%</span></li>
-                                    <li><i icon-name="check-check"></i>Level Income
-                                        <span>2% upto 5 levels</span></li>
-                                    <li><i icon-name="check-check"></i>Upline Income
+                                    <li><i icon-name="check-check"></i>Diamond Income <span>25%</span></li>
+                                    <li><i icon-name="check-check"></i>Level Income <span>2% upto 5 levels</span></li>
+                                    <li>
+                                        <i icon-name="check-check"></i>Upline Income
                                         <span>5%</span>
                                     </li>
-                        <li><i icon-name="check-check"></i>Global Community<span>40%
-                                            </span></li>
-                                    <li><i icon-name="check-check"></i>Total Revenue
-                                        <span> Infinity</span></li>
+                                    <li><i icon-name="check-check"></i>Global Community<span>40% </span></li>
+                                    <li><i icon-name="check-check"></i>Total Revenue <span> Infinity</span></li>
                                 </ul>
-    
-                                <div class="holidays"><span>*</span>                                    No Profit
-                                     Holidays</div>
-    
+
+                                <div class="holidays"><span>*</span> No Profit Holidays</div>
                             </div>
-                            <a id="/user/schema-preview/2"
-                               class="Crowd Funding-btn w-100 centered">Fund Now<i
-                                    icon-name="move-right"></i></a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-style light-yellow-bg">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-10 col-lg-12">
+                        <div class="section-title text-center">
+                            <h4 data-aos="fade-down" data-aos-duration="2000">Crowd Funding Calculator</h4>
+                            <h2 data-aos="fade-down" data-aos-duration="1500">
+                                Plan Profit Calculation.
+                            </h2>
                         </div>
-        </div>
-    </section>
-                        <section class="section-style light-yellow-bg">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-10 col-lg-12">
-                    <div class="section-title text-center">
-                        <h4 data-aos="fade-down" data-aos-duration="2000">Crowd Funding Calculator</h4>
-                        <h2 data-aos="fade-down" data-aos-duration="1500">
-                            Plan Profit Calculation.
-                        </h2>
                     </div>
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-xl-12 col-md-12">
-                    <div class="earnings-calculator" data-aos="fade-left" data-aos-duration="2000">
-                        <form action="#" class="row">
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-                                <div class="single-box">
-                                    <label for="">Crowd Funding Plans:</label>
-                                    <select name="selectCalculationPlan" id="selectPlan"
-                                            class="site-nice-select plan-selects mb-2">
-                                        <option value="0">---Select Plan---</option>
-                                        <option value="1">Starter Plan ($100)</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-12">
-                                <div class="single-box">
-                                    <label for="">Enter Amount:</label>
-                                    <div class="input-group">
-                                        <input type="text" id="enter-amount" class="form-control" aria-label="Amount"
-                                               aria-describedby="basic-addon1">
-                                        <span class="input-group-text" id="basic-addon1">USD</span>
+                <div class="row justify-content-center">
+                    <div class="col-xl-12 col-md-12">
+                        <div class="earnings-calculator" data-aos="fade-left" data-aos-duration="2000">
+                            <form action="#" class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+                                    <div class="single-box">
+                                        <label for="">Crowd Funding Plans:</label>
+                                        <select name="selectCalculationPlan" id="selectPlan" class="site-nice-select plan-selects mb-2">
+                                            <option value="0">---Select Plan---</option>
+                                            <option value="1">Starter Plan ($100)</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="single-box">
-                                    <div class="input-info-text charge " id="amount-level"></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-12">
-                                <div class="single-box">
-                                    <label for="">Profit: <span id="profit-label"></span></label>
-                                    <div class="input-group mb-0">
-                                        <input type="text" class="form-control" id="profit" disabled>
-                                        <span class="input-group-text" id="basic-addon1">USD</span>
+                                <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                                    <div class="single-box">
+                                        <label for="">Enter Amount:</label>
+                                        <div class="input-group">
+                                            <input type="text" id="enter-amount" class="form-control" aria-label="Amount" aria-describedby="basic-addon1" />
+                                            <span class="input-group-text" id="basic-addon1">USD</span>
+                                        </div>
+                                    </div>
+                                    <div class="single-box">
+                                        <div class="input-info-text charge" id="amount-level"></div>
                                     </div>
                                 </div>
-                            </div>
-    
-    
-                            <div class="col-xl-2 col-lg-2 col-md-6 col-12">
-                                <div class="single-box mt-4">
-                                    <a id="/register" class=" mt-2 site-btn grad-btn-6 w-100 centered"><i
-                                            icon-name="sprout"></i>Fund Now</a>
+                                <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                                    <div class="single-box">
+                                        <label for="">Profit: <span id="profit-label"></span></label>
+                                        <div class="input-group mb-0">
+                                            <input type="text" class="form-control" id="profit" disabled />
+                                            <span class="input-group-text" id="basic-addon1">USD</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+
+                                <div class="col-xl-2 col-lg-2 col-md-6 col-12">
+                                    <div class="single-box mt-4">
+                                        <a id="/register" class="mt-2 site-btn grad-btn-6 w-100 centered"><i icon-name="sprout"></i>Fund Now</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-                        <section class="how-it-works section-style-2">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-10 col-lg-12">
-                    <div class="section-title text-center">
-                        <h4 data-aos="fade-down" data-aos-duration="2000">How It Works</h4>
-                        <h2 data-aos="fade-down" data-aos-duration="1500">
-                            It is a very simple process to start with us and earn money randomly
-                        </h2>
+        </section>
+
+        <section class="how-it-works section-style-2">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-10 col-lg-12">
+                        <div class="section-title text-center">
+                            <h4 data-aos="fade-down" data-aos-duration="2000">How It Works</h4>
+                            <h2 data-aos="fade-down" data-aos-duration="1500">
+                                It is a very simple process to start with us and earn money randomly
+                            </h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="row justify-content-center">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <div class="how-it-works-single" data-aos="fade-left" data-aos-duration="1000">
                             <div class="icon-box">
-                                <img class="icon-box-icon" src="{% static 'assets/global/images/xmyXm8AX2pPKOcENOAhr.png' %}" alt="">
+                                <img class="icon-box-icon" src="{% static 'assets/global/images/xmyXm8AX2pPKOcENOAhr.png' %}" alt="" />
                             </div>
                             <h4>Register Account</h4>
                             <p>
@@ -284,10 +231,10 @@
                             </p>
                         </div>
                     </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <div class="how-it-works-single" data-aos="fade-left" data-aos-duration="1000">
                             <div class="icon-box">
-                                <img class="icon-box-icon" src="{% static 'assets/global/images/UsDOScrB2abhlut4EyrQ.png' %}" alt="">
+                                <img class="icon-box-icon" src="{% static 'assets/global/images/UsDOScrB2abhlut4EyrQ.png' %}" alt="" />
                             </div>
                             <h4>Verify Email</h4>
                             <p>
@@ -295,10 +242,10 @@
                             </p>
                         </div>
                     </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <div class="how-it-works-single" data-aos="fade-left" data-aos-duration="1000">
                             <div class="icon-box">
-                                <img class="icon-box-icon" src="{% static 'assets/global/images/NFHXPuGy8E6XRIUIsH4w.png' %}" alt="">
+                                <img class="icon-box-icon" src="{% static 'assets/global/images/NFHXPuGy8E6XRIUIsH4w.png' %}" alt="" />
                             </div>
                             <h4>Verify KYC</h4>
                             <p>
@@ -306,10 +253,10 @@
                             </p>
                         </div>
                     </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <div class="how-it-works-single" data-aos="fade-left" data-aos-duration="1000">
                             <div class="icon-box">
-                                <img class="icon-box-icon" src="{% static 'assets/global/images/qD9hfcFCzTRnLG9s5uMs.png' %}" alt="">
+                                <img class="icon-box-icon" src="{% static 'assets/global/images/qD9hfcFCzTRnLG9s5uMs.png' %}" alt="" />
                             </div>
                             <h4>Deposit Money</h4>
                             <p>
@@ -317,10 +264,10 @@
                             </p>
                         </div>
                     </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <div class="how-it-works-single" data-aos="fade-left" data-aos-duration="1000">
                             <div class="icon-box">
-                                <img class="icon-box-icon" src="{% static 'assets/global/images/Tr0RUWXNkHVUxdzgXQlg.png' %}" alt="">
+                                <img class="icon-box-icon" src="{% static 'assets/global/images/Tr0RUWXNkHVUxdzgXQlg.png' %}" alt="" />
                             </div>
                             <h4>Crowd Funding a plan</h4>
                             <p>
@@ -328,10 +275,10 @@
                             </p>
                         </div>
                     </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <div class="how-it-works-single" data-aos="fade-left" data-aos-duration="1000">
                             <div class="icon-box">
-                                <img class="icon-box-icon" src="{% static 'assets/global/images/qWfX713GaXsCH5XKtJK6.png' %}" alt="">
+                                <img class="icon-box-icon" src="{% static 'assets/global/images/qWfX713GaXsCH5XKtJK6.png' %}" alt="" />
                             </div>
                             <h4>Transfer Money</h4>
                             <p>
@@ -339,10 +286,10 @@
                             </p>
                         </div>
                     </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <div class="how-it-works-single" data-aos="fade-left" data-aos-duration="1000">
                             <div class="icon-box">
-                                <img class="icon-box-icon" src="{% static 'assets/global/images/69Npd7asaByIGepeYgJz.png' %}" alt="">
+                                <img class="icon-box-icon" src="{% static 'assets/global/images/69Npd7asaByIGepeYgJz.png' %}" alt="" />
                             </div>
                             <h4>Refer to Friends</h4>
                             <p>
@@ -350,10 +297,10 @@
                             </p>
                         </div>
                     </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <div class="how-it-works-single" data-aos="fade-left" data-aos-duration="1000">
                             <div class="icon-box">
-                                <img class="icon-box-icon" src="{% static 'assets/global/images/wymsndzykzaM05QAoo0c.png' %}" alt="">
+                                <img class="icon-box-icon" src="{% static 'assets/global/images/wymsndzykzaM05QAoo0c.png' %}" alt="" />
                             </div>
                             <h4>Withdraw and Enjoy</h4>
                             <p>
@@ -361,65 +308,61 @@
                             </p>
                         </div>
                     </div>
-                        </div>
-        </div>
-    </section>
-                        <section class="section-style-2 grad-bg-6 coin-right">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-10 col-lg-12">
-                    <div class="section-title text-center">
-                        <h4 data-aos="fade-down" data-aos-duration="2000">Latest Investors and Withdraws</h4>
-                        <h2 data-aos="fade-down" data-aos-duration="1500">
-                            You can explore the live Crowd Fundings and withdraws
-                        </h2>
-                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-6 col-lg-12">
-                    <div class="site-card" data-aos="fade-right" data-aos-duration="2000">
-                        <div class="site-card-header">
-                            <h3 class="title">Recent Investors</h3>
+        </section>
+        <section class="section-style-2 grad-bg-6 coin-right">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-10 col-lg-12">
+                        <div class="section-title text-center">
+                            <h4 data-aos="fade-down" data-aos-duration="2000">Latest Investors and Withdraws</h4>
+                            <h2 data-aos="fade-down" data-aos-duration="1500">
+                                You can explore the live Crowd Fundings and withdraws
+                            </h2>
                         </div>
-                        <div class="site-card-body">
-                            <div class="site-transactions">
-                                
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="site-card" data-aos="fade-right" data-aos-duration="2000">
+                            <div class="site-card-header">
+                                <h3 class="title">Recent Investors</h3>
+                            </div>
+                            <div class="site-card-body">
+                                <div class="site-transactions"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="site-card" data-aos="fade-left" data-aos-duration="2000">
+                            <div class="site-card-header">
+                                <h3 class="title">Recent Withdraws</h3>
+                            </div>
+                            <div class="site-card-body">
+                                <div class="site-transactions"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-12">
-                    <div class="site-card" data-aos="fade-left" data-aos-duration="2000">
-                        <div class="site-card-header">
-                            <h3 class="title">Recent Withdraws</h3>
-                        </div>
-                        <div class="site-card-body">
-                            <div class="site-transactions">
-                                                        </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
-                        <section class="why-choose-us section-style-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-12">
-                    <div class="why-choose-us-img" data-aos="fade-right" data-aos-duration="2000">
-                        <img src="{% static 'assets/global/images/wGKXUnEdS3zoNPnj3RWA.jpg' %}" alt=""/>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-12">
-                    <div class="why-choose-us-content">
-                        <div class="section-title">
-                            <h4 data-aos="fade-down" data-aos-duration="1500">Why Choose Us</h4>
-                            <h2 data-aos="fade-down" data-aos-duration="1000">Explore Why You Will Choose Us.</h2>
+        </section>
+        <section class="why-choose-us section-style-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12">
+                        <div class="why-choose-us-img" data-aos="fade-right" data-aos-duration="2000">
+                            <img src="{% static 'assets/global/images/wGKXUnEdS3zoNPnj3RWA.jpg' %}" alt="" />
                         </div>
-                        <div class="row">
-    
-                                                        <div class="col-lg-6 col-md-12">
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12">
+                        <div class="why-choose-us-content">
+                            <div class="section-title">
+                                <h4 data-aos="fade-down" data-aos-duration="1500">Why Choose Us</h4>
+                                <h2 data-aos="fade-down" data-aos-duration="1000">Explore Why You Will Choose Us.</h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
                                     <div class="single" data-aos="fade-down" data-aos-duration="2000">
                                         <div class="icons">
                                             <div class="icon">
@@ -432,7 +375,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                                        <div class="col-lg-6 col-md-12">
+                                <div class="col-lg-6 col-md-12">
                                     <div class="single" data-aos="fade-down" data-aos-duration="2000">
                                         <div class="icons">
                                             <div class="icon">
@@ -445,7 +388,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                                        <div class="col-lg-6 col-md-12">
+                                <div class="col-lg-6 col-md-12">
                                     <div class="single" data-aos="fade-down" data-aos-duration="2000">
                                         <div class="icons">
                                             <div class="icon">
@@ -458,7 +401,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                                        <div class="col-lg-6 col-md-12">
+                                <div class="col-lg-6 col-md-12">
                                     <div class="single" data-aos="fade-down" data-aos-duration="2000">
                                         <div class="icons">
                                             <div class="icon">
@@ -471,139 +414,146 @@
                                         </div>
                                     </div>
                                 </div>
-                                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-                        <section class="section-style-2 grad-bg-5">
-        <div class="container">
-            <div class="row justify-content-center">
-    
-                                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+        </section>
+        <section class="section-style-2 grad-bg-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
                         <div class="single-stat" data-aos="fade-down" data-aos-duration="1000">
-                            <img src="{% static 'assets/global/images/Upbk4eWUnmEbOUDb0S1n.png' %}" alt=""/>
+                            <img src="{% static 'assets/global/images/Upbk4eWUnmEbOUDb0S1n.png' %}" alt="" />
                             <h3 style="color: black;" class="count">522</h3>
                             <h4 style="color: black;">Total Users</h4>
                         </div>
                     </div>
-                                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
                         <div class="single-stat" data-aos="fade-down" data-aos-duration="1000">
-                            <img src="{% static 'assets/global/images/4IbFwZ2PZa8nLudMHzSt.png' %}" alt=""/>
+                            <img src="{% static 'assets/global/images/4IbFwZ2PZa8nLudMHzSt.png' %}" alt="" />
                             <h3 style="color: black;" class="count">21453</h3>
                             <h4 style="color: black;">Total Deposit</h4>
                         </div>
                     </div>
-                                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
                         <div class="single-stat" data-aos="fade-down" data-aos-duration="1000">
-                            <img src="{% static 'assets/global/images/brPxBdDNKkKu1oFb3uUl.png' %}" alt=""/>
+                            <img src="{% static 'assets/global/images/brPxBdDNKkKu1oFb3uUl.png' %}" alt="" />
                             <h3 style="color: black;" class="count">112549</h3>
                             <h4 style="color: black;">Total Crowd Funding</h4>
                         </div>
                     </div>
-                                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
                         <div class="single-stat" data-aos="fade-down" data-aos-duration="1000">
-                            <img src="{% static 'assets/global/images/cxq0OgALCgYjCCcoI6f2.png' %}" alt=""/>
+                            <img src="{% static 'assets/global/images/cxq0OgALCgYjCCcoI6f2.png' %}" alt="" />
                             <h3 style="color: black;" class="count">58694</h3>
                             <h4 style="color: black;">Total Withdraw</h4>
                         </div>
                     </div>
-                        </div>
-        </div>
-    </section>
-                        <section class="section-style light-yellow-bg">
-        <div class="coins-left"
-             style="background: url({% static 'assets/frontend/theme_base/money_invest/materials/banners/coin.png) repeat;"
-             data-aos="fade-down-right" data-aos-duration="2000"></div>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-8">
-                    <div class="section-title centered">
-                        <h4 data-aos="fade-down" data-aos-duration="2000">Faq Questions</h4>
-                        <h2 data-aos="fade-down" data-aos-duration="1500">Explore Your Questions.</h2>
-                    </div>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                                <div class="col-xl-6 col-12">
+        </section>
+        <section class="section-style light-yellow-bg">
+            <div class="coins-left" style="background: url({% static 'assets/frontend/theme_base/money_invest/materials/banners/coin.png' %}) repeat;" data-aos="fade-down-right" data-aos-duration="2000"></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8">
+                        <div class="section-title centered">
+                            <h4 data-aos="fade-down" data-aos-duration="2000">Faq Questions</h4>
+                            <h2 data-aos="fade-down" data-aos-duration="1500">Explore Your Questions.</h2>
+                        </div>
+                    </div> 
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 col-12">
                         <div class="faq-contents">
                             <div class="headding">How does it work with two wallets?</div>
-                            <div class="content">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#039;Content here, content here&#039;, making it look like readable English.</div>
+                            <div class="content">
+                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
+                                letters, as opposed to using &#039;Content here, content here&#039;, making it look like readable English.
+                            </div>
                         </div>
                     </div>
-                                <div class="col-xl-6 col-12">
+                    <div class="col-xl-6 col-12">
                         <div class="faq-contents">
                             <div class="headding">Is there an option for manual Deposit?</div>
                             <div class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus molestiae voluptatem id ut repudiandae totam fugit harum architecto dolorem deleniti incidunt,</div>
                         </div>
                     </div>
-                                <div class="col-xl-6 col-12">
+                    <div class="col-xl-6 col-12">
                         <div class="faq-contents">
                             <div class="headding">How to Withdraw Money</div>
-                            <div class="content">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#039;Content here, content here&#039;, making it look like readable English.</div>
+                            <div class="content">
+                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
+                                letters, as opposed to using &#039;Content here, content here&#039;, making it look like readable English.
+                            </div>
                         </div>
                     </div>
-                                <div class="col-xl-6 col-12">
+                    <div class="col-xl-6 col-12">
                         <div class="faq-contents">
                             <div class="headding">How can I upgrade my Ranking</div>
-                            <div class="content">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#039;Content here, content here&#039;, making it look like readable English.</div>
+                            <div class="content">
+                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
+                                letters, as opposed to using &#039;Content here, content here&#039;, making it look like readable English.
+                            </div>
                         </div>
                     </div>
-                                <div class="col-xl-6 col-12">
+                    <div class="col-xl-6 col-12">
                         <div class="faq-contents">
                             <div class="headding">How the Referral Levels works?</div>
-                            <div class="content">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#039;Content here, content here&#039;, making it look like readable English.</div>
+                            <div class="content">
+                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
+                                letters, as opposed to using &#039;Content here, content here&#039;, making it look like readable English.
+                            </div>
                         </div>
                     </div>
-                                <div class="col-xl-6 col-12">
+                    <div class="col-xl-6 col-12">
                         <div class="faq-contents">
                             <div class="headding">How the Referral Levels works?</div>
-                            <div class="content">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#039;Content here, content here&#039;, making it look like readable English.</div>
+                            <div class="content">
+                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
+                                letters, as opposed to using &#039;Content here, content here&#039;, making it look like readable English.
+                            </div>
                         </div>
-                    </div>
-                        </div>
-        </div>
-    </section>
-                        <section class="cta"
-             style="background: url({% static 'assets/global/images/xfkDK9NG0f3xfcaNyXWv.jpg' %}) no-repeat center center fixed;">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-8 col-lg-12">
-                    <div class="headding" data-aos="fade-right" data-aos-duration="1500">
-                        <h2 class="black-color">
-                            We&#039;re a more than 1000+ members family, you can join with us with high confident
-                        </h2>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-12">
-                    <div class="btns" data-aos="fade-left" data-aos-duration="2000">
-                        <a href="#/register" target="_self"
-                           class="site-btn primary-btn"><i
-                                class="anticon anticon-user-add"></i>Join Us</a>
-                        <a href="#/contact" target="_self"
-                           class="site-btn"><i
-                                class="anticon anticon-mail"></i>Contact Us</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-                        <section class="section-style-2 light-blue-bg">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-8">
-                    <div class="section-title centered">
-                        <h4 data-aos="fade-down" data-aos-duration="2000">Our Blog Area</h4>
-                        <h2 data-aos="fade-down" data-aos-duration="1500">Latest Announcements</h2>
+        </section>
+        <section class="cta" style="background: url({% static 'assets/global/images/xfkDK9NG0f3xfcaNyXWv.jpg' %}) no-repeat center center fixed;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-12">
+                        <div class="headding" data-aos="fade-right" data-aos-duration="1500">
+                            <h2 class="black-color">
+                                We&#039;re a more than 1000+ members family, you can join with us with high confident
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-12">
+                        <div class="btns" data-aos="fade-left" data-aos-duration="2000">
+                            <a href="#/register" target="_self" class="site-btn primary-btn"><i class="anticon anticon-user-add"></i>Join Us</a>
+                            <a href="#/contact" target="_self" class="site-btn"><i class="anticon anticon-mail"></i>Contact Us</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                                <div class="col-xl-4 col-lg-6 col-sm-12">
+        </section>
+        <section class="section-style-2 light-blue-bg">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8">
+                        <div class="section-title centered">
+                            <h4 data-aos="fade-down" data-aos-duration="2000">Our Blog Area</h4>
+                            <h2 data-aos="fade-down" data-aos-duration="1500">Latest Announcements</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-sm-12">
                         <div class="single-blog" data-aos="fade-down" data-aos-duration="1000">
                             <div class="thumb">
-                                <img src="{% static 'assets/global/images/uyCxaK5gpvBEyscuoojc.jpg' %}" alt=""/>
+                                <img src="{% static 'assets/global/images/uyCxaK5gpvBEyscuoojc.jpg' %}" alt="" />
                             </div>
                             <div class="content">
                                 <div class="meta">
@@ -613,18 +563,19 @@
                                     <h3><a id="/blog/3">Yearly Best Crowd Funding authority here</a></h3>
                                 </div>
                                 <div class="des">
-                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of cla...
+                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of cla...</p>
                                 </div>
+
                                 <div class="link">
                                     <a id="/blog/3">Continue Reading</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                                <div class="col-xl-4 col-lg-6 col-sm-12">
+                    <div class="col-xl-4 col-lg-6 col-sm-12">
                         <div class="single-blog" data-aos="fade-down" data-aos-duration="1000">
                             <div class="thumb">
-                                <img src="{% static 'assets/global/images/HSHYzxdwZ8WlLCF1mSJ2.jpg' %}" alt=""/>
+                                <img src="{% static 'assets/global/images/HSHYzxdwZ8WlLCF1mSJ2.jpg' %}" alt="" />
                             </div>
                             <div class="content">
                                 <div class="meta">
@@ -634,18 +585,19 @@
                                     <h3><a id="/blog/2">The platform works headless</a></h3>
                                 </div>
                                 <div class="des">
-                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of cla...
+                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of cla...</p>
                                 </div>
+
                                 <div class="link">
                                     <a id="/blog/2">Continue Reading</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                                <div class="col-xl-4 col-lg-6 col-sm-12">
+                    <div class="col-xl-4 col-lg-6 col-sm-12">
                         <div class="single-blog" data-aos="fade-down" data-aos-duration="1000">
                             <div class="thumb">
-                                <img src="{% static 'assets/global/images/mIRVXC1G4SqYhkfHFoYP.jpg' %}" alt=""/>
+                                <img src="{% static 'assets/global/images/mIRVXC1G4SqYhkfHFoYP.jpg' %}" alt="" />
                             </div>
                             <div class="content">
                                 <div class="meta">
@@ -655,317 +607,286 @@
                                     <h3><a id="/blog/1">Money Invest allows to Invest jointly all the way</a></h3>
                                 </div>
                                 <div class="des">
-                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of cla...
+                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of cla...</p>
                                 </div>
+
                                 <div class="link">
                                     <a id="/blog/1">Continue Reading</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                
+                </div>
             </div>
-        </div>
-    </section>
-                        <section class="section-style-2">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-12">
-                    <div class="section-title text-center">
-                        <h4 data-aos="fade-down" data-aos-duration="2000">Payment Gateways</h4>
-                        <h2 data-aos="fade-down" data-aos-duration="1500">Payment Gateway We Accept</h2>
+        </section>
+        <section class="section-style-2">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-12">
+                        <div class="section-title text-center">
+                            <h4 data-aos="fade-down" data-aos-duration="2000">Payment Gateways</h4>
+                            <h2 data-aos="fade-down" data-aos-duration="1500">Payment Gateway We Accept</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row brands-logo justify-content-center">
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
+                            <img src="{% static 'assets/global/images/x2KBMjdkKOxVojM1BLpg.svg' %}" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
+                            <img src="{% static 'assets/global/gateway/stripe.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
+                            <img src="{% static 'assets/global/gateway/mollie.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
+                            <img src="{% static 'assets/global/gateway/perfectmoney.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
+                            <img src="{% static 'assets/global/gateway/coinbase.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
+                            <img src="{% static 'assets/global/gateway/paystack.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
+                            <img src="{% static 'assets/global/gateway/voguepay.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
+                            <img src="{% static 'assets/global/gateway/flutterwave.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
+                            <img src="{% static 'assets/global/gateway/coingate.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
+                            <img src="{% static 'assets/global/gateway/monnify.svg' %}" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
+                            <img src="{% static 'assets/global/gateway/securionpay.png' %}" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-6">
+                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
+                            <img src="{% static 'assets/global/gateway/coinpayments.svg' %}" alt="" />
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row brands-logo justify-content-center">
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-6">
-                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
-                            <img src="{% static 'assets/global/images/x2KBMjdkKOxVojM1BLpg.svg' %}" alt=""/>
+        </section>
+
+        <!--Footer Area-->
+        <footer class="footer black-bg section-style-2">
+            <div class="bat-right" style="background: url({% static 'assets/global/images/GAH1nccf5XhjretvfsYT.png' %}) repeat;" data-aos="fade-down-left" data-aos-duration="2000"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                        <div class="footer-widget" data-aos="fade-down" data-aos-duration="1000">
+                            <h4>About DollarVridhi</h4>
+                            <p>
+                                High-performing and most popular DollarVridhi Crowd Funding Platform in modern times. Full fill the most user needs and distribute maximum profits.
+                            </p>
+                            <div class="socials">
+                                <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                                <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
+                                <a href="https://discord.com"><i class="fab fa-discord"></i></a>
+                            </div>
                         </div>
                     </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-6">
-                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
-                            <img src="{% static 'assets/global/gateway/stripe.png' %}" alt=""/>
-                        </div>
-                    </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-6">
-                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
-                            <img src="{% static 'assets/global/gateway/mollie.png' %}" alt=""/>
-                        </div>
-                    </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-6">
-                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
-                            <img src="{% static 'assets/global/gateway/perfectmoney.png' %}" alt=""/>
-                        </div>
-                    </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-6">
-                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
-                            <img src="{% static 'assets/global/gateway/coinbase.png' %}" alt=""/>
-                        </div>
-                    </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-6">
-                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
-                            <img src="{% static 'assets/global/gateway/paystack.png' %}" alt=""/>
-                        </div>
-                    </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-6">
-                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
-                            <img src="{% static 'assets/global/gateway/voguepay.png' %}" alt=""/>
-                        </div>
-                    </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-6">
-                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
-                            <img src="{% static 'assets/global/gateway/flutterwave.png' %}" alt=""/>
-                        </div>
-                    </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-6">
-                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
-                            <img src="{% static 'assets/global/gateway/coingate.png' %}" alt=""/>
-                        </div>
-                    </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-6">
-                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
-                            <img src="{% static 'assets/global/gateway/monnify.svg' %}" alt=""/>
-                        </div>
-                    </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-6">
-                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
-                            <img src="{% static 'assets/global/gateway/securionpay.png' %}" alt=""/>
-                        </div>
-                    </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-6">
-                        <div class="single-brands-logo" data-aos="fade-down" data-aos-duration="2000">
-                            <img src="{% static 'assets/global/gateway/coinpayments.svg' %}" alt=""/>
-                        </div>
-                    </div>
-                
-            </div>
-        </div>
-    </section>
-        
-    <!--Footer Area-->
-    <footer class="footer black-bg section-style-2">
-        <div class="bat-right" style="background: url({% static 'assets/global/images/GAH1nccf5XhjretvfsYT.png) repeat;"
-             data-aos="fade-down-left" data-aos-duration="2000"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                    <div class="footer-widget" data-aos="fade-down" data-aos-duration="1000">
-                        <h4>About DollarVridhi</h4>
-                        <p>
-                            High-performing and most popular DollarVridhi Crowd Funding Platform in modern times. Full fill the most user needs and distribute maximum profits.
-                        </p>
-                        <div class="socials">
-                                                        <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
-                                                        <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
-                                                        <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
-                                                        <a href="https://discord.com"><i class="fab fa-discord"></i></a>
-                                                </div>
-                    </div>
-                </div>
-                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
-                    <div class="row">
-    
-                        
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+                        <div class="row">
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                                 <div class="footer-widget" data-aos="fade-down" data-aos-duration="1500">
                                     <h4>Base Navigation</h4>
                                     <div class="footer-nav">
                                         <ul>
-                                                                                                                                        <li><a id="">Home</a></li>
-                                                                                                                                                                                    <li><a id="/login">Account Login</a></li>
-                                                                                                                                                                                    <li><a id="/blog">Blog</a></li>
-                                                                                                                                                                                    <li><a id="/contact">Contact</a></li>
-                                                                                        
+                                            <li><a id="">Home</a></li>
+                                            <li><a id="/login">Account Login</a></li>
+                                            <li><a id="/blog">Blog</a></li>
+                                            <li><a id="/contact">Contact</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-    
-                        
+
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                                 <div class="footer-widget" data-aos="fade-down" data-aos-duration="1500">
                                     <h4>Important Links</h4>
                                     <div class="footer-nav">
                                         <ul>
-                                                                                                                                        <li><a id="/privacy-policy">Privacy</a></li>
-                                                                                                                                                                                    <li><a id="/rankings">Ranking</a></li>
-                                                                                                                                                                                    <li><a id="/schema">Schema</a></li>
-                                                                                                                                                                                    <li><a id="/faq">FAQ</a></li>
-                                                                                        
+                                            <li><a id="/privacy-policy">Privacy</a></li>
+                                            <li><a id="/rankings">Ranking</a></li>
+                                            <li><a id="/schema">Schema</a></li>
+                                            <li><a id="/faq">FAQ</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-    
-                        
+
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                                 <div class="footer-widget" data-aos="fade-down" data-aos-duration="1500">
                                     <h4>Company Essentials</h4>
                                     <div class="footer-nav">
                                         <ul>
-                                                                                                                                        <li><a id="/about-us">About</a></li>
-                                                                                                                                                                                    <li><a id="/terms-and-conditions">Terms and Conditions</a></li>
-                                                                                        
+                                            <li><a id="/about-us">About</a></li>
+                                            <li><a id="/terms-and-conditions">Terms and Conditions</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-    
-                        
-    
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="copyright-text" data-aos="fade-down" data-aos-duration="3000">
+                            <p>
+                                Copyright ©DollarVridhi 2023. All rights reserved.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <div class="copyright-text" data-aos="fade-down" data-aos-duration="3000">
-                        <p>
-                            Copyright ©DollarVridhi 2023. All rights reserved.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!--Footer Area End-->
-    
-    <div class="caches-privacy cookiealert" hidden>
+        </footer>
+        <!--Footer Area End-->
+
+        <div class="caches-privacy cookiealert" hidden>
             <div class="content">
-                <p>Please allow us to collect data about how you use our website. We will use it to improve our website, make your browsing experience and our business decisions better. Learn more <a id="/privacy-policy"
-                                                        target="_blank">Learn More</a></p>
+                <p>
+                    Please allow us to collect data about how you use our website. We will use it to improve our website, make your browsing experience and our business decisions better. Learn more
+                    <a id="/privacy-policy" target="_blank">Learn More</a>
+                </p>
             </div>
             <button class="site-btn blue-btn acceptcookies">Accept All</button>
         </div>
-    
-<!--Footer Area End-->
 
+        <!--Footer Area End-->
 
+        <script src="{% static 'assets/global/js/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/global/js/jquery-migrate.js' %}"></script>
 
-<script src="{% static 'assets/global/js/jquery.min.js' %}"></script>
-<script src="{% static 'assets/global/js/jquery-migrate.js' %}"></script>
+        <script src="{% static 'assets/frontend/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/frontend/js/scrollUp.min.js' %}"></script>
 
-<script src="{% static 'assets/frontend/js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static 'assets/frontend/js/scrollUp.min.js' %}"></script>
+        <script src="{% static 'assets/frontend/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'assets/global/js/waypoints.min.js' %}"></script>
+        <script src="{% static 'assets/frontend/js/jquery.counterup.min.js' %}"></script>
+        <script src="{% static 'assets/frontend/js/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static 'assets/frontend/js/lucide.min.js' %}"></script>
+        <script src="{% static 'assets/frontend/js/magnific-popup.min.js' %}"></script>
+        <script src="{% static 'assets/frontend/js/aos.js' %}"></script>
+        <script src="{% static 'assets/global/js/datatables.min.js' %}" type="text/javascript" charset="utf8"></script>
+        <script src="{% static 'assets/frontend/js/main.js' %}"></script>
+        <script src="{% static 'assets/frontend/js/cookie.js' %}"></script>
+        <script src="{% static 'assets/global/js/custom.js' %}"></script>
+        <script>
+            (function ($) {
+                "use strict";
+                // AOS initialization
+                AOS.init();
+            })(jQuery);
+        </script>
 
-<script src="{% static 'assets/frontend/js/owl.carousel.min.js' %}"></script>
-<script src="{% static 'assets/global/js/waypoints.min.js' %}"></script>
-<script src="{% static 'assets/frontend/js/jquery.counterup.min.js' %}"></script>
-<script src="{% static 'assets/frontend/js/jquery.nice-select.min.js' %}"></script>
-<script src="{% static 'assets/frontend/js/lucide.min.js' %}"></script>
-<script src="{% static 'assets/frontend/js/magnific-popup.min.js' %}"></script>
-<script src="{% static 'assets/frontend/js/aos.js' %}"></script>
-<script src="{% static 'assets/global/js/datatables.min.js' %}" type="text/javascript" charset="utf8"></script>
-<script src="{% static 'assets/frontend/js/main.js' %}"></script>
-<script src="{% static 'assets/frontend/js/cookie.js' %}"></script>
-<script src="{% static 'assets/global/js/custom.js' %}"></script>
-    <script>
-        (function ($) {
-            'use strict';
-            // AOS initialization
-            AOS.init();
-        })(jQuery);
-    </script>
+        <script>
+            (function ($) {
+                "use strict";
+                // To top
+                $.scrollUp({
+                    scrollText: '<i class="fas fa-caret-up"></i>',
+                    easingType: "linear",
+                    scrollSpeed: 500,
+                    animation: "fade",
+                });
+            })(jQuery);
+        </script>
 
+        <script type="text/javascript" src="{% static 'assets/vendor/mckenziearts/laravel-notify/js/notify.js' %}"></script>
+        <script>
+            $("#selectPlan").on("change", function (e) {
+                e.preventDefault();
+                ("use strict");
 
-    <script>
-        (function ($) {
-            'use strict';
-            // To top
-            $.scrollUp({
-                scrollText: '<i class="fas fa-caret-up"></i>',
-                easingType: 'linear',
-                scrollSpeed: 500,
-                animation: 'fade'
+                var id = $(this).val();
+
+                if (id != 0) {
+                    var invest_amount = $("#enter-amount");
+                    invest_amount.val("");
+                    invest_amount.attr("readonly", false);
+
+                    var url = "#/schema-select/:id";
+                    url = url.replace(":id", id);
+
+                    $.ajax({
+                        url: url,
+                        success: function (result) {
+                            $("#amount-level").html("Capital Back:" + result.capital_back);
+                            $("#profit-label").html(result.return_interest + " - " + result.number_period);
+
+                            if (result.invest_amount > 0) {
+                                invest_amount.val(result.invest_amount);
+                                invest_amount.attr("readonly", true);
+                            }
+
+                            if (result.number_period === "Unlimited Times") {
+                                $("#profit").val("Unlimited");
+                            } else {
+                                if (result.interest_type === "percentage") {
+                                    $("#profit").val(calPercentage(result.invest_amount, result.interest) * result.period);
+                                } else {
+                                    $("#profit").val(result.interest * result.period);
+                                }
+                            }
+                        },
+                    });
+                }
             });
-        })(jQuery);
-    </script>
 
-<script type="text/javascript" src="{% static 'assets/vendor/mckenziearts/laravel-notify/js/notify.js' %}"></script>    <script>
-        $('#selectPlan').on('change',function (e) {
-            e.preventDefault();
-            "use strict"
+            $("#enter-amount").on("keyup", function (e) {
+                e.preventDefault();
+                ("use strict");
+                var id = $("#selectPlan").val();
 
-            var id = $(this).val();
+                if (id != 0) {
+                    var url = "/schema-select/:id";
+                    url = url.replace(":id", id);
 
-            if (id != 0) {
-
-                var invest_amount = $("#enter-amount");
-                invest_amount.val('');
-                invest_amount.attr('readonly', false);
-
-                var url = '#/schema-select/:id';
-                url = url.replace(':id', id);
-
-                $.ajax({
-                    url: url, success: function (result) {
-                        $('#amount-level').html('Capital Back:' + result.capital_back);
-                        $('#profit-label').html(result.return_interest + ' - ' + result.number_period);
-
-                        if (result.invest_amount > 0) {
-                            invest_amount.val(result.invest_amount);
-                            invest_amount.attr('readonly', true);
-                        }
-
-                        if (result.number_period === 'Unlimited Times') {
-                            $('#profit').val('Unlimited');
-                        } else {
-
-                            if (result.interest_type === 'percentage') {
-                                $('#profit').val(calPercentage(result.invest_amount, result.interest) * result.period);
-
+                    $.ajax({
+                        url: url,
+                        success: function (result) {
+                            if (result.number_period === "Unlimited Times") {
+                                $("#profit").val("Unlimited");
                             } else {
-                                $('#profit').val(result.interest * result.period);
+                                if (result.interest_type === "percentage") {
+                                    var invest_amount = $("#enter-amount").val();
+                                    $("#profit").val(calPercentage(invest_amount, result.interest) * result.period);
+                                } else {
+                                    $("#profit").val(result.interest * result.period);
+                                }
                             }
-                        }
-
-                    }
-                });
-            }
-
-        })
-
-        $('#enter-amount').on('keyup',function (e) {
-            e.preventDefault();
-            "use strict"
-            var id = $('#selectPlan').val();
-
-            if (id != 0) {
-                var url = '/schema-select/:id';
-                url = url.replace(':id', id);
-
-                $.ajax({
-                    url: url, success: function (result) {
-
-                        if (result.number_period === 'Unlimited Times') {
-                            $('#profit').val('Unlimited');
-                        } else {
-
-                            if (result.interest_type === 'percentage') {
-                                var invest_amount = $("#enter-amount").val();
-                                $('#profit').val(calPercentage(invest_amount, result.interest) * result.period);
-
-                            } else {
-                                $('#profit').val(result.interest * result.period);
-                            }
-                        }
-
-                    }
-                });
-            }
-
-        })
-
-
-    </script>
-
-
-
-
-
-
-
-
-</body>
+                        },
+                    });
+                }
+            });
+        </script>
+    </body>
 </html>
-
