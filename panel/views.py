@@ -423,7 +423,9 @@ def activate(user, amount):
                                 try:
                                     w = WalletHistory.objects.get(comment="Direct Income from Non-AB nodes by "+userx)
                                     x = False
-                                    new_upline_user = User.objects.get(username=userx.referral)
+                                    new_upline_user = User.objects.get(
+                                        username=userx.referral
+                                        )
                                     new_upline_wallet = WalletHistory()
                                     new_upline_wallet.user_id = new_upline_user.username
                                     new_upline_wallet.amount = 25
@@ -438,7 +440,6 @@ def activate(user, amount):
                                     new_upline_user.total_income += 25
                                     new_upline_user.progress += 25
                                     new_upline_user.save()
-                                    new_upline_user = User.objects.get(username=upline)
                                 except Exception as e:
                                     userx = upline_user.referral
                         if directs.count() > 2:
