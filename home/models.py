@@ -28,7 +28,8 @@ class News(models.Model):
 class Company(models.Model):
 	total_turnover = models.FloatField()
 	today_turnover = models.FloatField()
-	
+	today_new_ids = models.FloatField()
+
 	def total_active_ids(self):
 		c = LevelUser.objects.filter(active=True).count()
 		return c

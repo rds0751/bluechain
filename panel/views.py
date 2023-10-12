@@ -381,7 +381,7 @@ def activate(user, amount):
                     capping = upgraded.level.amount * 4
                 except Exception as e:
                     print(e)
-                    upgraded = LevelUser.objects.get(user='BT000001')
+                    upgraded = LevelUser.objects.get(user='DV111111')
                     capping = 0
                 try:
                     upline_user = User.objects.get(username=upline) 
@@ -490,6 +490,11 @@ def activate(user, amount):
             model.activated_at = datetime.datetime.now()
             model.save()
             user_id.save()
+            c = Company.objects.get(id=1)
+            c.total_turnover += 100
+            c.today_new_ids += 1
+            c.today_turnover += 100
+            c.save()
             message = "Plan purchased"
         else:
             message = "user already joined, please upgrade another ID"
