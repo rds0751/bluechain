@@ -38,8 +38,8 @@
                                 <td>{% if directs >= 1 %}Open{% else %}Closed{% endif %}</td>
                                 <td><span style="color: red; font-size: 16px">&#9679; </span> {{ countingi.1 }}</td>
                                 <td><span style="color: green; font-size: 16px">&#9679; </span>{% sub counting.1 countingi.1 as x1 %}{{ x1|floatformat:"0" }}</td>
-                                <td><span style="font-size: 16px">₹ </span> {{ business.1 }}</td>
-                                <td><span style="font-size: 16px">₹ </span>{% mul business.1 0.2 as drfgvbh %}{{drfgvbh}}</td>
+                                <td><span style="font-size: 16px">$ </span> {{ business.1 }}</td>
+                                <td><span style="font-size: 16px">$ </span>{% mul business.1 0.2 as drfgvbh %}{{drfgvbh}}</td>
                                 <td><a href="/level/team/{{request.user.username}}/1/">View</a></td>
                               </tr>
                               <tr>
@@ -47,8 +47,8 @@
                               <td>{% if directs >= 2 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span> {{ countingi.2 }}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span>{% sub counting.2 countingi.2 as x2 %}{{ x2|floatformat:"0" }}</td>
-                              <td><span style="font-size: 16px">₹ </span> {{ business.2 }}</td>
-                              <td><span style="font-size: 16px">₹ </span>{{ lc.2 }}</td>
+                              <td><span style="font-size: 16px">$ </span> {{ business.2 }}</td>
+                              <td><span style="font-size: 16px">$ </span>{{ lc.2 }}</td>
                               <td><a href="/level/team/{{request.user.username}}/2/">View</a></td>
                               </tr>
                               <tr>
@@ -56,8 +56,8 @@
                               <td>{% if directs >= 3 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span> {{ countingi.3 }}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span>{% sub counting.3 countingi.3 as x3 %}{{ x3|floatformat:"0" }}</td>
-                              <td><span style="font-size: 16px">₹ </span> {{ business.3 }}</td>
-                              <td><span style="font-size: 16px">₹ </span>{{ lc.3 }}</td>
+                              <td><span style="font-size: 16px">$ </span> {{ business.3 }}</td>
+                              <td><span style="font-size: 16px">$ </span>{{ lc.3 }}</td>
                               <td><a href="/level/team/{{request.user.username}}/3/">View</a></td>
                               </tr>
                               <tr>
@@ -65,8 +65,8 @@
                               <td>{% if directs >= 4 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span> {{ countingi.4 }}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span>{% sub counting.4 countingi.4 as x4 %}{{ x4|floatformat:"0" }}</td>
-                              <td><span style="font-size: 16px">₹ </span> {{ business.4 }}</td>
-                              <td><span style="font-size: 16px">₹ </span>{{ lc.4 }}</td>
+                              <td><span style="font-size: 16px">$ </span> {{ business.4 }}</td>
+                              <td><span style="font-size: 16px">$ </span>{{ lc.4 }}</td>
                               <td><a href="/level/team/{{request.user.username}}/4/">View</a></td>
                               </tr>
                               <tr>
@@ -74,16 +74,16 @@
                               <td>{% if directs >= 5 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span> {{ countingi.5 }}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span>{% sub counting.5 countingi.5 as x5 %}{{ x5|floatformat:"0" }}</td>
-                              <td><span style="font-size: 16px">₹ </span> {{ business.5 }}</td>
-                              <td><span style="font-size: 16px">₹ </span>{{ lc.5 }}</td>
+                              <td><span style="font-size: 16px">$ </span> {{ business.5 }}</td>
+                              <td><span style="font-size: 16px">$ </span>{{ lc.5 }}</td>
                               <td><a href="/level/team/{{request.user.username}}/5/">View</a></td>
                               </tr>
                               <tr>
                               <td><strong>&nbsp;&nbsp;Total</strong></td>
                               <td><strong style="font-size: 16px;">&#9745; {{ countingi.1|add:countingi.2|add:countingi.3|add:countingi.4|add:countingi.5 }}</strong></td>
                               <td><strong style="font-size: 16px;">&#9745; {{ x1|add:x2|add:x3|add:x4|add:x5 }}</strong></td>
-                              <td><strong style="font-size: 16px;">₹ {{ business.1|add:business.2|add:business.3|add:business.4|add:business.5 }}</strong></td>
-                              <td><strong style="font-size: 16px;">₹ {{ drfgvbh|add:lc.1|add:lc.2|add:lc.3|add:lc.4|add:lc.5 }}</strong></td>
+                              <td><strong style="font-size: 16px;">$ {{ business.1|add:business.2|add:business.3|add:business.4|add:business.5 }}</strong></td>
+                              <td><strong style="font-size: 16px;">$ {{ drfgvbh|add:lc.1|add:lc.2|add:lc.3|add:lc.4|add:lc.5 }}</strong></td>
                               <td>&nbsp;&nbsp;</td>
                               </tr>
                           </tbody>
@@ -114,8 +114,8 @@
                               <td>{% if shopn.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ usern.name }}</td>
                               <td>{{ usern.username }}</td>
                               <td><a href="tel:{{ usern.mobile }}">{{ usern.mobile }}</a></td>
-                              <td>₹ {{ shopn.level.amount }}</td>
-                              <td>₹ {% mul shopn.level.amount 0.2 as shopnres %}{{ shopnres }}</td>
+                              <td>$ {{ shopn.level.amount }}</td>
+                              <td>$ {% mul shopn.level.amount 0.2 as shopnres %}{{ shopnres }}</td>
                               <td><a href="/level/team/{{ usern.username }}/1/">View</a></td>
                               {% endfor %}
                           </tbody>
@@ -147,8 +147,8 @@
                               <td>{% if level2n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level2nu.name }}</td>
                               <td>{{ level2nu.username }}</td>
                               <td>{{ level2nu.referral }}</td>
-                              <td>₹ {{ level2n.level.amount }}</td>
-                              <td>₹ {% mul level2n.level.amount 0.1 as level2nres %}{{ level2nres }}</td>
+                              <td>$ {{ level2n.level.amount }}</td>
+                              <td>$ {% mul level2n.level.amount 0.1 as level2nres %}{{ level2nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -180,8 +180,8 @@
                               <td>{% if level3n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level3nu.name }}</td>
                               <td>{{ level3nu.username }}</td>
                               <td>{{ level3n.direct }}</td>
-                              <td>₹ {{ level3n.level.amount }}</td>
-                              <td>₹ {% mul level3n.level.amount 0.08 as level3nres %}{{ level3nres }}</td>
+                              <td>$ {{ level3n.level.amount }}</td>
+                              <td>$ {% mul level3n.level.amount 0.08 as level3nres %}{{ level3nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>
@@ -214,8 +214,8 @@
                                 {% if level4n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level4nu.name }}</td>
                               <td>{{ level4nu.username }}</td>
                               <td>{{ level4n.direct }}</td>
-                              <td>₹ {{ level4n.level.amount }}</td>
-                              <td>₹ {% mul level4n.level.amount 0.08 as level4nres %}{{ level4nres }}</td>
+                              <td>$ {{ level4n.level.amount }}</td>
+                              <td>$ {% mul level4n.level.amount 0.08 as level4nres %}{{ level4nres }}</td>
                             </tr>
                               {% endfor %}
                           </tbody>
@@ -247,8 +247,8 @@
                               <td>{% if level5n.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ level5nu.name }}</td>
                               <td>{{ level5nu.username }}</td>
                               <td>{{ level5n.direct }}</td>
-                              <td>₹ {{ level5n.level.amount }}</td>
-                              <td>₹ {% mul level5n.level.amount 0.06 as level5nres %}{{ level5nres }}</td>
+                              <td>$ {{ level5n.level.amount }}</td>
+                              <td>$ {% mul level5n.level.amount 0.06 as level5nres %}{{ level5nres }}</td>
                               </tr>
                               {% endfor %}
                           </tbody>

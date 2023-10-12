@@ -47,9 +47,9 @@
             <div class="icon"><i class="anticon anticon-inbox"></i></div>
             <div class="content">
                             {% if amount != 'None' %}
-                                <h4 class="mb-0"><b>₹</b><span class="count">{{ amount.level.amount|floatformat:2 }}</span></h4>
+                                <h4 class="mb-0"><b>$</b><span class="count">{{ amount.level.amount|floatformat:2 }}</span></h4>
                             {% else %}
-                                <h4 class="increamentcount mb-0">₹ 0</h4>
+                                <h4 class="increamentcount mb-0">$ 0</h4>
                             {% endif %}
                         <p class="small">My Plan</p>
             </div>
@@ -59,7 +59,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-file-add"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">{{ request.user.total_income|floatformat:2 }}</span></h4>
+                <h4><b>$</b><span class="count">{{ request.user.total_income|floatformat:2 }}</span></h4>
                 <p>Total Income</p>
             </div>
         </div>
@@ -95,7 +95,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-arrow-right"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">{{request.user.wallet|floatformat:2 }}</span></h4>
+                <h4><b>$</b><span class="count">{{request.user.wallet|floatformat:2 }}</span></h4>
                 <p>Withdrawal Wallet</p>
             </div>
         </div>
@@ -104,7 +104,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-money-collect"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">{{request.user.today_income|floatformat:2 }}</span></h4>
+                <h4><b>$</b><span class="count">{{request.user.today_income|floatformat:2 }}</span></h4>
                 <p>Today Income</p>
             </div>
         </div>
@@ -113,7 +113,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-gift"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">{{ request.user.total_business|floatformat:2 }}</span>
+                <h4><b>$</b><span class="count">{{ request.user.total_business|floatformat:2 }}</span>
                 </h4>
                 <p>Total Business</p>
             </div>
@@ -123,7 +123,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-account-book"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">{{ request.user.level_income|floatformat:2 }}</span></h4>
+                <h4><b>$</b><span class="count">{{ request.user.level_income|floatformat:2 }}</span></h4>
                 <p>Level Incentive</p>
             </div>
         </div>
@@ -132,7 +132,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-gold"></i></div>
             <div class="content">
-                <h4><b>₹</b><span class="count">{{ request.user.direct_income|floatformat:2 }}</span></h4>
+                <h4><b>$</b><span class="count">{{ request.user.direct_income|floatformat:2 }}</span></h4>
                 <p>Direct Income</p>
             </div>
         </div>
@@ -141,7 +141,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-inbox"></i></div>
             <div class="content">
-                <h4><b>₹</b><span>0.00</span></h4>
+                <h4><b>$</b><span>0.00</span></h4>
                 <p>Diamond Income</p>
             </div>
         </div>
@@ -150,7 +150,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-inbox"></i></div>
             <div class="content">
-                <h4><b>₹</b><span>0.00</span></h4>
+                <h4><b>$</b><span>0.00</span></h4>
                 <p>Global Community Income</p>
             </div>
         </div>
@@ -160,7 +160,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-radar-chart"></i></div>
             <div class="content">
-                <h4><b>₹</b><span>0.00</span></h4>
+                <h4><b>$</b><span>0.00</span></h4>
                 <p>Upline Income</p>
             </div>
         </div>

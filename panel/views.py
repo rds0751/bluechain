@@ -363,7 +363,7 @@ def activate(user, amount):
             userid = user   
             amount = packamount 
             uplines = [upline_user, ]
-            while level < 5 and upline_user != 'blank':
+            while level < 4 and upline_user != 'blank':
                 upline_user = finduplines(str(upline_user))
                 uplines.append(upline_user)
                 level += 1
@@ -399,9 +399,10 @@ def activate(user, amount):
                     else:
                         direct = False
                     upline_amount = levels['level{}'.format(level+1)]*amount
+                    print(directs.count(), upline_user, '-----------------------------------------------------------------------------')
 
                     if direct:
-                        if directs.count() <= 2: 
+                        if directs.count() < 2: 
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
                             upline_wallet.amount = 25
@@ -419,13 +420,16 @@ def activate(user, amount):
                             upline_user = User.objects.get(username=upline)
                             userx = upline_user.username
                             x = True
+                            print(userx, 'ewsdrtfgyhujikoijuhgytfdresdrftgyhjkm')
                             while x:
+                                new_upline_user = User.objects.get(
+                                    username=User.objects.get(username=userx).referral
+                                    )
                                 try:
                                     w = WalletHistory.objects.get(comment="Direct Income from Non-AB nodes by "+userx)
+                                    print(userx)
+                                    print(w.comment)
                                     x = False
-                                    new_upline_user = User.objects.get(
-                                        username=userx.referral
-                                        )
                                     new_upline_wallet = WalletHistory()
                                     new_upline_wallet.user_id = new_upline_user.username
                                     new_upline_wallet.amount = 25
@@ -441,13 +445,13 @@ def activate(user, amount):
                                     new_upline_user.progress += 25
                                     new_upline_user.save()
                                 except Exception as e:
-                                    userx = upline_user.referral
+                                    print(str(e))
+                                    userx = new_upline_user.referral
+                                print(userx, upline_user)
                                 if not userx:
                                     x = False
-                                if userx == upline_user.referral:
-                                    x = False
                                 
-                        if directs.count() > 2:
+                        if directs.count() >= 2:
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
                             upline_wallet.amount = 50
