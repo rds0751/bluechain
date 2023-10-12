@@ -37,51 +37,15 @@ class Command(BaseCommand):
 				upline = 'blank'
 			return upline
 		
-		levels = {
-            'level1': 75/100,
-            'level2': 10/100,
-            'level3': 10/100,
-            'level4': 5/100,
-            'level5': 5/100,
-            'level6': 4/100,
-            'level7': 4/100,
-            'level8': 4/100,
-            'level9': 4/100,
-            'level10': 4/100,
-            'level11': 3/100,
-            'level12': 3/100,
-            'level13': 3/100,
-            'level14': 3/100,
-            'level15': 3/100,
-            'level16': 2/100,
-            'level17': 2/100,
-            'level18': 2/100,
-            'level19': 2/100,
-            'level20': 2/100
-			}
-
+		l = LevelUser.objects.filter(active=True)
 		for x in l:
-			directs = LevelUser.objects.filter(direct=x.user).count()
-			time_difference = timezone.now() - x.activated_at
-			days_difference = 3
-			roi = x.level.amount * 0.005 + x.level.amount * 0.005 * 0.01 * directs
-			count = 0
-			for d in range(0,days_difference):
-				wallet = WalletHistory()
-				wallet.comment = "Profit Share Income"
-				wallet.user_id = x.user
-				wallet.amount = roi
-				wallet.type = "credit"
-				wallet.created_at = timezone.now() - timedelta(days=count)
-				wallet.save()
-				user = User.objects.get(username=x.user)
-				user.wallet += roi
-				user.save()
-				userid = User.objects.get(username=user.username)
-				level = 0
-				upline_user = userid.referral 
-				userid = user
-				amount = x.level.amount * 0.05 / 30
-				uplines = [upline_user, ]
-				count += 1
-				print(days_difference, count)
+			wallet = WalletHistory()
+			wallet.comment = "Global Community Income"
+			wallet.user_id = x.user
+			wallet.amount = 40
+			wallet.type = "credit"
+			wallet.created_at = timezone.now()
+			# wallet.save()
+			user = User.objects.get(username=x.user)
+			user.wallet += 40
+			# user.save()

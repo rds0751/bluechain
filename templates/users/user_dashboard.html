@@ -59,7 +59,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-file-add"></i></div>
             <div class="content">
-                <h4><b>$</b><span class="count">{{ request.user.total_income|floatformat:2 }}</span></h4>
+                <h4><b>$</b><span class="count">{{ request.user.total_income|add:40|floatformat:2 }}</span></h4>
                 <p>Total Income</p>
             </div>
         </div>
@@ -78,7 +78,7 @@
             <div class="icon"><i class="anticon anticon-credit-card"></i></div>
             <div class="content">
                 <h4><b></b><span class="count">{{ c.total_active_ids }}</span></h4>
-                <p>Today's Global Team</p>
+                <p>Today's Global Active Team</p>
             </div>
         </div>
     </div>
