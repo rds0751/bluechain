@@ -434,8 +434,6 @@ def activate(user, amount):
                             upline_user.progress += 50
                             upline_user.save()
                             upline_user = User.objects.get(username=upline)
-                        comment = ""
-                        while 
                     if directs.count() >= level:
                         upline_amount = levels['level{}'.format(level+1)]*amount
                         upline_wallet = WalletHistory()
