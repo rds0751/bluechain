@@ -402,7 +402,7 @@ def activate(user, amount):
                     print(directs.count(), upline_user, '-----------------------------------------------------------------------------')
 
                     if direct:
-                        if directs.count() < 2: 
+                        if directs.count() < 2 and upline_user.total_income + 25 <= 400: 
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
                             upline_wallet.amount = 25
@@ -418,6 +418,7 @@ def activate(user, amount):
                             upline_user.direct_income += 25
                             upline_user.save()
                             upline_user = User.objects.get(username=upline)
+                        if directs.count() < 2:
                             userx = upline_user.username
                             x = True
                             print(userx, 'ewsdrtfgyhujikoijuhgytfdresdrftgyhjkm')
@@ -430,20 +431,21 @@ def activate(user, amount):
                                     print(userx)
                                     print(w.comment)
                                     x = False
-                                    new_upline_wallet = WalletHistory()
-                                    new_upline_wallet.user_id = new_upline_user.username
-                                    new_upline_wallet.amount = 25
-                                    new_upline_wallet.type = "credit"
-                                    new_upline_wallet.comment = "Diamond Income for AB nodes by {}".format(user)
-                                    new_upline_wallet.balance += 25
-                                    new_upline_wallet.txnid = generateid()
-                                    new_upline_wallet.save()
-                                    new_upline_user.wallet += 25
-                                    new_upline_user.today_income += 25
-                                    new_upline_user.diamond_income += 25
-                                    new_upline_user.total_income += 25
-                                    new_upline_user.progress += 25
-                                    new_upline_user.save()
+                                    if new_upline_user.total_income + 25 <= 400:
+                                        new_upline_wallet = WalletHistory()
+                                        new_upline_wallet.user_id = new_upline_user.username
+                                        new_upline_wallet.amount = 25
+                                        new_upline_wallet.type = "credit"
+                                        new_upline_wallet.comment = "Diamond Income for AB nodes by {}".format(user)
+                                        new_upline_wallet.balance += 25
+                                        new_upline_wallet.txnid = generateid()
+                                        new_upline_wallet.save()
+                                        new_upline_user.wallet += 25
+                                        new_upline_user.today_income += 25
+                                        new_upline_user.diamond_income += 25
+                                        new_upline_user.total_income += 25
+                                        new_upline_user.progress += 25
+                                        new_upline_user.save()
                                 except Exception as e:
                                     print(str(e))
                                     userx = new_upline_user.referral
@@ -451,7 +453,7 @@ def activate(user, amount):
                                 if not userx:
                                     x = False
                                 
-                        if directs.count() >= 2:
+                        if directs.count() >= 2 and upline_user.total_income + 50 <= 400:
                             upline_wallet = WalletHistory()
                             upline_wallet.user_id = upline
                             upline_wallet.amount = 50

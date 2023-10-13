@@ -43,21 +43,22 @@ class Command(BaseCommand):
 		amount = c.today_turnover
 		amount = amount / l
 		for x in l:
-			wallet = WalletHistory()
-			wallet.comment = "Global Community Income"
-			wallet.user_id = x.user
-			wallet.amount = amount
-			wallet.type = "credit"
-			wallet.created_at = timezone.now()
-			wallet.save()
-			user = User.objects.get(username=x.user)
-			user.today_income = 0
-			user.save()
-			user = User.objects.get(username=x.user)
-			user.wallet += amount
-			user.total_income += amount
-			user.today_income += amount
-			user.global_income += amount
-			user.save()
-			c.today_new_ids = 0
-			c.today_turnover = 0
+			if User.objects.get(username=x.user).total_income + amount <= 2 * 100: 
+				wallet = WalletHistory()
+				wallet.comment = "Global Community Income"
+				wallet.user_id = x.user
+				wallet.amount = amount
+				wallet.type = "credit"
+				wallet.created_at = timezone.now()
+				wallet.save()
+				user = User.objects.get(username=x.user)
+				user.today_income = 0
+				user.save()
+				user = User.objects.get(username=x.user)
+				user.wallet += amount
+				user.total_income += amount
+				user.today_income += amount
+				user.global_income += amount
+				user.save()
+				c.today_new_ids = 0
+				c.today_turnover = 0
