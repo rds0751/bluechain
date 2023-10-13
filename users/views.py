@@ -188,7 +188,7 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
     fields = [
-        "name", "email", "mobile", "address", "city", "state", "profile_pic",
+        "name", "email", "mobile", "address", "city", "state",
     ]
     model = User
     
