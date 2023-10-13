@@ -415,17 +415,19 @@ def activate(user, amount):
                             upline_user.today_income += 25
                             upline_user.direct_income += 25
                             upline_user.total_income += 25
-                            upline_user.direct_income += 25
                             upline_user.save()
-                            upline_user = User.objects.get(username=upline)
                         if directs.count() < 2:
+                            upline_user = User.objects.get(username=upline)
                             userx = upline_user.username
                             x = True
                             print(userx, 'ewsdrtfgyhujikoijuhgytfdresdrftgyhjkm')
                             while x:
-                                new_upline_user = User.objects.get(
-                                    username=User.objects.get(username=userx).referral
-                                    )
+                                try:
+                                    new_upline_user = User.objects.get(
+                                        username=User.objects.get(username=userx).referral
+                                        )
+                                except Exception as e:
+                                    x = False
                                 try:
                                     w = WalletHistory.objects.get(comment="Direct Income from Non-AB nodes by "+userx)
                                     print(userx)
