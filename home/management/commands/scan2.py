@@ -10,6 +10,7 @@ from level.models import LevelIncomeSettings, LevelUser
 from users.models import User
 from django.utils import timezone
 from django.utils.crypto import get_random_string
+from home.models import Company
 
 
 class Command(BaseCommand):
@@ -31,21 +32,32 @@ class Command(BaseCommand):
 			
 		def finduplines(user):  
 			try:
-				user = User.objects.get(username__iexact=str(user)) 
+				user = User.objects.get(username__iexact=str(user))
 				upline = user.referral   
 			except User.DoesNotExist:   
 				upline = 'blank'
 			return upline
 		
 		l = LevelUser.objects.filter(active=True)
+		c = Company.objects.get(id=1)
+		amount = c.today_turnover
+		amount = amount / l
 		for x in l:
 			wallet = WalletHistory()
 			wallet.comment = "Global Community Income"
 			wallet.user_id = x.user
-			wallet.amount = 40
+			wallet.amount = amount
 			wallet.type = "credit"
 			wallet.created_at = timezone.now()
-			# wallet.save()
+			wallet.save()
 			user = User.objects.get(username=x.user)
-			user.wallet += 40
-			# user.save()
+			user.today_income = 0
+			user.save()
+			user = User.objects.get(username=x.user)
+			user.wallet += amount
+			user.total_income += amount
+			user.today_income += amount
+			user.global_income += amount
+			user.save()
+			c.today_new_ids = 0
+			c.today_turnover = 0

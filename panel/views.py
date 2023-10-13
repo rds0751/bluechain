@@ -415,7 +415,7 @@ def activate(user, amount):
                             upline_user.today_income += 25
                             upline_user.direct_income += 25
                             upline_user.total_income += 25
-                            upline_user.progress += 25
+                            upline_user.direct_income += 25
                             upline_user.save()
                             upline_user = User.objects.get(username=upline)
                             userx = upline_user.username
@@ -464,7 +464,7 @@ def activate(user, amount):
                             upline_user.today_income += 50
                             upline_user.direct_income += 50
                             upline_user.total_income += 50
-                            upline_user.progress += 50
+                            upline_user.direct_income += 50
                             upline_user.save()
                             upline_user = User.objects.get(username=upline)
                     if True:
