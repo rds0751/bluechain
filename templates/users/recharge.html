@@ -20,7 +20,7 @@
 									<div class="mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-6-desktop stretch-card">
 										<div class="mdc-card">
 											<p>Recharge Credit Limit: {{ request.user.recharge_limit|currency }}</p>
-											<p>This Month Recharge Credit Limit Left: {% if request.user.recharge_limit > 250 %}{% sub 250 request.user.recharge_limit_used as rcll %}{{ rcll|currency }}{% else %}INR 0{% endif %}</p>
+											<p>This Month Recharge Credit Limit Left: {% if request.user.recharge_limit > 250 %}{% sub 250 request.user.recharge_limit_used as rcll %}{{ rcll|currency }}{% else %}USD 0{% endif %}</p>
 
 											{% if operator == '' %}
 											<form method="POST" action="/wallet/mobile-no/" class="template-demo">

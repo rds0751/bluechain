@@ -19,8 +19,8 @@
                   <div style="border-right: 1px dotted;" class="row stretch-card mb-3">
                     <div>
                       {% widthratio request.user.wallet|add:request.user.pool_wallet 1 10 as c %}
-                      {% widthratio request.user.wallet|add:request.user.pool_wallet 1 85 as inr %}
-                      <h6>Available Balance: INR {{ request.user.wallet|add:request.user.pool_wallet }}</h6>
+                      {% widthratio request.user.wallet|add:request.user.pool_wallet 1 85 as USD %}
+                      <h6>Available Balance: USD {{ request.user.wallet|add:request.user.pool_wallet }}</h6>
                     <div class="row">
                     <div class="col">
 
@@ -106,7 +106,7 @@ $('.options li').click(function(){
 																	</td>
 																	<td style="display: table-cell;">
 																		<p class="mb-0">{{ history.amount }}</p>
-																		<p class="text-secondary small">INR</p>
+																		<p class="text-secondary small">USD</p>
 																	</td>
 																	<td style="display: table-cell;">
 																		<p class="mb-0">{{history.comment}}</p>
