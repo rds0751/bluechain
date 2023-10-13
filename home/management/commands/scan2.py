@@ -41,7 +41,7 @@ class Command(BaseCommand):
 		l = LevelUser.objects.filter(active=True)
 		c = Company.objects.get(id=1)
 		amount = c.today_turnover
-		amount = amount / l
+		amount = (amount / l.count()) * 0.4
 		for x in l:
 			if User.objects.get(username=x.user).total_income + amount <= 2 * 100: 
 				wallet = WalletHistory()
@@ -62,3 +62,4 @@ class Command(BaseCommand):
 				user.save()
 				c.today_new_ids = 0
 				c.today_turnover = 0
+				c.save()
