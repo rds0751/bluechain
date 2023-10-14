@@ -340,7 +340,7 @@ def activate(user, amount):
             userwallet.txnid = generateid()
             userwallet.save()
 
-            userid = user   
+            userid = user
 
             def finduplines(user):  
                 try:    

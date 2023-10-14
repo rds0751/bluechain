@@ -15,7 +15,7 @@ urlpatterns = [
     url(regex=r"^profile/$", view=views.profile.as_view(), name="profile"),
     url(regex=r"^recharge/$", view=views.recharge.as_view(), name=""),
     url(regex=r"^money-transfer/$", view=views.moneytransfer.as_view(), name=""),
-    url(regex=r"^add-amount/$", view=views.addamount.as_view(), name=""),
+    url(regex=r"^fund-transfer/", view=views.addamount.as_view(), name=""),
     url(regex=r"^transfer-amount/$", view=views.transferamount.as_view(), name=""),
     url(regex=r"^direct-team/$", view=views.directteam.as_view(), name=""),
     url(regex=r"^zone-income/$", view=views.zoneincome.as_view(), name=""),

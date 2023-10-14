@@ -64,16 +64,16 @@
                 <div class="default">Wallet</div>
             </div>
             <div class="wallet-info">
-                <div class="wallet-id"><i icon-name="wallet"></i>Main Wallet</div>
-                <div class="balance">${{request.user.wallet|add:request.user.pool_wallet}}</div>
+                <div class="wallet-id"><i icon-name="wallet"></i>Fund Wallet</div>
+                <div class="balance">${{request.user.c}}</div>
             </div>
             <div class="wallet-info">
                 <div class="wallet-id"><i icon-name="landmark"></i>Profit Wallet</div>
-                <div class="balance">$0</div>
+                <div class="balance">${{request.user.wallet}}</div>
             </div>
         </div>
         <div class="actions">
-            <a style="color: aliceblue;" href="" class="user-sidebar-btn"><i
+            <a style="color: aliceblue;" href="/wallet/fund-request/" class="user-sidebar-btn"><i
                     class="anticon text-white anticon-file-add"></i>Deposit</a>
             <a style="color: aliceblue;" href="/level/activation/" class="user-sidebar-btn red-btn"><i
                     class="anticon text-white anticon-export"></i>Join Package</a>
@@ -94,6 +94,10 @@
             <li class="side-nav-item ">
                 <a style="color: aliceblue;" href="/level/activation/"><i
                         class="anticon text-white anticon-cloud"></i><span>Buy Plan</span></a>
+            </li>
+            <li class="side-nav-item ">
+                <a style="color: aliceblue;" href="/users/fund-transfer/"><i
+                        class="anticon text-white anticon-cloud"></i><span>Fund Transfer</span></a>
             </li>
 
             <li class="side-nav-item   ">

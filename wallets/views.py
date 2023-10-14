@@ -7,7 +7,7 @@ from django.views.generic import DetailView, ListView, RedirectView, UpdateView,
 from django.shortcuts import render, redirect
 from users.models import User
 from .models import PaymentOption, Withdrawal
-from wallets.models import WalletHistory, Beneficiary, MetatraderAccount, Mtw
+from wallets.models import WalletHistory, Beneficiary, MetatraderAccount, Mtw, FundRequest
 from django.shortcuts import render
 import requests
 import os
@@ -1892,7 +1892,7 @@ def fundrequest(request):
 
     def generateid():
         txnid = get_random_string(8)
-        txnid = 'IPAY'+txnid
+        txnid = 'DV'+txnid
         try:
             txn = FundRequest.objects.get(code = txnid)
         except FundRequest.DoesNotExist:

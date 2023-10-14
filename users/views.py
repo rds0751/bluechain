@@ -352,6 +352,64 @@ class moneytransfer(LoginRequiredMixin, ListView):
 
 class addamount(LoginRequiredMixin, ListView):
     model = User
+    def post(self,request):
+        message = ''
+        amount = float(request.POST.get('amount'))
+        t = amount * 1.05
+        user = request.POST.get('user')
+        try:
+            u = User.objects.get(username = user)
+        except Exception as E:
+            message = 'User not found'
+            return render(request,'users/addamount.html',{'message':message})
+        balance = float(request.user.c + request.user.wallet)
+        print(t, balance)
+        if t >= balance:
+            userwallet = WalletHistory()
+            userwallet.user_id = u.username
+            userwallet.amount = amount
+            userwallet.type = "credit"
+            userwallet.comment = "Fund Transfer received from {}".format(request.user.username)
+            userwallet.balance += amount
+            # userwallet.save()
+
+            userwallet = WalletHistory()
+            userwallet.user_id = request.user.username
+            userwallet.amount = t
+            userwallet.type = "debit"
+            userwallet.comment = "Amount transferred to {}".format(u.username)
+            userwallet.balance -= t
+            # userwallet.save()
+
+            if t >= request.user.wallet:
+                us = request.user
+                us.wallet -= t
+                t = 0
+                # us.save()
+            else:
+                us = request.user
+                w = us.wallet
+                us.wallet = 0
+                t -= w
+                # us.save()
+
+            if t >= request.user.c:
+                us = request.user
+                us.c -= t
+                t = 0
+                # us.save()
+            else:
+                us = request.user
+                w = us.c
+                us.c = 0
+                t -= w
+                # us.save()
+            u.c += amount
+            # u.save()
+            return render(request,'users/addamount.html',{'message':"Something went wrong! Please try again later!"})
+        else:
+            return render(request,'users/addamount.html',{'message':'Not Enough Balance'})
+    
     template_name = 'users/addamount.html'
     slug_field = "username"
     slug_url_kwarg = "username"

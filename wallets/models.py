@@ -25,6 +25,14 @@ class Mtw(models.Model):
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(default=timezone.now, blank=True)
     
+# Create your models here.
+class FundRequest(models.Model):
+    user = models.CharField(max_length=255, blank=True, null=True)
+    amount = models.FloatField(max_length=255, null=True, blank=True)
+    code = models.CharField(max_length=255, null=True, blank=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True)
+    updated_at = models.DateTimeField(default=timezone.now, blank=True)
+    
 
 class WalletHistory(models.Model):
     user_id = models.CharField(max_length=20)
