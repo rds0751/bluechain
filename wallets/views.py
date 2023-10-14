@@ -2059,12 +2059,12 @@ def withdrawBNXG(request):
                 # Check if the transaction was successful
                 if txn_receipt['status']:
                     wallet = request.user
-                    wallet.wallet -= int(request.session['amount'])
+                    wallet.wallet -= float(request.POST.get('amount'))
                     wallet.save()
                     message = 'Transaction Success!'
                     userwallet = WalletHistory()
                     userwallet.user_id = request.user.username
-                    userwallet.amount = int(request.session['amount'])
+                    userwallet.amount = int(float(request.POST.get('amount')))
                     userwallet.type = "debit"
                     userwallet.filter = "BNXG"
                     userwallet.comment = "Sent to your wallet address {}".format(po.bank)
