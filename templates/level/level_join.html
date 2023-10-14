@@ -161,6 +161,7 @@
            succeeded: function(transaction){ console.log(transaction.message) },
            failed: function(transaction){ console.log(transaction.message); }
          }).then((transaction)=>{ 
+          document.getElementById('myForm').submit()
           })
        } catch (err) {
           console.log(err)
