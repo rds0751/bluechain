@@ -88,15 +88,13 @@ fileinput.addEventListener('change', function() {
 <section>
 <div class="container">
   <div class="row align-items-center m-2 p-2">
-      <p style="font-weight: bold; color: {% if model != 'blank' %}{% if model.status == True %}green{% elif model.status == None %}orange{% else %}red{% endif %}{% endif %}">{% if model.status == True %}Hurray&#128512;! Payment option got verified.{% elif model.status == None %}Pending Verification(It will take 2-3 working days to verify your bank details){% endif %}</p>
-      <p style="color: red">{% if model != 'blank' %}{% if model.status == True %}{% elif model.status == None %}{% else %}{{ model.comment }}{% endif %}{% endif %}</p>
       <div class="mdc-layout-grid__inner mt-2">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-8-tablet">
           <div class="table-responsive">
             <div class="py-4">
               <p class="d-flex justify-content-between">
                 <span> {% trans "Account Status" %} </span>
-                <span style="color: {% if model != 'blank' %}{% if model.status == True %}green{% elif model.status == None %}orange{% else %}red{% endif %}{% endif %}">{% if model != 'blank' %}{% if model.status == True %}Active{% elif model.status == None %}Pending Verification{% else %}Declined{% endif %}{% endif %}</span>
+                <span style="color: {% if model != 'blank' %}{% if model.status == True %}green{% elif model.status == None %}green{% else %}red{% endif %}{% endif %}">{% if model != 'blank' %}{% if model.status == True %}Active{% elif model.status == None %}Active{% else %}Declined{% endif %}{% endif %}</span>
               </p>
               {{ message }}
               <p class="d-flex justify-content-between">
