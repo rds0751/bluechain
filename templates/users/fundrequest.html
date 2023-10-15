@@ -27,10 +27,10 @@
                           {% csrf_token %}
                           <br>
                           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop pb-2"> 
-                            <input class="w-100" type="integer" name="amount" placeholder="Amount in USD" min="500" max="100000" step="500">
+                            <input class="form-control" type="integer" name="amount" placeholder="Amount in USD" min="500" max="100000" step="500">
                           </div>
                           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8-desktop pb-2">
-                            <button type="submit" class="mdc-button mdc-button--raised w-100">
+                            <button type="submit" class="btn btn-primary">
                               Send Fund Request
                             </button>
                           </div>
