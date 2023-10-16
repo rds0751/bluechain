@@ -48,7 +48,7 @@
                               <td><span style="color: red; font-size: 16px">&#9679; </span> {{ countingi.2 }}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span>{% sub counting.2 countingi.2 as x2 %}{{ x2|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.2 }}</td>
-                              <td><span style="font-size: 16px">$ </span>{{ lc.2 }}</td>
+                              <td><span style="font-size: 16px">$ </span>{% mul business.2 0.02 as lc1 %}{{lc1}}</td>
                               <td><a href="/level/team/{{request.user.username}}/2/">View</a></td>
                               </tr>
                               <tr>
@@ -57,7 +57,7 @@
                               <td><span style="color: red; font-size: 16px">&#9679; </span> {{ countingi.3 }}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span>{% sub counting.3 countingi.3 as x3 %}{{ x3|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.3 }}</td>
-                              <td><span style="font-size: 16px">$ </span>{{ lc.3 }}</td>
+                              <td><span style="font-size: 16px">$ </span>{% mul business.3 0.02 as lc2 %}{{lc2}}</td>
                               <td><a href="/level/team/{{request.user.username}}/3/">View</a></td>
                               </tr>
                               <tr>
@@ -66,7 +66,7 @@
                               <td><span style="color: red; font-size: 16px">&#9679; </span> {{ countingi.4 }}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span>{% sub counting.4 countingi.4 as x4 %}{{ x4|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.4 }}</td>
-                              <td><span style="font-size: 16px">$ </span>{{ lc.4 }}</td>
+                              <td><span style="font-size: 16px">$ </span>{% mul business.4 0.02 as lc3 %}{{lc3}}</td>
                               <td><a href="/level/team/{{request.user.username}}/4/">View</a></td>
                               </tr>
                               <tr>
@@ -75,7 +75,7 @@
                               <td><span style="color: red; font-size: 16px">&#9679; </span> {{ countingi.5 }}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span>{% sub counting.5 countingi.5 as x5 %}{{ x5|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.5 }}</td>
-                              <td><span style="font-size: 16px">$ </span>{{ lc.5 }}</td>
+                              <td><span style="font-size: 16px">$ </span>{% mul business.5 0.02 as lc4 %}{{lc4}}</td>
                               <td><a href="/level/team/{{request.user.username}}/5/">View</a></td>
                               </tr>
                               <tr>
