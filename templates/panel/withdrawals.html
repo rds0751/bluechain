@@ -14,35 +14,56 @@
                     </div>
                     <div class="card-block">
                         <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
-                        <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+                        <table class="table table-borderless footable footable-1 footable-paging footable-paging-center breakpoint breakpoint-sm" data-show-toggle="true" style="">
                             <thead>
-                                <tr>
-                                    <th class="text-center"></th>
-                                    <th>User</th>
-                                    <th>Status</th>
-                                    <th class="hidden-xs">Amount</th>
-                                    <th>Date</th>
-                                    <th class="text-center w-20">Actions</th>
-                                </tr>
+                                <tr class="text-muted footable-header">	
+                                <th class="w-12 footable-sortable footable-first-visible" style="display: table-cell;"><span class="fooicon fooicon-sort"></span></th>
+                                <th class="footable-sortable" style="display: table-cell;">User ID<span class="fooicon fooicon-sort"></span></th>
+                                <th data-breakpoints="xs md" class="footable-sortable" style="display: table-cell;">Amount<span class="fooicon fooicon-sort"></span></th>
+                                <th data-breakpoints="xs" class="footable-sortable" style="display: table-cell;">Comment<span class="fooicon fooicon-sort"></span></th>
+                                <th data-breakpoints="xs md" class="footable-sortable" style="display: table-cell;">Date<span class="fooicon fooicon-sort"></span></th>
+                                <th data-breakpoints="xs md" class="footable-sortable" style="display: table-cell;">Status<span class="fooicon fooicon-sort"></span></th>
+                                <th data-breakpoints="all" data-title="Deliver to" class="footable-sortable" style="display: table-cell">txn ID<span class="fooicon fooicon-sort"></span></th>
+                                <th data-breakpoints="all" data-title="Address" class="footable-sortable" style="display: table-cell">Type<span class="fooicon fooicon-sort"></span></th>
+                                <th data-breakpoints="all" data-title="Location" class="footable-sortable" style="display: table-cell">Balance<span class="fooicon fooicon-sort"></span></th>
+                            </tr>
                             </thead>
                             <tbody>
                                 {% for x in w %}
-                                    <tr>
-                                        <td class="text-center">{{ forloop.counter }}</td>
-                                        <td class="font-500">{{ x.user }}</td>
-                                        <td>{{ x.status }}</td>
-                                        <td class="hidden-xs">{{ x.amount }}</td>
-                                        <td>{{ x.created_at|date }}</td>
-                                        <td class="text-center">
-                                            <form action="/m2/admin/withdrawals/{{ x.id }}/">
-                                                <div class="btn-group">
-                                                    <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="View Details"><i style="color: green" class="ion-information-circled"></i></button>
-                                                </div>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
+                                                                {% if x.type == 'hidden' %}
+                                                                {% else %}
+                                                                <tr>
+                                                                    <td class="footable-first-visible" style="display: table-cell;">{{ forloop.counter }}</td>
+                                                                    <td style="display: table-cell;">
+                                                                        {{ x.user_id }}
+                                                                        </td>
+                                                                        <td style="display: table-cell;">
+                                                                            <p class="mb-0">{{ x.amount }}</p>
+                                                                            <p class="text-secondary small">USD</p>
+                                                                        </td>
+                                                                        <td style="display: table-cell;">
+                                                                            <p class="mb-0">{{x.comment}}</p>
+                                                                        </td>
+                                                                        <td style="display: table-cell;">
+                                                                            <p class="mb-0">{{x.created_at}}</p>
+                                                                        </td>
+                                                                        <td style="display: table-cell;">
+                                                                            <p class="mb-0">Success</p>
+                                                                        </td>
+                                                                        <td style="display: table-cell;">
+                                                                            <p class="mb-0">{{x.txnid}}</p>
+                                                                        </td>
+                                                                        <td style="display: table-cell">
+                                                                            <p class="mb-0">{{x.type}}</p>
+                                                                        </td>
+                                                                        <td style="display: table-cell">
+                                                                            <p class="mb-0">{{x.balance}}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endif %}
+                                                                {% endfor %}
+                            
+                                </tbody>
                         </table>
                     </div>
                     <!-- .card-block -->

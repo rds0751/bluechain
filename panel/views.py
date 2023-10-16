@@ -175,7 +175,7 @@ def user(request, id):
 
 @staff_member_required
 def withdrawals(request):
-    w = Withdrawal.objects.all()
+    w = WalletHistory.objects.filter(comment__icontains="Sent to your wallet")
     return render(request, 'panel/withdrawals.html', {'w': w})
 
 @staff_member_required

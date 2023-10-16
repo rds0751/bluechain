@@ -43,7 +43,7 @@ class Command(BaseCommand):
 		amount = c.today_turnover
 		amount = (amount / l.count()) * 0.4
 		for x in l:
-			if User.objects.get(username=x.user).total_income + amount <= 2 * 100: 
+			if User.objects.get(username=x.user).total_income + amount <= 4 * 100: 
 				wallet = WalletHistory()
 				wallet.comment = "Global Community Income"
 				wallet.user_id = x.user
@@ -65,7 +65,7 @@ class Command(BaseCommand):
 				c.save()
 
 
-				// withdraw WalletHistory
-				// auto green, retopup
-				// 2x
-				// fund
+				# // withdraw WalletHistory
+				# // auto green, retopup
+				# // 2x
+				# // fund
