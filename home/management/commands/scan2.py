@@ -63,3 +63,9 @@ class Command(BaseCommand):
 				c.today_new_ids = 0
 				c.today_turnover = 0
 				c.save()
+
+
+				// withdraw WalletHistory
+				// auto green, retopup
+				// 2x
+				// fund

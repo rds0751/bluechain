@@ -439,6 +439,7 @@ def activation(request):
     packages = LevelIncomeSettings.objects.all().exclude(id=9).order_by('amount')
     actp = Activation.objects.filter(user=request.user.username, status='Pending').count()
     acta = Activation.objects.filter(user=request.user.username, status='Approved').count()
+    print(request.POST)
     if request.method == "POST":
         print(1)
         if request.POST.get('type') == 'cash':
@@ -454,6 +455,24 @@ def activation(request):
             title = 'Thankyou!'
             message = 'Your activation for ${} is in pending, please wait for 24-48 hrs for activation'.format(amount)
             return render(request,"level/thankyou.html", {'title': title, 'message': message})
+        elif request.POST.get('type') == 'online':
+            amount = int(request.POST.get("amount"))
+            user = request.user
+            if user.c >= amount:
+                usec = user
+                usec.c -= amount
+                act = Activation()
+                act.user = user.username
+                act.amount = amount
+                act.status = 'Approved'
+                act.comment = 'auto approved service balance'
+                message = activate(user, amount)
+                act.save()
+                usec.save()
+            else:
+                message = "You dont have enough service balance"
+                title = 'Please check the error'
+                return render(request,"level/sorry.html", {'title': title, 'message': message})
         elif request.POST.get('ghasedrftvgbhnj') == 'drcftvgbh':
             amount = int(request.POST.get("amount"))
             user = request.user

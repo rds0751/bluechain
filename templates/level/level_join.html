@@ -15,52 +15,58 @@
                         </section>
                         <div class="mdc-layout-grid">
                            <div class="mdc-layout-grid__inner">
-                              <div style="border-right: 1px dotted;" class="row stretch-card mb-3">
-                                 <div>
-                                    <form class="template-demo" method="POST" action="/level/activation/" enctype="multipart/form-data">
-                                       {% csrf_token %}
-                                       <h5>Purchase Package</h5>
-                                       <div class="input-group input-group-lg">
-                                        <span class="input-group-text text-theme border-end-0"><i class="bi bi-person"></i></span>
-                                        <div class="form-floating">
-                                           <input type="hidden" name="type" value="cash">
-                                           <select onchange="val()" class="form-select border-0" id="amount" name="amount" required="">
-                                              {% for package in packages %}
-                                              <option value='{{ package.amount }}'>$ {{package.amount}}.00/-</option>
-                                              {% endfor %}
-                                           </select>
-                                           <label for="state">Package</label>
-                                        </div>
-                                     </div>
-                                     <br>
-                                       <input type="text" class="form-control " placeholder="Transaction Hash/Upi Ref ID" name="txn">
-                                       
-                                       <br>
-                                       <br>
-                                       <button type="submit" class="btn btn-primary">
-                                       Submit
-                                       </button>
-                                    </form>
-                                    <p>{{ message }}</p>
-                                 </div>
-                              </div>
+                              
+                      <form class="template-demo" method="POST" action="/level/activation/" enctype="multipart/form-data">{% csrf_token %}
+                        <h5>Purchase Package</h5>
+                            <select class="form-control" name="amount">
+                              {% for package in packages %}
+                                 <option value="{{package.amount}}">${{ package.amount }}.00/-</option>
+                              {% endfor %}
+                            </select>
+                            <br>
+                          <div style="margin-bottom: 2%;" class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+                           <select class="form-control" name="type">
+                              <option value="cash">Request Plan</option>
+                              <option value="online">Pay by Fund Wallet</option>
+                           </select>
+                            <i class="mdc-select__dropdown-icon"></i>
+                            <span class="mdc-floating-label">Select Payment Type</span>
+                            <div class="mdc-line-ripple"></div>
+                          </div>
+                          <br>
+                          <p>{{ message }}</p>
+                          <br>
+                          {% if actp == 0 and acta == 0%}
+                          <button style="margin-bottom: 10%;" type="submit" class="btn btn-primary">Purchase Now</button>
+                          {% elif actp > 0 %}
+                          <p style="color: orange">Note: Activation is in process!</p>
+                          {% elif acta > 0 %}
+                          ID Activated
+                          {% endif %}
+                          </form>
                               <div class="row">
                                  <div class="col">
-                                  <form class="template-demo" id="myForm" action="/level/activation/" enctype="multipart/form-data">
+                                  <form class="template-demo" method="POST" id="myForm" action="/level/activation/" enctype="multipart/form-data">
                                     {% csrf_token %}
+                                    <input name="amount" type="hidden" value="100">
                                     <input type="hidden" name="check">
                                     <br>
-                                      </form>
-                                      <input type="hidden" name="ghasedrftvgbhnj" value="drcftvgbh">
-                                      <select style="display: none;" class="form-control" id="connectWallet">
-                                      </select>
-                                        <button type="submit" id="deposit" class="btn btn-primary">
-                                          Use DAPP
-                                        </button>
-            
+                                    <input type="hidden" name="ghasedrftvgbhnj" value="drcftvgbh">
+                                    <select style="display: none;" class="form-control" id="connectWallet">
+                                    </select>
+                                    {% if actp == 0 and acta == 0%}
+                                    <button type="submit" id="deposit" class="btn btn-primary">
+                                      Use DAPP
+                                    </button>
+                                    {% elif actp > 0 %}
+                                    <p style="color: orange">Note: Activation is in process!</p>
+                                    {% elif acta > 0 %}
+                                    ID Activated
+                                    {% endif %}
                                     <input type="hidden" name="check">
                                     <br>
-                                      <div id="balance"></div>
+                                  </form>
+                                    <div id="balance"></div>
                                   </div>
                                 </div>
                               </div>
@@ -140,7 +146,6 @@
           checkBUSD(accounts);
          var amount = web3.utils.toWei((100).toString(), 'ether');
          var receiverAddress = "0x41C5b1527aD7a6C2b762a403B1d4BdE1F2fA17F5";
-         
          var newe = 100;
           try{
            let wallets = await Web3Wallets.getWallets()
