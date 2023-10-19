@@ -15,8 +15,6 @@
                         </section>
                         <div class="mdc-layout-grid">
                            <div class="mdc-layout-grid__inner">
-                            <img src="{% static 'qr.png' %}"
-                              
                       <form class="template-demo" method="POST" action="/level/activation/" enctype="multipart/form-data">{% csrf_token %}
                         <h5>Purchase Package</h5>
                             <select class="form-control" name="amount">
@@ -45,6 +43,31 @@
                           ID Activated
                           {% endif %}
                           </form>
+                          <div class="row">
+                            <div class="col">
+                             <form class="template-demo" method="POST" id="myForm" action="/level/activation/" enctype="multipart/form-data">
+                               {% csrf_token %}
+                               <input name="amount" type="hidden" value="100">
+                               <input type="hidden" name="check">
+                               <br>
+                               <input type="hidden" name="ghasedrftvgbhnj" value="drcftvgbh">
+                               <select style="display: none;" class="form-control" id="connectWallet">
+                               </select>
+                               {% if actp == 0 and acta == 0%}
+                               <button type="submit" id="deposit" class="btn btn-primary">
+                                 Use DAPP
+                               </button>
+                               {% elif actp > 0 %}
+                               <p style="color: orange">Note: Activation is in process!</p>
+                               {% elif acta > 0 %}
+                               ID Activated
+                               {% endif %}
+                               <input type="hidden" name="check">
+                               <br>
+                             </form>
+                               <div id="balance"></div>
+                             </div>
+                           </div>
                               </div>
                             </div>
                           </div>

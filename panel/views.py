@@ -504,6 +504,7 @@ def activate(user, amount):
             model.direct = user.referral
             model.activated_at = datetime.datetime.now()
             model.save()
+            user_id.total_business = 0
             user_id.save()
             c = Company.objects.get(id=1)
             c.total_turnover += 100
