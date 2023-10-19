@@ -513,7 +513,7 @@ def activate(user, amount):
             c.save()
             message = "Plan purchased"
         else:
-            message = "user already joined, please upgrade another ID"
+            message = "user already joined please upgrade another ID"
     return message
 
 @staff_member_required
