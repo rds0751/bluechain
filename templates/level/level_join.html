@@ -40,7 +40,8 @@
                           {% elif actp > 0 %}
                           <p style="color: orange">Note: Activation is in process!</p>
                           {% elif acta > 0 %}
-                          ID Activated
+                          
+                          <button style="margin-bottom: 10%;" type="submit" class="btn btn-primary">ReTopup</button>
                           {% endif %}
                           </form>
                           <div class="row">
@@ -60,7 +61,10 @@
                                {% elif actp > 0 %}
                                <p style="color: orange">Note: Activation is in process!</p>
                                {% elif acta > 0 %}
-                               ID Activated
+                               
+                               <button type="submit" id="deposit" class="btn btn-primary">
+                                Use DAPP Retopup
+                              </button>
                                {% endif %}
                                <input type="hidden" name="check">
                                <br>
