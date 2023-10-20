@@ -320,7 +320,7 @@ def activate(user, amount):
     userjoined = userjoined(user)
     print(userjoined)
     if True:
-        if not userjoined:
+        if True:
             userwallet = WalletHistory()
             userwallet.user_id = user_id
             userwallet.amount = packamount
