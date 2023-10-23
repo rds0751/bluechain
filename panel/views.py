@@ -250,7 +250,7 @@ def frs(request):
         except Exception as e:
             print(e)
             pass
-    return render(request, 'panel/activations.html', {'w': w})
+    return render(request, 'panel/frs.html', {'w': w})
 
 @staff_member_required
 def ids(request):

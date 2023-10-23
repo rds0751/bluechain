@@ -2012,7 +2012,7 @@ def withdrawBNXG(request):
         message = f'your otp is {otp}'
         user_email = request.user.email
         amount = float(request.POST.get('amount'))*0.85
-        if amount <= request.user.wallet and request.POST.get('amount') >= 10:
+        if amount <= request.user.wallet and float(request.POST.get('amount')) >= 10:
             try:
                 po = PaymentOption.objects.get(user=request.user.username)
 
