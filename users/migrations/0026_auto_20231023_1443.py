@@ -12,7 +12,22 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='user',
+            name='global_income',
+            field=models.FloatField(blank=True, default=0, null=True),
+        ),
+        migrations.AddField(
+            model_name='user',
+            name='upline_income',
+            field=models.FloatField(blank=True, default=0, null=True),
+        ),
+        migrations.AddField(
+            model_name='user',
             name='whold',
             field=models.BooleanField(default=True),
-        )
+        ),
+        migrations.AlterField(
+            model_name='user',
+            name='diamond_income',
+            field=models.FloatField(blank=True, default=0, null=True),
+        ),
     ]
