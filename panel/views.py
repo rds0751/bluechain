@@ -240,6 +240,18 @@ def activations(request):
             pass
     return render(request, 'panel/activations.html', {'w': w})
 
+from wallets.models import FundRequest
+@staff_member_required
+def frs(request):
+    w = FundRequest.objects.all().order_by('-created_at')
+    for x in w:
+        try:
+            x.user = User.objects.get(username=x.user)
+        except Exception as e:
+            print(e)
+            pass
+    return render(request, 'panel/activations.html', {'w': w})
+
 @staff_member_required
 def ids(request):
     w = LevelUser.objects.filter(active=True).order_by('-created_at')
