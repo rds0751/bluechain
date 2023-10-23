@@ -45,6 +45,7 @@ class User(AbstractUser, PermissionsMixin):
     diamond_income = models.FloatField(default=0, null=True, blank=True)
     global_income = models.FloatField(default=0, null=True, blank=True)
     upline_income = models.FloatField(default=0, null=True, blank=True)
+    whold = models.BooleanField(default=True)
     
     
 

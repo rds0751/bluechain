@@ -26,7 +26,6 @@ urlpatterns = [
     url(r'^date/', views.date, name="date"),
     url(r'^withdrawal/', views.withdrawal, name="withdrawal"),
     url(r'^pending/', views.pending, name="pending"),
-    url(r'^withdrawal/', views.withdrawal, name="withdrawal"),
     url(r'^autopool/', views.autopool, name="autopool"),
     url(r'^rank/', views.rank, name="rank"),
     url(r'^royalty/', views.royalty, name="royalty"),
