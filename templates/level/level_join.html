@@ -37,9 +37,10 @@
                           <br>
                           {% if actp == 0 and acta == 0%}
                           <button style="margin-bottom: 10%;" type="submit" class="btn btn-primary">Purchase Now</button>
-                          {% elif actp > 0 %}
+                          {% else %}
                           <p style="color: orange">Note: Activation is in process!</p>
-                          {% elif acta > 0 %}
+                          {% endif %}
+                          {% if request.user.total_income > 200 %}
                           
                           <button style="margin-bottom: 10%;" type="submit" class="btn btn-primary">ReTopup</button>
                           {% endif %}
@@ -58,9 +59,10 @@
                                <button type="submit" id="deposit" class="btn btn-primary">
                                  Use DAPP
                                </button>
-                               {% elif actp > 0 %}
+                               {% else actp > 0 %}
                                <p style="color: orange">Note: Activation is in process!</p>
-                               {% elif acta > 0 %}
+                               {% endif %}
+                               {% if request.user.total_income > 200 %}
                                
                                <button type="submit" id="deposit" class="btn btn-primary">
                                 Use DAPP Retopup
