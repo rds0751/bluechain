@@ -30,6 +30,7 @@ class FundRequest(models.Model):
     user = models.CharField(max_length=255, blank=True, null=True)
     amount = models.FloatField(max_length=255, null=True, blank=True)
     code = models.CharField(max_length=255, null=True, blank=True)
+    status = models.CharField(max_length=200, default="Pending")
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(default=timezone.now, blank=True)
     

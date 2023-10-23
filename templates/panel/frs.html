@@ -32,16 +32,17 @@
                                 {% for x in w %}
                                 <tr style="background-color: {% if x.status == 'Pending' %}#ffc10740{% elif x.status == 'Rejected' %}#ff000040{% else %}#00ff0040;{% endif %}">
                                     <td class="text-center">{{ forloop.counter }}</td>
-                                    <td class="font-500">{{ x.user.username }}</td>
-                                    <td class="font-500">{{ x.user.name }}</td>
-                                    <td><i style="color: {% if x.user.referral.top.level.amount > 0 %}green {% else %}red{% endif %}" class="ion-cube"></i>{{ x.user.referral.username }}</td>
-                                    <td>{{ x.user.referral.name }}</td>
+                                    <td class="font-500">{{ x.user }}</td>
+                                    <td class="font-500">{{ x.code }}</td>
                                     <td class="hidden-xs">{{ x.status }}</td>
                                     <td >{{ x.amount }}</td>
                                     <td>{{ x.created_at|date:'Y-m-d h:i A' }}</td>
                                     <td class="text-center">
-                                        <form style="float: left;" action="/m2/admin/activations/{{ x.id }}/">
+                                        <form style="float: left;" method="POST" action="/m2/admin/activations/">
                                             <div class="btn-group">
+                                                <input type="hidden" name="action" value="approve">
+                                                <input type="hidden" name="comment" value="Approved from outside">
+                                                <input type="hidden" name="code" value="{{x.code}}">
                                                 <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="View Details"><i style="color: green" class="ion-information-circled"></i></button>
                                             </div>
                                         </form>
