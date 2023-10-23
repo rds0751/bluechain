@@ -535,43 +535,44 @@ def activate(user, amount):
             message = "user already joined please upgrade another ID"
     return message
 
+from wallets.models import FundRequest
 @staff_member_required
-def activation(request, id):
+def frs1(request, id):
     message = ''
 
     if request.method == 'POST' and 'delete' in request.POST:
-        act = Activation.objects.get(id=id)
+        act = FundRequest.objects.get(id=id)
         act.delete()
-        return redirect('/m2/admin/activations/')
+        return redirect('/m2/admin/frs/')
 
-    w = Activation.objects.get(id=id)
+    w = FundRequest.objects.get(id=id)
     u = User.objects.get(username=w.user)
     if request.method == "POST" and 'action' in request.POST:
         action = request.POST.get('action')
         comment = request.POST.get('comment')
         act_id = request.POST.get('id')
-        if action == 'accept':
-            act = Activation.objects.get(id=act_id)
+        if action == 'approve':
+            act = FundRequest.objects.get(id=act_id)
             user = act.user
             amount = act.amount
-            message = activate(user, amount)
-            act.comments = comment
+            user = User.objects.get(username=act.user)
+            user.c += amount
+            user.save()
             act.status = 'Approved'
             act.save()
         else:
-            act = Activation.objects.get(id=act_id)
-            act.comments = comment
+            act = FundRequest.objects.get(id=act_id)
             act.status = "Rejected"
             act.save()
-        return redirect('/m2/admin/activations/')
+        return redirect('/m2/admin/frs/')
     if request.method == "POST" and 'cmnt' in request.POST:
         comment = request.POST.get('comment')
         act_id = request.POST.get('id')
-        act = Activation.objects.get(id=act_id)
-        act.comments = comment
+        act = FundRequest.objects.get(id=act_id)
         act.save()
-        return redirect('/m2/admin/activations/')
+        return redirect('/m2/admin/frs/')
     return render(request, 'panel/activation.html', {'w': w, 'u': u, 'message': message})
+
 @staff_member_required
 def activation(request, id):
     message = ''
@@ -588,12 +589,10 @@ def activation(request, id):
         comment = request.POST.get('comment')
         act_id = request.POST.get('code')
         if action == 'approve':
-            act = Activation.objects.get(code=act_id)
+            act = Activation.objects.get(id=act_id)
             user = act.user
             amount = act.amount
-            user = User.objects.get(username=act.user)
-            user.c += amount
-            user.save()
+            message = activate(user, amount)
             act.comments = comment
             act.status = 'Approved'
             act.save()

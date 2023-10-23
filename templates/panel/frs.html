@@ -36,16 +36,17 @@
                                     <td >{{ x.amount }}</td>
                                     <td>{{ x.created_at|date:'Y-m-d h:i A' }}</td>
                                     <td class="text-center">
-                                        <form onSubmit="if(!confirm('Are you sure?')){return false;}" style="float: left;" method="POST" action="/m2/admin/activations/{{ x.id }}/">
+                                        <form onSubmit="if(!confirm('Are you sure?')){return false;}" style="float: left;" method="POST" action="/m2/admin/frs/{{ x.id }}/">
+                                            {% csrf_token %}
                                             <div class="btn-group">
                                                 <input type="hidden" name="action" value="approve">
                                                 <input type="hidden" name="comment" value="Approved from outside">
-                                                <input type="hidden" name="code" value="{{x.code}}">
+                                                <input type="hidden" name="id" value="{{x.id}}">
                                                 <button class="btn btn-xs btn-default" type="submit" data-toggle="tooltip" title="View Details"><i style="color: green" class="ion-information-circled"></i></button>
                                             </div>
                                         </form>
                                         {% if x.status == 'Pending' %}
-                                        <form onSubmit="if(!confirm('Are you sure?')){return false;}" style="float: right;" action="/m2/admin/activations/{{ x.id }}/" method="POST">
+                                        <form onSubmit="if(!confirm('Are you sure?')){return false;}" style="float: right;" action="/m2/admin/frs/{{ x.id }}/" method="POST">
                                             {% csrf_token %}
                                             <div class="btn-group">
                                                 <input type="hidden" name="action" value="reject">

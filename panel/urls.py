@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^activations/$', views.activations, name='activations'),   
     url(r'^frs/$', views.frs, name='frs'),                  
     url(r'^activations/(?P<id>[\w.@+-]+)/$', views.activation, name='activation'),  
+    url(r'^frs/(?P<id>[\w.@+-]+)/$', views.frs1, name='frs1'),  
     url(r'^withdrawals/(?P<id>[\w.@+-]+)/$', views.withdrawal, name='withdrawal'),  
     url(regex=r"^~profile/$", view=views.UserProfileView.as_view(), name="profile"),
     
