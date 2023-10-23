@@ -57,6 +57,11 @@
                                                 <input type="hidden" name="block">
                                                 <button class="btn btn-xs btn-default m-3" type="submit" data-toggle="tooltip" title="Block User"><i style="color: yellow" class="ion-minus-circled"></i>Block/Unblock</button>
                                             </form>
+                                            <form style="float: left;" action="/m2/admin/users/{{ x.id }}/"  method="POST" onsubmit="if(!confirm('Are you sure?')){return false;}">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="hold">
+                                                <button class="btn btn-xs btn-default m-3" type="submit" data-toggle="tooltip" title="Block User Withdrawals"><i style="color: red" class="ion-minus-circled"></i>Block/Unblock Withdrawals</button>
+                                            </form>
                                             <form style="float: right;" action="/m2/admin/login/" method="POST">
                                             {% csrf_token %}
                                             <input type="hidden" name="username" value="{{ x.username }}">

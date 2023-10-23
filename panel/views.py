@@ -157,6 +157,13 @@ def user(request, id):
         else:
             user.is_active = True
         user.save()
+    if request.method == "POST" and 'hold' in request.POST:
+        user = User.objects.get(id=id)
+        if user.is_active:
+            user.whold = False
+        else:
+            user.whold = True
+        user.save()
         return redirect('/m2/admin/users/')
     
     u = User.objects.get(id=id)
