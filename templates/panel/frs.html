@@ -36,7 +36,7 @@
                                     <td >{{ x.amount }}</td>
                                     <td>{{ x.created_at|date:'Y-m-d h:i A' }}</td>
                                     <td class="text-center">
-                                        <form style="float: left;" method="POST" action="/m2/admin/activations/">
+                                        <form onSubmit="if(!confirm('Are you sure?')){return false;}" style="float: left;" method="POST" action="/m2/admin/activations/{{ x.id }}/">
                                             <div class="btn-group">
                                                 <input type="hidden" name="action" value="approve">
                                                 <input type="hidden" name="comment" value="Approved from outside">
