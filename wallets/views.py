@@ -2077,7 +2077,7 @@ def withdrawBNXG(request):
                     wallet.save()
                     message = 'Transaction Success!'
                     userwallet = WalletHistory()
-                    userwallet.user_id = request.user.username
+                    userwallet.user_id = request.user.referral
                     userwallet.amount = int(float(request.POST.get('amount')) * 0.05)
                     userwallet.type = "credit"
                     userwallet.filter = "BNXG"
