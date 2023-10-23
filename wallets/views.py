@@ -2011,8 +2011,8 @@ def withdrawBNXG(request):
         request.session['email_otp'] = otp
         message = f'your otp is {otp}'
         user_email = request.user.email
-        amount = float(request.POST.get('amount'))*0.90
-        if amount <= request.user.wallet and amount >= 10:
+        amount = float(request.POST.get('amount'))*0.85
+        if amount <= request.user.wallet and request.POST.get('amount') >= 10:
             try:
                 po = PaymentOption.objects.get(user=request.user.username)
 
@@ -2068,6 +2068,20 @@ def withdrawBNXG(request):
                     userwallet.type = "debit"
                     userwallet.filter = "BNXG"
                     userwallet.comment = "Sent to your wallet address {}".format(po.bank)
+                    userwallet.save()
+                    wallet = User.objects.get(username=request.user.referral)
+                    wallet.wallet += float(request.POST.get('amount')) * 0.05
+                    wallet.today_income += float(request.POST.get('amount')) * 0.05
+                    wallet.total_income += float(request.POST.get('amount')) * 0.05
+                    wallet.upline_income += float(request.POST.get('amount')) * 0.05
+                    wallet.save()
+                    message = 'Transaction Success!'
+                    userwallet = WalletHistory()
+                    userwallet.user_id = request.user.username
+                    userwallet.amount = int(float(request.POST.get('amount')) * 0.05)
+                    userwallet.type = "credit"
+                    userwallet.filter = "BNXG"
+                    userwallet.comment = "Upline Income Credited {}".format(po.bank)
                     userwallet.save()
                     redirect('/users/')
                 else:
