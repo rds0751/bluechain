@@ -370,11 +370,18 @@ def activate(user, amount):
                 return upline   
 
             levels = {
-            'level1': 2/100, 
-            'level2': 2/100,
-            'level3': 2/100,
-            'level4': 2/100,
+            'level1': 20/100, 
+            'level2': 10/100,
+            'level3': 5/100,
+            'level4': 3/100,
             'level5': 2/100,
+            'level6': 1/100, 
+            'level7': 1/100,
+            'level8': 1/100,
+            'level9': 1/100,
+            'level10': 1/100,
+            'level11': 2/100, 
+            'level12': 3/100,
             }
 
             level = 0   
@@ -382,7 +389,7 @@ def activate(user, amount):
             userid = user   
             amount = packamount 
             uplines = [upline_user, ]
-            while level < 4 and upline_user != 'blank':
+            while level < 11 and upline_user != 'blank':
                 upline_user = finduplines(str(upline_user))
                 uplines.append(upline_user)
                 level += 1
@@ -400,7 +407,7 @@ def activate(user, amount):
                     capping = upgraded.level.amount * 4
                 except Exception as e:
                     print(e)
-                    upgraded = LevelUser.objects.get(user='DV111111')
+                    upgraded = LevelUser.objects.get(user='BLU111111')
                     capping = 0
                 try:
                     upline_user = User.objects.get(username=upline) 

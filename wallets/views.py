@@ -547,10 +547,10 @@ def neft(request):
         mt.user = request.user
         mt.save()
         user_id = request.user
-        subject = 'MT5 Account Generate Request from DollarVridhi'
+        subject = 'MT5 Account Generate Request from BluechainDefi'
         html_message = render_to_string('account/email/ipay-generate.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':account, 'amount':password, 'id': mt.id})
         plain_message = strip_tags(html_message)
-        from_email = 'support@DollarVridhi.com'
+        from_email = 'support@BluechainDefi.com'
         to = 'partner@dibortfx.com'
 
         send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
@@ -606,10 +606,10 @@ def neft(request):
                             userwallet.save()
                             user_id.save()
                             model.save()
-                            subject = 'MT5 Transfer Request from DollarVridhi'
+                            subject = 'MT5 Transfer Request from BluechainDefi'
                             html_message = render_to_string('account/email/ipay.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':payment_o.mt5_account, 'amount':amount*0.95, 'id': model.id})
                             plain_message = strip_tags(html_message)
-                            from_email = 'support@DollarVridhi.com'
+                            from_email = 'support@BluechainDefi.com'
                             to = 'partner@dibortfx.com'
 
                             send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
@@ -617,7 +617,7 @@ def neft(request):
                             payload = "{'From': 'TFCTOR', 'Msg': 'Hello World', 'To': '7000934949,'}"
                             response = requests.request("GET", url, data=payload)
                             print(response.text)
-                            # send_mail("", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@DollarVridhi.com", ['rds0751@gmail.com',])
+                            # send_mail("", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@BluechainDefi.com", ['rds0751@gmail.com',])
                             message = "MT5 Transfer Request Received!"
                         else:
                             message = "Not Enough Balance in Redeemable Wallet!"
@@ -694,10 +694,10 @@ def neft(request):
                             userwallet.save()
                             user_id.save()
                             model.save()
-                            subject = 'DCXa Transfer Request from DollarVridhi'
+                            subject = 'DCXa Transfer Request from BluechainDefi'
                             html_message = render_to_string('account/email/ipay.html', {'name': user_id.name, 'username':user_id.username, 'email':user_id.email, 'mt5':payment_o.mt5_account, 'amount':amount*0.95, 'id': model.id})
                             plain_message = strip_tags(html_message)
-                            from_email = 'support@DollarVridhi.com'
+                            from_email = 'support@BluechainDefi.com'
                             to = 'support@dcxa.io'
 
                             send_mail(subject=subject, message=plain_message, from_email=from_email, recipient_list=[to], html_message=html_message)
@@ -705,7 +705,7 @@ def neft(request):
                             payload = "{'From': 'TFCTOR', 'Msg': 'Hello World', 'To': '7000934949,'}"
                             response = requests.request("GET", url, data=payload)
                             print(response.text)
-                            # send_mail("", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@DollarVridhi.com", ['rds0751@gmail.com',])
+                            # send_mail("", "Please transfer following amount to given MT5 account. <br> Name: {}, User id: {}, Email: {}, MT5 Account: {}, Amount: {}".format(user_id.name, user_id.username, user_id.email, payment_o.mt5_account, amount*0.95), "support@BluechainDefi.com", ['rds0751@gmail.com',])
                             message = "DCXa Transfer Request Received!"
                         else:
                             message = "Not Enough Balance in Redeemable Wallet!"
@@ -1892,7 +1892,7 @@ def fundrequest(request):
 
     def generateid():
         txnid = get_random_string(8)
-        txnid = 'DV'+txnid
+        txnid = 'BLU'+txnid
         try:
             txn = FundRequest.objects.get(code = txnid)
         except FundRequest.DoesNotExist:

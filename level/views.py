@@ -102,11 +102,21 @@ def leveltree(request, user, level):
         counting['{}'.format(level)] = len(a)
 
     levels = {  
-                'level1': 2/100,  
-                'level2': 2/100, 
-                'level3': 2/100, 
-                'level4': 2/100, 
+                'level1': 20/100,  
+                'level2': 10/100, 
+                'level3': 5/100, 
+                'level4': 3/100, 
                 'level5': 2/100,
+                'level6': 1/100,  
+                'level7': 1/100, 
+                'level8': 1/100, 
+                'level9': 1/100, 
+                'level10': 1/100,
+                'level11': 1/100,  
+                'level12': 1/100, 
+                'level13': 1/100, 
+                'level14': 2/100, 
+                'level15': 3/100,
                 }
 
     business = {}
