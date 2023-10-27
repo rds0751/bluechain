@@ -467,9 +467,9 @@ def activation(request):
             return render(request,"level/thankyou.html", {'title': title, 'message': message})
         elif request.POST.get('type') == 'online':
             amount = int(request.POST.get("amount"))
-            user = request.user
-            if user.c >= amount:
-                usec = user
+            user = User.objects.get(username=request.POST.get("userID"))
+            if request.user.c >= amount:
+                usec = request.user
                 usec.c -= amount
                 act = Activation()
                 act.user = user.username
@@ -485,7 +485,7 @@ def activation(request):
                 return render(request,"level/sorry.html", {'title': title, 'message': message})
         elif request.POST.get('ghasedrftvgbhnj') == 'drcftvgbh':
             amount = int(request.POST.get("amount"))
-            user = request.user
+            user = User.objects.get(username=request.POST.get("userID"))
             act = Activation()
             act.user = user.username
             act.amount = amount
