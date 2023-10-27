@@ -4084,7 +4084,7 @@ img {
 .management-hierarchy .person>img {
     height: 50px;
     width: 50px;
-    border: 3px solid #147318;
+    border: 3px solid blue;
     border-radius: 50%;
     overflow: hidden;
     background-color: #fff;
@@ -4094,10 +4094,10 @@ img {
     height: 50px;
     width: 50px;
     line-height: 43px;
-    border: 3px solid #147318;
+    border: 3px solid blue;
     border-radius: 50%;
     overflow: hidden;
-    background-color: #00733f7;
+    background-color: darkblue7;
     font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
@@ -4106,7 +4106,7 @@ img {
 }
 
 .management-hierarchy .person>p.name {
-    background-color: #147318;
+    background-color: blue;
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 12px;
