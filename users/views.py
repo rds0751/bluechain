@@ -362,9 +362,8 @@ class addamount(LoginRequiredMixin, ListView):
         except Exception as E:
             message = 'User not found'
             return render(request,'users/addamount.html',{'message':message})
-        balance = float(request.user.c + request.user.wallet)
-        print(t, balance)
-        if t >= balance:
+        balance = float(request.user.c)
+        if t >= amount:
             userwallet = WalletHistory()
             userwallet.user_id = u.username
             userwallet.amount = amount
@@ -379,33 +378,20 @@ class addamount(LoginRequiredMixin, ListView):
             userwallet.type = "debit"
             userwallet.comment = "Amount transferred to {}".format(u.username)
             userwallet.balance -= t
-            # userwallet.save()
-
-            if t >= request.user.wallet:
-                us = request.user
-                us.wallet -= t
-                t = 0
-                # us.save()
-            else:
-                us = request.user
-                w = us.wallet
-                us.wallet = 0
-                t -= w
-                # us.save()
-
+            userwallet.save()
             if t >= request.user.c:
                 us = request.user
                 us.c -= t
                 t = 0
-                # us.save()
+                us.save()
             else:
                 us = request.user
                 w = us.c
                 us.c = 0
                 t -= w
-                # us.save()
+                us.save()
             u.c += amount
-            # u.save()
+            u.save()
             return render(request,'users/addamount.html',{'message':"Something went wrong! Please try again later!"})
         else:
             return render(request,'users/addamount.html',{'message':'Not Enough Balance'})
