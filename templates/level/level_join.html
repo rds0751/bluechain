@@ -11,12 +11,14 @@
                      <div class="mdc-card p-0">
                         <section style="padding: 30px 30px 20px 30px;" class="error-header">
                            <h1>{% trans "Join Package" %}</h1>
-                           <p>{% trans 'here you can join us' %}</p>
+                           <p>E-Wallet Balance: {{request.user.c}}</p>
                         </section>
                         <div class="mdc-layout-grid">
                            <div class="mdc-layout-grid__inner">
                       <form class="template-demo" method="POST" action="/level/activation/" enctype="multipart/form-data">{% csrf_token %}
                         <h5>Purchase Package</h5>
+                        <label>User ID</label>
+                        <input type="text" class="form-control mb-2" placeholder="UserID" name="userID">
                             <select class="form-control" name="amount">
                               {% for package in packages %}
                                  <option value="{{package.amount}}">${{ package.amount }}.00/-</option>
@@ -26,7 +28,7 @@
                           <div style="margin-bottom: 2%;" class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
                            <select class="form-control" name="type">
                               <option value="cash">Request Plan</option>
-                              <option value="online">Pay by Fund Wallet</option>
+                              <option value="online">Pay by E-Wallet</option>
                            </select>
                             <i class="mdc-select__dropdown-icon"></i>
                             <span class="mdc-floating-label">Select Payment Type</span>
@@ -35,11 +37,7 @@
                           <br>
                           <p>{{ message }}</p>
                           <br>
-                          {% if actp == 0 and acta == 0%}
                           <button style="margin-bottom: 10%;" type="submit" class="btn btn-primary">Purchase Now</button>
-                          {% else %}
-                          <p style="color: orange">Note: Activation is in process!</p>
-                          {% endif %}
                           {% if request.user.total_income > 200 %}
                           
                           <button style="margin-bottom: 10%;" type="submit" class="btn btn-primary">ReTopup</button>

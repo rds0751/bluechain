@@ -22,7 +22,7 @@
 
                       <form class="template-demo" method="POST" action="/level/staked/" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <input name="amounta" placeholder="Amount in Dollars" class="form-control border-start-0">
+                        <input name="amounta" placeholder="Amount in Dollars" class="form-control ">
                           <p>Staked Tokens: $ {{ request.user.staked }}</p>
                           <button type="submit" class="btn btn-primary">
                             Stake Now
