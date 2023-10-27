@@ -54,9 +54,28 @@
     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
         <div class="single">
             <div class="icon"><i class="anticon anticon-file-add"></i></div>
-            <div class="content">
-                <h4><b>$</b><span class="count">{{ request.user.total_income|floatformat:2 }}</span></h4>
-                <p>Total Income</p>
+            <div class="content" style="float: left;">
+                <h4><b></b><span class="count">{{ all }}</span></h4>
+                <p>Total Team</p>
+            </div>
+            <div class="content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div class="content" style="float: right; text-align: end;">
+                <h4><b></b><span class="count">{{ 2 }}</span></h4>
+                <p>Active Team</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="anticon anticon-file-add"></i></div>
+            <div class="content" style="float: left;">
+                <h4><b></b><span class="count">{{ all }}</span></h4>
+                <p>Total Business</p>
+            </div>
+            <div class="content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div class="content" style="float: right; text-align: end;">
+                <h4><b></b><span class="count">{{ 2 }}</span></h4>
+                <p>Today Business</p>
             </div>
         </div>
     </div>
@@ -87,6 +106,21 @@
             </div>
         </div>
     </div>
+    
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="anticon anticon-file-add"></i></div>
+            <div class="content" style="float: left;">
+                <h4><b></b><span class="count">{{ all }}</span></h4>
+                <p>Total Withdrwal</p>
+            </div>
+            <div class="content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div class="content" style="float: right; text-align: end;">
+                <h4><b></b><span class="count">{{ 2 }}</span></h4>
+                <p>Pending Withdrwal</p>
+            </div>
+        </div>
+    </div>
     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
         <div class="single">
             <div class="icon"><i class="anticon anticon-arrow-right"></i></div>
@@ -107,15 +141,6 @@
     </div>
     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
         <div class="single">
-            <div class="icon"><i class="anticon anticon-account-book"></i></div>
-            <div class="content">
-                <h4><b>$</b><span class="count">{{ request.user.level_income|floatformat:2 }}</span></h4>
-                <p>Level Incentive</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-        <div class="single">
             <div class="icon"><i class="anticon anticon-inbox"></i></div>
             <div class="content">
                 <h4><b>$</b><span>{{ request.user.global_income }}</span></h4>
@@ -129,6 +154,24 @@
             <div class="content">
                 <h4><b>$</b><span>{{ request.user.global_income }}</span></h4>
                 <p>Direct Income</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="anticon anticon-account-book"></i></div>
+            <div class="content">
+                <h4><b>$</b><span class="count">{{ request.user.level_income|floatformat:2 }}</span></h4>
+                <p>Level Income</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="anticon anticon-account-book"></i></div>
+            <div class="content">
+                <h4><b>$</b><span class="count">{{ request.user.level_income|floatformat:2 }}</span></h4>
+                <p>Retopup Income</p>
             </div>
         </div>
     </div>
