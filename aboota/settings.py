@@ -307,6 +307,7 @@ ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = False
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False
 
 LOGIN_REDIRECT_URL = '/users/'
+SIGNUP_REDIRECT_URL = '/signup/onboarding/'
 
 LOGIN_URL = "/accounts/login/"
 
