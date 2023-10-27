@@ -42,8 +42,8 @@ class User(AbstractUser, PermissionsMixin):
     direct_income = models.FloatField(default=0)
     level_income = models.FloatField(default=0)
     visiblepass = models.CharField(max_length=100, null=True, blank=True)
-    diamond_income = models.FloatField(default=0, null=True, blank=True)
-    global_income = models.FloatField(default=0, null=True, blank=True)
+    retopup_income = models.FloatField(default=0, null=True, blank=True)
+    loop_income = models.FloatField(default=0, null=True, blank=True)
     upline_income = models.FloatField(default=0, null=True, blank=True)
     whold = models.BooleanField(default=True)
 

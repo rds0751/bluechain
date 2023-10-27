@@ -35,22 +35,25 @@ class LevelUser(models.Model):
     business = models.IntegerField(default=0)
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True)
-    activated_at = models.DateTimeField(null=True, blank=True)
+    activated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
 
     def __str__(self):
         return str(self.user)    
 
 class PoolUser(models.Model):
-    user = models.CharField(max_length=25, blank=True, null=True, unique=True)
-    level = models.IntegerField(default=0)
-    plan = models.ForeignKey(LevelIncomeSettings, null=True, on_delete=models.CASCADE)
-    downlines = models.IntegerField(default=0)
-    plan = models.ForeignKey(LevelIncomeSettings, on_delete=models.CASCADE)
-    active = models.BooleanField(default=False)
+    user = models.CharField(max_length=25, blank=True, null=True)
+    level = models.ForeignKey(LevelIncomeSettings, null=True, on_delete=models.CASCADE)
     upline = models.CharField(max_length=10)
+    d1 = models.CharField(max_length=10, default='')
+    d2 = models.CharField(max_length=10, default='')
+    d3 = models.CharField(max_length=10, default='')
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True)
     activated_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return str(self.user)
+    
+    class Meta:
+        # Define unique_together as a list of tuples
+        unique_together = ('user', 'level')

@@ -18,7 +18,7 @@
 </style>
 <div class="container  mt-5 mb-5">
    <div class="row align-items-center">
-      <div class="col-12 col-sm-12 col-md-4 text-center">
+      <div class="col-lg-12 col-sm-12 col-md-4 text-center">
          <h4 class="username">My Network</h4>
          <div class="row">
             <div class="col-12">
@@ -34,188 +34,34 @@
             <div class="col-6"></div>
          </div>
          <div class="row">
-            <div class="col-3 right-line"></div>
+            <div class="col-2 right-line"></div>
             <div class="col-2 top-line"></div>
+            <div class="col-2 top-line right-line"></div>
             <div class="col-2 top-line"></div>
             <div class="col-2 right-line top-line"></div>
-            <div class="col-3"></div>
+            <div class="col-2"></div>
          </div>
          <div class="row">
-            <div class="col-6">
+            <div class="col-4">
                {% if d1.0 %}
                <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d1.0.user }}
                {% else %}
                <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">     
                {% endif %}
-               <div class="row">
-                  <div class="col-6 right-line"></div>
-                  <div class="col-6"></div>
-               </div>
-               <div class="row">
-                  <div class="col-3 right-line"></div>
-                  <div class="col-2 top-line"></div>
-                  <div class="col-2 top-line"></div>
-                  <div class="col-2 right-line top-line"></div>
-                  <div class="col-3"></div>
-               </div>
-               <div class="row">
-                  <div class="col-6">
-                     {% if d2.0 %}
-                     <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d2.0.user }}
-                     {% else %}
-                     <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">     
-                     {% endif %}
-                     <div class="row">
-                        <div class="col-6 right-line"></div>
-                        <div class="col-6"></div>
-                     </div>
-                     <div class="row">
-                        <div class="col-3 right-line"></div>
-                        <div class="col-2 top-line"></div>
-                        <div class="col-2 top-line"></div>
-                        <div class="col-2 right-line top-line"></div>
-                        <div class="col-3"></div>
-                     </div>
-                     <div class="row">
-                        <div class="col-6">
-                           {% if d3.0 %}
-                           <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d3.0.user }}
-                           {% else %}
-                           <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">     
-                           {% endif %}
-                        </div>
-                        <div class="col-6">
-                           {% if d3.1 %}
-                           <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d3.1.user }}
-                           {% else %}
-                           <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">
-                           {% endif %}
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-6">
-                     {% if d2.1 %}
-                     <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d2.1.user }}
-                     {% else %}
-                     <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">
-                     {% endif %}
-                     <div class="row">
-                        <div class="col-6 right-line"></div>
-                        <div class="col-6"></div>
-                     </div>
-                     <div class="row">
-                        <div class="col-3 right-line"></div>
-                        <div class="col-2 top-line"></div>
-                        <div class="col-2 top-line"></div>
-                        <div class="col-2 right-line top-line"></div>
-                        <div class="col-3"></div>
-                     </div>
-                     <div class="row">
-                        <div class="col-6">
-                           {% if d3.2 %}
-                           <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d3.2.user }}
-                           {% else %}
-                           <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">     
-                           {% endif %}
-                        </div>
-                        <div class="col-6">
-                           {% if d3.3 %}
-                           <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d3.3.user }}
-                           {% else %}
-                           <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">
-                           {% endif %}
-                        </div>
-                     </div>
-                  </div>
-               </div>
             </div>
-            <div class="col-6">
+            <div class="col-4">
                {% if d1.1 %}
                <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d1.1.user }}
                {% else %}
                <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">
                {% endif %}
-               <div class="row">
-                  <div class="col-6 right-line"></div>
-                  <div class="col-6"></div>
-               </div>
-               <div class="row">
-                  <div class="col-3 right-line"></div>
-                  <div class="col-2 top-line"></div>
-                  <div class="col-2 top-line"></div>
-                  <div class="col-2 right-line top-line"></div>
-                  <div class="col-3"></div>
-               </div>
-               <div class="row">
-                  <div class="col-6">
-                     {% if d2.2 %}
-                     <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d2.2.user }}
-                     {% else %}
-                     <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">     
-                     {% endif %}
-                     <div class="row">
-                        <div class="col-6 right-line"></div>
-                        <div class="col-6"></div>
-                     </div>
-                     <div class="row">
-                        <div class="col-3 right-line"></div>
-                        <div class="col-2 top-line"></div>
-                        <div class="col-2 top-line"></div>
-                        <div class="col-2 right-line top-line"></div>
-                        <div class="col-3"></div>
-                     </div>
-                     <div class="row">
-                        <div class="col-6">
-                           {% if d3.4 %}
-                           <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d3.4.user }}
-                           {% else %}
-                           <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">     
-                           {% endif %}
-                        </div>
-                        <div class="col-6">
-                           {% if d3.5 %}
-                           <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d3.5.user }}
-                           {% else %}
-                           <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">
-                           {% endif %}
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-6">
-                     {% if d2.3 %}
-                     <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d2.3.user }}
-                     {% else %}
-                     <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">
-                     {% endif %}
-                     <div class="row">
-                        <div class="col-6 right-line"></div>
-                        <div class="col-6"></div>
-                     </div>
-                     <div class="row">
-                        <div class="col-3 right-line"></div>
-                        <div class="col-2 top-line"></div>
-                        <div class="col-2 top-line"></div>
-                        <div class="col-2 right-line top-line"></div>
-                        <div class="col-3"></div>
-                     </div>
-                     <div class="row">
-                        <div class="col-6">
-                           {% if d3.6 %}
-                           <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d3.6.user }}
-                           {% else %}
-                           <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">     
-                           {% endif %}
-                        </div>
-                        <div class="col-6">
-                           {% if d3.7 %}
-                           <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d3.7.user }}
-                           {% else %}
-                           <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">
-                           {% endif %}
-                        </div>
-                     </div>
-                  </div>
-               </div>
+            </div>
+            <div class="col-4">
+               {% if d1.2 %}
+               <img style="width: 4rem;" src="https://www.citypng.com/public/uploads/small/11639594320pss4tbiransxz0lclgesdm9kr73odulxn16eo3n1remr761kz0vj2nda3llvan8besj5i9fp18ocdvfnf36c5b6wfz8b8itb81fp.png"><br>{{ d1.1.user }}
+               {% else %}
+               <img style="width: 4rem;" src="https://static.vecteezy.com/system/resources/previews/008/506/404/original/contact-person-red-icon-free-png.png">
+               {% endif %}
             </div>
          </div>
       </div>

@@ -5,18 +5,18 @@
 
 {% block content %}
 <div class="container">
-  <div class="row align-items-center m-2 p-2">
+  <div class="row align-items-center">
     <div class="page-wrapper full-page-wrapper">
       <main>
         <div>
           <div class="mdc-layout-grid__inner">
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
               <div class="mdc-card p-0">
-                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                <section style="" class="error-header">
                   <h1>{% trans "My Network" %}</h1>
                   <p>{% trans 'here you can see your Network' %}</p>
                 </section>
-                <section style="padding: 5%">
+                <section >
                   <div class="mdc-layout-grid__inner mt-2" align="center">
                     {% if lll == "0" %}
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
@@ -25,7 +25,6 @@
                           <thead>
                             <tr>
                               <th>&nbsp;&nbsp;Levels</th>
-                              <th>Status</th>
                               <th>Active Users</th>
                               <th>Inactive Users</th>
                               <th>Total Business</th>
@@ -35,7 +34,6 @@
                           <tbody>
                               <tr>
                                 <td><strong>&nbsp;&nbsp;Level 1</strong></td>
-                                <td>{% if directs >= 1 %}Open{% else %}Closed{% endif %}</td>
                                 <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.1 }}</td>
                                 <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.1 countingi.1 as x1 %}{{ x1|floatformat:"0" }}</td>
                                 <td><span style="font-size: 16px">$ </span> {{ business.1 }}</td>
@@ -43,7 +41,6 @@
                               </tr>
                               <tr>
                               <td><strong>&nbsp;&nbsp;Level 2</strong></td>
-                              <td>{% if directs >= 1 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.2 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.2 countingi.2 as x2 %}{{ x2|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.2 }}</td>
@@ -51,7 +48,6 @@
                               </tr>
                               <tr>
                               <td><strong>&nbsp;&nbsp;Level 3</strong></td>
-                              <td>{% if directs >= 2 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.3 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.3 countingi.3 as x3 %}{{ x3|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.3 }}</td>
@@ -59,7 +55,6 @@
                               </tr>
                               <tr>
                               <td><strong>&nbsp;&nbsp;Level 4</strong></td>
-                              <td>{% if directs >= 2 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.4 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.4 countingi.4 as x4 %}{{ x4|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.4 }}</td>
@@ -67,7 +62,6 @@
                               </tr>
                               <tr>
                               <td><strong>&nbsp;&nbsp;Level 5</strong></td>
-                              <td>{% if directs >= 3 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.5 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.5 countingi.5 as x5 %}{{ x5|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.5 }}</td>
@@ -75,7 +69,6 @@
                               </tr>
                               <tr>
                               <td><strong>&nbsp;&nbsp;Level 6</strong></td>
-                              <td>{% if directs >= 3 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.6 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.6 countingi.6 as x6 %}{{ x6|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.6 }}</td>
@@ -83,7 +76,6 @@
                               </tr>
                               <tr>
                               <td><strong>&nbsp;&nbsp;Level 7</strong></td>
-                              <td>{% if directs >= 4 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.7 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.7 countingi.7 as x7 %}{{ x7|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.7 }}</td>
@@ -91,7 +83,6 @@
                               </tr>
                               <tr>
                               <td><strong>&nbsp;&nbsp;Level 8</strong></td>
-                              <td>{% if directs >= 4 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.8 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.8 countingi.8 as x8 %}{{ x8|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.8 }}</td>
@@ -99,7 +90,6 @@
                               </tr>
                               <tr>
                               <td><strong>&nbsp;&nbsp;Level 9</strong></td>
-                              <td>{% if directs >= 5 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.9 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.9 countingi.9 as x9 %}{{ x9|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.9 }}</td>
@@ -107,7 +97,6 @@
                               </tr>
                               <tr>
                               <td><strong>&nbsp;&nbsp;Level 10</strong></td>
-                              <td>{% if directs >= 5 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.10 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.10 countingi.10 as x10 %}{{ x10|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.10 }}</td>
@@ -115,7 +104,6 @@
                               </tr>
                               <tr>
                               <td><strong>&nbsp;&nbsp;Level 11</strong></td>
-                              <td>{% if directs >= 6 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.11 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.11 countingi.11 as x11 %}{{ x11|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.11 }}</td>
@@ -123,7 +111,6 @@
                               </tr>
                               <tr>
                               <td><strong>&nbsp;&nbsp;Level 12</strong></td>
-                              <td>{% if directs >= 6 %}Open{% else %}Closed{% endif %}</td>
                               <td><span style="color: green; font-size: 16px">&#9679; </span> {{ countingi.12 }}</td>
                               <td><span style="color: red; font-size: 16px">&#9679; </span>{% sub counting.12 countingi.12 as x12 %}{{ x12|floatformat:"0" }}</td>
                               <td><span style="font-size: 16px">$ </span> {{ business.12 }}</td>
@@ -131,7 +118,6 @@
                               </tr>
                               <tr>
                               <td><strong>&nbsp;&nbsp;Total</strong></td>
-                              <td><strong>{{directs}} Levels Open</strong></td>
                               <td><strong style="font-size: 16px;">&#9745; {{ countingi.1|add:countingi.2|add:countingi.3|add:countingi.4|add:countingi.5|add:countingi.6|add:countingi.7|add:countingi.8|add:countingi.9|add:countingi.10|add:countingi.11 }}</strong></td>
                               <td><strong style="font-size: 16px;">&#9745; {{ x1|add:x2|add:x3|add:x4|add:x5|add:x6|add:x7|add:x8|add:x9|add:x10|add:x11|add:x12 }}</strong></td>
                               <td><strong style="font-size: 16px;">$ {{ business.1|add:business.2|add:business.3|add:business.4|add:business.5|add:business.6|add:business.7|add:business.8|add:business.9|add:business.10|add:business.11|add:business.12 }}</strong></td>
@@ -148,7 +134,7 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                            <tr style="background-color: #333333;">
+                            <tr>
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
                               <th>User ID</th>
@@ -161,10 +147,10 @@
                               {% for usern, shopn in user_list %}
                               <tr >
                               <td>&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
-                              <td>{% if shopn.active %}<span style="color: green; font-size: 16px">Active</span>{% else %}<span style="color: red; font-size: 16px">Inactive</span>{% endif %}{{ usern.name }}</td>
+                              <td>{% if shopn.active %}<span style="color: green; font-size: 16px">●</span>{% else %}<span style="color: red; font-size: 16px">●</span>{% endif %}{{ usern.name }}</td>
                               <td>{{ usern.username }}</td>
                               <td>$ {{ shopn.level.amount }}</td>
-                              <td>$ {{ usern.mobile }}</td>
+                              <td>{{ usern.mobile }}</td>
                               <td><a href="/level/team/{{ usern.username }}/1/">View</a></td>
                               {% endfor %}
                           </tbody>
@@ -180,7 +166,7 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                            <tr style="background-color: #333333;">
+                            <tr>
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
                               <th>User ID</th>
@@ -211,7 +197,7 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                            <tr style="background-color: #333333;">
+                            <tr>
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
                               <th>User ID</th>
@@ -242,7 +228,7 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                            <tr style="background-color: #333333;">
+                            <tr>
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
                               <th>User ID</th>
@@ -274,7 +260,7 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                            <tr style="background-color: #333333;">
+                            <tr>
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
                               <th>User ID</th>
@@ -305,7 +291,7 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                            <tr style="background-color: #333333;">
+                            <tr>
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
                               <th>User ID</th>
@@ -336,7 +322,7 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                            <tr style="background-color: #333333;">
+                            <tr>
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
                               <th>User ID</th>
@@ -367,7 +353,7 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                            <tr style="background-color: #333333;">
+                            <tr>
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
                               <th>User ID</th>
@@ -398,7 +384,7 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                            <tr style="background-color: #333333;">
+                            <tr>
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
                               <th>User ID</th>
@@ -429,7 +415,7 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                            <tr style="background-color: #333333;">
+                            <tr>
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
                               <th>User ID</th>
@@ -460,7 +446,7 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                            <tr style="background-color: #333333;">
+                            <tr>
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
                               <th>User ID</th>
@@ -491,7 +477,7 @@
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
-                            <tr style="background-color: #333333;">
+                            <tr>
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
                               <th>User ID</th>

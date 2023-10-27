@@ -102,7 +102,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-inbox"></i></div>
             <div class="content">
-                <h4><b>$</b><span>{{ request.user.global_income }}</span></h4>
+                <h4><b>$</b><span>{{ request.user.loop_income }}</span></h4>
                 <p>Loop 3X Income</p>
             </div>
         </div>
@@ -111,7 +111,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-inbox"></i></div>
             <div class="content">
-                <h4><b>$</b><span>{{ request.user.global_income }}</span></h4>
+                <h4><b>$</b><span>{{ request.user.direct_income }}</span></h4>
                 <p>Direct Income</p>
             </div>
         </div>
@@ -129,7 +129,7 @@
         <div class="single">
             <div class="icon"><i class="anticon anticon-account-book"></i></div>
             <div class="content">
-                <h4><b>$</b><span class="count">{{ request.user.level_income|floatformat:2 }}</span></h4>
+                <h4><b>$</b><span class="count">{{ request.user.retopup_income|floatformat:2 }}</span></h4>
                 <p>Retopup Income</p>
             </div>
         </div>
