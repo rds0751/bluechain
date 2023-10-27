@@ -29,7 +29,7 @@
                               <th>Active Users</th>
                               <th>Inactive Users</th>
                               <th>Total Business</th>
-                              <th>Details</th>
+                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -144,25 +144,27 @@
                     {% endif %}
                     {% if lll == "1" %}
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-4-tablet" align="center">
-                      <h5>Level 1</h5>
+                      <h5>My Directs</h5>
                       <div class="table-responsive">
                         <table class="table dashboard-table">
                           <thead>
                             <tr style="background-color: #333333;">
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
-                              <th>VISTA ID</th>
-                              <th>Plan</th>
-                              <th>Details</th>
+                              <th>User ID</th>
+                              <th>Package</th>
+                              <th>Mobile</th>
+                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>
                               {% for usern, shopn in user_list %}
                               <tr >
                               <td>&nbsp;&nbsp;&nbsp;&nbsp;{{forloop.counter}}</td>
-                              <td>{% if shopn.active %}<span style="color: green; font-size: 16px">&#9679;</span>{% else %}<span style="color: red; font-size: 16px">&#9679;</span>{% endif %}{{ usern.name }}</td>
+                              <td>{% if shopn.active %}<span style="color: green; font-size: 16px">Active</span>{% else %}<span style="color: red; font-size: 16px">Inactive</span>{% endif %}{{ usern.name }}</td>
                               <td>{{ usern.username }}</td>
                               <td>$ {{ shopn.level.amount }}</td>
+                              <td>$ {{ usern.mobile }}</td>
                               <td><a href="/level/team/{{ usern.username }}/1/">View</a></td>
                               {% endfor %}
                           </tbody>
@@ -181,9 +183,9 @@
                             <tr style="background-color: #333333;">
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
-                              <th>VISTA ID</th>
+                              <th>User ID</th>
                               <th>Upline</th>
-                              <th>Plan</th>
+                              <th>Package</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -212,9 +214,9 @@
                             <tr style="background-color: #333333;">
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
-                              <th>VISTA ID</th>
+                              <th>User ID</th>
                               <th>Upline</th>
-                              <th>Plan</th>
+                              <th>Package</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -243,9 +245,9 @@
                             <tr style="background-color: #333333;">
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
-                              <th>VISTA ID</th>
+                              <th>User ID</th>
                               <th>Upline</th>
-                              <th>Plan</th>
+                              <th>Package</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -275,9 +277,9 @@
                             <tr style="background-color: #333333;">
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
-                              <th>VISTA ID</th>
+                              <th>User ID</th>
                               <th>Upline</th>
-                              <th>Plan</th>
+                              <th>Package</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -306,9 +308,9 @@
                             <tr style="background-color: #333333;">
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
-                              <th>VISTA ID</th>
+                              <th>User ID</th>
                               <th>Upline</th>
-                              <th>Plan</th>
+                              <th>Package</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -337,9 +339,9 @@
                             <tr style="background-color: #333333;">
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
-                              <th>VISTA ID</th>
+                              <th>User ID</th>
                               <th>Upline</th>
-                              <th>Plan</th>
+                              <th>Package</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -368,9 +370,9 @@
                             <tr style="background-color: #333333;">
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
-                              <th>VISTA ID</th>
+                              <th>User ID</th>
                               <th>Upline</th>
-                              <th>Plan</th>
+                              <th>Package</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -399,9 +401,9 @@
                             <tr style="background-color: #333333;">
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
-                              <th>VISTA ID</th>
+                              <th>User ID</th>
                               <th>Upline</th>
-                              <th>Plan</th>
+                              <th>Package</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -430,9 +432,9 @@
                             <tr style="background-color: #333333;">
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
-                              <th>VISTA ID</th>
+                              <th>User ID</th>
                               <th>Upline</th>
-                              <th>Plan</th>
+                              <th>Package</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -461,9 +463,9 @@
                             <tr style="background-color: #333333;">
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
-                              <th>VISTA ID</th>
+                              <th>User ID</th>
                               <th>Upline</th>
-                              <th>Plan</th>
+                              <th>Package</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -492,9 +494,9 @@
                             <tr style="background-color: #333333;">
                               <th width="50px">&nbsp;&nbsp;Sr. No.</th>
                               <th>&nbsp;&nbsp;Name</th>
-                              <th>VISTA ID</th>
+                              <th>User ID</th>
                               <th>Upline</th>
-                              <th>Plan</th>
+                              <th>Package</th>
                             </tr>
                           </thead>
                           <tbody>
