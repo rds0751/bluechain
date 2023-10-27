@@ -9,9 +9,7 @@
     <!--Page Content-->
 <div class="row">
     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
-        <div class="user-ranking" >
-            <h4>User ID</h4>
-            <p>{{ request.user.username }} </p>
+        <div class="user-ranking" style="background-image: url({{ request.user.profile_pic.url }}); ">
             <div class="rank" data-bs-toggle="tooltip" data-bs-placement="top" title="By signing up to the account">
                 <img src="{% static '/assets/global/images/sCQgIyl0OKzFiO73nmWF.svg' %}" alt="">
             </div>
@@ -24,7 +22,7 @@
             </div>
             <div class="site-card-body">
                 <div class="row bg-gradient-theme-light theme-purple border-0 mb-2 row">
-                    <div class="col-sm-6 col-lg-9">
+                    <div style="overflow-x: auto;" class="col-sm-6 col-lg-9">
                         <p class="text-secondary">https://BluechainDefi.com/register/{{request.user.username}}</p>
                         <input type="input" style="width:20px; position:absolute; display: none;" value="https:/BluechainDefi.com/register/{{request.user.username}}" id="copy-to-clipboard-input">
                     </div>
@@ -197,7 +195,6 @@
           copyText.select();
           copyText.setSelectionRange(0, 99999)
           document.execCommand("copy");
-          alert("Copied the link: " + copyText.value);
         }
         </script>
     {% endblock content %}
