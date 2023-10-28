@@ -19,6 +19,7 @@ from django.shortcuts import reverse
 from django.contrib.auth.decorators import login_required 
 import datetime
 from django.conf import settings
+from django.utils import timezone
 from django.contrib.auth import load_backend, login
 
 from wallets.models import WalletHistory, Withdrawal, PaymentOption
@@ -309,18 +310,33 @@ def ids(request):
 from django.utils.crypto import get_random_string
 def activate(user, amount):
     def revive(user, amount):
-        pupline = PoolUser.objects.filter(d3='').order_by('registration_date').first()
-        modelp, createdp = PoolUser.objects.get_or_create(user=user.username, upline=pupline, level=LevelIncomeSettings.objects.get(amount=packamount), activated_at=timezone.now())
-        modelp, createdp = PoolUser.objects.get_or_create(user=user.username, upline=pupline, level=LevelIncomeSettings.objects.get(amount=packamount), activated_at=timezone.now())
+        pupline = PoolUser.objects.filter(d3='', level=LevelIncomeSettings.objects.get(amount=amount)).order_by('activated_at').first()
+        try:
+            modelp = PoolUser.objects.get(user=user, level=LevelIncomeSettings.objects.get(amount=amount))
+        except Exception as e:
+            modelp = PoolUser(user=user, upline=pupline, level=LevelIncomeSettings.objects.get(amount=amount), activated_at=timezone.now()).save()
         
+        modelp = PoolUser.objects.get(user=user, level=LevelIncomeSettings.objects.get(amount=amount))
+        modelp.delete()
         
-        def finduplines(user):  
-            try:    
-                user = User.objects.get(username__iexact=str(user)) 
-                upline = user.referral   
-            except User.DoesNotExist:   
-                upline = 'blank'    
-            return upline   
+        try:
+            modelp = PoolUser.objects.get(user=user, level=LevelIncomeSettings.objects.get(amount=amount))
+        except Exception as e:
+            modelp = PoolUser(user=user, upline=pupline, level=LevelIncomeSettings.objects.get(amount=amount), activated_at=timezone.now()).save()
+        
+        modelp = PoolUser.objects.get(user=user, level=LevelIncomeSettings.objects.get(amount=amount))
+        
+        def find_uplines(user_id, amount):
+            uplines = []
+            current_user_id = user_id
+            while len(uplines) < 12  and current_user_id != 'blank' and current_user_id != None:
+                user = User.objects.get(username=current_user_id)
+                if LevelUser.objects.get(user=str(user)).level.amount >= amount:
+                    uplines.append(user)
+                current_user_id = user.referral
+
+            return uplines
+
 
         levels = {
         'level1': 20/100, 
@@ -338,16 +354,10 @@ def activate(user, amount):
         }
     
         userid = User.objects.get(username=user)
-        level = 0   
-        upline_user = userid.referral    
+        level = 0  
         userid = userid
         packamount = amount
-        uplines = [upline_user, ]
-
-        while level < 12 and upline_user != 'blank':
-            upline_user = finduplines(str(upline_user))
-            uplines.append(upline_user)
-            level += 1
+        uplines = find_uplines(userid.referral, amount)
 
         level = 0
         print(uplines)
@@ -359,7 +369,6 @@ def activate(user, amount):
                 upline_user = 'blank'
             try:
                 upgraded = LevelUser.objects.get(user=upline, active=True)
-                capping = upgraded.level.amount * 4
             except Exception as e:
                 print(e)
                 upgraded = LevelUser.objects.get(user='BLU000000')
@@ -375,6 +384,7 @@ def activate(user, amount):
                 upline_user.total_business += packamount
                 upline_user.save()
                 directs = LevelUser.objects.filter(direct=upline_user, active=True)
+                user = User.objects.get(username=user)
                 if user.referral == upline_user.username:
                     direct = True
                 else:
@@ -383,7 +393,7 @@ def activate(user, amount):
                 print(directs.count(), upline_user, '-----------------------------------------------------------------------------')
                 vamount = LevelUser.objects.get(user=userid).level.amount + amount
 
-                if upgraded.amount >= vamount:
+                if upgraded.level.amount >= packamount:
                     upline_amount = levels['level{}'.format(level+1)]*amount
                     upline_wallet = WalletHistory()
                     upline_wallet.user_id = upline
@@ -409,12 +419,8 @@ def activate(user, amount):
             print('outside')
             level = level + 1
 
-        while level < 12 and upline_user != 'blank':
-            upline_user = finduplines(str(upline_user))
-            uplines.append(upline_user)
-            level += 1
         if pupline.d1 == '':
-            pupline.d1 = modelp.user
+            pupline.d1 = str(user)
             pupline.save()
             pupline_wallet = WalletHistory()
             pupline_wallet.user_id = pupline
@@ -432,10 +438,10 @@ def activate(user, amount):
             pupline_user.loop_income += packamount / 2
             pupline_user.save()
         elif pupline.d2 == '' and pupline.d1 != '':
-            pupline.d2 = modelp.user
+            pupline.d2 = str(user)
             pupline.save()
         else:
-            pupline.d3 = modelp.user
+            pupline.d3 = str(user)
             pupline.save()
             revive(pupline, packamount)
 
@@ -450,7 +456,7 @@ def activate(user, amount):
         else:
             return txnid
         
-    def userjoined(user):
+    def userjoined(user, amount):
         try:
             user = LevelUser.objects.get(user=str(user), active=True)
         except Exception as e:
@@ -458,21 +464,33 @@ def activate(user, amount):
             user = 'blank'
         print(user, '---------------')
         if user != 'blank':
-            if user.amount >= 1875:
+            if user.level.amount >= amount:
                 return True
             else:
                 return False
         else:
             return False
+        
+    def isNextUserPack(user, amount):
+        try:
+            user = LevelUser.objects.get(user=str(user))
+        except Exception as e:
+            print(e, 478)
+            user = 'blank'
+        package = LevelIncomeSettings.objects.get(amount=amount) 
+        print(user.level.id + 1, package.id, 481)
+        if user.level.id + 1 == package.id:
+            return True
+        return False
 
     user = User.objects.get(username=user)
     upline_user = user.referral
     packamount = amount
     levelp = LevelIncomeSettings.objects.get(amount=packamount)
     user_id = User.objects.get(username=str(user))
-    userjoined = userjoined(user)
+    userjoined = userjoined(user, amount)
     print(userjoined)
-    if True:
+    if isNextUserPack(user, amount):
         if not userjoined:
             userwallet = WalletHistory()
             userwallet.user_id = user_id
@@ -495,13 +513,33 @@ def activate(user, amount):
 
             userid = user
 
-            def finduplines(user):  
-                try:    
-                    user = User.objects.get(username__iexact=str(user)) 
-                    upline = user.referral   
-                except User.DoesNotExist:   
-                    upline = 'blank'    
-                return upline   
+            def find_uplines(user_id, amount):
+                uplines = []
+                current_user_id = user_id
+                while len(uplines) < 12  and current_user_id != 'blank' and current_user_id != None:
+                    user = User.objects.get(username=current_user_id)
+                    if LevelUser.objects.get(user=str(user)).level.amount >= amount:
+                        uplines.append(user)
+                    current_user_id = user.referral
+
+                return uplines
+
+            # def finduplines(user, amount):
+
+            #     upline = 'blank' 
+            #     try:    
+            #         user = User.objects.get(username=str(user))
+            #         upline = User.objects.get(username=user.referral)
+            #     except Exception as e:
+            #         print(str(e), 535) 
+            #         upline = 'blank'
+            #     if upline != 'blank' and upline != None:
+            #         print(upline, LevelUser.objects.get(user=str(upline)).level.amount, amount)
+            #     if upline != 'blank' and upline != None:
+            #         if LevelUser.objects.get(user=str(upline)).level.amount >= amount:   
+            #             return upline
+                    
+            #     finduplines(upline.referral, amount)
 
             levels = {
             'level1': 20/100, 
@@ -518,35 +556,29 @@ def activate(user, amount):
             'level12': 3/100,
             }
 
-            level = 0   
-            upline_user = userid.referral    
+            level = 0
             userid = user   
             amount = packamount 
-            uplines = [upline_user, ]
-            while level < 12 and upline_user != 'blank':
-                upline_user = finduplines(str(upline_user))
-                uplines.append(upline_user)
-                level += 1
+            uplines1 = find_uplines(userid.referral, amount)
 
             level = 0
-            print(uplines)
-            for upline in uplines:
+            print(uplines1)
+            for upline in uplines1:
                 try:
                     upline_user = User.objects.get(username=upline) 
                 except Exception as e:
-                    print(e)  
+                    print(e, '541')  
                     upline_user = 'blank'
                 try:
                     upgraded = LevelUser.objects.get(user=upline, active=True)
-                    capping = upgraded.level.amount * 4
                 except Exception as e:
-                    print(e)
+                    print(e, '546')
                     upgraded = LevelUser.objects.get(user='BLU000000')
                     capping = 0
                 try:
                     upline_user = User.objects.get(username=upline) 
                 except Exception as e:
-                    print(e)  
+                    print(e, '552')  
                     upline_user = 'blank'
                 if upline_user != 'blank' and upgraded.active:
                     upline_user.my_directs +=1 
@@ -560,21 +592,22 @@ def activate(user, amount):
                         direct = False
                     upline_amount = levels['level{}'.format(level+1)]*amount
                     print(directs.count(), upline_user, '-----------------------------------------------------------------------------')
-                    vamount = LevelUser.objects.get(user=userid).level.amount + amount
 
-                    if upgraded.amount >= vamount:
+                    if True:
+                        upline_user = User.objects.get(username=upline)
                         upline_amount = levels['level{}'.format(level+1)]*amount
                         upline_wallet = WalletHistory()
                         upline_wallet.user_id = upline
                         upline_wallet.amount = upline_amount
                         upline_wallet.type = "credit"
                         if level + 1 == 1:
-                            upline_wallet.comment = "Direct Income by {}".format(user)
+                            comment = "Direct Income by {}".format(user)
                         else:
-                            upline_wallet.comment = "New Upgrade by {} in level {}".format(
+                            comment = "New Upgrade by {} in level {}".format(
                                 user, 
                                 level+1
                                 )
+                        upline_wallet.comment = comment
                         upline_wallet.balance += upline_amount
                         upline_wallet.txnid = generateid()
                         upline_wallet.save()
@@ -588,15 +621,18 @@ def activate(user, amount):
                         else:
                             upline_user.level_income += upline_amount
                         upline_user.save()
-                        upline_user = User.objects.get(username=upline)
                 print('outside')
                 level = level + 1
             
             model, created = LevelUser.objects.get_or_create(user=userid.username)
             model, created = LevelUser.objects.get_or_create(user=userid.username)
-            pupline = PoolUser.objects.filter(d3='').order_by('registration_date').first()
-            modelp, createdp = PoolUser.objects.get_or_create(user=userid.username, upline=pupline, level=LevelIncomeSettings.objects.get(amount=packamount), activated_at=timezone.now())
-            modelp, createdp = PoolUser.objects.get_or_create(user=userid.username, upline=pupline, level=LevelIncomeSettings.objects.get(amount=packamount), activated_at=timezone.now())
+            pupline = PoolUser.objects.filter(d3='', level=LevelIncomeSettings.objects.get(amount=amount)).order_by('activated_at').first()
+            try:
+                modelp = PoolUser.objects.get(user=user, level=LevelIncomeSettings.objects.get(amount=amount))
+            except Exception as e:
+                modelp = PoolUser(user=user, upline=pupline, level=LevelIncomeSettings.objects.get(amount=amount), activated_at=timezone.now()).save()
+            modelp = PoolUser.objects.get(user=user, level=LevelIncomeSettings.objects.get(amount=amount))
+            
             if pupline.d1 == '':
                 pupline.d1 = modelp.user
                 pupline.save()
@@ -622,7 +658,7 @@ def activate(user, amount):
                 pupline.d3 = modelp.user
                 pupline.save()
                 revive(pupline, packamount)
-            levelp = LevelIncomeSettings.objects.get(amount = LevelIncomeSettings.objects.get(amount=packamount).amount + model.level.amount)
+            levelp = LevelIncomeSettings.objects.get(amount=packamount)
             model.user = userid.username
             model.level = levelp
             model.active = True
@@ -639,6 +675,8 @@ def activate(user, amount):
             message = "Plan purchased"
         else:
             message = "User already joined please upgrade another ID"
+    else:
+        message = "Invalid Package"
     return message
 
 from wallets.models import FundRequest

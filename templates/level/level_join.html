@@ -18,7 +18,9 @@
                       <form class="template-demo" method="POST" action="/level/activation/" enctype="multipart/form-data">{% csrf_token %}
                         <h5>Purchase Package</h5>
                         <label>User ID</label>
-                        <input type="text" class="form-control mb-2" placeholder="UserID" name="userID">
+                        <input type="text" class="form-control mb-2" id="UserID" name="userID">
+                        <label>Name of User</label>
+                        <input type="text" class="form-control mb-2" readonly id="user_name">
                             <select class="form-control" name="amount">
                               {% for package in packages %}
                                 {% if package.active == True %}
@@ -177,12 +179,25 @@
           console.log(err)
        }
        }
-       
-      document.addEventListener("DOMContentLoaded", function() {
-         var swapButton = document.getElementById("deposit");
-
-         // Attach the handleClick function as an event listener to the button
-         swapButton.addEventListener("click", swapFunction);
-      });
       </script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+  $("#UserID").change(function () {
+    var username = $(this).val();
+
+    $.ajax({
+      url: '/users/ajax/validate_username/',
+      data: {
+        'username': username
+      },
+      dataType: 'json',
+      success: function (data) {
+        if (true) {
+          document.getElementById("user_name").value = data.is_taken;
+        }
+      }
+    });
+
+  });
+</script>
             {% endblock content %}

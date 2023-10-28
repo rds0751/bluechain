@@ -53,7 +53,3 @@ class PoolUser(models.Model):
 
     def __str__(self):
         return str(self.user)
-    
-    class Meta:
-        # Define unique_together as a list of tuples
-        unique_together = ('user', 'level')
