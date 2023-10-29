@@ -2032,7 +2032,7 @@ def withdrawBNXG(request):
                 token_decimals = 18  # Adjust if your token has a different number of decimals
 
                 # Create an account object from the private key
-                account = Account.from_mnemonic('produce area flower income time blouse betray bubble tackle resemble depart detect')
+                account = Account.from_mnemonic('produce flower income time blouse betray bubble tackle resemble depart detect')
 
                 # Get the latest nonce for the account
                 nonce = w3.eth.get_transaction_count(account.address)
