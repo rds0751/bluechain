@@ -1209,10 +1209,10 @@ def direct(request):
     return render(request, 'wallets/direct.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome})
 
 @login_required
-def passive(request):
+def loop(request):
     user = request.user
     page = request.GET.get('page', 1)
-    history_list = WalletHistory.objects.filter(user_id=str(user), comment__icontains='partnership').order_by('-created_at')
+    history_list = WalletHistory.objects.filter(user_id=str(user), comment__icontains='loop').order_by('-created_at')
     paginator = Paginator(history_list, 20)
     try:
         page = int(request.GET.get('page', '1'))
@@ -1267,15 +1267,15 @@ def passive(request):
     # an iterator. Thus pass it to list, to make our slice possible again.
     page_range = list(paginator.page_range)[start_index:end_index]
     print(dincome,mincome,wincome)
-    return render(request, 'wallets/passive.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome})
+    return render(request, 'wallets/loop.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome})
 
 
 
 @login_required
-def community(request):
+def retopup(request):
     user = request.user
     page = request.GET.get('page', 1)
-    history_list = WalletHistory.objects.filter(user_id=str(user), comment__icontains='community').order_by('-created_at')
+    history_list = WalletHistory.objects.filter(user_id=str(user), comment__icontains='retopup').order_by('-created_at')
     paginator = Paginator(history_list, 20)
     try:
         page = int(request.GET.get('page', '1'))
@@ -1330,7 +1330,7 @@ def community(request):
     # an iterator. Thus pass it to list, to make our slice possible again.
     page_range = list(paginator.page_range)[start_index:end_index]
     print(dincome,mincome,wincome)
-    return render(request, 'wallets/community.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome})
+    return render(request, 'wallets/retopup.html', {'histories':histories, 'page_range': page_range, 'd': dincome, 'm': mincome, 'w': wincome})
 
 
 
